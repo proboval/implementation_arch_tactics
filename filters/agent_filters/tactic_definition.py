@@ -1,7 +1,10 @@
 import csv
 import json
 from pathlib import Path
+
+from filters.help_methods import safe_llm_json
 from pipes_and_filters.pipes_and_filters import Filter
+from filters.help_methods import collect_repo_files, build_repo_tree
 
 
 TACTICS_CATALOG_PATH = Path("architectural_tactics_complete_catalog.csv")
@@ -14,6 +17,7 @@ class ArchitectureTacticSelectionFilter(Filter):
         self,
         artifacts_dir: Path,
         tactics_catalog: Path,
+        model_name: str,
         call_llm
     ):
         super().__init__()
@@ -21,15 +25,16 @@ class ArchitectureTacticSelectionFilter(Filter):
         self.tactics_catalog = tactics_catalog
         self.tactics = self._load_tactics()
         self.call_llm = call_llm
+        self.model_name = model_name
 
         self.architecture_dir = (
-            self.artifacts_dir / "ai_analysis" / "architecture"
+            self.artifacts_dir / f"ai_analysis_{model_name.split(":")[0]}" / "architecture"
         )
         self.static_analysis_dir = (
             self.artifacts_dir / "static_analysis" / "BEFORE"
         )
         self.output_dir = (
-            self.artifacts_dir / "ai_analysis" / "architecture_tactics"
+            self.artifacts_dir / f"ai_analysis_{model_name.split(":")[0]}" / "architecture_tactics"
         )
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -39,92 +44,124 @@ class ArchitectureTacticSelectionFilter(Filter):
 
     def process(self, repositories: list):
         for repo in repositories:
-            repo_name = repo.name
+            try:
+                repo_name = repo.name
 
-            self.logger.info(f"Selecting tactic for repo: {repo_name}")
+                if not repo.repo_files:
+                    repo.repo_files = collect_repo_files(repo.local_path)
+                if not repo.repo_tree:
+                    repo.repo_tree = build_repo_tree(repo.local_path)
 
-            static_repo_dir = self.static_analysis_dir / repo_name
+                output_file = self.output_dir / f"{repo_name}.json"
+                if output_file.exists():
+                    continue
 
-            if not static_repo_dir.exists() or not static_repo_dir.is_dir():
-                self.logger.warning(
-                    f"Static analysis directory not found for {repo_name}: {static_repo_dir}"
-                )
-                continue
+                self.logger.info(f"Selecting tactic for repo: {repo_name}")
 
-            architecture_file = self.architecture_dir / f"{repo_name}.json"
+                static_repo_dir = self.static_analysis_dir / repo_name
 
-            if not architecture_file.exists():
-                self.logger.warning(
-                    f"Architecture analysis not found for {repo_name}"
-                )
-                continue
-
-            static_metrics = {}
-
-            for json_file in static_repo_dir.glob("*.json"):
-                try:
-                    static_metrics[json_file.stem] = json.loads(
-                        json_file.read_text(encoding="utf-8")
-                    )
-                except json.JSONDecodeError as e:
+                if not static_repo_dir.exists() or not static_repo_dir.is_dir():
                     self.logger.warning(
-                        f"Invalid JSON in {json_file}: {e}"
+                        f"Static analysis directory not found for {repo_name}: {static_repo_dir}"
                     )
+                    continue
 
-            architecture = architecture_file.read_text(encoding="utf-8")
-            issues = static_metrics
+                architecture_file = self.architecture_dir / f"{repo_name}.json"
 
-            tactics_text = "\n".join(
-                f"""
-ID: {t['AT_ID']}
-Name: {t['Tactic_Name']}
-Primary QA Impact: {t['Primary_QA_Impact']}
-Description: {t['Description']}
-Positive Impact: {t['Positive_Impact']}
-Negative Impact: {t['Negative_Impact']}
-Related Terms: {t['Related_Terms']}
-Source: {t['Source']}
-""".strip()
-                for t in self.tactics
-            )
+                if not architecture_file.exists():
+                    self.logger.warning(
+                        f"Architecture analysis not found for {repo_name}"
+                    )
+                    continue
 
-            prompt = f"""
-You are a software architecture expert.
+                static_metrics = {}
 
-ARCHITECTURE:
-{architecture}
+                for json_file in static_repo_dir.glob("*.json"):
+                    try:
+                        static_metrics[json_file.stem] = json.loads(
+                            json_file.read_text(encoding="utf-8")
+                        )
+                    except json.JSONDecodeError as e:
+                        self.logger.warning(
+                            f"Invalid JSON in {json_file}: {e}"
+                        )
 
-MAINTAINABILITY ISSUES (static analysis):
-{issues}
+                architecture = architecture_file.read_text(encoding="utf-8")
+                issues = static_metrics
 
-ARCHITECTURAL TACTICS CATALOG:
-{tactics_text}
+                tactics_text = "\n".join(
+                    f"""
+    ID: {t['AT_ID']}
+    Name: {t['Tactic_Name']}
+    Primary QA Impact: {t['Primary_QA_Impact']}
+    Description: {t['Description']}
+    Positive Impact: {t['Positive_Impact']}
+    Negative Impact: {t['Negative_Impact']}
+    Related Terms: {t['Related_Terms']}
+    Source: {t['Source']}
+    """.strip()
+                    for t in self.tactics
+                )
 
-TASK:
-Select the most appropriate architectural tactic to improve maintainability.
-Consider trade-offs.
+                prompt = f"""
+    You are a software architecture expert.
+    
+    ARCHITECTURE:
+    {architecture}
+    
+    MAINTAINABILITY ISSUES (static analysis):
+    {issues}
+    
+    ARCHITECTURAL TACTICS CATALOG:
+    {tactics_text}
+    
+    REPOSITORY TREE:
+    {repo.repo_tree}
+    
+    REPOSITORY FILES CONTENT:
+    {"".join(
+        f"\n--- FILE: {path} ---\n{content}\n"
+        for path, content in repo.repo_files.items()
+    )}
+    
+    TASK:
+    Select the most appropriate architectural tactic to improve maintainability.
+    Consider trade-offs.
+    
+    OUTPUT STRICT JSON:
+    {{
+      "selected_tactic": {{
+        "id": "...",
+        "name": "...",
+        "primary_qa_impact": "...",
+        "positive_impact": "...",
+        "negative_impact": "..."
+      }},
+      "justification": "...",
+      "expected_architectural_change": "...",
+      "risks": "..."
+    }}
+    
+    IMPORTANT:
+    - Return ONLY raw JSON
+    - Do NOT use markdown
+    - Do NOT wrap in ```json
+    - The first character of the response MUST be {{ or [
+    """
 
-OUTPUT STRICT JSON:
-{{
-  "selected_tactic": {{
-    "id": "...",
-    "name": "...",
-    "primary_qa_impact": "...",
-    "positive_impact": "...",
-    "negative_impact": "..."
-  }},
-  "justification": "...",
-  "expected_architectural_change": "...",
-  "risks": "..."
-}}
-"""
+                response = self.call_llm(prompt=prompt, model=self.model_name)
 
-            response = self.call_llm(prompt)
+                data = safe_llm_json(response)
 
-            output_file = self.output_dir / f"{repo_name}.json"
-            output_file.write_text(response, encoding="utf-8")
+                output_file.write_text(
+                    data
+                )
 
-            self.logger.info(f"Tactic selected for {repo_name}")
+                self.logger.info(f"Tactic selected for {repo_name}")
+
+            except Exception as e:
+                self.logger.error(f"Catch Exception: {e} on repo {repo.name}")
 
         return repositories
+
 

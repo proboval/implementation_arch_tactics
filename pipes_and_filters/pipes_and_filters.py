@@ -27,6 +27,9 @@ class Repository:
     analysis_strategy: Optional[str] = None
     changes_metrics: Dict[str, Any] = None
 
+    repo_files: dict[str, str] = None
+    repo_tree: str = None
+
 
 class Filter(ABC):
     name = "base"
@@ -36,20 +39,18 @@ class Filter(ABC):
 
     def run(self, data):
         start = time.time()
-        self.logger.info("START")
-        self.logger.info(f"DATA | {data}")
+        self.logger.info(f"{self.name} |START")
 
         try:
             result = self.process(data)
             duration = round(time.time() - start, 2)
 
-            self.logger.info(f"SUCCESS | time={duration}s")
+            self.logger.info(f"{self.name} | SUCCESS | time={duration}s")
             return result
 
         except Exception as e:
             duration = round(time.time() - start, 2)
-            self.logger.error(f"FAILED | time={duration}s | error={e}")
-            raise
+            self.logger.error(f"{self.name} | FAILED | time={duration}s | error={e}")
 
     @abstractmethod
     def process(self, data: Iterable[Repository]) -> List[Repository]:
@@ -60,7 +61,7 @@ class Pipeline:
     def __init__(self, filters: list[Filter]):
         self.filters = filters
 
-    def run(self, data):
+    def run(self, data=None):
         for f in self.filters:
             data = f.run(data)
         return data
