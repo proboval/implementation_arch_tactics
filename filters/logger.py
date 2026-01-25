@@ -16,7 +16,7 @@ def get_filter_logger(name: str) -> logging.Logger:
 
     file_handler = logging.FileHandler(LOG_DIR / f"{name}.log", encoding="utf-8")
     formatter = logging.Formatter(
-        "%(asctime)s | %(levelname)s | %(message)s"
+        "%(name)s | %(asctime)s | %(levelname)s | %(message)s"
     )
     file_handler.setFormatter(formatter)
 

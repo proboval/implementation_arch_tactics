@@ -30,6 +30,11 @@ class StaticAnalysisFilter(Filter):
                 continue
 
             repo_dir = self.before_dir / repo.name
+
+            if repo_dir.exists():
+                self.logger.info(f"{repo_dir} exists")
+                continue
+
             repo_dir.mkdir(parents=True, exist_ok=True)
 
             maintainability = self._run_radon(repo.local_path, repo_dir)

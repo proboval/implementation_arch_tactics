@@ -16,36 +16,45 @@ load_dotenv()
 
 GITHUB_TOKEN = os.getenv("GIT_KEY")
 
+MODEL_NAME = "qwen3-coder:480b-cloud"
+
 pipeline = Pipeline(
     filters=[
-        GitHubSearchFilter(token=GITHUB_TOKEN, max_repos=2),
+        GitHubSearchFilter(
+            token=GITHUB_TOKEN,
+            max_repos=15,
+            output_file=Path("./artifacts/cloned_repositories.txt")
+        ),
 
-        # CloneRepositoriesFilter(
-        #     base_dir=Path("./artifacts/repos"),
-        #     output_file=Path("./artifacts/cloned_repositories.txt"),
-        # ),
-        #
-        # StaticAnalysisFilter(
-        #     artifacts_dir=Path("./artifacts"),
-        #     step="BEFORE"
-        # ),
-        #
-        # ArchitectureDetectionAgent(
-        #     call_llm=call_llm,
-        #     artifacts_dir=Path("./artifacts"),
-        # ),
-        #
-        # ArchitectureTacticSelectionFilter(
-        #     artifacts_dir=Path("./artifacts"),
-        #     tactics_catalog=Path(
-        #         "./filters/agent_filters/architectural_tactics_complete_catalog.csv"
-        #     ),
-        #     call_llm=call_llm
-        # ),
+        CloneRepositoriesFilter(
+            base_dir=Path("./artifacts/repos"),
+        ),
+
+        StaticAnalysisFilter(
+            artifacts_dir=Path("./artifacts"),
+            step="BEFORE"
+        ),
+
+        ArchitectureDetectionAgent(
+            call_llm=call_llm,
+            artifacts_dir=Path("./artifacts"),
+            model_name=MODEL_NAME
+        ),
+
+        ArchitectureTacticSelectionFilter(
+            artifacts_dir=Path("./artifacts"),
+            tactics_catalog=Path(
+                "./filters/agent_filters/architectural_tactics_complete_catalog.csv"
+            ),
+            call_llm=call_llm,
+            model_name=MODEL_NAME
+        ),
 
         ArchitecturalTacticImplementationAgent(
             call_llm=call_llm,
+            model_name=MODEL_NAME,
             artifacts_dir=Path("./artifacts"),
+            max_iterations=10,
         ),
 
         StaticAnalysisFilter(
@@ -55,7 +64,4 @@ pipeline = Pipeline(
     ]
 )
 
-repositories = pipeline.run(None)
-
-for repo in repositories:
-    print(repo.full_name, repo.stars, repo.size_kb)
+pipeline.run()
