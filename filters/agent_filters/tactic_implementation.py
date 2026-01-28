@@ -13,7 +13,7 @@ def build_refactor_prompt(
     previous_steps: list[dict],
 ):
     return f"""
-You are a senior software architect and refactoring assistant.
+You are a senior backend engineer strictly following Test Driven Development (TDD).
 
 You are working inside an EXISTING real Python repository.
 
@@ -39,39 +39,36 @@ SELECTED ARCHITECTURAL TACTIC
 {json.dumps(tactic, indent=2)}
 
 ========================================
-PREVIOUSLY APPLIED STEPS
+PREVIOUS TDD STEPS
 ========================================
-{json.dumps(previous_steps, indent=2) if previous_steps else "No changes applied yet."}
-
-Rules:
-- Do NOT repeat previous steps
-- Do NOT modify the same file in the same way twice
-- If all reasonable steps are already applied, respond with STOP
-
+{json.dumps(previous_steps, indent=2) if previous_steps else "No steps yet."}
 
 ========================================
-YOUR TASK
+STRICT DEVELOPMENT PROCESS (MANDATORY)
 ========================================
-Apply the selected architectural tactic to this repository.
+You MUST follow Test Driven Development:
 
-Constraints (STRICT):
-- Make ONE small, localized, reversible change
+Iteration rules:
+1. FIRST create or modify a TEST that describes the next desired behavior
+2. The test MUST fail on current code
+3. THEN implement the MINIMAL production code needed to pass the test
+4. NEVER implement production code without a test
+5. ONE SMALL CHANGE per iteration
+6. If the tactic is fully implemented, respond with STOP
+
+========================================
+CONSTRAINTS (STRICT)
+========================================
 - Do NOT break existing tests
-- Prefer refactoring over rewriting
-- Do NOT invent new abstractions unless strictly necessary
-- If implementation is risky or unclear, respond with STOP
-
-You MUST reason about:
-- Existing architecture
-- File responsibilities
-- Dependency directions
-- Test stability
+- Do NOT rewrite large components
+- Prefer refactoring over new abstractions
+- Avoid touching unrelated files
+- If unsure, respond with STOP
 
 ========================================
 OUTPUT FORMAT (STRICT)
 ========================================
 Return ONLY valid JSON.
-
 The JSON MUST be an ARRAY of steps.
 
 Each step MUST follow EXACTLY this schema:
@@ -83,40 +80,29 @@ Each step MUST follow EXACTLY this schema:
     "STOP"
   ],
   "path": "relative/path",
-  "content": "file content if applicable",
-  "from": "old path (only for move_file)"
+  "content": "file content if applicable"
 }}
 
 Rules:
-- DO NOT invent new action names
-- DO NOT use natural language as action
+- Test steps MUST target test files (tests/, *_test.py, test_*.py)
+- Implementation steps MUST target production code
+- NEVER mix test and implementation in the same step
+- NEVER output more than ONE step per response
 - DO NOT include explanations
 - DO NOT include markdown
-- DO NOT include comments outside JSON
-- DO NOT modify init.py files
-- You MUST modify/create only files with main business and technical logic 
-- You MYST work only with backend, if you see ML/frontend projects just return:
-    [
-      {{ "action": "STOP" }}
-    ]
+- DO NOT modify __init__.py files
+- Backend code only
 
-If no safe change is possible:
-Return:
+If no safe next TDD step exists:
 [
   {{ "action": "STOP" }}
 ]
 
 IMPORTANT:
-- Return ONLY raw JSON
-- Do NOT use markdown
-- Do NOT wrap in ```json
-- The first character of the response MUST be {{ or [
-- There is no need to endlessly try to implement the tactics, as soon as you realized that you have implemented it, immediately return:
-    [
-      {{ "action": "STOP" }}
-    ]
+- First response MUST be a TEST
+- There is NO NEED to finish the whole tactic
+- Stop as soon as the tactic is sufficiently covered by tests
 """
-
 
 
 class ArchitecturalTacticImplementationAgent(Filter):
@@ -180,31 +166,31 @@ class ArchitecturalTacticImplementationAgent(Filter):
             steps = self.ask_llm_for_steps(repo, tactic, applied_steps_summary)
 
             if not steps:
-                self.logger.warning("Empty plan returned, stopping")
                 break
 
-            for step in steps:
-                action = step.get("action", "STOP")
+            step = steps[0]
+            action = step.get("action", "STOP")
 
-                if action == "STOP":
-                    self.logger.info("LLM requested STOP")
-                    return
+            if action == "STOP":
+                self.logger.info("LLM requested STOP")
+                return
 
-                self.apply_step(repo_path, step)
+            self.apply_step(repo_path, step)
 
-                test_result = self.run_tests(repo_path)
-                self.save_step(artifact_dir, iteration, step, test_result)
+            test_result = self.run_tests(repo_path)
+            self.save_step(artifact_dir, iteration, step, test_result)
 
-                applied_steps_summary.append({
-                    "iteration": iteration,
-                    "action": step.get("action"),
-                    "path": step.get("path"),
-                    "from": step.get("from"),
-                })
+            applied_steps_summary.append({
+                "iteration": iteration,
+                "action": action,
+                "path": step.get("path"),
+                "tests_passed": test_result["success"],
+            })
 
-                if not test_result["success"]:
-                    self.logger.error("Tests failed, rolling back changes")
-                    self.rollback(repo_path, repo.name)
+            if not test_result["success"]:
+                self.logger.info("Tests failed (expected for TDD), continuing")
+                continue
+
 
     def install_requirements(self, repo_path: Path) -> bool:
         req = repo_path / "requirements.txt"
