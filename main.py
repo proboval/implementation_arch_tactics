@@ -15,36 +15,36 @@ import os
 load_dotenv()
 
 GITHUB_TOKEN = os.getenv("GIT_KEY")
-
 MODEL_NAME = "qwen3-coder:480b-cloud"
+ARTIFACTS_DIR_NAME = "artifacts_TDD"
 
 pipeline = Pipeline(
     filters=[
         GitHubSearchFilter(
             token=GITHUB_TOKEN,
             max_repos=5,
-            output_file=Path("./artifacts_new_implementation/cloned_repositories.txt"),
+            output_file=Path(f"./{ARTIFACTS_DIR_NAME}/cloned_repositories.txt"),
             stars=(1000, 10000)
         ),
 
         CloneRepositoriesFilter(
-            base_dir=Path("./artifacts_new_implementation/repos"),
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            base_dir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
         ),
 
         StaticAnalysisFilter(
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
             step="BEFORE"
         ),
 
         ArchitectureDetectionAgent(
             call_llm=call_llm,
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
             model_name=MODEL_NAME
         ),
 
         ArchitectureTacticSelectionFilter(
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
             tactics_catalog=Path(
                 "./filters/agent_filters/architectural_tactics_complete_catalog.csv"
             ),
@@ -55,12 +55,12 @@ pipeline = Pipeline(
         ArchitecturalTacticImplementationAgent(
             call_llm=call_llm,
             model_name=MODEL_NAME,
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
             max_iterations=100,
         ),
 
         StaticAnalysisFilter(
-            artifacts_dir=Path("./artifacts_new_implementation"),
+            artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}"),
             step="AFTER"
         ),
     ]
