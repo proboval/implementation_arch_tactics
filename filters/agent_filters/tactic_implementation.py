@@ -95,6 +95,10 @@ Rules:
 - DO NOT include comments outside JSON
 - DO NOT modify init.py files
 - You MUST modify/create only files with main business and technical logic 
+- You MYST work only with backend, if you see ML/frontend projects just return:
+    [
+      {{ "action": "STOP" }}
+    ]
 
 If no safe change is possible:
 Return:
@@ -107,6 +111,10 @@ IMPORTANT:
 - Do NOT use markdown
 - Do NOT wrap in ```json
 - The first character of the response MUST be {{ or [
+- There is no need to endlessly try to implement the tactics, as soon as you realized that you have implemented it, immediately return:
+    [
+      {{ "action": "STOP" }}
+    ]
 """
 
 
@@ -153,7 +161,14 @@ class ArchitecturalTacticImplementationAgent(Filter):
             )
             return
 
-        repo_path = Path("artifacts/repos") / repo.name
+        repo_path = self.artifacts_dir / "repos" / repo.name
+
+        if not self.install_requirements(repo_path):
+            self.logger.error(
+                f"Skipping repo {repo.name} due to dependency installation failure"
+            )
+            return
+
         artifact_dir = (
             self.artifacts_dir / "tactic_application" / repo.name
         )
@@ -187,10 +202,37 @@ class ArchitecturalTacticImplementationAgent(Filter):
                     "from": step.get("from"),
                 })
 
-                # if not test_result["success"]:
-                #     self.logger.error("Tests failed, rolling back changes")
-                #     self.rollback(repo_path)
+                if not test_result["success"]:
+                    self.logger.error("Tests failed, rolling back changes")
+                    self.rollback(repo_path, repo.name)
 
+    def install_requirements(self, repo_path: Path) -> bool:
+        req = repo_path / "requirements.txt"
+        if not req.exists():
+            self.logger.info("No requirements.txt found, skipping dependency install")
+            return True
+
+        self.logger.info(f"Installing dependencies for {repo_path.name}")
+
+        result = subprocess.run(
+            [
+                "pip",
+                "install",
+                "-r",
+                "requirements.txt",
+            ],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+        )
+
+        if result.returncode != 0:
+            self.logger.error(
+                f"Dependency installation failed:\n{result.stderr}"
+            )
+            return False
+
+        return True
 
     # -------------------------------------------------
     # LLM interaction
@@ -333,8 +375,17 @@ class ArchitecturalTacticImplementationAgent(Filter):
             "stderr": result.stderr,
         }
 
-    def rollback(self, repo_path: Path):
-        subprocess.run(["git", "checkout", "."], cwd=repo_path)
+    def rollback(self, repo_path: Path, repo_name: str):
+        snapshot = self.artifacts_dir / "snapshots" / repo_name / "baseline"
+
+        if not snapshot.exists():
+            self.logger.error("No snapshot found, cannot rollback")
+            return
+
+        self.logger.warning(f"Rolling back repo {repo_name} to baseline snapshot")
+
+        shutil.rmtree(repo_path, ignore_errors=True)
+        shutil.copytree(snapshot, repo_path)
 
     # -------------------------------------------------
     # Artifacts

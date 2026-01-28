@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List
+from typing import List, Tuple
 import requests
 from pipes_and_filters.pipes_and_filters import Filter, Repository
 
@@ -13,12 +13,14 @@ class GitHubSearchFilter(Filter):
         output_file: Path,
         max_repos: int = 10,
         repos_base_dir: Path = Path("artifacts/repos"),
+        stars: Tuple[int, int] = (500, 1200)
     ):
         super().__init__()
         self.token = token
         self.max_repos = max_repos
         self.output_file = output_file
         self.repos_base_dir = repos_base_dir
+        self.stars = stars
 
         self.output_file.parent.mkdir(parents=True, exist_ok=True)
         self.repos_base_dir.mkdir(parents=True, exist_ok=True)
@@ -106,7 +108,7 @@ class GitHubSearchFilter(Filter):
 
         query = (
             "language:Python "
-            "stars:500..1200 "
+            f"stars:{self.stars[0]}..{self.stars[1]} "
             "forks:>=30 "
             "size:<=5000"
         )

@@ -22,27 +22,29 @@ pipeline = Pipeline(
     filters=[
         GitHubSearchFilter(
             token=GITHUB_TOKEN,
-            max_repos=15,
-            output_file=Path("./artifacts/cloned_repositories.txt")
+            max_repos=5,
+            output_file=Path("./artifacts_new_implementation/cloned_repositories.txt"),
+            stars=(1000, 10000)
         ),
 
         CloneRepositoriesFilter(
-            base_dir=Path("./artifacts/repos"),
+            base_dir=Path("./artifacts_new_implementation/repos"),
+            artifacts_dir=Path("./artifacts_new_implementation"),
         ),
 
         StaticAnalysisFilter(
-            artifacts_dir=Path("./artifacts"),
+            artifacts_dir=Path("./artifacts_new_implementation"),
             step="BEFORE"
         ),
 
         ArchitectureDetectionAgent(
             call_llm=call_llm,
-            artifacts_dir=Path("./artifacts"),
+            artifacts_dir=Path("./artifacts_new_implementation"),
             model_name=MODEL_NAME
         ),
 
         ArchitectureTacticSelectionFilter(
-            artifacts_dir=Path("./artifacts"),
+            artifacts_dir=Path("./artifacts_new_implementation"),
             tactics_catalog=Path(
                 "./filters/agent_filters/architectural_tactics_complete_catalog.csv"
             ),
@@ -53,12 +55,12 @@ pipeline = Pipeline(
         ArchitecturalTacticImplementationAgent(
             call_llm=call_llm,
             model_name=MODEL_NAME,
-            artifacts_dir=Path("./artifacts"),
-            max_iterations=10,
+            artifacts_dir=Path("./artifacts_new_implementation"),
+            max_iterations=100,
         ),
 
         StaticAnalysisFilter(
-            artifacts_dir=Path("./artifacts"),
+            artifacts_dir=Path("./artifacts_new_implementation"),
             step="AFTER"
         ),
     ]
