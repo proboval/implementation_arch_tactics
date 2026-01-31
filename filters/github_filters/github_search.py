@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List
+from typing import List, Tuple
 import requests
 from pipes_and_filters.pipes_and_filters import Filter, Repository
 
@@ -13,12 +13,14 @@ class GitHubSearchFilter(Filter):
         output_file: Path,
         max_repos: int = 10,
         repos_base_dir: Path = Path("artifacts/repos"),
+        stars: Tuple[int, int] = (100, 1000)
     ):
         super().__init__()
         self.token = token
         self.max_repos = max_repos
         self.output_file = output_file
         self.repos_base_dir = repos_base_dir
+        self.stars = stars
 
         self.output_file.parent.mkdir(parents=True, exist_ok=True)
         self.repos_base_dir.mkdir(parents=True, exist_ok=True)
@@ -106,51 +108,65 @@ class GitHubSearchFilter(Filter):
 
         query = (
             "language:Python "
-            "stars:500..1200 "
+            f"stars:{self.stars[0]}..{self.stars[1]} "
             "forks:>=30 "
             "size:<=5000"
         )
 
         url = "https://api.github.com/search/repositories"
 
-        response = requests.get(
-            url,
-            headers=headers,
-            params={
-                "q": query,
-                "sort": "stars",
-                "order": "desc",
-                "per_page": self.max_repos,
-            },
-            timeout=30,
-        )
-
-        response.raise_for_status()
-        items = response.json().get("items", [])
-
         repos: List[Repository] = []
+        temp_max_repos = self.max_repos
+        found_repos = 0
 
-        for item in items:
-            repo_name = item["name"]
-            local_path = self.repos_base_dir / repo_name
+        while temp_max_repos:
+            per_page = 100
+            if temp_max_repos >= per_page:
+                temp_max_repos -= per_page
+            else:
+                per_page = temp_max_repos
+                temp_max_repos = 0
 
-            repos.append(
-                Repository(
-                    name=repo_name,
-                    full_name=item["full_name"],
-                    url=item["clone_url"],
-                    stars=item.get("stargazers_count", 0),
-                    forks=item.get("forks_count", 0),
-                    size_kb=item.get("size", 0),
-                    language=item.get("language"),
-                    local_path=local_path,
-                )
+            response = requests.get(
+                url,
+                headers=headers,
+                params={
+                    "q": query,
+                    "sort": "stars",
+                    "order": "desc",
+                    "per_page": per_page,
+                },
+                timeout=30,
             )
+
+            response.raise_for_status()
+            items = response.json().get("items", [])
+
+            for item in items:
+                repo_name = item["name"]
+                local_path = self.repos_base_dir / repo_name
+
+                repos.append(
+                    Repository(
+                        name=repo_name,
+                        full_name=item["full_name"],
+                        url=item["clone_url"],
+                        stars=item.get("stargazers_count", 0),
+                        forks=item.get("forks_count", 0),
+                        size_kb=item.get("size", 0),
+                        language=item.get("language"),
+                        local_path=local_path,
+                    )
+                )
+
+            found_repos += per_page
+
+            self.logger.info(f"Found {found_repos}/{self.max_repos} repos")
 
         self._save_paths(repos)
         return repos
 
     def _save_paths(self, repos: List[Repository]):
-        with open(self.output_file, "w", encoding="utf-8") as f:
+        with open(self.output_file, "a", encoding="utf-8") as f:
             for repo in repos:
                 f.write(f"{repo.full_name}\n")

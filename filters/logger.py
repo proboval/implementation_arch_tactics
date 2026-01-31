@@ -1,9 +1,10 @@
 import logging
 import sys
 from pathlib import Path
+from filters.config import ARTIFACTS_DIR_NAME
 
 
-LOG_DIR = Path("./artifacts/logs")
+LOG_DIR = Path(f"./{ARTIFACTS_DIR_NAME}/logs")
 LOG_DIR.mkdir(exist_ok=True)
 
 
