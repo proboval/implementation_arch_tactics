@@ -1,6 +1,7 @@
 import csv
 import shutil
 import subprocess
+import time
 from pathlib import Path
 from typing import List
 
@@ -73,6 +74,7 @@ class BackendDatasetPreparationFilter(Filter):
         try:
             is_backend = self.is_backend_repo(repo_path)
         finally:
+            time.sleep(5)
             shutil.rmtree(repo_path, ignore_errors=True)
             repo.local_path = None
             repo.repo_files = None
