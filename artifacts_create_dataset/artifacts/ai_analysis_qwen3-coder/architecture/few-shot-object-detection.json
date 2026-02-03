@@ -1,0 +1,20 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module separation with 'fsdet' as the main package containing submodules like 'checkpoint', 'config', 'data', 'engine', 'evaluation', 'modeling', 'model_zoo', and 'utils'",
+    "Each submodule has a distinct responsibility (e.g., 'modeling' for neural network architectures, 'evaluation' for evaluation metrics, 'data' for dataset handling)",
+    "Presence of '__init__.py' files indicating Python packages and intentional module structuring",
+    "Use of registry patterns (e.g., META_ARCH_REGISTRY, ROI_HEADS_REGISTRY) suggesting a plugin-like modular design within a single deployable unit",
+    "Shared configuration and utility modules used across different parts of the system",
+    "No evidence of network-based service communication or script-based orchestration"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between modules through shared state or direct imports may reduce modularity in practice",
+    "Absence of explicit boundaries or interfaces between modules could lead to architectural drift over time"
+  ]
+}

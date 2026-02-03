@@ -1,0 +1,20 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with distinct modules like 'nodes', 'server', 'src/comfystream', and 'scripts'",
+    "Presence of internal APIs and services (e.g., aiohttp server in 'server/app.py') communicating within the same codebase",
+    "Shared core components such as 'tensor_cache' and 'pipeline' used across different parts of the system",
+    "No evidence of network-based service communication that would indicate microservices",
+    "Presence of a monolithic structure with multiple cohesive layers handling different responsibilities (UI, processing, streaming, utilities)"
+  ],
+  "alternatives": [
+    "layered",
+    "microservices_like"
+  ],
+  "risks": [
+    "Tight coupling between modules could emerge if boundaries are not strictly maintained",
+    "Potential for growing complexity as more features are added to the single deployable unit",
+    "Difficulty in scaling individual components independently compared to a microservices architecture"
+  ]
+}

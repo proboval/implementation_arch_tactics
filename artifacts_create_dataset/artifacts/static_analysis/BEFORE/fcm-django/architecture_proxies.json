@@ -1,0 +1,165 @@
+{
+  "python_files": 40,
+  "packages": 8,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "setup.py": [
+      "fcm_django",
+      "setuptools",
+      "distutils"
+    ],
+    "__init__.py": [],
+    "bin\\new_max.py": [
+      "fcm_django",
+      "firebase_admin"
+    ],
+    "fcm_django\\admin.py": [
+      "firebase_admin",
+      "typing",
+      "fcm_django",
+      "django",
+      "swapper"
+    ],
+    "fcm_django\\apps.py": [
+      "django",
+      "fcm_django"
+    ],
+    "fcm_django\\fields.py": [
+      "struct",
+      "re",
+      "django"
+    ],
+    "fcm_django\\models.py": [
+      "firebase_admin",
+      "typing",
+      "django",
+      "fcm_django",
+      "swapper",
+      "collections",
+      "copy"
+    ],
+    "fcm_django\\settings.py": [
+      "django"
+    ],
+    "fcm_django\\__init__.py": [
+      "django"
+    ],
+    "tests\\conftest.py": [
+      "pytest_mock",
+      "pytest",
+      "firebase_admin",
+      "fcm_django",
+      "swapper",
+      "unittest"
+    ],
+    "tests\\test_admin.py": [
+      "pytest"
+    ],
+    "tests\\test_api_rest_framework.py": [
+      "fcm_django",
+      "base64",
+      "pytest",
+      "swapper"
+    ],
+    "tests\\test_api_tastypie.py": [
+      "fcm_django",
+      "base64",
+      "pytest",
+      "swapper"
+    ],
+    "tests\\test_models.py": [
+      "pytest",
+      "firebase_admin",
+      "typing",
+      "django",
+      "fcm_django",
+      "uuid",
+      "swapper",
+      "unittest"
+    ],
+    "tests\\urls.py": [
+      "django",
+      "fcm_django",
+      "rest_framework",
+      "tastypie"
+    ],
+    "tests\\__init__.py": [],
+    "fcm_django\\api\\rest_framework.py": [
+      "django",
+      "swapper",
+      "fcm_django",
+      "rest_framework"
+    ],
+    "fcm_django\\api\\tastypie.py": [
+      "swapper",
+      "tastypie"
+    ],
+    "fcm_django\\api\\__init__.py": [
+      "django",
+      "tastypie"
+    ],
+    "fcm_django\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0002_auto_20160808_1645.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0003_auto_20170313_1314.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0004_auto_20181128_1642.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0005_auto_20170808_1145.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0006_auto_20210802_1140.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0007_auto_20211001_1440.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0008_auto_20211224_1205.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0009_alter_fcmdevice_user.py": [
+      "django"
+    ],
+    "fcm_django\\migrations\\0010_unique_registration_id.py": [
+      "django",
+      "fcm_django"
+    ],
+    "fcm_django\\migrations\\0011_fcmdevice_fcm_django_registration_id_user_id_idx.py": [
+      "django",
+      "fcm_django"
+    ],
+    "fcm_django\\migrations\\__init__.py": [],
+    "tests\\settings\\base.py": [
+      "dj_database_url"
+    ],
+    "tests\\settings\\default.py": [
+      "base"
+    ],
+    "tests\\settings\\swap.py": [
+      "base"
+    ],
+    "tests\\settings\\__init__.py": [],
+    "tests\\swapped_models\\admin.py": [
+      "django",
+      "fcm_django",
+      "models"
+    ],
+    "tests\\swapped_models\\models.py": [
+      "django",
+      "fcm_django",
+      "uuid"
+    ],
+    "tests\\swapped_models\\__init__.py": [],
+    "tests\\swapped_models\\migrations\\0001_initial.py": [
+      "django",
+      "uuid"
+    ],
+    "tests\\swapped_models\\migrations\\__init__.py": []
+  }
+}

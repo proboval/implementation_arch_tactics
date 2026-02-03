@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single executable script (bin/q.py) with main entry point",
+    "Flat directory structure with minimal nesting (max depth 2)",
+    "High fan-out (7.67) indicating central script calling many modules",
+    "All core logic contained in one large file (bin/q.py)",
+    "Test structure organized around functional testing of the script",
+    "No clear layer separation or module boundaries",
+    "Direct command-line interface implementation in main script",
+    "Utility functions and classes all defined within the main script file"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability issues due to single large file architecture",
+    "Tight coupling between components in the main script",
+    "Difficulty in testing individual components in isolation",
+    "Potential scalability limitations due to script-based design"
+  ]
+}

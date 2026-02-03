@@ -1,0 +1,20 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with distinct modules like 'mochi_preview/dit', 'mochi_preview/vae' and root-level utility files such as 'fp8_optimization.py', 'infer.py'",
+    "Presence of multiple self-contained components (e.g., model loading, encoding/decoding, sampling) in 'nodes.py' that are cohesive yet decoupled",
+    "Hierarchical directory structure with up to 4 levels deep organization indicating logical grouping rather than flat or service-oriented layout",
+    "Use of internal APIs and shared utilities (e.g., 'comfy.utils', 'einops') across modules without external service calls",
+    "Absence of network-based communication or orchestration typical of microservices or script-based architectures"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling may emerge if inter-module dependencies grow unchecked",
+    "Maintainability could degrade if module boundaries become blurred over time",
+    "Potential for circular dependencies between modules like 'mochi_preview' and root-level nodes"
+  ]
+}

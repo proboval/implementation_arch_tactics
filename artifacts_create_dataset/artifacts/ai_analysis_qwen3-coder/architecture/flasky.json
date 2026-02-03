@@ -1,0 +1,22 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with models, views, and controllers in the app/ directory",
+    "Models defined in app/models.py with SQLAlchemy ORM classes",
+    "Views implemented in app/main/views.py and app/auth/views.py handling HTTP requests",
+    "Templates directory containing HTML templates for views",
+    "Controllers logic distributed across view modules handling routing and business logic",
+    "Blueprint-based modular structure with main, auth, and api modules",
+    "REST API endpoints organized separately in app/api/ following controller pattern"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Some business logic mixed with view logic in view modules",
+    "API controllers may have some overlap with traditional MVC controllers",
+    "Database models contain some business logic methods"
+  ]
+}

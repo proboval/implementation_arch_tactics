@@ -1,0 +1,20 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 3 Python files analyzed with no packages or deep directory structure",
+    "Files directly import each other without abstraction layers",
+    "Streamlit app directly imports portfolio and plots modules",
+    "No evidence of layers, ports/adapters, or modular separation",
+    "Average fan-out of 4.0 indicates direct coupling between modules",
+    "Maximum directory depth of 1 suggests flat structure typical of scripts"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between components may impact maintainability",
+    "Low maintainability index (49.68 avg) suggests code quality issues",
+    "Lack of architectural boundaries may hinder future scalability"
+  ]
+}

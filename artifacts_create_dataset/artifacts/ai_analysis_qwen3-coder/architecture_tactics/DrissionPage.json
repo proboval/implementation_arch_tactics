@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits high fan-out (4.84) and extensive cross-module dependencies, indicating tight coupling. This negatively impacts maintainability as changes in one module may ripple across the system. By applying reduced coupling, modules can be made more independent, narrowing the scope of modifications and reducing unintended side effects during maintenance. This aligns with the modular monolith structure where clear boundaries between modules are essential for long-term maintainability.",
+  "expected_architectural_change": "Introduce explicit interfaces and dependency inversion to reduce direct references between modules. Refactor internal APIs to depend on abstractions rather than concrete implementations. Restructure import relationships to avoid deep cross-module dependencies, especially from lower-level modules like _base and _functions into higher-level ones like _pages and _units.",
+  "risks": "Refactoring for reduced coupling may require significant interface redesign and could introduce short-term instability. Careful attention is needed to preserve existing functionality while decoupling modules."
+}

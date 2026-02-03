@@ -123,7 +123,7 @@ class BackendDatasetPreparationFilter(Filter):
 
         with self.output_csv.open("w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["name", "clone_url"])
+            writer.writerow(["full_name", "clone_url"])
 
             for repo in repos:
                 writer.writerow([repo.full_name, repo.url])

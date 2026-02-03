@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.85,
+  "evidence": [
+    "Low number of files (5 files analyzed) with flat directory structure (max depth 2)",
+    "Presence of bot.py and app.py suggesting independent script-like components",
+    "Direct usage of external libraries (pyrogram, flask, motor) without clear abstraction layers",
+    "No evidence of package structure or layered organization",
+    "High average maintainability index (82.15) suggests simple, flat code structure",
+    "Files appear to be functional scripts rather than organized modules"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Limited scalability as project grows",
+    "Potential code duplication across scripts",
+    "Difficulty in maintaining consistent architecture as complexity increases",
+    "Weak separation of concerns may lead to maintenance challenges"
+  ]
+}

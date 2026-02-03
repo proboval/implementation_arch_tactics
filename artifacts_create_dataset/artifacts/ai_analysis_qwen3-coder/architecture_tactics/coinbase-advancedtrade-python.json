@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits a modular monolith architecture with clear separation of concerns, but static analysis reveals an average fan-out of 3.19, indicating moderate inter-module dependencies. The architecture risks tight coupling between internal modules, especially between services like order_service, price_service, and fear_and_greed_strategy. Applying reduced coupling will minimize ripple effects during modifications, improve testability, and support long-term maintainability as the system grows.",
+  "expected_architectural_change": "Introduce interface abstractions and dependency inversion to decouple service implementations. Refactor direct dependencies between services to depend on abstract interfaces. Implement a dependency injection mechanism to manage service instantiation and composition. Restructure import relationships to reduce bidirectional dependencies and enforce unidirectional flow of dependencies toward abstractions.",
+  "risks": "Increased architectural complexity due to additional abstraction layers. Potential performance overhead from indirection. Requires careful refactoring to avoid breaking existing functionality. May increase initial development time for new features while abstractions are being established."
+}

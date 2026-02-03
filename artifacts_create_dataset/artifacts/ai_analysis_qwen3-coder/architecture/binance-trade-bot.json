@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with distinct modules: models, strategies, and core components",
+    "High cohesion within modules (e.g., all database-related code in database.py and models/ directory)",
+    "Low coupling between modules through well-defined interfaces and dependency injection",
+    "Single deployment unit with internal modularity rather than distributed services",
+    "Presence of a main entry point (__main__.py) indicating monolithic execution",
+    "Shared database access pattern across modules",
+    "Average fan-out of ~5 indicates moderate inter-module dependencies"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Directory depth of 3 may indicate some complexity in module organization",
+    "Maintainability index average of 68.8 suggests moderate code complexity",
+    "Some modules like binance_api_manager.py have high internal complexity"
+  ]
+}

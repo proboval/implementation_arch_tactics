@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single file structure with no packages or directories",
+    "Flat directory structure with max depth of 1",
+    "High average fan-out indicating procedural function calls",
+    "No evidence of layered organization or module separation",
+    "Contains main execution logic with imported libraries",
+    "Function names suggest procedural workflow (vlunNone, urlcheckNone, dispatcherNone)",
+    "Uses common script patterns like argparse for command line arguments"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability concerns with single file approach",
+    "Limited scalability due to flat structure",
+    "Tight coupling between components in single file"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "python_files": 21,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "main.py": [
+      "utils",
+      "function",
+      "argparse"
+    ],
+    "function\\__init__.py": [],
+    "utils\\config.py": [
+      "os",
+      "configparser"
+    ],
+    "utils\\database_utils.py": [
+      "utils",
+      "pymongo",
+      "sys"
+    ],
+    "utils\\get_file_map.py": [
+      "json"
+    ],
+    "utils\\logger.py": [
+      "logging"
+    ],
+    "utils\\__init__.py": [],
+    "utils\\saver\\__init__.py": []
+  }
+}

@@ -104,4 +104,4 @@ def call_llm(
 
 
 if __name__ == "__main__":
-    print(call_llm("Explain software architecture in one sentence", model="qwen3-coder:480b-cloud"))
+    print(call_llm("Explain software architecture in one sentence", model="gemma3:latest"))

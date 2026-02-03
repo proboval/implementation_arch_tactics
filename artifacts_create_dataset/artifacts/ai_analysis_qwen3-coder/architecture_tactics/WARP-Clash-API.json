@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The current modular monolith architecture shows signs of increasing coupling, particularly in the services layer where modules like 'subscription.py' and 'web_service.py' import numerous dependencies, including cross-references between services and utils. The static analysis also reveals an avg_fan_out of 3.95, which indicates a moderate level of interdependence. Applying Reduced Coupling will help isolate changes, reduce ripple effects, and improve long-term maintainability by enforcing stricter module boundaries.",
+  "expected_architectural_change": "Refactor existing modules to minimize direct dependencies by introducing interfaces or abstracting shared functionalities into common utilities. For example, break direct imports between services by creating a shared contract or event-based communication where appropriate. Introduce dependency inversion principles to reduce reliance on concrete implementations.",
+  "risks": "Over-abstraction may increase complexity if not carefully implemented. Additionally, refactoring tightly coupled components may introduce short-term instability if not thoroughly tested. Proper unit and integration testing will be essential to mitigate these risks."
+}

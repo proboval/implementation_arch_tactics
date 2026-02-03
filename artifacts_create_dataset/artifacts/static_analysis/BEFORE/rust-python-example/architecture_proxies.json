@@ -1,0 +1,43 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "doubles.py": [
+      "re",
+      "random",
+      "string",
+      "itertools"
+    ],
+    "doubles_all.py": [
+      "string",
+      "myclib",
+      "sys",
+      "numpy",
+      "itertools",
+      "re",
+      "myrustlib",
+      "random"
+    ],
+    "doubles_with_c_swig.py": [
+      "string",
+      "myclib",
+      "sys",
+      "itertools",
+      "re",
+      "myrustlib",
+      "random"
+    ],
+    "doubles_with_rust.py": [
+      "string",
+      "itertools",
+      "re",
+      "myrustlib",
+      "random"
+    ],
+    "pyext-myclib\\setup.py": [
+      "distutils"
+    ]
+  }
+}

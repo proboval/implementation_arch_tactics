@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The analysis reveals moderate inter-module dependencies (avg_fan_out: 2.075) and risks of tight coupling through direct imports between modules. The architecture is a modular monolith, and reducing coupling will enhance its modularity, making it easier to maintain and modify. This aligns with the evidence of shared database models and implicit dependencies. Reduced Coupling directly addresses these concerns without introducing negative trade-offs.",
+  "expected_architectural_change": "Refactor module interactions to minimize direct dependencies by introducing interfaces, dependency inversion, or event-driven communication where applicable. This may involve creating abstraction layers for shared models and decoupling API modules from core logic.",
+  "risks": "Refactoring to reduce coupling may require significant changes to existing code, especially in how modules interact. Care must be taken to ensure that abstractions do not overly complicate the system or introduce performance overhead."
+}

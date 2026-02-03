@@ -1,0 +1,45 @@
+{
+  "python_files": 8,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 8.0,
+  "imports_graph": {
+    "sgd\\cache.py": [
+      "json",
+      "pickle"
+    ],
+    "sgd\\gdrive.py": [
+      "googleapiclient",
+      "sgd",
+      "google",
+      "datetime",
+      "requests"
+    ],
+    "sgd\\meta.py": [
+      "cchardet",
+      "sgd",
+      "bs4",
+      "lxml"
+    ],
+    "sgd\\ptn.py": [
+      "PTN"
+    ],
+    "sgd\\routes.py": [
+      "json",
+      "sgd",
+      "flask",
+      "datetime"
+    ],
+    "sgd\\utils.py": [
+      "json",
+      "sgd",
+      "requests"
+    ],
+    "sgd\\__init__.py": [
+      "json",
+      "sgd",
+      "flask",
+      "os"
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "python_files": 25,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 12.5,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "os"
+    ],
+    "bpycv\\camera_utils.py": [
+      "pose_utils",
+      "mathutils",
+      "boxx",
+      "random",
+      "bpy"
+    ],
+    "bpycv\\domain_randomzition.py": [
+      "bpy",
+      "random",
+      "object_utils",
+      "boxx"
+    ],
+    "bpycv\\exr_image_parser.py": [
+      "cv2",
+      "scipy",
+      "os",
+      "boxx",
+      "pseudo_color",
+      "camera_utils",
+      "struct",
+      "minexr",
+      "utils",
+      "bpy"
+    ],
+    "bpycv\\hdri_manager.py": [
+      "bs4",
+      "urllib",
+      "boxx",
+      "glob",
+      "random",
+      "requests"
+    ],
+    "bpycv\\material_utils.py": [
+      "statu_recover",
+      "boxx",
+      "random",
+      "node_graph",
+      "utils",
+      "bpy"
+    ],
+    "bpycv\\node_graph.py": [
+      "boxx"
+    ],
+    "bpycv\\object_utils.py": [
+      "bpy",
+      "material_utils",
+      "boxx",
+      "numpy"
+    ],
+    "bpycv\\physic_utils.py": [
+      "mathutils",
+      "object_utils",
+      "bpy"
+    ],
+    "bpycv\\pose_utils.py": [
+      "object_utils",
+      "mathutils",
+      "boxx",
+      "numpy",
+      "camera_utils",
+      "physic_utils",
+      "bpy"
+    ],
+    "bpycv\\pseudo_color.py": [
+      "exr_image_parser",
+      "boxx"
+    ],
+    "bpycv\\render_utils.py": [
+      "pose_utils",
+      "statu_recover",
+      "tempfile",
+      "boxx",
+      "exr_image_parser",
+      "camera_utils",
+      "collections",
+      "bpy",
+      "material_utils"
+    ],
+    "bpycv\\scene_setting.py": [
+      "random",
+      "bpycv",
+      "boxx",
+      "bpy"
+    ],
+    "bpycv\\select_utils.py": [
+      "bpy",
+      "boxx"
+    ],
+    "bpycv\\statu_recover.py": [
+      "time",
+      "boxx",
+      "inspect",
+      "functools",
+      "bpy"
+    ],
+    "bpycv\\stereo_utils.py": [
+      "pose_utils",
+      "cv2",
+      "mathutils",
+      "boxx",
+      "calibrating",
+      "camera_utils",
+      "render_utils"
+    ],
+    "bpycv\\utils.py": [
+      "bpy",
+      "IPython",
+      "boxx",
+      "sys"
+    ],
+    "bpycv\\__info__.py": [],
+    "bpycv\\__init__.py": [
+      "select_utils",
+      "__info__",
+      "statu_recover",
+      "object_utils",
+      "pose_utils",
+      "domain_randomzition",
+      "scene_setting",
+      "boxx",
+      "exr_image_parser",
+      "stereo_utils",
+      "hdri_manager",
+      "camera_utils",
+      "node_graph",
+      "render_utils",
+      "utils",
+      "physic_utils",
+      "material_utils"
+    ],
+    "example\\6d_pose_demo.py": [
+      "cv2",
+      "bpycv",
+      "scipy",
+      "boxx",
+      "numpy",
+      "random",
+      "bpy"
+    ],
+    "example\\demo.py": [
+      "cv2",
+      "bpycv",
+      "numpy",
+      "random",
+      "bpy"
+    ],
+    "example\\ycb_demo.py": [
+      "bpycv",
+      "os",
+      "glob",
+      "random",
+      "bpy"
+    ],
+    "bpycv\\dataset_utils\\cfg_utils.py": [
+      "argparse",
+      "sys",
+      "os",
+      "boxx",
+      "zcs"
+    ],
+    "bpycv\\dataset_utils\\dataset_generator.py": [
+      "abc",
+      "time",
+      "boxx",
+      "random",
+      "bpy"
+    ],
+    "bpycv\\dataset_utils\\__init__.py": []
+  }
+}

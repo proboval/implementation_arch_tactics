@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits tight coupling, particularly through direct imports from modules to core components and cross-module dependencies via Core.console. This increases the risk of ripple effects during modifications and complicates testing and maintenance. Applying Reduced Coupling will isolate modules further, limiting the scope of changes and improving modularity without introducing significant trade-offs.",
+  "expected_architectural_change": "Refactor module interactions to depend on interfaces or abstracted utilities instead of concrete implementations. Introduce a mediator or event-driven communication to reduce direct imports between Modules_Active, Modules_Passive, and Core components.",
+  "risks": "Initial refactoring effort may introduce bugs if not carefully managed. Requires updating import structures and potentially modifying function signatures across multiple files."
+}

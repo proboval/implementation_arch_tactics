@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with dedicated packages for models, resources, and authentication",
+    "Models and resources are organized by domain entities (documents, files, groups, profiles)",
+    "Consistent package structure with __init__.py files indicating intentional modularization",
+    "Low average fan-out (1.74) suggests loose coupling between modules",
+    "Resource layer abstracts API interactions from model implementations",
+    "Models inherit from common base classes, showing inheritance-based organization",
+    "Test structure mirrors source code organization with clear module boundaries"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Deep directory nesting (max depth 4) could indicate over-modularization",
+    "Some modules may have implicit dependencies not captured in metrics",
+    "Authentication logic is mixed with core domain models"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The application is a single-file script with high fan-out and low maintainability index. Decomposability will address the lack of modular structure by dividing the system into distinct modules or layers, which directly aligns with the need to reduce coupling, increase cohesion, and improve testability and analyzability. This tactic supports long-term maintainability by isolating concerns and simplifying future modifications.",
+  "expected_architectural_change": "Refactor main.py into multiple modules such as api_clients, services, utils, and configuration. Introduce a layered architecture separating business logic from external integrations (e.g., IQ Option API and Telegram).",
+  "risks": "Initial refactoring effort may introduce bugs if not done carefully. Requires updating import statements and ensuring proper module interfaces. Risk of over-engineering if decomposition is taken too far without clear boundaries."
+}

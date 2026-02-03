@@ -1,0 +1,20 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single file application (dorker.py) with no package structure",
+    "Maximum directory depth of 1 indicates flat structure",
+    "High average fan-out (8.0) suggests procedural function calls",
+    "Functions appear to be procedurally organized without clear layers",
+    "Repository structure resembles a simple script with supporting files",
+    "No evidence of package-level organization or module separation"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability concerns with single file containing all logic",
+    "Tight coupling between functions with high fan-out",
+    "Limited scalability of current structure"
+  ]
+}

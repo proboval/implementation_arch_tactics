@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with 'database', 'plugins', and utility modules",
+    "Plugins are organized by feature/functionality (e.g., banned, broadcast, channel)",
+    "Shared utilities and common components reused across modules",
+    "No evidence of distributed services or APIs suggesting microservices",
+    "Single deployment unit indicated by presence of Dockerfile, requirements.txt, and start.sh",
+    "Database access is centralized but not abstracted behind a port/adapter pattern"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling possible through direct imports between modules",
+    "Lack of explicit interface contracts may lead to maintenance challenges",
+    "Absence of package structure might limit scalability in larger projects"
+  ]
+}

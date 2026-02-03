@@ -1,0 +1,20 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with distinct layers: ingestion, transformation (silver/gold), orchestration, and rag",
+    "Data flows in a unidirectional manner from bronze (ingestion) to silver and gold (transformation)",
+    "Use of shared utilities in 'utils' directory supporting the layered structure",
+    "Presence of orchestration layer using Dagster to manage data pipeline workflows",
+    "Transformation layer uses dbt which implies a clear separation between data modeling and business logic"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling possible through shared utility modules if not carefully managed",
+    "Layer transitions may become bottlenecks if not properly asynchronous",
+    "Risk of leaking abstraction between layers if boundaries are not strictly enforced"
+  ]
+}

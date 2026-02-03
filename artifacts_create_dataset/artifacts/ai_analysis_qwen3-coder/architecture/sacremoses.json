@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear module separation (tokenize, normalize, truecase, etc.)",
+    "Shared data module (corpus.py) used across multiple modules",
+    "CLI module that integrates all functionality without external service calls",
+    "Internal utilities module (util.py) reused across components",
+    "Test modules mirror the structure of main modules indicating clear boundaries",
+    "Average fan-out of 3.14 suggests moderate inter-module dependencies",
+    "Max directory depth of 3 indicates flat, manageable structure",
+    "No evidence of network calls or service separation in code"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling through shared corpus module could become problematic as system grows",
+    "Single package structure may not scale well for larger teams",
+    "Lack of explicit architectural boundaries beyond module level"
+  ]
+}

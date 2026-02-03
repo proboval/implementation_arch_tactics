@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear internal module separation (kittentts package containing multiple related modules)",
+    "Well-defined module responsibilities (model loading, ONNX implementation, text processing)",
+    "Internal imports follow a logical flow (get_model imports onnx_model)",
+    "High maintainability index (91.6 average) suggesting good code organization",
+    "Low directory depth (2 levels) with clean separation of concerns",
+    "Export pattern through __init__.py files showing intentional API design"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Small codebase size (5 files) may not fully represent intended architecture",
+    "Limited fan-out (1.75 average) could indicate either good encapsulation or under-engineered dependencies",
+    "Missing implementation details in methods could obscure actual architectural patterns"
+  ]
+}

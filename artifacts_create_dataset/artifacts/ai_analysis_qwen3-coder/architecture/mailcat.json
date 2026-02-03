@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Python file (mailcat.py) contains all functionality",
+    "No package structure (packages: 0, max_directory_depth: 1)",
+    "High average fan-out (19.0) indicating procedural function calls",
+    "Contains main execution logic with various utility functions",
+    "Uses command-line argument parsing (argparse)",
+    "Direct imports of external libraries at module level",
+    "Presence of async execution classes suggests procedural script with async operations"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability issues due to single file structure",
+    "High coupling between components (high fan-out)",
+    "Limited scalability of current architecture",
+    "Difficulty in testing individual components"
+  ]
+}

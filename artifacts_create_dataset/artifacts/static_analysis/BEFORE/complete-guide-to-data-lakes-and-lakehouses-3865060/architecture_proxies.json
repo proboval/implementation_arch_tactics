@@ -1,0 +1,79 @@
+{
+  "python_files": 17,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 8.5,
+  "imports_graph": {
+    "ingestion\\__init__.py": [],
+    "orchestration\\setup.py": [
+      "setuptools"
+    ],
+    "rag\\manage_chroma_db.py": [
+      "langchain_community",
+      "argparse",
+      "langchain_text_splitters",
+      "sys",
+      "os",
+      "shutil",
+      "dotenv",
+      "logging",
+      "langchain"
+    ],
+    "ingestion\\bronze\\chargenet_ingest.py": [
+      "ingestion"
+    ],
+    "ingestion\\bronze\\documents_ingest.py": [
+      "os",
+      "ingestion"
+    ],
+    "ingestion\\bronze\\ecoride_ingest.py": [
+      "ingestion"
+    ],
+    "ingestion\\bronze\\vehicle_health_ingest.py": [
+      "ingestion"
+    ],
+    "ingestion\\utils\\config_loader.py": [
+      "dotenv",
+      "os"
+    ],
+    "ingestion\\utils\\data_ingestor.py": [
+      "logging",
+      "pyspark"
+    ],
+    "ingestion\\utils\\document_data_ingestor.py": [
+      "ingestion",
+      "logging",
+      "os",
+      "boto3"
+    ],
+    "ingestion\\utils\\file_path_manager.py": [
+      "os"
+    ],
+    "ingestion\\utils\\spark_utils.py": [
+      "dotenv",
+      "os",
+      "pyspark"
+    ],
+    "orchestration\\orchestration\\assets.py": [
+      "constants",
+      "dagster",
+      "dagster_dbt"
+    ],
+    "orchestration\\orchestration\\constants.py": [
+      "pathlib",
+      "os",
+      "dagster_dbt"
+    ],
+    "orchestration\\orchestration\\definitions.py": [
+      "schedules",
+      "constants",
+      "dagster",
+      "assets"
+    ],
+    "orchestration\\orchestration\\schedules.py": [
+      "assets",
+      "dagster_dbt"
+    ],
+    "orchestration\\orchestration\\__init__.py": []
+  }
+}

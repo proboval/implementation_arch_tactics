@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The analysis shows tight coupling between Flask framework and core logic due to direct imports and dependencies. High fan-out (avg 4.36) indicates modules depend on many other modules, increasing maintenance difficulty. Reduced coupling will isolate components, minimize ripple effects during changes, and improve overall system modularity.",
+  "expected_architectural_change": "Introduce interfaces/abstract classes to decouple Flask dependencies from business logic. Create adapter patterns for framework-specific code. Restructure service layer to minimize direct framework imports. Implement dependency inversion principle to reduce direct dependencies between modules.",
+  "risks": "Initial refactoring effort may introduce bugs. Requires careful interface design to maintain functionality. May need to restructure existing integration tests to accommodate new abstraction layers."
+}

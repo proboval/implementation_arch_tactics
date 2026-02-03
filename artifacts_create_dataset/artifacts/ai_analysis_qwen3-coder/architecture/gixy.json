@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with distinct modules: cli, core, directives, formatters, parser, plugins, utils",
+    "Each module has its own __init__.py and contains related functionality",
+    "Plugins architecture with separate plugin classes in plugins/ directory",
+    "Formatters module with multiple output format implementations",
+    "Core module containing business logic separated from IO operations",
+    "Parser module dedicated to parsing nginx configurations",
+    "Low average fan-out (1.76) indicating good modularization",
+    "Directory depth of 4 shows reasonable separation without over-engineering"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Some modules like 'core' might become too large and require further decomposition",
+    "Plugin architecture could evolve into microservices if scaled significantly",
+    "Tight coupling between parser and directive modules through nginx-specific logic"
+  ]
+}

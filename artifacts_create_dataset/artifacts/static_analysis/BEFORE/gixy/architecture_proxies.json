@@ -1,0 +1,215 @@
+{
+  "python_files": 59,
+  "packages": 14,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 4.214285714285714,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "re"
+    ],
+    "gixy\\__init__.py": [
+      "gixy"
+    ],
+    "tests\\asserts.py": [
+      "nose"
+    ],
+    "tests\\utils.py": [
+      "logging"
+    ],
+    "tests\\__init__.py": [],
+    "gixy\\cli\\argparser.py": [
+      "six",
+      "configargparse",
+      "gixy"
+    ],
+    "gixy\\cli\\main.py": [
+      "sys",
+      "os",
+      "logging",
+      "gixy",
+      "copy"
+    ],
+    "gixy\\cli\\__init__.py": [],
+    "gixy\\core\\builtin_variables.py": [
+      "gixy"
+    ],
+    "gixy\\core\\config.py": [
+      "gixy"
+    ],
+    "gixy\\core\\context.py": [
+      "logging",
+      "gixy",
+      "copy"
+    ],
+    "gixy\\core\\exceptions.py": [],
+    "gixy\\core\\issue.py": [],
+    "gixy\\core\\manager.py": [
+      "logging",
+      "os",
+      "gixy"
+    ],
+    "gixy\\core\\plugins_manager.py": [
+      "os",
+      "gixy"
+    ],
+    "gixy\\core\\regexp.py": [
+      "cached_property",
+      "re",
+      "six",
+      "logging",
+      "random",
+      "itertools",
+      "gixy"
+    ],
+    "gixy\\core\\severity.py": [],
+    "gixy\\core\\utils.py": [],
+    "gixy\\core\\variable.py": [
+      "re",
+      "logging",
+      "gixy"
+    ],
+    "gixy\\core\\__init__.py": [],
+    "gixy\\directives\\block.py": [
+      "cached_property",
+      "gixy"
+    ],
+    "gixy\\directives\\directive.py": [
+      "gixy"
+    ],
+    "gixy\\directives\\__init__.py": [
+      "os",
+      "gixy"
+    ],
+    "gixy\\formatters\\base.py": [
+      "__future__",
+      "gixy"
+    ],
+    "gixy\\formatters\\console.py": [
+      "__future__",
+      "gixy"
+    ],
+    "gixy\\formatters\\json.py": [
+      "json",
+      "__future__",
+      "gixy"
+    ],
+    "gixy\\formatters\\text.py": [
+      "__future__",
+      "gixy"
+    ],
+    "gixy\\formatters\\_jinja.py": [
+      "gixy",
+      "__future__",
+      "jinja2"
+    ],
+    "gixy\\formatters\\__init__.py": [
+      "os",
+      "gixy"
+    ],
+    "gixy\\parser\\nginx_parser.py": [
+      "os",
+      "fnmatch",
+      "logging",
+      "pyparsing",
+      "glob",
+      "gixy"
+    ],
+    "gixy\\parser\\raw_parser.py": [
+      "codecs",
+      "cached_property",
+      "logging",
+      "six",
+      "pyparsing"
+    ],
+    "gixy\\parser\\__init__.py": [],
+    "gixy\\plugins\\add_header_multiline.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\add_header_redefinition.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\alias_traversal.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\host_spoofing.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\http_splitting.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\origins.py": [
+      "re",
+      "logging",
+      "gixy"
+    ],
+    "gixy\\plugins\\plugin.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\ssrf.py": [
+      "re",
+      "gixy"
+    ],
+    "gixy\\plugins\\valid_referers.py": [
+      "gixy"
+    ],
+    "gixy\\plugins\\__init__.py": [],
+    "gixy\\utils\\text.py": [
+      "six",
+      "__future__"
+    ],
+    "gixy\\utils\\__init__.py": [],
+    "gixy\\core\\sre_parse\\sre_constants.py": [
+      "_sre"
+    ],
+    "gixy\\core\\sre_parse\\sre_parse.py": [
+      "warnings",
+      "__future__",
+      "sre_constants"
+    ],
+    "gixy\\core\\sre_parse\\__init__.py": [],
+    "tests\\core\\test_context.py": [
+      "gixy",
+      "nose"
+    ],
+    "tests\\core\\test_regexp.py": [
+      "gixy",
+      "nose"
+    ],
+    "tests\\core\\test_variable.py": [
+      "gixy",
+      "nose"
+    ],
+    "tests\\core\\__init__.py": [],
+    "tests\\directives\\test_block.py": [
+      "tests",
+      "gixy",
+      "nose"
+    ],
+    "tests\\directives\\test_directive.py": [
+      "tests",
+      "gixy",
+      "nose"
+    ],
+    "tests\\directives\\__init__.py": [],
+    "tests\\parser\\test_nginx_parser.py": [
+      "tests",
+      "gixy",
+      "nose"
+    ],
+    "tests\\parser\\test_raw_parser.py": [
+      "gixy",
+      "nose"
+    ],
+    "tests\\parser\\__init__.py": [],
+    "tests\\plugins\\test_simply.py": [
+      "nose",
+      "os",
+      "json",
+      "tests",
+      "utils",
+      "gixy"
+    ],
+    "tests\\plugins\\__init__.py": []
+  }
+}

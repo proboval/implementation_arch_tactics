@@ -1,0 +1,624 @@
+{
+  "python_files": 104,
+  "packages": 4,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 26.0,
+  "imports_graph": {
+    "alluka\\events.py": [
+      "alluka",
+      "telethon"
+    ],
+    "alluka\\__init__.py": [
+      "telegram",
+      "sys",
+      "spamwatch",
+      "alluka",
+      "telethon",
+      "logging",
+      "yaml"
+    ],
+    "alluka\\__main__.py": [
+      "telegram",
+      "traceback",
+      "datetime",
+      "sys",
+      "typing",
+      "alluka",
+      "resource",
+      "re",
+      "platform",
+      "importlib"
+    ],
+    "alluka\\modules\\admin.py": [
+      "telegram",
+      "sys",
+      "typing",
+      "html",
+      "time",
+      "alluka",
+      "os",
+      "json",
+      "subprocess",
+      "importlib",
+      "requests"
+    ],
+    "alluka\\modules\\afk.py": [
+      "typing",
+      "telegram",
+      "random",
+      "alluka"
+    ],
+    "alluka\\modules\\antiflood.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\antispam.py": [
+      "telegram",
+      "typing",
+      "html",
+      "io",
+      "time",
+      "alluka"
+    ],
+    "alluka\\modules\\bans.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\blacklist.py": [
+      "telegram",
+      "typing",
+      "html",
+      "alluka",
+      "re"
+    ],
+    "alluka\\modules\\blacklistusers.py": [
+      "typing",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\blacklist_stickers.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\cleaner.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\cust_filters.py": [
+      "telegram",
+      "re",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\dbcleanup.py": [
+      "telegram",
+      "time",
+      "alluka"
+    ],
+    "alluka\\modules\\developer.py": [
+      "telegram",
+      "sys",
+      "typing",
+      "time",
+      "alluka",
+      "os",
+      "subprocess"
+    ],
+    "alluka\\modules\\devpromoter.py": [
+      "telegram",
+      "typing",
+      "html",
+      "alluka",
+      "os",
+      "json"
+    ],
+    "alluka\\modules\\directlink.py": [
+      "bs4",
+      "telegram",
+      "alluka",
+      "os",
+      "json",
+      "re",
+      "random",
+      "hurry",
+      "urllib",
+      "requests"
+    ],
+    "alluka\\modules\\disable.py": [
+      "telegram",
+      "typing",
+      "alluka",
+      "future",
+      "importlib"
+    ],
+    "alluka\\modules\\eval.py": [
+      "math",
+      "traceback",
+      "io",
+      "asyncio",
+      "re",
+      "subprocess",
+      "psutil",
+      "random",
+      "datetime",
+      "os",
+      "contextlib",
+      "urllib",
+      "telegram",
+      "textwrap",
+      "json",
+      "logging",
+      "glob",
+      "requests",
+      "gc",
+      "sys",
+      "alluka",
+      "time",
+      "shutil",
+      "inspect"
+    ],
+    "alluka\\modules\\familylist.py": [
+      "telegram",
+      "alluka",
+      "requests"
+    ],
+    "alluka\\modules\\feds.py": [
+      "telegram",
+      "typing",
+      "html",
+      "io",
+      "uuid",
+      "time",
+      "alluka",
+      "future",
+      "json",
+      "re",
+      "random"
+    ],
+    "alluka\\modules\\feedback.py": [
+      "telegram",
+      "html",
+      "alluka",
+      "requests"
+    ],
+    "alluka\\modules\\getlink.py": [
+      "telegram",
+      "typing",
+      "alluka",
+      "re",
+      "random"
+    ],
+    "alluka\\modules\\get_comman_chat.py": [
+      "telegram",
+      "typing",
+      "time",
+      "alluka",
+      "os"
+    ],
+    "alluka\\modules\\global_kick.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\gtranslator.py": [
+      "googletrans",
+      "emoji",
+      "alluka",
+      "telegram"
+    ],
+    "alluka\\modules\\locks.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\log_channel.py": [
+      "alluka",
+      "functools",
+      "telegram",
+      "datetime"
+    ],
+    "alluka\\modules\\modules.py": [
+      "telegram",
+      "alluka",
+      "importlib"
+    ],
+    "alluka\\modules\\msg_deleting.py": [
+      "alluka"
+    ],
+    "alluka\\modules\\muting.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\notes.py": [
+      "telegram",
+      "typing",
+      "io",
+      "alluka",
+      "re"
+    ],
+    "alluka\\modules\\ownercmd.py": [
+      "telegram",
+      "typing",
+      "io",
+      "alluka",
+      "time"
+    ],
+    "alluka\\modules\\quotly.py": [
+      "alluka",
+      "telethon",
+      "os",
+      "textwrap",
+      "json",
+      "re",
+      "logging",
+      "random",
+      "emoji",
+      "urllib",
+      "fontTools",
+      "PIL"
+    ],
+    "alluka\\modules\\remote_cmds.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\rss.py": [
+      "telegram",
+      "feedparser",
+      "html",
+      "alluka",
+      "re"
+    ],
+    "alluka\\modules\\rules.py": [
+      "typing",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\sed.py": [
+      "telegram",
+      "re",
+      "alluka",
+      "sre_constants"
+    ],
+    "alluka\\modules\\send.py": [
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\shout.py": [
+      "typing",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\stats.py": [
+      "telegram",
+      "typing",
+      "html",
+      "alluka",
+      "re",
+      "requests"
+    ],
+    "alluka\\modules\\stickers.py": [
+      "math",
+      "telegram",
+      "typing",
+      "alluka",
+      "os",
+      "urllib",
+      "PIL",
+      "requests"
+    ],
+    "alluka\\modules\\system_info.py": [
+      "telegram",
+      "alluka",
+      "speedtest",
+      "psutil",
+      "platform",
+      "datetime"
+    ],
+    "alluka\\modules\\translation.py": [
+      "telegram",
+      "pprint",
+      "alluka",
+      "json",
+      "requests"
+    ],
+    "alluka\\modules\\truth_and_dare.py": [
+      "alluka",
+      "html",
+      "random",
+      "telegram"
+    ],
+    "alluka\\modules\\truth_and_dare_string.py": [],
+    "alluka\\modules\\tts.py": [
+      "telegram",
+      "typing",
+      "html",
+      "time",
+      "alluka",
+      "gtts",
+      "json",
+      "re",
+      "urllib",
+      "datetime",
+      "requests"
+    ],
+    "alluka\\modules\\urlblacklist.py": [
+      "tldextract",
+      "html",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\userinfo.py": [
+      "typing",
+      "telegram",
+      "html",
+      "alluka"
+    ],
+    "alluka\\modules\\users.py": [
+      "telegram",
+      "io",
+      "alluka",
+      "time"
+    ],
+    "alluka\\modules\\warns.py": [
+      "telegram",
+      "typing",
+      "html",
+      "alluka",
+      "re"
+    ],
+    "alluka\\modules\\welcome.py": [
+      "telegram",
+      "typing",
+      "alluka",
+      "html",
+      "time",
+      "re"
+    ],
+    "alluka\\modules\\whois.py": [
+      "telegram",
+      "typing",
+      "html",
+      "time",
+      "alluka",
+      "os",
+      "json",
+      "re",
+      "psutil",
+      "random",
+      "datetime",
+      "requests"
+    ],
+    "alluka\\modules\\__init__.py": [
+      "alluka",
+      "os",
+      "glob"
+    ],
+    "alluka\\modules\\helper_funcs\\alternate.py": [
+      "telegram",
+      "traceback",
+      "sys",
+      "typing",
+      "alluka",
+      "functools"
+    ],
+    "alluka\\modules\\helper_funcs\\cas_api.py": [
+      "json",
+      "urllib",
+      "datetime",
+      "requests"
+    ],
+    "alluka\\modules\\helper_funcs\\chat_status.py": [
+      "telegram",
+      "functools",
+      "alluka"
+    ],
+    "alluka\\modules\\helper_funcs\\extraction.py": [
+      "typing",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\helper_funcs\\filters.py": [
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\helper_funcs\\git_api.py": [
+      "json",
+      "urllib",
+      "datetime"
+    ],
+    "alluka\\modules\\helper_funcs\\handlers.py": [
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\helper_funcs\\misc.py": [
+      "typing",
+      "math",
+      "alluka",
+      "telegram"
+    ],
+    "alluka\\modules\\helper_funcs\\msg_types.py": [
+      "enum",
+      "telegram",
+      "alluka"
+    ],
+    "alluka\\modules\\helper_funcs\\panel_string.py": [],
+    "alluka\\modules\\helper_funcs\\string_handling.py": [
+      "telegram",
+      "typing",
+      "time",
+      "re",
+      "emoji"
+    ],
+    "alluka\\modules\\helper_funcs\\__init__.py": [],
+    "alluka\\modules\\sql\\afk_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\antiflood_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\antispam_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\blacklistusers_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\blacklist_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\blsticker_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\cleaner_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\connection_sql.py": [
+      "sqlalchemy",
+      "typing",
+      "alluka",
+      "time",
+      "threading"
+    ],
+    "alluka\\modules\\sql\\cust_filters_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\disable_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\feds_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\global_kicks_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\global_mutes_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\languages_sql.py": [
+      "typing",
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\last_fm_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\locks_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\log_channel_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\lydia_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\notes_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\reporting_sql.py": [
+      "typing",
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\rss_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\rules_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\urlblacklist_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\userinfo_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\users_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\warns_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\welcome_sql.py": [
+      "alluka",
+      "threading",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\sql\\__init__.py": [
+      "alluka",
+      "sqlalchemy"
+    ],
+    "alluka\\modules\\helper_funcs\\telethon\\chat_status.py": [
+      "alluka",
+      "telethon"
+    ],
+    "alluka\\modules\\helper_funcs\\telethon\\misc.py": [
+      "telethon"
+    ],
+    "alluka\\modules\\helper_funcs\\telethon\\msg_types.py": [
+      "enum",
+      "alluka",
+      "re",
+      "telethon"
+    ]
+  }
+}

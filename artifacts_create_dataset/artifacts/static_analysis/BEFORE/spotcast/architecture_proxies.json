@@ -1,0 +1,88 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "custom_components\\spotcast\\cast.py": [
+      "homeassistant",
+      "logging",
+      "pychromecast",
+      "__future__"
+    ],
+    "custom_components\\spotcast\\const.py": [
+      "homeassistant",
+      "voluptuous",
+      "__future__"
+    ],
+    "custom_components\\spotcast\\crypto.py": [
+      "base64",
+      "pyotp"
+    ],
+    "custom_components\\spotcast\\error.py": [],
+    "custom_components\\spotcast\\helpers.py": [
+      "difflib",
+      "functools",
+      "asyncio",
+      "time",
+      "spotipy",
+      "logging",
+      "random",
+      "__future__",
+      "homeassistant",
+      "urllib",
+      "requests"
+    ],
+    "custom_components\\spotcast\\sensor.py": [
+      "const",
+      "helpers",
+      "json",
+      "logging",
+      "collections",
+      "__future__",
+      "homeassistant",
+      "datetime"
+    ],
+    "custom_components\\spotcast\\spotcast_controller.py": [
+      "const",
+      "crypto",
+      "pychromecast",
+      "spotipy",
+      "time",
+      "asyncio",
+      "spotify_controller",
+      "aiohttp",
+      "error",
+      "helpers",
+      "json",
+      "logging",
+      "collections",
+      "__future__",
+      "homeassistant",
+      "random",
+      "datetime",
+      "requests"
+    ],
+    "custom_components\\spotcast\\spotify_controller.py": [
+      "const",
+      "pychromecast",
+      "error",
+      "hashlib",
+      "json",
+      "logging",
+      "__future__",
+      "threading",
+      "requests"
+    ],
+    "custom_components\\spotcast\\__init__.py": [
+      "const",
+      "time",
+      "helpers",
+      "spotcast_controller",
+      "logging",
+      "collections",
+      "__future__",
+      "homeassistant"
+    ]
+  }
+}

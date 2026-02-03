@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a script-based architecture with all logic contained in a single file (dorker.py), leading to high fan-out and limited modularity. Decomposability will address these maintainability concerns by dividing the system into smaller, isolated modules or layers. This will simplify analysis, facilitate testing, and reduce the complexity of understanding and modifying the codebase.",
+  "expected_architectural_change": "Refactor dorker.py into multiple modules based on functionality (e.g., github_interaction.py, data_processing.py, database_operations.py). Introduce a layered structure separating concerns such as input handling, business logic, and data access.",
+  "risks": "Initial refactoring effort may introduce bugs if not done carefully. Requires updating import statements and ensuring clear interfaces between new modules. Risk of over-engineering if decomposition is taken too far without clear functional boundaries."
+}

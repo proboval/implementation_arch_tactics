@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system is currently a single script with high fan-out and low modularity, leading to poor maintainability (MI score 39.9). Decomposability will address these issues by dividing the monolithic script into cohesive modules or layers. This will isolate functionality, simplify testing, and make the codebase easier to analyze and modify. Given the current architecture type is 'script_based' with risks of tight coupling and scalability limitations, decomposability directly targets these concerns.",
+  "expected_architectural_change": "Refactor the single file 'daily_arxiv.py' into multiple modules such as config_loader.py, paper_fetcher.py, data_processor.py, and file_updater.py. Introduce a layered structure separating concerns like data fetching, processing, and output generation. This will reduce the average fan-out and improve directory depth beyond 1.",
+  "risks": "Initial refactoring effort may introduce bugs if not done carefully. Requires updating import statements and ensuring that inter-module dependencies are well-defined. Risk of over-engineering if decomposition is taken too far without clear boundaries."
+}

@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits significant code duplication, particularly with the sendNotify.py file being copied across multiple function directories. This copy-paste reuse pattern increases maintenance overhead and inconsistency risk. By applying Localized Modification through creating shared utility modules and centralizing common functionality, we can reduce the scope of changes needed when updating notification logic, thereby improving maintainability. This approach directly addresses the script-based architecture's weakness of duplicated utility files and tight coupling between scripts and specific platforms.",
+  "expected_architectural_change": "Consolidate duplicated utility files (sendNotify.py) into a single shared module in a common directory. Refactor existing scripts to import from this centralized location rather than maintaining local copies. Create a utilities or common package to house shared functionality, reducing the need for cross-directory code duplication and establishing clearer architectural boundaries between functional modules.",
+  "risks": "Initial refactoring effort required to consolidate and redirect imports. Potential breaking changes during transition if import paths are not properly updated. Risk of introducing bugs if the shared module is not properly tested across all existing use cases. Need to ensure backward compatibility during the migration process."
+}

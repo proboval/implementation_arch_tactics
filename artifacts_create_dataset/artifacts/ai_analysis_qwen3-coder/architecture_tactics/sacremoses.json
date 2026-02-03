@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The analysis reveals that the system exhibits tight coupling, particularly through the shared corpus module which is used across multiple modules. This increases the risk of ripple effects when changes are made. Applying the 'Reduced Coupling' tactic will help isolate modules and reduce dependencies, making the system easier to maintain and modify. This aligns with the maintainability issues identified, such as the moderate fan-out and lack of explicit architectural boundaries.",
+  "expected_architectural_change": "Refactor the shared corpus module to reduce its direct usage across other modules. Introduce interfaces or abstraction layers where necessary to decouple modules. This may involve creating specific data access or utility functions that limit the exposure of the corpus module's internals to other parts of the system.",
+  "risks": "Refactoring to reduce coupling may introduce complexity in the short term and require careful planning to avoid breaking existing functionality. Additionally, if not done carefully, it could lead to over-engineering or unnecessary abstraction."
+}

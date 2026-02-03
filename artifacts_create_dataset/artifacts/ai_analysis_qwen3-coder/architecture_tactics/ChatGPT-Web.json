@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The application exhibits low maintainability (mi_avg: 50.67), with main.py containing a high number of functions and mixed concerns. Decomposability will address these issues by dividing the monolithic main.py into cohesive modules or layers, isolating functionality, and simplifying future modifications and testing. This aligns with the existing MVC structure but enforces stricter separation of concerns.",
+  "expected_architectural_change": "Refactor main.py by extracting business logic, data handling, and utility functions into separate modules such as services/, models/, and utils/. Introduce a clear layering between controllers (Flask routes), services (business logic), and models (data access).",
+  "risks": "Initial refactoring effort may introduce bugs if not carefully managed. Requires updating import statements and ensuring no cyclic dependencies are introduced. Team coordination may be needed to avoid conflicts during the restructuring phase."
+}

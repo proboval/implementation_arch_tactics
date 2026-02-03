@@ -1,0 +1,514 @@
+{
+  "python_files": 107,
+  "packages": 21,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.095238095238095,
+  "imports_graph": {
+    "fuzzowski\\constants.py": [],
+    "fuzzowski\\exception.py": [
+      "attr"
+    ],
+    "fuzzowski\\ip_constants.py": [],
+    "fuzzowski\\session.py": [
+      "fuzzowski",
+      "testcase",
+      "typing",
+      "pickle",
+      "time",
+      "os",
+      "zlib"
+    ],
+    "fuzzowski\\testcase.py": [
+      "typing",
+      "time",
+      "fuzzowski"
+    ],
+    "fuzzowski\\__init__.py": [
+      "fuzzowski",
+      "exception",
+      "session",
+      "responses",
+      "mutants",
+      "constants",
+      "loggers",
+      "connections"
+    ],
+    "fuzzowski\\__main__.py": [
+      "fuzzowski",
+      "argparse",
+      "sys",
+      "hashlib",
+      "os",
+      "re",
+      "importlib"
+    ],
+    "tests\\test_blocks_block.py": [
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_blocks_checksum.py": [
+      "pytest",
+      "fuzzowski",
+      "hashlib",
+      "os"
+    ],
+    "tests\\test_blocks_repeat.py": [
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_blocks_request.py": [
+      "pytest",
+      "fuzzowski",
+      "hashlib"
+    ],
+    "tests\\test_blocks_size.py": [
+      "struct",
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_http_request.py": [
+      "pytest",
+      "fuzzowski",
+      "mock_http_server"
+    ],
+    "tests\\test_mutants_mutant.py": [
+      "pytest",
+      "fuzzowski"
+    ],
+    "tests\\test_primitives_bit_fields.py": [
+      "pytest",
+      "fuzzowski"
+    ],
+    "tests\\test_primitives_delim.py": [
+      "pytest",
+      "fuzzowski"
+    ],
+    "tests\\test_primitives_random.py": [
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_primitives_static.py": [
+      "pytest",
+      "fuzzowski"
+    ],
+    "tests\\test_primitives_string.py": [
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_response.py": [
+      "pytest",
+      "fuzzowski",
+      "re"
+    ],
+    "tests\\test_session.py": [
+      "pytest",
+      "fuzzowski",
+      "os"
+    ],
+    "tests\\test_testcase.py": [
+      "pytest",
+      "fuzzowski",
+      "hashlib"
+    ],
+    "tests\\__init__.py": [],
+    "docs\\source\\conf.py": [
+      "sphinx_rtd_theme",
+      "os",
+      "sys"
+    ],
+    "fuzzowski\\connections\\itarget_connection.py": [
+      "abc"
+    ],
+    "fuzzowski\\connections\\socket_connection.py": [
+      "socket",
+      "math",
+      "sys",
+      "ssl",
+      "errno",
+      "struct",
+      "itarget_connection"
+    ],
+    "fuzzowski\\connections\\target.py": [
+      "loggers",
+      "ip_constants",
+      "copy"
+    ],
+    "fuzzowski\\connections\\telnet_connection.py": [
+      "socket",
+      "math",
+      "sys",
+      "ssl",
+      "telnetlib",
+      "errno",
+      "struct",
+      "itarget_connection"
+    ],
+    "fuzzowski\\connections\\__init__.py": [
+      "socket_connection",
+      "target",
+      "itarget_connection",
+      "telnet_connection"
+    ],
+    "fuzzowski\\fuzzers\\ifuzzer.py": [
+      "abc",
+      "typing"
+    ],
+    "fuzzowski\\fuzzers\\telnet_cli.py": [
+      "fuzzowski",
+      "ifuzzer"
+    ],
+    "fuzzowski\\fuzzers\\tftp.py": [
+      "fuzzowski",
+      "ifuzzer"
+    ],
+    "fuzzowski\\fuzzers\\__init__.py": [
+      "pkgutil",
+      "importlib",
+      "ifuzzer"
+    ],
+    "fuzzowski\\graph\\edge.py": [],
+    "fuzzowski\\graph\\graph.py": [
+      "typing",
+      "edge",
+      "exception"
+    ],
+    "fuzzowski\\graph\\__init__.py": [
+      "graph",
+      "edge"
+    ],
+    "fuzzowski\\helpers\\deprecated.py": [
+      "warnings",
+      "functools",
+      "inspect"
+    ],
+    "fuzzowski\\helpers\\helpers.py": [
+      "socket",
+      "struct",
+      "prompt_toolkit",
+      "time",
+      "os",
+      "ctypes",
+      "itertools",
+      "re",
+      "zlib",
+      "signal",
+      "errno",
+      "platform",
+      "functools"
+    ],
+    "fuzzowski\\helpers\\printers.py": [
+      "prompt_toolkit",
+      "fuzzowski",
+      "pygments"
+    ],
+    "fuzzowski\\helpers\\__init__.py": [
+      "deprecated",
+      "printers",
+      "helpers"
+    ],
+    "fuzzowski\\legos\\ber.py": [
+      "constants",
+      "__future__"
+    ],
+    "fuzzowski\\legos\\dcerpc.py": [
+      "struct",
+      "helpers"
+    ],
+    "fuzzowski\\legos\\misc.py": [
+      "__future__"
+    ],
+    "fuzzowski\\legos\\xdr.py": [
+      "struct",
+      "__future__",
+      "helpers"
+    ],
+    "fuzzowski\\legos\\__init__.py": [],
+    "fuzzowski\\loggers\\fuzz_logger.py": [
+      "ifuzz_logger"
+    ],
+    "fuzzowski\\loggers\\fuzz_logger_csv.py": [
+      "csv",
+      "datetime",
+      "sys"
+    ],
+    "fuzzowski\\loggers\\fuzz_logger_file.py": [
+      "ifuzz_logger",
+      "os",
+      "errno"
+    ],
+    "fuzzowski\\loggers\\fuzz_logger_text.py": [
+      "prompt_toolkit",
+      "constants",
+      "sys"
+    ],
+    "fuzzowski\\loggers\\ifuzz_logger.py": [
+      "abc"
+    ],
+    "fuzzowski\\loggers\\ifuzz_logger_backend.py": [],
+    "fuzzowski\\loggers\\__init__.py": [
+      "ifuzz_logger",
+      "fuzz_logger",
+      "fuzz_logger_file",
+      "fuzz_logger_csv",
+      "fuzz_logger_text"
+    ],
+    "fuzzowski\\monitors\\imonitor.py": [
+      "fuzzowski",
+      "testcase",
+      "abc",
+      "connections",
+      "copy"
+    ],
+    "fuzzowski\\monitors\\ithreadmonitor.py": [
+      "abc",
+      "fuzzowski",
+      "imonitor",
+      "threading"
+    ],
+    "fuzzowski\\monitors\\__init__.py": [
+      "imonitor",
+      "ithreadmonitor",
+      "pkgutil",
+      "importlib"
+    ],
+    "fuzzowski\\mutants\\imutant.py": [
+      "abc",
+      "typing"
+    ],
+    "fuzzowski\\mutants\\mutant.py": [
+      "typing",
+      "re",
+      "exception",
+      "imutant"
+    ],
+    "fuzzowski\\mutants\\spike.py": [
+      "fuzzowski",
+      "exception",
+      "typing",
+      "constants",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\__init__.py": [
+      "mutant",
+      "primitives",
+      "blocks"
+    ],
+    "fuzzowski\\prompt\\helpers.py": [],
+    "fuzzowski\\prompt\\prompt.py": [
+      "prompt_toolkit",
+      "commands",
+      "helpers",
+      "sys"
+    ],
+    "fuzzowski\\prompt\\session_prompt.py": [
+      "fuzzowski",
+      "sys",
+      "typing",
+      "prompt_toolkit",
+      "os",
+      "signal",
+      "prompt"
+    ],
+    "fuzzowski\\prompt\\__init__.py": [
+      "session_prompt"
+    ],
+    "fuzzowski\\responses\\http_json_response.py": [
+      "http",
+      "fuzzowski",
+      "typing",
+      "io",
+      "response",
+      "json"
+    ],
+    "fuzzowski\\responses\\regex_response.py": [
+      "typing",
+      "re",
+      "fuzzowski",
+      "response"
+    ],
+    "fuzzowski\\responses\\response.py": [
+      "pprint",
+      "fuzzowski",
+      "typing",
+      "abc"
+    ],
+    "fuzzowski\\responses\\__init__.py": [
+      "http_json_response",
+      "regex_response"
+    ],
+    "fuzzowski\\restarters\\cmd_restarter.py": [
+      "irestarter",
+      "shlex",
+      "subprocess"
+    ],
+    "fuzzowski\\restarters\\irestarter.py": [
+      "abc"
+    ],
+    "fuzzowski\\restarters\\__init__.py": [
+      "irestarter",
+      "pkgutil",
+      "importlib"
+    ],
+    "fuzzowski\\fuzzers\\bacnet\\bacnet.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\bacnet\\bacnetmonitor.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\bacnet\\__init__.py": [],
+    "fuzzowski\\fuzzers\\ipp\\ipp.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\ipp\\ippmonitor.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\ipp\\__init__.py": [],
+    "fuzzowski\\fuzzers\\lpd\\lpd.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\lpd\\__init__.py": [],
+    "fuzzowski\\fuzzers\\modbus\\modbus.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\modbus\\modbusmonitor.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\fuzzers\\modbus\\__init__.py": [],
+    "fuzzowski\\mutants\\blocks\\block.py": [
+      "typing",
+      "fuzzowski",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\blocks\\checksum.py": [
+      "fuzzowski",
+      "typing",
+      "hashlib",
+      "helpers",
+      "constants",
+      "zlib",
+      "blocks",
+      "struct",
+      "functools",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\blocks\\repeat.py": [
+      "fuzzowski",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\blocks\\request.py": [
+      "fuzzowski",
+      "re",
+      "block",
+      "collections",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\blocks\\size.py": [
+      "primitives",
+      "functools",
+      "constants",
+      "blocks"
+    ],
+    "fuzzowski\\mutants\\blocks\\variable.py": [
+      "mutant",
+      "request"
+    ],
+    "fuzzowski\\mutants\\blocks\\__init__.py": [
+      "typing",
+      "size",
+      "checksum",
+      "request",
+      "repeat",
+      "block",
+      "variable"
+    ],
+    "fuzzowski\\mutants\\primitives\\bit_field.py": [
+      "struct",
+      "mutant",
+      "constants",
+      "typing"
+    ],
+    "fuzzowski\\mutants\\primitives\\byte.py": [
+      "struct",
+      "bit_field"
+    ],
+    "fuzzowski\\mutants\\primitives\\delim.py": [
+      "fuzzowski"
+    ],
+    "fuzzowski\\mutants\\primitives\\dword.py": [
+      "struct",
+      "bit_field"
+    ],
+    "fuzzowski\\mutants\\primitives\\group.py": [
+      "typing",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\primitives\\qword.py": [
+      "struct",
+      "bit_field"
+    ],
+    "fuzzowski\\mutants\\primitives\\random_data.py": [
+      "random",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\primitives\\static.py": [
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\primitives\\string.py": [
+      "exception",
+      "typing",
+      "itertools",
+      "glob",
+      "random",
+      "mutant"
+    ],
+    "fuzzowski\\mutants\\primitives\\word.py": [
+      "struct",
+      "bit_field"
+    ],
+    "fuzzowski\\mutants\\primitives\\__init__.py": [
+      "string",
+      "qword",
+      "byte",
+      "random_data",
+      "word",
+      "dword",
+      "bit_field",
+      "delim",
+      "group",
+      "static"
+    ],
+    "fuzzowski\\prompt\\commands\\commands.py": [],
+    "fuzzowski\\prompt\\commands\\completer.py": [
+      "prompt_toolkit",
+      "collections",
+      "helpers"
+    ],
+    "fuzzowski\\prompt\\commands\\handler.py": [
+      "prompt_toolkit",
+      "traceback"
+    ],
+    "fuzzowski\\prompt\\commands\\__init__.py": [
+      "commands",
+      "handler",
+      "completer"
+    ],
+    "tests\\mock_http_server\\mock_http_fuzzer.py": [
+      "fuzzowski"
+    ],
+    "tests\\mock_http_server\\mock_http_monitor.py": [
+      "fuzzowski"
+    ],
+    "tests\\mock_http_server\\mock_http_server.py": [
+      "json",
+      "http",
+      "uuid",
+      "threading"
+    ],
+    "tests\\mock_http_server\\__init__.py": []
+  }
+}

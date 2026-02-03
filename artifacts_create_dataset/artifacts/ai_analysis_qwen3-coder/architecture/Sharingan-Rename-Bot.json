@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with distinct modules: 'database', 'helper_funcs', 'plugins'",
+    "Shared global configuration and translation files suggesting unified deployment",
+    "No evidence of network-based service communication or packaging as separate services",
+    "Directory structure supports modularity without physical distribution",
+    "High fan-out (6.4) indicates centralized coordination, typical of monoliths",
+    "Maximum directory depth of 2 suggests flat modular organization"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling through shared global state (config.py, translation.py)",
+    "Potential for circular dependencies between modules like database and plugins",
+    "Maintainability could degrade as modules increase without strict boundaries"
+  ]
+}

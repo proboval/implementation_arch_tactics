@@ -1,0 +1,20 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single main file (geowifi.py) with multiple function definitions suggests a procedural/script-based approach",
+    "No clear package structure or modular organization beyond helper files",
+    "Low number of files analyzed (2), indicating minimal modularization",
+    "Presence of protobuf-generated code in helpers suggests tooling support rather than architectural design",
+    "Directory depth is minimal (2 levels), consistent with simple script organization"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Low maintainability index (mi_avg: 68.7) may indicate difficulty in scaling the script-based approach",
+    "High average fan-out (6.0) suggests potential tight coupling between functions",
+    "Lack of clear architectural boundaries may lead to maintenance challenges as the project grows"
+  ]
+}

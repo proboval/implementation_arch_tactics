@@ -1,0 +1,406 @@
+{
+  "python_files": 85,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 28.333333333333332,
+  "imports_graph": {
+    "scratch\\clustering.py": [
+      "typing",
+      "matplotlib",
+      "random",
+      "tqdm",
+      "itertools",
+      "scratch"
+    ],
+    "scratch\\crash_course_in_python.py": [
+      "typing",
+      "re",
+      "random",
+      "collections"
+    ],
+    "scratch\\databases.py": [
+      "typing",
+      "collections"
+    ],
+    "scratch\\decision_trees.py": [
+      "typing",
+      "math",
+      "collections"
+    ],
+    "scratch\\deep_learning.py": [
+      "math",
+      "typing",
+      "operator",
+      "matplotlib",
+      "json",
+      "tqdm",
+      "mnist",
+      "random",
+      "scratch"
+    ],
+    "scratch\\getting_data.py": [
+      "bs4",
+      "csv",
+      "typing",
+      "dateutil",
+      "os",
+      "json",
+      "re",
+      "collections",
+      "webbrowser",
+      "twython",
+      "random",
+      "requests"
+    ],
+    "scratch\\gradient_descent.py": [
+      "typing",
+      "random",
+      "scratch",
+      "matplotlib"
+    ],
+    "scratch\\inference.py": [
+      "typing",
+      "math",
+      "random",
+      "scratch"
+    ],
+    "scratch\\introduction.py": [
+      "collections"
+    ],
+    "scratch\\k_nearest_neighbors.py": [
+      "typing",
+      "csv",
+      "matplotlib",
+      "collections",
+      "tqdm",
+      "random",
+      "scratch"
+    ],
+    "scratch\\linear_algebra.py": [
+      "typing",
+      "math"
+    ],
+    "scratch\\logistic_regression.py": [
+      "math",
+      "typing",
+      "matplotlib",
+      "tqdm",
+      "random",
+      "scratch"
+    ],
+    "scratch\\machine_learning.py": [
+      "typing",
+      "random"
+    ],
+    "scratch\\mapreduce.py": [
+      "typing",
+      "collections",
+      "datetime"
+    ],
+    "scratch\\multiple_regression.py": [
+      "typing",
+      "tqdm",
+      "random",
+      "datetime",
+      "scratch"
+    ],
+    "scratch\\naive_bayes.py": [
+      "math",
+      "typing",
+      "re",
+      "collections",
+      "glob",
+      "random",
+      "scratch"
+    ],
+    "scratch\\network_analysis.py": [
+      "typing",
+      "collections",
+      "tqdm",
+      "random",
+      "scratch"
+    ],
+    "scratch\\neural_networks.py": [
+      "math",
+      "typing",
+      "tqdm",
+      "random",
+      "scratch"
+    ],
+    "scratch\\nlp.py": [
+      "bs4",
+      "math",
+      "typing",
+      "scratch",
+      "matplotlib",
+      "json",
+      "re",
+      "collections",
+      "tqdm",
+      "random",
+      "requests"
+    ],
+    "scratch\\nlp_advanced.py": [
+      "scratch"
+    ],
+    "scratch\\probability.py": [
+      "math",
+      "enum",
+      "matplotlib",
+      "collections",
+      "random"
+    ],
+    "scratch\\recommender_systems.py": [
+      "typing",
+      "csv",
+      "re",
+      "collections",
+      "tqdm",
+      "random",
+      "scratch"
+    ],
+    "scratch\\simple_linear_regression.py": [
+      "typing",
+      "random",
+      "tqdm",
+      "scratch"
+    ],
+    "scratch\\statistics.py": [
+      "math",
+      "typing",
+      "matplotlib",
+      "collections",
+      "scratch"
+    ],
+    "scratch\\visualization.py": [
+      "collections",
+      "matplotlib"
+    ],
+    "scratch\\working_with_data.py": [
+      "math",
+      "typing",
+      "dateutil",
+      "csv",
+      "matplotlib",
+      "re",
+      "collections",
+      "tqdm",
+      "random",
+      "datetime",
+      "scratch"
+    ],
+    "scratch\\__init__.py": [],
+    "first-edition\\code\\charts.py": [],
+    "first-edition\\code\\egrep.py": [
+      "re",
+      "sys"
+    ],
+    "first-edition\\code\\linear_algebra.py": [
+      "math",
+      "matplotlib",
+      "re",
+      "collections",
+      "__future__",
+      "random",
+      "functools"
+    ],
+    "first-edition\\code\\plot_state_borders.py": [
+      "re"
+    ],
+    "first-edition\\code\\visualizing_data.py": [
+      "collections",
+      "matplotlib"
+    ],
+    "first-edition\\code\\__init__.py": [],
+    "first-edition\\code-python3\\charts.py": [],
+    "first-edition\\code-python3\\clustering.py": [
+      "math",
+      "random",
+      "linear_algebra",
+      "matplotlib"
+    ],
+    "first-edition\\code-python3\\databases.py": [
+      "math",
+      "random",
+      "collections",
+      "re"
+    ],
+    "first-edition\\code-python3\\decision_trees.py": [
+      "math",
+      "functools",
+      "random",
+      "collections"
+    ],
+    "first-edition\\code-python3\\egrep.py": [
+      "re",
+      "sys"
+    ],
+    "first-edition\\code-python3\\getting_data.py": [
+      "bs4",
+      "math",
+      "csv",
+      "dateutil",
+      "time",
+      "json",
+      "re",
+      "collections",
+      "twython",
+      "random",
+      "requests"
+    ],
+    "first-edition\\code-python3\\gradient_descent.py": [
+      "math",
+      "matplotlib",
+      "random",
+      "collections",
+      "functools",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\hypothesis_and_inference.py": [
+      "math",
+      "random",
+      "probability"
+    ],
+    "first-edition\\code-python3\\introduction.py": [
+      "collections",
+      "matplotlib"
+    ],
+    "first-edition\\code-python3\\linear_algebra.py": [
+      "math",
+      "matplotlib",
+      "re",
+      "collections",
+      "random",
+      "functools"
+    ],
+    "first-edition\\code-python3\\line_count.py": [
+      "sys"
+    ],
+    "first-edition\\code-python3\\logistic_regression.py": [
+      "gradient_descent",
+      "multiple_regression",
+      "math",
+      "working_with_data",
+      "machine_learning",
+      "random",
+      "collections",
+      "functools",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\machine_learning.py": [
+      "math",
+      "random",
+      "collections"
+    ],
+    "first-edition\\code-python3\\mapreduce.py": [
+      "math",
+      "naive_bayes",
+      "re",
+      "collections",
+      "random",
+      "datetime",
+      "functools"
+    ],
+    "first-edition\\code-python3\\most_common_words.py": [
+      "collections",
+      "sys"
+    ],
+    "first-edition\\code-python3\\multiple_regression.py": [
+      "gradient_descent",
+      "stats",
+      "math",
+      "random",
+      "collections",
+      "simple_linear_regression",
+      "functools",
+      "linear_algebra",
+      "probability"
+    ],
+    "first-edition\\code-python3\\naive_bayes.py": [
+      "math",
+      "machine_learning",
+      "re",
+      "collections",
+      "glob",
+      "random"
+    ],
+    "first-edition\\code-python3\\natural_language_processing.py": [
+      "bs4",
+      "math",
+      "re",
+      "collections",
+      "random",
+      "requests"
+    ],
+    "first-edition\\code-python3\\nearest_neighbors.py": [
+      "math",
+      "stats",
+      "matplotlib",
+      "collections",
+      "random",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\network_analysis.py": [
+      "math",
+      "functools",
+      "re",
+      "collections",
+      "random",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\neural_networks.py": [
+      "math",
+      "matplotlib",
+      "random",
+      "collections",
+      "functools",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\plot_state_borders.py": [
+      "re",
+      "matplotlib"
+    ],
+    "first-edition\\code-python3\\probability.py": [
+      "math",
+      "random",
+      "collections"
+    ],
+    "first-edition\\code-python3\\recommender_systems.py": [
+      "math",
+      "random",
+      "collections",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\simple_linear_regression.py": [
+      "gradient_descent",
+      "stats",
+      "math",
+      "collections",
+      "random",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\stats.py": [
+      "math",
+      "collections",
+      "linear_algebra"
+    ],
+    "first-edition\\code-python3\\visualizing_data.py": [
+      "collections",
+      "matplotlib"
+    ],
+    "first-edition\\code-python3\\working_with_data.py": [
+      "gradient_descent",
+      "stats",
+      "math",
+      "csv",
+      "dateutil",
+      "matplotlib",
+      "random",
+      "collections",
+      "functools",
+      "linear_algebra",
+      "probability"
+    ],
+    "first-edition\\code-python3\\__init__.py": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "python_files": 4,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "example\\example.py": [
+      "samsungtv",
+      "sys"
+    ],
+    "samsungtv\\remote.py": [
+      "time",
+      "websocket",
+      "json",
+      "logging",
+      "base64"
+    ],
+    "samsungtv\\__init__.py": [
+      "remote"
+    ]
+  }
+}

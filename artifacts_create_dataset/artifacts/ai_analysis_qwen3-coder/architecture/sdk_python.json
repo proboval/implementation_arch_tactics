@@ -1,0 +1,24 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with distinct layers: context, exception, http, json, model, security, and util packages",
+    "Model layer is further divided into core and generated sub-layers indicating layered architecture",
+    "HTTP client functionality is isolated in http package with clear API client implementations",
+    "JSON serialization/deserialization is handled by dedicated json package with adapter pattern implementation",
+    "Context management is separated into its own package with clear responsibility for API context, user context, and session management",
+    "Exception handling is centralized in exception package with specific exception types",
+    "Security concerns are isolated in security package with encryption and signing functionality",
+    "Models follow a base class pattern (BunqModel) suggesting inheritance-based layering",
+    "Package structure shows clear horizontal separation with no circular dependencies evident"
+  ],
+  "alternatives": [
+    "hexagonal (ports and adapters)",
+    "modular_monolith"
+  ],
+  "risks": [
+    "High package count (18 packages) may indicate over-engineering for simpler use cases",
+    "Deep directory nesting (max depth 5) could complicate navigation and maintenance",
+    "Some packages like 'model/generated' suggest code generation which may increase complexity"
+  ]
+}

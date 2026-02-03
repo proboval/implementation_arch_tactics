@@ -1,0 +1,44 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "postgresql_metrics\\common.py": [
+      "logbook",
+      "yaml",
+      "os"
+    ],
+    "postgresql_metrics\\default_metrics.py": [],
+    "postgresql_metrics\\localhost_postgres_stats.py": [
+      "re",
+      "os",
+      "postgresql_metrics"
+    ],
+    "postgresql_metrics\\metrics_gatherer.py": [
+      "postgresql_metrics"
+    ],
+    "postgresql_metrics\\metrics_logic.py": [
+      "socket",
+      "argparse",
+      "time",
+      "os",
+      "json",
+      "postgresql_metrics"
+    ],
+    "postgresql_metrics\\postgres_queries.py": [
+      "re",
+      "postgresql_metrics",
+      "psycopg2"
+    ],
+    "postgresql_metrics\\prepare_db.py": [
+      "getpass",
+      "postgresql_metrics",
+      "psycopg2"
+    ],
+    "postgresql_metrics\\__init__.py": []
+  }
+}

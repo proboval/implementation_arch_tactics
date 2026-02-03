@@ -1,0 +1,439 @@
+{
+  "python_files": 98,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 32.666666666666664,
+  "imports_graph": {
+    "keys.example.py": [],
+    "pybikes\\aksu.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\ambici.py": [
+      "pybikes"
+    ],
+    "pybikes\\baksi.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\base.py": [
+      "pybikes",
+      "dataclasses",
+      "hashlib",
+      "json",
+      "datetime"
+    ],
+    "pybikes\\batumvelo.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\bcycle.py": [
+      "pybikes"
+    ],
+    "pybikes\\beryl.py": [
+      "pybikes"
+    ],
+    "pybikes\\bicicard.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\bicicas.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\bicielx.py": [
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\biciferrolterra.py": [
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\bicimad.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\bicincitta.py": [
+      "json",
+      "re",
+      "pybikes",
+      "urllib"
+    ],
+    "pybikes\\bicing.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\bikeshare_ie.py": [
+      "json",
+      "pybikes",
+      "base"
+    ],
+    "pybikes\\bikeu.py": [
+      "pybikes",
+      "json",
+      "re",
+      "lxml",
+      "urllib"
+    ],
+    "pybikes\\bixi.py": [
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\bizkaibizi.py": [
+      "pybikes"
+    ],
+    "pybikes\\careem.py": [
+      "pybikes"
+    ],
+    "pybikes\\chartered_bike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\clujbike.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\compat.py": [
+      "importlib_resources",
+      "importlib",
+      "datetime"
+    ],
+    "pybikes\\contrib.py": [
+      "time"
+    ],
+    "pybikes\\cyclocity.py": [
+      "pybikes"
+    ],
+    "pybikes\\cyclopolis.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\cykleo.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\data.py": [
+      "pybikes",
+      "sys",
+      "json",
+      "re",
+      "importlib"
+    ],
+    "pybikes\\decobike.py": [
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\derp.py": [
+      "pybikes"
+    ],
+    "pybikes\\deutschebahn.py": [
+      "pybikes"
+    ],
+    "pybikes\\digitransit.py": [
+      "pybikes"
+    ],
+    "pybikes\\docomo.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\easybike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\ecovelo.py": [
+      "pybikes"
+    ],
+    "pybikes\\emovity.py": [
+      "re",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\encicla.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\exceptions.py": [],
+    "pybikes\\fifteen.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\fsm.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\ganxeta.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\gbfs.py": [
+      "warnings",
+      "pybikes",
+      "json",
+      "urllib",
+      "datetime"
+    ],
+    "pybikes\\gira.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\hellocycling.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\joco.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\keolis.py": [
+      "json",
+      "re",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\kolumbus.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\lastenvelo.py": [
+      "csv",
+      "io",
+      "pybikes"
+    ],
+    "pybikes\\linkbike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\meiob.py": [
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\mobhis.py": [
+      "re",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\movus.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\nextbike.py": [
+      "json",
+      "re",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\nextbike_gbfs.py": [
+      "pybikes"
+    ],
+    "pybikes\\nubija.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\openmove.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\open_source_bike_share.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\open_source_bike_share_v2.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\otp.py": [
+      "json",
+      "pybikes",
+      "warnings"
+    ],
+    "pybikes\\ov_fiets.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\pedalada.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\publibike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\qrobici.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\roovee.py": [
+      "json",
+      "urllib",
+      "pybikes"
+    ],
+    "pybikes\\samba.py": [
+      "re",
+      "pybikes",
+      "ast"
+    ],
+    "pybikes\\sejong.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\seoulbike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\sharedmobility.py": [
+      "pybikes"
+    ],
+    "pybikes\\slovnaft_bajk.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\smartbike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\smoove.py": [
+      "json",
+      "base"
+    ],
+    "pybikes\\soltrafego.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\tashu.py": [
+      "json",
+      "re",
+      "pybikes"
+    ],
+    "pybikes\\urbansharing.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\utils.py": [
+      "pybikes",
+      "os",
+      "re",
+      "inspect",
+      "shapely",
+      "requests"
+    ],
+    "pybikes\\velib.py": [
+      "pybikes"
+    ],
+    "pybikes\\velobike_kz.py": [
+      "json",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\velok.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\veloway.py": [
+      "pybikes",
+      "json",
+      "re",
+      "lxml",
+      "urllib"
+    ],
+    "pybikes\\weelo.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\wegoshare.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\xian.py": [
+      "json",
+      "pybikes",
+      "lxml"
+    ],
+    "pybikes\\yelovelo.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\youbike.py": [
+      "json",
+      "pybikes"
+    ],
+    "pybikes\\__init__.py": [
+      "pybikes",
+      "importlib"
+    ],
+    "tests\\conftest.py": [],
+    "tests\\test_base.py": [
+      "pytest",
+      "pybikes"
+    ],
+    "tests\\test_changes.py": [
+      "warnings",
+      "pytest",
+      "pybikes",
+      "git",
+      "os",
+      "tests",
+      "re",
+      "inspect",
+      "importlib"
+    ],
+    "tests\\test_compat.py": [
+      "pybikes"
+    ],
+    "tests\\test_data.py": [
+      "pytest",
+      "pybikes",
+      "unittest"
+    ],
+    "tests\\test_instances.py": [
+      "pytest",
+      "pybikes",
+      "os",
+      "json",
+      "re",
+      "datetime",
+      "unittest"
+    ],
+    "tests\\test_utils.py": [
+      "json",
+      "pytest",
+      "pybikes"
+    ],
+    "tests\\__init__.py": [],
+    "utils\\report.py": [
+      "pybikes",
+      "argparse",
+      "sys",
+      "pprint",
+      "html",
+      "os",
+      "jinja2",
+      "json",
+      "re"
+    ],
+    "utils\\sync_nextbike.py": [
+      "json",
+      "slugify",
+      "pybikes",
+      "requests"
+    ],
+    "tests\\fixtures\\__init__.py": [],
+    "utils\\scaffold\\system.py": [
+      "json",
+      "pybikes"
+    ],
+    "utils\\scaffold\\__main__.py": [
+      "argparse",
+      "sys",
+      "re",
+      "logging",
+      "pathlib"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Python file (dorks-eye.py) with no package structure",
+    "No directories or modules beyond the main script",
+    "Maximum directory depth of 1 with only image assets",
+    "Contains main execution logic with minimal structure",
+    "No evidence of layers, modules, or service decomposition",
+    "Simple file-based organization with supporting assets"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Limited scalability due to single file architecture",
+    "Maintainability concerns as functionality grows",
+    "No clear separation of concerns",
+    "Difficulty in testing individual components"
+  ]
+}

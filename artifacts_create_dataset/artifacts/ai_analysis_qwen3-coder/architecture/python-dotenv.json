@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with distinct modules: cli, main, parser, variables, ipython",
+    "Each module has a single responsibility and well-defined interface",
+    "Internal APIs are used consistently across modules (e.g., main imports from parser and variables)",
+    "Presence of __init__.py indicates package structure with controlled exports",
+    "Tests are organized per module, indicating modular testing approach",
+    "Low package count (2) but high avg_fan_out (4.47) suggests internal module dependencies rather than service boundaries",
+    "No evidence of network-based service communication or multiple deployable units"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "High fan-out could indicate tight coupling between modules",
+    "Single package structure may not scale well for larger applications",
+    "No explicit layering patterns visible in the code organization"
+  ]
+}

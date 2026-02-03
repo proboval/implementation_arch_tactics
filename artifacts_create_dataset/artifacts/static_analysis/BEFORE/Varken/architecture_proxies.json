@@ -1,0 +1,114 @@
+{
+  "python_files": 16,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 16.0,
+  "imports_graph": {
+    "Varken.py": [
+      "schedule",
+      "queue",
+      "argparse",
+      "sys",
+      "varken",
+      "time",
+      "os",
+      "logging",
+      "distro",
+      "threading",
+      "platform"
+    ],
+    "utilities\\grafana_build.py": [
+      "json",
+      "requests",
+      "sys"
+    ],
+    "utilities\\historical_tautulli_import.py": [
+      "varken",
+      "logging",
+      "os",
+      "argparse"
+    ],
+    "varken\\dbmanager.py": [
+      "logging",
+      "influxdb",
+      "requests",
+      "sys"
+    ],
+    "varken\\helpers.py": [
+      "ipaddress",
+      "geoip2",
+      "time",
+      "hashlib",
+      "os",
+      "json",
+      "logging",
+      "tarfile",
+      "urllib3",
+      "urllib",
+      "datetime",
+      "requests"
+    ],
+    "varken\\iniparser.py": [
+      "varken",
+      "os",
+      "shutil",
+      "re",
+      "logging",
+      "configparser"
+    ],
+    "varken\\lidarr.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\ombi.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\radarr.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\sickchill.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\sonarr.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\structures.py": [
+      "typing",
+      "logging",
+      "sys"
+    ],
+    "varken\\tautulli.py": [
+      "geoip2",
+      "varken",
+      "logging",
+      "influxdb",
+      "datetime",
+      "requests"
+    ],
+    "varken\\unifi.py": [
+      "varken",
+      "logging",
+      "datetime",
+      "requests"
+    ],
+    "varken\\varkenlogger.py": [
+      "varken",
+      "logging"
+    ],
+    "varken\\__init__.py": []
+  }
+}

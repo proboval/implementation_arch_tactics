@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear module separation (CYNITE, database)",
+    "High average fan-out (5.875) indicating dense inter-module communication typical of monoliths",
+    "Maximum directory depth of 2 suggests flat module organization",
+    "Database modules directly coupled with business logic modules",
+    "Shared utilities and info modules used across components",
+    "No evidence of service boundaries or API-based communication patterns"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between database and business logic modules",
+    "High fan-out may indicate difficult maintainability",
+    "Single package structure limits scalability",
+    "Direct database access from multiple modules increases complexity"
+  ]
+}

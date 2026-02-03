@@ -1,0 +1,35 @@
+{
+  "python_files": 8,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "train.py": [
+      "time",
+      "os",
+      "minbpe"
+    ],
+    "minbpe\\base.py": [
+      "unicodedata"
+    ],
+    "minbpe\\basic.py": [
+      "base"
+    ],
+    "minbpe\\gpt4.py": [
+      "base",
+      "tiktoken",
+      "regex"
+    ],
+    "minbpe\\regex.py": [
+      "base",
+      "regex"
+    ],
+    "minbpe\\__init__.py": [
+      "base",
+      "gpt4",
+      "regex",
+      "basic"
+    ],
+    "tests\\__init__.py": []
+  }
+}

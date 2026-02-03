@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits tight coupling between Django framework components, with business logic embedded directly in views rather than separated into a distinct domain layer. This makes modifications more risky and increases ripple effects across subsystems. Applying Reduced Coupling will help isolate components, narrow the scope of changes, and improve overall maintainability by minimizing dependencies.",
+  "expected_architectural_change": "Introduce a service layer to encapsulate business logic currently residing in views. Refactor models and views to depend on abstractions rather than concrete implementations where possible. Use dependency injection or Django's built-in mechanisms to reduce direct coupling between layers.",
+  "risks": "Initial refactoring may introduce bugs if not done carefully. Requires careful planning and testing to ensure existing functionality remains intact while decoupling components."
+}

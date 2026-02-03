@@ -1,0 +1,96 @@
+{
+  "python_files": 58,
+  "packages": 18,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 3.2222222222222223,
+  "imports_graph": {
+    "everyday_wechat\\__init__.py": [],
+    "tests\\test_01.py": [
+      "os"
+    ],
+    "tests\\__init__.py": [
+      "everyday_wechat",
+      "os",
+      "unittest"
+    ],
+    "everyday_wechat\\control\\__init__.py": [],
+    "everyday_wechat\\utils\\__init__.py": [],
+    "everyday_wechat\\control\\airquality\\__init__.py": [],
+    "everyday_wechat\\control\\bot\\qingyunke.py": [
+      "requests"
+    ],
+    "everyday_wechat\\control\\bot\\__init__.py": [],
+    "everyday_wechat\\control\\calendar\\sojson_calendar.py": [
+      "everyday_wechat",
+      "datetime",
+      "requests"
+    ],
+    "everyday_wechat\\control\\calendar\\__init__.py": [],
+    "everyday_wechat\\control\\express\\__init__.py": [],
+    "everyday_wechat\\control\\moviebox\\maoyan_movie_box.py": [
+      "everyday_wechat",
+      "datetime",
+      "requests"
+    ],
+    "everyday_wechat\\control\\moviebox\\__init__.py": [],
+    "everyday_wechat\\control\\onewords\\acib.py": [
+      "everyday_wechat",
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\caihongpi.py": [
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\juzimi.py": [
+      "random",
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\lovelive.py": [
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\rtjokes.py": [
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\wufazhuce.py": [
+      "bs4",
+      "everyday_wechat",
+      "requests"
+    ],
+    "everyday_wechat\\control\\onewords\\__init__.py": [],
+    "everyday_wechat\\control\\rubbish\\atoolbox_rubbish.py": [
+      "everyday_wechat",
+      "requests"
+    ],
+    "everyday_wechat\\control\\rubbish\\__init__.py": [],
+    "everyday_wechat\\control\\weather\\__init__.py": [],
+    "tests\\test_alarm\\test_info.py": [
+      "tests",
+      "everyday_wechat"
+    ],
+    "tests\\test_alarm\\__init__.py": [],
+    "tests\\test_config\\__init__.py": [],
+    "tests\\test_control\\test_one_words.py": [
+      "everyday_wechat",
+      "path",
+      "os",
+      "importlib",
+      "unittest"
+    ],
+    "tests\\test_control\\test_rubbish.py": [
+      "everyday_wechat",
+      "unittest"
+    ],
+    "tests\\test_control\\__init__.py": [],
+    "tests\\test_db\\test_air.py": [
+      "tests",
+      "everyday_wechat",
+      "pysnooper"
+    ],
+    "tests\\test_db\\__init__.py": [],
+    "tests\\test_email_alarm\\test_email.py": [
+      "tests",
+      "everyday_wechat",
+      "wechat_notice"
+    ],
+    "tests\\test_email_alarm\\__init__.py": []
+  }
+}

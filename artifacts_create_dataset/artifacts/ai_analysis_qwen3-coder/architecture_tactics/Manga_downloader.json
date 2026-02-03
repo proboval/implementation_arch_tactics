@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits tight coupling through direct imports between modules, particularly in the Downloader class which has a high fan-out (4.33), indicating centralized coordination logic. This creates ripple effects when changes are made and increases the risk of unintended side effects. By reducing coupling, especially between the Downloader and website action implementations, we can isolate changes, improve testability, and make the system more modular. This aligns with the existing modular monolith structure but addresses its key maintainability weakness.",
+  "expected_architectural_change": "Introduce interfaces or abstract factories to decouple the Downloader from concrete website action implementations. Replace direct imports of specific website action classes with configuration-based loading or dependency injection. This would involve creating a plugin-like mechanism where new website implementations can be added without modifying the Downloader class, reducing the fan-out and improving modularity.",
+  "risks": "Initial refactoring effort may be significant due to existing tight coupling. The single package structure may need to be reorganized into multiple packages to properly separate concerns. Care must be taken to maintain backward compatibility during the transition. There's also a risk of over-engineering if the decoupling is taken too far for the current scale of the application."
+}

@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module separation with 'fcm_django' as the main module containing submodules like 'api', 'migrations'",
+    "Presence of Django-specific constructs like models, views (ViewSet), migrations indicating a structured monolithic application",
+    "API modules are separated by framework (rest_framework, tastypie) suggesting internal modularization",
+    "Use of swappable models and abstract base classes indicating extensibility within a single codebase",
+    "Tests are structured in a separate top-level directory with clear organization mirroring the source structure",
+    "Average fan-out of ~2.075 suggests moderate inter-module dependencies, typical of modular monoliths",
+    "Directory depth of 4 indicates structured organization without extreme nesting"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling through direct imports between modules could lead to degradation into a monolithic ball of mud",
+    "Shared database models across modules may create implicit dependencies",
+    "Lack of explicit boundaries between business logic and framework code"
+  ]
+}

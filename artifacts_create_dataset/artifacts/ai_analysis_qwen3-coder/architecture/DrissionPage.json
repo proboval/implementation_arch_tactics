@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package structure with clear module separation in subdirectories (_base, _configs, _elements, _functions, _pages, _units)",
+    "High average fan-out (4.84) indicating extensive cross-module dependencies",
+    "Maximum directory depth of 3 suggests flat modular organization",
+    "Clear separation of concerns with dedicated modules for different functionalities (browser automation, element handling, page management)",
+    "Evidence of internal APIs with abstract base classes (BasePage, BaseElement, BaseParser)",
+    "Multiple cohesive functional units organized in distinct modules",
+    "Presence of both Chromium-based and Session-based page handling indicating unified but modular approach"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "High fan-out may indicate tight coupling between modules",
+    "Single package structure limits deployment flexibility",
+    "Complex internal dependencies may impact maintainability"
+  ]
+}

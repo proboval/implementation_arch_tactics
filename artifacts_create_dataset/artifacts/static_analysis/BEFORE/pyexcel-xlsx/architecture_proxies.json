@@ -1,0 +1,103 @@
+{
+  "python_files": 19,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 19.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "sys",
+      "codecs",
+      "locale",
+      "os",
+      "gease",
+      "shutil",
+      "platform"
+    ],
+    "pyexcel_xlsx\\book.py": [
+      "openpyxl"
+    ],
+    "pyexcel_xlsx\\xlsxr.py": [
+      "openpyxl",
+      "io",
+      "pyexcel_io"
+    ],
+    "pyexcel_xlsx\\xlsxw.py": [
+      "openpyxl",
+      "pyexcel_io"
+    ],
+    "pyexcel_xlsx\\__init__.py": [
+      "pyexcel_io"
+    ],
+    "tests\\base.py": [
+      "nose",
+      "pyexcel",
+      "os",
+      "datetime"
+    ],
+    "tests\\test_book.py": [
+      "nose",
+      "pyexcel_xlsx",
+      "os",
+      "pyexcel_io",
+      "datetime"
+    ],
+    "tests\\test_bug_fixes.py": [
+      "nose",
+      "sys",
+      "pyexcel",
+      "os",
+      "textwrap",
+      "datetime"
+    ],
+    "tests\\test_filter.py": [
+      "os",
+      "nose",
+      "pyexcel_io"
+    ],
+    "tests\\test_formatters.py": [
+      "nose",
+      "pyexcel",
+      "os",
+      "textwrap",
+      "datetime"
+    ],
+    "tests\\test_hidden.py": [
+      "pyexcel_xlsx",
+      "os",
+      "nose"
+    ],
+    "tests\\test_merged_cells.py": [
+      "openpyxl",
+      "pyexcel_xlsx",
+      "os",
+      "nose"
+    ],
+    "tests\\test_multiple_sheets.py": [
+      "nose",
+      "pyexcel",
+      "os",
+      "base",
+      "collections"
+    ],
+    "tests\\test_reader.py": [
+      "nose",
+      "pyexcel_xlsx",
+      "os",
+      "pyexcel_io",
+      "datetime"
+    ],
+    "tests\\test_stringio.py": [
+      "base",
+      "pyexcel",
+      "os",
+      "nose"
+    ],
+    "tests\\test_writer.py": [
+      "base",
+      "pyexcel_xlsx",
+      "os"
+    ],
+    "docs\\source\\conf.py": []
+  }
+}

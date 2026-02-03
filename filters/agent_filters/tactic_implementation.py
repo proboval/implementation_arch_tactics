@@ -40,8 +40,7 @@ SELECTED ARCHITECTURAL TACTIC
 
 ========================================
 PREVIOUSLY APPLIED STEPS
-========================================
-{json.dumps(previous_steps, indent=2) if previous_steps else "No changes applied yet."}
+{previous_steps}
 
 Rules:
 - Do NOT repeat previous steps
@@ -83,18 +82,19 @@ Each step MUST follow EXACTLY this schema:
     "STOP"
   ],
   "path": "relative/path",
-  "content": "file content if applicable",
-  "from": "old path (only for move_file)"
+  "content": "file content if applicable"
 }}
 
 Rules:
-- DO NOT invent new action names
-- DO NOT use natural language as action
+- Test steps MUST target test files (tests/, *_test.py, test_*.py)
+- Test MUST be in pytest style
+- Implementation steps MUST target production code
+- NEVER mix test and implementation in the same step
+- NEVER output more than ONE step per response
 - DO NOT include explanations
 - DO NOT include markdown
-- DO NOT include comments outside JSON
-- DO NOT modify init.py files
-- You MUST modify/create only files with main business and technical logic 
+- DO NOT modify __init__.py files
+- Backend code only
 
 If no safe change is possible:
 Return:
@@ -110,16 +110,16 @@ IMPORTANT:
 """
 
 
-
 class ArchitecturalTacticImplementationAgent(Filter):
     name = "tacticImplementation"
 
-    def __init__(self, call_llm, model_name: str, artifacts_dir: Path, max_iterations: int = 5):
+    def __init__(self, call_llm, model_name: str, artifacts_dir: Path, repo_path: Path, max_iterations: int = 5):
         super().__init__()
         self.call_llm = call_llm
         self.artifacts_dir = artifacts_dir
         self.max_iterations = max_iterations
         self.model_name = model_name
+        self.repo_path = repo_path
 
     # -------------------------------------------------
     # Pipeline entrypoint
@@ -153,7 +153,14 @@ class ArchitecturalTacticImplementationAgent(Filter):
             )
             return
 
-        repo_path = Path("artifacts/repos") / repo.name
+        repo_path = self.repo_path / repo.name
+
+        if not self.install_requirements(repo_path):
+            self.logger.error(
+                f"Skipping repo {repo.name} due to dependency installation failure"
+            )
+            return
+
         artifact_dir = (
             self.artifacts_dir / "tactic_application" / repo.name
         )
@@ -165,32 +172,55 @@ class ArchitecturalTacticImplementationAgent(Filter):
             steps = self.ask_llm_for_steps(repo, tactic, applied_steps_summary)
 
             if not steps:
-                self.logger.warning("Empty plan returned, stopping")
                 break
 
-            for step in steps:
-                action = step.get("action", "STOP")
+            step = steps[0]
+            action = step.get("action", "STOP")
 
-                if action == "STOP":
-                    self.logger.info("LLM requested STOP")
-                    return
+            if action == "STOP":
+                self.logger.info("LLM requested STOP")
+                return
 
-                self.apply_step(repo_path, step)
+            self.apply_step(repo_path, step)
 
-                test_result = self.run_tests(repo_path)
-                self.save_step(artifact_dir, iteration, step, test_result)
+            test_result = self.run_tests(repo_path)
+            self.save_step(artifact_dir, iteration, step, test_result)
 
-                applied_steps_summary.append({
-                    "iteration": iteration,
-                    "action": step.get("action"),
-                    "path": step.get("path"),
-                    "from": step.get("from"),
-                })
+            applied_steps_summary.append({
+                "iteration": iteration,
+                "action": action,
+                "path": step.get("path"),
+            })
 
-                # if not test_result["success"]:
-                #     self.logger.error("Tests failed, rolling back changes")
-                #     self.rollback(repo_path)
+            if not test_result["success"]:
+                self.logger.info("Tests failed, continuing")
+                continue
 
+
+    def install_requirements(self, repo_path: Path) -> bool:
+        req = repo_path / "requirements.txt"
+
+        self.logger.info(f"Installing dependencies for {repo_path.name}")
+
+        result = subprocess.run(
+            [
+                "pip",
+                "install",
+                "-r",
+                "requirements.txt",
+            ],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+        )
+
+        if result.returncode != 0:
+            self.logger.error(
+                f"Dependency installation failed:\n{result.stderr}"
+            )
+            return False
+
+        return True
 
     # -------------------------------------------------
     # LLM interaction
@@ -333,8 +363,17 @@ class ArchitecturalTacticImplementationAgent(Filter):
             "stderr": result.stderr,
         }
 
-    def rollback(self, repo_path: Path):
-        subprocess.run(["git", "checkout", "."], cwd=repo_path)
+    def rollback(self, repo_path: Path, repo_name: str):
+        snapshot = self.artifacts_dir / "snapshots" / repo_name / "baseline"
+
+        if not snapshot.exists():
+            self.logger.error("No snapshot found, cannot rollback")
+            return
+
+        self.logger.warning(f"Rolling back repo {repo_name} to baseline snapshot")
+
+        shutil.rmtree(repo_path, ignore_errors=True)
+        shutil.copytree(snapshot, repo_path)
 
     # -------------------------------------------------
     # Artifacts
