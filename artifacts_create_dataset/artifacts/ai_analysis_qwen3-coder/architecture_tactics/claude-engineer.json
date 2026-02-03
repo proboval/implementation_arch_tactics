@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits tight coupling between the Assistant core and specific tool implementations, with the Assistant class directly managing tool loading, execution, and orchestration. This creates a god object anti-pattern and makes modifications risky. Applying reduced coupling will isolate components, particularly by decoupling the Assistant from direct tool dependencies through interfaces or an inversion of control mechanism.",
+  "expected_architectural_change": "Introduce a plugin-style tool registry and dependency injection mechanism. Refactor Assistant to depend on abstractions (BaseTool) rather than concrete implementations. Move tool discovery/loading into a separate module that registers tools with the Assistant at runtime.",
+  "risks": "Initial refactoring may introduce bugs due to the high fan-out and central coordinator pattern. The mixed concerns in Claude-Eng-v2 directory may complicate decoupling efforts without further modularization."
+}

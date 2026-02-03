@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits high fan-out (5.875) and tight coupling between database and business logic modules, with direct database access from multiple modules. This creates ripple effects during modifications and increases maintenance complexity. Applying Reduced Coupling will isolate modules, minimize interdependencies, and contain changes to specific areas, directly addressing the maintainability issues identified in the static analysis.",
+  "expected_architectural_change": "Introduce service layers between business logic and database modules, implement dependency inversion through interfaces, and establish clear module boundaries. This will transform the current tightly-coupled modular monolith into a more loosely-coupled architecture while maintaining the single deployment unit.",
+  "risks": "Initial refactoring effort may be significant due to existing tight coupling. Careful incremental changes will be needed to avoid breaking existing functionality. Some performance overhead might occur due to additional abstraction layers, but this is outweighed by maintainability gains."
+}

@@ -1,0 +1,56 @@
+{
+  "python_files": 15,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.5,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "javalang\\ast.py": [
+      "pickle",
+      "six"
+    ],
+    "javalang\\javadoc.py": [
+      "re"
+    ],
+    "javalang\\parse.py": [
+      "tokenizer",
+      "parser"
+    ],
+    "javalang\\parser.py": [
+      "tokenizer",
+      "six"
+    ],
+    "javalang\\tokenizer.py": [
+      "re",
+      "six",
+      "collections",
+      "unicodedata"
+    ],
+    "javalang\\tree.py": [
+      "ast"
+    ],
+    "javalang\\util.py": [],
+    "javalang\\__init__.py": [],
+    "javalang\\test\\test_javadoc.py": [
+      "unittest"
+    ],
+    "javalang\\test\\test_java_8_syntax.py": [
+      "pkg_resources",
+      "unittest"
+    ],
+    "javalang\\test\\test_package_declaration.py": [
+      "pkg_resources",
+      "unittest"
+    ],
+    "javalang\\test\\test_tokenizer.py": [
+      "unittest"
+    ],
+    "javalang\\test\\test_util.py": [
+      "util",
+      "unittest"
+    ],
+    "javalang\\test\\__init__.py": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single directory with multiple cohesive modules (client.py, server.py, common.py)",
+    "Shared common module with clear separation of concerns",
+    "No package structure indicates single deployable unit",
+    "High fan-out suggests inter-module communication",
+    "Clear functional boundaries between client, server, and shared components",
+    "Presence of configuration and utility scripts within same codebase"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling potential between client and server through common module",
+    "Maintainability concerns with medium MI scores",
+    "Limited scalability due to monolithic structure"
+  ]
+}

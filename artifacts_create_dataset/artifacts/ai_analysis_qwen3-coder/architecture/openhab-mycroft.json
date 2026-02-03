@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package structure with flat directory layout (max depth 1)",
+    "Simple file organization focused on language-specific resources",
+    "Single __init__.py file containing all skill logic",
+    "Resource-oriented structure (dialog, vocab, regex directories) rather than code modules",
+    "Low code complexity metrics indicating simple procedural code",
+    "No evidence of layered separation or complex module dependencies",
+    "Mycroft skill pattern following simple skill definition structure"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability concerns due to single file containing all logic",
+    "Limited scalability as skill complexity grows",
+    "Tight coupling between skill components"
+  ]
+}

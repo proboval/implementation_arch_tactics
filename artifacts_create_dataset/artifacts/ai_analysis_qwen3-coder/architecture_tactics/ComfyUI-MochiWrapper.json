@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis reveals a modular monolith with an average fan-out of 4.09 and multiple interdependent modules, especially between 'mochi_preview' and root-level components like 'nodes.py'. The presence of circular dependency risks and the current tight coupling between modules such as model loading, encoding/decoding, and sampling indicate that reducing coupling will significantly improve maintainability. Tactics like 'Localized Modification' (AT38) are related but secondary; AT39 directly addresses the core issue of inter-module dependencies.",
+  "expected_architectural_change": "Introduce interfaces or abstract base classes to decouple concrete implementations. Refactor shared utilities into explicit contracts and use dependency injection where appropriate. Restructure module interactions to rely on well-defined APIs rather than direct imports, especially between 'mochi_preview' submodules and root-level nodes.",
+  "risks": "Over-abstraction may increase initial complexity. Care must be taken to avoid introducing unnecessary layers that could obscure the existing logical modularity without providing tangible benefits."
+}

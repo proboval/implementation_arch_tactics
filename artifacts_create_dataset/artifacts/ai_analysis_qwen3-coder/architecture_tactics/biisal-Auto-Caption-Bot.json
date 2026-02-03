@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The project exhibits a script-based architecture with low directory depth and direct usage of external libraries without abstraction layers. This structure leads to limited scalability and weak separation of concerns. Decomposability addresses these issues by promoting modular design and separation of concerns, which will improve maintainability, testability, and analyzability. Given the flat structure and lack of clear modules, introducing decomposability will help organize the code into logical components (e.g., separating bot logic, database interactions, and utility functions) and reduce coupling between them.",
+  "expected_architectural_change": "Refactor the existing files into well-defined modules or packages based on functionality (e.g., create separate modules for bot handling, database operations, configuration, and utilities). Introduce interfaces or abstract layers where necessary to decouple dependencies such as pyrogram and motor from business logic.",
+  "risks": "Initial refactoring effort may be significant due to the current flat structure and interdependencies. Care must be taken to ensure that decomposition does not introduce unnecessary complexity or over-engineering for the current scale of the application."
+}

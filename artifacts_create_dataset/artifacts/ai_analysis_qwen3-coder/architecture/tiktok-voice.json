@@ -1,0 +1,19 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only two Python files (`main.py` and `constants.py`) are present with no packages or modules",
+    "Maximum directory depth is 1, indicating flat structure",
+    "Average fan-out of 5.0 suggests loose coupling but simple function calls typical in scripts",
+    "Presence of a `main.py` file with top-level functions and direct execution patterns",
+    "No clear separation of concerns such as layers, services, or adapters"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Limited scalability due to lack of structural organization",
+    "Maintainability may degrade as functionality increases without modularization",
+    "Lack of testability and reusability common in script-based architectures"
+  ]
+}

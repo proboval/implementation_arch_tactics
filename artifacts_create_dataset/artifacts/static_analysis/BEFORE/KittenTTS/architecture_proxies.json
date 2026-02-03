@@ -1,0 +1,23 @@
+{
+  "python_files": 5,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "kittentts\\get_model.py": [
+      "json",
+      "huggingface_hub",
+      "os",
+      "onnx_model"
+    ],
+    "kittentts\\__index__.py": [
+      "kittentts"
+    ],
+    "kittentts\\__init__.py": [
+      "kittentts"
+    ]
+  }
+}

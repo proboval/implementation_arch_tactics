@@ -1,0 +1,317 @@
+{
+  "python_files": 82,
+  "packages": 17,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 4.823529411764706,
+  "imports_graph": {
+    "fabfile.py": [
+      "fabric"
+    ],
+    "setup.py": [
+      "pytest",
+      "setuptools",
+      "string",
+      "sys",
+      "os",
+      "re"
+    ],
+    "djadmin2\\actions.py": [
+      "django",
+      "viewmixins"
+    ],
+    "djadmin2\\admin2.py": [
+      "django",
+      "djadmin2",
+      "rest_framework"
+    ],
+    "djadmin2\\apiviews.py": [
+      "django",
+      "rest_framework",
+      "viewmixins"
+    ],
+    "djadmin2\\apps.py": [
+      "django",
+      "djadmin2"
+    ],
+    "djadmin2\\core.py": [
+      "django",
+      "importlib"
+    ],
+    "djadmin2\\filters.py": [
+      "django_filters",
+      "django",
+      "utils",
+      "collections",
+      "itertools"
+    ],
+    "djadmin2\\forms.py": [
+      "django"
+    ],
+    "djadmin2\\models.py": [
+      "django",
+      "utils"
+    ],
+    "djadmin2\\permissions.py": [
+      "django",
+      "re",
+      "logging"
+    ],
+    "djadmin2\\renderers.py": [
+      "django",
+      "djadmin2",
+      "os",
+      "datetime"
+    ],
+    "djadmin2\\settings.py": [
+      "django"
+    ],
+    "djadmin2\\site.py": [],
+    "djadmin2\\types.py": [
+      "sys",
+      "django",
+      "extra_views",
+      "os",
+      "logging",
+      "collections"
+    ],
+    "djadmin2\\utils.py": [
+      "django",
+      "collections",
+      "builtins"
+    ],
+    "djadmin2\\viewmixins.py": [
+      "django",
+      "utils",
+      "os",
+      "braces"
+    ],
+    "djadmin2\\views.py": [
+      "filters",
+      "models",
+      "django",
+      "operator",
+      "extra_views",
+      "forms",
+      "viewmixins",
+      "functools",
+      "datetime"
+    ],
+    "djadmin2\\__init__.py": [],
+    "docs\\conf.py": [
+      "os",
+      "sys"
+    ],
+    "example\\manage.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "djadmin2\\contrib\\floppyforms.py": [
+      "django",
+      "floppyforms",
+      "copy"
+    ],
+    "djadmin2\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "djadmin2\\migrations\\__init__.py": [],
+    "djadmin2\\templatetags\\admin2_tags.py": [
+      "django",
+      "numbers",
+      "datetime"
+    ],
+    "djadmin2\\templatetags\\__init__.py": [],
+    "djadmin2\\tests\\models.py": [
+      "django"
+    ],
+    "djadmin2\\tests\\test_actions.py": [
+      "django",
+      "actions",
+      "models",
+      "core"
+    ],
+    "djadmin2\\tests\\test_admin2tags.py": [
+      "django",
+      "models",
+      "views",
+      "templatetags"
+    ],
+    "djadmin2\\tests\\test_auth_admin.py": [
+      "django",
+      "djadmin2",
+      "admin2"
+    ],
+    "djadmin2\\tests\\test_core.py": [
+      "models",
+      "django",
+      "core",
+      "types",
+      "djadmin2"
+    ],
+    "djadmin2\\tests\\test_renderers.py": [
+      "django",
+      "decimal",
+      "models",
+      "datetime"
+    ],
+    "djadmin2\\tests\\test_types.py": [
+      "django",
+      "types",
+      "models",
+      "core"
+    ],
+    "djadmin2\\tests\\test_utils.py": [
+      "django",
+      "models",
+      "views"
+    ],
+    "djadmin2\\tests\\test_views.py": [
+      "django"
+    ],
+    "djadmin2\\tests\\urls.py": [
+      "django",
+      "djadmin2"
+    ],
+    "djadmin2\\tests\\__init__.py": [],
+    "djadmin2\\themes\\__init__.py": [],
+    "djadmin2\\tests\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "djadmin2\\tests\\migrations\\__init__.py": [],
+    "djadmin2\\themes\\djadmin2theme_bootstrap3\\__init__.py": [],
+    "docs\\_ext\\djangodocs.py": [
+      "re",
+      "sphinx"
+    ],
+    "example\\blog\\actions.py": [
+      "django",
+      "djadmin2"
+    ],
+    "example\\blog\\admin.py": [
+      "django",
+      "models"
+    ],
+    "example\\blog\\admin2.py": [
+      "django",
+      "djadmin2",
+      "actions",
+      "models"
+    ],
+    "example\\blog\\models.py": [
+      "django"
+    ],
+    "example\\blog\\views.py": [
+      "django",
+      "models"
+    ],
+    "example\\blog\\__init__.py": [],
+    "example\\example\\settings.py": [
+      "os"
+    ],
+    "example\\example\\urls.py": [
+      "django",
+      "djadmin2",
+      "blog"
+    ],
+    "example\\example\\wsgi.py": [
+      "django",
+      "os"
+    ],
+    "example\\example\\__init__.py": [],
+    "example\\files\\admin.py": [
+      "django",
+      "models"
+    ],
+    "example\\files\\admin2.py": [
+      "models",
+      "djadmin2"
+    ],
+    "example\\files\\models.py": [
+      "django"
+    ],
+    "example\\files\\views.py": [],
+    "example\\files\\__init__.py": [],
+    "example\\polls\\admin.py": [
+      "django",
+      "models"
+    ],
+    "example\\polls\\admin2.py": [
+      "models",
+      "djadmin2"
+    ],
+    "example\\polls\\models.py": [
+      "django",
+      "datetime"
+    ],
+    "example\\polls\\views.py": [],
+    "example\\polls\\__init__.py": [],
+    "example\\blog\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "example\\blog\\migrations\\__init__.py": [],
+    "example\\blog\\tests\\test_apiviews.py": [
+      "json",
+      "djadmin2",
+      "models",
+      "django"
+    ],
+    "example\\blog\\tests\\test_builtin_api_resources.py": [
+      "django",
+      "test_apiviews"
+    ],
+    "example\\blog\\tests\\test_filters.py": [
+      "django",
+      "django_filters",
+      "models",
+      "djadmin2"
+    ],
+    "example\\blog\\tests\\test_modelforms.py": [
+      "django",
+      "models"
+    ],
+    "example\\blog\\tests\\test_nestedobjects.py": [
+      "django",
+      "djadmin2",
+      "models"
+    ],
+    "example\\blog\\tests\\test_permissions.py": [
+      "django",
+      "djadmin2",
+      "blog"
+    ],
+    "example\\blog\\tests\\test_views.py": [
+      "django",
+      "models",
+      "datetime"
+    ],
+    "example\\blog\\tests\\__init__.py": [],
+    "example\\files\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "example\\files\\migrations\\__init__.py": [],
+    "example\\files\\tests\\test_models.py": [
+      "django",
+      "files",
+      "os"
+    ],
+    "example\\files\\tests\\test_views.py": [
+      "django",
+      "models",
+      "os"
+    ],
+    "example\\files\\tests\\__init__.py": [],
+    "example\\polls\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "example\\polls\\migrations\\__init__.py": [],
+    "example\\polls\\tests\\test_models.py": [
+      "django",
+      "polls"
+    ],
+    "example\\polls\\tests\\test_views.py": [
+      "django",
+      "models"
+    ],
+    "example\\polls\\tests\\__init__.py": []
+  }
+}

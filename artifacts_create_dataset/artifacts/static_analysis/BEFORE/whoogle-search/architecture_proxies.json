@@ -1,0 +1,233 @@
+{
+  "python_files": 39,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.8,
+  "imports_graph": {
+    "app\\filter.py": [
+      "bs4",
+      "cssutils",
+      "app",
+      "html",
+      "os",
+      "cryptography",
+      "re",
+      "urllib",
+      "flask"
+    ],
+    "app\\request.py": [
+      "app",
+      "httpx",
+      "defusedxml",
+      "os",
+      "stem",
+      "urllib",
+      "flask"
+    ],
+    "app\\routes.py": [
+      "traceback",
+      "app",
+      "io",
+      "cryptography",
+      "re",
+      "datetime",
+      "os",
+      "base64",
+      "urllib",
+      "werkzeug",
+      "functools",
+      "bs4",
+      "waitress",
+      "argparse",
+      "uuid",
+      "json",
+      "sys",
+      "httpx",
+      "validators",
+      "flask"
+    ],
+    "app\\version.py": [
+      "os"
+    ],
+    "app\\__init__.py": [
+      "bs4",
+      "warnings",
+      "app",
+      "sys",
+      "stem",
+      "os",
+      "json",
+      "dotenv",
+      "logging",
+      "threading",
+      "base64",
+      "werkzeug",
+      "flask",
+      "datetime"
+    ],
+    "app\\__main__.py": [
+      "routes"
+    ],
+    "misc\\generate_uas.py": [
+      "random",
+      "os",
+      "app",
+      "sys"
+    ],
+    "misc\\replit.py": [
+      "subprocess"
+    ],
+    "misc\\update-translations.py": [
+      "json",
+      "httpx",
+      "pathlib"
+    ],
+    "test\\conftest.py": [
+      "test",
+      "pytest",
+      "app",
+      "httpx",
+      "random"
+    ],
+    "test\\test_alts.py": [
+      "bs4",
+      "os",
+      "app",
+      "copy"
+    ],
+    "test\\test_autocomplete.py": [
+      "app"
+    ],
+    "test\\test_autocomplete_xml.py": [
+      "app"
+    ],
+    "test\\test_http_client.py": [
+      "types",
+      "pytest",
+      "httpx",
+      "app"
+    ],
+    "test\\test_json.py": [
+      "json",
+      "types",
+      "pytest",
+      "app"
+    ],
+    "test\\test_misc.py": [
+      "app",
+      "cryptography"
+    ],
+    "test\\test_results.py": [
+      "bs4",
+      "test",
+      "app",
+      "dateutil",
+      "urllib",
+      "datetime"
+    ],
+    "test\\test_routes.py": [
+      "json",
+      "test",
+      "app"
+    ],
+    "test\\test_routes_json.py": [
+      "json",
+      "pytest",
+      "app"
+    ],
+    "test\\test_tor.py": [
+      "pytest",
+      "app"
+    ],
+    "test\\__init__.py": [],
+    "app\\models\\config.py": [
+      "cssutils",
+      "app",
+      "typing",
+      "brotli",
+      "hashlib",
+      "os",
+      "cryptography",
+      "json",
+      "logging",
+      "inspect",
+      "base64",
+      "flask"
+    ],
+    "app\\models\\endpoint.py": [
+      "enum"
+    ],
+    "app\\models\\g_classes.py": [
+      "bs4"
+    ],
+    "app\\models\\__init__.py": [],
+    "app\\services\\cse_client.py": [
+      "dataclasses",
+      "typing",
+      "httpx",
+      "urllib",
+      "flask"
+    ],
+    "app\\services\\http_client.py": [
+      "h2",
+      "ssl",
+      "typing",
+      "httpx",
+      "time",
+      "os",
+      "cachetools",
+      "threading"
+    ],
+    "app\\services\\provider.py": [
+      "typing",
+      "os",
+      "app"
+    ],
+    "app\\services\\__init__.py": [],
+    "app\\utils\\bangs.py": [
+      "httpx",
+      "os",
+      "json",
+      "glob",
+      "urllib"
+    ],
+    "app\\utils\\misc.py": [
+      "bs4",
+      "httpx",
+      "io",
+      "hashlib",
+      "os",
+      "cryptography",
+      "contextlib",
+      "re",
+      "base64",
+      "urllib",
+      "flask"
+    ],
+    "app\\utils\\search.py": [
+      "bs4",
+      "app",
+      "typing",
+      "os",
+      "cryptography",
+      "re",
+      "flask"
+    ],
+    "app\\utils\\session.py": [
+      "flask",
+      "cryptography"
+    ],
+    "app\\utils\\ua_generator.py": [
+      "typing",
+      "os",
+      "json",
+      "random",
+      "datetime"
+    ],
+    "app\\utils\\widgets.py": [
+      "bs4",
+      "pathlib"
+    ],
+    "app\\utils\\__init__.py": []
+  }
+}

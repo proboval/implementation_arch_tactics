@@ -1,0 +1,47 @@
+{
+  "python_files": 8,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "setup.py": [
+      "codecs",
+      "setuptools",
+      "os"
+    ],
+    "docs\\conf.py": [],
+    "google_images_download\\google_images_download.py": [
+      "socket",
+      "http",
+      "httplib",
+      "argparse",
+      "ssl",
+      "sys",
+      "codecs",
+      "time",
+      "urllib2",
+      "os",
+      "json",
+      "re",
+      "selenium",
+      "urllib",
+      "datetime"
+    ],
+    "google_images_download\\__init__.py": [
+      "google_images_download",
+      "__future__"
+    ],
+    "google_images_download\\__main__.py": [
+      "__init__",
+      "__future__"
+    ],
+    "tests\\test_google_images_download.py": [
+      "time",
+      "google_images_download",
+      "os",
+      "errno"
+    ],
+    "tests\\test_sample.py": [],
+    "tests\\__init__.py": []
+  }
+}

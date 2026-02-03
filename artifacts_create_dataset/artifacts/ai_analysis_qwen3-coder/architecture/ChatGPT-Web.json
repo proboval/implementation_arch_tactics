@@ -1,0 +1,20 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.85,
+  "evidence": [
+    "Presence of templates directory with index.html indicating view layer",
+    "Static assets (css, js) organized separately suggesting frontend separation",
+    "main.py contains Flask application setup and route handlers (controller layer)",
+    "Business logic and data handling embedded within main.py (model layer)",
+    "Directory structure separates concerns: templates (views), static (frontend), and Python files (controllers/models)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "script_based"
+  ],
+  "risks": [
+    "Low maintainability index (mi_avg: 50.67) suggests potential code quality issues",
+    "High number of functions in main.py may indicate tight coupling",
+    "Limited directory depth (max 1) suggests flat organization which may not scale"
+  ]
+}

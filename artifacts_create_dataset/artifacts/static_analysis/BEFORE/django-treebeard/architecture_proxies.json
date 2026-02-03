@@ -1,0 +1,105 @@
+{
+  "python_files": 25,
+  "packages": 4,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 6.25,
+  "imports_graph": {
+    "tests\\admin.py": [
+      "django",
+      "tests",
+      "itertools",
+      "treebeard"
+    ],
+    "tests\\conftest.py": [
+      "django",
+      "os"
+    ],
+    "tests\\manage.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "tests\\models.py": [
+      "django",
+      "treebeard",
+      "uuid"
+    ],
+    "tests\\settings.py": [
+      "os"
+    ],
+    "tests\\test_migrations.py": [
+      "django"
+    ],
+    "tests\\test_treebeard.py": [
+      "pytest",
+      "django",
+      "os",
+      "tests",
+      "treebeard",
+      "datetime",
+      "unittest"
+    ],
+    "tests\\urls.py": [
+      "django"
+    ],
+    "tests\\__init__.py": [],
+    "treebeard\\admin.py": [
+      "django",
+      "treebeard",
+      "sys"
+    ],
+    "treebeard\\al_tree.py": [
+      "django",
+      "treebeard",
+      "functools"
+    ],
+    "treebeard\\exceptions.py": [],
+    "treebeard\\forms.py": [
+      "django",
+      "treebeard"
+    ],
+    "treebeard\\models.py": [
+      "django",
+      "operator",
+      "contextlib",
+      "treebeard",
+      "functools"
+    ],
+    "treebeard\\mp_tree.py": [
+      "typing",
+      "django",
+      "treebeard",
+      "collections",
+      "functools"
+    ],
+    "treebeard\\ns_tree.py": [
+      "django",
+      "operator",
+      "functools",
+      "treebeard"
+    ],
+    "treebeard\\numconv.py": [],
+    "treebeard\\__init__.py": [],
+    "docs\\source\\conf.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "docs\\source\\_ext\\djangodocs.py": [],
+    "tests\\migrations\\0001_initial.py": [
+      "django",
+      "uuid"
+    ],
+    "tests\\migrations\\__init__.py": [],
+    "treebeard\\templatetags\\admin_tree.py": [
+      "django"
+    ],
+    "treebeard\\templatetags\\admin_tree_list.py": [
+      "django",
+      "treebeard"
+    ],
+    "treebeard\\templatetags\\__init__.py": [
+      "django"
+    ]
+  }
+}

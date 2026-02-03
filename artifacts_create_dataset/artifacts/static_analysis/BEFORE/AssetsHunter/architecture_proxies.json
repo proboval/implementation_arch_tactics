@@ -1,0 +1,42 @@
+{
+  "python_files": 21,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "AssetsHunter.py": [
+      "Core"
+    ],
+    "Config\\config_hawkeye.py": [],
+    "Config\\config_requests.py": [
+      "random"
+    ],
+    "Config\\config_saveinfo.py": [],
+    "Core\\banner.py": [
+      "random"
+    ],
+    "Modules_Active\\whatcms.py": [
+      "json",
+      "Config",
+      "hashlib",
+      "requests"
+    ],
+    "Modules_Passive\\asn_cidr.py": [
+      "Core",
+      "Config",
+      "requests"
+    ],
+    "Modules_Passive\\ip_whois.py": [
+      "json",
+      "ipwhois"
+    ],
+    "Tools\\cidr_ip.py": [
+      "ipaddress",
+      "Core",
+      "netaddr"
+    ],
+    "Tools\\kill_repeat.py": [
+      "Core"
+    ]
+  }
+}

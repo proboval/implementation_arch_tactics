@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear module separation (website_actions package containing multiple specialized modules)",
+    "Abstract base class (WebsiteActions) defining interface for different website implementations",
+    "High fan-out (4.33) indicating centralized coordination logic in Downloader class",
+    "Directory depth of 2 shows organized but not deeply nested structure",
+    "Multiple concrete implementations of abstract interface following polymorphic pattern",
+    "Main entry point (main.py) delegating to central Downloader class"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling through direct imports between modules",
+    "Potential for growing complexity as more website implementations are added",
+    "Single package structure may not scale well with increasing functionality"
+  ]
+}

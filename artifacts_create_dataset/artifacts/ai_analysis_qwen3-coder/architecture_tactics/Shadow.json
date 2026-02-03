@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits high module coupling through shared global state and services, with numerous circular dependencies evident in the import structure. Modules directly reference each other and shared services, making changes risky and propagation of modifications difficult. The modular monolith architecture would benefit significantly from reduced coupling to improve maintainability, as evidenced by the static analysis showing complex inter-module dependencies and the architecture risks highlighting coupling issues.",
+  "expected_architectural_change": "Introduce interface abstractions and dependency inversion principles to decouple modules. Replace direct module-to-module imports with service contracts and event-based communication. Implement a clearer separation of concerns by defining explicit module boundaries and reducing shared state access. This would involve creating abstract interfaces for services and using dependency injection more consistently.",
+  "risks": "Refactoring to reduce coupling requires significant architectural changes that may introduce bugs during transition. The existing codebase has deeply embedded cross-module dependencies that will be challenging to untangle. Careful planning and incremental refactoring will be necessary to avoid breaking existing functionality while implementing looser coupling between components."
+}

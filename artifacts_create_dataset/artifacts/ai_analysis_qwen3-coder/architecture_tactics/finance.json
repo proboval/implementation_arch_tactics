@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The current script-based architecture exhibits tight coupling and a flat structure with no clear separation of concerns. Decomposability will introduce modular design by dividing the system into distinct layers or modules such as data fetching, portfolio logic, and visualization. This aligns with the evidence of high fan-out (4.0) and low maintainability index (49.68 avg), which indicate that components are overly interdependent and difficult to manage. By applying decomposability, we can isolate problems, simplify testing, and improve overall analyzability and maintainability.",
+  "expected_architectural_change": "Refactor the codebase into separate packages or directories for each major concern: e.g., 'data', 'portfolio', and 'visualization'. Each Python file will be restructured into its respective module, reducing direct imports between unrelated functionalities. Introduce interfaces or abstract layers where necessary to reduce coupling.",
+  "risks": "Initial refactoring may require significant effort due to existing tight coupling. There is also a risk of over-engineering if decomposition is taken too far, potentially increasing complexity instead of reducing it. However, these risks are outweighed by long-term benefits in maintainability and scalability."
+}

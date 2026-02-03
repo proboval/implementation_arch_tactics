@@ -1,0 +1,181 @@
+{
+  "python_files": 34,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 11.333333333333334,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "re",
+      "os"
+    ],
+    "docs\\conf.py": [
+      "collections",
+      "http_prompt"
+    ],
+    "http_prompt\\cli.py": [
+      "contextio",
+      "http",
+      "click",
+      "sys",
+      "prompt_toolkit",
+      "os",
+      "lexer",
+      "utils",
+      "json",
+      "xdg",
+      "re",
+      "httpie",
+      "context",
+      "yaml",
+      "urllib",
+      "execution",
+      "completer",
+      "pygments"
+    ],
+    "http_prompt\\completer.py": [
+      "prompt_toolkit",
+      "itertools",
+      "re",
+      "completion",
+      "collections",
+      "urllib"
+    ],
+    "http_prompt\\completion.py": [
+      "collections"
+    ],
+    "http_prompt\\config.py": [
+      "shutil",
+      "os"
+    ],
+    "http_prompt\\contextio.py": [
+      "io",
+      "execution",
+      "context",
+      "os"
+    ],
+    "http_prompt\\defaultconfig.py": [],
+    "http_prompt\\execution.py": [
+      "parsimonious",
+      "click",
+      "sys",
+      "io",
+      "os",
+      "utils",
+      "json",
+      "re",
+      "completion",
+      "output",
+      "context",
+      "subprocess",
+      "httpie",
+      "urllib",
+      "pygments"
+    ],
+    "http_prompt\\lexer.py": [
+      "pygments"
+    ],
+    "http_prompt\\options.py": [],
+    "http_prompt\\output.py": [
+      "click",
+      "sys"
+    ],
+    "http_prompt\\tree.py": [],
+    "http_prompt\\utils.py": [
+      "prompt_toolkit",
+      "math",
+      "re",
+      "shlex"
+    ],
+    "http_prompt\\xdg.py": [
+      "functools",
+      "os",
+      "sys"
+    ],
+    "http_prompt\\__init__.py": [],
+    "tests\\base.py": [
+      "sys",
+      "tempfile",
+      "os",
+      "shutil",
+      "unittest"
+    ],
+    "tests\\test_cli.py": [
+      "click",
+      "http_prompt",
+      "sys",
+      "os",
+      "json",
+      "base",
+      "requests",
+      "unittest"
+    ],
+    "tests\\test_completer.py": [
+      "prompt_toolkit",
+      "http_prompt",
+      "unittest"
+    ],
+    "tests\\test_config.py": [
+      "base",
+      "hashlib",
+      "os",
+      "http_prompt"
+    ],
+    "tests\\test_contextio.py": [
+      "base",
+      "http_prompt"
+    ],
+    "tests\\test_installation.py": [
+      "pytest",
+      "utils",
+      "subprocess",
+      "http_prompt"
+    ],
+    "tests\\test_interaction.py": [
+      "pytest",
+      "pexpect",
+      "sys",
+      "http_prompt",
+      "os",
+      "base",
+      "utils"
+    ],
+    "tests\\test_lexer.py": [
+      "pygments",
+      "http_prompt",
+      "unittest"
+    ],
+    "tests\\test_tree.py": [
+      "http_prompt",
+      "unittest"
+    ],
+    "tests\\test_utils.py": [
+      "http_prompt"
+    ],
+    "tests\\test_xdg.py": [
+      "stat",
+      "http_prompt",
+      "sys",
+      "os",
+      "base"
+    ],
+    "tests\\utils.py": [
+      "os",
+      "sys"
+    ],
+    "tests\\__init__.py": [],
+    "http_prompt\\context\\transform.py": [
+      "json",
+      "http_prompt"
+    ],
+    "http_prompt\\context\\__init__.py": [
+      "http_prompt"
+    ],
+    "tests\\context\\test_context.py": [
+      "http_prompt"
+    ],
+    "tests\\context\\test_transform.py": [
+      "http_prompt"
+    ]
+  }
+}

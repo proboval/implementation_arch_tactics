@@ -1,0 +1,84 @@
+{
+  "python_files": 11,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "bot.py": [
+      "pyrogram",
+      "config",
+      "sample_config",
+      "os"
+    ],
+    "sample_config.py": [
+      "time",
+      "os"
+    ],
+    "script.py": [],
+    "database\\connections_mdb.py": [
+      "config",
+      "pymongo",
+      "os",
+      "sample_config"
+    ],
+    "database\\filters_mdb.py": [
+      "pymongo",
+      "os",
+      "re",
+      "sample_config",
+      "config"
+    ],
+    "database\\users_mdb.py": [
+      "config",
+      "pymongo",
+      "os",
+      "sample_config"
+    ],
+    "plugins\\callbacks.py": [
+      "script",
+      "database",
+      "ast",
+      "os",
+      "pyrogram",
+      "sample_config",
+      "config"
+    ],
+    "plugins\\commands.py": [
+      "math",
+      "script",
+      "database",
+      "heroku3",
+      "time",
+      "plugins",
+      "os",
+      "json",
+      "shutil",
+      "pyrogram",
+      "sample_config",
+      "config",
+      "requests"
+    ],
+    "plugins\\connections.py": [
+      "database",
+      "os",
+      "pyrogram",
+      "sample_config",
+      "config"
+    ],
+    "plugins\\filters.py": [
+      "database",
+      "io",
+      "plugins",
+      "os",
+      "pyrogram",
+      "re",
+      "sample_config",
+      "config"
+    ],
+    "plugins\\helpers.py": [
+      "typing",
+      "re",
+      "pyrogram"
+    ]
+  }
+}

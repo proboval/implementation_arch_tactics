@@ -1,0 +1,40 @@
+{
+  "python_files": 18,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "koans_plugs.py": [],
+    "run.py": [
+      "pytest",
+      "sys"
+    ],
+    "koans\\about_compound_conditions.py": [
+      "koans_plugs"
+    ],
+    "koans\\about_dictionaries.py": [
+      "koans",
+      "koans_plugs"
+    ],
+    "koans\\about_floats.py": [
+      "koans_plugs"
+    ],
+    "koans\\about_format.py": [
+      "koans_plugs",
+      "datetime",
+      "sys"
+    ],
+    "koans\\about_for_loop.py": [
+      "koans_plugs"
+    ],
+    "koans\\about_integers.py": [
+      "koans_plugs"
+    ],
+    "koans\\about_slices.py": [
+      "koans_plugs"
+    ],
+    "koans\\__init__.py": [],
+    "koans\\helpers\\comparators.py": [],
+    "koans\\helpers\\__init__.py": []
+  }
+}

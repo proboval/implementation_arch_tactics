@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single main package with a primary module containing a monolithic class (googleimagesdownload) that encapsulates all functionality",
+    "Presence of __main__.py indicating direct script execution capability",
+    "Simple directory structure with minimal abstraction layers",
+    "Low package count (2) and moderate fan-out (3.25) suggest procedural organization",
+    "Main logic resides in one primary file (google_images_download.py)",
+    "Entry point is exposed through __init__.py and __main__.py for direct execution",
+    "Test structure mirrors the main module without additional architectural layers"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling within the main module may impact maintainability",
+    "Limited separation of concerns could hinder future scalability",
+    "Single module contains excessive responsibilities"
+  ]
+}

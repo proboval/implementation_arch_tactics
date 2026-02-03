@@ -1,0 +1,19 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Python file (daily_arxiv.py) contains all functionality",
+    "No packages or directory depth indicating modular structure",
+    "High average fan-out (9.0) suggests procedural calling patterns",
+    "Functions appear to be sequentially organized without clear layers",
+    "Repository structure supports single-script execution with config and docs"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Maintainability concerns with single file containing all logic (MI score 39.9)",
+    "Limited scalability due to lack of architectural boundaries",
+    "Tight coupling between components in single file"
+  ]
+}

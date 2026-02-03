@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits tight coupling between modules through direct imports, with an average fan-out of 3.29 and evidence of inter-module dependencies. This can lead to ripple effects during modifications and increase the risk of circular dependencies as the system grows. Applying Reduced Coupling will help isolate changes, reduce side effects, and improve overall maintainability by minimizing unnecessary dependencies.",
+  "expected_architectural_change": "Refactor module interactions to use interfaces or abstraction layers where appropriate. Introduce dependency inversion principles to reduce direct references between modules. Restructure import statements to avoid cross-module dependencies and consider using a mediator or facade pattern for complex interactions.",
+  "risks": "Initial refactoring effort may be significant due to existing tight coupling. Risk of introducing bugs during decoupling process if not carefully managed. May require redesigning some internal APIs to support looser integration between components."
+}

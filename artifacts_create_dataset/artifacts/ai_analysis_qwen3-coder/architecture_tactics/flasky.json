@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis reveals a moderate average fan-out of 3.41 and some evident coupling risks such as business logic mixed with view logic in view modules, API controllers overlapping with traditional MVC controllers, and database models containing business logic methods. By applying Reduced Coupling, we can isolate components more effectively, minimizing ripple effects during modifications and improving overall maintainability. This aligns well with the existing modular structure based on blueprints (main, auth, api) and can be incrementally applied without major architectural overhaul.",
+  "expected_architectural_change": "Introduce interfaces or abstract base classes to decouple dependencies between modules, especially between views and business logic. Refactor models to remove business logic and delegate it to separate service layers. Use dependency injection where appropriate to reduce direct instantiation and increase flexibility. Restructure view modules to strictly handle presentation logic, delegating business operations to dedicated services.",
+  "risks": "Refactoring existing tightly coupled components may introduce bugs if not done carefully. It requires a deep understanding of existing interactions and thorough testing. The effort involved in separating business logic from models and views could be significant, potentially impacting delivery timelines. Care must be taken to ensure that the introduction of service layers does not overcomplicate the architecture."
+}

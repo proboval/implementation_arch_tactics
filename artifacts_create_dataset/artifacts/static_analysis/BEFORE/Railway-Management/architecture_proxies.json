@@ -1,0 +1,32 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "Main.py": [
+      "time",
+      "core"
+    ],
+    "core\\Checks.py": [
+      "mysql",
+      "core"
+    ],
+    "core\\InsertData.py": [
+      "csv",
+      "mysql"
+    ],
+    "core\\Other.py": [
+      "time",
+      "os"
+    ],
+    "core\\User_Functions.py": [
+      "time",
+      "os",
+      "mysql",
+      "random",
+      "datetime"
+    ],
+    "core\\__init__.py": []
+  }
+}

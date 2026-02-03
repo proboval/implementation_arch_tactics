@@ -1,0 +1,35 @@
+{
+  "python_files": 7,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "src\\cli.py": [
+      "sys",
+      "os",
+      "fnmatch",
+      "subprocess",
+      "colorama"
+    ],
+    "src\\diff.py": [
+      "difflib",
+      "sys",
+      "os",
+      "colorama",
+      "oletools"
+    ],
+    "scripts\\windows\\git-xl-version-info.py": [],
+    "scripts\\windows\\update-version-info.py": [
+      "json",
+      "re",
+      "os"
+    ],
+    "src\\tests\\test_cli.py": [
+      "io",
+      "cli",
+      "unittest"
+    ],
+    "src\\tests\\test_diff.py": [],
+    "src\\tests\\__init__.py": []
+  }
+}

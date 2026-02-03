@@ -1,0 +1,19 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.85,
+  "evidence": [
+    "Presence of distinct models, views, and controllers directories under 'app' indicating separation of concerns",
+    "Flask framework usage which inherently supports MVC pattern",
+    "Clear routing mechanism via 'routes.py' handling HTTP requests and responses",
+    "Business logic separated into service classes ('cse_client.py', 'http_client.py') supporting the controller layer",
+    "Data handling through model classes ('config.py', 'endpoint.py', 'g_classes.py')"
+  ],
+  "alternatives": [
+    "layered",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Some business logic may be leaking into route handlers instead of being fully encapsulated in services or models",
+    "Tight coupling possible between Flask framework and core logic due to direct imports and dependencies"
+  ]
+}

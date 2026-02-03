@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module separation with Modules_Active and Modules_Passive directories indicating functional grouping",
+    "Shared Core directory with common utilities (banner, console, decorators) used across modules",
+    "Config directory centralizing configuration management",
+    "Tools directory containing shared utility functions",
+    "Single entry point (AssetsHunter.py) coordinating module execution",
+    "Low package count (0) with shallow directory depth (max 2) indicating monolithic structure",
+    "High average maintainability index (87.2) suggesting well-organized codebase",
+    "Cross-module imports through Core.console showing centralized coordination"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling through direct imports between modules and core components",
+    "Potential for circular dependencies as system grows",
+    "Single point of failure through Core.console coordination",
+    "Limited scalability beyond current monolithic boundaries"
+  ]
+}

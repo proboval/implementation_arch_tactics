@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear module separation (kubedifflib directory containing related functionality)",
+    "Well-defined internal modules (_diff.py, _images.py, _kube.py) with specific responsibilities",
+    "Presence of tests directory following standard Python testing conventions",
+    "Clear API boundaries with explicit exports in __init__.py",
+    "Low directory depth (max 3 levels) suggesting cohesive, tightly-integrated components",
+    "Average fan-out of 6.3 indicates moderate coupling between modules",
+    "Repository contains standard Python packaging files (setup.py, requirements.txt)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling between modules as indicated by fan-out metric",
+    "Limited scalability beyond single-package structure",
+    "Potential for tight coupling between Kubernetes domain logic and diffing functionality"
+  ]
+}

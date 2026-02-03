@@ -1,0 +1,23 @@
+{
+  "python_files": 3,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 3.0,
+  "imports_graph": {
+    "main.py": [
+      "click",
+      "textrank"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "textrank\\__init__.py": [
+      "networkx",
+      "io",
+      "os",
+      "nltk",
+      "editdistance",
+      "itertools"
+    ]
+  }
+}

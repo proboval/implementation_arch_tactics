@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module-based organization in Shadow/modules with numerous specialized files",
+    "Separation of concerns with distinct directories for db, services, utils, and Addons",
+    "Presence of a single main entry point (Shadow/__main__.py) indicating monolithic structure",
+    "Shared database access across modules (MongoDB and SQL) through service layers",
+    "Consistent use of dependency injection and service registration patterns",
+    "Centralized configuration management in Shadow/config.py",
+    "Unified error handling and logging systems across modules"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "High module coupling through shared global state and services",
+    "Potential for circular dependencies between modules",
+    "Difficulty in scaling individual components independently",
+    "Complexity in maintaining module boundaries as system grows"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "python_files": 4,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "client.py": [
+      "socket",
+      "dataclasses",
+      "argparse",
+      "ssl",
+      "typing",
+      "asyncio",
+      "time",
+      "common",
+      "os",
+      "logging",
+      "struct"
+    ],
+    "generate_certs.py": [
+      "argparse",
+      "sys",
+      "os",
+      "cryptography",
+      "datetime"
+    ],
+    "server.py": [
+      "dataclasses",
+      "argparse",
+      "ssl",
+      "typing",
+      "asyncio",
+      "common",
+      "os",
+      "logging",
+      "struct"
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "python_files": 24,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 12.0,
+  "imports_graph": {
+    "runtests.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "tests\\models.py": [
+      "string",
+      "django",
+      "uuid",
+      "treenode",
+      "random"
+    ],
+    "tests\\settings.py": [
+      "os"
+    ],
+    "tests\\test_admin.py": [
+      "django"
+    ],
+    "tests\\test_fixtures.py": [
+      "django",
+      "tests"
+    ],
+    "tests\\test_metadata.py": [
+      "django",
+      "re",
+      "treenode"
+    ],
+    "tests\\test_models.py": [
+      "django",
+      "tests",
+      "treenode"
+    ],
+    "tests\\test_parents.py": [
+      "django",
+      "tests",
+      "treenode"
+    ],
+    "tests\\test_performance.py": [
+      "django",
+      "tests",
+      "treenode"
+    ],
+    "tests\\test_signals.py": [
+      "contextlib",
+      "tests",
+      "django"
+    ],
+    "tests\\test_utils.py": [
+      "django",
+      "treenode"
+    ],
+    "tests\\__init__.py": [],
+    "treenode\\admin.py": [
+      "django",
+      "treenode"
+    ],
+    "treenode\\cache.py": [
+      "django",
+      "logging",
+      "collections",
+      "treenode"
+    ],
+    "treenode\\debug.py": [
+      "django",
+      "logging",
+      "timeit"
+    ],
+    "treenode\\exceptions.py": [],
+    "treenode\\forms.py": [
+      "django",
+      "treenode"
+    ],
+    "treenode\\memory.py": [
+      "collections",
+      "weakref"
+    ],
+    "treenode\\metadata.py": [],
+    "treenode\\models.py": [
+      "django",
+      "uuid",
+      "treenode"
+    ],
+    "treenode\\signals.py": [
+      "django",
+      "models",
+      "inspect",
+      "treenode"
+    ],
+    "treenode\\utils.py": [],
+    "treenode\\__init__.py": [
+      "treenode"
+    ]
+  }
+}

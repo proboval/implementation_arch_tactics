@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits a layered structure with clear separation of concerns, but there is a risk of tight coupling through shared utility modules. Applying the 'Reduced Coupling' tactic will reinforce the independence between layers and components, particularly between the ingestion utilities and the core business logic in transformation and orchestration. This will make future modifications easier, limit ripple effects, and improve overall system maintainability.",
+  "expected_architectural_change": "Refactor shared utility modules to minimize direct dependencies between layers. Introduce interfaces or abstraction layers where necessary to decouple concrete implementations. Enforce stricter module boundaries through dependency inversion and possibly dependency injection mechanisms.",
+  "risks": "Over-engineering abstractions may increase initial complexity. Careful balance is required to ensure that decoupling does not introduce unnecessary indirection without providing tangible benefits."
+}

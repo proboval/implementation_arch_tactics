@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture analysis reveals a script-based design with a single large file (bin/q.py) containing all core logic, resulting in high fan-out and tight coupling. Decomposability addresses these maintainability issues by dividing the system into modules or layers, which isolates problems, facilitates testing, and simplifies analysis. This directly mitigates the risks of maintainability issues, difficulty in testing individual components, and tight coupling identified in the architecture.",
+  "expected_architectural_change": "Refactor the monolithic bin/q.py file into smaller, cohesive modules based on functionality (e.g., data parsing, SQL execution, caching, CLI handling). Introduce clear layer separation such as presentation, business logic, and data access layers. Reorganize the flat directory structure to support logical grouping of related components.",
+  "risks": "Initial refactoring effort will be significant due to the large size of bin/q.py and tight coupling between components. Risk of introducing bugs during decomposition if dependencies are not carefully managed. Potential for increased complexity in module interactions if decomposition boundaries are not well-defined."
+}

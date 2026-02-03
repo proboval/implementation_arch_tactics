@@ -1,0 +1,945 @@
+{
+  "python_files": 192,
+  "packages": 29,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 6.620689655172414,
+  "imports_graph": {
+    "main.py": [
+      "sys",
+      "ctypes",
+      "logging",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "setup.py": [
+      "setuptools",
+      "DownloaderForReddit"
+    ],
+    "alembic\\env.py": [
+      "alembic",
+      "sqlalchemy",
+      "DownloaderForReddit",
+      "sys"
+    ],
+    "DownloaderForReddit\\version.py": [],
+    "DownloaderForReddit\\__init__.py": [],
+    "Tests\\__init__.py": [
+      "logging"
+    ],
+    "Tools\\ui_converter.py": [
+      "os",
+      "subprocess",
+      "sys"
+    ],
+    "alembic\\versions\\4476d8334855_add_hash_duplicate.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\6dabad0d34fb_.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\70d9de393850_.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\7c83ade12997_add_md5_hash.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\ab46745cf45e_add_custom_save_paths.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\b838ef3372ca_enhance_duplicate_controls.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "alembic\\versions\\cc19495248eb_add_md5_hash.py": [
+      "alembic",
+      "sqlalchemy"
+    ],
+    "DownloaderForReddit\\core\\cli.py": [
+      "version",
+      "messaging",
+      "argparse",
+      "os",
+      "utils"
+    ],
+    "DownloaderForReddit\\core\\comment_filter.py": [
+      "database",
+      "praw"
+    ],
+    "DownloaderForReddit\\core\\comment_handler.py": [
+      "core",
+      "utils",
+      "logging",
+      "runner"
+    ],
+    "DownloaderForReddit\\core\\const.py": [
+      "os"
+    ],
+    "DownloaderForReddit\\core\\content_filter.py": [
+      "utils",
+      "database",
+      "sqlalchemy"
+    ],
+    "DownloaderForReddit\\core\\content_runner.py": [
+      "database",
+      "queue",
+      "concurrent",
+      "submission_handler",
+      "runner",
+      "logging",
+      "submittable_creator",
+      "utils"
+    ],
+    "DownloaderForReddit\\core\\download_runner.py": [
+      "database",
+      "threading",
+      "content_runner",
+      "datetime",
+      "queue",
+      "messaging",
+      "collections",
+      "PyQt5",
+      "version",
+      "runner",
+      "logging",
+      "DownloaderForReddit",
+      "platform",
+      "submission_filter",
+      "praw",
+      "sqlalchemy",
+      "prawcore",
+      "errors",
+      "utils"
+    ],
+    "DownloaderForReddit\\core\\duplicate_handler.py": [
+      "os",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\core\\errors.py": [
+      "enum"
+    ],
+    "DownloaderForReddit\\core\\reddit_object_creator.py": [
+      "utils",
+      "logging",
+      "database",
+      "sqlalchemy"
+    ],
+    "DownloaderForReddit\\core\\runner.py": [
+      "abc"
+    ],
+    "DownloaderForReddit\\core\\submission_filter.py": [
+      "database"
+    ],
+    "DownloaderForReddit\\core\\submission_handler.py": [
+      "bs4",
+      "database",
+      "queue",
+      "praw",
+      "sqlalchemy",
+      "typing",
+      "messaging",
+      "extractors",
+      "comment_handler",
+      "runner",
+      "logging",
+      "prawcore",
+      "errors",
+      "utils"
+    ],
+    "DownloaderForReddit\\core\\submittable_creator.py": [
+      "database",
+      "praw",
+      "sqlalchemy",
+      "typing",
+      "logging",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\core\\update_runner.py": [
+      "database",
+      "queue",
+      "messaging",
+      "submission_handler",
+      "runner",
+      "logging",
+      "threading",
+      "PyQt5",
+      "utils",
+      "datetime",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\core\\user_auth.py": [
+      "logging",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\core\\__init__.py": [],
+    "DownloaderForReddit\\customwidgets\\clickable_label.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\customwidgets\\link_cursor_handler.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\customwidgets\\__init__.py": [],
+    "DownloaderForReddit\\database\\database_handler.py": [
+      "sqlalchemy",
+      "os",
+      "core",
+      "contextlib",
+      "sqlite3",
+      "utils"
+    ],
+    "DownloaderForReddit\\database\\exceptions.py": [],
+    "DownloaderForReddit\\database\\filters.py": [
+      "models",
+      "model_enums",
+      "traceback",
+      "sqlalchemy",
+      "abc"
+    ],
+    "DownloaderForReddit\\database\\migration.py": [
+      "models",
+      "model_enums",
+      "sqlalchemy",
+      "alembic",
+      "database_handler",
+      "os",
+      "logging",
+      "utils"
+    ],
+    "DownloaderForReddit\\database\\models.py": [
+      "model_enums",
+      "sqlalchemy",
+      "database_handler",
+      "core",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\database\\model_enums.py": [
+      "enum"
+    ],
+    "DownloaderForReddit\\database\\model_manager.py": [
+      "models",
+      "math",
+      "utils"
+    ],
+    "DownloaderForReddit\\database\\__init__.py": [
+      "models",
+      "scheduling",
+      "messaging",
+      "sqlalchemy"
+    ],
+    "DownloaderForReddit\\extractors\\base_extractor.py": [
+      "database",
+      "messaging",
+      "core",
+      "logging",
+      "utils",
+      "requests"
+    ],
+    "DownloaderForReddit\\extractors\\comment_extractor.py": [
+      "self_post_extractor",
+      "utils",
+      "os",
+      "core"
+    ],
+    "DownloaderForReddit\\extractors\\direct_extractor.py": [
+      "base_extractor"
+    ],
+    "DownloaderForReddit\\extractors\\erome_extractor.py": [
+      "bs4",
+      "core",
+      "base_extractor"
+    ],
+    "DownloaderForReddit\\extractors\\generic_video_extractor.py": [
+      "yt_dlp",
+      "time",
+      "core",
+      "local_logging",
+      "base_extractor",
+      "utils"
+    ],
+    "DownloaderForReddit\\extractors\\gfycat_extractor.py": [
+      "os",
+      "core",
+      "base_extractor",
+      "urllib",
+      "requests"
+    ],
+    "DownloaderForReddit\\extractors\\imgur_extractor.py": [
+      "utils",
+      "core",
+      "base_extractor"
+    ],
+    "DownloaderForReddit\\extractors\\reddit_uploads_extractor.py": [
+      "re",
+      "core",
+      "utils",
+      "base_extractor"
+    ],
+    "DownloaderForReddit\\extractors\\reddit_video_extractor.py": [
+      "core",
+      "re",
+      "base_extractor",
+      "utils",
+      "requests"
+    ],
+    "DownloaderForReddit\\extractors\\redgifs_extractor.py": [
+      "core",
+      "base_extractor",
+      "redgifs"
+    ],
+    "DownloaderForReddit\\extractors\\self_post_extractor.py": [
+      "database",
+      "os",
+      "core",
+      "base_extractor",
+      "utils"
+    ],
+    "DownloaderForReddit\\extractors\\vidble_extractor.py": [
+      "bs4",
+      "core",
+      "base_extractor"
+    ],
+    "DownloaderForReddit\\extractors\\__init__.py": [
+      "gfycat_extractor",
+      "erome_extractor",
+      "vidble_extractor",
+      "reddit_uploads_extractor",
+      "reddit_video_extractor",
+      "imgur_extractor",
+      "redgifs_extractor",
+      "generic_video_extractor"
+    ],
+    "DownloaderForReddit\\gui\\about_dialog.py": [
+      "guiresources",
+      "utils",
+      "version",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\add_reddit_object_dialog.py": [
+      "guiresources",
+      "pyqtspinner",
+      "database",
+      "os",
+      "logging",
+      "threading",
+      "PyQt5",
+      "utils",
+      "existing_names_dialog"
+    ],
+    "DownloaderForReddit\\gui\\blank_dialog.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\downloader_for_reddit_gui.py": [
+      "guiresources",
+      "pyqtspinner",
+      "database",
+      "version",
+      "messaging",
+      "io",
+      "viewmodels",
+      "customwidgets",
+      "gui",
+      "core",
+      "logging",
+      "PyQt5",
+      "platform",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\gui\\existing_names_dialog.py": [
+      "guiresources",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\existing_reddit_object_add_dialog.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\export_wizard.py": [
+      "guiresources",
+      "os",
+      "PyQt5",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\gui\\ffmpeg_info_dialog.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\invalid_reddit_object_dialog.py": [
+      "guiresources",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\message_dialogs.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\reddit_object_settings_dialog.py": [
+      "guiresources",
+      "viewmodels",
+      "logging",
+      "PyQt5",
+      "utils"
+    ],
+    "DownloaderForReddit\\gui\\update_dialog_gui.py": [
+      "guiresources",
+      "utils",
+      "version",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\__init__.py": [],
+    "DownloaderForReddit\\guiresources\\about_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\add_reddit_object_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\downloader_for_reddit_gui_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\download_sessions_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\existing_names_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\export_wizard_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\invalid_reddit_object_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\reddit_object_settings_dialog_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\update_dialog_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\__init__.py": [],
+    "DownloaderForReddit\\local_logging\\logger.py": [
+      "os",
+      "pythonjsonlogger",
+      "local_logging",
+      "logging",
+      "utils"
+    ],
+    "DownloaderForReddit\\local_logging\\log_utils.py": [
+      "logging"
+    ],
+    "DownloaderForReddit\\local_logging\\stream_formatter.py": [
+      "pythonjsonlogger"
+    ],
+    "DownloaderForReddit\\local_logging\\__init__.py": [],
+    "DownloaderForReddit\\messaging\\message.py": [
+      "enum",
+      "utils",
+      "typing"
+    ],
+    "DownloaderForReddit\\messaging\\message_receiver.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\messaging\\__init__.py": [],
+    "DownloaderForReddit\\persistence\\settings_manager.py": [
+      "database",
+      "messaging",
+      "extractors",
+      "os",
+      "core",
+      "logging",
+      "toml",
+      "utils"
+    ],
+    "DownloaderForReddit\\persistence\\__init__.py": [],
+    "DownloaderForReddit\\scheduling\\scheduler.py": [
+      "schedule",
+      "logging",
+      "threading",
+      "PyQt5",
+      "utils",
+      "tasks",
+      "datetime"
+    ],
+    "DownloaderForReddit\\scheduling\\tasks.py": [
+      "enum",
+      "uuid",
+      "database",
+      "sqlalchemy"
+    ],
+    "DownloaderForReddit\\scheduling\\__init__.py": [
+      "tasks",
+      "scheduler"
+    ],
+    "DownloaderForReddit\\utils\\alphanum_key.py": [
+      "re"
+    ],
+    "DownloaderForReddit\\utils\\filename_generator.py": [
+      "typing",
+      "database"
+    ],
+    "DownloaderForReddit\\utils\\general_utils.py": [
+      "gui",
+      "os",
+      "logging",
+      "token_parser",
+      "datetime"
+    ],
+    "DownloaderForReddit\\utils\\html_formatting.py": [
+      "re"
+    ],
+    "DownloaderForReddit\\utils\\imgur_utils.py": [
+      "utils",
+      "time",
+      "logging",
+      "requests"
+    ],
+    "DownloaderForReddit\\utils\\injector.py": [
+      "scheduling",
+      "database",
+      "queue",
+      "persistence"
+    ],
+    "DownloaderForReddit\\utils\\reddit_utils.py": [
+      "version",
+      "praw",
+      "messaging",
+      "cryptography",
+      "core",
+      "logging",
+      "collections",
+      "prawcore",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\utils\\system_util.py": [
+      "sys",
+      "os",
+      "shutil",
+      "local_logging",
+      "re",
+      "logging",
+      "subprocess",
+      "datetime"
+    ],
+    "DownloaderForReddit\\utils\\token_parser.py": [
+      "operator",
+      "re"
+    ],
+    "DownloaderForReddit\\utils\\updater_checker.py": [
+      "PyQt5",
+      "logging",
+      "requests",
+      "sys"
+    ],
+    "DownloaderForReddit\\utils\\video_merger.py": [
+      "distutils",
+      "database",
+      "logging",
+      "subprocess",
+      "utils"
+    ],
+    "DownloaderForReddit\\utils\\__init__.py": [
+      "updater_checker",
+      "imgur_utils",
+      "general_utils",
+      "system_util",
+      "token_parser",
+      "reddit_utils"
+    ],
+    "DownloaderForReddit\\viewmodels\\add_reddit_object_list_model.py": [
+      "utils",
+      "os",
+      "queue",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\viewmodels\\database_view_models.py": [
+      "utils",
+      "core",
+      "os",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\viewmodels\\hyperlink_delegate.py": [
+      "webbrowser",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\viewmodels\\output_view_model.py": [
+      "utils",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\viewmodels\\reddit_object_list_model.py": [
+      "database",
+      "messaging",
+      "sqlalchemy",
+      "core",
+      "logging",
+      "PyQt5",
+      "utils"
+    ],
+    "DownloaderForReddit\\viewmodels\\__init__.py": [],
+    "DownloaderForReddit\\core\\download\\downloader.py": [
+      "concurrent",
+      "hashlib",
+      "logging",
+      "multipart_downloader",
+      "DownloaderForReddit",
+      "duplicate_handler",
+      "requests"
+    ],
+    "DownloaderForReddit\\core\\download\\multipart_downloader.py": [
+      "concurrent",
+      "asyncio",
+      "os",
+      "logging",
+      "DownloaderForReddit",
+      "requests"
+    ],
+    "DownloaderForReddit\\core\\download\\__init__.py": [],
+    "DownloaderForReddit\\gui\\database_views\\database_dialog.py": [
+      "logging",
+      "sqlalchemy",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\database_views\\database_statistics_dialog.py": [
+      "calendar",
+      "sqlalchemy",
+      "operator",
+      "time",
+      "os",
+      "logging",
+      "PyQt5",
+      "datetime",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\gui\\database_views\\filter_input_widget.py": [
+      "sqlalchemy",
+      "filter_item",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\database_views\\filter_item.py": [],
+    "DownloaderForReddit\\gui\\database_views\\filter_widget.py": [
+      "filter_item",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\database_views\\post_text_browser.py": [
+      "utils",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\database_views\\__init__.py": [],
+    "DownloaderForReddit\\gui\\settings\\abstract_settings_widget.py": [
+      "logging",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\core_settings_widget.py": [
+      "abstract_settings_widget",
+      "os",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\database_settings_widget.py": [
+      "abstract_settings_widget",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\default_filter_settings_widget.py": [
+      "quick_filter_settings_widget"
+    ],
+    "DownloaderForReddit\\gui\\settings\\display_settings_widget.py": [
+      "abstract_settings_widget",
+      "datetime",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\download_settings_widget.py": [
+      "abstract_settings_widget",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\gui\\settings\\imgur_settings_widget.py": [
+      "abstract_settings_widget",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\notification_settings_widget.py": [
+      "abstract_settings_widget",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\output_settings_widget.py": [
+      "messaging",
+      "abstract_settings_widget",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\quick_filter_settings_widget.py": [
+      "abstract_settings_widget",
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\schedule_settings_widget.py": [
+      "DownloaderForReddit",
+      "time",
+      "abstract_settings_widget",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\gui\\settings\\settings_dialog.py": [
+      "output_settings_widget",
+      "imgur_settings_widget",
+      "quick_filter_settings_widget",
+      "supported_video_settings_widget",
+      "default_filter_settings_widget",
+      "download_settings_widget",
+      "database_settings_widget",
+      "schedule_settings_widget",
+      "notification_settings_widget",
+      "DownloaderForReddit",
+      "PyQt5",
+      "display_settings_widget",
+      "core_settings_widget"
+    ],
+    "DownloaderForReddit\\gui\\settings\\supported_video_settings_widget.py": [
+      "time",
+      "os",
+      "DownloaderForReddit",
+      "PyQt5",
+      "abstract_settings_widget"
+    ],
+    "DownloaderForReddit\\gui\\settings\\__init__.py": [],
+    "DownloaderForReddit\\gui\\widgets\\object_info_widget.py": [
+      "guiresources",
+      "database",
+      "threading",
+      "PyQt5",
+      "utils"
+    ],
+    "DownloaderForReddit\\gui\\widgets\\object_settings_widget.py": [
+      "guiresources",
+      "database",
+      "os",
+      "core",
+      "PyQt5",
+      "utils",
+      "datetime"
+    ],
+    "DownloaderForReddit\\gui\\widgets\\__init__.py": [],
+    "DownloaderForReddit\\guiresources\\database_views\\database_dialog_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\database_views\\filter_input_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\database_views\\filter_widget_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\database_views\\__init__.py": [],
+    "DownloaderForReddit\\guiresources\\settings\\core_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\database_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\display_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\download_settings_widget_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\notification_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\output_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\quick_filter_settings_widget_auto.py": [
+      "DownloaderForReddit",
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\schedule_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\settings_dialog_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\settings\\__init__.py": [],
+    "DownloaderForReddit\\guiresources\\widgets\\object_info_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\widgets\\object_settings_widget_auto.py": [
+      "PyQt5"
+    ],
+    "DownloaderForReddit\\guiresources\\widgets\\__init__.py": [],
+    "DownloaderForReddit\\utils\\exporters\\csv_exporter.py": [
+      "csv",
+      "logging",
+      "sqlite3",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\utils\\exporters\\json_exporter.py": [
+      "json",
+      "logging",
+      "database"
+    ],
+    "DownloaderForReddit\\utils\\exporters\\text_exporter.py": [
+      "logging"
+    ],
+    "DownloaderForReddit\\utils\\exporters\\__init__.py": [],
+    "DownloaderForReddit\\utils\\importers\\csv_importer.py": [
+      "csv",
+      "logging",
+      "sqlite3",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\utils\\importers\\json_importer.py": [
+      "json",
+      "logging",
+      "datetime",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\utils\\importers\\legacy_import.py": [
+      "logging",
+      "datetime",
+      "DownloaderForReddit"
+    ],
+    "DownloaderForReddit\\utils\\importers\\text_importer.py": [
+      "logging"
+    ],
+    "DownloaderForReddit\\utils\\importers\\__init__.py": [],
+    "Tests\\mockobjects\\mock_objects.py": [
+      "datetime",
+      "DownloaderForReddit"
+    ],
+    "Tests\\unittests\\test_version.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\__init__.py": [],
+    "Tests\\unittests\\core\\test_comment_filter.py": [
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_content_filter.py": [
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_downloader.py": [
+      "sqlalchemy",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_download_runner.py": [
+      "Tests",
+      "logging",
+      "prawcore",
+      "DownloaderForReddit",
+      "datetime",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_duplicate_handler.py": [
+      "Tests",
+      "sqlalchemy",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_submission_filter.py": [
+      "Tests",
+      "datetime",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_submission_handler.py": [
+      "Tests",
+      "prawcore",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\test_user_auth.py": [
+      "PyQt5",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\core\\__init__.py": [],
+    "Tests\\unittests\\extractors\\abstract_extractor_test.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_base_extractor.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_direct_extractor.py": [
+      "abstract_extractor_test",
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_gfycat_extractor.py": [
+      "abstract_extractor_test",
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_imgur_extractor.py": [
+      "abstract_extractor_test",
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_reddit_video_extractor.py": [
+      "abstract_extractor_test",
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\test_redgifs_extractor.py": [],
+    "Tests\\unittests\\extractors\\test_vidble_extractor.py": [
+      "bs4",
+      "abstract_extractor_test",
+      "Tests",
+      "os",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\extractors\\__init__.py": [],
+    "Tests\\unittests\\persistence\\test_settings_manager.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\persistence\\__init__.py": [],
+    "Tests\\unittests\\utils\\test_filename_generator.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\test_general_utils.py": [
+      "Tests",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\test_html_formatting.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\test_system_utils.py": [
+      "os",
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\test_update_checker.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\__init__.py": [],
+    "Tests\\unittests\\utils\\importers\\test_text_importer.py": [
+      "DownloaderForReddit",
+      "unittest"
+    ],
+    "Tests\\unittests\\utils\\importers\\__init__.py": []
+  }
+}

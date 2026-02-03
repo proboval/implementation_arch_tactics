@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module separation with 'methods' subpackage handling different platform-specific implementations (nat.py, pf.py, tproxy.py)",
+    "Well-defined internal APIs with explicit imports between modules (e.g., client.py imports from helpers.py, ssnet.py)",
+    "Centralized command-line interface in cmdline.py that orchestrates other modules",
+    "Separation of concerns with distinct modules for networking (ssnet.py), SSH (ssh.py), firewall (firewall.py), and helpers",
+    "Presence of a single setup.py with find_packages indicating a unified deployment unit",
+    "Test organization mirrors implementation structure with tests/ directory mapping to source modules",
+    "Average fan-out of ~4.9 suggests moderate coupling between well-defined modules rather than tight or loose coupling extremes"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Some modules like client.py and server.py are quite large and may become bottlenecks",
+    "High average fan-out could indicate some modules are doing too much coordination",
+    "Limited package count (only 2) suggests minimal horizontal decomposition"
+  ]
+}

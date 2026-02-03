@@ -1,0 +1,21 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.95,
+  "evidence": [
+    "Project structure separates models, views, and controllers (MVC pattern) in the Django framework",
+    "Views are organized by user roles (students, teachers) and contain business logic",
+    "Models define data structures and relationships using Django ORM",
+    "Templates are used for presentation layer with HTML files organized by feature",
+    "URL routing maps to view functions/classes following MVC routing patterns",
+    "Uses Django's built-in authentication and form handling systems"
+  ],
+  "alternatives": [
+    "layered",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between Django framework components",
+    "Business logic mixed with view layer instead of separated domain layer",
+    "Potential scalability issues with monolithic structure"
+  ]
+}

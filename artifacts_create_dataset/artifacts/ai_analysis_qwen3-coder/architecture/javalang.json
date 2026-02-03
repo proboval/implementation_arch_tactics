@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module structure with 'javalang' as the main package and 'test' as a sub-package, indicating logical separation of concerns",
+    "Low average fan-out (1.4) suggests limited inter-module dependencies, consistent with modular design",
+    "Directory depth of 3 is minimal, supporting a single cohesive unit rather than distributed services",
+    "Presence of distinct functional modules: tokenizer, parser, ast, javadoc, and tree, each encapsulating specific responsibilities",
+    "Internal imports are managed within the same package structure (e.g., relative imports like 'from . import util')",
+    "No evidence of network-based communication or service boundaries that would indicate microservices or hexagonal architecture",
+    "Absence of UI-related components or controllers that would suggest MVC"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "If the project scales significantly, maintaining clear boundaries without enforced architectural constraints may become difficult",
+    "Testing and core logic are co-located; separation might be needed for larger teams or deployment models"
+  ]
+}

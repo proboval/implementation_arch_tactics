@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Python file with no package structure (packages: 0)",
+    "Maximum directory depth of 1 indicates flat structure",
+    "File contains direct implementation of functionality without architectural layers",
+    "Uses direct imports of external libraries (requests, playwright, PyTado)",
+    "Function names suggest procedural workflow (get_meter_reading, tado_login, send_reading)",
+    "No evidence of ports/ adapters or layered separation",
+    "Simple CI/CD workflow files suggest automation script usage"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Low maintainability index (71.08) may impact long-term sustainability",
+    "High average fan-out (6.0) suggests tight coupling to external dependencies",
+    "Single file structure limits scalability and separation of concerns"
+  ]
+}

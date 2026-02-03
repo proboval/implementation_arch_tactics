@@ -1,0 +1,66 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "trevorproxy\\cli.py": [
+      "ipaddress",
+      "traceback",
+      "argparse",
+      "sys",
+      "lib",
+      "time",
+      "shutil",
+      "logging",
+      "pathlib"
+    ],
+    "trevorproxy\\lib\\cyclic.py": [
+      "ipaddress",
+      "random",
+      "sys"
+    ],
+    "trevorproxy\\lib\\errors.py": [],
+    "trevorproxy\\lib\\logger.py": [
+      "pathlib",
+      "logging",
+      "sys"
+    ],
+    "trevorproxy\\lib\\socks.py": [
+      "socket",
+      "traceback",
+      "logging",
+      "select",
+      "struct",
+      "socketserver"
+    ],
+    "trevorproxy\\lib\\ssh.py": [
+      "util",
+      "time",
+      "logging",
+      "subprocess",
+      "errors",
+      "pathlib",
+      "sh"
+    ],
+    "trevorproxy\\lib\\subnet.py": [
+      "ipaddress",
+      "util",
+      "cyclic",
+      "errors",
+      "logging",
+      "subprocess",
+      "threading"
+    ],
+    "trevorproxy\\lib\\util.py": [
+      "ipaddress",
+      "os",
+      "json",
+      "contextlib",
+      "logging",
+      "subprocess",
+      "pathlib",
+      "getpass"
+    ]
+  }
+}

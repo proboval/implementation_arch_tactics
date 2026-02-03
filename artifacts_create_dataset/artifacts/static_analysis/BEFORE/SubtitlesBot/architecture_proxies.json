@@ -1,0 +1,31 @@
+{
+  "python_files": 5,
+  "packages": 3,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 1.6666666666666667,
+  "imports_graph": {
+    "bot.py": [
+      "telegram",
+      "commands",
+      "logging",
+      "config",
+      "inline"
+    ],
+    "config.py": [
+      "os"
+    ],
+    "commands\\__init__.py": [
+      "telegram",
+      "subtitle"
+    ],
+    "inline\\__init__.py": [
+      "telegram",
+      "uuid",
+      "subtitle"
+    ],
+    "subtitle\\__init__.py": [
+      "bs4",
+      "requests"
+    ]
+  }
+}

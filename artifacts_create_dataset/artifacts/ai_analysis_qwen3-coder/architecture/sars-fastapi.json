@@ -1,0 +1,21 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation of concerns with distinct modules for database (models), business logic (main), and data transfer (schemas)",
+    "Single package structure with well-defined layers: app/ contains submodules for different responsibilities",
+    "Database abstraction through SQLAlchemy models and session management",
+    "API layer (FastAPI) separated from domain models and schemas",
+    "Low fan-out (2.5) suggests good layer isolation",
+    "Directory depth of 2 indicates flat but organized structure typical of layered architecture"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between FastAPI routes and business logic in main.py",
+    "Database models directly imported in load.py script suggesting some bypassing of layers",
+    "Limited number of files (6) may not fully represent complex layer interactions"
+  ]
+}

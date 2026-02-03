@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The analysis reveals tight coupling between Twitter API and business logic, with low fan-out and minimal separation of concerns. Applying Reduced Coupling will isolate components, making future modifications easier and reducing ripple effects during changes. This directly addresses the architecture's scalability limitations and improves long-term maintainability.",
+  "expected_architectural_change": "Introduce interface abstractions for Twitter API interactions and decouple business logic from concrete implementations. Restructure modules to reduce direct dependencies and enable independent testing and modification of components.",
+  "risks": "Initial refactoring effort may introduce bugs if not carefully managed. Requires careful dependency injection and interface design to avoid over-engineering while achieving desired decoupling."
+}

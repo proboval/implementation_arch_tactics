@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module separation with distinct packages: 'bypy', 'baidudoc', 'update'",
+    "High fan-out (4.65) suggests tight coupling between modules",
+    "Directory depth of 3 indicates structured organization",
+    "Presence of multiple cohesive modules like 'printer', 'requester', 'cached', 'util'",
+    "Shared global state via 'gvar' and 'const' modules",
+    "No evidence of network-based service communication",
+    "GUI components coexist with core logic in same codebase",
+    "Test modules are integrated within the main package structure"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between modules may impact maintainability",
+    "Shared global state increases complexity",
+    "High fan-out indicates potential fragility",
+    "Lack of clear architectural boundaries"
+  ]
+}

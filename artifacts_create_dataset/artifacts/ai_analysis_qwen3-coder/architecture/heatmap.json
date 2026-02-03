@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single main execution file (heatmap.py) with supporting example scripts",
+    "Flat directory structure with maximum depth of 2",
+    "No packages or complex module hierarchy",
+    "High fan-out (4.76) indicating wide usage of core functionality",
+    "Examples and tests directly import the main module",
+    "Command-line interface focus with configuration handling",
+    "Procedural-style class organization with clear input-processing-output flow"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Limited scalability for larger applications",
+    "Tight coupling between components",
+    "Potential maintenance challenges as complexity grows"
+  ]
+}

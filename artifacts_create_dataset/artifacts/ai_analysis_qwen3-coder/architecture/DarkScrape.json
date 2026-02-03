@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Code is organized into a single package with a clear module separation (modules directory)",
+    "Modules have distinct responsibilities (file handling, URL parsing)",
+    "Low directory depth (max 2 levels) indicates flat structure",
+    "Average fan-out of 3.5 suggests moderate inter-module dependencies",
+    "Presence of __init__.py indicates Python package structure",
+    "Shared imports across modules (requests, subprocess) suggest cohesive monolith"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling through shared imports may increase as project grows",
+    "Single package structure may not scale well for larger teams",
+    "Face recognition functionality mixed with web scraping may violate single responsibility"
+  ]
+}

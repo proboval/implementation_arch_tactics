@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits tight coupling through shared imports like requests, subprocess, and face_recognition across modules. This increases the risk of ripple effects during modifications. Applying Reduced Coupling will isolate dependencies and limit the scope of changes, directly improving maintainability.",
+  "expected_architectural_change": "Refactor modules to minimize direct dependencies by introducing interfaces or abstraction layers for shared functionality such as HTTP requests and file handling. Restructure imports to ensure each module interacts only with necessary components.",
+  "risks": "Initial refactoring may introduce bugs if not carefully managed. Requires careful analysis of existing inter-module dependencies to avoid breaking functionality."
+}

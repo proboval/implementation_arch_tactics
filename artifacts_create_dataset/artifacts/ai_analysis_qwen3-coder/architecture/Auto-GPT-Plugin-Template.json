@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear module boundaries",
+    "Abstract base class pattern with plugin interface definition",
+    "Well-defined method contracts for plugin functionality",
+    "Consistent directory structure with src layout",
+    "High maintainability score indicating good code quality",
+    "Template-based design suggesting reusable component architecture"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Limited files analyzed may not represent full system complexity",
+    "Plugin template nature may not reflect actual implementation architecture",
+    "Single package could indicate insufficient modularization in larger systems"
+  ]
+}

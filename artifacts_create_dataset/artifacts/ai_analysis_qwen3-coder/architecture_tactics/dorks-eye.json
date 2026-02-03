@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The current script-based architecture with a single Python file and no modular structure severely limits maintainability, testability, and analyzability. Applying the Decomposability tactic will allow the system to be divided into logical modules or layers, isolating functionality and making it easier to manage as the codebase grows. This directly addresses the maintainability issues identified in the static analysis such as lack of package structure, zero fan-out, and low documentation coverage.",
+  "expected_architectural_change": "Refactor the monolithic dorks-eye.py file into multiple modules based on functional concerns (e.g., search_engines/, utils/, core/). Introduce a basic package structure with an __init__.py and separate files for each class or cohesive group of functions. This will increase directory depth beyond 1 and introduce imports between modules.",
+  "risks": "Initial refactoring effort may introduce bugs if not done carefully. Increased module count can lead to more complex import dependencies if not managed properly. Requires updating of any hardcoded paths or assumptions about file structure in the existing code."
+}

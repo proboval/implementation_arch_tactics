@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single file application (main.py) with no package structure",
+    "Flat directory structure with maximum depth of 1",
+    "High average fan-out (9.0) indicating procedural function calls",
+    "Functions named with 'None' suffix suggesting incomplete modularization",
+    "Direct imports of external libraries without abstraction layers",
+    "Configuration files (config.txt) treated as simple data files",
+    "Dockerfile present but likely wrapping single script execution"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Low maintainability index (42.22) indicating code quality issues",
+    "Tight coupling between external APIs (IQ_Option, telegram)",
+    "Lack of separation of concerns in single file implementation",
+    "Difficult to test and extend functionality",
+    "Single point of failure in main.py file"
+  ]
+}

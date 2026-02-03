@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis reveals several maintainability issues including tight coupling between Django framework components and business logic, as evidenced by high fan-out (2.01) and complex import dependencies. The architecture evidence also notes 'Tight coupling between Django framework and business logic may limit flexibility' and 'Layer boundaries may become blurred in complex Django implementations'. Applying Reduced Coupling will help isolate components, minimize ripple effects during changes, and improve overall system modularity. This aligns with the layered architecture pattern already in use and will address the identified risks of circular dependencies and blurred layer boundaries.",
+  "expected_architectural_change": "Implement dependency inversion by introducing interfaces/abstract classes between layers, particularly between Django framework components and business logic. Create explicit boundaries between the presentation layer (views, templates), business logic layer (admin2.py, types.py), and data access layer (models.py). Refactor direct imports between modules to depend on abstractions rather than concrete implementations. Introduce service layers to encapsulate business logic and reduce direct dependencies between views and models.",
+  "risks": "Refactoring existing tightly-coupled code may introduce bugs if not done carefully with comprehensive testing. The Django framework's inherent coupling patterns may make complete decoupling challenging. Team members may need training on the new architectural patterns. Initial development time may increase as developers adapt to the new structure, but this should be offset by improved maintainability in the long term."
+}

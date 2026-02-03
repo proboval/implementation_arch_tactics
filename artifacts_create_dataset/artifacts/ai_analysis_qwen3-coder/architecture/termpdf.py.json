@@ -1,0 +1,20 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single-file Python application (termpdf.py) with no package structure",
+    "High average fan-out (15.5) indicating procedural-style function calls",
+    "Maximum directory depth of 1 suggests flat structure",
+    "Contains many top-level functions alongside classes suggesting procedural organization",
+    "No evidence of layered separation or module-based decoupling",
+    "Uses direct imports and single entry point typical of scripts"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Low maintainability index (50.0 avg) may indicate tight coupling",
+    "Single file structure may become unwieldy as functionality grows",
+    "Lack of clear architectural boundaries could impact long-term maintainability"
+  ]
+}

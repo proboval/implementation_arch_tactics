@@ -1,0 +1,48 @@
+{
+  "python_files": 16,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 8.0,
+  "imports_graph": {
+    "config.py": [
+      "dotenv",
+      "os"
+    ],
+    "cache\\admins.py": [
+      "typing",
+      "config"
+    ],
+    "cache\\__init__.py": [
+      "cache"
+    ],
+    "Downloaders\\__init__.py": [
+      "downloaders"
+    ],
+    "helpers\\admins.py": [
+      "typing",
+      "cache",
+      "pyrogram"
+    ],
+    "helpers\\decorators.py": [
+      "typing",
+      "config",
+      "pyrogram",
+      "helpers"
+    ],
+    "helpers\\errors.py": [],
+    "helpers\\filters.py": [
+      "typing",
+      "config",
+      "pyrogram"
+    ],
+    "Misery\\MiseryInlineSearch.py": [
+      "pyrogram",
+      "youtubesearchpython"
+    ],
+    "Misery\\__main__.py": [
+      "pyrogram",
+      "config",
+      "Misery"
+    ]
+  }
+}

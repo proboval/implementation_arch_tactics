@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns with distinct modules: apis, core, datasets, models, ops, utils",
+    "Hierarchical package structure with well-defined boundaries",
+    "Config-based approach with extensive configuration files organized by model types",
+    "Strong module isolation with builder patterns for components (backbones, heads, losses)",
+    "Comprehensive testing structure mirroring the source code organization",
+    "Dataset pipeline architecture with composable transforms",
+    "Model composition through encoder-decoder and cascade architectures",
+    "Low average fan-out (1.106) indicating loose coupling between modules",
+    "High maintainability index (92.42) suggesting good modular design"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Complex configuration management across many model variants",
+    "Potential for tight coupling through shared utility modules",
+    "Large number of configuration files may indicate architectural complexity"
+  ]
+}

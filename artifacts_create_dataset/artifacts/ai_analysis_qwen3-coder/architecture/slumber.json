@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Low package count (2) with clear separation between slumber library and tests",
+    "Average fan-out of 3.2 indicates moderate inter-module dependencies",
+    "Maximum directory depth of 2 suggests flat, organized structure",
+    "Presence of distinct modules: exceptions, serialize, utils, and core resource/API logic",
+    "Self-contained functionality within the slumber package without external service dependencies",
+    "Clear internal layering with serializers, utilities, exceptions, and core API/resource classes"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Low maintainability index (26.2 min) may indicate code complexity issues",
+    "Tight coupling possible through direct imports between modules",
+    "Limited scalability beyond single package boundary"
+  ]
+}

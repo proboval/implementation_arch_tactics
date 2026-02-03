@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository contains multiple standalone Python scripts (doubles.py, doubles_all.py, etc.) with no clear package structure",
+    "Each script appears to be self-contained with its own imports and functions",
+    "Presence of build scripts and extensions (pyext-myclib, pyext-myrustlib) suggests script-level integration rather than architectural organization",
+    "Maximum directory depth is only 2, indicating flat structure",
+    "No evidence of layered organization, MVC patterns, or service decomposition",
+    "Average fan-out of 5.0 suggests loose coupling between scripts and modules",
+    "Low maintainability index (67.86 average) consistent with script-based development"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Low code maintainability may become problematic as scripts grow",
+    "Lack of architectural structure may hinder long-term project scalability",
+    "Tight coupling between scripts and external libraries (numpy, rust extensions)"
+  ]
+}

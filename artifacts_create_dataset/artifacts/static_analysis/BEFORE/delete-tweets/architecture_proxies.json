@@ -1,0 +1,31 @@
+{
+  "python_files": 5,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "deletetweets\\deletetweets.py": [
+      "sys",
+      "dateutil",
+      "io",
+      "os",
+      "json",
+      "twitter",
+      "datetime"
+    ],
+    "deletetweets\\__init__.py": [],
+    "deletetweets\\__main__.py": [
+      "deletetweets",
+      "os",
+      "argparse",
+      "sys"
+    ],
+    "tests\\test_deletetweets.py": [
+      "deletetweets",
+      "unittest"
+    ]
+  }
+}

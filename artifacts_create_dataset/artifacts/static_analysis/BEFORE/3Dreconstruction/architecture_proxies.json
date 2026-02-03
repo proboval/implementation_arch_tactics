@@ -1,0 +1,49 @@
+{
+  "python_files": 7,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "camera.py": [
+      "cv2",
+      "matplotlib",
+      "mpl_toolkits",
+      "numpy",
+      "transformers",
+      "processor"
+    ],
+    "cube_reconstruction.py": [
+      "camera",
+      "matplotlib",
+      "mpl_toolkits",
+      "numpy",
+      "transformers",
+      "structure",
+      "processor"
+    ],
+    "example.py": [
+      "features",
+      "cv2",
+      "camera",
+      "matplotlib",
+      "numpy",
+      "mpl_toolkits",
+      "structure",
+      "processor"
+    ],
+    "features.py": [
+      "cv2",
+      "numpy"
+    ],
+    "processor.py": [
+      "numpy"
+    ],
+    "structure.py": [
+      "matplotlib",
+      "numpy"
+    ],
+    "transformers.py": [
+      "numpy"
+    ]
+  }
+}

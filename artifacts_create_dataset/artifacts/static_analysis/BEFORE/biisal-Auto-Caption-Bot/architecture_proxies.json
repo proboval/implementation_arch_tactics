@@ -1,0 +1,30 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "app.py": [
+      "flask"
+    ],
+    "bot.py": [
+      "pyrogram",
+      "info"
+    ],
+    "info.py": [
+      "re",
+      "os"
+    ],
+    "body\\autoCap.py": [
+      "asyncio",
+      "info",
+      "pyrogram",
+      "re",
+      "db"
+    ],
+    "body\\db.py": [
+      "motor",
+      "info"
+    ]
+  }
+}

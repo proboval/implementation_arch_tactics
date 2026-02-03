@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository currently follows a script-based architecture with minimal structure, posing risks to scalability and maintainability as functionality grows. Applying the Decomposability tactic will help divide the system into modular components, improving isolation of concerns, simplifying testing, and making future changes easier to manage. This aligns well with the need to address the flat directory structure and limited separation of concerns.",
+  "expected_architectural_change": "Introduce a modular structure by organizing code into logical packages such as 'catalog', 'validation', and 'models'. Separate concerns by moving catalog creation and validation logic into distinct modules or classes. This will increase cohesion and reduce coupling between functionalities.",
+  "risks": "Initial refactoring may introduce bugs if not carefully managed. Team members may require training on the new structure. There is also a risk of over-modularization which could complicate simple operations."
+}

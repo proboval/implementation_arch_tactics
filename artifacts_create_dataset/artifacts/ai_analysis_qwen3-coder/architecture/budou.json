@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module separation with 'budou' package containing multiple related modules (parser, segmenter, chunk, cache)",
+    "Use of abstract base classes (ABC) for extensibility (Segmenter, Parser, BudouCache)",
+    "Multiple implementation variants for same interfaces (MecabSegmenter, NLAPISegmenter, TinysegmenterSegmenter)",
+    "Factory pattern usage (get_parser, load_cache)",
+    "Consistent internal package structure with 2 packages and max directory depth of 2",
+    "Comprehensive test organization mirroring source structure",
+    "Average fan-out of 3.8 suggests moderate inter-module dependencies",
+    "Single repository with cohesive functionality focused on text processing"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between parser and specific segmenter implementations",
+    "Potential for circular dependencies between modules (chunk imports in multiple segmenters)",
+    "Cache factory has platform-specific implementations (GAE) that could increase complexity"
+  ]
+}

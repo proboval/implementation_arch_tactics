@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 files analyzed with simple functional structure",
+    "No packages or complex directory structure (max_directory_depth=1)",
+    "Files contain single main functions with helper functions",
+    "No evidence of layered or modular organization",
+    "Presence of direct I/O operations and external API calls typical of scripts",
+    "No MVC or hexagonal patterns visible in code structure"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Low maintainability score (mi_avg=59.4)",
+    "Tight coupling likely due to script-based approach",
+    "Limited scalability for future growth"
+  ]
+}

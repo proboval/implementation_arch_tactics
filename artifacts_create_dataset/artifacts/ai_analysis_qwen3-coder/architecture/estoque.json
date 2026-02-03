@@ -1,0 +1,22 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.95,
+  "evidence": [
+    "Project structure follows typical Django MVC pattern with models, views, and templates separated",
+    "Presence of models.py, views.py, and templates directories in each app",
+    "URL routing configuration files (urls.py) mapping to views",
+    "Template files (.html) organized in templates directories",
+    "Models inherit from Django's base models",
+    "Views handle HTTP requests and return responses",
+    "Static files (CSS, JS) organized in static directory"
+  ],
+  "alternatives": [
+    "layered",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between Django framework and business logic",
+    "Potential for fat models or fat controllers if not properly maintained",
+    "Limited separation of concerns compared to hexagonal architecture"
+  ]
+}

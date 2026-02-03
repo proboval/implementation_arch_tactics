@@ -1,0 +1,146 @@
+{
+  "python_files": 24,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 12.0,
+  "imports_graph": {
+    "gae_test_runner.py": [
+      "argparse",
+      "sys",
+      "os",
+      "appengine_config",
+      "google",
+      "dev_appserver",
+      "unittest"
+    ],
+    "poc.py": [
+      "html5lib"
+    ],
+    "setup.py": [
+      "codecs",
+      "setuptools",
+      "os"
+    ],
+    "testcase_manager.py": [
+      "argparse",
+      "io",
+      "json",
+      "six",
+      "__future__",
+      "budou"
+    ],
+    "budou\\budou.py": [
+      "warnings",
+      "sys",
+      "__version__",
+      "__future__",
+      "docopt",
+      "parser"
+    ],
+    "budou\\cachefactory.py": [
+      "abc",
+      "pickle",
+      "os",
+      "six",
+      "google"
+    ],
+    "budou\\chunk.py": [
+      "xml",
+      "unicodedata",
+      "collections",
+      "html5lib"
+    ],
+    "budou\\mecabsegmenter.py": [
+      "sys",
+      "chunk",
+      "MeCab",
+      "six",
+      "logging",
+      "segmenter"
+    ],
+    "budou\\nlapisegmenter.py": [
+      "cachefactory",
+      "chunk",
+      "hashlib",
+      "googleapiclient",
+      "logging",
+      "__future__",
+      "google",
+      "segmenter",
+      "google_auth_httplib2",
+      "builtins"
+    ],
+    "budou\\parser.py": [
+      "nlapisegmenter",
+      "abc",
+      "re",
+      "six",
+      "xml",
+      "html5lib",
+      "tinysegmentersegmenter",
+      "mecabsegmenter"
+    ],
+    "budou\\segmenter.py": [
+      "abc",
+      "six"
+    ],
+    "budou\\tinysegmentersegmenter.py": [
+      "tinysegmenter",
+      "sys",
+      "chunk",
+      "six",
+      "logging",
+      "segmenter"
+    ],
+    "budou\\__init__.py": [
+      "cachefactory",
+      "parser",
+      "budou"
+    ],
+    "budou\\__version__.py": [],
+    "docs\\conf.py": [
+      "os",
+      "sys"
+    ],
+    "tests\\context.py": [
+      "budou",
+      "os",
+      "sys"
+    ],
+    "tests\\test_budou.py": [
+      "context",
+      "mock",
+      "unittest"
+    ],
+    "tests\\test_chunk.py": [
+      "context",
+      "budou",
+      "unittest"
+    ],
+    "tests\\test_mecabsegmenter.py": [
+      "context",
+      "unittest"
+    ],
+    "tests\\test_nlpapisegmenter.py": [
+      "os",
+      "json",
+      "mock",
+      "context",
+      "unittest"
+    ],
+    "tests\\test_parser.py": [
+      "context",
+      "unittest"
+    ],
+    "tests\\test_tinysegmentersegmenter.py": [
+      "context",
+      "unittest"
+    ],
+    "tests\\__init__.py": [],
+    "tests_gae\\test_cachefactory.py": [
+      "google",
+      "budou",
+      "unittest"
+    ]
+  }
+}

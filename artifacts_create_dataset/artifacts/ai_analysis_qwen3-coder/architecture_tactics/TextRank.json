@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The project exhibits a script-based architecture with low module count and shallow directory structure, leading to limited separation of concerns. Decomposability will help reorganize the codebase into well-defined modules or layers, improving maintainability by isolating functionality, simplifying testing, and making the system easier to analyze.",
+  "expected_architectural_change": "Refactor the textrank/__init__.py file into multiple cohesive modules based on functionality (e.g., graph building, phrase extraction, summarization). Introduce a layered structure separating data handling, processing logic, and CLI interaction. This will increase the directory depth and package structure maturity from script-based to modular monolith.",
+  "risks": "Initial refactoring may introduce bugs if dependencies are not carefully managed. Team members may require time to adapt to new module boundaries. Risk of over-engineering if decomposition is taken too far for the current scale of the project."
+}

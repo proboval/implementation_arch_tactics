@@ -1,0 +1,160 @@
+{
+  "python_files": 45,
+  "packages": 6,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.5,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "tests\\__init__.py": [],
+    "weibo_spider\\datetime_util.py": [
+      "datetime"
+    ],
+    "weibo_spider\\weibo.py": [],
+    "weibo_spider\\__init__.py": [],
+    "weibo_spider\\__main__.py": [
+      "weibo_spider",
+      "os",
+      "absl",
+      "sys"
+    ],
+    "tests\\test_parser\\test_album_parser.py": [
+      "util",
+      "weibo_spider",
+      "unittest"
+    ],
+    "tests\\test_parser\\test_info_parser.py": [
+      "util",
+      "weibo_spider",
+      "unittest"
+    ],
+    "tests\\test_parser\\test_mblog_picAll_parser.py": [
+      "util",
+      "weibo_spider",
+      "unittest"
+    ],
+    "tests\\test_parser\\test_photo_parser.py": [
+      "weibo_spider",
+      "util",
+      "unittest"
+    ],
+    "tests\\test_parser\\util.py": [
+      "json",
+      "weibo_spider",
+      "os",
+      "unittest"
+    ],
+    "tests\\test_parser\\__init__.py": [],
+    "weibo_spider\\downloader\\avatar_picture_downloader.py": [
+      "img_downloader",
+      "os"
+    ],
+    "weibo_spider\\downloader\\img_downloader.py": [
+      "downloader",
+      "os"
+    ],
+    "weibo_spider\\downloader\\origin_picture_downloader.py": [
+      "img_downloader"
+    ],
+    "weibo_spider\\downloader\\retweet_picture_downloader.py": [
+      "img_downloader"
+    ],
+    "weibo_spider\\downloader\\video_downloader.py": [
+      "downloader",
+      "os"
+    ],
+    "weibo_spider\\downloader\\__init__.py": [
+      "retweet_picture_downloader",
+      "video_downloader",
+      "origin_picture_downloader",
+      "avatar_picture_downloader"
+    ],
+    "weibo_spider\\parser\\album_parser.py": [
+      "util",
+      "parser"
+    ],
+    "weibo_spider\\parser\\comment_parser.py": [
+      "util",
+      "time",
+      "re",
+      "logging",
+      "lxml",
+      "random",
+      "parser",
+      "requests"
+    ],
+    "weibo_spider\\parser\\info_parser.py": [
+      "util",
+      "sys",
+      "logging",
+      "parser",
+      "user"
+    ],
+    "weibo_spider\\parser\\mblog_picAll_parser.py": [
+      "util",
+      "parser"
+    ],
+    "weibo_spider\\parser\\parser.py": [],
+    "weibo_spider\\parser\\photo_parser.py": [
+      "util",
+      "parser"
+    ],
+    "weibo_spider\\parser\\__init__.py": [
+      "index_parser",
+      "page_parser",
+      "album_parser",
+      "photo_parser"
+    ],
+    "weibo_spider\\writer\\kafka_writer.py": [
+      "sys",
+      "kafka",
+      "writer",
+      "json",
+      "logging"
+    ],
+    "weibo_spider\\writer\\mongo_writer.py": [
+      "pymongo",
+      "sys",
+      "writer",
+      "logging",
+      "copy"
+    ],
+    "weibo_spider\\writer\\mysql_writer.py": [
+      "pymysql",
+      "sys",
+      "writer",
+      "logging",
+      "copy"
+    ],
+    "weibo_spider\\writer\\post_writer.py": [
+      "codecs",
+      "writer",
+      "time",
+      "os",
+      "json",
+      "logging",
+      "requests"
+    ],
+    "weibo_spider\\writer\\sqlite_writer.py": [
+      "sys",
+      "writer",
+      "logging",
+      "sqlite3",
+      "copy"
+    ],
+    "weibo_spider\\writer\\writer.py": [
+      "abc"
+    ],
+    "weibo_spider\\writer\\__init__.py": [
+      "kafka_writer",
+      "csv_writer",
+      "sqlite_writer",
+      "mysql_writer",
+      "txt_writer",
+      "json_writer",
+      "mongo_writer",
+      "post_writer"
+    ]
+  }
+}

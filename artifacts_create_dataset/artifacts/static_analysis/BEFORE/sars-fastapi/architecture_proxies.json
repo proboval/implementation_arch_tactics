@@ -1,0 +1,35 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "load.py": [
+      "csv",
+      "datetime",
+      "app"
+    ],
+    "app\\database.py": [
+      "os",
+      "sqlalchemy"
+    ],
+    "app\\main.py": [
+      "fastapi",
+      "database",
+      "starlette",
+      "typing",
+      "sqlalchemy"
+    ],
+    "app\\models.py": [
+      "database",
+      "sqlalchemy"
+    ],
+    "app\\schemas.py": [
+      "pydantic",
+      "datetime"
+    ],
+    "app\\__init__.py": [
+      "app"
+    ]
+  }
+}

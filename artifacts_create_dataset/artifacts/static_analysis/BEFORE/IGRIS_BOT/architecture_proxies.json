@@ -1,0 +1,676 @@
+{
+  "python_files": 125,
+  "packages": 6,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 20.833333333333332,
+  "imports_graph": {
+    "aifuction.py": [
+      "asyncio",
+      "telethon",
+      "os",
+      "SaitamaRobot",
+      "requests"
+    ],
+    "SaitamaRobot\\event.py": [],
+    "SaitamaRobot\\events.py": [
+      "telethon",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\igris.py": [
+      "telethon",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\mwt.py": [
+      "time"
+    ],
+    "SaitamaRobot\\sample_config.py": [
+      "json",
+      "os"
+    ],
+    "SaitamaRobot\\__init__.py": [
+      "telegram",
+      "sys",
+      "spamwatch",
+      "time",
+      "telethon",
+      "os",
+      "SaitamaRobot",
+      "logging"
+    ],
+    "SaitamaRobot\\modules\\afk.py": [
+      "telegram",
+      "random",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\animation.py": [
+      "telegram",
+      "time",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\animequotes.py": [
+      "telegram",
+      "html",
+      "time",
+      "SaitamaRobot",
+      "random"
+    ],
+    "SaitamaRobot\\modules\\animequotes_strings.py": [],
+    "SaitamaRobot\\modules\\antiflood.py": [
+      "typing",
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\approval.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\backups.py": [
+      "telegram",
+      "time",
+      "io",
+      "os",
+      "SaitamaRobot",
+      "json"
+    ],
+    "SaitamaRobot\\modules\\bans.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\blacklist.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot",
+      "re"
+    ],
+    "SaitamaRobot\\modules\\blacklistusers.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\blacklist_stickers.py": [
+      "typing",
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\chatbot.py": [
+      "telegram",
+      "html",
+      "time",
+      "SaitamaRobot",
+      "coffeehouse"
+    ],
+    "SaitamaRobot\\modules\\cleaner.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\country.py": [
+      "flag",
+      "html",
+      "telethon",
+      "os",
+      "SaitamaRobot",
+      "countryinfo"
+    ],
+    "SaitamaRobot\\modules\\currency_converter.py": [
+      "telegram",
+      "requests",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\cust_filters.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot",
+      "re",
+      "random"
+    ],
+    "SaitamaRobot\\modules\\dbcleanup.py": [
+      "telegram",
+      "time",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\debug.py": [
+      "telegram",
+      "telethon",
+      "os",
+      "SaitamaRobot",
+      "datetime"
+    ],
+    "SaitamaRobot\\modules\\dev.py": [
+      "telegram",
+      "sys",
+      "time",
+      "os",
+      "SaitamaRobot",
+      "subprocess"
+    ],
+    "SaitamaRobot\\modules\\disable.py": [
+      "telegram",
+      "typing",
+      "SaitamaRobot",
+      "future",
+      "importlib"
+    ],
+    "SaitamaRobot\\modules\\disasters.py": [
+      "telegram",
+      "typing",
+      "html",
+      "os",
+      "SaitamaRobot",
+      "json"
+    ],
+    "SaitamaRobot\\modules\\eval.py": [
+      "telegram",
+      "traceback",
+      "io",
+      "os",
+      "textwrap",
+      "contextlib",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\feds.py": [
+      "telegram",
+      "csv",
+      "time",
+      "io",
+      "uuid",
+      "os",
+      "html",
+      "SaitamaRobot",
+      "json",
+      "re"
+    ],
+    "SaitamaRobot\\modules\\gettime.py": [
+      "telegram",
+      "typing",
+      "SaitamaRobot",
+      "datetime",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\get_common_chats.py": [
+      "telegram",
+      "time",
+      "os",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\global_bans.py": [
+      "telegram",
+      "html",
+      "io",
+      "time",
+      "SaitamaRobot",
+      "datetime"
+    ],
+    "SaitamaRobot\\modules\\google.py": [
+      "bs4",
+      "html2text",
+      "io",
+      "telethon",
+      "os",
+      "aiohttp",
+      "SaitamaRobot",
+      "search_engine_parser",
+      "re",
+      "glob",
+      "bing_image_downloader",
+      "urllib",
+      "PIL",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\googlle.py": [
+      "bs4",
+      "html2text",
+      "io",
+      "telethon",
+      "os",
+      "aiohttp",
+      "SaitamaRobot",
+      "search_engine_parser",
+      "re",
+      "glob",
+      "bing_image_downloader",
+      "urllib",
+      "PIL",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\gtranslate.py": [
+      "emoji",
+      "telegram",
+      "google_trans_new",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\image_reverse_search.py": [
+      "bs4",
+      "telegram",
+      "os",
+      "SaitamaRobot",
+      "re",
+      "urllib",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\locks.py": [
+      "telegram",
+      "html",
+      "alphabet_detector",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\log.py": [
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\log_channel.py": [
+      "telegram",
+      "functools",
+      "datetime",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\math.py": [
+      "math",
+      "telegram",
+      "pynewtonmath",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\misc.py": [
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\modules.py": [
+      "telegram",
+      "importlib",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\muting.py": [
+      "typing",
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\paste.py": [
+      "telegram",
+      "requests",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\ping.py": [
+      "telegram",
+      "typing",
+      "time",
+      "SaitamaRobot",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\purge.py": [
+      "time",
+      "telethon",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\quote.py": [
+      "telethon",
+      "os",
+      "textwrap",
+      "json",
+      "SaitamaRobot",
+      "re",
+      "logging",
+      "random",
+      "emoji",
+      "urllib",
+      "fontTools",
+      "PIL"
+    ],
+    "SaitamaRobot\\modules\\remote_cmds.py": [
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\reporting.py": [
+      "telegram",
+      "html",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\rss.py": [
+      "telegram",
+      "feedparser",
+      "html",
+      "SaitamaRobot",
+      "re"
+    ],
+    "SaitamaRobot\\modules\\rules.py": [
+      "typing",
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sed.py": [
+      "telegram",
+      "SaitamaRobot",
+      "regex",
+      "sre_constants"
+    ],
+    "SaitamaRobot\\modules\\shell.py": [
+      "telegram",
+      "subprocess",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\shout.py": [
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\snipe.py": [
+      "telegram",
+      "typing",
+      "time",
+      "SaitamaRobot",
+      "random"
+    ],
+    "SaitamaRobot\\modules\\songs.py": [
+      "youtube_search",
+      "aiohttp",
+      "os",
+      "SaitamaRobot",
+      "youtube_dl",
+      "pyrogram",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\speed_test.py": [
+      "telegram",
+      "speedtest",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\stickers.py": [
+      "bs4",
+      "math",
+      "telegram",
+      "html",
+      "os",
+      "SaitamaRobot",
+      "re",
+      "urllib",
+      "PIL",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\tts.py": [
+      "telegram",
+      "feedparser",
+      "typing",
+      "html",
+      "time",
+      "urllib",
+      "gtts",
+      "SaitamaRobot",
+      "json",
+      "re",
+      "emoji",
+      "random",
+      "datetime",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\ud.py": [
+      "telegram",
+      "requests",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\userinfo.py": [
+      "telegram",
+      "html",
+      "telethon",
+      "os",
+      "SaitamaRobot",
+      "re",
+      "subprocess",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\vc.py": [],
+    "SaitamaRobot\\modules\\wallpaper.py": [
+      "telegram",
+      "random",
+      "requests",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\welcome.py": [
+      "telegram",
+      "html",
+      "time",
+      "SaitamaRobot",
+      "re",
+      "random",
+      "functools"
+    ],
+    "SaitamaRobot\\modules\\whois.py": [
+      "pyrogram",
+      "datetime",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\wiki.py": [
+      "telegram",
+      "SaitamaRobot",
+      "wikipedia"
+    ],
+    "SaitamaRobot\\modules\\x.py": [
+      "telegram",
+      "nekos",
+      "os",
+      "SaitamaRobot",
+      "PIL",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\ytsearch.py": [
+      "pyrogram",
+      "search_engine_parser",
+      "logging",
+      "youtube_search"
+    ],
+    "SaitamaRobot\\modules\\__init__.py": [
+      "glob",
+      "os",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\utils\\dbfuctions.py": [
+      "typing",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\utils\\errors.py": [],
+    "SaitamaRobot\\utils\\exceptions.py": [],
+    "SaitamaRobot\\utils\\filter_groups.py": [],
+    "SaitamaRobot\\utils\\progress.py": [
+      "math",
+      "time",
+      "exceptions",
+      "tools"
+    ],
+    "SaitamaRobot\\utils\\tools.py": [
+      "re",
+      "hashlib"
+    ],
+    "SaitamaRobot\\utils\\__init__.py": [
+      "progress",
+      "tools"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\alternate.py": [
+      "telegram",
+      "functools"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\cas_api.py": [
+      "json",
+      "urllib",
+      "datetime",
+      "requests"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\chat_status.py": [
+      "telegram",
+      "cachetools",
+      "SaitamaRobot",
+      "threading",
+      "functools"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\extraction.py": [
+      "typing",
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\filters.py": [
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\handlers.py": [
+      "telegram",
+      "pyrate_limiter",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\misc.py": [
+      "typing",
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\msg_types.py": [
+      "enum",
+      "telegram",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\regex_helper.py": [
+      "regex"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\string_handling.py": [
+      "telegram",
+      "typing",
+      "time",
+      "re",
+      "bleach",
+      "emoji",
+      "markdown2"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\__init__.py": [],
+    "SaitamaRobot\\modules\\sql\\afk_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\antiflood_sql.py": [
+      "SaitamaRobot",
+      "threading",
+      "sqlalchemy"
+    ],
+    "SaitamaRobot\\modules\\sql\\approve_sql.py": [
+      "SaitamaRobot",
+      "threading",
+      "sqlalchemy"
+    ],
+    "SaitamaRobot\\modules\\sql\\blacklistusers_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\blacklist_sql.py": [
+      "SaitamaRobot",
+      "threading",
+      "sqlalchemy"
+    ],
+    "SaitamaRobot\\modules\\sql\\blsticker_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\chatbot_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\cleaner_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\connection_sql.py": [
+      "sqlalchemy",
+      "typing",
+      "time",
+      "SaitamaRobot",
+      "threading"
+    ],
+    "SaitamaRobot\\modules\\sql\\cust_filters_sql.py": [
+      "SaitamaRobot",
+      "threading",
+      "sqlalchemy"
+    ],
+    "SaitamaRobot\\modules\\sql\\disable_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\feds_sql.py": [
+      "telegram",
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\global_bans_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\locks_sql.py": [
+      "SaitamaRobot",
+      "threading",
+      "sqlalchemy"
+    ],
+    "SaitamaRobot\\modules\\sql\\log_channel_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\notes_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\reporting_sql.py": [
+      "typing",
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\rss_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\rules_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\userinfo_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\users_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\warns_sql.py": [
+      "sqlalchemy",
+      "threading",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\sql\\welcome_sql.py": [
+      "sqlalchemy",
+      "typing",
+      "SaitamaRobot",
+      "threading",
+      "random"
+    ],
+    "SaitamaRobot\\modules\\sql\\__init__.py": [
+      "sqlalchemy",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\telethn\\chatstatus.py": [
+      "telethon",
+      "SaitamaRobot"
+    ],
+    "SaitamaRobot\\modules\\helper_funcs\\telethn\\__init__.py": [
+      "SaitamaRobot"
+    ]
+  }
+}

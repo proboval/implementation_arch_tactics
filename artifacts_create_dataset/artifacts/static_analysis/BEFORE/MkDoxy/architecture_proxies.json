@@ -1,0 +1,144 @@
+{
+  "python_files": 32,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 32.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "mkdoxy\\cache.py": [],
+    "mkdoxy\\constants.py": [
+      "enum"
+    ],
+    "mkdoxy\\doxygen.py": [
+      "logging",
+      "xml",
+      "os",
+      "mkdoxy"
+    ],
+    "mkdoxy\\doxyrun.py": [
+      "typing",
+      "hashlib",
+      "os",
+      "shutil",
+      "re",
+      "logging",
+      "subprocess",
+      "pathlib"
+    ],
+    "mkdoxy\\DoxyTagParser.py": [
+      "re"
+    ],
+    "mkdoxy\\filters.py": [
+      "typing",
+      "re"
+    ],
+    "mkdoxy\\finder.py": [
+      "typing",
+      "mkdoxy"
+    ],
+    "mkdoxy\\generatorAuto.py": [
+      "mkdocs",
+      "logging",
+      "os",
+      "mkdoxy"
+    ],
+    "mkdoxy\\generatorBase.py": [
+      "string",
+      "typing",
+      "os",
+      "jinja2",
+      "logging",
+      "mkdocs",
+      "mkdoxy"
+    ],
+    "mkdoxy\\generatorSnippets.py": [
+      "re",
+      "mkdocs",
+      "logging",
+      "mkdoxy",
+      "yaml",
+      "pathlib"
+    ],
+    "mkdoxy\\markdown.py": [
+      "typing"
+    ],
+    "mkdoxy\\node.py": [
+      "os",
+      "re",
+      "logging",
+      "xml",
+      "mkdoxy"
+    ],
+    "mkdoxy\\plugin.py": [
+      "mkdocs",
+      "pathlib",
+      "logging",
+      "mkdoxy"
+    ],
+    "mkdoxy\\project.py": [
+      "mkdoxy"
+    ],
+    "mkdoxy\\property.py": [
+      "re",
+      "xml",
+      "mkdoxy"
+    ],
+    "mkdoxy\\utils.py": [
+      "yaml",
+      "mkdocs",
+      "re",
+      "logging"
+    ],
+    "mkdoxy\\xml_parser.py": [
+      "xml",
+      "mkdoxy"
+    ],
+    "mkdoxy\\__init__.py": [],
+    "tests\\test_doxyrun.py": [
+      "pytest",
+      "mkdoxy"
+    ],
+    "tests-old\\basic.py": [
+      "pprint"
+    ],
+    "tests-old\\callDoxyByName.py": [],
+    "tests-old\\doxygenSubprocess.py": [
+      "subprocess"
+    ],
+    "tests-old\\exceptKeyboardInterrupt.py": [
+      "time"
+    ],
+    "tests-old\\gpt-example-parser.py": [],
+    "tests-old\\metaDataParse.py": [
+      "yaml",
+      "re",
+      "sys"
+    ],
+    "tests-old\\mkdocsValidateCfg.py": [
+      "mkdocs"
+    ],
+    "tests-old\\originalTest.py": [
+      "doxybook"
+    ],
+    "tests-old\\parseMdTags.py": [
+      "yaml",
+      "re",
+      "sys"
+    ],
+    "tests-old\\snippetsTest-examples.py": [
+      "pprint",
+      "mkdoxy"
+    ],
+    "tests-old\\snippetsTest.py": [
+      "pprint",
+      "doxygen_snippets"
+    ],
+    "tests-old\\testTemplate.py": [
+      "pprint",
+      "doxygen_snippets",
+      "os"
+    ]
+  }
+}

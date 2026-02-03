@@ -1,0 +1,343 @@
+{
+  "python_files": 93,
+  "packages": 16,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.8125,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "docs\\conf.py": [
+      "os",
+      "sys"
+    ],
+    "mendeley\\auth.py": [
+      "requests_oauthlib",
+      "future",
+      "json",
+      "mendeley",
+      "requests",
+      "oauthlib"
+    ],
+    "mendeley\\exception.py": [],
+    "mendeley\\models.py": [
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\pagination.py": [
+      "memoized_property"
+    ],
+    "mendeley\\response.py": [],
+    "mendeley\\session.py": [
+      "requests_oauthlib",
+      "future",
+      "mendeley",
+      "platform",
+      "oauthlib"
+    ],
+    "mendeley\\version.py": [],
+    "mendeley\\__init__.py": [
+      "string",
+      "os",
+      "future",
+      "mendeley",
+      "random"
+    ],
+    "test\\yamlfileserializer.py": [
+      "vcr"
+    ],
+    "test\\__init__.py": [
+      "vcr",
+      "test",
+      "time",
+      "os",
+      "mendeley",
+      "yaml"
+    ],
+    "mendeley\\models\\annotations.py": [
+      "json",
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\models\\base_documents.py": [
+      "mendeley"
+    ],
+    "mendeley\\models\\catalog.py": [
+      "mendeley"
+    ],
+    "mendeley\\models\\common.py": [
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\models\\documents.py": [
+      "mimetypes",
+      "os",
+      "json",
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\models\\files.py": [
+      "json",
+      "re",
+      "mendeley",
+      "os"
+    ],
+    "mendeley\\models\\groups.py": [
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\models\\profiles.py": [
+      "mendeley",
+      "arrow"
+    ],
+    "mendeley\\models\\__init__.py": [
+      "common"
+    ],
+    "mendeley\\resources\\annotations.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\base.py": [
+      "mendeley",
+      "future"
+    ],
+    "mendeley\\resources\\base_documents.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\catalog.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\documents.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\files.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\groups.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\profiles.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\trash.py": [
+      "mendeley"
+    ],
+    "mendeley\\resources\\__init__.py": [
+      "files",
+      "documents",
+      "profiles",
+      "annotations",
+      "trash",
+      "catalog",
+      "groups"
+    ],
+    "test\\auth\\test_client_credentials.py": [
+      "pytest",
+      "test",
+      "oauthlib"
+    ],
+    "test\\auth\\test_implicit_grant.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\auth\\__init__.py": [],
+    "test\\manual\\__init__.py": [],
+    "test\\resources\\__init__.py": [],
+    "test\\response\\test_lazy_response_object.py": [
+      "test"
+    ],
+    "test\\response\\test_response_object.py": [
+      "pytest",
+      "test"
+    ],
+    "test\\response\\__init__.py": [
+      "mendeley"
+    ],
+    "test\\manual\\annotations\\test_add_annotation.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\manual\\annotations\\test_delete_annotations.py": [
+      "test"
+    ],
+    "test\\manual\\annotations\\test_get_annotation.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\manual\\annotations\\test_iter_annotations.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\manual\\annotations\\test_list_annotations.py": [
+      "test"
+    ],
+    "test\\manual\\annotations\\test_update_annotations.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\manual\\annotations\\__init__.py": [],
+    "test\\manual\\auth\\test_authorization_code.py": [
+      "test",
+      "mendeley"
+    ],
+    "test\\manual\\auth\\__init__.py": [],
+    "test\\manual\\documents\\test_create_document.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_create_document_from_file.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_create_group_document.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_delete_document.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_get_document.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_iter_documents.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\manual\\documents\\test_iter_group_documents.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\manual\\documents\\test_iter_search.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_list_advanced_search.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\manual\\documents\\test_list_documents.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_list_group_documents.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\test_list_search.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\manual\\documents\\test_update_document.py": [
+      "test"
+    ],
+    "test\\manual\\documents\\__init__.py": [
+      "test",
+      "mendeley",
+      "arrow"
+    ],
+    "test\\manual\\files\\test_delete_file.py": [
+      "test"
+    ],
+    "test\\manual\\files\\test_download_file.py": [
+      "test"
+    ],
+    "test\\manual\\files\\test_iter_files.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\manual\\files\\test_list_files.py": [
+      "test"
+    ],
+    "test\\manual\\files\\test_upload_file.py": [
+      "test"
+    ],
+    "test\\manual\\files\\__init__.py": [],
+    "test\\manual\\groups\\test_get_group.py": [
+      "pytest",
+      "mendeley",
+      "arrow",
+      "test"
+    ],
+    "test\\manual\\groups\\test_iter_groups.py": [
+      "pytest",
+      "test"
+    ],
+    "test\\manual\\groups\\test_iter_group_members.py": [
+      "pytest",
+      "test",
+      "arrow"
+    ],
+    "test\\manual\\groups\\test_list_groups.py": [
+      "test",
+      "arrow"
+    ],
+    "test\\manual\\groups\\test_list_group_members.py": [
+      "test",
+      "arrow"
+    ],
+    "test\\manual\\groups\\__init__.py": [],
+    "test\\manual\\profiles\\test_get_my_profile.py": [
+      "pytest",
+      "mendeley",
+      "arrow",
+      "test"
+    ],
+    "test\\manual\\profiles\\test_get_profile.py": [
+      "pytest",
+      "mendeley",
+      "arrow",
+      "test"
+    ],
+    "test\\manual\\profiles\\__init__.py": [],
+    "test\\manual\\trash\\test_delete_trash_document.py": [
+      "test"
+    ],
+    "test\\manual\\trash\\test_get_trash_document.py": [
+      "test"
+    ],
+    "test\\manual\\trash\\test_iter_group_trash.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\manual\\trash\\test_iter_trash.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\manual\\trash\\test_list_group_trash.py": [
+      "test"
+    ],
+    "test\\manual\\trash\\test_list_trash.py": [
+      "test"
+    ],
+    "test\\manual\\trash\\test_move_to_trash.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\manual\\trash\\test_restore_from_trash.py": [
+      "test"
+    ],
+    "test\\manual\\trash\\__init__.py": [],
+    "test\\resources\\catalog\\test_get_catalog_by_id.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\resources\\catalog\\test_get_catalog_by_identifier.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\resources\\catalog\\test_iter_search.py": [
+      "test",
+      "itertools"
+    ],
+    "test\\resources\\catalog\\test_list_advanced_search.py": [
+      "test"
+    ],
+    "test\\resources\\catalog\\test_list_search.py": [
+      "test"
+    ],
+    "test\\resources\\catalog\\test_lookup.py": [
+      "pytest",
+      "mendeley",
+      "test"
+    ],
+    "test\\resources\\catalog\\__init__.py": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Low number of files analyzed (3 files)",
+    "No packages detected, indicating flat structure",
+    "Maximum directory depth is 1, suggesting minimal hierarchy",
+    "Presence of standalone Python scripts (subgen.py, launcher.py, language_code.py)",
+    "High average fan-out (17.5), typical of scripts with broad dependencies",
+    "Files contain direct implementation without clear separation of concerns",
+    "Repository includes various configuration and deployment files (Dockerfile, docker-compose.yml, .github workflows) but no structured module organization"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling due to high fan-out",
+    "Maintainability issues indicated by low average maintainability index (33.76)",
+    "Lack of architectural structure may lead to scalability problems"
+  ]
+}

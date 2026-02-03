@@ -1,0 +1,12 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits high fan-out (4.65), indicating tight coupling between modules. This increases the risk of changes propagating across modules and makes the system harder to maintain. By applying the 'Reduced Coupling' tactic, dependencies between modules can be minimized, which directly addresses the maintainability issues identified. This tactic aligns with the modular monolith structure by promoting clearer boundaries between modules without requiring a full decomposition into microservices.",
+  "expected_architectural_change": "Introduce interfaces or abstraction layers between highly coupled modules such as 'bypy', 'requester', and 'util'. Refactor direct imports and shared global state usage (e.g., 'gvar') to use dependency injection or event-based communication where possible. This will lead to a more loosely coupled design while preserving the monolithic deployment model.",
+  "risks": "Refactoring for reduced coupling may require significant changes to core modules like 'bypy.py' and 'util.py', which are central to many operations. Mismanaged refactoring could introduce new bugs or break existing functionality. Additionally, over-abstracting can lead to increased complexity if not carefully implemented."
+}
