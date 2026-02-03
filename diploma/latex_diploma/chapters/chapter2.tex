@@ -1,0 +1,110 @@
+\chapter{Literature Review}
+\label{chap:lr}
+\chaptermark{Second Chapter Heading}
+
+This chapter provides a structured review of the existing research related to software architecture, maintainability, quality attributes, refactoring practices, technical debt, and architecture erosion.  
+The objective of this review is to identify conceptual foundations, analytical methods, and empirical findings that support the investigation of how backend architectural styles influence software maintainability.
+
+\section{Software Architecture Foundations}
+
+Early research in software architecture established a conceptual level of reasoning that goes beyond individual components or algorithms. Software architecture is commonly defined as the organization of a system in terms of components, connectors, and their relationships, providing a high-level view of system structure \cite{garlan_introduction_1993}. This perspective shifts design from isolated implementation decisions toward reusable architectural structures governed by explicit constraints.
+
+Architectural styles such as Pipes-and-Filters, Layered Systems, Event-based architectures, and Repository-based architectures represent recurring structural solutions. Each style introduces specific invariants that restrict component interaction and shape system behavior. These structural constraints directly influence quality attributes such as modifiability, analyzability, and evolvability. In practice, many systems combine multiple architectural styles across different abstraction levels, which expands the architectural design space and introduces trade-offs between competing quality concerns \cite{garlan_introduction_1993}.
+
+In addition to structural organization, software architecture also captures design intent and rationale. A widely accepted model describes architecture as a combination of elements, their form, and the rationale behind design decisions \cite{perry_foundations_1992}. This model emphasizes that architectural decisions are intentional and must be understood through multiple complementary views, including processing, data, and connector perspectives. Such multi-view descriptions are essential for understanding how architectural decisions affect system qualities over time \cite{perry_foundations_1992}.
+
+Together, these foundational concepts establish software architecture as a primary design concern and provide the basis for reasoning about architectural change, degradation, and quality-oriented design.
+
+\section{Maintainability Foundations}
+
+Maintainability is widely recognized as a key quality attribute for long-lived software systems. It reflects the ease with which a system can be analyzed, modified, tested, and evolved. As systems increase in size and complexity, architectural decisions play a growing role in determining maintainability, often outweighing the impact of local code-level practices.
+
+Empirical studies show that maintainability evolves over time rather than remaining stable. Maintainability in open-source systems follows observable evolutionary trends, where mature systems tend to stabilize while significant degradation often coincides with major feature additions or architectural changes \cite{molnar2020study}. These findings also indicate that targeted refactoring can mitigate maintainability degradation, highlighting the importance of deliberate architectural improvement.
+
+From a measurement perspective, standardized quality models provide a common basis for evaluation. The ISO/IEC 25010 quality model defines maintainability as a composite attribute consisting of modularity, reusability, analysability, modifiability, and testability \cite{ISO25010}. This decomposition enables maintainability to be assessed through observable structural and behavioral properties rather than subjective judgment.
+
+At the architectural level, these sub-characteristics are strongly influenced by system decomposition, dependency structure, and clarity of component responsibilities. For example, modular designs with clear interfaces support analysability and modifiability, while low coupling and high cohesion contribute to testability and controlled change impact \cite{ISO25010}. As a result, ISO/IEC 25010 provides a suitable theoretical foundation for analyzing the impact of architectural decisions on maintainability.
+
+\section{Pattern--Tactic Interaction}
+
+Architectural patterns define high-level structural organization, while architectural tactics represent localized design decisions aimed at influencing specific quality attributes. The interaction between patterns and tactics can be understood by examining the structural changes required to introduce a tactic into an existing architecture \cite{harrison_how_2010}. These changes range from minimal modifications within existing components to substantial restructuring that alters the original pattern.
+
+A classification of tactic-related changes helps estimate implementation effort and architectural impact. The effectiveness and cost of a tactic depend on its compatibility with the underlying architectural pattern, meaning that tactics are not universally applicable \cite{harrison_how_2010}. Visual annotation techniques further support architectural reasoning by making tactic-induced changes explicit.
+
+Architecture erosion poses a major threat to long-term maintainability. Common causes include inappropriate architectural changes, accumulation of technical debt, and uncontrolled growth in system complexity \cite{li2021understanding}. Various detection practices are used in practice, such as dependency structure analysis, architecture conformance checking, architectural smell detection, and visualization techniques.
+
+Closely related to erosion, architectural drift refers to the gradual divergence between intended and implemented architecture. This divergence can be detected by comparing architectural models extracted from source code with the original design over multiple development iterations \cite{rosik2011assessing}. Both erosion and drift represent measurable architectural degradation that directly impacts maintainability.
+
+Quality-driven architectural design further clarifies the relationship between patterns and tactics. The applicability of tactics is constrained by the structural properties of architectural patterns and their control and data flow semantics \cite{kim_quality-driven_2009}. Empirical evidence shows that architectural patterns are rarely implemented without modification, and most real-world systems rely on pattern–tactic combinations rather than pure pattern implementations \cite{kassab_software_2018}.
+
+Empirical mining of developer discussions reveals that architectural tactics have both positive and negative effects on quality attributes. Some tactics intended to improve one quality attribute may unintentionally harm maintainability, underscoring the need for systematic evaluation rather than relying solely on prescriptive guidance \cite{bi_mining_2021}.
+
+\section{Maintainability Tactics}
+\label{sec:maintainability_tactics}
+
+This section summarizes architectural tactics that are explicitly intended to improve software maintainability.  
+Tactics are grouped by the maintainability sub-characteristics they primarily support.  Short descriptions and practical notes are provided for each tactic.
+
+\subsection{Tactics for Modularity and Localized Change}
+\begin{itemize}
+  \item \textbf{Modularization / Componentization.} Decompose the system into well-defined components with narrow, stable interfaces so that changes are localized and have minimal ripple effects; this reduces change impact and improves modifiability. \cite{rahmati_ensuring_2021}
+  \item \textbf{Adding Extension Points (Plug-in Architecture).} Design explicit extension points that allow new behavior to be added as plug-ins rather than modifying existing components; this enables adding features with lower modification cost. \cite{rahmati_ensuring_2021}
+  \item \textbf{Encapsulation and Information Hiding.} Hide internal details behind interfaces so that internal changes do not affect other parts of the system, improving modularity and lowering maintenance effort. \cite{kim_quality-driven_2009}
+  \item \textbf{Deferred Binding / Late Binding.} Postpone binding of concrete implementations (for example via dependency injection or service registries) to allow easier replacement and reduce the cost of changes. \cite{rahmati_ensuring_2021}
+\end{itemize}
+
+\subsection{Tactics for Analyzability and Observability}
+\begin{itemize}
+  \item \textbf{Logging and Audit Trails.} Record key events and state transitions to provide informative traces for debugging and root-cause analysis; well-structured logs reduce the time required to understand defects. \cite{bi_mining_2021}
+  \item \textbf{Impact Analysis / Change Impact Tools.} Use systematic change-impact analysis to predict which components are affected by a planned change; this supports planning, risk assessment, and targeted testing. \cite{molnar2020study}
+  \item \textbf{Runtime Observability (Metrics, Tracing).} Expose meaningful runtime metrics and request traces so that the system’s behavior can be inspected and understood without invasive code changes. \cite{lenarduzzi_critical_2023}
+\end{itemize}
+
+\subsection{Tactics for Testability}
+\begin{itemize}
+  \item \textbf{Test Hooks and Facades.} Provide test-specific interfaces or facades that allow isolated testing of components without heavy setup, improving the speed and reliability of regression tests. \cite{rahmati_ensuring_2021}
+  \item \textbf{Design for Dependency Injection.} Structure components so dependencies can be substituted in tests (mocks/stubs), reducing test setup complexity and enhancing automated test coverage. \cite{kim_quality-driven_2009}
+\end{itemize}
+
+\subsection{Tactics for Understandability and Self-descriptiveness}
+\begin{itemize}
+  \item \textbf{Self-Descriptive Naming and Documentation.} Use clear naming conventions, inline documentation, and architecture-level documentation so that intent and component responsibilities are easier to grasp. \cite{rahmati_ensuring_2021}
+  \item \textbf{Standardization and Conventions.} Apply consistent patterns and coding/architecture conventions across the system to lower learning curve for developers and reduce accidental architecture violations. \cite{kassab_software_2018}
+\end{itemize}
+
+\subsection{Tactics for Reducing Coupling and Controlling Dependencies}
+\begin{itemize}
+  \item \textbf{Layered Separation and Strict Interfaces.} Enforce clear layering and restrict cross-layer calls to control dependency directions, thereby preventing unplanned coupling that hampers maintainability. \cite{garlan_introduction_1993}
+  \item \textbf{Dependency Inversion and Abstraction.} Depend on abstract interfaces rather than concrete implementations to minimize change propagation when implementations evolve. \cite{kim_quality-driven_2009}
+  \item \textbf{Periodic Conformance Checking.} Automate checks that verify the implemented dependencies conform to intended architectural constraints to detect and prevent erosion early. \cite{li2021understanding}
+\end{itemize}
+
+\subsection{Tactics to Mitigate Architectural Erosion and Technical Debt}
+\begin{itemize}
+  \item \textbf{Continuous Architecture Monitoring.} Track architecture health indicators (e.g., smell density, cyclic dependencies) over time to identify erosion trends and trigger remediation before problems grow. \cite{li2021understanding}
+  \item \textbf{Refactoring with Small, Local Steps.} Prefer small, reversible refactorings (e.g., extract module, rename, move function) that gradually improve structure while reducing risk and cost. \cite{molnar2020study}
+  \item \textbf{Rollback / Reversion Support.} Provide mechanisms to revert changes safely so that risky modifications can be undone quickly if they harm maintainability or behavior. \cite{li2021understanding}
+  \item \textbf{Architecture-Conscious Code Reviews.} Include architecture checklist items in code review and accept only changes that preserve or improve architectural invariants. \cite{rosik2011assessing}
+\end{itemize}
+
+\subsection{Notes on Tactic Selection and Interaction}
+\begin{itemize}
+  \item \textbf{Pattern–Tactic Fit.} The cost and benefit of a tactic depend on the hosting architectural pattern: a tactic that is cheap in one pattern may be expensive or infeasible in another, so tactic selection must consider pattern constraints. \cite{harrison_how_2010}
+  \item \textbf{Trade-offs and Side Effects.} Some tactics improve one maintainability sub-characteristic while degrading another quality attribute (for example, added observability may add code and overhead); therefore, evaluation must consider both positive and negative impacts. \cite{bi_mining_2021}
+  \item \textbf{Tooling and Measurement.} Use a mix of static analysis tools, architecture conformance checks, and history-based metrics to measure the effect of applied tactics, being aware that tools may disagree and require triangulation. \cite{lenarduzzi_critical_2023}
+\end{itemize}
+
+
+\section{Maintainability Assessment Methods}
+
+Assessing maintainability at the architectural level requires operational metrics that connect abstract quality attributes to concrete system properties. A structured framework decomposes maintainability into measurable architectural factors aligned with sub-characteristics such as testability, changeability, analyzability, and stability \cite{rahmati_ensuring_2021}. These factors translate architectural principles, including low coupling, high cohesion, and decomposability, into actionable evaluation criteria.
+
+Static analysis tools are widely used to automate maintainability assessment. Comparative studies of popular tools reveal large differences in detection capabilities, precision, and rule coverage \cite{lenarduzzi_critical_2023}. Extremely low agreement between tools indicates that assessment results depend strongly on tool selection, highlighting the need to combine multiple sources of evidence when evaluating architectural changes.
+
+\section{LLMs for Code Refactoring}
+
+Recent advances in large language models enable new forms of automated software maintenance. Empirical evaluations show that LLM-based refactoring can preserve program behavior while improving maintainability-related attributes such as readability, analysability, and modifiability \cite{depalma_exploring_2024}.
+
+Common refactoring actions identified in these studies include renaming, decomposition, code simplification, and structural cleanup. These recurring patterns are strongly associated with improved maintainability, suggesting that large language models can serve as effective tools for applying architecture-related refactorings at scale \cite{depalma_exploring_2024}.
+
+
