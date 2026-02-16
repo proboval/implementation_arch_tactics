@@ -73,7 +73,15 @@
       "Bash(\"c:/_code/implementation_arch_tactics/.claude/skills/web-scraper/.venv/Scripts/python.exe\" -c \"import patchright; print\\(''ok''\\)\")",
       "Bash(\"c:/_code/implementation_arch_tactics/.claude/skills/web-scraper/.venv/Scripts/pip.exe\" install patchright beautifulsoup4 markdownify)",
       "Bash(\"c:/_code/implementation_arch_tactics/.claude/skills/web-scraper/.venv/Scripts/patchright.exe\" install chromium)",
-      "Bash(\"c:/_code/implementation_arch_tactics/.claude/skills/web-scraper/.venv/Scripts/pip.exe\" install lxml)"
+      "Bash(\"c:/_code/implementation_arch_tactics/.claude/skills/web-scraper/.venv/Scripts/pip.exe\" install lxml)",
+      "Bash(do echo \"$f\")",
+      "Bash(done)",
+      "Read(//c/_code/implementation_arch_tactics/**)",
+      "Bash(find:*)",
+      "WebFetch(domain:dblp.org)",
+      "Bash(git mv:*)",
+      "Bash(PYTHONIOENCODING=utf-8 curl:*)",
+      "Bash(xargs:*)"
     ],
     "additionalDirectories": [
       "c:\\_code\\implementation_arch_tactics\\.claude"

@@ -24,3 +24,18 @@
 | 20 | depalma2024exploring | Exploring ChatGPT's Code Refactoring Capabilities | 2.6 | 2024 | ✅ | ❌ | CRITICAL | Phase 3 |
 | 21 | liu2025exploring | LLMs in Automated Software Refactoring | 2.6 | 2025 | ✅ | ❌ | CRITICAL | Phase 3 |
 | 22 | haindl2024chatgpt | Does ChatGPT Help Novice Programmers Write Better Code? | 2.6 | 2024 | ✅ | ❌ | MEDIUM | Phase 3 |
+| 23 | marquez2022architectural | Architectural Tactics: Systematic Mapping Study | 2.3 | 2022 | ✅ | ❌ | CRITICAL | Phase 3 |
+| 24 | shokri2024ipsynth | IPSynth: Automated Tactic Implementation | 2.3 | 2024 | ✅ | ❌ | CRITICAL | Phase 3 |
+| 25 | ge2022archtacrv | ArchTacRV: Detecting Tactics in Code | 2.3 | 2022 | ❌ | ❌ | HIGH | Phase 3 |
+| 26 | ardito2020maintainability | Maintainability Metrics: SLR (Tools) | 2.5 | 2020 | ✅ | ❌ | HIGH | Phase 3 |
+| 27 | martinez2025refactoring | LLM Refactoring: SLR | 2.6 | 2025 | ❌ | ❌ | HIGH | Phase 3 |
+| 28 | alomari2026llm | LLMs for Code Quality: SLR | 2.6 | 2026 | ❌ | ❌ | HIGH | Phase 3 |
+| 29 | xu2025mantra | MANTRA: Multi-Agent LLM Refactoring | 2.6 | 2025 | ✅ | ❌ | HIGH | Phase 3 |
+| 30 | horikawa2025agentic | Agentic Refactoring: Empirical Study | 2.6 | 2025 | ✅ | ❌ | HIGH | Phase 3 |
+| 31 | cordeiro2024llm | LLM Agents for Bug Fixing & Refactoring | 2.6 | 2024 | ✅ | ❌ | HIGH | Phase 3 |
+| 32 | goncalves2025sonarqube | SonarQube + LLM Iterative Pipeline | 2.6 | 2025 | ✅ | ❌ | HIGH | Phase 3 |
+| 33 | kim2014refactoring | Refactoring at Microsoft: Empirical Study | 2.6 | 2014 | ✅ | ❌ | MEDIUM | Phase 3 |
+| 34 | wang2025llmpa | LLM-Assisted Program Analysis: Survey | 2.6 | 2025 | ✅ | ❌ | MEDIUM | Phase 3 |
+| 35 | oman1992maintainability | Maintainability Index (original) | 2.5 | 1992 | — | — | REF | Bib-only |
+| 36 | mccabe1976complexity | Cyclomatic Complexity (original) | 2.5 | 1976 | — | — | REF | Bib-only |
+| 37 | halstead1977elements | Halstead Software Science (original) | 2.5 | 1977 | — | — | REF | Bib-only |

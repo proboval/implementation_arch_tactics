@@ -10,6 +10,9 @@
 - [ ] `li2021understanding` — Understanding Architecture Erosion
 - [ ] `rosik2011assessing` — Assessing Architectural Drift
 - [ ] `liu2025exploring` — Exploring the Potential of LLMs in Automated Software Refactoring
+- [ ] `marquez2022architectural` — Architectural Tactics: Systematic Mapping Study *(no PDF — use MCP read)*
+- [ ] `shokri2024ipsynth` — IPSynth: Automated Architectural Tactic Implementation
+- [ ] `martinez2025refactoring` — LLM Refactoring: Systematic Literature Review *(no PDF — use MCP read)*
 
 ## Tier 2 — Key Sections (abstract + methodology + results)
 
@@ -20,6 +23,12 @@
 - [ ] `alqutaish2010quality` — Quality Models in Software Engineering Literature
 - [ ] `nocera2025sonarqube` — Dealing with SonarQube Cloud: Mining Study
 - [ ] `cui2024empirical` — False Negatives and Positives of Static Code Analyzers
+- [ ] `xu2025mantra` — MANTRA: Multi-Agent LLM Refactoring Framework
+- [ ] `horikawa2025agentic` — Agentic Refactoring: Empirical Study at Scale
+- [ ] `ardito2020maintainability` — Maintainability Metrics SLR (Tools) *(no PDF — use MCP read)*
+- [ ] `cordeiro2024llm` — LLM Agents for Bug Fixing & Refactoring
+- [ ] `goncalves2025sonarqube` — SonarQube + LLM Iterative Pipeline *(no PDF — use MCP read)*
+- [ ] `ge2022archtacrv` — ArchTacRV: Detecting Tactics in Code *(no PDF — use MCP read)*
 
 ## Tier 3 — Skim (abstract + conclusion)
 
@@ -30,3 +39,12 @@
 - [ ] `abdelmoez2006methodology` — Methodology for Maintainability-Based Risk Assessment
 - [ ] `moreu2012practical` — Practical Maintainability Assessment in Industrial Devices
 - [ ] `garlan1995editorial` — Introduction to the Special Issue on Software Architecture
+- [ ] `alomari2026llm` — LLMs for Code Quality: SLR *(no PDF — use MCP read)*
+- [ ] `kim2014refactoring` — Refactoring at Microsoft: Empirical Study
+- [ ] `wang2025llmpa` — LLM-Assisted Program Analysis: Survey
+
+## Bib-Only References (cited, no summary needed)
+
+- `oman1992maintainability` — Original Maintainability Index (Radon formula source)
+- `mccabe1976complexity` — Cyclomatic Complexity (foundational metric)
+- `halstead1977elements` — Halstead Software Science (MI component)
