@@ -10,9 +10,9 @@
 - [ ] `li2021understanding` — Understanding Architecture Erosion
 - [ ] `rosik2011assessing` — Assessing Architectural Drift
 - [ ] `liu2025exploring` — Exploring the Potential of LLMs in Automated Software Refactoring
-- [ ] `marquez2022architectural` — Architectural Tactics: Systematic Mapping Study *(no PDF — use MCP read)*
+- [ ] `marquez2022architectural` — Architectural Tactics: Systematic Mapping Study
 - [ ] `shokri2024ipsynth` — IPSynth: Automated Architectural Tactic Implementation
-- [ ] `martinez2025refactoring` — LLM Refactoring: Systematic Literature Review *(no PDF — use MCP read)*
+- [ ] `martinez2025refactoring` — LLM Refactoring: SLR *(no PDF — use MCP read)*
 
 ## Tier 2 — Key Sections (abstract + methodology + results)
 
@@ -25,9 +25,11 @@
 - [ ] `cui2024empirical` — False Negatives and Positives of Static Code Analyzers
 - [ ] `xu2025mantra` — MANTRA: Multi-Agent LLM Refactoring Framework
 - [ ] `horikawa2025agentic` — Agentic Refactoring: Empirical Study at Scale
-- [ ] `ardito2020maintainability` — Maintainability Metrics SLR (Tools) *(no PDF — use MCP read)*
+- [ ] `ardito2020maintainability` — Maintainability Metrics SLR (Tools)
 - [ ] `cordeiro2024llm` — LLM Agents for Bug Fixing & Refactoring
-- [ ] `goncalves2025sonarqube` — SonarQube + LLM Iterative Pipeline *(no PDF — use MCP read)*
+- [ ] `goncalves2025sonarqube` — SonarQube + LLM Iterative Pipeline
+- [ ] `bogner2019modifiability` — Modifiability Tactics in Microservices
+- [ ] `piao2025refactoring` — LLM Refactoring: Instruction Strategies
 - [ ] `ge2022archtacrv` — ArchTacRV: Detecting Tactics in Code *(no PDF — use MCP read)*
 
 ## Tier 3 — Skim (abstract + conclusion)
@@ -48,3 +50,8 @@
 - `oman1992maintainability` — Original Maintainability Index (Radon formula source)
 - `mccabe1976complexity` — Cyclomatic Complexity (foundational metric)
 - `halstead1977elements` — Halstead Software Science (MI component)
+
+## Books (NLM-processed)
+
+- `bass2021software` — Software Architecture in Practice (4th ed.) — tactics catalog
+- `fowler2018refactoring` — Refactoring (2nd ed.) — refactoring catalog

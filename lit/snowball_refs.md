@@ -73,8 +73,9 @@ This validates the thesis research gap.
 |---|---|---|
 | Sharifi & Barforoosh — Clone Microtactics | 2022 | Bridges tactics→code gap |
 | Serban & Visser — Architectures for ML | 2021 | ML system architecture adaptation |
-| Piao et al. — LLM refactoring instructions | 2025 | Prompt engineering for refactoring |
+| ~~Piao et al. — LLM refactoring instructions~~ | 2025 | ✅ Added as `piao2025refactoring` |
 | Midolo & Di Penta — GPT-4 Python refactoring | 2026 | Multi-tool quality evaluation |
 | Karabiyik — RefactorGPT | 2025 | Sequential multi-agent pipeline |
 | Xu et al. — SWE-Refactor benchmark | 2026 | Evaluation benchmark |
+| Bogner, Wagner & Zimmermann — Modifiability tactics | 2019 | ✅ Added as `bogner2019modifiability` |
 | Baumgartner et al. — Data clumps + ChatGPT | 2025 | Pipeline for code smell detection |
