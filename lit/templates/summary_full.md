@@ -9,6 +9,11 @@
 | **Citations** | N (if known) |
 | **Level** | L1-Foundational / L2-Intersection / L3-Thesis-Specific |
 
+### Motivation & Gaps
+- **Problem:** [What problem does the paper address?]
+- **Motivation:** [Why is this research needed?]
+- **Gap:** [What specific gap in existing work does it fill?]
+
 ### Contribution
 [2-3 sentences: What is the main contribution?]
 
@@ -27,6 +32,17 @@
 - **Validation:** Prototype / Benchmark / Expert Review / Comparison / None
 - **Evidence:** [What supports claims?]
 
+### Models & Tools
+- **LLM/AI models:** [GPT-4, Claude, CodeLlama, etc. — or N/A]
+- **Tools/frameworks:** [SonarQube, Radon, PMD, custom tool, etc.]
+- **Languages:** [Java, Python, C++, etc.]
+
+### Dataset / Benchmark
+- **Name:** [Dataset name or "custom"]
+- **Size:** [N projects, N files, N LOC, etc.]
+- **Domain:** [Open-source, industrial, synthetic, etc.]
+- **Availability:** [Public URL / Private / Not specified]
+
 ### Key Findings
 | Finding | Value/Detail |
 |---------|-------------|
@@ -36,10 +52,7 @@
 > "Exact quote from paper" (p. XX)
 
 ### Challenges & Limitations
-[What are the main limitations reported by the authors?]
-
-### Dataset / Benchmark
-[What data or benchmark was used? Size, language, domain?]
+[What are the main challenges and limitations reported by the authors?]
 
 ### Key Takeaway
 [One actionable insight for the thesis]
