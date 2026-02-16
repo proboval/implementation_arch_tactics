@@ -86,13 +86,14 @@ Tell Claude: `"Lit review for [topic]. Working dir: lit/"`
 | Sub-topic | Key Paper | Status |
 |-----------|-----------|--------|
 | LLM code refactoring | `depalma2024exploring` — Exploring ChatGPT's Code Refactoring Capabilities | ✅ have |
-| LLM for novice code | lit/pdfs/Does_ChatGPT_Help_Novice_Programmers... | ✅ have |
-| Maintainability risk methods | lit/pdfs/Methodology_for_maintainability_based_ri... | ✅ have |
-| Quality models comparison | lit/pdfs/Software_Quality_Models_A_Comparative_St... | ✅ have |
-| Quality models in SE literature | lit/pdfs/Quality_Models_in_Software_Engineering_L... | ✅ have |
-| SonarQube mining study | lit/pdfs/dealing with SonarQube Cloud... | ✅ have |
-| Automated refactoring (recent) | lit/pdfs/s10515-025-00500-0.pdf | ✅ have |
-| Architecture tactics & testing | lit/pdfs/s11334-018-0319-4.pdf | ✅ have |
+| LLM automated refactoring | `liu2025exploring` — Exploring LLMs in Automated Software Refactoring | ✅ have |
+| LLM for novice code | `haindl2024chatgpt` — Does ChatGPT Help Novice Programmers Write Better Code? | ✅ have |
+| Static analysis FPs/FNs | `cui2024empirical` — False Negatives and Positives of Static Code Analyzers | ✅ have |
+| SonarQube mining study | `nocera2025sonarqube` — Dealing with SonarQube Cloud: Mining Study | ✅ have |
+| Maintainability risk methods | `abdelmoez2006methodology` — Methodology for Maintainability-Based Risk Assessment | ✅ have |
+| Quality models comparison | `albadareen2011quality` — Software Quality Models: A Comparative Study | ✅ have |
+| Quality models in SE literature | `alqutaish2010quality` — Quality Models in Software Engineering Literature | ✅ have |
+| Maintainability assessment (industrial) | `moreu2012practical` — Practical Maintainability Assessment in Industrial Devices | ✅ have |
 
 ---
 
