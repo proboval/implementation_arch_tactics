@@ -39,3 +39,5 @@
 | 35 | oman1992maintainability | Maintainability Index (original) | 2.5 | 1992 | — | — | REF | Bib-only |
 | 36 | mccabe1976complexity | Cyclomatic Complexity (original) | 2.5 | 1976 | — | — | REF | Bib-only |
 | 37 | halstead1977elements | Halstead Software Science (original) | 2.5 | 1977 | — | — | REF | Bib-only |
+| 38 | bass2021software | Software Architecture in Practice (4th ed.) | 2.3/2.4 | 2021 | — | — | REF | NLM |
+| 39 | fowler2018refactoring | Refactoring (2nd ed.) | 2.4/2.6 | 2018 | — | — | REF | NLM |
