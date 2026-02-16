@@ -41,3 +41,5 @@
 | 37 | halstead1977elements | Halstead Software Science (original) | 2.5 | 1977 | — | — | REF | Bib-only |
 | 38 | bass2021software | Software Architecture in Practice (4th ed.) | 2.3/2.4 | 2021 | — | — | REF | NLM |
 | 39 | fowler2018refactoring | Refactoring (2nd ed.) | 2.4/2.6 | 2018 | — | — | REF | NLM |
+| 40 | bogner2019modifiability | Modifiability Tactics in Microservices | 2.4 | 2019 | ✅ | ❌ | HIGH | Phase 3 |
+| 41 | piao2025refactoring | LLM Refactoring: Instruction Strategies | 2.6 | 2025 | ✅ | ❌ | HIGH | Phase 3 |
