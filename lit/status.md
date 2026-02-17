@@ -28,7 +28,7 @@
 | 24 | shokri2024ipsynth | IPSynth: Automated Tactic Implementation | 2.3 | 2024 | ✅ | ✅ | CRITICAL | Done |
 | 25 | ge2022archtacrv | ArchTacRV: Detecting Tactics in Code | 2.3 | 2022 | ❌ | ✅* | HIGH | Done |
 | 26 | ardito2020maintainability | Maintainability Metrics: SLR (Tools) | 2.5 | 2020 | ✅ | ✅ | HIGH | Done |
-| 27 | martinez2025refactoring | LLM Refactoring: SLR | 2.6 | 2025 | ❌ | ✅* | HIGH | Done |
+| 27 | martinez2025refactoring | LLM Refactoring: SLR | 2.6 | 2025 | ✅ | ✅ | HIGH | Done |
 | 28 | alomari2026llm | LLMs for Code Quality: SLR | 2.6 | 2026 | ❌ | ✅* | HIGH | Done |
 | 29 | xu2025mantra | MANTRA: Multi-Agent LLM Refactoring | 2.6 | 2025 | ✅ | ✅ | HIGH | Done |
 | 30 | horikawa2025agentic | Agentic Refactoring: Empirical Study | 2.6 | 2025 | ✅ | ✅ | HIGH | Done |
@@ -47,4 +47,4 @@
 
 **Legend:** ✅* = summary from abstract only (paywalled PDF)
 
-**Totals:** 42 entries | 34 summarized | 3 abstract-only | 3 bib-only | 2 NLM books
+**Totals:** 42 entries | 35 summarized | 2 abstract-only | 3 bib-only | 2 NLM books

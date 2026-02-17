@@ -1,7 +1,7 @@
 # LLM Refactoring Effectiveness — Cross-Paper Synthesis
 
-**Source:** NLM cross-paper synthesis across 34 sources
-**Date:** 2026-02-16
+**Source:** NLM cross-paper synthesis across 34 sources + Martinez et al. SLR (50 studies)
+**Date:** 2026-02-17
 
 ## 1. Success Rates
 
@@ -39,13 +39,14 @@
 
 ## 4. Common Failure Modes
 
-| Failure | Rate/Detail |
-|---------|-------------|
-| Unsafe solutions (semantic/syntactic bugs) | 7.4% GPT, 6.6% Gemini |
-| Hallucinations | Reference nonexistent variables/methods |
-| Context blindness | Lack broader codebase understanding |
-| Input length limits | Performance drops > 300 LOC |
-| Lexical/parsing errors | Faulty string literals, invalid tokens |
+| Failure | Rate/Detail | Prevalence (Martinez SLR) |
+|---------|-------------|---------------------------|
+| Erroneous/unreliable code generation | 76.3% hallucination (EM-Assist); 15% Copilot smell introduction; only 28.8% loop refactorings compilable | **50% of 50 studies** |
+| Complex multi-file task failure | 45.5% of iteratively refactored methods non-plausible; token limits prevent processing | **44% of studies** |
+| Misunderstanding developer intent | Avg 13.58 turns unstructured vs 1.45 structured; only 50% success detecting bad code | **34% of studies** |
+| Unsafe solutions (semantic/syntactic bugs) | 7.4% GPT, 6.6% Gemini | — |
+| Context blindness | Lack broader codebase understanding | — |
+| Input length limits | Performance drops > 300 LOC | — |
 
 ## 5. Evaluation Metrics Used Across Studies
 
@@ -65,3 +66,6 @@
 4. **300 LOC limit**: Pipeline must chunk code into manageable units
 5. **Iterative approach works**: Gemini + 5 iterations = 81.29% issue reduction
 6. **Behavior preservation is high**: 97.2% suggests LLMs can maintain functionality during refactoring
+7. **Challenge prevalence (Martinez SLR)**: Erroneous code (50%), multi-file failure (44%), intent misunderstanding (34%) --- all amplified at architecture level
+8. **Data leakage underreported**: 72% of studies ignore it; thesis must ensure dataset integrity
+9. **Only 1/50 studies at architecture level**: Pandini et al. on Cyclic Dependencies --- confirms thesis gap with strongest evidence yet

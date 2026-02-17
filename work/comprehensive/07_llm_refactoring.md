@@ -10,7 +10,7 @@
 
 The application of large language models to software engineering has undergone a rapid and consequential evolution. GitHub Copilot, launched in 2021, demonstrated that transformer-based models trained on vast corpora of source code could autocomplete functions and suggest boilerplate with surprising accuracy. But autocomplete is fundamentally a *syntactic* operation: the model predicts the next likely tokens given a local context window.
 
-By 2023, the field had shifted decisively toward *code transformation* --- the use of LLMs not merely to extend code but to restructure, refactor, and improve it. This shift matters because refactoring is not about writing new functionality; it is about understanding *existing* code deeply enough to reorganize it without changing what it does. That requires semantic understanding: knowing what a method *means*, which variables carry state, where side effects lurk, and how components interact. Martinez et al., in their systematic literature review, confirm that the LLM-refactoring intersection has become one of the most active areas in software engineering research [@martinez2025refactoring].
+By 2023, the field had shifted decisively toward *code transformation* --- the use of LLMs not merely to extend code but to restructure, refactor, and improve it. This shift matters because refactoring is not about writing new functionality; it is about understanding *existing* code deeply enough to reorganize it without changing what it does. That requires semantic understanding: knowing what a method *means*, which variables carry state, where side effects lurk, and how components interact. Martinez et al., in their systematic literature review of 50 primary studies drawn from 8 databases (867 initial publications narrowed to 50 through a Kitchenham-protocol screening process), confirm that the LLM-refactoring intersection has become one of the most active areas in software engineering research, with Java dominating (66% of studies) and Python second (44%) [@martinez2025refactoring].
 
 The paradigm shift can be stated simply: **LLMs understand code semantics, not just syntax.** They can identify that two loops perform the same traversal, that a deeply nested conditional could be flattened into a guard clause, or that three scattered database calls could be consolidated into a repository class. This capability makes them plausible candidates for automated refactoring --- and potentially for the architectural transformations that this study guide is building toward.
 
@@ -209,6 +209,22 @@ Target: The for-loop body in process_order.
 *Typical LLM output:* Very similar to Strategy 2, but with more consistent handling of edge cases (e.g., correctly parameterizing `tax_rate` rather than accessing it through `order`). Rule-based prompts reduce ambiguity about *what* to extract and *how* to parameterize it.
 
 The practical takeaway: **always specify the refactoring type, the target code region, and either step-by-step instructions or formal pre/post-conditions.** Generic prompts waste tokens and produce unreliable results.
+
+### Cross-study prompt taxonomy
+
+Martinez et al.'s SLR synthesizes prompt engineering practices across all 50 reviewed studies into seven categories [@martinez2025refactoring]:
+
+| Technique | Studies | Share | Key Finding |
+|-----------|:-------:|:-----:|-------------|
+| Context-Specific | 27 | 22% | Most commonly used; provides codebase context, usage patterns, quality goals |
+| Few-Shot | 25 | 21% | Most effective for Python (reduced CC by 17.35%, LOC by 25.85%) |
+| Zero-Shot | 19 | 16% | Baseline with minimal context |
+| Chain-of-Thought | 18 | 15% | Improves diversity and adds new refactoring types; not always correctness |
+| Output Constraints | 15 | 12% | Format/correctness specifications (e.g., "return valid JSON") |
+| One-Shot | 12 | 10% | Highest unit test pass rate (34.51%) and smell reduction (42.97%) for Java |
+| Ranking | 2 | 2% | Generate multiple versions and rank --- the least explored technique |
+
+The SLR reveals that no single prompting technique dominates across all contexts: Context-Specific and Few-Shot are most prevalent, but One-Shot achieves the best correctness metrics for Java, while Chain-of-Thought enables LLMs to handle refactoring types they otherwise cannot attempt (Extract Method, Extract Class, Add Parameter). The *Ranking* approach --- generating multiple candidate refactorings and selecting the best one --- is almost entirely unexplored despite its natural fit for quality-metric-driven optimization.
 
 ---
 
@@ -423,7 +439,7 @@ The contrast between high merge rates and negligible smell reduction raises an i
 
 After surveying the entire landscape of LLM-based refactoring --- from standalone models through prompt engineering to multi-agent frameworks and tool-integrated pipelines --- one conclusion is inescapable: **no existing work uses LLMs to implement architectural tactics.** Every study reviewed in this chapter operates at the level of individual methods, single classes, or at most pairs of classes. The "architecture" in these studies refers to the architecture of the *pipeline* (multi-agent, iterative feedback), not to the architecture of the *target software*.
 
-Martinez et al.'s systematic literature review confirms this gap explicitly: the taxonomy of LLM-refactoring research covers code smell removal, method-level restructuring, and test generation --- but not architectural restructuring, tactic implementation, or system-level quality improvement [@martinez2025refactoring].
+Martinez et al.'s systematic literature review of 50 studies confirms this gap with striking precision: of all studies reviewed, only one (Pandini et al.) addresses architecture-level refactoring --- specifically Cyclic Dependency smells via Arcan + LLM --- while the remaining 49 operate at code-level or design-level [@martinez2025refactoring]. The SLR further quantifies three persistent challenges across the field: LLMs generate erroneous code in 50% of studies (with hallucination rates as high as 76.3%), struggle with complex multi-file tasks in 44% of studies (only 28.8% of loop refactorings were compilable in one evaluation), and misunderstand developer intent in 34% of studies (unstructured prompts required an average of 13.58 conversational turns vs. 1.45 with structured prompts) [@martinez2025refactoring]. These challenges are amplified at the architectural level, where cross-component reasoning, system-wide context, and multi-file transformations are the norm rather than the exception.
 
 ### The gap in detail
 
