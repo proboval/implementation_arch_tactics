@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:26pt 40pt;">
+<h1>Five Core Technical Challenges</h1>
+<div style="display:flex;gap:10pt;margin-top:8pt;">
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<div style="background:#E8573A;border-radius:4pt;padding:4pt 8pt;margin-bottom:6pt;display:inline-block;">
+<p style="font-size:9pt;color:#FFFFFF;margin:0;font-weight:bold;">HIGH</p>
+</div>
+<h3 style="font-size:12pt;">Context Blindness</h3>
+<p style="font-size:9pt;margin:0;">LLMs see one file, tactics span many. RAG helps 40.7%.</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<div style="background:#E8573A;border-radius:4pt;padding:4pt 8pt;margin-bottom:6pt;display:inline-block;">
+<p style="font-size:9pt;color:#FFFFFF;margin:0;font-weight:bold;">CRITICAL</p>
+</div>
+<h3 style="font-size:12pt;">Hallucinations</h3>
+<p style="font-size:9pt;margin:0;">95% syntax-correct but only 5% semantically correct on tactics.</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<div style="background:#E8573A;border-radius:4pt;padding:4pt 8pt;margin-bottom:6pt;display:inline-block;">
+<p style="font-size:9pt;color:#FFFFFF;margin:0;font-weight:bold;">HIGH</p>
+</div>
+<h3 style="font-size:12pt;">Token Limits</h3>
+<p style="font-size:9pt;margin:0;">Performance degrades beyond ~300 LOC. Tactics need 10K+.</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<div style="background:#E8573A;border-radius:4pt;padding:4pt 8pt;margin-bottom:6pt;display:inline-block;">
+<p style="font-size:9pt;color:#FFFFFF;margin:0;font-weight:bold;">HIGH</p>
+</div>
+<h3 style="font-size:12pt;">Complexity Gap</h3>
+<p style="font-size:9pt;margin:0;">0% Extract Class recall; agents are "cleanup partners."</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<div style="background:#2E86AB;border-radius:4pt;padding:4pt 8pt;margin-bottom:6pt;display:inline-block;">
+<p style="font-size:9pt;color:#FFFFFF;margin:0;font-weight:bold;">MEDIUM</p>
+</div>
+<h3 style="font-size:12pt;">Non-Determinism</h3>
+<p style="font-size:9pt;margin:0;">Same prompt → different outputs. Temp=0 helps.</p>
+</div>
+</div>
+<div style="display:flex;gap:16pt;margin-top:10pt;">
+<div style="flex:1;background:#1B2A4A;border-radius:6pt;padding:10pt;">
+<h3 style="font-size:11pt;color:#FFFFFF;">Measurement Challenges</h3>
+<ul style="font-size:9pt;color:#F4F6F9;">
+<li>Tool disagreement: &lt;0.4%</li>
+<li>No tactic-specific metrics</li>
+<li>Java-dominated datasets</li>
+<li>Small benchmarks (IPSynth: 20 tasks)</li>
+</ul>
+</div>
+<div style="flex:1;background:#1B2A4A;border-radius:6pt;padding:10pt;">
+<h3 style="font-size:11pt;color:#FFFFFF;">Practical Challenges</h3>
+<ul style="font-size:9pt;color:#F4F6F9;">
+<li>Detection-remediation gap (0/9 fixed)</li>
+<li>Developer resistance to automated changes</li>
+<li>Behavior preservation vs. architecture improvement</li>
+<li>Strict preservation may be inappropriate for tactic-level</li>
+</ul>
+</div>
+</div>
+</div></body></html>

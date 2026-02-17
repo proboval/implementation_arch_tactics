@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>The LLM Revolution in SE</h1>
+<p>From syntax-level code completion (2021) to semantic-level code transformation (2023+)</p>
+<div style="display:flex;gap:20pt;margin-top:10pt;">
+<div style="flex:1;">
+<h2 style="font-size:14pt;">What LLMs Handle Well</h2>
+<div style="background:#27AE60;border-radius:6pt;padding:10pt;margin-bottom:8pt;">
+<ul style="font-size:10pt;color:#FFFFFF;margin:0;">
+<li>Rename Method/Variable</li>
+<li>Extract Method</li>
+<li>Simplify Conditionals</li>
+<li>Remove Dead Code</li>
+<li>Inline Variable</li>
+</ul>
+</div>
+<p style="font-size:10pt;color:#8899AA;">Local, single-file, pattern-based</p>
+</div>
+<div style="flex:1;">
+<h2 style="font-size:14pt;">What LLMs Struggle With</h2>
+<div style="background:#E8573A;border-radius:6pt;padding:10pt;margin-bottom:8pt;">
+<ul style="font-size:10pt;color:#FFFFFF;margin:0;">
+<li>Extract Class (0% recall with generic prompts)</li>
+<li>Move Method (cross-file)</li>
+<li>Split Class</li>
+<li>Extract Superclass</li>
+</ul>
+</div>
+<p style="font-size:10pt;color:#8899AA;">Structural, cross-file, design-judgment</p>
+</div>
+<div style="flex:1;">
+<h2 style="font-size:14pt;">Key Stats</h2>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;margin-bottom:6pt;">
+<p style="font-size:18pt;color:#E8573A;font-weight:bold;margin:0;">97.2%</p>
+<p style="font-size:9pt;margin:0;">Behavior preservation [DePalma]</p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;margin-bottom:6pt;">
+<p style="font-size:18pt;color:#E8573A;font-weight:bold;margin:0;">86.7%</p>
+<p style="font-size:9pt;margin:0;">Recall with optimized prompts [Liu]</p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;">
+<p style="font-size:18pt;color:#2E86AB;font-weight:bold;margin:0;">3.7%</p>
+<p style="font-size:9pt;margin:0;">Agentic refactorings >1 file</p>
+</div>
+</div>
+</div>
+</div></body></html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>The Agreement Crisis</h1>
+<p>[Lenarduzzi et al., 2023] — 6 tools × 47 Java projects</p>
+<div style="display:flex;gap:20pt;margin-top:10pt;">
+<div style="flex:1;">
+<div style="background:#E8573A;border-radius:6pt;padding:18pt;text-align:center;margin-bottom:12pt;">
+<p style="font-size:40pt;color:#FFFFFF;font-weight:bold;margin:0;">&lt; 0.4%</p>
+<p style="font-size:13pt;color:#FFFFFF;margin:0;">Overall inter-tool detection agreement</p>
+</div>
+<h2 style="font-size:14pt;">Tool Precision</h2>
+<ul>
+<li>CheckStyle: <b>86%</b> (mostly formatting)</li>
+<li>FindBugs: <b>57%</b></li>
+<li>PMD: <b>52%</b></li>
+<li>SonarQube: <b>18%</b> (broadest but least precise)</li>
+</ul>
+</div>
+<div style="flex:1;">
+<div style="background:#1B2A4A;border-radius:6pt;padding:14pt;margin-bottom:12pt;">
+<p class="quote" style="color:#F4F6F9;">"There is no silver bullet that is able to guarantee source code quality assessment on its own."</p>
+<p style="font-size:9pt;color:#8899AA;margin:0;">— Lenarduzzi et al., 2023</p>
+</div>
+<h2 style="font-size:14pt;">Implications</h2>
+<ul>
+<li>Any improvement measured by a <b>single tool</b> may not be confirmed by another</li>
+<li>Cui et al. (2024): 35.7% of FN/FP from <b>missing cases</b></li>
+<li>Issue count ≠ debt reduction (ratio as low as 0.71)</li>
+</ul>
+<div style="background:#27AE60;border-radius:6pt;padding:10pt;margin-top:8pt;">
+<p style="font-size:11pt;color:#FFFFFF;margin:0;"><b>Solution: Multi-tool validation</b> — Radon + SonarQube + Pylint + custom architecture analysis</p>
+</div>
+</div>
+</div>
+</div></body></html>

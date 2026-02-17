@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>Tool-Integrated Pipelines</h1>
+<div style="display:flex;gap:20pt;">
+<div style="flex:1;">
+<h2 style="font-size:14pt;">SonarQube + LLM Loop [Goncalves, 2025]</h2>
+<div style="background:#FFFFFF;border-radius:6pt;padding:12pt;margin-bottom:10pt;">
+<p style="font-size:11pt;">Codebase → SonarQube Analysis → Issues List → LLM Prompt → Fix → Re-analyze → Repeat</p>
+</div>
+<ul>
+<li>Best config: <span style="color:#27AE60;font-weight:bold;">81.3%</span> issue reduction</li>
+<li>Average: &gt;58% across all configurations</li>
+<li>5 iterations outperform 2 (diminishing returns after 3-4)</li>
+<li>Low temp (0.1) + zero-shot = most consistent</li>
+</ul>
+<div style="background:#E8573A;border-radius:6pt;padding:10pt;margin-top:8pt;">
+<p style="font-size:10pt;color:#FFFFFF;margin:0;"><b>Caveat:</b> 58.8% issue reduction = only 42.1% debt reduction (ratio 0.71). LLMs can create new issues while fixing others.</p>
+</div>
+</div>
+<div style="flex:1;">
+<h2 style="font-size:14pt;">Agentic Refactoring [Horikawa, 2025]</h2>
+<p>15,451 instances from AIDev dataset — largest corpus</p>
+<ul>
+<li>26.1% of agentic commits target refactoring</li>
+<li>Dominant: Rename (10.4%), Change Type (11.8%)</li>
+<li>Only <span style="color:#E8573A;font-weight:bold;">3.7%</span> touch more than one file</li>
+<li>Median design smell delta: <b>0.00</b></li>
+<li>86.9% of PRs merged despite low impact</li>
+</ul>
+<div style="background:#1B2A4A;border-radius:6pt;padding:12pt;margin-top:8pt;">
+<p class="quote" style="color:#F4F6F9;">"Agentic coding tools serve as <b style="color:#2E86AB;">incremental cleanup partners</b>, not software architects."</p>
+<p style="font-size:9pt;color:#8899AA;margin:0;">— Horikawa et al., 2025</p>
+</div>
+</div>
+</div>
+</div></body></html>

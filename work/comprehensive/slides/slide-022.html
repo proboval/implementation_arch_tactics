@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:28pt 40pt;">
+<h1>Prompt Engineering for Refactoring</h1>
+<p>[Piao et al., 2025] — 5 strategies across all 61 Fowler refactoring types</p>
+<div style="display:flex;gap:16pt;margin-top:10pt;">
+<div style="flex:2;">
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;display:flex;margin-bottom:6pt;">
+<div style="flex:2;"><p style="font-size:11pt;margin:0;"><b>Zero-Shot</b> — Just the refactoring name</p></div>
+<div style="flex:1;text-align:right;"><p style="font-size:11pt;margin:0;color:#E8573A;">47.5% / 91.8%</p></div>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;display:flex;margin-bottom:6pt;">
+<div style="flex:2;"><p style="font-size:11pt;margin:0;"><b>Two-Shot</b> — Two worked examples</p></div>
+<div style="flex:1;text-align:right;"><p style="font-size:11pt;margin:0;color:#E8573A;">57.4% / 95.1%</p></div>
+</div>
+<div style="background:#27AE60;border-radius:6pt;padding:10pt;display:flex;margin-bottom:6pt;">
+<div style="flex:2;"><p style="font-size:11pt;margin:0;color:#FFFFFF;"><b>Step-by-Step</b> — Procedural instructions</p></div>
+<div style="flex:1;text-align:right;"><p style="font-size:11pt;margin:0;color:#FFFFFF;font-weight:bold;">83.6% / 100%</p></div>
+</div>
+<div style="background:#27AE60;border-radius:6pt;padding:10pt;display:flex;margin-bottom:6pt;">
+<div style="flex:2;"><p style="font-size:11pt;margin:0;color:#FFFFFF;"><b>Rule-based</b> — Detection heuristics</p></div>
+<div style="flex:1;text-align:right;"><p style="font-size:11pt;margin:0;color:#FFFFFF;font-weight:bold;">80.3% / 100%</p></div>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;display:flex;">
+<div style="flex:2;"><p style="font-size:11pt;margin:0;"><b>Objective Learning</b> — High-level goal only</p></div>
+<div style="flex:1;text-align:right;"><p style="font-size:11pt;margin:0;color:#8899AA;">29–36% / 31–38%</p></div>
+</div>
+<p style="font-size:9pt;color:#8899AA;margin-top:6pt;">Format: GPT-4o-mini / DeepSeek-V3 success rates</p>
+</div>
+<div style="flex:1;">
+<div style="background:#1B2A4A;border-radius:6pt;padding:12pt;margin-bottom:10pt;">
+<p style="font-size:12pt;color:#FFFFFF;margin:0;">Generic → Subcategory prompt boosts success from <span style="color:#E8573A;">15.6%</span> to <span style="color:#27AE60;">86.7%</span></p>
+<p style="font-size:9pt;color:#8899AA;margin:4pt 0 0 0;">[Liu et al., 2025]</p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:12pt;">
+<h3 style="font-size:12pt;color:#2E86AB;">Key Insight</h3>
+<p style="font-size:10pt;margin:0;">Rule-based instructions (pre/post conditions) outperform descriptive ones — LLMs follow mechanical rules better than natural language</p>
+</div>
+</div>
+</div>
+</div></body></html>
