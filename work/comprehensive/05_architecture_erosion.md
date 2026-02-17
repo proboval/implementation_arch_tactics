@@ -4,11 +4,11 @@
 
 ---
 
-## 5.1 What Is Architecture Erosion?
+## What Is Architecture Erosion?
 
 Every software system begins with an *intended architecture* --- a set of design decisions about how modules, layers, and components should interact. Over time, the *implemented architecture* (what is actually in the code) diverges from that intent. This divergence is the broad phenomenon of **architecture erosion**.
 
-### 5.1.1 A Four-Perspective Definition
+### A Four-Perspective Definition
 
 Li et al. [@li2021understanding] conducted the first systematic mapping study dedicated exclusively to architecture erosion (AEr), analyzing 73 primary studies published between 2006 and 2019. One of their most important contributions is a refined definition that unifies four complementary perspectives found across the literature:
 
@@ -25,7 +25,7 @@ The synthesized definition reads:
 
 This multi-perspective view is important because it means erosion is not just about breaking rules. A system can be "correct" with respect to its layer boundaries and still suffer erosion if its quality metrics are degrading or if every change requires touching dozens of files. Students should internalize this: **erosion is a spectrum, not a binary**.
 
-### 5.1.2 Erosion vs. Drift
+### Erosion vs. Drift
 
 Although the terms are sometimes used interchangeably, they capture different failure modes:
 
@@ -35,7 +35,21 @@ Although the terms are sometimes used interchangeably, they capture different fa
 
 Think of erosion as *breaking the rules* and drift as *losing the map*. Both lead to the same outcome --- an architecture that is harder to maintain, extend, and reason about --- but they require different detection strategies. Erosion can be caught by conformance checkers that compare code against explicit rules. Drift requires comparing the actual dependency structure against a high-level model of what the architecture *should* look like.
 
-### 5.1.3 Causes of Erosion
+```mermaid
+graph LR
+    subgraph Intended["Intended Architecture"]
+        IA[Design Decisions<br/>Constraints<br/>Quality Goals]
+    end
+    subgraph Implemented["Implemented Architecture"]
+        IC[Actual Code<br/>Dependencies<br/>Runtime Behavior]
+    end
+    IA -- "Erosion:<br/>Rules Broken" --> IC
+    IA -. "Drift:<br/>Map Lost" .-> IC
+    IC --> D[Quality<br/>Degradation]
+    IC --> TD[Technical<br/>Debt Cycle]
+```
+
+### Causes of Erosion
 
 Li et al. classify 13 categories of erosion causes into three groups [@li2021understanding]:
 
@@ -61,7 +75,7 @@ Technology evolution (new frameworks, language features, platform changes) and r
 
 **Knowledge vaporization** deserves special attention. It refers to the phenomenon where the *reasons* behind architectural decisions are lost. The code remains, but nobody remembers *why* a particular module boundary exists, *why* a certain dependency was forbidden, or *what* quality attribute a particular structure was protecting. When this knowledge evaporates, developers unknowingly make changes that violate the intent.
 
-### 5.1.4 Consequences
+### Consequences
 
 The consequences of erosion are severe and empirically documented:
 
@@ -71,7 +85,7 @@ The consequences of erosion are severe and empirically documented:
 
 > "Technical debt is both a cause and consequence of AEr, forming a vicious cycle." [@li2021understanding]
 
-### 5.1.5 The Tool Landscape
+### The Tool Landscape
 
 Li et al. catalog **35 tools** for erosion detection across the 73 studies. However, the landscape has significant limitations:
 
@@ -79,7 +93,7 @@ Li et al. catalog **35 tools** for erosion detection across the 73 studies. Howe
 - **Over 50% support only one programming language**, and that language is overwhelmingly Java.
 - There is a major **research-practice gap**: 82.2% of erosion studies come from academia, and developers report that they do not use dedicated erosion-detection tools in practice.
 
-### 5.1.6 Example: Layer Violations in a Web Application
+### Example: Layer Violations in a Web Application
 
 Consider a standard 3-layer backend architecture:
 
@@ -141,9 +155,9 @@ One violation seems harmless. But when dozens of controllers bypass services, th
 
 ---
 
-## 5.2 Architecture Drift in Practice
+## Architecture Drift in Practice
 
-### 5.2.1 The IBM Dublin Case Study
+### The IBM Dublin Case Study
 
 While Li et al. provide the theoretical taxonomy, Rosik et al. [@rosik2011assessing] provide the empirical ground truth. They conducted a **2-year longitudinal case study** at IBM Dublin Software Lab, studying the development of DAP 2.0 (Domino Application Portlet), a commercial system of approximately **28,500 lines of code** (16 packages, 95 classes).
 
@@ -153,7 +167,7 @@ What makes this study exceptional is its design:
 - It is conducted **in vivo** --- on a real commercial project during active development, not on a student project or a post-hoc analysis of an open-source codebase.
 - It uses **Reflexion Modelling**, a technique that compares the *planned* architecture (a high-level model drawn by the architect) against the *actual* architecture (dependencies extracted from the source code). Discrepancies appear as *divergent edges* --- connections that exist in the code but should not exist according to the plan.
 
-### 5.2.2 Key Findings
+### Key Findings
 
 Over 6 evaluation sessions spanning 2 years, the researchers found:
 
@@ -167,7 +181,7 @@ Over 6 evaluation sessions spanning 2 years, the researchers found:
 
 The most striking finding is that **none of the 9 identified violations were ever fixed**. The researchers detected them, presented them to the developers, and the developers chose --- deliberately --- not to fix them.
 
-### 5.2.3 Why Violations Persist: Developer Voices
+### Why Violations Persist: Developer Voices
 
 The think-aloud sessions and retrospective interviews captured revealing developer statements:
 
@@ -185,13 +199,13 @@ These quotes reveal three distinct barriers to remediation:
 2. **Cost-benefit calculus**: Minor violations are perceived as low-risk and not worth the effort.
 3. **Time pressure**: Fixing architectural issues is never "in scope" when there are features to deliver.
 
-### 5.2.4 The Batch Detection Problem
+### The Batch Detection Problem
 
 The study used **batch processing** --- evaluation sessions were conducted at roughly 4--5 month intervals. This schedule proved inadequate. By the time violations were detected, they had been present for months, other code had been built on top of them, and removing them would have required significant rework.
 
 Rosik et al. conclude that **continuous, lightweight monitoring** is far more effective than periodic reviews. If violations are caught within hours or days, they can be fixed while the developer still has context and before dependent code accumulates. This finding aligns with modern CI/CD practices where static analysis runs on every commit.
 
-### 5.2.5 False Negatives in Reflexion Modelling
+### False Negatives in Reflexion Modelling
 
 A particularly troubling finding is that Reflexion Modelling itself can **conceal violations**. When a planned connection exists between two modules (a *convergent edge*), any additional unplanned connections between the same modules are hidden within the aggregate. Rosik et al. found that 5 out of 8 convergent edges contained hidden divergent relationships. In the worst case, a single convergent edge masked 41 out of 44 inconsistent relationships.
 
@@ -199,9 +213,9 @@ This means the 9 detected violations are likely an **undercount**. The real numb
 
 ---
 
-## 5.3 Practitioner Knowledge About Tactics
+## Practitioner Knowledge About Tactics
 
-### 5.3.1 Mining Stack Overflow
+### Mining Stack Overflow
 
 If erosion is pervasive and detection tools are underused, how do practitioners actually learn about and discuss architectural tactics? Bi et al. [@bi2021mining] investigated this question by mining Stack Overflow, the largest Q&A platform for developers.
 
@@ -212,7 +226,7 @@ Their approach was semi-automatic:
 3. **Mining**: Applied the classifier to the full Stack Overflow corpus (2012--2019), extracting 5,103 candidate posts, of which **4,195 were manually verified** as genuine QA-tactic discussions (82.2% precision).
 4. **Analysis**: Mapped the mined posts to 21 architecture tactics and 8 quality attributes (following ISO 25010).
 
-### 5.3.2 What Practitioners Discuss
+### What Practitioners Discuss
 
 The most-discussed quality attributes and tactics on Stack Overflow reveal clear practitioner priorities:
 
@@ -234,7 +248,7 @@ The most-discussed quality attributes and tactics on Stack Overflow reveal clear
 
 **Performance and Security tactics dominate** Stack Overflow discussions. Maintainability tactics receive less attention, which is consistent with the general observation that maintainability is often a *non-functional* concern that developers defer in favor of immediate functional and performance requirements.
 
-### 5.3.3 Tactics and Maintainability
+### Tactics and Maintainability
 
 For the purposes of this thesis, the most relevant finding is which tactics practitioners associate with maintainability improvements:
 
@@ -251,13 +265,13 @@ For the purposes of this thesis, the most relevant finding is which tactics prac
 
 This finding is nuanced. Tactics designed primarily for reliability or security (like Heartbeat, Sanity checking) can have **positive side-effects on maintainability** because they promote modular, well-separated components. Conversely, Resource pooling --- while excellent for performance --- can increase coupling and make the system harder to maintain.
 
-### 5.3.4 Little-Known Relationships
+### Little-Known Relationships
 
 Perhaps the most surprising finding is that **approximately 21% of the QA-tactic relationships discovered on Stack Overflow are "little-known"** --- they are not documented in the academic literature or standard textbooks like Bass et al. [@bass2021software]. These relationships emerge from real-world experience: practitioners discover through building systems that certain tactics affect quality attributes in ways that formal catalogs do not predict.
 
 > "About 21% of the extracted QA-AT relationships are additional to the ones documented in the literature, which we call 'little-known' design relationships." [@bi2021mining]
 
-### 5.3.5 Discussion Context
+### Discussion Context
 
 The study also analyzed *how* practitioners discuss tactics. Four main discussion topics emerged:
 
@@ -272,9 +286,9 @@ The dominance of "architecture patterns" (47%) suggests that practitioners think
 
 ---
 
-## 5.4 The Detection-Remediation Disconnect
+## The Detection-Remediation Disconnect
 
-### 5.4.1 Synthesizing the Evidence
+### Synthesizing the Evidence
 
 The three studies reviewed in this chapter converge on a single, critical insight: **detecting architectural problems is not the same as fixing them**. Let us trace the argument:
 
@@ -284,7 +298,7 @@ The three studies reviewed in this chapter converge on a single, critical insigh
 
 3. **Bi et al. (2021)** show that knowledge about tactics exists in the developer community --- 4,195 Stack Overflow posts discuss how tactics relate to quality attributes. But this knowledge is **fragmented, informal, and biased** toward Performance and Security. Maintainability tactics are under-discussed, and only 11% of discussions address applying tactics to existing systems.
 
-### 5.4.2 The Gap
+### The Gap
 
 The synthesis reveals a **three-part gap**:
 
@@ -294,27 +308,33 @@ The synthesis reveals a **three-part gap**:
 | **Detection does not lead to action** | 0/9 violations fixed even after explicit identification [@rosik2011assessing] |
 | **Knowledge exists but is fragmented** | 4,195 SO posts on tactics, but 21% of relationships are undocumented; maintainability is under-discussed [@bi2021mining] |
 
-What is missing is the **middle step** --- a mechanism that takes detected problems and implements solutions. Currently, the workflow is:
+What is missing is the **middle step** --- a mechanism that takes detected problems and implements solutions. The following diagram contrasts the current manual workflow with the envisioned automated approach:
 
-```
-Detection  ->  [Manual analysis]  ->  [Manual design]  ->  [Manual implementation]
-   OK              Expensive            Requires             Time-consuming
-                                        expertise             and risky
+```mermaid
+graph TD
+    subgraph Current["Current Workflow"]
+        D1[Detection] --> MA[Manual<br/>Analysis]
+        MA --> MD[Manual<br/>Design]
+        MD --> MI[Manual<br/>Implementation]
+        MA -.- E1["Expensive"]
+        MD -.- E2["Requires<br/>Expertise"]
+        MI -.- E3["Time-consuming<br/>& Risky"]
+    end
+    subgraph Proposed["Proposed Workflow"]
+        D2[Detection] --> LS[LLM: Select<br/>Tactic]
+        LS --> LG[LLM: Generate<br/>Implementation]
+        LG --> V[Validation via<br/>Static Analysis]
+        LS -.- A1["Automated"]
+        LG -.- A2["Automated"]
+        V -.- A3["Multi-tool"]
+    end
 ```
 
 Each manual step is a barrier. Each barrier gives developers a reason to defer the fix. The result is the vicious cycle that Li et al. describe: erosion generates technical debt, which generates more erosion, which further degrades the architecture.
 
-### 5.4.3 Automated Remediation as the Missing Link
+### Automated Remediation as the Missing Link
 
 This is where the thesis contribution enters. The central research question is not "can we detect erosion?" (we can) or "do tactics exist to address it?" (they do) but rather: **can an LLM bridge the gap between detection and implementation?**
-
-The envisioned workflow replaces manual steps with LLM-driven automation:
-
-```
-Detection  ->  [LLM: select tactic]  ->  [LLM: generate implementation]  ->  Validation
-   OK              Automated                   Automated                     Static
-                                                                             analysis
-```
 
 If an LLM can reliably (a) analyze a detected violation, (b) select an appropriate architectural tactic from a catalog, and (c) implement that tactic in the existing codebase while preserving behavior, then the three barriers identified by Rosik et al. --- risk, cost, and time --- are substantially reduced:
 

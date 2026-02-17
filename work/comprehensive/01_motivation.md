@@ -4,7 +4,7 @@
 
 ---
 
-## 1.1 The Software Maintenance Crisis
+## The Software Maintenance Crisis
 
 Software is not built once and forgotten. The overwhelming majority of a system's total cost of ownership is spent not on initial development but on understanding, modifying, extending, and fixing the code that already exists. Industry data consistently places maintenance at **60--80% of total lifecycle costs** [@bass2021software]. Martin Fowler goes further, estimating that up to **75% of development effort** is consumed by refactoring --- the restructuring of existing code to improve its internal quality without changing its external behavior [@fowler2018refactoring].
 
@@ -20,7 +20,7 @@ Just as removing a load-bearing wall in a building risks structural collapse, mo
 | Development effort spent on refactoring | up to 75% | [@fowler2018refactoring] |
 | Practitioners reporting quality degradation from architecture erosion | 83.8% | [@li2021understanding] |
 
-## 1.2 The Knowledge Barrier
+## The Knowledge Barrier
 
 If good architectural decisions are the key to maintainability, why do so many systems end up poorly structured? The answer lies in a persistent knowledge barrier that separates *knowing what to do* from *knowing how to do it in code*.
 
@@ -48,7 +48,7 @@ Rosik et al. provided striking empirical evidence in a 2-year longitudinal case 
 | Drift occurs even with a single architect-developer | 9 divergent edges found in 2-year IBM case study | [@rosik2011assessing] |
 | Detection does not equal remediation | Zero identified inconsistencies were removed by developers | [@rosik2011assessing] |
 
-## 1.3 The Promise of LLMs
+## The Promise of LLMs
 
 Large language models have demonstrated remarkable ability to understand and transform source code. In the domain of refactoring --- the restructuring of code to improve quality without changing behavior --- recent results are striking:
 
@@ -60,7 +60,7 @@ These results establish a crucial precedent: LLMs can perform code-level transfo
 
 This is the gap that motivates the present work. Can LLMs bridge the distance between *design intent* (an architectural tactic specification) and *code implementation* (the actual changes across files, classes, and methods)? Can we build a pipeline that takes a tactic like "Use an Intermediary" and automatically produces the correct multi-file transformation in a real codebase --- while preserving behavior, respecting existing architecture, and improving measurable maintainability?
 
-## 1.4 A Motivating Example
+## A Motivating Example
 
 Consider a Python web service for an e-commerce platform. The service handles product catalog queries, and every endpoint directly queries the database:
 
@@ -163,7 +163,7 @@ The caching change now lives in **2--3 files** (the repository and the cache con
 
 This is exactly the kind of transformation that a well-designed LLM pipeline could automate: detect the scattered database access pattern, select the "Use an Intermediary" tactic, generate the repository class, and rewrite the call sites --- all while ensuring the tests still pass.
 
-## 1.5 Guide Roadmap
+## Guide Roadmap
 
 This study guide is organized as follows:
 

@@ -4,7 +4,7 @@
 
 ---
 
-## 7.1 The LLM Revolution in Software Engineering
+## The LLM Revolution in Software Engineering
 
 ### From code completion to code transformation
 
@@ -32,7 +32,7 @@ Several patterns emerge from this comparison. First, **model size alone does not
 
 ---
 
-## 7.2 Standalone LLM Refactoring
+## Standalone LLM Refactoring
 
 ### DePalma et al.: the pioneering quality-attribute study
 
@@ -78,9 +78,27 @@ Synthesizing evidence from DePalma et al. [@depalma2024exploring], Liu et al. [@
 
 The pattern is clear: **LLMs excel at within-file, pattern-based transformations and fail at cross-file, design-judgment transformations.** This is the central limitation that motivates the multi-agent and tool-integrated approaches described in the next sections.
 
+```mermaid
+graph LR
+    subgraph OK["LLMs Handle Well"]
+        A1[Rename<br/>Method]
+        A2[Extract<br/>Method]
+        A3[Simplify<br/>Conditionals]
+        A4[Remove<br/>Dead Code]
+    end
+    subgraph Fail["LLMs Struggle With"]
+        B1[Extract<br/>Class]
+        B2[Move Method<br/>Cross-file]
+        B3[Split<br/>Class]
+        B4[Extract<br/>Superclass]
+    end
+    OK -.- L["Local, Single-file<br/>Pattern-based"]
+    Fail -.- S["Structural, Cross-file<br/>Design-judgment"]
+```
+
 ---
 
-## 7.3 Prompt Engineering for Refactoring
+## Prompt Engineering for Refactoring
 
 ### Piao et al.: systematic instruction strategies
 
@@ -194,13 +212,31 @@ The practical takeaway: **always specify the refactoring type, the target code r
 
 ---
 
-## 7.4 Multi-Agent Frameworks
+## Multi-Agent Frameworks
 
 ### MANTRA: multi-agent refactoring with RAG
 
 The most significant advance in LLM-based refactoring to date is MANTRA (Multi-Agent eNhanced refacToring with RAG), developed by Xu et al. [@xu2025mantra]. MANTRA addresses the central weakness of standalone LLM refactoring --- the lack of project context and verification --- through a coordinated multi-agent architecture.
 
-**Architecture.** MANTRA employs three specialized agents orchestrated by LangGraph:
+**Architecture.** The following diagram illustrates MANTRA's multi-agent pipeline:
+
+```mermaid
+graph LR
+    Code[Source Code] --> RAG[Context-Aware<br/>RAG]
+    RAG --> Dev[Developer<br/>Agent]
+    Dev --> Rev[Reviewer<br/>Agent]
+    Rev -->|Feedback| Rep[Repair<br/>Agent]
+    Rep -->|Fixed Code| Rev
+    Rev -->|Pass| Out[Verified<br/>Refactoring]
+    subgraph Tools["Verification Tools"]
+        RM[RefactoringMiner]
+        CS[CheckStyle]
+        TS[Test Suite]
+    end
+    Rev --- Tools
+```
+
+MANTRA employs three specialized agents orchestrated by LangGraph:
 
 1. **Developer Agent** --- generates the refactored code, informed by Context-Aware RAG that retrieves similar past refactorings, API documentation, and project conventions.
 2. **Reviewer Agent** --- validates the generated code using traditional SE tools (RefactoringMiner for verifying that the intended refactoring type occurred, CheckStyle for style compliance, compilation and test execution for functional correctness). Provides structured feedback to the Developer Agent.
@@ -264,7 +300,7 @@ The finding that multiple generations with test validation substantially improve
 
 ---
 
-## 7.5 Tool-Integrated Pipelines
+## Tool-Integrated Pipelines
 
 ### Goncalves and Maia: iterative SonarQube + LLM pipeline
 
@@ -314,7 +350,7 @@ This last point is the fundamental limitation of tool-integrated pipelines at th
 
 ---
 
-## 7.6 Behavior Preservation
+## Behavior Preservation
 
 ### The fundamental challenge
 
@@ -353,7 +389,7 @@ The practical implication is clear: **any LLM refactoring pipeline must include 
 
 ---
 
-## 7.7 Refactoring at Scale: Industry Evidence
+## Refactoring at Scale: Industry Evidence
 
 ### Kim, Zimmermann, and Nagappan: the Microsoft study
 
@@ -381,7 +417,7 @@ The contrast between high merge rates and negligible smell reduction raises an i
 
 ---
 
-## 7.8 The Code-Level vs. Architecture-Level Gap
+## The Code-Level vs. Architecture-Level Gap
 
 ### All current LLM refactoring operates at method/class level
 

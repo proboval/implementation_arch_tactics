@@ -2,7 +2,7 @@
 
 Software quality is not a monolithic concept. Over five decades of software engineering research, the community has progressively refined how we define, decompose, and measure quality -- with maintainability emerging as one of the most economically significant and technically challenging attributes. This chapter traces that evolution, establishes ISO/IEC 25010 as the authoritative framework, and shows how maintainability can be operationalized through concrete metrics and guidelines.
 
-## 3.1 Evolution of Quality Models
+## Evolution of Quality Models
 
 Understanding modern maintainability requires understanding the intellectual lineage that produced it. Four major quality models, spanning from 1977 to 2011, have shaped how we think about software quality attributes. Each generation addressed limitations of its predecessors while introducing new perspectives and decompositions.
 
@@ -76,7 +76,7 @@ The following table traces how the concept of "ease of change" evolved across qu
 
 The progression shows a clear trend: maintainability has been refined from a vaguely defined "ability to fix bugs" into a multi-dimensional attribute with five distinct, measurable sub-characteristics. This thesis adopts ISO/IEC 25010 as its evaluation framework because it represents the current international consensus and provides the most fine-grained decomposition of maintainability available.
 
-## 3.2 ISO/IEC 25010: The Standard Framework
+## ISO/IEC 25010: The Standard Framework
 
 ISO/IEC 25010 defines two quality models: a **product quality model** (8 characteristics describing internal and external quality) and a **quality-in-use model** (5 characteristics describing the user's experience). For evaluating architectural changes, the product quality model is the relevant one.
 
@@ -124,7 +124,7 @@ A concrete maintainability scenario might read:
 
 Quality attribute scenarios bridge the gap between abstract quality definitions and concrete, testable requirements. They provide the "before" and "after" framing that makes maintainability measurable.
 
-## 3.3 Maintainability in Practice
+## Maintainability in Practice
 
 ### The 60-80% Problem
 
@@ -277,7 +277,7 @@ The problems are identifiable from the metrics:
 
 This is precisely the kind of module where architectural tactics -- specifically *Split Module* and *Increase Semantic Coherence* -- would improve measurable maintainability.
 
-## 3.4 The SIG Maintainability Model
+## The SIG Maintainability Model
 
 The Software Improvement Group (SIG), based on the work of Joost Visser and colleagues, developed a practitioner-oriented maintainability model that bridges the gap between abstract quality standards and daily coding decisions [@visser2016maintainable]. The model is grounded in the analysis of hundreds of real-world software systems and provides benchmarked thresholds for maintainability metrics.
 

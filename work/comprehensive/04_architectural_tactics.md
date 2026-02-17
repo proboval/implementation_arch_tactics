@@ -2,7 +2,7 @@
 
 Architectural tactics are the core mechanism through which architects translate quality attribute requirements into concrete design decisions. While the previous chapter established *what* maintainability means and *how* to measure it, this chapter addresses the more fundamental question: *what specific design decisions improve maintainability, and how can they be systematically applied?* This is the central chapter of the study guide because the thesis proposes automating the implementation of these tactics using large language models.
 
-## 4.1 What Are Architectural Tactics?
+## What Are Architectural Tactics?
 
 ### Definition
 
@@ -20,7 +20,21 @@ The word "fine-grained" is critical. Tactics are deliberately small and focused.
 
 ### The Design Hierarchy: Style, Pattern, Tactic, Technique
 
-To understand tactics properly, you must understand where they sit in the hierarchy of architectural design concepts. From most abstract to most concrete:
+To understand tactics properly, you must understand where they sit in the hierarchy of architectural design concepts:
+
+```mermaid
+graph TD
+    A["Architectural Style<br/>(e.g., Layered, Microservices)"] --> B["Architectural Pattern<br/>(e.g., MVC, Repository)"]
+    B --> C["Architectural Tactic<br/>(e.g., Split Module, Use Intermediary)"]
+    C --> D["Design Technique<br/>(e.g., Factory Method, DI)"]
+
+    style A fill:#e1bee7,stroke:#333
+    style B fill:#b3e5fc,stroke:#333
+    style C fill:#c8e6c9,stroke:#333
+    style D fill:#fff9c4,stroke:#333
+```
+
+From most abstract to most concrete:
 
 | Level | Concept | Scope | Example | Quality Scope |
 |-------|---------|-------|---------|---------------|
@@ -68,7 +82,39 @@ Bass et al. define tactics for seven quality attributes [@bass2021software]:
 
 This thesis focuses exclusively on **modifiability tactics** because they (a) directly target ISO 25010 maintainability sub-characteristics, (b) are implementable through source code transformation, and (c) produce measurable changes in static analysis metrics.
 
-## 4.2 The Modifiability Tactics Catalog
+## The Modifiability Tactics Catalog
+
+The following diagram shows the three categories of modifiability tactics and their key members:
+
+```mermaid
+graph LR
+    M[Modifiability Tactics] --> IC[Increase Cohesion]
+    M --> RC[Reduce Coupling]
+    M --> DB[Defer Binding]
+
+    IC --> IC1[Split Module]
+    IC --> IC2[Abstract Common Services]
+    IC --> IC3[Semantic Coherence]
+    IC --> IC4[Encapsulate]
+    IC --> IC5[Restrict Dependencies]
+
+    RC --> RC1[Use Encapsulation]
+    RC --> RC2[Use an Intermediary]
+    RC --> RC3[Restrict Dependencies]
+    RC --> RC4[Abstract Common Services]
+
+    DB --> DB1[Component Replacement]
+    DB --> DB2[Publish-Subscribe]
+    DB --> DB3[Configuration Files]
+    DB --> DB4[Resource Files]
+    DB --> DB5[Polymorphism]
+    DB --> DB6[Startup Binding]
+
+    style M fill:#e1bee7,stroke:#333
+    style IC fill:#c8e6c9,stroke:#333
+    style RC fill:#b3e5fc,stroke:#333
+    style DB fill:#fff9c4,stroke:#333
+```
 
 Bass, Clements, and Kazman define 15 modifiability tactics organized into three categories based on the mechanism they use to improve modifiability [@bass2021software]. The categories correspond to three fundamental strategies:
 
@@ -764,7 +810,7 @@ The following table summarizes all 15 modifiability tactics with their measurabi
 
 The "LLM Implementable?" column is critical for the thesis. Of the 15 tactics, **11 are assessed as fully implementable** by an LLM through source code transformation, 2 are partially implementable, and 2 are not implementable without external domain knowledge. The thesis selects 8 tactics for its pipeline based on three criteria: (1) full LLM implementability, (2) measurability through static analysis, and (3) demonstrated structural compatibility with common backend patterns.
 
-## 4.3 Pattern-Tactic Interactions
+## Pattern-Tactic Interactions
 
 Tactics do not exist in isolation. In real systems, they are implemented within the context of existing architectural patterns. Understanding how tactics interact with patterns is essential for predicting whether a tactic implementation will succeed or fail.
 
@@ -843,7 +889,7 @@ The theoretical pattern-tactic interaction model is grounded in empirical realit
 
 This confirms that the pattern-tactic interaction problem is not academic. Every real system that uses architectural patterns has already applied tactics (whether the developers called them that or not), and understanding these interactions is essential for any automated approach that modifies system architecture.
 
-## 4.4 Tactics in Service-Oriented and Microservice Systems
+## Tactics in Service-Oriented and Microservice Systems
 
 Bogner, Wagner, and Zimmermann provide the most detailed mapping of modifiability tactics to modern service-oriented architectures [@bogner2019modifiability]. Their work systematically maps all 15 modifiability tactics onto principles and design patterns of both SOA and Microservice-Based Systems.
 
@@ -893,7 +939,7 @@ A particularly striking finding is that **only 3 of 21 mapped Microservices patt
 
 This cohesion gap represents an area where LLM-driven tactic implementation could add particular value: helping developers decompose services that have grown beyond their original bounded context back into cohesive units, using Split Module and Increase Semantic Coherence tactics.
 
-## 4.5 The Tactic Research Landscape
+## The Tactic Research Landscape
 
 Marquez, Astudillo, and Kazman provide the most comprehensive overview of the state of architectural tactics research through their systematic mapping study of 91 primary studies spanning 2003-2021 [@marquez2022architectural].
 
@@ -970,7 +1016,7 @@ Critically, **all existing tools detect tactics but none implement them**. The d
 
 The dominance of frameworks and solution proposals indicates a field still in the theory-building phase. The thesis contributes to moving the field toward implementation and empirical validation.
 
-## 4.6 Quality-Driven Architecture Development
+## Quality-Driven Architecture Development
 
 ### Kim's Feature Model Approach
 

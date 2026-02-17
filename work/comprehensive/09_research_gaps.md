@@ -6,7 +6,7 @@
 
 The previous chapter catalogued the challenges that confront LLM-based architecture transformation. This chapter asks a different question: *What has not yet been attempted?* By mapping the boundaries of existing work, we can identify the gaps that represent the highest-impact opportunities for advancing both research and practice. We begin with the core contribution gap that motivates the thesis, then enumerate specific open questions, survey available datasets, and conclude with a forward-looking research agenda.
 
-## 9.1 The Transformation Gap
+## The Transformation Gap
 
 The most significant finding from our survey of the literature is that two mature, active research streams exist in almost complete isolation from each other.
 
@@ -16,18 +16,25 @@ The most significant finding from our survey of the literature is that two matur
 
 **The gap is between them.** No existing work uses LLMs to implement architectural tactics. The detection stream knows *what* tactics to apply but has no LLM-based mechanism to *apply* them. The refactoring stream can *transform code* but lacks the architectural awareness to select and implement *tactics*. The following diagram illustrates this disconnect and the contribution that bridging it would represent:
 
-```
-Current State:
-  [Tactic Detection]  --------  GAP  --------  [LLM Code Refactoring]
-   Marquez (91 studies)                          MANTRA (82.8% success)
-   ArchTacRV (ML detection)                      Liu et al. (86.7% recall)
-   IPSynth (program synthesis)                   Piao et al. (61 types)
-   Bi et al. (SO mining)                         Horikawa (15,451 instances)
-
-Thesis Contribution:
-  [Tactic Detection] ---> [LLM Tactic Implementation] ---> [Quality Measurement]
-   Identify what              Apply architectural              Measure before/after
-   tactics to apply           tactics using LLMs               with multi-tool framework
+```mermaid
+graph LR
+    subgraph S1["Stream 1: Tactic Detection"]
+        M1[Marquez<br/>91 studies]
+        M2[ArchTacRV<br/>ML detection]
+        M3[IPSynth<br/>Program synthesis]
+        M4[Bi et al.<br/>SO mining]
+    end
+    subgraph GAP["TRANSFORMATION GAP"]
+        G[No existing work<br/>uses LLMs to implement<br/>architectural tactics]
+    end
+    subgraph S2["Stream 2: LLM Refactoring"]
+        R1[MANTRA<br/>82.8% success]
+        R2[Liu et al.<br/>86.7% recall]
+        R3[Piao et al.<br/>61 types]
+        R4[Horikawa<br/>15,451 instances]
+    end
+    S1 --> GAP
+    GAP --> S2
 ```
 
 The evidence for this gap is unambiguous:
@@ -40,7 +47,7 @@ The evidence for this gap is unambiguous:
 
 Bridging this gap --- building systems that use LLMs to implement architectural tactics in real codebases, verified by multi-tool static analysis --- is the central research contribution that remains to be made.
 
-## 9.2 Specific Research Gaps
+## Specific Research Gaps
 
 Beyond the overarching transformation gap, the literature reveals seven specific research questions that remain unanswered. Each is grounded in empirical evidence.
 
@@ -54,7 +61,7 @@ Beyond the overarching transformation gap, the literature reveals seven specific
 | 6 | **Agents do not plan architecturally.** Current AI coding agents (Codex, Claude Code, Devin, Cursor) perform refactoring reactively --- responding to individual code issues --- rather than proactively planning architecture-level improvements. | Horikawa et al. find agents overwhelmingly perform low-level edits (renaming, type changes) and recommend equipping agents with design-smell detection tools to enable higher-level reasoning [@horikawa2025agentic]. | How can we elevate AI coding agents from tactical cleanup partners to strategic architectural planners? |
 | 7 | **Behavior preservation is not formally verified.** LLM-generated transformations are tested empirically (via test suites) but never formally verified. Architecture-level changes that legitimately alter interfaces are particularly problematic. | Liu et al. report 7.4% unsafe transformation rate [@liu2025exploring]. IPSynth uses a "correct by construction" approach with SMT solving but only for loop-free, single-framework code [@shokri2024ipsynth]. | Can lightweight formal methods (AST-based structural verification, refinement checking) be integrated with LLM output to provide stronger guarantees? |
 
-## 9.3 Available Datasets and Benchmarks
+## Available Datasets and Benchmarks
 
 For researchers entering this field, the following table summarizes the currently available datasets and benchmarks relevant to LLM-based architectural transformation. Note the absence of any architecture-level transformation dataset --- which is itself a gap identified in Section 9.2.
 
@@ -77,11 +84,25 @@ Several observations stand out:
 
 Creating such a dataset --- labeled systems before and after tactic implementation, covering multiple languages and tactic types --- is itself a significant research contribution waiting to be made.
 
-## 9.4 Future Research Agenda
+## Future Research Agenda
 
 Based on the gaps identified above, we propose five concrete research directions that collectively address the transformation gap and its surrounding challenges.
 
-### 9.4.1 LLM-Driven Architectural Tactic Implementation
+```mermaid
+graph TD
+    TA[Future Research Agenda] --> D1[LLM-Driven<br/>Tactic Implementation]
+    TA --> D2[Multi-Tool<br/>Validation Frameworks]
+    TA --> D3[Architecture-Aware<br/>Agent Pipelines]
+    TA --> D4[Tactic-Specific<br/>Benchmarks]
+    TA --> D5[Formal Verification<br/>Integration]
+    D1 --> GOAL[Close the<br/>Transformation Gap]
+    D2 --> GOAL
+    D3 --> GOAL
+    D4 --> GOAL
+    D5 --> GOAL
+```
+
+### LLM-Driven Architectural Tactic Implementation
 
 The most direct contribution is to build and evaluate systems that use LLMs to implement architectural tactics in real codebases. This requires solving several sub-problems simultaneously:
 
@@ -92,7 +113,7 @@ The most direct contribution is to build and evaluate systems that use LLMs to i
 
 A successful system in this space would demonstrate, for the first time, that LLMs can implement named architectural tactics with measurable quality improvement and verified behavior preservation.
 
-### 9.4.2 Multi-Tool Validation Frameworks
+### Multi-Tool Validation Frameworks
 
 The tool disagreement problem (less than 0.4% inter-tool agreement [@lenarduzzi2023critical]) demands a validation framework that synthesizes evidence from multiple complementary tools rather than relying on any single one. Such a framework should include:
 
@@ -102,7 +123,7 @@ The tool disagreement problem (less than 0.4% inter-tool agreement [@lenarduzzi2
 
 The goal is not merely to report "metric X improved" but to provide convergent evidence from multiple independent tools that the tactic implementation achieved its architectural intent.
 
-### 9.4.3 Architecture-Aware Agent Pipelines
+### Architecture-Aware Agent Pipelines
 
 Current AI coding agents operate without architectural awareness, treating each code change in isolation [@horikawa2025agentic]. The next generation of agents should understand system architecture *before* making changes:
 
@@ -110,7 +131,7 @@ Current AI coding agents operate without architectural awareness, treating each 
 - **Proactive tactic selection:** Instead of waiting for a developer to request a specific change, the agent should analyze the system's architectural health, identify opportunities for tactic application, and propose tactic-level improvements --- moving from "tactical cleanup" to "strategic architecture improvement" [@horikawa2025agentic].
 - **Multi-agent collaboration:** MANTRA's three-agent architecture (Developer, Reviewer, Repair) [@xu2025mantra] provides a proven blueprint. For architecture-level work, this could be extended to include an Architect Agent (analyzes system architecture and selects tactics), a Developer Agent (generates code changes), a Reviewer Agent (verifies correctness using static analysis and tests), and a Repair Agent (fixes issues identified by the Reviewer).
 
-### 9.4.4 Tactic-Specific Benchmark Creation
+### Tactic-Specific Benchmark Creation
 
 The absence of architecture-level transformation benchmarks is a bottleneck for the entire field. Creating such benchmarks requires:
 
@@ -119,7 +140,7 @@ The absence of architecture-level transformation benchmarks is a bottleneck for 
 - **Verification criteria:** For each benchmark entry, a specification of how to verify that the tactic was correctly implemented --- structural checks (does the intermediary class exist? are the original direct dependencies removed?), behavioral checks (do all tests pass?), and quality checks (did coupling decrease? did cohesion increase?).
 - **Scalable construction:** Since manual benchmark creation is expensive (Liu et al. report 42 person-days for 180 instances [@liu2025exploring]), explore semi-automated approaches: mine open-source repositories for commits that implement known tactics (using commit message analysis and structural diff patterns), then manually validate a subset.
 
-### 9.4.5 Formal Verification Integration
+### Formal Verification Integration
 
 The 7.4% unsafe transformation rate reported by Liu et al. [@liu2025exploring] is acceptable for developer-reviewed suggestions but not for autonomous pipelines operating at scale. Bridging LLM output with lightweight formal methods could provide stronger guarantees:
 
@@ -127,7 +148,7 @@ The 7.4% unsafe transformation rate reported by Liu et al. [@liu2025exploring] i
 - **Refinement calculus for behavioral equivalence:** Use program refinement techniques to verify that the transformed program is a valid refinement of the original --- meaning it preserves all externally observable behaviors while allowing internal structural changes.
 - **IPSynth's "correct by construction" paradigm:** IPSynth demonstrates that formal approaches (FSpec models, SMT solving) can achieve 85% semantic correctness on tactic synthesis [@shokri2024ipsynth]. A hybrid approach --- using the LLM for generative code production and formal methods for verification --- could combine the flexibility of LLMs with the guarantees of formal techniques.
 
-## 9.5 Conclusion
+## Conclusion
 
 This study guide has traced a path through six decades of software engineering research, from the foundational recognition that software architecture is the primary determinant of system quality [@perry1992foundations; @garlan1993introduction] to the modern possibility that large language models could automate the implementation of architectural design decisions.
 

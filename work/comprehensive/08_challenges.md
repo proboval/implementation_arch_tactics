@@ -8,11 +8,11 @@ The preceding chapters have established that architectural tactics are powerful 
 
 We organize the discussion into three categories: technical challenges inherent to LLM-based architecture transformation (Section 8.1), challenges in measuring whether the transformation actually helped (Section 8.2), and practical challenges that arise when deploying such systems in real development workflows (Section 8.3).
 
-## 8.1 Technical Challenges for LLM-Based Architecture Transformation
+## Technical Challenges for LLM-Based Architecture Transformation
 
 Architectural tactics are, by definition, cross-cutting design decisions that affect multiple modules and quality attributes simultaneously [@bass2021software]. This makes them fundamentally different from the local, syntactic code edits at which LLMs currently excel. Below we examine the five core technical challenges that any LLM-based tactic implementation system must overcome, providing for each one a description, evidence from the literature, an assessment of severity, and potential mitigation strategies.
 
-### 8.1.1 Context Blindness
+### Context Blindness
 
 **Description.** LLMs process text in a bounded context window. When applied to code, they typically see one file at a time --- or, at best, a small collection of files that fits within the token budget. They have no inherent understanding of the system-wide architectural context: the dependency graph, the module boundary map, the import structure, the runtime call chains, or the design rationale that explains why modules are partitioned the way they are. For architecture-level changes --- which by definition span module boundaries --- this creates a fundamental mismatch between the scope of the problem and the scope of the LLM's awareness.
 
@@ -26,7 +26,7 @@ Architectural tactics are, by definition, cross-cutting design decisions that af
 - **Context injection:** Feed the LLM a structured representation of the system architecture (dependency graph, module map, quality profile) as part of the prompt, compressing thousands of lines of code into a tractable summary.
 - **Multi-agent architectures:** Assign a dedicated "context-gathering agent" that analyzes the codebase and produces an architectural summary, which is then consumed by a "transformation agent" that generates code changes.
 
-### 8.1.2 Hallucinations
+### Hallucinations
 
 **Description.** LLMs are generative models that produce statistically plausible output --- but "plausible" does not mean "correct." In code generation, hallucinations manifest as references to nonexistent variables, methods, APIs, classes, or modules. The LLM may generate a call to `subject.hasRole("admin")` when no such method exists in the codebase's security framework, or import a module that was never defined. These hallucinations are particularly dangerous for architecture-level changes because they often involve framework-specific APIs (dependency injection containers, ORM configurations, security frameworks) where the correct API surface is large and version-dependent.
 
@@ -41,7 +41,7 @@ Architectural tactics are, by definition, cross-cutting design decisions that af
 - **Test execution:** Run the project's existing test suite after each transformation to catch behavioral regressions.
 - **Formal specification matching:** For well-defined tactics, compare the generated code against a formal specification (as IPSynth does with its FSpec model) to verify correct API usage [@shokri2024ipsynth].
 
-### 8.1.3 Token and Length Limits
+### Token and Length Limits
 
 **Description.** LLM performance degrades as input length increases. While modern models support context windows of 100K+ tokens, the quality of code understanding and generation measurably declines for longer inputs. Architecture-level changes often require understanding thousands of lines of code spread across many files --- far beyond the effective attention span of current models.
 
@@ -55,7 +55,7 @@ Architectural tactics are, by definition, cross-cutting design decisions that af
 - **Hierarchical prompting:** First prompt the LLM to produce an architectural plan (which files need to change, what changes each file needs), then execute each file-level change in a separate prompt with focused context.
 - **Context summarization:** Summarize large files or modules into compact representations (function signatures, class hierarchies, dependency lists) that convey architectural structure without consuming the full token budget.
 
-### 8.1.4 The Complexity Gap
+### The Complexity Gap
 
 **Description.** LLMs perform well on local, syntactic transformations --- Rename Variable, Extract Method, Inline Variable --- but struggle with cross-cutting, semantic transformations that require understanding design intent and coordinating changes across multiple code locations. This creates a "complexity gap" between the kinds of refactorings LLMs can reliably perform and the kinds of transformations that architectural tactics require.
 
@@ -69,7 +69,7 @@ Architectural tactics are, by definition, cross-cutting design decisions that af
 - **Rule-based instruction:** Piao et al. found that formulating transformations as machine-oriented rules (pre/post conditions) rather than natural language descriptions significantly improves LLM performance [@piao2025refactoring].
 - **Hybrid approaches:** Use the LLM for the generative parts of the transformation (writing new code) and traditional tools for the mechanical parts (updating imports, renaming references).
 
-### 8.1.5 Non-Determinism
+### Non-Determinism
 
 **Description.** LLMs are stochastic models. The same prompt, applied to the same code, can produce different outputs across runs. This non-determinism is problematic for automated pipelines that need consistent, reproducible results --- especially when the pipeline includes multiple stages where each stage's output feeds into the next.
 
@@ -83,7 +83,7 @@ Architectural tactics are, by definition, cross-cutting design decisions that af
 - **Majority voting:** Run the same prompt multiple times and select the most common output, or use an ensemble of models.
 - **Deterministic verification:** Accept non-deterministic generation but require deterministic verification (compilation, testing, static analysis) before accepting any output.
 
-### 8.1.6 Summary of Technical Challenges
+### Summary of Technical Challenges
 
 The following table consolidates the five technical challenges:
 
@@ -97,11 +97,33 @@ The following table consolidates the five technical challenges:
 
 Two challenges --- hallucinations and the complexity gap --- are currently open problems without satisfactory solutions. These define the frontier that any LLM-based architectural tactic implementation system must push against.
 
-## 8.2 Measurement Challenges
+```mermaid
+graph TD
+    subgraph Challenges["Five Core Technical Challenges"]
+        CB[Context<br/>Blindness] -->|High| F[Frontier]
+        HA[Hallucinations] -->|Critical| F
+        TL[Token/Length<br/>Limits] -->|High| F
+        CG[Complexity<br/>Gap] -->|High| F
+        ND[Non-<br/>Determinism] -->|Medium| F
+    end
+    subgraph Mitigations["Key Mitigations"]
+        RAG[RAG + Context<br/>Injection]
+        VER[Verification<br/>Feedback Loops]
+        DEC[Decomposition +<br/>Chunking]
+        TEMP[Temperature = 0 +<br/>Majority Voting]
+    end
+    CB -.-> RAG
+    HA -.-> VER
+    TL -.-> DEC
+    CG -.-> DEC
+    ND -.-> TEMP
+```
+
+## Measurement Challenges
 
 Even if an LLM successfully implements an architectural tactic, how do we know whether the transformation actually improved the system? Measuring software quality is harder than it appears, and several methodological challenges undermine confidence in before/after comparisons.
 
-### 8.2.1 Tool Disagreement
+### Tool Disagreement
 
 Lenarduzzi et al. conducted the largest empirical comparison of six widely used static analysis tools (SonarQube, Better Code Hub, CheckStyle, Coverity Scan, FindBugs, PMD) applied to 47 Java projects [@lenarduzzi2023critical]. The results are sobering:
 
@@ -113,7 +135,7 @@ The implication is stark: **any metric improvement measured by a single tool may
 
 For researchers and practitioners designing evaluation frameworks, this finding demands a multi-tool validation strategy. Relying on a single tool --- even a respected one like SonarQube --- introduces both false positive risk (the tool flags issues that are not real problems) and blind spot risk (the tool misses issues that other tools catch).
 
-### 8.2.2 No Tactic-Specific Metrics
+### No Tactic-Specific Metrics
 
 There is currently no standardized, widely accepted way to measure whether an architectural tactic was *correctly implemented*. We have metrics for code complexity (cyclomatic complexity), coupling (fan-in/fan-out, CBO), cohesion (LCOM), and aggregate maintainability (Maintainability Index). But none of these directly answers the question: "Was the Use an Intermediary tactic correctly applied?"
 
@@ -121,7 +143,7 @@ Architecture conformance checking tools (e.g., Reflexion Modelling, Lattix, Stru
 
 The absence of tactic-specific metrics means that researchers must rely on proxy indicators --- improvements in coupling, cohesion, or complexity that are *consistent with* the expected effect of a tactic, but do not conclusively prove that the tactic was correctly implemented.
 
-### 8.2.3 Dataset Limitations
+### Dataset Limitations
 
 The benchmarks available for evaluating LLM-based architectural transformations suffer from three systematic limitations:
 
@@ -131,7 +153,7 @@ The benchmarks available for evaluating LLM-based architectural transformations 
 
 3. **No architecture-level transformation benchmarks.** Every existing benchmark operates at the method or class level. There are no publicly available datasets of systems before and after architectural tactic implementation, with ground truth labels indicating which tactic was applied, where, and what the expected quality improvement should be.
 
-### 8.2.4 The Metric Paradox
+### The Metric Paradox
 
 Kim et al.'s field study at Microsoft provides a cautionary finding: **the same refactoring can improve one metric while worsening another** [@kim2014refactoring]. In the Windows 7 codebase, modules that underwent intensive refactoring reduced inter-module dependencies by a factor of 0.85 but *increased* lines of code and cross-cutting changes. This means that a simple "did the metric go up or down?" evaluation is insufficient.
 
@@ -139,11 +161,11 @@ The metric paradox is especially acute for architectural tactics, which often in
 
 This demands multi-dimensional evaluation: any assessment of architectural tactic impact must track multiple complementary metrics (coupling, cohesion, complexity, LOC, dependency counts) and interpret them in the context of the specific tactic's intended effect.
 
-## 8.3 Practical Challenges
+## Practical Challenges
 
 Technical feasibility and measurement validity are necessary but not sufficient. Even a perfectly functioning LLM-based tactic implementation system faces practical challenges when deployed in real development workflows.
 
-### 8.3.1 The Detection-Remediation Gap
+### The Detection-Remediation Gap
 
 Rosik et al.'s 2-year longitudinal case study at IBM demonstrated a troubling pattern: **none of the 9 identified architectural violations were fixed by the development team**, despite being explicitly detected and reported [@rosik2011assessing]. Developers were aware of the drift. They could see the violations in the Reflexion Model output. But they chose not to fix them because:
 
@@ -157,7 +179,7 @@ This finding reveals a fundamental gap between *detection* and *remediation*. Th
 
 Automated remediation --- using LLMs to not just identify but also *implement* the fix --- could potentially break this cycle by reducing the cost and risk of addressing detected violations. But this requires the LLM's output to be trustworthy enough that developers are willing to accept it, which leads to the next challenge.
 
-### 8.3.2 Developer Trust and Adoption
+### Developer Trust and Adoption
 
 Developers are, rightly, skeptical of automated architectural changes. Architecture-level modifications are among the highest-risk transformations in software engineering: they touch many files, affect many stakeholders, and can introduce subtle behavioral changes that are difficult to detect.
 
@@ -171,7 +193,7 @@ For automated architecture transformation to gain adoption, the system must prov
 
 DePalma et al.'s user study found that while 85.8% of participants rated ChatGPT's refactoring quality at 5 or 6 out of 7, **92.9% said additional refactoring was still needed** [@depalma2024exploring]. This suggests that developers see LLMs as useful starting points but not as replacements for human judgment --- a "suggestive auxiliary tool" rather than an autonomous architect.
 
-### 8.3.3 Behavior Preservation vs. Architecture Improvement
+### Behavior Preservation vs. Architecture Improvement
 
 The standard assumption in refactoring research is that transformations must be strictly behavior-preserving: the system's external behavior must be identical before and after the change. This assumption works well for method-level refactorings (Rename Variable, Extract Method) where the external API is unchanged.
 
@@ -187,7 +209,7 @@ What is needed is a notion of "controlled behavioral change" rather than strict 
 
 Liu et al. quantify the risk: 7.4% of GPT-4's refactoring solutions introduced unsafe changes (semantic bugs or syntax errors), with semantic changes being more dangerous because they evade compiler checks [@liu2025exploring]. For architecture-level changes that intentionally alter interfaces, distinguishing "intentional interface change" from "accidental semantic bug" requires understanding the designer's intent --- precisely the kind of reasoning that LLMs currently struggle to articulate.
 
-## 8.4 Chapter Summary
+## Chapter Summary
 
 The challenges described in this chapter are not reasons to abandon the pursuit of LLM-based architectural tactic implementation. Rather, they define the engineering requirements for a viable system. A successful pipeline must:
 

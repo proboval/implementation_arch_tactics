@@ -4,13 +4,13 @@
 
 ---
 
-## 6.1 Maintainability Metrics
+## Maintainability Metrics
 
 Maintainability is one of the eight quality characteristics defined by ISO/IEC 25010. But unlike functional correctness, it cannot be directly observed --- it must be *measured* through proxy metrics. This section presents the major metric families used in software engineering research, with formulas, interpretations, and worked examples.
 
 Ardito et al. [@ardito2020maintainability] conducted a systematic literature review of 43 studies (2000--2019), cataloging **174 distinct maintainability metrics**. However, 75% of those metrics appear in only a single paper. The field has converged on a much smaller set of widely-adopted metrics, which we cover here.
 
-### 6.1.1 Maintainability Index (MI)
+### Maintainability Index (MI)
 
 The Maintainability Index is a composite metric designed to provide a single number summarizing how easy a piece of code is to maintain. It was originally proposed by Oman and Hagemeister [@oman1992maintainability] and later adopted by Microsoft Visual Studio and the Python tool Radon.
 
@@ -44,7 +44,7 @@ Where $perCM$ is the percentage of comment lines. The comment term rewards well-
 
 **Practical note.** Radon (Python) computes MI per module. Microsoft Visual Studio computes it per method and per class. The exact formula varies slightly between implementations, so always report which tool and version you used.
 
-### 6.1.2 Cyclomatic Complexity (CC)
+### Cyclomatic Complexity (CC)
 
 Cyclomatic Complexity, introduced by McCabe [@mccabe1976complexity], measures the number of linearly independent paths through a function's control flow graph. It is the most widely used single metric for code complexity.
 
@@ -112,7 +112,7 @@ Counting decision points:
 
 **CC = 7 + 1 (base) = 8.** This falls in the "low risk" range (1--10) but exceeds Visser's stricter threshold of 5. Reducing it would require extracting the grade thresholds into a data structure or splitting the validation from the categorization.
 
-### 6.1.3 Halstead Metrics
+### Halstead Metrics
 
 Halstead's Software Science metrics [@halstead1977elements] treat a program as a sequence of operators and operands and derive complexity measures from their counts. While sometimes criticized as overly reductive, Halstead metrics remain widely used because they capture aspects of code density and cognitive effort that CC alone misses.
 
@@ -141,7 +141,7 @@ Halstead's Software Science metrics [@halstead1977elements] treat a program as a
 
 **Difficulty** captures how error-prone the code is. It increases when operators are diverse (high $n_1$) and when operands are reused frequently (high $N_2 / n_2$).
 
-### 6.1.4 Chidamber-Kemerer (CK) Object-Oriented Suite
+### Chidamber-Kemerer (CK) Object-Oriented Suite
 
 For object-oriented systems, the CK metrics suite [@chidamber1994metrics] provides measures of coupling, cohesion, and inheritance complexity at the class level. These metrics are especially relevant for architectural tactics, which often involve restructuring class relationships.
 
@@ -164,7 +164,7 @@ For object-oriented systems, the CK metrics suite [@chidamber1994metrics] provid
 
 - **WMC** directly reflects internal complexity. Visser [@visser2016maintainable] maps this to the guideline "Write Simple Units of Code" and recommends keeping individual method CC <= 5, which in turn keeps WMC manageable.
 
-### 6.1.5 Comprehensive Metric Reference Table
+### Comprehensive Metric Reference Table
 
 | Metric | Formula / Definition | Level | Tool(s) | Threshold | Source |
 |--------|---------------------|-------|---------|-----------|--------|
@@ -182,7 +182,7 @@ For object-oriented systems, the CK metrics suite [@chidamber1994metrics] provid
 | LCOM | Cohesion lack (method pairs) | Class | CKJM | 0 = perfect cohesion | [@chidamber1994metrics] |
 | TDR | Remediation cost / dev cost | Project | SonarQube | <5% = A rating | SQALE model |
 
-### 6.1.6 Practical Example: Full Metric Calculation with Radon
+### Practical Example: Full Metric Calculation with Radon
 
 Consider the following Python module that manages a simple inventory:
 
@@ -276,11 +276,11 @@ The `Inventory` class is reasonably maintainable at the method level (all method
 
 ---
 
-## 6.2 Static Analysis Tools
+## Static Analysis Tools
 
 Static analysis tools (SATs) automate the computation of code metrics and the detection of quality issues. They analyze source code without executing it, making them fast, repeatable, and suitable for CI/CD integration.
 
-### 6.2.1 Tool Landscape
+### Tool Landscape
 
 | Tool | Language(s) | Focus | Open Source | Key Metrics |
 |------|-------------|-------|-------------|-------------|
@@ -294,7 +294,7 @@ Static analysis tools (SATs) automate the computation of code metrics and the de
 
 Each tool occupies a different niche. SonarQube is the broadest in language support and issue taxonomy. Radon is the standard for Python-specific complexity metrics. PMD and CheckStyle focus on Java with different emphases (patterns vs. style). FindBugs/SpotBugs analyzes compiled bytecode, catching issues that source-level tools miss.
 
-### 6.2.2 The Agreement Crisis
+### The Agreement Crisis
 
 If multiple tools exist for the same purpose, a natural question is: **do they agree?** The answer, based on rigorous empirical evidence, is deeply troubling.
 
@@ -337,11 +337,11 @@ SonarQube has the **lowest precision at 18%** --- meaning that roughly 4 out of 
 
 ---
 
-## 6.3 False Positives and False Negatives
+## False Positives and False Negatives
 
 The agreement crisis concerns **what tools detect**. An equally important question is **what they get wrong** and **what they miss entirely**.
 
-### 6.3.1 Root Causes of Errors
+### Root Causes of Errors
 
 Cui et al. [@cui2024empirical] conducted the first systematic study of false negatives (FNs) and false positives (FPs) using the analyzers' own bug repositories. They examined **350 confirmed, developer-fixed FN/FP issues** across PMD, SpotBugs, and SonarQube.
 
@@ -352,7 +352,7 @@ Cui et al. [@cui2024empirical] conducted the first systematic study of false neg
 | Analysis module errors | Varies | Bugs in type resolution, data-flow analysis, or symbolic execution engines |
 | Incorrect rule logic | Varies | The rule's implementation does not match its specification |
 
-### 6.3.2 What Triggers Failures
+### What Triggers Failures
 
 The study identified **10 input characteristics** that commonly trigger FN/FP errors:
 
@@ -368,7 +368,7 @@ The study identified **10 input characteristics** that commonly trigger FN/FP er
 
 > "Unfortunately, this rule is (implemented as) AST-based, and it brings some limitations. So to eliminate these false positives the rule should rely on the data flow." --- SonarQube developer [@cui2024empirical]
 
-### 6.3.3 Implications for Before/After Studies
+### Implications for Before/After Studies
 
 When a thesis compares maintainability metrics before and after an intervention (such as applying an architectural tactic), the reliability of the measurement instrument matters enormously. If the tool has:
 
@@ -380,11 +380,11 @@ This is why multi-tool validation (Section 6.5) and statistical testing are esse
 
 ---
 
-## 6.4 SonarQube and the SQALE Model
+## SonarQube and the SQALE Model
 
 Despite its low precision, SonarQube is the most widely used static analysis platform in both industry and research. Understanding its measurement model is essential for interpreting its output correctly.
 
-### 6.4.1 The SQALE Model
+### The SQALE Model
 
 SonarQube uses the **SQALE** (Software Quality Assessment based on Lifecycle Expectations) model to estimate technical debt. The core idea is:
 
@@ -404,7 +404,7 @@ $$TDR = \frac{\text{Remediation Cost (total fix effort)}}{\text{Development Cost
 | **D** | 21 -- 50% | High technical debt |
 | **E** | > 50% | Very high technical debt, remediation cost exceeds half the rewrite cost |
 
-### 6.4.2 Issue Taxonomy
+### Issue Taxonomy
 
 SonarQube classifies issues into three categories:
 
@@ -414,7 +414,7 @@ SonarQube classifies issues into three categories:
 | **Bugs** | Reliability issues that could cause incorrect behavior | Null pointer dereferences, resource leaks |
 | **Vulnerabilities** | Security issues that could be exploited | SQL injection, hardcoded credentials |
 
-### 6.4.3 SonarQube in Practice
+### SonarQube in Practice
 
 Nocera et al. [@nocera2025sonarqube] mined **321 GitHub projects** using SonarQube Cloud to understand how the tool is actually configured and used in open-source development.
 
@@ -433,17 +433,17 @@ The finding that **89% of projects enforce a maintainability rating** on new cod
 
 **Important caveat from Nocera et al.:** Issue count reduction does not necessarily equal debt reduction. They found ratios as low as 0.71 between the two --- meaning you can fix many issues without significantly reducing overall technical debt if the remaining issues are high-effort ones. This has direct implications for evaluating LLM-driven interventions: counting resolved issues is not sufficient; you must track actual debt reduction (in remediation-time units).
 
-### 6.4.4 Cloud vs. On-Premise
+### Cloud vs. On-Premise
 
 Nocera et al. also note differences between SonarQube Cloud and on-premise installations. The cloud version follows the "Clean as You Code" philosophy, which focuses quality gates on *new code* rather than the entire codebase. This means the quality gate only triggers on changes since the last version, which is philosophically aligned with the thesis approach: we apply tactics to specific parts of the code and measure whether those changes improve metrics.
 
 ---
 
-## 6.5 Multi-Tool Validation Strategy
+## Multi-Tool Validation Strategy
 
 Given the agreement crisis (< 0.4%) and the precision problems documented above, relying on a single tool for maintainability assessment is methodologically unsound. This section presents a principled strategy for combining multiple tools.
 
-### 6.5.1 Why One Tool Is Never Enough
+### Why One Tool Is Never Enough
 
 The evidence is unambiguous:
 
@@ -457,9 +457,33 @@ The evidence is unambiguous:
 
 No single tool provides a complete picture. Different tools catch different things. Combining them increases both coverage and confidence.
 
-### 6.5.2 Recommended Tool Combination
+### Recommended Tool Combination
 
 For a research study evaluating maintainability before and after an intervention, the following four-layer strategy is recommended:
+
+```mermaid
+graph TD
+    CB[Codebase] --> L1
+    CB --> L2
+    CB --> L3
+    CB --> L4
+    subgraph L1["Layer 1: Code Metrics"]
+        R[Radon] --> MI[MI, CC,<br/>Halstead]
+    end
+    subgraph L2["Layer 2: Technical Debt"]
+        SQ[SonarQube] --> TDR[SQALE TDR,<br/>Issue Counts]
+    end
+    subgraph L3["Layer 3: Style & Patterns"]
+        PL[Pylint / PMD] --> CV[Convention<br/>Violations]
+    end
+    subgraph L4["Layer 4: Architecture"]
+        CA[Custom Analysis] --> AG[Import Graph,<br/>Coupling, Cycles]
+    end
+    MI --> V[Convergent<br/>Evidence]
+    TDR --> V
+    CV --> V
+    AG --> V
+```
 
 | Layer | Tool | What It Measures | Why Include It |
 |-------|------|------------------|----------------|
@@ -476,7 +500,7 @@ For a research study evaluating maintainability before and after an intervention
 
 **Layer 4 (Custom)** is essential because **no commercial tool measures architecture-level maintainability well**. Import graph analysis can detect coupling between modules, identify circular dependencies, and measure whether tactic implementations actually change the dependency structure. This is the layer most directly relevant to architectural tactics.
 
-### 6.5.3 Statistical Methods for Before/After Comparison
+### Statistical Methods for Before/After Comparison
 
 When comparing metrics before and after applying an architectural tactic, raw numbers are insufficient. You need statistical evidence that the change is both *significant* (not due to chance) and *meaningful* (large enough to matter).
 
@@ -527,15 +551,15 @@ This workflow ensures that reported improvements are statistically rigorous and 
 
 ---
 
-## 6.6 Ardito et al.'s SLR on Maintainability Metrics
+## Ardito et al.'s SLR on Maintainability Metrics
 
 We have referenced Ardito et al. [@ardito2020maintainability] throughout this chapter, but their systematic literature review deserves dedicated attention as the most comprehensive survey of the metric landscape.
 
-### 6.6.1 Scope and Method
+### Scope and Method
 
 The SLR followed Kitchenham's guidelines, screening 801 papers from four digital libraries (ACM, IEEE Xplore, Scopus, Web of Science) and selecting 43 primary studies published between 2000 and 2019.
 
-### 6.6.2 The 174 Metrics Problem
+### The 174 Metrics Problem
 
 The SLR identified **174 distinct maintainability metrics**, organized into 10 metric suites. However, the distribution is extremely long-tailed:
 
@@ -564,7 +588,7 @@ The SLR identified **174 distinct maintainability metrics**, organized into 10 m
 
 Notice that **5 of the top 8 metrics are from the CK suite**. Object-oriented coupling and cohesion metrics dominate the maintainability measurement landscape.
 
-### 6.6.3 Tool Coverage
+### Tool Coverage
 
 Ardito et al. catalog **19 available tools** (6 closed-source, 13 open-source) across 34 programming languages. Key findings about tool coverage:
 
@@ -575,7 +599,7 @@ Ardito et al. catalog **19 available tools** (6 closed-source, 13 open-source) a
 - For Java, the optimal tool set requires **5 tools** to cover all 15 most-mentioned metrics.
 - **CKJM** (Chidamber-Kemerer Java Metrics) is the most cited tool in the literature (5 papers) but supports only Java.
 
-### 6.6.4 The Standardization Gap
+### The Standardization Gap
 
 Perhaps the most important finding for researchers is the **lack of standardization**. Different tools compute "the same" metric differently:
 
@@ -585,7 +609,7 @@ Perhaps the most important finding for researchers is the **lack of standardizat
 
 This means that metric values from different tools are **not directly comparable**. Research studies must report the exact tool, version, and configuration used, and comparisons between studies that used different tools must be interpreted with extreme caution.
 
-### 6.6.5 The Missing Benchmark
+### The Missing Benchmark
 
 Ardito et al. identify a critical gap: **there is no standard benchmark dataset for calibrating maintainability tools**. Unlike in other areas of software engineering (e.g., the Defects4J benchmark for fault localization), there is no agreed-upon codebase with known maintainability scores that can be used to validate tools. This means every tool's thresholds are calibrated against different data, making cross-tool comparison inherently difficult.
 

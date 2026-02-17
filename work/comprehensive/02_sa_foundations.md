@@ -4,11 +4,11 @@
 
 ---
 
-## 2.1 What Is Software Architecture?
+## What Is Software Architecture?
 
 Before we can discuss *improving* software architecture with automated tactics, we need a precise understanding of what software architecture *is*. Two foundational definitions, published within a year of each other in the early 1990s, established the vocabulary that the entire field still uses today. Each emphasizes different aspects of the same underlying reality, and understanding both provides a richer conceptual foundation.
 
-### 2.1.1 Perry and Wolf (1992): Elements, Form, and Rationale
+### Perry and Wolf (1992): Elements, Form, and Rationale
 
 Perry and Wolf proposed the first formal model of software architecture in their seminal 1992 paper [@perry1992foundations]. Their definition takes the form of a triple:
 
@@ -39,7 +39,7 @@ Each component of this triple captures a distinct concern.
 
 The *form* might specify: "Each phase must be invocable independently" (property) and "phases execute in a fixed linear sequence" (relationship). The *rationale* explains: "This decomposition was chosen to maximize modifiability --- a new optimization pass can be inserted between existing phases without modifying them."
 
-### 2.1.2 Garlan and Shaw (1993): Components, Connectors, and Configuration
+### Garlan and Shaw (1993): Components, Connectors, and Configuration
 
 One year later, Garlan and Shaw proposed an alternative formulation that has become equally canonical [@garlan1993introduction]:
 
@@ -59,7 +59,7 @@ One year later, Garlan and Shaw proposed an alternative formulation that has bec
 | Connector | REST/HTTP between services, SQL connection to database, Message queue (RabbitMQ) for async order processing | Each has distinct quality implications |
 | Configuration | Services communicate via REST; Order Service publishes events to RabbitMQ; Payment Gateway is called synchronously during checkout | Topology determines coupling and change propagation |
 
-### 2.1.3 Comparing the Two Definitions
+### Comparing the Two Definitions
 
 Both definitions describe the same phenomenon, but they emphasize different facets. The following table highlights the key differences and commonalities:
 
@@ -77,7 +77,7 @@ Both definitions describe the same phenomenon, but they emphasize different face
 
 The two definitions are complementary. Perry and Wolf give us a framework for reasoning about *why* an architecture is the way it is (rationale) and *what constraints* it satisfies (form). Garlan and Shaw give us a concrete vocabulary for describing *what* an architecture looks like (components, connectors, configuration) and *which patterns* recur across systems (styles). A complete understanding of software architecture draws on both.
 
-### 2.1.4 The "Load-Bearing Walls" Metaphor
+### The "Load-Bearing Walls" Metaphor
 
 Garlan and Perry, writing together in 1995, introduced a metaphor that crystallizes why architecture matters for maintainability [@garlan1995editorial]:
 
@@ -100,11 +100,37 @@ The critical insight for maintainability: **architectural tactics operate on the
 
 ---
 
-## 2.2 Architectural Styles
+## Architectural Styles
 
 An *architectural style* defines a family of systems in terms of a pattern of structural organization [@garlan1993introduction]. Each style specifies the types of components and connectors that may be used, how they may be combined, and what constraints govern their composition. Choosing an architectural style is one of the earliest and most consequential decisions in a system's lifecycle, because it determines the system's strengths and weaknesses across multiple quality attributes.
 
-### 2.2.1 Major Styles Overview
+The following diagram illustrates four common architectural styles and their primary structural patterns:
+
+```mermaid
+graph TB
+    subgraph "Pipes-and-Filters"
+        PF_A[Filter A] -->|Pipe| PF_B[Filter B]
+        PF_B -->|Pipe| PF_C[Filter C]
+    end
+
+    subgraph "Layered"
+        L1[Presentation Layer] --> L2[Business Logic Layer]
+        L2 --> L3[Data Access Layer]
+    end
+
+    subgraph "Event-Driven"
+        ED_P1[Publisher] -->|Event| ED_Bus((Event Bus))
+        ED_Bus -->|Notify| ED_S1[Subscriber 1]
+        ED_Bus -->|Notify| ED_S2[Subscriber 2]
+    end
+
+    subgraph "Client-Server"
+        CS_C1[Client 1] --> CS_S[Server]
+        CS_C2[Client 2] --> CS_S
+    end
+```
+
+### Major Styles Overview
 
 | Style | Structure | Quality Strengths | Quality Weaknesses | Example |
 |-------|-----------|-------------------|-------------------|---------|
@@ -115,7 +141,7 @@ An *architectural style* defines a family of systems in terms of a pattern of st
 | **Client-Server** | Clients request services; servers provide them. Clear separation of concerns between request initiation and service provision | Centralized data management, clear security boundaries, shared resource efficiency | Server is a single point of failure, network latency, scalability limited by server capacity | Web applications, email (SMTP/IMAP), databases (client query / server response) |
 | **Microservices** | System decomposed into small, independently deployable services, each owning its data and communicating via lightweight protocols (typically HTTP/REST or messaging) | Independent deployment, technology heterogeneity, team autonomy, fine-grained scalability | Distributed system complexity (network failures, eventual consistency), operational overhead (monitoring, tracing), data duplication across service boundaries | Netflix, Amazon, modern cloud-native applications |
 
-### 2.2.2 The KWIC Case Study
+### The KWIC Case Study
 
 One of the most influential demonstrations of how architectural style choice impacts quality attributes is the **Key Word In Context (KWIC)** case study, introduced by Parnas in 1972 and elaborated by Garlan and Shaw in 1993 [@garlan1993introduction].
 
@@ -150,7 +176,7 @@ Practice Software Architecture in
 
 **Key insight.** No single style dominates all dimensions. The Shared Data style wins on performance but loses on modifiability. Pipes and Filters excels at reusability and functional enhancement but pays a performance cost. The ADT style balances most dimensions but does not achieve the best score in any single one. This is why architectural design involves *trade-offs* --- and why the concept of *architectural tactics* (fine-grained decisions targeting specific qualities) is essential.
 
-### 2.2.3 Heterogeneous Architectures
+### Heterogeneous Architectures
 
 Real-world systems rarely conform to a single pure architectural style. Garlan and Shaw explicitly note that practical architectures are **heterogeneous**, combining multiple styles through several mechanisms [@garlan1993introduction]:
 
@@ -162,9 +188,9 @@ This heterogeneity is important for the thesis because it means that automated t
 
 ---
 
-## 2.3 Design Rationale
+## Design Rationale
 
-### 2.3.1 Rationale as a First-Class Element
+### Rationale as a First-Class Element
 
 Perry and Wolf's inclusion of *rationale* in the architecture triple is one of their most important and most overlooked contributions [@perry1992foundations]. Rationale answers the question: **Why was this architecture chosen?**
 
@@ -177,7 +203,7 @@ These systems look the same in a class diagram, but they should be *evolved diff
 
 Without rationale, a maintainer looking at either system sees only the structure and might make changes that violate the original design intent --- contributing to architectural erosion.
 
-### 2.3.2 The Documentation Problem
+### The Documentation Problem
 
 In practice, design rationale is rarely documented and even more rarely traced from architecture decisions to code [@perry1992foundations; @garlan1995editorial]. This creates a persistent problem:
 
@@ -188,7 +214,7 @@ In practice, design rationale is rarely documented and even more rarely traced f
 
 This documentation gap is part of what makes automated tactic implementation so valuable: if the tactic catalog explicitly encodes design rationale (e.g., "Use an Intermediary *because* direct coupling between modules increases change propagation cost"), then the LLM pipeline preserves and propagates that rationale through the code changes it generates.
 
-### 2.3.3 Connecting Rationale to Tactics
+### Connecting Rationale to Tactics
 
 Architectural tactics are, in essence, the **operational expression of rationale**. When a quality attribute requirement states "the system must accommodate new data sources without modifying existing processing modules," the rationale for choosing the "Generalize Module" tactic is directly embedded in that requirement. The relationship is:
 
@@ -202,9 +228,9 @@ Perry and Wolf's model tells us that the *rationale* motivates the *form* (prope
 
 ---
 
-## 2.4 From Styles to Tactics
+## From Styles to Tactics
 
-### 2.4.1 The Granularity Gap
+### The Granularity Gap
 
 Architectural styles provide the *big picture*: the overall structural organization of a system. But styles alone do not prescribe how to handle specific quality attribute requirements. Knowing that a system uses a layered architecture does not tell you:
 
@@ -214,7 +240,21 @@ Architectural styles provide the *big picture*: the overall structural organizat
 
 These are finer-grained design decisions that operate *within* a chosen style. They are **architectural tactics** --- a concept introduced and systematically cataloged by Bass, Clements, and Kazman [@bass2021software].
 
-### 2.4.2 Quality Attribute Scenarios
+### Quality Attribute Scenarios
+
+The following diagram shows how quality attribute scenarios connect styles, tactics, and code:
+
+```mermaid
+flowchart LR
+    S[Stimulus] --> T{Architectural Tactic}
+    T --> R[Response]
+    R --> M[Response Measure]
+
+    style S fill:#f9f,stroke:#333
+    style T fill:#bbf,stroke:#333
+    style R fill:#bfb,stroke:#333
+    style M fill:#fdb,stroke:#333
+```
 
 Bass et al. define a formal structure for reasoning about quality requirements called a **quality attribute scenario** [@bass2021software]. Each scenario has six parts:
 
@@ -231,7 +271,7 @@ A modifiability scenario might read: "A developer (source) wants to add a new pa
 
 This scenario *motivates* the selection of specific tactics. To confine the change to one module, we might apply "Use Encapsulation" (hide the payment provider behind a stable interface) and "Generalize Module" (make the payment module parameterized by provider). To avoid regressions, we might apply "Maintain Existing Interface" (ensure the new provider conforms to the existing contract).
 
-### 2.4.3 Bridging to the Next Chapter
+### Bridging to the Next Chapter
 
 Quality attribute scenarios are the bridge between architectural styles (Chapter 2) and architectural tactics (Chapter 4). Styles determine the overall playing field; scenarios define the specific quality goals; and tactics are the design moves that achieve those goals within the constraints of the chosen style.
 
