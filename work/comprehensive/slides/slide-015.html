@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>IBM Dublin Case Study [Rosik et al., 2011]</h1>
+<p>2-year longitudinal study of DAP 2.0 (28,500 LOC) using Reflexion Modelling</p>
+<div style="display:flex;gap:20pt;margin-top:12pt;">
+<div style="flex:1;">
+<div style="display:flex;gap:12pt;margin-bottom:12pt;">
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:14pt;text-align:center;">
+<p class="stat" style="font-size:36pt;">9</p>
+<p class="stat-label">Divergent edges detected</p>
+</div>
+<div style="flex:1;background:#E8573A;border-radius:6pt;padding:14pt;text-align:center;">
+<p class="stat" style="font-size:36pt;color:#FFFFFF;">0</p>
+<p style="font-size:11pt;color:#FFFFFF;margin:0;">Violations fixed</p>
+</div>
+</div>
+<h2 style="font-size:14pt;">Why Violations Persist</h2>
+<ul>
+<li><b>Risk aversion:</b> "Fixing minor issues might cause larger ones"</li>
+<li><b>Cost-benefit:</b> Minor violations perceived as not worth the effort</li>
+<li><b>Time pressure:</b> Architectural fixes never "in scope"</li>
+</ul>
+</div>
+<div style="flex:1;">
+<h2 style="font-size:14pt;">Hidden Violations</h2>
+<p>5 of 8 convergent edges contained hidden divergent relationships</p>
+<p>Worst case: 1 edge masked <span style="color:#E8573A;font-weight:bold;">41 of 44</span> inconsistent relationships</p>
+<div style="background:#1B2A4A;border-radius:6pt;padding:12pt;margin-top:10pt;">
+<p class="quote" style="color:#F4F6F9;">"If performance can be gained by breaking an architectural design, then this can sometimes be acceptable... time pressure is probably the main factor."</p>
+<p style="font-size:9pt;color:#8899AA;margin:0;">— IBM developer</p>
+</div>
+<div style="background:#27AE60;border-radius:6pt;padding:10pt;margin-top:10pt;">
+<p style="font-size:11pt;color:#FFFFFF;margin:0;"><b>Key insight:</b> Continuous monitoring needed, not batch detection</p>
+</div>
+</div>
+</div>
+</div></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>The Code-Level vs. Architecture-Level Gap</h1>
+<p><b>No existing work uses LLMs to implement architectural tactics.</b></p>
+<div style="display:flex;gap:16pt;margin-top:10pt;">
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:12pt;">
+<h3 style="font-size:12pt;color:#2E86AB;">Code-Level (Current)</h3>
+<ul style="font-size:10pt;">
+<li><b>Scope:</b> Single method or class</li>
+<li><b>Context:</b> Local (&lt;300 LOC)</li>
+<li><b>Examples:</b> Extract Method, Rename</li>
+<li><b>Files touched:</b> 1 (96.3%)</li>
+<li><b>Design judgment:</b> Minimal</li>
+<li><b>Best success:</b> 82.8% (MANTRA)</li>
+</ul>
+</div>
+<div style="flex:1;background:#E8573A;border-radius:6pt;padding:12pt;">
+<h3 style="font-size:12pt;color:#FFFFFF;">Architecture-Level (Thesis Gap)</h3>
+<ul style="font-size:10pt;color:#FFFFFF;">
+<li><b>Scope:</b> Multiple modules/packages</li>
+<li><b>Context:</b> System-wide (project structure)</li>
+<li><b>Examples:</b> Split Module, Use Intermediary</li>
+<li><b>Files touched:</b> 5-15+</li>
+<li><b>Design judgment:</b> Substantial</li>
+<li><b>Best success:</b> Unknown — no data</li>
+</ul>
+</div>
+</div>
+<div style="display:flex;gap:16pt;margin-top:10pt;">
+<div style="flex:1;background:#1B2A4A;border-radius:6pt;padding:10pt;">
+<p style="font-size:10pt;color:#F4F6F9;margin:0;"><b>Why the gap:</b> Context window limits, no architecture-aware tools, training data bias (most commits are code-level)</p>
+</div>
+<div style="flex:1;background:#1B2A4A;border-radius:6pt;padding:10pt;">
+<p style="font-size:10pt;color:#F4F6F9;margin:0;"><b>The opportunity:</b> Patterns from MANTRA + SonarQube pipeline can be extended from code-level to architecture-level</p>
+</div>
+</div>
+</div></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:30pt 40pt;">
+<h1>The Knowledge Barrier</h1>
+<div style="display:flex;gap:20pt;">
+<div style="flex:1;">
+<h2 style="font-size:14pt;">Tactics Require Deep Knowledge</h2>
+<ul>
+<li>Architectural tactics are easy to state but hard to implement in real codebases</li>
+<li>Require <b>inter-procedural changes</b> spanning multiple classes and packages</li>
+<li>ChatGPT: 95% syntax-correct but only <span style="color:#E8573A;font-weight:bold;">5% semantically correct</span> on tactic synthesis [Shokri et al., 2024]</li>
+</ul>
+<h2 style="font-size:14pt;margin-top:10pt;">Detection ≠ Remediation</h2>
+<ul>
+<li>Rosik et al. (IBM): <span style="color:#E8573A;font-weight:bold;">0 of 9</span> detected violations were fixed by developers</li>
+<li>Barriers: risk of ripple effects, time pressure, legacy entanglement</li>
+<li>Developers <b>knew</b> about problems but chose not to fix them</li>
+</ul>
+</div>
+<div style="flex:1;">
+<div style="background:#FFFFFF;border-radius:6pt;padding:14pt;margin-bottom:10pt;">
+<h3 style="font-size:12pt;color:#2E86AB;">The Vicious Cycle</h3>
+<p style="font-size:11pt;">Technical debt causes erosion → erosion generates more debt → architecture degrades further</p>
+<p style="font-size:9pt;color:#8899AA;margin:0;">[Li et al., 2021]</p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:14pt;">
+<h3 style="font-size:12pt;color:#27AE60;">The Promise</h3>
+<p style="font-size:11pt;">LLMs can bridge the gap if placed in a <b>structured pipeline</b> with external verification</p>
+<p style="font-size:11pt;">MANTRA: <span style="color:#27AE60;font-weight:bold;">82.8%</span> success rate with multi-agent pipeline vs 8.7% standalone</p>
+</div>
+</div>
+</div>
+</div></body></html>

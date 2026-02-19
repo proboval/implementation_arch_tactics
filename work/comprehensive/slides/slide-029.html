@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:28pt 40pt;">
+<h1>The Transformation Gap</h1>
+<p>Two mature research streams exist in <b>almost complete isolation</b></p>
+<div style="display:flex;gap:12pt;margin-top:10pt;">
+<div style="flex:1;background:#2E86AB;border-radius:6pt;padding:12pt;">
+<h3 style="font-size:13pt;color:#FFFFFF;">Stream 1: Tactic Detection</h3>
+<ul style="font-size:10pt;color:#FFFFFF;">
+<li>Marquez: 91 studies surveyed</li>
+<li>ArchTacRV: ML-based detection</li>
+<li>IPSynth: 85% via program synthesis</li>
+<li>Bi et al.: 4,195 SO posts mined</li>
+</ul>
+</div>
+<div style="flex:0 0 60pt;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<div style="background:#E8573A;border-radius:6pt;padding:8pt;text-align:center;">
+<p style="font-size:10pt;color:#FFFFFF;font-weight:bold;margin:0;">GAP</p>
+</div>
+</div>
+<div style="flex:1;background:#1B2A4A;border-radius:6pt;padding:12pt;">
+<h3 style="font-size:13pt;color:#FFFFFF;">Stream 2: LLM Refactoring</h3>
+<ul style="font-size:10pt;color:#F4F6F9;">
+<li>MANTRA: 82.8% success</li>
+<li>Liu et al.: 86.7% recall</li>
+<li>Piao et al.: 61 types tested</li>
+<li>Horikawa: 15,451 instances</li>
+</ul>
+</div>
+</div>
+<div style="background:#27AE60;border-radius:6pt;padding:12pt;margin-top:12pt;">
+<p style="font-size:13pt;color:#FFFFFF;margin:0;text-align:center;"><b>Thesis Contribution:</b> Tactic Detection → <b>LLM Tactic Implementation</b> → Quality Measurement</p>
+</div>
+<div style="display:flex;gap:12pt;margin-top:8pt;">
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:8pt;">
+<p style="font-size:9pt;margin:0;">IPSynth: 85% success but uses SMT solver, not LLMs. ChatGPT: only 5%</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:8pt;">
+<p style="font-size:9pt;margin:0;">MANTRA: 82.8% but method-level only. No architecture-level data exists.</p>
+</div>
+<div style="flex:1;background:#FFFFFF;border-radius:6pt;padding:8pt;">
+<p style="font-size:9pt;margin:0;">71% of tactic studies don't describe identification method [Marquez, 2022]</p>
+</div>
+</div>
+</div></body></html>

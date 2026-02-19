@@ -1,0 +1,34 @@
+---
+title: "Automated Implementation of Architectural Tactics for Software Quality Improvement"
+subtitle: "A Comprehensive Study Guide"
+author: "Innopolis University — MS Study Notes, 2026"
+date: "February 2026"
+documentclass: report
+classoption:
+  - 12pt
+  - a4paper
+geometry: margin=2.5cm
+mainfont: "Latin Modern Roman"
+monofont: "Latin Modern Mono"
+toc: true
+toc-depth: 3
+numbersections: true
+bibliography: references.bib
+csl: ieee.csl
+link-citations: true
+colorlinks: true
+linkcolor: "blue"
+citecolor: "blue"
+urlcolor: "blue"
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{listings}
+  - \usepackage{xcolor}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{\leftmark}
+  - \fancyhead[R]{}
+  - \fancyfoot[C]{\thepage}
+  - \lstset{basicstyle=\ttfamily\small, breaklines=true, frame=single, backgroundcolor=\color{gray!10}}
+---

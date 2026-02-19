@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><style>
+html{background:#F4F6F9;}
+body{width:720pt;height:405pt;margin:0;padding:0;background:#F4F6F9;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+h1{font-size:28pt;color:#1B2A4A;margin:0 0 8pt 0;line-height:1.2;}
+h2{font-size:20pt;color:#2E86AB;margin:0 0 6pt 0;line-height:1.2;}
+h3{font-size:16pt;color:#1B2A4A;margin:0 0 4pt 0;}
+p{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;line-height:1.4;}
+ul,ol{font-size:12pt;color:#2C2C2C;margin:0 0 6pt 0;padding-left:18pt;line-height:1.5;}
+li{margin-bottom:3pt;}
+.stat{font-size:32pt;color:#E8573A;font-weight:bold;margin:0;}
+.stat-label{font-size:11pt;color:#8899AA;margin:0 0 4pt 0;}
+.accent{color:#2E86AB;font-weight:bold;}
+.highlight{color:#E8573A;font-weight:bold;}
+.quote{font-size:11pt;color:#1B2A4A;font-style:italic;margin:0 0 6pt 0;line-height:1.4;}
+</style></head><body>
+<div style="margin:24pt 40pt;">
+<h1 style="font-size:24pt;">What Is Software Architecture?</h1>
+<div style="display:flex;gap:16pt;">
+<div style="flex:1;">
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;margin-bottom:6pt;">
+<h3 style="font-size:12pt;color:#2E86AB;margin:0 0 2pt 0;">Perry &amp; Wolf (1992)</h3>
+<p style="font-size:11pt;margin:0;"><b>Architecture = Elements + Form + Rationale</b></p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;margin-bottom:6pt;">
+<h3 style="font-size:12pt;color:#2E86AB;margin:0 0 2pt 0;">Garlan &amp; Shaw (1993)</h3>
+<p style="font-size:11pt;margin:0;"><b>Components + Connectors + Configurations</b></p>
+</div>
+<div style="background:#FFFFFF;border-radius:6pt;padding:10pt;margin-bottom:6pt;">
+<h3 style="font-size:12pt;color:#2E86AB;margin:0 0 2pt 0;">Bass, Clements &amp; Kazman</h3>
+<p style="font-size:11pt;margin:0;"><b>Structures needed to reason about the system</b></p>
+</div>
+<div style="background:#1B2A4A;border-radius:6pt;padding:10pt;">
+<p style="font-size:10pt;color:#F4F6F9;margin:0;">Architecture captures intent, not just structure — rationale is a first-class citizen</p>
+</div>
+</div>
+<div style="flex:1;">
+<h2 style="font-size:14pt;">Key Architectural Styles</h2>
+<ul style="font-size:11pt;">
+<li><b>Pipes-and-Filters:</b> Data flows through stages</li>
+<li><b>Layered:</b> Hierarchical dependency rules</li>
+<li><b>Event-Driven:</b> Components via events</li>
+<li><b>Repository:</b> Shared data store</li>
+<li><b>Client-Server:</b> Requestors and providers</li>
+</ul>
+<p style="font-size:10pt;color:#8899AA;margin-top:6pt;">KWIC case study: same problem in 4 styles yields different modifiability trade-offs</p>
+</div>
+</div>
+</div></body></html>

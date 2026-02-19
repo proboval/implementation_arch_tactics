@@ -1,3 +1,12 @@
 .env
 .venv
 filters/agent_filters/architectural_tactics_complete_catalog_copy.csv
+
+# Skill virtual environments and data
+.claude/skills/*/.venv/
+.claude/skills/*/data/
+.claude/skills/pptx/scripts/node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]

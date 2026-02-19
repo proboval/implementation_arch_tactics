@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "paper_search_server": {
+      "type": "stdio",
+      "command": "C:\\Users\\asadovykh\\.local\\bin\\uv.exe",
+      "args": [
+        "run",
+        "--directory",
+        "C:\\_code\\paper-search-mcp",
+        "-m",
+        "paper_search_mcp.server"
+      ],
+      "env": {
+        "SEMANTIC_SCHOLAR_API_KEY": ""
+      }
+    }
+  }
+}
