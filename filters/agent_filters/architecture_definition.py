@@ -112,7 +112,8 @@ class ArchitectureDetectionAgent(Filter):
                 self.logger.info(f"Architecture detect for {repo.name}")
 
                 out_file.write_text(
-                    data
+                    data,
+                    encoding="utf-8"
                 )
             except Exception as e:
                 self.logger.error(f"Catch Exception: {e} on repo {repo.name}")

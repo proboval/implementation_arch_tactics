@@ -176,3 +176,67 @@ def safe_llm_json(response: str) -> str:
         ensure_ascii=False,
         indent=2,
     )
+
+import csv
+import json
+from pathlib import Path
+
+
+def add_maintainability_to_csv(
+    artifacts_dir: Path,
+    csv_file: Path,
+):
+    """
+    Adds mi_before and mi_after columns to csv_file
+    using static_analysis results.
+
+    artifacts_dir example:
+    artifacts_create_dataset/artifacts
+
+    csv_file example:
+    artifacts_create_dataset/improvement_maintainability_dataset_experiment_1.csv
+    """
+
+    before_dir = artifacts_dir / "static_analysis" / "BEFORE"
+    after_dir = artifacts_dir / "static_analysis" / "AFTER"
+
+    rows = []
+
+    with open(csv_file, newline="", encoding="utf-8") as f:
+
+        reader = csv.DictReader(f)
+
+        fieldnames = reader.fieldnames or []
+
+        if "mi_before" not in fieldnames:
+            fieldnames.append("mi_before")
+
+        if "mi_after" not in fieldnames:
+            fieldnames.append("mi_after")
+
+        for row in reader:
+            full_name = row["full_name"]
+            repo_name = full_name.split("/")[-1]
+            row["mi_before"] = read_mi(repo_name, before_dir)
+            row["mi_after"] = read_mi(repo_name, after_dir)
+
+            rows.append(row)
+
+    with open(csv_file, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print("Done. Maintainability added.")
+
+def read_mi(repo_name: str, base_dir: Path):
+    json_file = base_dir / repo_name / "code_maintainability.json"
+
+    if not json_file.exists():
+        return None
+    try:
+        with open(json_file, encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("mi_avg")
+    except Exception:
+        return None
