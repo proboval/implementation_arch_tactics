@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{12}
+\begin{thebibliography}{20}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,6 +36,19 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
+\bibitem[ISO(2023)]%
+        {ISO25010}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{{ISO/IEC 25010 --- Systems and software engineering:
+  Software product Quality Requirements and Evaluation (SQuaRE) --- Product
+  quality model}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://iso25000.com/en/iso-25000-standards/iso-25010}}.
+\newblock
+\newblock
+\shownote{[Online; accessed 2025-12-04]}.
+
+
 \bibitem[Bass et~al\mbox{.}(2021)]%
         {bass2021software}
 \bibfield{author}{\bibinfo{person}{Len Bass}, \bibinfo{person}{Paul Clements},
@@ -47,12 +60,46 @@
 \showISBNx{978-0136886099}
 
 
+\bibitem[Bogner et~al\mbox{.}(2019)]%
+        {bogner2019modifiability}
+\bibfield{author}{\bibinfo{person}{Justus Bogner}, \bibinfo{person}{Stefan
+  Wagner}, {and} \bibinfo{person}{Alfred Zimmermann}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Using architectural modifiability tactics to
+  examine evolution qualities of Service- and Microservice-Based Systems}.
+\newblock \bibinfo{journal}{\emph{Computer Science -- Research and
+  Development}}  \bibinfo{volume}{34} (\bibinfo{year}{2019}),
+  \bibinfo{pages}{187--237}.
+\newblock
+\href{https://doi.org/10.1007/s00450-019-00402-z}{doi:\nolinkurl{10.1007/s00450-019-00402-z}}
+
+
+\bibitem[Fowler(2018)]%
+        {fowler2018refactoring}
+\bibfield{author}{\bibinfo{person}{Martin Fowler}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Refactoring: Improving the Design of
+  Existing Code} (\bibinfo{edition}{2nd} ed.)}.
+\newblock \bibinfo{publisher}{Addison-Wesley}.
+\newblock
+\showISBNx{978-0134757599}
+
+
 \bibitem[Garlan and Shaw(1993)]%
         {garlan1993introduction}
 \bibfield{author}{\bibinfo{person}{David Garlan} {and} \bibinfo{person}{Mary
   Shaw}.} \bibinfo{year}{1993}\natexlab{}.
 \newblock \showarticletitle{An introduction to software architecture}.
 \newblock  \bibinfo{volume}{1}, \bibinfo{number}{3} (\bibinfo{year}{1993}).
+\newblock
+
+
+\bibitem[Halstead(1977)]%
+        {halstead1977elements}
+\bibfield{author}{\bibinfo{person}{Maurice~H. Halstead}.}
+  \bibinfo{year}{1977}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Elements of Software Science}}.
+\newblock \bibinfo{publisher}{Elsevier}.
 \newblock
 
 
@@ -67,6 +114,32 @@
   arXiv:2511.04824}}.
 \newblock
 \showeprint[arxiv]{2511.04824}
+
+
+\bibitem[Kim et~al\mbox{.}(2014)]%
+        {kim2014refactoring}
+\bibfield{author}{\bibinfo{person}{Miryung Kim}, \bibinfo{person}{Thomas
+  Zimmermann}, {and} \bibinfo{person}{Nachiappan Nagappan}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{An Empirical Study of Refactoring Challenges and
+  Benefits at {Microsoft}}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Transactions on Software Engineering}}
+  \bibinfo{volume}{40}, \bibinfo{number}{7} (\bibinfo{year}{2014}),
+  \bibinfo{pages}{633--649}.
+\newblock
+\href{https://doi.org/10.1109/TSE.2014.2318734}{doi:\nolinkurl{10.1109/TSE.2014.2318734}}
+
+
+\bibitem[Kim et~al\mbox{.}(2009)]%
+        {kim2009qualitydriven}
+\bibfield{author}{\bibinfo{person}{Suntae Kim}, \bibinfo{person}{Dae-Kyoo Kim},
+  \bibinfo{person}{Lunjin Lu}, {and} \bibinfo{person}{Sooyong Park}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Quality-driven architecture development using
+  architectural tactics}.
+\newblock  \bibinfo{volume}{82}, \bibinfo{number}{8} (\bibinfo{year}{2009}),
+  \bibinfo{pages}{1211--1231}.
+\newblock
 
 
 \bibitem[Lenarduzzi et~al\mbox{.}(2023)]%
@@ -120,6 +193,28 @@
   (\bibinfo{year}{2025}), \bibinfo{pages}{112762}.
 \newblock
 \href{https://doi.org/10.1016/j.jss.2025.112762}{doi:\nolinkurl{10.1016/j.jss.2025.112762}}
+
+
+\bibitem[McCabe(1976)]%
+        {mccabe1976complexity}
+\bibfield{author}{\bibinfo{person}{Thomas~J. McCabe}.}
+  \bibinfo{year}{1976}\natexlab{}.
+\newblock \showarticletitle{A Complexity Measure}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Transactions on Software Engineering}}
+  \bibinfo{volume}{SE-2}, \bibinfo{number}{4} (\bibinfo{year}{1976}),
+  \bibinfo{pages}{308--320}.
+\newblock
+\href{https://doi.org/10.1109/TSE.1976.233837}{doi:\nolinkurl{10.1109/TSE.1976.233837}}
+
+
+\bibitem[Oman and Hagemeister(1992)]%
+        {oman1992maintainability}
+\bibfield{author}{\bibinfo{person}{Paul Oman} {and} \bibinfo{person}{Jack
+  Hagemeister}.} \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Metrics for assessing a software system's
+  maintainability}. In \bibinfo{booktitle}{\emph{Conference on Software
+  Maintenance}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{337--344}.
+\newblock
 
 
 \bibitem[Perry and Wolf(1992)]%
