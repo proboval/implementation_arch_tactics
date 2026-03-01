@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package (packages: 1) with no explicit service boundaries or network communication patterns",
+    "All core functionality resides in the mkdoxy/ directory as a cohesive Python module",
+    "Clear separation of concerns with dedicated modules: parser (xml_parser, doxygen), generation (generator*, templates), caching (cache), utilities (utils), and plugin integration (plugin)",
+    "Low average fan-out (2.375) suggests tight internal cohesion and limited cross-module dependencies",
+    "No evidence of external service interactions, message queues, or API gateways",
+    "Plugins and generators interact via direct function calls and shared data structures (Node, ProjectContext, Cache)",
+    "Templating system uses Jinja2 (template-driven) and is tightly integrated with core generation logic",
+    "Directory depth of 2 reflects hierarchical module grouping without over-engineering"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling between generation modules could hinder future modularity or testing",
+    "Monolithic structure may become unwieldy as feature set grows",
+    "No clear separation between domain logic and presentation layers beyond module names"
+  ]
+}

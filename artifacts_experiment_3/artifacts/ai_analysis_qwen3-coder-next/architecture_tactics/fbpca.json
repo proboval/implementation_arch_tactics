@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a script-based monolith where core PCA functionality, unit tests, and supporting functions reside in a single file (fbpca.py), with no modularity. Static analysis confirms 'packages: 0' and 'factors: [C1, C2, A3]' indicating poor modularity, low testability, and limited analyzability. Tests are embedded inline as nested unittest classes inside the same file, tightly coupling test code with implementation and preventing independent test execution or module-level isolation. This structure severely limits maintainability: changes risk breaking both logic and tests simultaneously, and the file will grow unmanageable as features expand. Decomposability directly addresses this by structuring the code into separate, cohesive modules — separating concerns (e.g., core algorithms, low-level routines, test suite) to isolate changes and simplify analysis.",
+  "target_components": [
+    "fbpca.py",
+    "fbpca/tests.py"
+  ],
+  "expected_architectural_change": "The flat single-file structure will be replaced by a modular package: a top-level fbpca/ directory with submodules (e.g., algorithms/, utils/, low_level/), and tests moved to a dedicated tests/ package (or fbpca/tests.py) with clear module boundaries. fbpca.py will become a minimal entry point or be replaced by an __init__.py exposing clean public APIs. Core functions (eigenn, eigens, pca, diffsnorm, etc.) will be grouped into logical modules based on responsibility (e.g., eigen_decompositions.py, svd_computations.py).",
+  "implementation_strategy": "1. Create fbpca/ package directory. 2. Extract core logic into cohesive modules (e.g., move eigen routines to fbpca/eigen.py, PCA core to fbpca/pca.py). 3. Move unittest classes into tests/ (e.g., tests/test_eigen.py). 4. Use import statements in fbpca/__init__.py to maintain backward compatibility for callers. 5. Ensure each submodule has well-defined inputs/outputs and minimal internal dependencies. 6. Keep tests independent of implementation details via stable public interfaces. This enables incremental adoption — start by extracting one or two modules while preserving original fbpca.py for compatibility, then phase it out.",
+  "risks": "Initial refactoring may temporarily increase coupling if extraction is too coarse; test modules must be carefully synchronized with implementation to avoid silent test failures. Risk is mitigated by keeping extraction granular and verifying behavior via unit tests after each step. Minimal risk due to incremental nature and lack of external dependencies on internal structure."
+}

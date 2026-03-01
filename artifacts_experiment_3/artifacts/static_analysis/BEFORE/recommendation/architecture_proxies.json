@@ -1,0 +1,48 @@
+{
+  "python_files": 10,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "manage.py": [
+      "sys",
+      "workflow",
+      "preprocess"
+    ],
+    "preprocess.py": [
+      "pandas"
+    ],
+    "model\\cf.py": [
+      "pandas",
+      "math"
+    ],
+    "model\\lfm.py": [
+      "math",
+      "random",
+      "pandas",
+      "pickle",
+      "numpy"
+    ],
+    "model\\prank.py": [
+      "pandas",
+      "pickle"
+    ],
+    "model\\__init__.py": [],
+    "workflow\\cf_workflow.py": [
+      "os",
+      "time",
+      "model"
+    ],
+    "workflow\\lfm_workflow.py": [
+      "os",
+      "time",
+      "model"
+    ],
+    "workflow\\prank_workflow.py": [
+      "os",
+      "time",
+      "model"
+    ],
+    "workflow\\__init__.py": []
+  }
+}

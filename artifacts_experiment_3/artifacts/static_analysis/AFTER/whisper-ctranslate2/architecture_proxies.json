@@ -1,0 +1,99 @@
+{
+  "python_files": 16,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 16.0,
+  "imports_graph": {
+    "setup.py": [
+      "pathlib",
+      "setuptools"
+    ],
+    "e2e-tests\\testcmd.py": [
+      "json",
+      "unittest",
+      "tempfile",
+      "shutil",
+      "os"
+    ],
+    "tests\\testdiarization.py": [
+      "unittest",
+      "whisper_ctranslate2"
+    ],
+    "tests\\testlive.py": [
+      "unittest",
+      "whisper_ctranslate2"
+    ],
+    "tests\\testwriters.py": [
+      "json",
+      "unittest",
+      "tempfile",
+      "faster_whisper",
+      "os",
+      "whisper_ctranslate2"
+    ],
+    "src\\whisper_ctranslate2\\commandline.py": [
+      "argparse",
+      "languages",
+      "version"
+    ],
+    "src\\whisper_ctranslate2\\commands.py": [
+      "languages",
+      "diarization",
+      "typing",
+      "writers",
+      "commandline",
+      "transcribe",
+      "live"
+    ],
+    "src\\whisper_ctranslate2\\diarization.py": [
+      "numpy",
+      "torch",
+      "pyannote",
+      "faster_whisper",
+      "collections"
+    ],
+    "src\\whisper_ctranslate2\\exit_code.py": [
+      "enum"
+    ],
+    "src\\whisper_ctranslate2\\languages.py": [],
+    "src\\whisper_ctranslate2\\live.py": [
+      "numpy",
+      "sounddevice",
+      "transcribe",
+      "typing"
+    ],
+    "src\\whisper_ctranslate2\\transcribe.py": [
+      "languages",
+      "sys",
+      "numpy",
+      "tqdm",
+      "typing",
+      "faster_whisper",
+      "writers"
+    ],
+    "src\\whisper_ctranslate2\\version.py": [],
+    "src\\whisper_ctranslate2\\whisper_ctranslate2.py": [
+      "traceback",
+      "exit_code",
+      "languages",
+      "warnings",
+      "sys",
+      "numpy",
+      "typing",
+      "datetime",
+      "writers",
+      "commandline",
+      "commands",
+      "os",
+      "transcribe",
+      "live"
+    ],
+    "src\\whisper_ctranslate2\\writers.py": [
+      "json",
+      "os",
+      "re",
+      "typing"
+    ],
+    "src\\whisper_ctranslate2\\__init__.py": []
+  }
+}

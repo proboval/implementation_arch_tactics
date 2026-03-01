@@ -1,0 +1,176 @@
+{
+  "python_files": 18,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 18.0,
+  "imports_graph": {
+    "build.py": [
+      "subprocess",
+      "sys",
+      "__future__",
+      "argparse",
+      "pathlib",
+      "shutil",
+      "os",
+      "platform",
+      "PIL",
+      "plistlib"
+    ],
+    "chatmock.py": [
+      "__future__",
+      "chatmock"
+    ],
+    "gui.py": [
+      "webbrowser",
+      "sys",
+      "__future__",
+      "argparse",
+      "chatmock",
+      "multiprocessing",
+      "PySide6",
+      "os"
+    ],
+    "chatmock\\app.py": [
+      "__future__",
+      "http",
+      "routes_openai",
+      "flask",
+      "config",
+      "routes_ollama"
+    ],
+    "chatmock\\cli.py": [
+      "webbrowser",
+      "oauth",
+      "utils",
+      "threading",
+      "sys",
+      "__future__",
+      "argparse",
+      "json",
+      "datetime",
+      "config",
+      "limits",
+      "os",
+      "urllib",
+      "app",
+      "errno"
+    ],
+    "chatmock\\config.py": [
+      "pathlib",
+      "os",
+      "__future__",
+      "sys"
+    ],
+    "chatmock\\http.py": [
+      "flask",
+      "__future__"
+    ],
+    "chatmock\\limits.py": [
+      "dataclasses",
+      "utils",
+      "__future__",
+      "typing",
+      "json",
+      "datetime",
+      "os"
+    ],
+    "chatmock\\models.py": [
+      "dataclasses",
+      "__future__",
+      "typing"
+    ],
+    "chatmock\\oauth.py": [
+      "certifi",
+      "utils",
+      "__future__",
+      "http",
+      "models",
+      "typing",
+      "datetime",
+      "json",
+      "urllib",
+      "config",
+      "time",
+      "threading",
+      "secrets",
+      "ssl"
+    ],
+    "chatmock\\reasoning.py": [
+      "__future__",
+      "typing"
+    ],
+    "chatmock\\routes_ollama.py": [
+      "transform",
+      "utils",
+      "__future__",
+      "http",
+      "upstream",
+      "typing",
+      "json",
+      "datetime",
+      "flask",
+      "reasoning",
+      "config",
+      "time",
+      "limits"
+    ],
+    "chatmock\\routes_openai.py": [
+      "utils",
+      "__future__",
+      "http",
+      "upstream",
+      "typing",
+      "json",
+      "flask",
+      "reasoning",
+      "config",
+      "time",
+      "limits"
+    ],
+    "chatmock\\session.py": [
+      "hashlib",
+      "__future__",
+      "typing",
+      "json",
+      "threading",
+      "uuid"
+    ],
+    "chatmock\\transform.py": [
+      "json",
+      "__future__",
+      "typing"
+    ],
+    "chatmock\\upstream.py": [
+      "utils",
+      "__future__",
+      "http",
+      "typing",
+      "json",
+      "requests",
+      "flask",
+      "session",
+      "config",
+      "time"
+    ],
+    "chatmock\\utils.py": [
+      "sys",
+      "hashlib",
+      "__future__",
+      "models",
+      "typing",
+      "datetime",
+      "json",
+      "base64",
+      "requests",
+      "config",
+      "os",
+      "secrets",
+      "urllib"
+    ],
+    "chatmock\\__init__.py": [
+      "app",
+      "__future__",
+      "cli"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single application entry point (bot.py) with explicit imports from modules (config, pyrogram), indicating a unified runtime",
+    "Clear separation into logical modules: database, helper_funcs, plugins, config, translation — each encapsulating cohesive responsibilities",
+    "No external service boundaries or inter-process communication (no network calls between modules, no REST/gRPC usage in code)",
+    "Shared dependencies (e.g., database modules used directly via import, translation shared across plugins)",
+    "All code in single repository with flat top-level structure and ≤2 directory depth, typical of maintainable monoliths",
+    "Fan-out of 6.4 suggests high interdependency but not tight coupling; consistent with modular monolith where modules depend on shared utilities/services",
+    "Use of global config class (Config) and shared translation suggests centralized configuration and localization within one process"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between plugins and core infrastructure (e.g., direct imports of database modules in plugins) may reduce testability and modularity over time",
+    "Lack of explicit layers (e.g., service/domain layer abstraction) could blur separation of concerns between business logic and I/O",
+    "High fan-out suggests dependencies may become circular or hard to manage as project grows without explicit dependency rules"
+  ]
+}

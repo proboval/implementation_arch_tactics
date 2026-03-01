@@ -1,0 +1,47 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "ray_marcher_demo.py": [
+      "random",
+      "ctypes",
+      "pygame",
+      "math",
+      "sys",
+      "OpenGL",
+      "numpy",
+      "os",
+      "pyspace"
+    ],
+    "pyspace\\camera.py": [],
+    "pyspace\\coloring.py": [
+      "util",
+      "numpy"
+    ],
+    "pyspace\\fold.py": [
+      "util",
+      "numpy",
+      "math"
+    ],
+    "pyspace\\geo.py": [
+      "util",
+      "numpy",
+      "math"
+    ],
+    "pyspace\\object.py": [
+      "util",
+      "numpy"
+    ],
+    "pyspace\\shader.py": [
+      "OpenGL",
+      "ctypes",
+      "os",
+      "util"
+    ],
+    "pyspace\\util.py": [
+      "numpy"
+    ]
+  }
+}

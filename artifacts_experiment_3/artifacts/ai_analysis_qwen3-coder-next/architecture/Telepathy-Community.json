@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.85,
+  "evidence": [
+    "No packages defined (packages: 0) despite having nested directories, indicating lack of formal module boundaries",
+    "Low average fan-out (2.2) suggests limited cross-module dependencies typical of small monolithic scripts",
+    "Flat structure with only 4 directory depth and single top-level 'telepathy' module suggests procedural organization rather than layered or modular architecture",
+    "All utility functions in utils.py are stateless helpers without clear interfaces or layers",
+    "Presence of main CLI class (Telepathy_cli) and analysis class (Group_Chat_Analisys) in a single module suggests procedural scripting with minimal abstraction",
+    "Test file imports directly from src.telepathy.telepathy, indicating tight coupling and no formal dependency inversion",
+    "No ports/adapters, no clear domain/core separation, no service boundaries"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Poor testability due to lack of decoupled layers or interfaces",
+    "Tight coupling between I/O, business logic, and presentation (CLI) in single modules",
+    "Difficulty scaling or maintaining as features grow without architecture refactoring",
+    "Low reusability of core functionality due to absence of module boundaries"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Project uses Django framework with distinct apps (cmdb, system, monitor, oauth, work, information) under drf_admin/apps/, indicating logical separation of domain concerns",
+    "Each app follows Django conventions (models, views, serializers, urls, admin, migrations, signals), supporting cohesive modular organization",
+    "No inter-process communication mechanisms (e.g., message queues between services, REST/gRPC endpoints between separate processes) — all modules reside in the same codebase and deploy as one unit",
+    "Shared infrastructure (Redis, Celery) is used for cross-cutting concerns (caching, background tasks), not inter-service communication",
+    "Centralized routing via drf_admin/urls.py, with each app mounting its own URLs",
+    "Shared utilities, permissions, and models across apps (e.g., drf_admin/common/, utils/), indicating high cohesion within the monolith and low coupling to external services",
+    "No evidence of process boundaries or service discovery; all services are part of one Django project root"
+  ],
+  "alternatives": [
+    "microservices_like",
+    "layered"
+  ],
+  "risks": [
+    "Monolithic scaling limitations — difficulty scaling individual components independently",
+    "Risk of tight coupling over time if module boundaries are not enforced (e.g., cross-app model imports)",
+    "Deployment complexity increases as project grows — full rebuild/deploy needed for any change",
+    "Shared state (e.g., Redis, DB) across modules may lead to contention or unintended dependencies"
+  ]
+}

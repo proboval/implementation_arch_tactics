@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package structure with clear separation of concerns (cli.py, diff.py, tests/)",
+    "Modules (cli, diff) are logically grouped but not heavily decoupled (no ports/adapters patterns visible)",
+    "No indication of process boundaries or network communication (rules out microservices_like)",
+    "No explicit layering (e.g., no presentation/business/data layers)",
+    "Contains test modules co-located with production code — common in modular monoliths",
+    "Low fan-out (2.29) suggests limited inter-module dependencies",
+    "Scripts directory is small and tooling-focused (not part of core domain logic)"
+  ],
+  "alternatives": [
+    "script_based",
+    "unclear"
+  ],
+  "risks": [
+    "Low code maintainability metrics (mi_avg=0) may indicate hard-to-maintain procedural code despite modularity",
+    "Few packages (1) suggest limited abstraction — possible future monolithic decay risk",
+    "Tight coupling between cli and diff modules cannot be confirmed but plausible given small size"
+  ]
+}

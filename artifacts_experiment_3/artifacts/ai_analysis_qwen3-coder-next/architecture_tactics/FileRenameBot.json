@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling (avg fan-out 6.2, cross-module imports like plugins importing directly from database.* and helper_funcs.*, duplicated database access via both database.py and db.py, and tight interdependence across plugins, database, helpers, and translation modules). This makes modules hard to test, refactor, or reuse in isolation. Reduced coupling directly addresses this by enforcing loose dependencies via abstractions (e.g., interfaces/services), thereby minimizing ripple effects and enabling incremental, focused changes — exactly matching the modular monolith structure where modules like plugins/, database/, and helper_funcs/ currently share implementation details instead of stable contracts.",
+  "target_components": [
+    "plugins/custom_thumbnail.py",
+    "plugins/help_text.py",
+    "plugins/rename_file.py",
+    "plugins/video_converter.py",
+    "database/database.py",
+    "database/db.py",
+    "helper_funcs/display_progress.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers: (1) a unified database service layer to replace direct imports from database.* modules; (2) a dedicated helper service interface (e.g., ProgressService, FfmpegService) instead of plugins importing implementation modules directly; (3) decouple translation from business logic via a well-defined contract. This reduces direct module-to-module dependencies and replaces them with dependency injection or well-defined interfaces.",
+  "implementation_strategy": "Refactor database access by introducing a DatabaseRepository class with interface (e.g., AbstractDatabaseRepository) and concrete implementations; create a Services module (e.g., services/progress.py) that wraps display_progress.py and ffmpeg helpers; update plugins to depend only on the abstractions (not concrete modules) — e.g., via dependency injection or factory patterns. Start with plugins/help_text.py and plugins/rename_file.py as they have the highest fan-out, then extend to others. No architectural overhaul required; can be done incrementally per module.",
+  "risks": "Initial risk is refactoring time and potential temporary test breakage during migration. However, risks are mitigated by incremental approach: introduce abstract layer first, add tests for layer, then replace callers one by one. No risk of architectural infeasibility — tactic fits monolith structure and does not require removing or restructuring existing modules."
+}

@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "websocket_server/websocket_server.py",
+  "content": "# Author: Johan Hanssen Seferidis\n# License: MIT\n\nimport sys\nimport struct\nimport ssl\nfrom base64 import b64encode\nfrom hashlib import sha1\nimport logging\nfrom socket import error as SocketError\nimport errno\nimport threading\nfrom socketserver import ThreadingMixIn, TCPServer, StreamRequestHandler\n\nfrom websocket_server.thread import WebsocketServerThread\nfrom websocket_server.abstractions import (\n    BaseClientManager,\n    BaseMessageHandler,\n    BaseHandshakeHandler,\n    BaseFrameReader,\n    BaseFrameWriter\n)\n\nlogger = logging.getLogger(__name__)\nlogging.basicConfig()\n"
+}

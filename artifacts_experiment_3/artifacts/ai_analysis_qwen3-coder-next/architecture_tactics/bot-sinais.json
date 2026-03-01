@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a script-based monolith (single main.py, 0 packages, depth=1) with no separation of concerns—configuration, trading logic, Telegram integration, and metrics calculation are intermingled. Static analysis confirms high fan-out (9.0), zero modularity, and no module boundaries, directly causing poor testability, high coupling, and high maintenance cost. Decomposability directly addresses this by dividing the system into logical modules (e.g., config, signals, trading engine, telegram, metrics), enabling isolation of concerns, reducing ripple effects, and improving testability. Unlike abstraction or inversion tactics, this works directly on the *current* file structure (main.py) without requiring heavy refactoring frameworks, and can be implemented incrementally via module extraction.",
+  "target_components": [
+    "main.py"
+  ],
+  "expected_architectural_change": "The monolithic main.py will be decomposed into a directory-based package structure (e.g., bot_sinais/), with modules such as config.py, signals.py, engine.py, telegram_client.py, and metrics.py. Functions currently defined as stubs (e.g., MartingaleNone, PayoutNone) will be replaced with concrete implementations in appropriate modules, and dependencies will be passed explicitly (e.g., via constructor or function arguments) instead of relying on implicit global-like behavior.",
+  "implementation_strategy": "1. Create a bot_sinais/ package directory. 2. Extract logical groupings from main.py into separate modules: e.g., move all configuration-related code into config.py, signal parsing into signals.py, entry submission into engine.py, Telegram logic into telegram_client.py, and metrics into metrics.py. 3. Replace stub functions (e.g., MartingaleNone → Martingale in engine.py) with functional implementations, importing dependencies from other modules rather than sharing global state. 4. Introduce a minimal main.py (or entrypoint.py) that wires modules together via composition (e.g., passing configuration to engine, engine to signal handler, etc.). 5. Begin adding tests per module. This can be done iteratively, module by module, without rewrites.",
+  "risks": "Initial breakdown may introduce temporary tight coupling within modules if not carefully designed (e.g., cyclic imports), and onboarding may temporarily slow during the transition until structure is stabilized. However, risks are mitigated by incremental extraction—each module can be validated in isolation before full integration."
+}

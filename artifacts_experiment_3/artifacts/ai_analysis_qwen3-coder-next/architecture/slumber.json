@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 high-level packages (slumber and tests), indicating a single deployment unit",
+    "Clear internal dependencies among modules (e.g., slumber/__init__.py imports from serialize and utils; serialize imports from exceptions)",
+    "No explicit communication patterns (e.g., no message queues, REST service calls between modules), all imports are local",
+    "Directory structure follows standard Python project layout with slumber/ as main module, tests/ for unit tests, docs/ for documentation — typical of a modular monolith",
+    "Central API and Resource classes in slumber/__init__.py suggest cohesive domain modeling within one codebase",
+    "No evidence of separate processes, containers, or network boundaries"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Lack of test coverage (mi_avg/min=0) may indicate maintainability debt if architecture evolves",
+    "Low package count (2) may limit scalability of team parallelization over time",
+    "Tight internal coupling possible due to mutual imports (e.g., serialize imports from exceptions) — may hinder future modularity refactoring"
+  ]
+}

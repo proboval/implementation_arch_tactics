@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Small, flat package structure (3 top-level packages: http_prompt, tests, docs) with no service boundaries",
+    "High intra-package coupling visible in cross-module imports (e.g., execution.py imports from context, output, utils; completer.py imports from completion)",
+    "Shared context object (http_prompt.context.Context) used across modules (cli, execution, completer, etc.)",
+    "All functionality resides in a single deployable unit (one Python package 'http_prompt') with no external process communication",
+    "Clear vertical modularity by concern (cli, execution, context, completion, lexer, tree, etc.) rather than technical layers",
+    "Testing follows standard Python unittest/pytest conventions with test modules mirroring source modules",
+    "No explicit ports/adapters or ingress/egress mechanisms (e.g., no abstract interfaces for HTTP clients, filesystems, etc.)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Potential for tight coupling as modules evolve without strict boundaries",
+    "Limited scalability for distributed features without refactoring",
+    "Difficult to adopt independent release cycles for components"
+  ]
+}

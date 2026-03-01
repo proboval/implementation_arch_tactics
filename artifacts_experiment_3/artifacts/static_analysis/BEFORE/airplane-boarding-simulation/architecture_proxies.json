@@ -1,0 +1,42 @@
+{
+  "python_files": 6,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "agent.py": [
+      "stable_baselines3",
+      "sb3_contrib",
+      "gymnasium",
+      "os",
+      "airplane_boarding"
+    ],
+    "airplane_boarding.py": [
+      "enum",
+      "boarding_strategies",
+      "gymnasium",
+      "pygame",
+      "argparse",
+      "numpy"
+    ],
+    "boarding_strategies.py": [
+      "gymnasium",
+      "numpy"
+    ],
+    "main.py": [
+      "gymnasium",
+      "enum",
+      "numpy"
+    ],
+    "new.py": [
+      "gymnasium",
+      "enum",
+      "numpy"
+    ],
+    "run_strategies.py": [
+      "matplotlib",
+      "boarding_strategies",
+      "numpy"
+    ]
+  }
+}

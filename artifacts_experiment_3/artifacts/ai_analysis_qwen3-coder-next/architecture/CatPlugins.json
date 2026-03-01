@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "All functionality resides in top-level Python files (e.g., animation1.py, memes.py, figlet.py) with no directory structure for logical grouping (max_directory_depth = 1)",
+    "Zero packages reported (packages: 0), indicating no formal modular decomposition",
+    "High fan-out (avg_fan_out ≈ 3.3) with repeated cross-file imports from userbot.plugins and userbot.core, suggesting many independent scripts depending on shared utilities rather than encapsulated modules",
+    "Files are largely homogeneous in purpose (e.g., command handlers for a Telegram bot), each importing common shared modules but with no clear abstraction boundaries or separation of concerns",
+    "Architectural factors C1, C2, A3 (likely coupling, cohesion, size) and T4, A1 (testability, architecture compliance) in metrics imply weak encapsulation and monolithic execution flow",
+    "All scripts share same top-level import hierarchy (userbot.*, userbot.core, userbot.helpers), indicating a flat dependency structure rather than layered or port-adapters design"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Low maintainability due to tight coupling and缺乏 modular boundaries",
+    "High risk of naming collisions and accidental dependencies across files",
+    "Difficult to test in isolation (no clear module boundaries, all share global imports)",
+    "Scalability limitations as all functionality runs in one process with shared state (userbot, Config, sql_helper.globals)",
+    "Poor reusability — features cannot be easily composed or replaced without affecting other modules"
+  ]
+}

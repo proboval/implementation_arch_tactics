@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows moderate coupling (avg_fan_out=6.33) with internal modules importing each other directly (e.g., _diff.py imports from _kube, _images imports from _kube, and _kube.py imports from itself and subprocess/yaml), and test files importing core modules directly. This creates tight coupling where changes in _kube (a core dependency for both _diff and _images) risk ripple effects across comparison and image-handling logic. The imports include both internal modules and low-level libraries (subprocess, yaml) in the same modules, mixing domain abstraction with system concerns, which violates separation of concerns and makes testing harder. Reducing coupling will isolate responsibilities, improve testability (e.g., mocks for _kube instead of real subprocess/yaml calls), and allow independent evolution of diff and image logic.",
+  "target_components": [
+    "kubedifflib/_diff.py",
+    "kubedifflib/_images.py",
+    "kubedifflib/_kube.py",
+    "kubedifflib/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce explicit abstractions (interfaces/protocols) for the services used by _diff and _images (e.g., KubeObject loading, file iteration, YAML parsing), and replace direct imports with dependency injection. _kube.py would become a dependency provider, not a shared state container, and _diff.py/_images.py would receive their dependencies via constructors or function parameters, rather than importing and calling _kube directly. The top-level kubedifflib/__init__.py would orchestrate dependency wiring.",
+  "implementation_strategy": "Step 1: Define lightweight abstractions (e.g., using Protocol classes or simple interfaces) for core services: FileLoader (for iter_files), KubeObjectFactory (for KubeObject.from_dict and get_from_cluster), YamlParser. Step 2: Refactor _kube.py to implement these interfaces, then modify _diff.py and _images.py to accept them via constructors or function parameters instead of direct imports. Step 3: Introduce a factory/factory function in __init__.py for creating diff and image processors with injected dependencies. Step 4: Add tests that mock dependencies to verify reduced coupling and improved isolation.",
+  "risks": "Initial refactoring effort may introduce temporary test failures or bugs during the transition. Dependencies may become more verbose to pass (especially for nested calls), but this can be mitigated by grouping related dependencies into dependency containers. Risk of over-engineering must be avoided—abstractions should be minimal and driven by actual usage patterns observed in the code, not hypothetical future needs."
+}

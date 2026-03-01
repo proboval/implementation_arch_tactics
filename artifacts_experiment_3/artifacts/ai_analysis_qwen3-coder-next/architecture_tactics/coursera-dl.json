@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from high fan-out (~5.92) and tight inter-module coupling in the modular monolith structure, where modules like workflow.py, coursera_dl.py, and api.py import dozens of internal modules directly, increasing ripple-effect risk and hindering independent testing. Static analysis flags 'C1' (complexity) and 'A3' (analysis difficulty), and the flat module layout (depth 3, 14.5 files/package avg) shows insufficient modularity boundaries. Decomposability addresses this by introducing clear subsystem boundaries and reducing internal coupling via well-defined interfaces—this aligns with existing high-cohesion module groupings (e.g., downloaders, extractors, workflow) and enables layering *within* the monolith without structural overhaul. For example, coursera_dl.py (the entry point) aggregates 14+ internal imports, and workflow.py couples formatting, playlist, utils, filtering, and define directly—ideal candidates for decomposed subsystems.",
+  "target_components": [
+    "coursera/coursera_dl.py",
+    "coursera/workflow.py",
+    "coursera/api.py",
+    "coursera/downloaders.py",
+    "coursera/extractors.py",
+    "coursera/formatting.py",
+    "coursera/filtering.py"
+  ],
+  "expected_architectural_change": "Introduce a small number of well-scoped subsystem modules (e.g., coursera/download_engine/, coursera/extract_engine/, coursera/io/) that encapsulate tightly-coupled modules. For example, merge downloaders.py, parallel.py, and coursera_dl’s downloader-related logic into coursera/download_engine/, and replace direct imports from those modules with imports from the new subsystem package. Each subsystem will expose a minimal public interface (e.g., DownloadEngine.download(url), ExtractEngine.extract(course_id)), reducing cross-module coupling and enabling easier unit testing and impact analysis.",
+  "implementation_strategy": "Phase 1: Identify high-fan-out modules (coursera_dl.py, workflow.py) and cluster their dependencies (e.g., downloaders, parallel, utils). Phase 2: Create new subsystem directories (e.g., coursera/download_engine/) and move cohesive modules into them, then define a single public API module per subsystem (e.g., __init__.py exposing core classes/functions). Phase 3: Update high-level callers (coursera_dl.py, workflow.py, test files) to import from subsystem packages instead of individual modules, gradually replacing direct imports. Phase 4: Add interface classes (e.g., AbstractDownloader, AbstractExtractor) to enforce decoupling and enable testing. This is incrementally adoptable—start with one subsystem (e.g., download_engine), refactor tests for it, and iterate.",
+  "risks": "Low risk if done incrementally: the subsystem boundaries mirror existing logical groupings, and the presence of a comprehensive test suite (test_*.py per module) supports gradual refactoring. However, risk of temporary test breakage exists if import paths or public interfaces are not carefully versioned. Additionally, if subsystem boundaries are too coarse, cohesion may suffer—must enforce fine-grained, single-responsibility subsystems."
+}

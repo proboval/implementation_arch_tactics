@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Well-defined high-level modules (e.g., history, live, derivatives, symbols, commons) with clear responsibilities",
+    "Inter-module dependencies are explicit and direct (e.g., history.py imports from commons, constants, urls)",
+    "No process or network boundaries — all modules run in the same Python process",
+    "Single package (nsepy) containing all application code, with internal package subdivision (derivatives, debt, etc.) indicating logical modularity",
+    "URLFetch and ParseTables in commons are shared utilities used across modules, indicating cohesion within monolith",
+    "No evidence of message queues, REST/gRPC APIs, or service discovery typical of microservices or hexagonal architecture",
+    "Test suite mirrors module structure (test_*.py per module), consistent with modular monolith testing practices"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling via cross-module imports may hinder future refactoring or vertical slicing",
+    "No explicit boundary enforcement may lead to increasing entropy over time",
+    "Scalability limited to vertical scaling only without architectural changes"
+  ]
+}

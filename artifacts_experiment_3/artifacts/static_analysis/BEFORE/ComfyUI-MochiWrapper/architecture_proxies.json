@@ -1,0 +1,133 @@
+{
+  "python_files": 21,
+  "packages": 4,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.25,
+  "imports_graph": {
+    "fp8_optimization.py": [
+      "torch"
+    ],
+    "infer.py": [
+      "PIL",
+      "tqdm",
+      "click",
+      "mochi_preview",
+      "tempfile",
+      "time",
+      "json",
+      "os",
+      "einops",
+      "numpy"
+    ],
+    "latent_preview.py": [
+      "PIL",
+      "struct",
+      "folder_paths",
+      "logging",
+      "torch",
+      "io",
+      "comfy",
+      "numpy"
+    ],
+    "mz_gguf_loader.py": [
+      "cublas_ops",
+      "torch"
+    ],
+    "nodes.py": [
+      "tqdm",
+      "torchvision",
+      "folder_paths",
+      "mochi_preview",
+      "huggingface_hub",
+      "accelerate",
+      "os",
+      "einops",
+      "logging",
+      "torch",
+      "contextlib",
+      "comfy"
+    ],
+    "__init__.py": [
+      "nodes"
+    ],
+    "mochi_preview\\t2v_synth_mochi.py": [
+      "tqdm",
+      "fp8_optimization",
+      "accelerate",
+      "importlib",
+      "typing",
+      "pathlib",
+      "os",
+      "einops",
+      "logging",
+      "torch",
+      "latent_preview",
+      "contextlib",
+      "comfy",
+      "threading",
+      "shutil",
+      "dit"
+    ],
+    "mochi_preview\\utils.py": [
+      "time"
+    ],
+    "mochi_preview\\__init__.py": [],
+    "mochi_preview\\vae\\latent_dist.py": [
+      "torch"
+    ],
+    "mochi_preview\\vae\\model.py": [
+      "tqdm",
+      "math",
+      "typing",
+      "latent_dist",
+      "einops",
+      "torch",
+      "comfy",
+      "functools"
+    ],
+    "mochi_preview\\vae\\vae_stats.py": [
+      "torch"
+    ],
+    "mochi_preview\\vae\\__init__.py": [],
+    "mochi_preview\\dit\\joint_model\\asymm_models_joint.py": [
+      "residual_tanh_gated_rmsnorm",
+      "rope_mixed",
+      "utils",
+      "mod_rmsnorm",
+      "typing",
+      "flash_attn",
+      "apex",
+      "sageattention",
+      "torch",
+      "comfy",
+      "temporal_rope",
+      "layers"
+    ],
+    "mochi_preview\\dit\\joint_model\\layers.py": [
+      "collections",
+      "math",
+      "itertools",
+      "typing",
+      "einops",
+      "torch"
+    ],
+    "mochi_preview\\dit\\joint_model\\mod_rmsnorm.py": [
+      "torch"
+    ],
+    "mochi_preview\\dit\\joint_model\\residual_tanh_gated_rmsnorm.py": [
+      "torch"
+    ],
+    "mochi_preview\\dit\\joint_model\\rope_mixed.py": [
+      "math",
+      "torch"
+    ],
+    "mochi_preview\\dit\\joint_model\\temporal_rope.py": [
+      "torch"
+    ],
+    "mochi_preview\\dit\\joint_model\\utils.py": [
+      "torch",
+      "typing"
+    ],
+    "mochi_preview\\dit\\joint_model\\__init__.py": []
+  }
+}

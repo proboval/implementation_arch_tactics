@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.92,
+  "evidence": [
+    "Only 2 packages: top-level 'ingredient_phrase_tagger' (core logic) and 'bin' (CLI entry points)",
+    "Low average fan-out (2.33) and max directory depth of 3 indicate flat, minimal structure",
+    "bin/ scripts directly import from ingredient_phrase_tagger.training.utils without adapter or interface layers",
+    "No evidence of ports/adapters boundaries, controllers, services, or domain models",
+    "Utils module contains pure utility functions (tokenize, cleanUnicodeFractions, etc.) typical of procedural scripts",
+    "No clear separation between core domain, infrastructure, and UI — all tightly coupled in one package"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between components makes testing and maintenance difficult",
+    "Lack of explicit boundaries prevents independent evolution of parts",
+    "Hardcoded dependencies reduce testability and flexibility",
+    "Limited scalability for future feature growth"
+  ]
+}

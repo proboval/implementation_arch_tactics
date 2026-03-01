@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single-file script (bot.py) with no package structure, leading to poor separation of concerns, high coupling to external systems (Telegram API via pyrogram, MongoDB via motor), and zero modularity. Static analysis confirms 'packages: 0', 'max_directory_depth: 1', and 'avg_fan_out: 6.0'—indicating all logic is inline and tightly coupled to infrastructure. Decomposability directly addresses this by splitting the monolithic script into cohesive, isolated modules (e.g., 'handlers/', 'services/', 'models/'), enabling easier testing, analysis, and incremental change without ripple effects.",
+  "target_components": [
+    "bot.py"
+  ],
+  "expected_architectural_change": "The flat bot.py file will be split into a structured package (e.g., app/ with __init__.py, handlers/, services/, config/), separating Telegram client setup, command handlers, database operations, and configuration into distinct modules with explicit interfaces, reducing direct coupling and increasing cohesion.",
+  "implementation_strategy": "Refactor bot.py by extracting related responsibilities into modules: (1) move environment/config handling to config.py, (2) create service layer abstractions (e.g., database_service.py) to wrap motor client, (3) move Telegram handler functions into handlers/ (e.g., start.py, help.py), (4) create a central app.py to wire modules via dependency injection—using clear interfaces (e.g., Protocol or ABC) for services instead of direct imports. This reduces fan-out per module and introduces loose coupling.",
+  "risks": "Over-engineering if decomposition is too granular; require disciplined adherence to single responsibility. Initial refactoring may increase cognitive load for small teams but pays off as features scale. Risk of broken imports during transition can be mitigated with incremental commits and CI tests."
+}

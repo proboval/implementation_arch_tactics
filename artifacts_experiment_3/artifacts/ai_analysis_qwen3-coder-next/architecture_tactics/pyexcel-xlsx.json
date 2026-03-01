@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a modular monolith with a single package (pyexcel_xlsx) containing three core modules (book.py, xlsxr.py, xlsxw.py) that handle workbook operations, reading, and writing respectively. However, the static analysis shows high average fan-out (3.65), and the imports graph reveals tight coupling: xlsxr.py imports both pyexcel_io and openpyxl directly, and test files like test_merged_cells.py import internal implementation classes (e.g., pyexcel_xlsx.xlsxr.MergedCell) rather than abstractions. This coupling harms testability (tests depend on internals) and maintainability (changes propagate widely). The decomposition tactic will allow isolating responsibilities, reducing inter-module dependencies, and enabling independent testing. The evidence from the repository tree confirms clear module boundaries (book.py/xlsxr.py/xlsxw.py), and the high directory depth (3) supports hierarchical decomposition without service-level complexity. This tactic directly addresses the documented risk of 'potential for tight coupling between reader/writer components'.",
+  "target_components": [
+    "pyexcel_xlsx/xlsxr.py",
+    "pyexcel_xlsx/xlsxw.py",
+    "pyexcel_xlsx/book.py",
+    "pyexcel_xlsx/__init__.py",
+    "tests/test_book.py",
+    "tests/test_reader.py",
+    "tests/test_writer.py"
+  ],
+  "expected_architectural_change": "Introduce well-defined abstractions at the module boundary (e.g., a unified IDataSource interface for reading, IDataSink for writing), moving shared interfaces (like ISheet, IReader, IWriter from pyexcel_io) into this package or tightly binding them as stable contracts. This reduces direct dependencies from tests to internal implementations (e.g., tests should not import pyexcel_xlsx.xlsxr.MergedCell), and transforms xlsxr/xlsxw from direct openpyxl users to clients of clean, narrow abstractions. The book.py module can evolve into an orchestrator that delegates to reader/writer services via interfaces.",
+  "implementation_strategy": "1. Extract shared interfaces (e.g., IDecodableSheet, IEncodingSheet) into a new internal submodule pyexcel_xlsx/interfaces.py to decouple openpyxl usage from business logic. 2. Replace direct imports of openpyxl in xlsxr/xlsxw with abstractions (e.g., XlsxWorkbookLoader, XlsxWorkbookSaver) injected via composition or dependency injection. 3. Refactor test files to depend only on pyexcel_xlsx.get_data/save_data (public API), eliminating direct imports of internal classes like MergedCell. 4. Use adapter patterns to wrap openpyxl objects if needed, isolating openpyxl-specific behavior. 5. Create integration points (e.g., a read_stream/write_stream API) that abstract file vs. stream handling—this follows the separation of concerns in tests/test_stringio.py and tests/test_bug_fixes.py. This enables incremental adoption: start by extracting interfaces, then refactor xlsxr/xlsxw, then update tests.",
+  "risks": "Risk of over-abstraction if interfaces are not grounded in real usage; requires careful design to avoid premature complexity. However, the presence of IReader/IWriter base classes from pyexcel_io suggests the ecosystem already expects such abstractions, minimizing risk. Additional work to maintain interface stability during refactoring, but this is offset by long-term maintainability gains shown in static analysis improvement targets."
+}

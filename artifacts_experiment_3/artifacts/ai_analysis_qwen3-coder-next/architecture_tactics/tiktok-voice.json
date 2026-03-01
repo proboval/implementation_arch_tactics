@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits extreme lack of modularity: zero packages, flat directory structure, and no separation of concerns between business logic, I/O (playsound), and external API calls (requests). Static analysis confirms packages: 0 and avg_fan_out: 5.0 with imports spanning multiple concerns (requests, playsound, base64, os). main.py contains stub functions and no actual implementation logic, indicating unstructured procedural accumulation. Decomposability directly addresses this by enforcing modularization—dividing the monolith into cohesive, testable units (e.g., API client, audio player, voice selection, CLI interface). This tactic improves maintainability by isolating changes, enabling testability of individual components, and supporting incremental refactoring without system-wide rewrite.",
+  "target_components": [
+    "main.py",
+    "constants.py"
+  ],
+  "expected_architectural_change": "The current flat 1-file script structure will evolve into a hierarchical package (e.g., src/tiktok_voice/) with distinct modules: api_client.py (handles requests to TTS service), player.py (wraps playsound), voice_loader.py (loads/validates voice constants), cli.py (handles argparse/entrypoint), and tests/. main.py becomes a minimal entry point, and constants.py gets refactored into structured data/configuration modules.",
+  "implementation_strategy": "1. Create src/tiktok_voice package directory with __init__.py. 2. Extract core functionality into modules: (a) api_client.py—replace raw requests calls with a TtsClient class; (b) player.py—encapsulate playsound calls; (c) voices.py—refactor constants.py into a dictionary + loader; (d) cli.py—wrap argparse in a run() function. 3. Use explicit imports between modules to enforce boundaries. 4. Add unit test files in tests/ that depend only on specific modules. 5. Update main.py to instantiate and orchestrate modules. This preserves existing behavior while enabling incremental migration—no behavioral changes required.",
+  "risks": "Risk of initial overhead during refactoring, but mitigated by incremental adoption (e.g., move one module at a time). Temporary instability if modules are not cleanly isolated—mitigated by early interface definition and test-first approach for extracted components."
+}

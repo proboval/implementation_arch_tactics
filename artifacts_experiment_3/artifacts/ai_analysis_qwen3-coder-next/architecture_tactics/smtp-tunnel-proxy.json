@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits critical maintainability issues due to lack of decomposition: all Python files reside in a single flat directory with zero packages, and 'common.py' has become a god module (14 classes, including crypto, config parsing, traffic shaping, and SMTP obfuscation). Static analysis confirms 'packages': 0 and 'max_directory_depth': 1, with high fan-out (8.3) indicating tight coupling across modules. This structure violates separation of concerns—e.g., TunnelCrypto (crypto logic) is bundled with SMTPMessageGenerator (stealth obfuscation) and config loaders—making testing difficult and changes risky. The tactic Decomposability directly addresses this by creating modular boundaries (e.g., isolating crypto, config, and tunneling logic into separate packages), which will reduce coupling, improve testability, and enable incremental refactoring without rewriting the entire system.",
+  "target_components": [
+    "common.py",
+    "client.py",
+    "server.py",
+    "generate_certs.py"
+  ],
+  "expected_architectural_change": "The flat directory will evolve into a package-based structure with clear module groupings: e.g., src/tunnel/crypto/, src/tunnel/config/, src/tunnel/protocol/, src/tunnel/stealth/. 'common.py' will be split into focused modules—'crypto.py', 'config.py', 'protocol.py', etc.—each in its own subpackage. 'client.py' and 'server.py' will retain entry-point responsibilities but import only from their respective subpackages. This creates layered, loosely-coupled modules where changes propagate locally (e.g., modifying crypto logic won't require touching SMTP obfuscation code).",
+  "implementation_strategy": "1. Create package directories (e.g., src/tunnel/) with __init__.py files. 2. Extract high-cohesion groups from common.py into dedicated modules: (a) crypto-related classes → src/tunnel/crypto/crypto.py, (b) config classes → src/tunnel/config/__init__.py, (c) tunnel protocol classes → src/tunnel/protocol/messages.py and frames.py. 3. Refactor client.py, server.py, and generate_certs.py to import from new subpackages instead of common.py. 4. Add forward-compatibility aliases in common.py (redirect imports) to enable incremental migration. This strategy allows unit testing per module (e.g., testing crypto in isolation) and minimizes risk by allowing partial deployments. No changes to external interfaces (e.g., CLI args or service files) are required.",
+  "risks": "Temporary import path changes during migration could break deployment if not managed carefully; this is mitigated by maintaining backward-compatible aliases in common.py until all imports are migrated. There is minimal risk of feature regression since the tactic preserves behavior while reorganizing structure. The main risk is scope creep—ensuring only cohesive groupings are extracted (e.g., not splitting SMTPMessageGenerator into multiple modules prematurely)."
+}

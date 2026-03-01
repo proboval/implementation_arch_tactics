@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from tight coupling and blurred separation of concerns, evidenced by modules directly importing from multiple layers (e.g., `SaitamaRobot/modules/bans.py` imports `chat_status.py`, `helper_funcs.extraction`, `log_channel.py`, and `sql/antiflood_sql.py`) and modules like `backups.py` importing from across 10+ different modules. This makes testability difficult—many modules lack clear interfaces and embed business, persistence, and control logic in the same function. Static analysis flags 'C1' (coupling) and 'A3' (analyzability) as risk factors. Decomposability directly addresses this by isolating responsibilities into well-defined layers (e.g., domain, service, infrastructure), improving testability and maintainability without requiring a full rewrite. The modular-monolith structure supports incremental application of this tactic by grouping related modules (e.g., creation of `SaitamaRobot.services.bans.BanService` to replace inline SQL and extraction logic in `bans.py`).",
+  "target_components": [
+    "SaitamaRobot/modules/bans.py",
+    "SaitamaRobot/modules/warns.py",
+    "SaitamaRobot/modules/antiflood.py",
+    "SaitamaRobot/modules/blacklist.py",
+    "SaitamaRobot/modules/locks.py",
+    "SaitamaRobot/modules/cust_filters.py",
+    "SaitamaRobot/modules/notes.py",
+    "SaitamaRobot/modules/welcome.py",
+    "SaitamaRobot/modules/sql/*_sql.py",
+    "SaitamaRobot/modules/helper_funcs/extraction.py",
+    "SaitamaRobot/modules/helper_funcs/chat_status.py",
+    "SaitamaRobot/modules/helper_funcs/alternate.py"
+  ],
+  "expected_architectural_change": "Introduce service layer modules (e.g., `SaitamaRobot/services/`) that encapsulate cross-module logic. Each service will coordinate interaction with the SQL layer and shared helpers. Existing modules will shift to thin command/event handlers delegating to services. Database access will be centralized under `SaitamaRobot.repositories/`, with clear interfaces (e.g., `UserRepository`, `ChatSettingsRepository`). This creates clear dependency direction: handlers → services → repositories → database, reducing fan-out in modules and eliminating duplicate imports across modules.",
+  "implementation_strategy": "1. Identify high-coupling modules (e.g., `bans.py`, `warns.py`, `antiflood.py`) with overlapping dependency patterns. 2. Refactor common business logic into domain services (e.g., `BanService`, `WarnService`, `FloodControlService`). 3. Extract persistence logic into repository classes in `SaitamaRobot/repositories/`, using SQLAlchemy session management consistently via the existing BASE/SESSION pattern. 4. Update module entry points to delegate to services instead of directly calling SQL and helper functions. 5. Add abstract base interfaces (e.g., via `abc`) for services to support testing. 6. Refactor helper functions (e.g., `chat_status.py`) to be stateless utilities or part of service composition.",
+  "risks": "Initial refactoring may increase local complexity if services become god-objects. Mitigation: enforce domain-oriented splitting (e.g., per feature area) and avoid monolithic services. Requires discipline to prevent modules from re-introducing direct SQL access. Need to update all import statements and ensure backward compatibility in public APIs (e.g., command handlers)."
+}

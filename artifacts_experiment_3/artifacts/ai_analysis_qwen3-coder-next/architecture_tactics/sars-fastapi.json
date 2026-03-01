@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor separation of concerns: business logic appears to be embedded directly in main.py (e.g., 'show_records' function signature is incomplete, suggesting procedural logic), and models.py/schemas.py contain only ORM/Pydantic definitions without business encapsulation. The static analysis flags 'C1' (likely cohesion) and 'A3' (likely modularity/abstraction) as risks, while the layered architecture confidence is only 0.9 with explicit concern about missing service layer — business logic likely leaks across layers. This reduces maintainability because changes to business rules require touching multiple tightly-coupled files (main.py, models.py) and increase ripple-effect risk. Localized Modification directly addresses this by increasing cohesion: grouping related responsibilities (e.g., data validation, business rules, transformation logic) into a dedicated service module (e.g., app/service/) so that changes to domain behavior occur in one place.",
+  "target_components": [
+    "app/main.py",
+    "app/models.py",
+    "app/database.py"
+  ],
+  "expected_architectural_change": "Introduce a new app/service/ directory with domain-focused modules (e.g., app/service/record_service.py). Move business logic currently in main.py (like 'show_records' implementation) and implicit logic in models.py into this service layer. The service layer will orchestrate database interactions (via dependency-injected Session) and apply domain rules before persisting or returning data. models.py and schemas.py will remain pure DTOs/ORM definitions, while main.py will contain only endpoint wiring and minimal validation.",
+  "implementation_strategy": "1. Create app/service/__init__.py and app/service/record_service.py. 2. Move 'show_records' implementation logic into a method like RecordService.get_records(). 3. Extract any inline business logic (e.g., date filtering, record transformations) into the service class. 4. Update main.py to depend on RecordService via FastAPI dependency injection (e.g., get_service() → use Request scope session → service method). 5. Update models.py/schemas.py only if domain rules require adding validation/validation helpers — but keep them free of implementation logic. This incremental change preserves existing endpoints while cleanly separating concerns and increasing cohesion.",
+  "risks": "Risk of over-engineering if the current business logic is trivial — but the missing service layer explicitly identified in architecture risks justifies the refactor. Initial iteration may require prototyping logic in service before refactoring main.py to ensure parity. Dependency injection wiring must be added carefully to maintain testability (e.g., service should accept session as argument, not create it internally)."
+}

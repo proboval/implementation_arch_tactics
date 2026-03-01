@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: core logic is interleaved across modules (e.g., postgres_queries contains both SQL queries and parsing logic), dependencies flow unidirectionally without clear boundaries, and high-level modules like metrics_gatherer directly import dozens of low-level functions violating Single Responsibility. This prevents isolating changes, testing components independently, and analyzing system behavior. Decomposability directly addresses this by enforcing modularity, separation of concerns, and testability through module boundaries — measurable in the current flat, single-package structure with shallow depth (max 2) and high internal coupling (e.g., metrics_gatherer imports 21 functions from multiple modules). The tactic is implementable incrementally via module split and interface introduction without architectural overhaul.",
+  "target_components": [
+    "postgresql_metrics/postgres_queries.py",
+    "postgresql_metrics/metrics_gatherer.py",
+    "postgresql_metrics/metrics_logic.py"
+  ],
+  "expected_architectural_change": "Separate postgres_queries into two new modules: one for database connectivity (e.g., db_connection.py) and one for query execution/parsing (e.g., query_handlers.py). Introduce explicit domain interfaces (e.g., metrics_interface.py) that abstract metric gatherers from implementation details. Reduce direct cross-module imports: metrics_gatherer should import only well-defined metric operation contracts, not raw query functions. This will increase module count (e.g., from 8 to 12 files) while keeping a single package, aligning with the modular monolith structure.",
+  "implementation_strategy": "Step 1: Extract parsing and SQL logic from postgres_queries.py into separate modules (e.g., postgres_queries_query.py and postgres_queries_utils.py) using functional encapsulation. Step 2: Define a clean metric execution interface (e.g., postgresql_metrics/metric_api.py) that abstracts metrics gatherers behind a small interface (get_metrics(), prepare_metrics_context()). Step 3: Refactor metrics_gatherer to depend only on this interface, not individual metric functions. Step 4: Introduce context objects (e.g., MetricContext) to carry connection/state instead of passing raw DB handles. All changes preserve the single-package layout while improving modularity, testability, and maintainability via reduced fan-out and cohesion per module.",
+  "risks": "Risk of over-fragmentation in a single-package structure; mitigated by keeping all new modules under postgresql_metrics/ and using semantic naming. Initial refactoring may increase short-term coupling during transition until all imports are updated. However, since the codebase is small (9 files, shallow depth), changes are feasible incrementally per sprint without disruption to existing functionality."
+}

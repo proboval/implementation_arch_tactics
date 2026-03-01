@@ -1,0 +1,172 @@
+{
+  "python_files": 47,
+  "packages": 7,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 6.714285714285714,
+  "imports_graph": {
+    "create_data.py": [
+      "string",
+      "os",
+      "django",
+      "random",
+      "timeit",
+      "projeto"
+    ],
+    "escrevendo_csv.py": [
+      "csv"
+    ],
+    "importando_produtos.py": [
+      "csv",
+      "projeto"
+    ],
+    "manage.py": [
+      "sys",
+      "os",
+      "django"
+    ],
+    "contrib\\env_gen.py": [
+      "django"
+    ],
+    "projeto\\settings.py": [
+      "os",
+      "decouple"
+    ],
+    "projeto\\urls.py": [
+      "django"
+    ],
+    "projeto\\wsgi.py": [
+      "os",
+      "django"
+    ],
+    "projeto\\__init__.py": [],
+    "projeto\\core\\admin.py": [
+      "django"
+    ],
+    "projeto\\core\\apps.py": [
+      "django"
+    ],
+    "projeto\\core\\models.py": [
+      "django"
+    ],
+    "projeto\\core\\tests.py": [
+      "django"
+    ],
+    "projeto\\core\\urls.py": [
+      "django",
+      "projeto"
+    ],
+    "projeto\\core\\views.py": [
+      "django"
+    ],
+    "projeto\\core\\__init__.py": [],
+    "projeto\\estoque\\admin.py": [
+      "django",
+      "models"
+    ],
+    "projeto\\estoque\\apps.py": [
+      "django"
+    ],
+    "projeto\\estoque\\forms.py": [
+      "django",
+      "models",
+      "projeto"
+    ],
+    "projeto\\estoque\\managers.py": [
+      "django"
+    ],
+    "projeto\\estoque\\models.py": [
+      "managers",
+      "django",
+      "projeto"
+    ],
+    "projeto\\estoque\\tests.py": [
+      "django"
+    ],
+    "projeto\\estoque\\urls.py": [
+      "django",
+      "projeto"
+    ],
+    "projeto\\estoque\\views.py": [
+      "forms",
+      "django",
+      "models",
+      "projeto"
+    ],
+    "projeto\\estoque\\__init__.py": [],
+    "projeto\\produto\\admin.py": [
+      "datetime",
+      "csv",
+      "django",
+      "xlwt",
+      "models"
+    ],
+    "projeto\\produto\\apps.py": [
+      "django"
+    ],
+    "projeto\\produto\\forms.py": [
+      "django",
+      "models"
+    ],
+    "projeto\\produto\\models.py": [
+      "django"
+    ],
+    "projeto\\produto\\tests.py": [
+      "django"
+    ],
+    "projeto\\produto\\urls.py": [
+      "django",
+      "projeto"
+    ],
+    "projeto\\produto\\views.py": [
+      "datetime",
+      "csv",
+      "django",
+      "io",
+      "forms",
+      "pandas",
+      "models",
+      "projeto"
+    ],
+    "projeto\\produto\\__init__.py": [],
+    "projeto\\core\\migrations\\__init__.py": [],
+    "projeto\\estoque\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\0002_auto_20190424_1440.py": [
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\0003_auto_20190905_2342.py": [
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\0004_protocoloentrega_protocoloentregaitens.py": [
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\0005_auto_20191029_2026.py": [
+      "datetime",
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\0006_protocoloentrega_estoque_atualizado.py": [
+      "django"
+    ],
+    "projeto\\estoque\\migrations\\__init__.py": [],
+    "projeto\\produto\\actions\\export_xlsx.py": [
+      "django",
+      "datetime",
+      "xlwt"
+    ],
+    "projeto\\produto\\actions\\import_xlsx.py": [
+      "xlrd",
+      "projeto"
+    ],
+    "projeto\\produto\\migrations\\0001_initial.py": [
+      "django"
+    ],
+    "projeto\\produto\\migrations\\0002_produto_data.py": [
+      "django"
+    ],
+    "projeto\\produto\\migrations\\0003_auto_20191005_0359.py": [
+      "django"
+    ],
+    "projeto\\produto\\migrations\\__init__.py": []
+  }
+}

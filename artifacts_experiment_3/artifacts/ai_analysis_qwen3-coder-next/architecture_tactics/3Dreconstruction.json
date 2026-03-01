@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling (fan-out 3.86), zero packages, flat structure (max_directory_depth 1), and tangled cross-module dependencies — all of which violate decomposability. This makes analysis difficult (A3 in architecture_maintainability), testing hard (direct imports, no interfaces), and maintenance fragile (C1/C2 in factors). The architecture description explicitly identifies 'tangled web rather than directional flow' and 'absence of explicit interfaces' as core issues. AT41 (Decomposability) directly targets these by enabling modularization into logical groups (e.g., camera, processor, structure, transformers) to isolate responsibilities, reduce ripple effects, and enable focused testing. Unlike more complex patterns (e.g., ports & adapters), decomposability can be applied incrementally by grouping existing modules into cohesive subdirectories with minimal code changes.",
+  "target_components": [
+    "camera.py",
+    "processor.py",
+    "transformers.py",
+    "structure.py",
+    "features.py",
+    "cube_reconstruction.py",
+    "example.py"
+  ],
+  "expected_architectural_change": "The flat, root-level module layout will evolve into a multi-package structure (e.g., /camera/, /processor/, /structure/) where each package encapsulates related functionality with minimal dependencies between packages. Cross-package dependencies will be mediated through clearly defined interfaces or well-scoped public APIs, replacing the current direct file-level imports (e.g., camera.py → processor, transformers will instead depend on abstracted services or clearly bounded modules). This reduces the imports graph fan-out and enforces directionality (e.g., higher-level orchestration modules like example.py may depend on lower-level packages but not vice versa).",
+  "implementation_strategy": "1. Identify cohesive functional clusters: e.g., camera.py + transformers.py → 'cameras' package; processor.py → 'io' package; structure.py + transformers.py → 'geometry' package; features.py → 'features' package. 2. Move each cluster into a subdirectory with an __init__.py exposing only public interfaces. 3. Refactor imports in dependent files to reference packages instead of individual files (e.g., import camera.processor vs from camera import Camera). 4. Introduce minimal abstractions (e.g., CameraInterface, FeatureDetector) where needed to reduce concrete dependencies. 5. Preserve existing function signatures during initial packaging to ensure backward compatibility during transition.",
+  "risks": "Incremental modularization may temporarily create hybrid import patterns (mix of old direct imports and new package imports), risking inconsistency if not managed carefully. If interfaces are introduced too early or overly generically, they may increase complexity without tangible benefit. Risk is mitigated by focusing on grouping based on static analysis (actual dependencies) and evolving abstractions only after observing usage patterns."
+}

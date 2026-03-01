@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "bunq/sdk/model/core/internal_model_interface.py",
+  "content": "from __future__ import annotations\n\n\nclass InternalModelInterface:\n    \"\"\"\n    Interface for internal models that wrap generated API models.\n    Internal models should delegate to the wrapped generated model instance\n    rather than inheriting from it to reduce coupling.\n    \"\"\"\n\n    def get_generated_model(self) -> None:\n        \"\"\"\n        Return the wrapped generated model instance.\n        :return: The wrapped generated model instance.\n        :rtype: object\n        \"\"\"\n        pass\n"
+}

@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a monolithic script-based architecture with heatmap.py containing 21 classes and ~40+ functions at top-level, mixing I/O, business logic, external system interactions (OSM, GDAL), and GUI-related concerns (PIL). Static analysis confirms zero packages, low modularity (avg_fan_out=4.76), and tight coupling across file types (e.g., test files import heatmap.py directly without modular boundary). This causes test flakiness due to global state, difficult test isolation (tests depend on file system and external tools), and hindered maintainability as new features propagate across all layers. Decomposability directly addresses this by introducing modular boundaries (e.g., domain, I/O, infrastructure, CLI), enabling focused testing and reducing ripple effects during change.",
+  "target_components": [
+    "heatmap.py",
+    "test/test.py",
+    "test/test_background.py",
+    "test/test_configuration.py",
+    "test/test_coordinates.py",
+    "test/test_extent.py",
+    "test/test_projections.py",
+    "numpy_example.py",
+    "random_example.py",
+    "two_pass_example.py"
+  ],
+  "expected_architectural_change": "The flat structure will be transformed into a layered, package-based architecture: 1) 'domain/' for core objects (Point, LineSegment, Kernel, Matrix variants, Projection), 2) 'io/' for file readers and OSM I/O, 3) 'cli/' for argument parsing and entry points, 4) 'infrastructure/' for external dependencies (GDAL, PIL), and 5) 'tests/' subdivided into 'unit/', 'integration/', and 'e2e/' with mocks and stubs. Imports will shift from 'import heatmap as hm' to 'from heatmap.domain import Point', and test files will mock infrastructure instead of relying on live OSM/GDAL calls.",
+  "implementation_strategy": "Step 1: Extract domain model classes (Coordinate, LatLon, Projection, Matrix, Point, etc.) into 'heatmap/domain/' with no external I/O or global state. Step 2: Move FileReader subclasses and OSM-related functions to 'heatmap/io/' with dependency injection for file handling. Step 3: Isolate CLI logic (Configuration, main()) into 'heatmap/cli/', making entry points simple. Step 4: Refactor test files: unit tests will import and mock only domain classes, integration tests will handle file/external calls separately. Step 5: Introduce package __init__.py with clear exports, and update import statements across all files incrementally. This is achievable without rewriting — only structural refactoring.",
+  "risks": "Risk of broken imports during transition if module hierarchy is not updated consistently across all files. Example: examples and tests may fail until all 'import heatmap.*' statements are updated. Mitigation: Incrementally add modules and keep backward compatibility with shallow 'heatmap/__init__.py' facade early. Another risk is over-decomposition (too many tiny modules); controlled by keeping modules cohesive (e.g., group all matrix-related classes in 'matrix.py', not one per class)."
+}

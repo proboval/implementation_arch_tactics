@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from flat, tightly coupled structure with zero packages and no separation of concerns — evidenced by files like bot.py and body/autoCap.py directly importing from info.py and each other at module level, causing low maintainability (MI=0). Decomposability directly addresses this by introducing clear boundaries (e.g., domain vs service vs infrastructure) via layered or module-based decomposition, improving testability and reducing ripple effects. Unlike abstraction or dependency inversion, this tactic targets structural decomposition *without requiring full pattern adoption*, fitting a script-based repo that needs incremental refactoring.",
+  "target_components": [
+    "body/autoCap.py",
+    "body/db.py",
+    "info.py",
+    "bot.py",
+    "app.py"
+  ],
+  "expected_architectural_change": "Current flat hierarchy (5 modules in root + 2 in body/) will evolve into at least two cohesive modules: e.g., a 'domain' module (encapsulating caption logic, data models), and a 'services' module (handling database, bot orchestration). The body/ directory will become a proper Python package with internal structure. Cross-module dependencies will shift from direct circular imports (e.g., autoCap.py ↔ info.py ↔ db.py) to directionally consistent imports (e.g., services → domain).",
+  "implementation_strategy": "1. Convert body/ into a proper package (add __init__.py). 2. Create submodules: body/domain/ (e.g., caption.py, models.py) and body/services/ (e.g., db_service.py, bot_service.py). 3. Move db.py → body/services/database.py; refactor info.py constants/functions → body/domain/config.py, body/domain/models.py. 4. Update autoCap.py to import only from body.domain and body.services — not directly from db or info. 5. Ensure imports flow: services → domain, not反之. This reduces fan-out and isolates side effects.",
+  "risks": "Risk of over-engineering for a small bot; however, since tactic is applied incrementally (start with body/ restructuring), impact is localized. Temporary breaking of imports during refactoring requires disciplined migration order. Minimal runtime overhead expected."
+}

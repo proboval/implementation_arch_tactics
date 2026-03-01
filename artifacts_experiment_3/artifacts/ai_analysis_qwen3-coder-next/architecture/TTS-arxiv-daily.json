@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0), indicating no structured module organization",
+    "Single source file (daily_arxiv.py) dominates the codebase with 0 module boundaries",
+    "Flat directory structure (max_directory_depth: 1) with no layered or modular subdirectories",
+    "High average fan-out (9.0) suggests heavy use of external libraries and global functions",
+    "All functions are top-level with no class or package encapsulation (script-style procedural)",
+    "Assets and docs are static resources, not part of core architectural layers",
+    "Config-driven workflow (config.yaml) with CLI entrypoint (daily_arxiv.py), typical of automation scripts"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor testability due to lack of separation of concerns",
+    "Difficulty scaling or maintaining functionality as it grows",
+    "High coupling between I/O, business logic, and formatting",
+    "Limited reusability without explicit abstractions"
+  ]
+}

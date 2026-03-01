@@ -4,6 +4,7 @@ from filters.agent_filters.architecture_definition import ArchitectureDetectionA
 from filters.agent_filters.call_llm import call_llm
 from filters.github_filters.github_search import GitHubSearchFilter
 from filters.dataset_filters.collect_github_stars import DatasetMergeAndEnrichFilter
+from filters.dataset_filters.architecture_base import BackendDatasetPreparationFilter
 from filters.github_filters.github_clone import CloneRepositoriesFilter
 from filters.static_analysis.before import StaticAnalysisFilter
 from filters.agent_filters.tactic_definition import ArchitectureTacticSelectionFilter
@@ -53,14 +54,26 @@ def maintainability_filter_factory(step: str):
 pipeline = Pipeline(
     filters=[
         DatasetLLMImprovementRunner(
-            input_csv=Path(f"./{ARTIFACTS_DIR_NAME}/maintainability_dataset.csv"),
-            output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/improvement_maintainability_experiment_3.csv"),
+            input_csv=Path(f"./{ARTIFACTS_DIR_NAME}/dataset.csv"),
+            output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/improvement_maintainability_experiment_4.csv"),
             workdir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),
             architecture_filter=architecture_filter,
             tactic_filter=tactic_filter,
             implementation_filter=implementation_filter,
             maintainability_filter_factory=maintainability_filter_factory
         ),
+        # GitHubSearchFilter(
+        #     token=GITHUB_TOKEN,
+        #     max_repos=300,
+        #     output_file=Path(f"./{ARTIFACTS_DIR_NAME}/cloned_repositories.txt"),
+        #     stars=STARS
+        # ),
+        #
+        # BackendDatasetPreparationFilter(
+        #     workdir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),
+        #     output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/dataset.csv")
+        # ),
+
         # DatasetMaintainabilityEnricher(
         #     dataset_csv=Path(f"./{ARTIFACTS_DIR_NAME}/stars_dataset.csv"),
         #     output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/maintainability_dataset.csv"),
@@ -73,12 +86,7 @@ pipeline = Pipeline(
         #     output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/stars_dataset.csv"),
         #     github_token=GITHUB_TOKEN,
         # ),
-        # GitHubSearchFilter(
-        #     token=GITHUB_TOKEN,
-        #     max_repos=300,
-        #     output_file=Path(f"./{ARTIFACTS_DIR_NAME}/cloned_repositories.txt"),
-        #     stars=STARS
-        # ),
+
         #
         # BackendDatasetPreparationFilter(
         #     workdir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: workflows depend directly on concrete model classes (e.g., cf_workflow imports model.cf.UserCf), the shared preprocess module is flat and outside the package structure, and manage.py centrally orchestrates all workflows with no clear partitioning. This tight coupling increases ripple-effect risk during changes, reduces testability (e.g., mocking workflows requires launching real workflows or duplicating setup), and impedes independent analysis of components. Decomposability directly addresses this by enforcing separation of concerns via bounded modules, interfaces, and clear data boundaries — specifically improving testability and analyzability, which static analysis flags (factors 'T4', 'A1' in code_maintainability).",
+  "target_components": [
+    "model/cf.py",
+    "model/lfm.py",
+    "model/prank.py",
+    "workflow/cf_workflow.py",
+    "workflow/lfm_workflow.py",
+    "workflow/prank_workflow.py",
+    "preprocess.py",
+    "manage.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit ports/interfaces (e.g., Recommender interface in model package) and bounded workflow adapters, moving preprocess logic into a dedicated preprocess package under workflow/, and decoupling manage.py to depend only on workflow interfaces rather than concrete implementations. Current direct model imports (e.g., from model.cf import UserCf) will be replaced by dependency injection or factory patterns via abstractions.",
+  "implementation_strategy": "1. Define a Recommender interface (e.g., in model/__init__.py or a new model/ports.py) with abstract methods predict(user_id) and train(corpus). 2. Update each model class (cf.py, lfm.py, prank.py) to implement this interface. 3. Refactor each workflow module to accept a Recommender instance via run(recommender: Recommender), not import a concrete class. 4. Create a preprocess/ package (move preprocess.py inside) and refactor Channel into a DataLoadPort with concrete implementations for loading rating/user/movie data. 5. Update manage.py to assemble workflows via dependency injection: instantiate models → wrap in Recommender implementations → inject into workflows. 6. Introduce workflow/ports.py with Workflow interface (run(data_loader: DataLoadPort) → None).",
+  "risks": "Risk of temporary code duplication during interface refactoring; minor runtime overhead from indirection (negligible); potential scope creep if interfaces are over-engineered (mitigated by starting with minimal behavioral contracts based on actual usage in workflows)."
+}

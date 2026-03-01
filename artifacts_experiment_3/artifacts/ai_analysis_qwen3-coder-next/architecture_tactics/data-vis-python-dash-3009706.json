@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: 12 Python files are arranged in flat, chronologically named directories (02_01, 02_02, ..., 05_01) with zero packages or shared modules, and each file duplicates identical import chains (dash, dash.html, dash.dcc, plotly, pandas). The imports graph shows 12 independent files each importing the same core libraries without extracting common dependencies. This violates modular design, causing high ripple-effect risk when upgrading dependencies or refactoring UI logic. Decomposability directly addresses this by enforcing separation into cohesive modules (e.g., data access, UI layout, callbacks), reducing coupling and enabling localized changes—exactly matching the 'Decomposability' tactic's purpose: 'Divides system into modules or layers to isolate problems, facilitate testing and simplify analysis'. The flat script-based structure makes this the most tangible and incrementally implementable tactic.",
+  "target_components": [
+    "02_01/hello_world_dash.py",
+    "02_02/hello_world_dash.py",
+    "02_03/basic_dash_app.py",
+    "03_01/plotly_attributes.py",
+    "03_01/templates.py",
+    "03_02/style_arguments.py",
+    "03_03/dash_stylesheet.py",
+    "04_01/dash_callbacks.py",
+    "04_02/dropdown.py",
+    "04_03/dropdown.py",
+    "04_04/daterange.py",
+    "05_01/app.py"
+  ],
+  "expected_architectural_change": "The current script-based hierarchy (chronological chapter folders) will be restructured into a layered module structure: e.g., src/data/ (shared CSV reading), src/components/ (reusable Dash components like dropdown templates), src/styles/ (shared styling logic), src/callbacks/ (reusable callback patterns), and src/app.py (integration layer). Directories like 02_01, 03_02, etc., will be replaced by a single src/ tree with meaningful separation of concerns.",
+  "implementation_strategy": "1. Extract common utility code: create src/data.py to hold pandas/CSV loading logic, src/styles.py for theme templates. 2. Extract UI layout patterns: group dropdown and date-range layouts into src/components/dropdown.py and src/components/daterange.py. 3. Extract callback logic: move Output/Input patterns into src/callbacks/utils.py. 4. Refactor existing files to import from src/ modules instead of duplicating imports. 5. Begin with 03_01/templates.py (already partially extracts layout configuration) to create a reusable template module. 6. Incrementally move files into src/ without breaking existing directory structure initially—retain chapter folders as deprecated wrappers that import from src/.",
+  "risks": "Risk of short-term disruption during refactoring; however, the tactic is low-risk due to incremental applicability—each module extraction can be verified independently using existing test scripts. No system downtime since Dash apps remain standalone entry points that simply change import paths. Avoids over-engineering by targeting only high-duplication areas (CSV loading, dropdown creation) first."
+}

@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows a modular monolith with internal modularity (tokenizer, parser, ast, tree, javadoc, util, parse), but static analysis reveals critical maintainability risks: (1) The imports graph shows temporal coupling — e.g., parse.py imports both parser and tokenizer, but parser.py imports tokenizer *and* tree, while tree.py imports ast; this creates implicit initialization dependencies and brittle inter-module orderings (e.g., parser depends on both tree and tokenizer, yet tree depends on ast — an unenforced dependency chain). (2) The avg_fan-out of 1.4 is low, indicating *internal* cohesion, but the module boundary leakage is evident from cross-module dependencies (tree -> ast, parser -> tree, javadoc imports only stdlib but lacks clear abstraction for parsing integration). (3) The parse.py file acts as a ‘facade’ with no cohesion of its own, importing only parser and tokenizer — it combines unrelated concerns instead of delegating via abstractions. These issues increase ripple effects and make change impact analysis difficult — a core Maintainability concern. Decomposability (AT41) directly addresses this by enforcing modular boundaries that isolate changes, improve testability via smaller subsystems, and enable analyzability — all through clear module interfaces and reduced interdependencies.",
+  "target_components": [
+    "javalang/parse.py",
+    "javalang/parser.py",
+    "javalang/tree.py",
+    "javalang/ast.py",
+    "javalang/javadoc.py"
+  ],
+  "expected_architectural_change": "Introduce explicit module interfaces (e.g., a `javalang.analysis` or `javalang.parsing` interface layer) that define minimal contracts for parser/t tokenizer interaction, replacing current direct internal imports. Refactor parse.py to delegate solely to a well-defined `ParserService` or `ParseFacade` — rather than importing parser/tokenizer directly — to reduce the highfan-out burden on the parse module. This transforms parse.py from a procedural aggregator into a single-responsibility coordinator with fewer direct dependencies. Tree and ast modules will be separated by introducing an AST interface layer (e.g., `javalang.ast.base` or `javalang.ast.core`) that tree implements but does not depend on implementation details of ast — enabling tree to evolve independently.",
+  "implementation_strategy": "1. Extract interfaces: Create `javalang.ast/interfaces.py` containing abstract base classes for `Node` and core AST behaviors, then refactor `javalang/ast.py` to depend on these interfaces. 2. Introduce `javalang.parsing` or `javalang.analysis` module with `ParserService` and `ParserContext` abstractions that wrap parser/tokenizer/javadoc coordination. 3. Refactor `parse.py` to use only `ParserService`, removing direct imports of `parser` and `tokenizer`. 4. Introduce `javalang._internal` or `javalang._types` to hold low-level type hierarchy used only by core parsing components, hiding implementation from user-facing APIs. 5. Add explicit module-level `__all__` declarations to enforce public contracts and reduce implicit coupling. These changes can be done incrementally, one module at a time, with backward-compatible wrappers initially.",
+  "risks": "Risk of temporary duplication during transition (e.g., having both old-style `parse.py` imports and new service interface), but this is mitigated by incremental refactoring. Risk of over-abstraction is low given the current simplicity — the average fan-out is already low, and introducing a small number of well-scoped interfaces reduces complexity rather than adding it. No performance impact is expected since the tactics are structural, not behavioral."
+}

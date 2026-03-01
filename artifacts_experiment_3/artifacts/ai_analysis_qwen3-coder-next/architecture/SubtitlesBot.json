@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Three high-level packages (commands, inline, subtitle) indicate logical modularization within a single deployable unit",
+    "Flat repository structure with only 2 levels of directory depth, no service boundaries or separate processes",
+    "Shared dependencies across modules (e.g., commands and inline both import from subtitle), indicating cohesion and internal coupling",
+    "Single entry point (bot.py) orchestrating all components, typical of monolithic architectures",
+    "No external service discovery, inter-process communication, or deployment isolation patterns observed",
+    "Low average fan-out (2.6) and only 3 packages suggest moderate modularity without distributed complexity"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Potential for tight coupling between modules as they share internal imports (e.g., commands/inline importing subtitle internals directly)",
+    "Scalability limitations due to monolithic deployment and lack of process isolation",
+    "Risk of increasing maintainability debt as new features are added without clear module boundaries"
+  ]
+}

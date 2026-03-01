@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Structure shows clear separation of concerns with modules (dply, sql, siu, ops, experimental) representing cohesive responsibilities",
+    "Modules interact through well-defined APIs (e.g., siuba imports via __init__.py use explicit imports from submodules)",
+    "No external service boundaries or inter-process communication patterns are present",
+    "Database backend support (pandas, SQL dialects) is integrated as pluggable components rather than separate services",
+    "Test structure mirrors the source structure, indicating monolithic deployment with integrated testing",
+    "Shared core components like siu (symbolic execution engine) are reused across dply and sql modules",
+    "Config and tooling (setup.py, pytest, CI workflows) are centralized rather than distributed"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal"
+  ],
+  "risks": [
+    "Potential for tight coupling between modules if interfaces are not carefully maintained",
+    "Scaling may require internal refactoring rather than architectural changes"
+  ]
+}

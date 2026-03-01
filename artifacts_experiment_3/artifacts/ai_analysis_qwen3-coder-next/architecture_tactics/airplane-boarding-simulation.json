@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high maintainability debt due to extreme code duplication: identical core classes (Passenger, Lobby, AirplaneEnv, etc.) are duplicated across main.py, new.py, and airplane_boarding.py, with no shared module or encapsulation. Static analysis confirms zero packages (packages: 0), flat structure (max_directory_depth: 1), and duplicated responsibilities (C1, C2, A3 factors). This violates separation of concerns and makes testing, refactoring, and change analysis difficult. Decomposability directly addresses this by dividing the system into cohesive, isolated modules—specifically extracting shared simulation components (Passenger, Lobby, BoardingLine, AirplaneEnv) into a central module—and cleanly separating simulation (airplane_boarding.py), RL agent (agent.py), and strategy orchestration (run_strategies.py), thereby reducing coupling, increasing cohesion, and improving testability and analyzability.",
+  "target_components": [
+    "main.py",
+    "new.py",
+    "airplane_boarding.py",
+    "boarding_strategies.py"
+  ],
+  "expected_architectural_change": "The flat, script-based structure (no packages, single directory depth) will evolve into a modular monolith: a top-level src/ or airplane_boarding/ package containing submodules for core simulation entities (e.g., simulation_core/passengers.py, simulation_core/aircraft.py, simulation_core/lobby.py), with strategy and agent files importing from a well-defined interface. Shared classes will exist once in the package; main.py and new.py will be deprecated or repurposed as minimal entry points.",
+  "implementation_strategy": "Start by extracting core simulation classes (Passenger, Lobby, BoardingLine, AirplaneEnv) into a new src/airplane_boarding/core.py module. Refactor boarding_strategies.py to depend on this module (not duplicate definitions). Update agent.py, run_strategies.py, main.py, and new.py to import from the new module instead of defining classes inline. Rename main.py and new.py to examples/run_random.py and examples/run_rl.py to reflect their reduced role. This incremental approach preserves functionality while enabling testability, isolation, and future extension.",
+  "risks": "Risk of breaking imports if module structure changes without updating all imports consistently. To mitigate: run tests after each refactor step; use static import analysis tools; maintain backward-compatible aliases temporarily if needed. Since duplication is high, initial implementation will reduce overall code size and complexity, lowering long-term risk."
+}

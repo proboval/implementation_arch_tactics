@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between dialect implementations (Elastic vs OpenDistro) and shared base classes (e.g., es/baseapi.py and es/basesqlalchemy.py). Static analysis confirms high average fan-out (3.26) and shared imports like 'elasticsearch', 'opensearchpy', 'boto3', and 'requests_aws4auth' appear directly in core API modules (es/elastic/api.py, es/opendistro/api.py). The architecture description explicitly identifies the risk that 'tight coupling between database dialect implementations and shared base classes could hinder independent evolution'. Additionally, shared exceptions are used across dialects (e.g., es/exceptions.py imported by both), leaking implementation details. Reducing coupling will allow Elastic and OpenDistro dialects to evolve independently, improve testability (by allowing mock injection), and clarify boundaries between abstractions and implementations.",
+  "target_components": [
+    "es/baseapi.py",
+    "es/basesqlalchemy.py",
+    "es/elastic/api.py",
+    "es/elastic/sqlalchemy.py",
+    "es/opendistro/api.py",
+    "es/opendistro/sqlalchemy.py",
+    "es/exceptions.py"
+  ],
+  "expected_architectural_change": "Current shared base classes (BaseConnection, BaseCursor, BaseESDialect, etc.) will be refactored to depend on abstractions rather than concrete dialect implementations. A clear interface layer (ports) will be introduced—e.g., a ConnectionProvider and CursorProvider abstraction—to decouple shared logic from client-specific details. The base modules will no longer import elasticsearch or opensearchpy; instead, dialect-specific implementations will implement required adapter interfaces (e.g., ClientAdapter) that wrap low-level clients (Elasticsearch, OpenSearch). Exception hierarchy may be separated: a common exception base in es/exceptions.py (for public API) and internal dialect-specific exceptions (e.g., es/elastic/exceptions.py).",
+  "implementation_strategy": "1. Introduce a new module es/clients/ or extend es/ to define clean client adapter interfaces (e.g., BaseClientAdapter with get_version(), ping(), execute_sql()). 2. Refactor es/baseapi.py and es/basesqlalchemy.py to accept client adapters via constructor or injection (dependency inversion). 3. Move dialect-specific client imports and client instantiation logic into es/elastic/clients.py and es/opendistro/clients.py. 4. Refactor shared exception usage: avoid importing dialect-specific exceptions (e.g., es_exceptions, os_exceptions) in base modules; instead, translate low-level exceptions at adapter boundaries. 5. Update module __init__.pys to expose only public API surface (e.g., connect(), exceptions.Error) while hiding implementation details.",
+  "risks": "Initial refactoring may increase indirectness and require updating test mocks. However, since tests already mock dialect-specific connections (e.g., in test_dbapi.py), this is a natural extension. Over-abstraction could occur if interfaces become too generic; to mitigate, define abstractions based on real usage patterns (e.g., SQL dialect differences observed in api.py and sqlalchemy.py). The modular monolith structure supports incremental rollout without requiring architecture overhaul."
+}

@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single-file script (daily_arxiv.py) with no module boundaries, high fan-out (9.0), and flat structure (depth=1), causing poor separation of concerns between I/O, business logic, formatting, and external API calls (arxiv, requests, yaml). This leads to low testability (no test files, docstring_coverage=0), high coupling, and difficulty analyzing or modifying specific behaviors. Decomposability directly addresses this by structuring the monolithic script into cohesive, well-scoped modules (e.g., separation into data_fetching/, rendering/, configuration/), isolating responsibilities to improve maintainability incrementally without rewriting.",
+  "target_components": [
+    "daily_arxiv.py"
+  ],
+  "expected_architectural_change": "single_script → multi-module monolith; current flat structure with 1 file will be reorganized into subdirectories (e.g., src/, src/fetch/, src/render/, src/utils/) each with focused responsibilities, enabling import-based reuse and testability.",
+  "implementation_strategy": "Refactor daily_arxiv.py by extracting logical groups of functions into modules: 1) src/fetch/arxiv_fetcher.py (get_daily_papers, get_code_link), 2) src/render/formatter.py (json_to_md, sort_papers), 3) src/core/config_manager.py (load_config, update_json_file), 4) src/core/orchestrator.py (demo, update_paper_links). Introduce __init__.py files and update imports to use modules. This can be done incrementally, preserving behavior while improving modularity.",
+  "risks": "Risk of temporary breakage during refactoring if imports are misordered; however, this is mitigated by the script’s limited scope, clear function boundaries, and existing test/workflow files (.github/workflows/) that provide regression safety. No major negative impacts are expected."
+}

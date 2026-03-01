@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor maintainability due to a flat, script-based structure: zero packages, max directory depth of 1, and tightly coupled procedural orchestration (avg fan-out 5.67). Classes exist but serve only as procedural groupings (e.g., Scraper subclasses with duplicated __init__None and get_urlNone), and core logic in proxyChecker.py (Proxy class, check function) and proxyScraper.py (main(), scraping glue) is intermingled with I/O and orchestration. Decomposability directly addresses this by introducing modular boundaries—separating scraping, validation, checking, and coordination concerns into distinct modules or packages—thereby improving testability (e.g., unit tests for scrapers without network calls), analyzability (dependency flow becomes visible), and maintainability (changes localize to one module).",
+  "target_components": [
+    "proxyScraper.py",
+    "proxyChecker.py"
+  ],
+  "expected_architectural_change": "Current flat structure (two top-level scripts) will evolve into a layered modular monolith: e.g., scraper/, checker/, shared/, and CLI/ or main/, each with a clear responsibility and a well-defined interface. Classes like Scraper and Proxy will be refined into interfaces/abstract base classes, with concrete scrapers (SpysMeScraper, etc.) moved into scraper/. Similar splitting of proxy validation and checking into checker/.",
+  "implementation_strategy": "Refactor proxyScraper.py and proxyChecker.py by extracting core responsibilities: (1) Move all Scraper subclasses and scraping logic into scraper/ (e.g., scraper/base.py, scraper/spysme.py, scraper/proxyscrape.py, etc.); (2) Extract Proxy validation and checking logic into checker/ (e.g., checker/validator.py, checker/checker.py); (3) Move shared utilities (e.g., verbose_print, regex helpers) into shared/; (4) Create minimal CLI entry points (e.g., cli/scraper.py, cli/checker.py) that import and wire modules. Introduce __init__.py files to formalize packages. This is incremental: start with one scraper module and one checker module, then refactor others. No major rewrites; just logical grouping and abstraction.",
+  "risks": "Risk of over-engineering if decomposability is applied too aggressively (e.g., creating unnecessary layers). However, given current mi_avg = 0 and poor testability, even modest decomposition (e.g., separate scraper/checker boundaries) yields immediate maintainability gains. Need to ensure modules expose clear contracts and avoid circular imports."
+}

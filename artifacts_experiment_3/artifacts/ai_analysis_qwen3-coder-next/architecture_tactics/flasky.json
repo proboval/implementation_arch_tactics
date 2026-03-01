@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits strong modularity by domain (auth, api, main) but suffers from cross-cutting responsibilities and tight coupling that erodes maintainability. Static analysis flags 'C1' (likely coupling) and 'A3' (complexity), and the imports graph shows problematic bidirectional dependencies: e.g., app/models.py imports 'app' (circular), app/decorators.py imports 'models', and app/api/decorators.py imports 'errors' while errors.py imports 'app'—indicating tangled control and data flow. In particular, models.py handles domain logic, authentication tokens, email token generation, and validation (via ValidationError), violating single responsibility. The 'Localized Modification' tactic directly targets this: by encapsulating responsibilities within narrowly scoped modules (e.g., extracting validation rules into a dedicated validator module), changes to validation logic will be isolated, reducing ripple effects. This aligns with the modular monolith structure where modules are already grouped by domain—localizing modification enhances cohesion within each module without requiring architectural overhaul.",
+  "target_components": [
+    "app/models.py",
+    "app/api/errors.py",
+    "app/api/decorators.py",
+    "app/decorators.py",
+    "app/exceptions.py",
+    "app/api/authentication.py"
+  ],
+  "expected_architectural_change": "Isolate validation and token-related logic from User/Post models into dedicated, cohesive modules (e.g., 'validators/', 'token_services/'). Decorators and API error handlers will depend on abstractions (interfaces/protocols) rather than concrete models or app-level modules. The app/exceptions.py file will remain as a central exception definitions module, but its usage will become explicit via explicit contracts rather than implicit imports, reducing hidden dependencies.",
+  "implementation_strategy": "1. Extract validation methods (e.g., password strength, email format, email change confirmation logic) from models.py into a new app/validators/ module with clear contracts (e.g., Validator interface). 2. Create app/token_services/ for token generation/verification logic currently embedded in models.py and authentication.py. 3. Refactor decorators.py and api/decorators.py to depend on new validation/token abstractions instead of models. 4. Update api/errors.py to import ValidationError from exceptions.py directly, not from app. 5. Define explicit interfaces (e.g., via abstract base classes) to enforce loose coupling. This can be done incrementally: start with token_services (minimal impact), then validators, then update decorators and errors. The modular monolith allows safe refactoring within the app/ directory without changing deployment boundaries.",
+  "risks": "Risk of temporary duplication during transition and possible circular imports if abstraction boundaries are poorly designed; mitigated by using type hints and interface-only imports (e.g., from __future__ import annotations). Minor performance overhead if abstraction layers add function call depth, but negligible for maintainability gains. Requires team agreement on new module boundaries to avoid reintroducing coupling."
+}

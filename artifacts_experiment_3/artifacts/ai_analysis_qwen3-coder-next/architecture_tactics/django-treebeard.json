@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis confirms this is a modular monolith with tightly coupled tree algorithm implementations (mp_tree.py, ns_tree.py, al_tree.py, ltree/fields.py) that share core Node functionality via inheritance. The import graph shows heavy cross-module dependencies: treebeard/al_tree.py imports from treebeard/exceptions.py and treebeard/models.py; treebeard/mp_tree.py imports treebeard/models.py and treebeard/numconv.py; treebeard/ltree/__init__.py imports fields from relative .fields; treebeard/templatetags/admin_tree_list.py imports from treebeard.templatetags. This creates ripple effects: changes to core Node methods propagate across all tree implementations, and adding new tree algorithms requires touching multiple shared modules. Localized Modification directly addresses this by grouping high-cohesion responsibilities per module, reducing modification scope and isolating change impact to a single module (e.g., path resolution logic in MP_Node). This fits the repository structure since the current 5-module layout already represents bounded logical components (MP, NS, AL, LT, core) that can be hardened with clearer internal cohesion boundaries and reduced cross-module mutation responsibilities.",
+  "target_components": [
+    "treebeard/mp_tree.py",
+    "treebeard/ns_tree.py",
+    "treebeard/al_tree.py",
+    "treebeard/ltree/fields.py",
+    "treebeard/models.py"
+  ],
+  "expected_architectural_change": "Reduction in cross-module write dependencies: each tree algorithm module will own its internal state mutation logic (e.g., path management, sibling ordering) without requiring shared coordination functions in models.py or core node methods to know tree-specific rules. Models.py will become a read-only abstraction layer, and each tree algorithm will encapsulate its own write-behavior. New tree algorithms can be added by implementing a self-contained module without touching core or other tree modules.",
+  "implementation_strategy": "Step 1: Identify write-behavior responsibilities currently in models.py (e.g., _prepare_pos_var, _process_foreign_keys) and extract them into per-treehandler classes within each tree module (MP_AddRootHandler already exists). Step 2: Refactor tree algorithm-specific path/sibling logic into the respective Node subclasses so they are not called by generic Node.move or Node.add_sibling, ensuring handlers are self-contained. Step 3: Remove cross-module state mutations by introducing immutable data contracts between modules (e.g., Node.move receives path delta from handler instead of mutating internal state directly). Step 4: Introduce handler interfaces (e.g., AbstractAddMoveHandler) to standardize extension points while keeping implementation local. This preserves Django ORM integration while localizing modification to tree-specific modules.",
+  "risks": "High: Refactoring core Node.move behavior will affect every test case (130+ test methods), requiring careful test suite coverage validation. Medium: Django admin integration relies on generic Node methods; changes may require admin method updates (treebeard/admin.py, templatetags/admin_tree.py). Low: Static analysis shows docstring coverage is low (48.28%); localized modification may expose undocumented internal mutation paths that require careful regression testing."
+}

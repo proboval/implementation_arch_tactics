@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis and repository structure reveal tight coupling in the services layer: services directly import and instantiate other services (e.g., TradingStrategyService imports and depends on both OrderService and PriceService), and core components like EnhancedRESTClient import and instantiate multiple services, creating a tangled dependency graph. This reduces testability (services require full service-layer mocks or real instantiations) and makes change impact analysis difficult. The 'Decomposability' tactic addresses this by enforcing modular boundaries—specifically introducing clear ports/adapters and dependency inversion—to isolate concerns, reduce cross-service coupling, and make the system analyzable and testable. This directly targets the 'A3' (Architecture) factor flagged in static analysis for modular_monolith architecture and aligns with the risk identified: 'Tight coupling between services may reduce testability'. The repository structure (services/, models/, utils/) provides a natural scaffold for layering: models as stable core, services as domain logic, with clear interfaces and adapter-style boundaries.",
+  "target_components": [
+    "coinbase_advanced_trader/services/trading_strategy_service.py",
+    "coinbase_advanced_trader/services/order_service.py",
+    "coinbase_advanced_trader/services/price_service.py",
+    "coinbase_advanced_trader/services/fear_and_greed_strategy.py",
+    "coinbase_advanced_trader/enhanced_rest_client.py",
+    "coinbase_advanced_trader/services/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., BaseOrderService, BasePriceService) and change dependency injection to depend on abstractions rather than concrete implementations. Services will no longer import or instantiate concrete services—instead, they accept dependencies via constructor or factory. EnhancedRESTClient will delegate to service interfaces, not concrete classes. A new 'ports' layer (interfaces/abstractions) is added alongside services, with current services becoming 'adapters' that implement those interfaces. This yields clearer layers: core models → service interfaces (ports) → service implementations (adapters) → higher orchestration.",
+  "implementation_strategy": "1. Extract interface definitions from existing service classes (e.g., create coinbase_advanced_trader/services/interfaces/order_service.py with BaseOrderService). 2. Refactor TradingStrategyService to depend on interfaces, not concrete OrderService/PriceService. 3. Refactor EnhancedRESTClient to inject services via constructor with interfaces, avoiding direct instantiation. 4. Update services/__init__.py to export interfaces only. 5. Add interfaces to dependencies in tests. 6. Gradually refactor concrete services to implement interfaces. This is incremental: start with one service pair, refactor, test, and repeat—no big-bang rewrite. New imports and class definitions can be added layer by layer without breaking existing functionality.",
+  "risks": "Risk of over-engineering if interfaces are added too broadly before evidence justifies them; mitigated by targeted refactoring of only the most coupled services first (e.g., order/price/trading_strategy). Risk of temporary test instability during injection changes; mitigated by thorough unit test coverage (already strong, per test files). Risk of increased boilerplate; offset by improved maintainability and testability gains confirmed by the high test count in tests/."
+}

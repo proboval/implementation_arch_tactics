@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "The codebase is organized into logical, cohesive modules (e.g., mmseg.datasets, mmseg.models, mmseg.apis, mmseg.core) with clear separation of concerns but no inter-service communication protocols.",
+    "Repository structure shows hierarchical module organization: models/backbones, models/decode_heads, models/necks, models/segmentors, etc., indicating strong internal cohesion and dependency-driven modularity—not loose coupling typical of microservices.",
+    "Total package count is 20, avg_fan_out is low (~1.1), and max_directory_depth is 5, consistent with a well-structured single deployment unit.",
+    "All components are imported directly via Python modules (e.g., from mmseg.models import build_segmentor), with no service calls, message queues, REST/gRPC interfaces, or deployment isolation.",
+    "Training/inference uses local function calls (e.g., train_segmentor, inference_segmentor) within the same process—no network boundaries.",
+    "Build/test/deployment tooling (tools/train.py, tools/test.py, setup.py, tests) treats the system as a single deployable unit—no orchestration or service discovery.",
+    "Registry pattern (mmcv.utils.Registry + build_from_cfg) used extensively across modules, indicating design for extensibility within a unified codebase, not service interaction."
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Limited scalability—vertical scaling only due to monolithic execution.",
+    "Higher risk of tight coupling if modularity boundaries are violated (though current structure shows good discipline).",
+    "Harder to deploy heterogeneous technologies for different workloads (e.g., inference vs training)."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits excessive direct coupling between control modules and utility modules via imports in both directions. For example, `data_collection.py` imports from `control/weather/sojson.py`, `control/horoscope/xzw_horescope.py`, and `control/calendar/rt_calendar.py`, while `friend_helper.py` imports from `data_collection.py`, and `group_helper.py` imports from multiple control modules and `db_helper.py`. This creates a tangled dependency graph where changes in any control module risk cascading to multiple utilities, reducing modularity and testability. Static analysis confirms `data_collection.py` as a high fan-in hub (imports 5+ control modules), and the `everyday_wechat` package-level import in multiple control modules (e.g., `sojson_calendar.py` imports `everyday_wechat`) indicates bidirectional coupling. The modular monolith structure is compromised by direct cross-module imports violating separation of concerns — control modules should be independent data sources, not dependencies of shared utilities. Reducing coupling isolates modules, limits ripple effects, and improves testability via easier mocking.",
+  "target_components": [
+    "everyday_wechat/utils/data_collection.py",
+    "everyday_wechat/utils/friend_helper.py",
+    "everyday_wechat/utils/group_helper.py",
+    "everyday_wechat/utils/itchat_helper.py",
+    "everyday_wechat/control/calendar/sojson_calendar.py",
+    "everyday_wechat/control/weather/sojson.py",
+    "everyday_wechat/control/horoscope/xzw_horescope.py",
+    "everyday_wechat/control/onewords/wufazhuce.py"
+  ],
+  "expected_architectural_change": "Replace direct imports from control modules into utilities with a dependency-injection pattern: introduce a centralized service layer or adapter interface that utilities depend on, and let higher-level orchestrators (e.g., `main.py`, `run.py`) inject concrete implementations. Control modules become independent, self-contained components without knowledge of utility consumers. New abstractions: an `adapter` or `service` package with interfaces (e.g., `BotService`, `CalendarService`) decoupling data sources from business logic.",
+  "implementation_strategy": "1. Extract service interfaces into `everyday_wechat/services/__init__.py` (e.g., `get_bot_info`, `get_calendar_info` signatures). 2. Move control module functions into adapter classes implementing these interfaces. 3. Modify `data_collection.py` to accept interface instances as arguments (e.g., `get_weather_info(weather_service)`), removing direct imports of control modules. 4. Refactor `group_helper.py` and `friend_helper.py` to accept adapters instead of importing data_collection. 5. Introduce a composition root in `main.py` to wire adapters and utilities, minimizing runtime coupling.",
+  "risks": "Refactoring `data_collection.py` requires careful signature updates across all callers. However, since `data_collection.py` is already a high-coupling hub, incremental isolation (e.g., extracting one service at a time) is low-risk: stub adapters can be used during migration. Test coverage (e.g., `tests/test_control/`) can validate behavior preservation. The main risk is temporary increased complexity during migration, but this is mitigated by modular, incremental commits (per service)."
+}

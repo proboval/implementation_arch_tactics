@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and ambiguous module boundaries — evidenced by the single-package modular monolith structure (confidence 0.95) and an imports graph where src/whisper_ctranslate2/whisper_ctranslate2.py directly imports 12 internal modules, becoming a central 'God' orchestrator. Static analysis flags 'C1' (complexity) and 'A3' (arcitecture proxies issues), and the circular imports (e.g., live.py → transcribe.py → writers.py) hinder modularity and testability. Decomposability addresses this by enforcing clear module boundaries and separation of concerns, reducing ripple effects during changes and improving testability. Specifically, the main() function in whisper_ctranslate2.py is doing too much: command parsing, orchestration, diarization, live input, and writing — violating single responsibility. Decomposing this into domain-specific entry points (e.g., transcribe_only.py, diarize.py, live_stream.py) with explicit interfaces and minimal internal coupling will make the system more analyzable and maintainable.",
+  "target_components": [
+    "src/whisper_ctranslate2/whisper_ctranslate2.py",
+    "src/whisper_ctranslate2/live.py",
+    "src/whisper_ctranslate2/diarization.py",
+    "src/whisper_ctranslate2/transcribe.py",
+    "src/whisper_ctranslate2/commandline.py"
+  ],
+  "expected_architectural_change": "The monolithic main() will be split into composable, single-responsibility orchestrators (e.g., 'TranscribeCommand', 'DiarizationCommand', 'LiveCommand') that each implement a clear interface (e.g., Command.execute()). Internal modules will interact only via well-defined interfaces (e.g., TranscribeInterface), not direct module imports. A new module like src/whisper_ctranslate2/commands.py or src/whisper_ctranslate2/cli/ can host these command classes, replacing direct inter-module calls.",
+  "implementation_strategy": "1) Introduce abstractions (e.g., TranscribeCommand interface, DiarizationCommand interface) to decouple command behavior from implementation. 2) Refactor whisper_ctranslate2.py to delegate to command handlers instead of implementing logic inline. 3) Extract live and diarization workflows into reusable command classes with no internal direct imports from each other. 4) Refactor transcribe.py/writers.py to expose only public methods via a common interface. 5) Add an explicit commands/ module to host decoupled command handlers. This can be done incrementally: start by extracting command behavior from main() into separate classes, then gradually remove direct imports across modules.",
+  "risks": "Short-term: increased file count and potential new coupling if interfaces are poorly designed. Long-term: minimal — decomposability reduces maintenance cost and supports future evolution to layered or plug-in architectures. Risk is mitigated by introducing interfaces before splitting modules and by keeping changes atomic per module."
+}

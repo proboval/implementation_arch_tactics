@@ -1,0 +1,26 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: modules share state via module-level globals (global_config, spider_config), have tightly coupled dependencies (e.g., utils.spider_controller imports and instantiates all function/* modules directly), and lack clear module boundaries — as seen in spider_controller.py importing entire function modules and utils modules importing each other cyclically (e.g., get_font_map.py imports requests_utils.py which imports cookie_utils.py which imports spider_config.py which imports logger which is used by many). This hinders testability (e.g., testing Detail or Search requires spinning up full config/environment), increases ripple effects (a change in config.py propagates across 10+ files), and erodes modularity (utils/saver/, utils/, and function/ modules are not cleanly layered). Decomposability directly addresses this by enforcing separation of concerns via module boundaries that isolate responsibilities, enable independent testing, and contain change. The repository structure (already modular monolith with clear package directories) makes this tactic implementable incrementally.",
+  "target_components": [
+    "function/search.py",
+    "function/detail.py",
+    "function/review.py",
+    "function/get_encryption_requests.py",
+    "utils/spider_controller.py",
+    "utils/spider_config.py",
+    "utils/config.py",
+    "utils/saver/saver.py",
+    "utils/saver/csv_saver.py",
+    "utils/saver/mongo_saver.py",
+    "main.py"
+  ],
+  "expected_architectural_change": "Introduce clean module boundaries with strict directionality: (1) configuration modules (config.py, spider_config.py) become read-only inputs, no longer injected into business logic; (2) saver modules exposed via a Saver interface (already partially in saver.py) with no direct config dependency; (3) function/* modules depend only on utils (not each other — e.g., get_encryption_requests.py’s import of function.detail must be removed); (4) spider_controller becomes a thin orchestrator coordinating interfaces, not instantiating concrete classes; (5) global_config/spider_config used only for injection at entry point (main.py), not accessed internally by function modules.",
+  "implementation_strategy": "Step 1: Define abstractions for dependencies: create interfaces in utils/ (e.g., utils/saver_interface.py, utils/config_interface.py). Step 2: Refactor function/* modules to accept dependencies via constructors (e.g., Search(encryptor, requests, saver)) instead of importing config/logger directly — config becomes passed-in; Step 3: Refactor utils/spider_config.py to provide factory methods returning concrete objects, not module-level globals; Step 4: Replace utils/spider_controller.py's direct instantiation with dependency injection via a factory; Step 5: Introduce an entry-point initialization layer in main.py to wire modules and pass interfaces. This preserves the monolithic package structure while adding well-defined boundaries and reducing coupling between function/* modules — turning the current flat dependency graph into a layered, testable architecture.",
+  "risks": "Module boundary refactoring may cause temporary test breakage during transition; team must agree on strict dependency rules to prevent boundary erosion in future; risk of over-engineering if abstractions are added prematurely — but mitigated by incremental, file-by-file application."
+}

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe maintainability issues due to tight coupling: (1) High average fan-out (4.5) indicates excessive cross-module dependencies (e.g., scratch/working_with_data.py imports from 12+ scratch modules, first-edition/code-python3/logistic_regression.py imports from 9 modules), (2) Circular import risk is evident (scratch/recommender_systems.py imports from scratch.nlp which imports from scratch.deep_learning which imports from scratch.linear_algebra and scratch.probability, while scratch/nlp imports from scratch.deep_learning and scratch.neural_networks which depend on scratch.linear_algebra), (3) Domain bleed is visible (e.g., scratch/getting_data.py contains both web scraping logic AND business logic like 'get_domain'), (4) Testability is compromised as modules cannot be unit-tested in isolation—scratch/logistic_regression.py imports 5 scratch modules and scratch/gradient_descent.py imports scratch.linear_algebra. This coupling violates the core maintainability goal: 'reduces coupling' (per architectural tactics definition). The modular monolith structure allows incremental decoupling without full architectural overhaul.",
+  "target_components": [
+    "scratch/logistic_regression.py",
+    "scratch/working_with_data.py",
+    "scratch/recommender_systems.py",
+    "first-edition/code-python3/logistic_regression.py",
+    "scratch/getting_data.py",
+    "scratch/gradient_descent.py",
+    "scratch/multiple_regression.py",
+    "scratch/neural_networks.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces/abstractions between logically dependent modules: (1) Define Vector, Matrix, and Probability abstractions in dedicated low-level modules (e.g., scratch/math_abstractions.py) to replace direct imports of scratch.linear_algebra and scratch.probability, (2) Extract shared data-handling utilities (e.g., parsing, type conversion) into a new scratch/io.py module to reduce getting_data.py's domain bleed, (3) Replace direct module-to-module calls with interface-based dependencies (e.g., logistic_regression.py depends onscratch.neural_networks -> depends on scratch.optimization_interface). This will create a layered dependency structure: data I/O → core math → algorithms → domain logic → presentation.",
+  "implementation_strategy": "Step 1: Extract shared math utilities into new scratch/math_abstractions.py module containing only interface definitions (e.g., Vector interface class, probability distribution contracts) without implementation. Step 2: Modify scratch/linear_algebra.py and scratch/probability.py to implement these interfaces. Step 3: Refactor high-fan-out modules (e.g., scratch/working_with_data.py, scratch/recommender_systems.py) to depend only on scratch.math_abstractions, not concrete implementations. Step 4: Extract I/O utilities (e.g., CSV/JSON parsing, date parsing) from scratch/getting_data.py into new scratch/io.py. This enables decoupling incrementally—each module can be refactored independently without breaking the build.",
+  "risks": "Risk of interface churn if abstractions are too rigid; mitigated by starting with minimal interface contracts (e.g., type signatures only) and evolving them iteratively. Short-term risk of increased import complexity during refactoring, addressed by maintaining backward compatibility (e.g., scratch/linear_algebra remains importable until all consumers switch). Long-term risk of over-engineering if interfaces become too generic—mitigated by domain-driven design: interfaces must reflect actual domain concepts (e.g., 'Vector' for numerical vectors, not generic 'DataContainer')."
+}

@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis reports 'C1' and 'A3' factors in architecture_maintainability, indicating cohesion and abstraction issues. The repository shows tight coupling between parser, directives, and plugins (e.g., gixy/plugins/origins.py imports gixy.core.regexp; gixy/plugins/ssrf.py imports gixy.core.variable and gixy.core.context directly). The Context singleton and shared state in gixy/core/context.py creates hidden dependencies that spread across multiple modules (plugins, parser, directives), causing ripple effects when changes occur. Localized Modification addresses this by increasing cohesion within modules and narrowing the scope of changes—specifically, by extracting variable and context handling logic from plugins into dedicated abstractions, reducing cross-module contamination.",
+  "target_components": [
+    "gixy/plugins/origins.py",
+    "gixy/plugins/ssrf.py",
+    "gixy/plugins/http_splitting.py",
+    "gixy/core/variable.py",
+    "gixy/core/context.py",
+    "gixy/plugins/plugin.py"
+  ],
+  "expected_architectural_change": "Extract variable/regexp analysis logic from individual plugins into a new 'VariableAnalyzer' module. This module will encapsulate all context and regexp operations, decoupling plugins from low-level implementation details. Current plugins will depend on this new abstraction instead of directly accessing gixy.core.variable.Variable or gixy.core.regexp.Regexp.",
+  "implementation_strategy": "1. Identify repeated patterns in plugins that directly use Context, Variable, and Regexp (e.g., origins.py, ssrf.py, http_splitting.py). 2. Create a new module gixy/core/variable_analyzer.py with a public interface that hides context/state management and regex operations. 3. Refactor affected plugins to import and use VariableAnalyzer instead of importing core modules directly. 4. Add unit tests for VariableAnalyzer to ensure behavior is preserved. 5. Gradually migrate other plugins as needed. This preserves existing behavior while improving modularity and testability.",
+  "risks": "Initial refactoring may temporarily increase coupling during the transition if VariableAnalyzer is poorly designed. However, the risk is bounded and reversible—reverting to previous state is straightforward since changes are isolated to plugin files. Dependencies on internal sre_parse modules (e.g., gixy/core/sre_parse/) should also be reviewed to avoid exposing fragile implementation details."
+}

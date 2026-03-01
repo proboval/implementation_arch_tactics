@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "The project follows Django's conventional structure with a core 'slick_reporting' app module and a separate 'demo_proj' app for demonstration, indicating loose coupling between domain-specific and demo code.",
+    "Clear separation of concerns: 'fields.py' for computation logic, 'generator.py' for report generation orchestration, 'views.py' for presentation layer, and 'forms.py' for input handling—typical of well-structured Django monoliths.",
+    "Use of Django apps ('slick_reporting', 'demo_app', 'tests') as modularity units, each encapsulating models, views, templates, and tests.",
+    "Shared database and runtime; no inter-process communication patterns or service discovery mechanisms indicating microservices.",
+    "Single codebase with explicit internal dependencies (e.g., slick_reporting imports used in demo_proj), but no evidence of strict dependency inversion or port/adapters decoupling.",
+    "No external message queues, API gateways, or service meshes typical of microservices or hexagonal architectures.",
+    "Test suite co-located with implementation, using Django's built-in test runner—standard for Django monoliths.",
+    "Registry pattern (registry.py), factory pattern (form_factory.py), and delegation patterns indicate internal modularity but remain within a single process."
+  ],
+  "alternatives": [
+    "layered",
+    "mvc",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Risk of tight coupling between modules if internal imports are not carefully managed across app boundaries.",
+    "Limited horizontal scalability without decoupling.",
+    "Potential for monolith bloat over time if domain boundaries are not strictly enforced."
+  ]
+}

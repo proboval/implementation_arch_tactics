@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "lib/domain.py",
+  "content": "# -*- coding: UTF-8 -*-\n\"\"\"Domain models for IP/host scanning.\"\"\"\n\n\nclass Host:\n    \"\"\"Represents a host (domain) to be scanned.\"\"\"\n    def __init__(self, name):\n        self.name = name.strip()\n\n    def __str__(self):\n        return self.name\n\n    def __repr__(self):\n        return f\"Host({self.name!r})\"\n\n\nclass ScanTarget:\n    \"\"\"Represents a scan target: (host, ip).\"\"\"\n    def __init__(self, host, ip):\n        self.host = Host(host) if isinstance(host, str) else host\n        self.ip = ip.strip() if isinstance(ip, str) else ip\n\n    def __str__(self):\n        return f\"{self.ip} -> {self.host}\"\n\n    def __repr__(self):\n        return f\"ScanTarget(host={self.host!r}, ip={self.ip!r})\"\n"
+}

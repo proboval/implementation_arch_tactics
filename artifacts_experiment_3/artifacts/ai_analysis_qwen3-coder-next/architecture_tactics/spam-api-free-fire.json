@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from a flat, single-module structure (only 4 Python files in root, 0 packages) where concerns are heavily interleaved: web routing, cryptography, protobuf handling, database access, and async HTTP clients are all in app.py. The static analysis confirms this via avg_fan_out=5.0, high interdependencies (e.g., app.py imports 15+ unrelated modules), and lack of module separation. Decomposability directly addresses this by introducing modular boundaries—splitting monolithic app.py into logical modules such as crypto/, api/, protobuf/, and db/—thereby reducing coupling, improving cohesion, testability, and maintainability. This tactic is implementable incrementally (e.g., create packages and move related functions) without requiring full rewrite.",
+  "target_components": [
+    "app.py",
+    "byte.py",
+    "like_count_pb2.py",
+    "uid_generator_pb2.py"
+  ],
+  "expected_architectural_change": "The 4 flat Python files will be reorganized into a multi-package structure with clear layering: e.g., src/ (or app/) containing submodules: crypto/ (with byte.py reorganized), api/ (handling Flask routes and HTTP clients), protobuf/ (wrapping generated pb2 files), and db/ (for PostgreSQL interactions). This decouples responsibilities and creates explicit dependency boundaries—each module depends only on its immediate neighbors, not on unrelated concerns.",
+  "implementation_strategy": "1. Create a top-level package (e.g., src/) and move app.py → src/app.py or src/__init__.py. 2. Extract crypto-related logic into src/crypto/ (including byte.py as src/crypto/aes.py). 3. Move protobuf usage into src/protobuf/ (wrapping like_count_pb2.py and uid_generator_pb2.py to reduce direct usage across files). 4. Extract API routing and HTTP client logic into src/api/ (isolating Flask/app routes from business logic). 5. Create internal abstractions (e.g., CryptoService, UidEncoder) to replace direct function calls (e.g., Encrypt_ID → CryptoService.encrypt_id()). 6. Update imports to use package-level references instead of flat file names.",
+  "risks": "Risk of over-engineering if too many layers are added prematurely; however, since this is a flat monolith with high coupling, even minimal decomposition (e.g., 3–4 logical subpackages) significantly improves maintainability without substantial overhead. Initial refactoring may temporarily increase import complexity if not done carefully—mitigated by enforcing consistent package boundaries and avoiding circular dependencies."
+}

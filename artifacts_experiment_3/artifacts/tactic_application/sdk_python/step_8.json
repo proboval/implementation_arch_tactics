@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "bunq/sdk/model/core/internal_model_interface.py",
+  "content": "class InternalModelInterface:\n    def __init__(self, generated_model):\n        self._generated_model = generated_model\n\n    @property\n    def generated_model(self):\n        return self._generated_model\n"
+}

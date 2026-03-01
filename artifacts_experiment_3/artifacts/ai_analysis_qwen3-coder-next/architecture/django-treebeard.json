@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into logical modules (e.g., treebeard.mp_tree, treebeard.ns_tree, treebeard.al_tree, treebeard.ltree) with bounded responsibility for specific tree algorithms",
+    "Single Django application structure with shared core (treebeard.models.Node, treebeard.exceptions, treebeard.numconv)",
+    "No indication of inter-process communication, network boundaries, or separate deployable units — all code resides in one repository with Django-style package layout",
+    "Heavy use of Django ORM, models, and admin integration indicates tight coupling to a single runtime framework",
+    "Test suite is co-located with source and follows Django testing conventions, confirming monolithic integration",
+    "Avg fan-out of 2.48 and 5 packages suggests small-to-moderate cohesion within one cohesive system",
+    "Template tags and admin classes are integrated directly in the library rather than externalized"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Potential for monolithic decay if modularity boundaries are not enforced — codebases like this often blur module responsibilities over time",
+    "Testing and deployment tightly coupled — changes in one tree algorithm (e.g., MP_Tree) may impact all",
+    "Limited scalability in terms of independent evolution of features or services"
+  ]
+}

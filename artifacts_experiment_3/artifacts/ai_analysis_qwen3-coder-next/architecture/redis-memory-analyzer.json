@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear module-based separation in the package structure (rma/cli, rma/helpers, rma/reporters, rma/rule, rma/tests)",
+    "Packages represent cohesive functional domains (e.g., rule for Redis data type analysis, reporters for output formatting)",
+    "No network boundaries or inter-service communication; all modules interact via internal Python imports",
+    "Single executable entry point (main.py, rma_cli.py) orchestrating core functionality via RmaApplication",
+    "Dependencies between modules are explicit but local (e.g., rma.application imports from rma.redis, rma.scanner, etc.)",
+    "No ports/adapters pattern (e.g., no clear separation between domain and infrastructure interfaces like interfaces for Redis dependency injection)",
+    "Layered aspects are present but not strict (e.g., rma.rule modules contain both logic and I/O; scanner uses redis directly)",
+    "Low average fan-out (2.38) suggests cohesive internal modules rather than distributed coordination"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Mixing of concerns in rule modules (analysis logic + Redis I/O + formatting) may hinder maintainability",
+    "Tight coupling to Redis and specific Redis client library (redis-py) limits testability and extensibility",
+    "Application layer (application.py) has many responsibilities, potentially violating single responsibility principle"
+  ]
+}

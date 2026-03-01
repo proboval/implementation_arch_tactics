@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and ambiguous module boundaries, particularly evident in static analysis: helpers/admins.py imports directly from cache/admins.py, and Misery modules (e.g., PmText.py) import from both helpers and plugins, creating cross-layer dependencies. The modular monolith has low modularity (only 2 packages: cache and Downloaders with helpers lumped in as subpackages without clear separation), and the dependency graph shows helpers/admins, helpers/decorators, and Misery files all importing shared state (config.py, cache.admins) without interface contracts. This violates decomposability: components are not cleanly separable for independent testing or maintenance. Selecting Decomposability addresses this by enforcing clean module boundaries and separation of concerns—exactly what the 'risks' note warns about: 'uncontrolled dependency cycles' and 'tight coupling hindering future refactoring or testing'. It is implementable incrementally, starting from high-coupling files like helpers/admins.py, helpers/decorators.py, and Misery/VideoStreaming.py.",
+  "target_components": [
+    "helpers/admins.py",
+    "helpers/decorators.py",
+    "helpers/filters.py",
+    "Misery/VideoStreaming.py",
+    "Misery/song.py",
+    "Misery/PmText.py",
+    "cache/admins.py",
+    "Downloaders/youtube.py"
+  ],
+  "expected_architectural_change": "Introduce well-defined interfaces/ports (e.g., AdminCacheInterface, DownloaderInterface, FilterFactory) at module boundaries, so helpers no longer depend on concrete implementations in cache. For example, helpers/admins.py would depend on an abstract admin store interface instead of cache.admins directly. Similarly, Misery modules would depend on abstractions (e.g., DownloaderProtocol) rather than concrete implementations like youtube.py. This creates layered decomposition: misapplication logic (Misery/) depends on domain support (helpers/) which depends on infrastructure abstractions (cache/ and Downloaders/), with arrows reversed via dependency inversion.",
+  "implementation_strategy": "1. Define abstract interfaces in dedicated modules (e.g., `interfaces/admin_store.py`, `interfaces/downloader.py`, `interfaces/filter_factory.py`). 2. Update cache/admins.py to implement AdminStoreInterface; Downloaders/youtube.py to implement DownloaderInterface. 3. Refactor helpers/admins.py to accept an AdminStoreInterface (e.g., via constructor or dependency injection) instead of importing cache.admins directly. 4. Refactor helpers/decorators.py and helpers/filters.py to use injected dependencies instead of calling config or cache directly. 5. Replace direct imports in Misery modules with interface-based dependencies (e.g., inject a video downloader interface into VideoStreaming.py instead of importing youtube_dl). New folders like `ports` or `interfaces` may emerge, and module import paths will shift from concrete → abstract.",
+  "risks": "Initial refactoring may require significant changes in module graphs; temporary duplication of interfaces and concrete classes could increase complexity before improvement. However, risks are low because changes are localized to file dependencies and do not require altering runtime behavior—just dependency direction and interface contracts. Incremental application minimizes disruption."
+}

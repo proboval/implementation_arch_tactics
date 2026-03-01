@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module-based grouping by responsibility: Core, Config, Modules_Active, Modules_Passive, Tools, Output — suggests cohesive modules with focused concerns",
+    "Central entry point (AssetsHunter.py) orchestrates multiple modules without explicit inter-process communication or service boundaries",
+    "Modules import from shared directories (Core, Config, Tools), indicating tight coupling and shared internal libraries",
+    "No evidence of network boundaries, distributed deployment, or service discovery — contradicts microservices_like",
+    "No explicit ports/adapters or clean separation of interfaces from core logic — weakens hexagonal claim",
+    "Low avg_fan_out (1.6) suggests modules depend on few others, consistent with loosely coupled modules in a monolith",
+    "Only 2 levels of directory depth and no packages (packages=0) imply flat, module-based organization without layered abstraction layers",
+    "Code maintainability metrics show zero values — likely indicates low formal structure or documentation, common in modular monoliths developed for specific tasks"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight inter-module dependencies increase risk of cascading changes",
+    "Lack of formal architecture documentation may hinder onboarding or future refactoring",
+    "Shared internal dependencies (e.g., Core/decorators, Config/config_*) may lead to cyclic dependencies over time",
+    "Limited separation of concerns (e.g., Modules_Active and Modules_Passive use same decorators) could reduce testability",
+    "Single-process execution (no concurrency abstraction) may limit scalability"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "arg.py": [
+      "argparse"
+    ],
+    "config.py": [
+      "arg",
+      "configobj"
+    ],
+    "macPreInstall.py": [
+      "os"
+    ],
+    "slouchy.py": [
+      "PyQt4",
+      "sys",
+      "config",
+      "time",
+      "signal",
+      "main"
+    ]
+  }
+}

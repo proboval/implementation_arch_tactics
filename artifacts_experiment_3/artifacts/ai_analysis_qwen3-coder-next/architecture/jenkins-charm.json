@@ -1,0 +1,21 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.95,
+  "evidence": [
+    "Directory structure explicitly separates layers: 'lib/charms/layer/jenkins/' contains core domain logic (api, configuration, packages, plugins, service, storage, users); 'reactive/' sits as an orchestration layer orchestrating lifecycle events; 'actions/' and 'templates/' indicate infrastructure automation separation.",
+    "Use of reactive programming framework (charms.reactive) with 'when', 'when_not', 'hook' decorators implies clear separation between reactive layer and core domain logic, a hallmark of layered architectures.",
+    "Dependency flow is unidirectional: reactive layer imports from lib.charms.layer.jenkins.*, not vice versa; unit/integration tests import from both reactive and lib layers, indicating decoupled testability across layers.",
+    "Packages count (3) matches typical layered projects (reactive, lib/layer/jenkins, and potentially tests/actions as isolated layers), with low fan-out suggesting minimal cross-layer dependencies.",
+    "Max directory depth of 5 aligns with deep modular layering: e.g., tests/integration/ → conftest.py with nested test organization.",
+    "Factors C1, C2, A3 in architecture metrics suggest cohesion within modules and separation across layers (C = Cohesion, A = Abstraction)."
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Reactive layer contains many top-level functions (e.g., 'install_jenkins', 'configure_admin') rather than formal abstractions; may risk future coupling if not refactored.",
+    "Heavy use of charmhelpers (external library) increases external dependency coupling, potentially limiting portability.",
+    "Shared mutable state via unitdata implies potential temporal coupling across layers in reactive flows."
+  ]
+}

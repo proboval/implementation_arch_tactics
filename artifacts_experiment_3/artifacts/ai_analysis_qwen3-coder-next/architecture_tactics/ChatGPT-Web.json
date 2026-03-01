@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from monolithic flat structure with all logic centralized in main.py (16+ top-level functions) and no module boundaries (packages=0, max_directory_depth=1), causing tight coupling, poor modularity, and low testability — exactly the problems AT41 (Decomposability) targets. This tactic directly addresses the maintainability risks: 'Lack of modularity leads to tight coupling', 'Monolithic flat structure hinders maintainability as codebase grows', and 'No separation of concerns between presentation, business logic, and data access'. By introducing decomposition, we can isolate business logic (e.g., message handling, auth, balance checks), data access (e.g., session/user dict persistence), and infrastructure (e.g., API calls to ChatGPT), enabling smaller, cohesive units that are easier to test and maintain — without requiring a full rewrite.",
+  "target_components": [
+    "main.py",
+    "log_util.py",
+    "LRU_cache.py"
+  ],
+  "expected_architectural_change": "Flat structure will evolve into layered decomposition: e.g., a src/ directory with submodules (api/, domain/, persistence/, services/). main.py will shrink to contain only web routing glue; business logic moved to domain/, API interactions to api/, user data handling to persistence/; log_util and LRU_cache become infrastructure utilities. Each layer will have well-defined interfaces (e.g., interfaces.py), reducing coupling and increasing cohesion.",
+  "implementation_strategy": "Start by identifying functional clusters in main.py (e.g., session/user management: check_session, get_user_info, auth; chat operations: new_chat, delete_history, load_chats; ChatGPT integration: get_response_from_ChatGPT_API, handle_messages_get_response). For each cluster: 1) create new package (e.g., src/services/, src/domain/), 2) extract related functions into classes/modules with clear responsibilities (e.g., ChatSessionService, ChatGPTClient), 3) extract interfaces (e.g., UserRepository, MessageStore), 4) refactor main.py to depend on abstractions (not implementations), 5) add tests per component. First step: create src/ directory, then src/services/, and move auth/new_chat/checkout logic out of main.py first — minimal change, high impact.",
+  "risks": "Risk of over-engineering if decomposition is too fine-grained; to mitigate, start coarse (3–5 modules max), refactor iteratively, and use static analysis post-change to validate increased modularity (e.g., target packages ≥ 3, depth ≥ 2). Initial refactoring may temporarily reduce test coverage until unit tests are added for new modules."
+}

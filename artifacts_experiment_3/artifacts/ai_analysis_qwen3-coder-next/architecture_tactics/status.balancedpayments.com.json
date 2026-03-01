@@ -1,0 +1,26 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between domain modules (e.g., tweeter directly importing models), unclear module boundaries (models.py acts as a shared singleton for all data structures), and tests that import the entire 'situation' package rather than specific components. Static analysis shows avg_fan_out=3.98 and max_directory_depth=8, indicating unbalanced modularity. The current 'situation' module combines core domain logic, third-party wrappers (tweepy, twilio), uptime calculation, and mailer functionality in a flat, non-hierarchical structure. Decomposability addresses this by enforcing module partitioning — isolating concerns into smaller, testable units — to reduce ripple effects and improve changeability. This tactic directly targets the architectural risk of blurred module boundaries and shared data model coupling.",
+  "target_components": [
+    "situation/models.py",
+    "situation/tweeter.py",
+    "situation/sms.py",
+    "situation/mailer.py",
+    "situation/uptime/__init__.py",
+    "situation/uptime/librato.py",
+    "situation/uptime/graphite.py",
+    "tests/test_subscription.py",
+    "tests/test_sms.py",
+    "tests/test_twitter.py",
+    "tests/test_librato_uptime.py"
+  ],
+  "expected_architectural_change": "The 'situation' module will be restructured into nested packages with clear boundaries: e.g., 'situation/core' (domain models, services), 'situation/integrations' (Twitter, SMS, email), 'situation/monitoring' (uptime calculators), each with well-defined interfaces. Modules like models.py will be replaced by domain-specific classes in subpackages, reducing shared state and making tests more targeted and decoupled.",
+  "implementation_strategy": "Step 1: Extract 'situation/models.py' into a 'situation/core' package with domain classes (Tweet, Uptime, ServiceStatus) plus domain services (TweetService, StatusService). Step 2: Move tweeter, sms, mailer into 'situation/integrations' with interfaces and implementations separated via dependency inversion. Step 3: Refactor uptime calculators into 'situation/monitoring' with a unified UptimeCalculator interface. Step 4: Update tests to import only necessary components (e.g., from situation.core import StatusService) instead of 'from situation import *'. Step 5: Introduce __init__.py packages with explicit exports to enforce encapsulation and reduce accidental coupling.",
+  "risks": "Temporary test breakage during refactoring; risk of creating premature or overly granular modules without clear business boundaries. Mitigation: Implement incrementally with automated tests ensuring behavioral equivalence; use import path deprecation (e.g., warnings.warn in old import paths) to guide gradual migration."
+}

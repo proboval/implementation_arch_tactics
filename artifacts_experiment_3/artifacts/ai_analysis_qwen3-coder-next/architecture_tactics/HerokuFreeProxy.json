@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis and repository structure reveal tight coupling between Django layers: urls.py directly imports 'proxy.views' without abstraction, and views/models logic is likely intermingled due to Django's default monolithic pattern (as confirmed by the architecture description's 'tight coupling between layers' risk). This creates ripple effects—any change to proxy views or URL routing risks breaking unrelated functionality. The 'A3' factor in architecture_maintainability explicitly flags coupling as an issue. This is implementable incrementally by introducing a service layer or interface abstraction between urls.py (routing) and proxy.views (business view logic), without rewriting the monolith.",
+  "target_components": [
+    "herokufreeproxy/urls.py",
+    "herokufreeproxy/settings.py",
+    "proxy/views.py"
+  ],
+  "expected_architectural_change": "Current routing directly depends on concrete view implementations. Introducing an abstraction (e.g., a proxy.service module) decouples URL patterns from view implementation details, allowing view logic to evolve without URL modifications and enabling easier unit testing of routes in isolation.",
+  "implementation_strategy": "Refactor herokufreeproxy/urls.py to import from a new module (e.g., proxy.service.urls or proxy.views_interface) instead of proxy.views directly. Create a proxy/service directory with a __init__.py and an interface (e.g., ProxyService) that exposes stable methods for routing. Gradually move view-logic responsibilities into this service layer, using dependency injection where possible. No major structural rewrite needed—just introduce a thin abstraction layer and refactor imports.",
+  "risks": "Slight increase in code overhead due to extra abstraction; minimal risk of over-engineering if the abstraction is kept simple. However, given the monolithic structure and documented coupling risk, this is low-risk and high-reward for maintainability."
+}

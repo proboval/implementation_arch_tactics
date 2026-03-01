@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single executable entry point (cli.py) with clear main() responsibility",
+    "Logical grouping of functionality into modules under lib/ (cyclic, errors, logger, socks, ssh, subnet, util)",
+    "No evidence of inter-process communication, network boundaries, or separate deployment units",
+    "Packages metric is 0, indicating flat module structure without package-based modularity",
+    "Average fan-out of 5.375 suggests moderate internal coupling within the same process",
+    "Directory depth of 3 matches typical single-process module hierarchy",
+    "Code maintainability factors T4 (testability) and A1 (analysis) suggest a structured, analyzable codebase typical of monoliths"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High fan-out indicates potential for tight coupling between modules",
+    "No testing evidence (mi_avg=0, files_analyzed=0) may impact long-term maintainability",
+    "Single-process design may limit scalability or fault isolation"
+  ]
+}

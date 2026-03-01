@@ -1,0 +1,36 @@
+{
+  "python_files": 4,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "app.py": [
+      "asyncio",
+      "psycopg2",
+      "google",
+      "flask",
+      "requests",
+      "dotenv",
+      "binascii",
+      "urllib3",
+      "datetime",
+      "os",
+      "logging",
+      "byte",
+      "aiohttp",
+      "uid_generator_pb2",
+      "Crypto",
+      "like_count_pb2",
+      "threading"
+    ],
+    "byte.py": [
+      "Crypto"
+    ],
+    "like_count_pb2.py": [
+      "google"
+    ],
+    "uid_generator_pb2.py": [
+      "google"
+    ]
+  }
+}

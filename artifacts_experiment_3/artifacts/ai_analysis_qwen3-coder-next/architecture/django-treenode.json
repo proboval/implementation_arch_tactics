@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Two top-level packages ('treenode' and 'tests') indicate clear separation of concerns",
+    "'treenode' contains logically grouped submodules (models, admin, forms, signals, utils, cache, etc.), suggesting cohesive internal modules",
+    "All functionality resides within a single Python package with no external service boundaries or inter-process communication",
+    "Django ORM and built-in patterns (models.Model, admin.ModelAdmin) used consistently within the core library",
+    "No evidence of remote APIs, message queues, or external adapters — all adapters (e.g., admin, signals) are internal to the app",
+    "Modular organization with dedicated modules for persistence (models), persistence caching (cache), memory debugging (memory), signal handling (signals), etc., typical of modular monoliths",
+    "High internal cohesion and low coupling between modules (e.g., utils and exceptions used by multiple layers without tight dependencies)"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Lack of strict layered separation (e.g., admin directly interacts with model internals), blurring layer boundaries",
+    "Risk of technical debt if internal module dependencies become cyclic over time",
+    "Limited scalability via horizontal partitioning — all components deploy together"
+  ]
+}

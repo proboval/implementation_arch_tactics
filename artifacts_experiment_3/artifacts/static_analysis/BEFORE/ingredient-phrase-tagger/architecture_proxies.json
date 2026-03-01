@@ -1,0 +1,32 @@
+{
+  "python_files": 8,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "setup.py": [
+      "sys",
+      "ingredient_phrase_tagger",
+      "setuptools"
+    ],
+    "bin\\convert-to-json.py": [
+      "sys",
+      "__future__",
+      "json",
+      "ingredient_phrase_tagger"
+    ],
+    "bin\\parse-ingredients.py": [
+      "sys",
+      "__future__",
+      "tempfile",
+      "ingredient_phrase_tagger",
+      "os"
+    ],
+    "ingredient_phrase_tagger\\__init__.py": [],
+    "ingredient_phrase_tagger\\training\\utils.py": [
+      "string",
+      "re"
+    ],
+    "ingredient_phrase_tagger\\training\\__init__.py": []
+  }
+}

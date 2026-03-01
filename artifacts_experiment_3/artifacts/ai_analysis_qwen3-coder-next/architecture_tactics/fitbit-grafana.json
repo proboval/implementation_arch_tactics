@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: a single Python file (Fitbit_Fetch.py) contains 14+ external dependencies and 13 procedural functions with no internal modularity or layering, as confirmed by static analysis (0 packages, max depth 1, mi_avg=0). This causes poor testability (no isolatable units), high cognitive load (flat function list), and tightly coupled data-fetching and persistence logic. Decomposability directly solves this by structuring the system into cohesive, isolated modules—e.g., separating Fitbit API clients, InfluxDB writers, and scheduling concerns—enabling incremental refactoring without full rewrite. This matches the repository’s flat structure and allows starting with small module splits (e.g., create `fitbit/` and `storage/` subpackages) while preserving existing behavior.",
+  "target_components": [
+    "Fitbit_Fetch.py"
+  ],
+  "expected_architectural_change": "Transformation of single-file monolith into a modular monolith with layered structure: top-level orchestration (e.g., `main.py` or `orchestrator.py`) delegating to clear modules (e.g., `fitbit/client.py`, `fitbit/auth.py`, `storage/influx_v1.py`, `storage/influx_v2.py`, `storage/influx_v3.py`, `scheduler.py`). Internal coupling reduced, cohesion increased; each module encapsulates a bounded concern.",
+  "implementation_strategy": "Refactor Fitbit_Fetch.py by extracting related functions into subpackages under `fitbit/` (authentication, data fetching, token refresh) and `storage/` (InfluxDB clients for v1, v2, v3). Start with vertical slices: first split auth-related functions (`refresh_fitbit_tokens`, `Get_New_Access_Token`, `load_tokens_from_file`) into `fitbit/auth.py`, then data fetchers into `fitbit/fetcher.py`. Introduce module-level interfaces (e.g., `BaseInfluxWriter`) to abstract storage variants. Dependency graph shifts from monolithic flat imports to well-defined inter-module dependencies with reduced fan-out per module.",
+  "risks": "Risk of temporary broken state during refactoring if import paths or module boundaries are misdefined; mitigated by adopting incremental migration (e.g., keep Fitbit_Fetch.py as thin wrapper calling new modules) and running tests after each extraction step. Also risks over-modularization if granularity is too fine, but initial coarse split (auth, fetch, storage) avoids this."
+}

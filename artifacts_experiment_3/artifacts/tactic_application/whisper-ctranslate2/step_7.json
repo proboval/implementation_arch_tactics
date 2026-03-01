@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "src/whisper_ctranslate2/commands.py",
+  "content": "from abc import ABC, abstractmethod\nfrom typing import Dict, List, Optional, Union\n\n\nclass TranscribeCommand(ABC):\n    \"\"\"Abstract base class for transcription commands.\"\"\"\n    \n    @abstractmethod\n    def execute(self, audio_path: str) -> Dict:\n        \"\"\"Execute the command and return a result dict.\"\"\"\n        pass\n\n\nclass DiarizationCommand(ABC):\n    \"\"\"Abstract base class for diarization commands.\"\"\"\n    \n    @abstractmethod\n    def execute(self, audio_path: str) -> Dict:\n        \"\"\"Execute the command and return diarization data.\"\"\"\n        pass\n\n\nclass LiveCommand(ABC):\n    \"\"\"Abstract base class for live transcription commands.\"\"\"\n    \n    @abstractmethod\n    def execute(self) -> None:\n        \"\"\"Execute the live command.\"\"\"\n        pass\n"
+}

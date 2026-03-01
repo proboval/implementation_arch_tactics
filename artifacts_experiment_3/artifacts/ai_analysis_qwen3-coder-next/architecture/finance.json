@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository contains only 3 Python source files in root directory (no packages or subdirectories)",
+    "max_directory_depth is 1, indicating flat structure",
+    "No clear separation into layers (e.g., no 'models/', 'views/', 'controllers/')",
+    "streamlit_app.py directly imports and calls functions from portfolio.py and plots.py without abstraction layers",
+    "Portfolio class and plotting functions are used directly as procedural scripts without adapters, interfaces, or ports",
+    "No evidence of dependency inversion or separation of concerns beyond basic function grouping",
+    "High average fan-out (4.0) suggests tight coupling across modules"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between components reduces reusability",
+    "Lack of modularity makes testing in isolation difficult",
+    "No separation of business logic from presentation layer",
+    "Scaling or refactoring will require major restructuring"
+  ]
+}

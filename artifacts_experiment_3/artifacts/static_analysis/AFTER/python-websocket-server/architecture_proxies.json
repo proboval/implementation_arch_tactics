@@ -1,0 +1,71 @@
+{
+  "python_files": 12,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 12.0,
+  "imports_graph": {
+    "server.py": [
+      "websocket_server"
+    ],
+    "setup.py": [
+      "re",
+      "subprocess",
+      "shlex",
+      "distutils",
+      "sys",
+      "os",
+      "setuptools"
+    ],
+    "tests\\conftest.py": [
+      "websocket_server",
+      "os",
+      "sys",
+      "logging",
+      "time",
+      "pytest",
+      "threading",
+      "websocket"
+    ],
+    "tests\\test_handshake.py": [
+      "websocket_server"
+    ],
+    "tests\\test_message_lengths.py": [],
+    "tests\\test_server.py": [
+      "pytest",
+      "threading",
+      "websocket",
+      "time"
+    ],
+    "tests\\test_text_messages.py": [
+      "threading"
+    ],
+    "websocket_server\\abstractions.py": [],
+    "websocket_server\\adapters.py": [
+      "sys",
+      "hashlib",
+      "base64",
+      "thread",
+      "abc",
+      "threading"
+    ],
+    "websocket_server\\thread.py": [
+      "threading"
+    ],
+    "websocket_server\\websocket_server.py": [
+      "websocket_server",
+      "sys",
+      "hashlib",
+      "struct",
+      "socketserver",
+      "logging",
+      "base64",
+      "socket",
+      "threading",
+      "ssl",
+      "errno"
+    ],
+    "websocket_server\\__init__.py": [
+      "websocket_server"
+    ]
+  }
+}

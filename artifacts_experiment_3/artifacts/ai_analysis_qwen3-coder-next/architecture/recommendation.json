@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Two main packages ('model' and 'workflow') indicate logical grouping of concerns",
+    "Each workflow directly imports and orchestrates a specific model class (e.g., 'cf_workflow' imports 'UserCf')",
+    "No explicit interface/adapter layer between layers; workflows depend directly on models",
+    "Shared 'preprocess.py' is a flat module outside the main package structure",
+    "Centralized entry point 'manage.py' that imports and likely invokes workflows",
+    "Repository tree shows bounded modules with minimal cross-dependency and no external service boundaries",
+    "fan_out of 2.2 and minimal depth (2) consistent with cohesive internal modules"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between workflow and model layers reduces testability and maintainability",
+    "Lack of explicit data/protocol interfaces (ports) makes substitution harder",
+    "Flat module structure in root ('preprocess.py', 'manage.py') may become a monolithic utility bottleneck"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "python_files": 29,
+  "packages": 5,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.8,
+  "imports_graph": {
+    "tests\\admin.py": [
+      "django",
+      "tests",
+      "treebeard"
+    ],
+    "tests\\conftest.py": [
+      "pytest",
+      "os",
+      "django"
+    ],
+    "tests\\manage.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "tests\\models.py": [
+      "django",
+      "os",
+      "treebeard",
+      "uuid"
+    ],
+    "tests\\settings.py": [
+      "os"
+    ],
+    "tests\\test_ltree_utils.py": [
+      "pytest",
+      "treebeard",
+      "time"
+    ],
+    "tests\\test_migrations.py": [
+      "django"
+    ],
+    "tests\\test_numconv.py": [
+      "pytest",
+      "string",
+      "treebeard"
+    ],
+    "tests\\test_treebeard.py": [
+      "tests",
+      "threading",
+      "treebeard",
+      "django",
+      "unittest",
+      "pytest",
+      "os"
+    ],
+    "tests\\urls.py": [
+      "django"
+    ],
+    "tests\\__init__.py": [],
+    "treebeard\\admin.py": [
+      "django",
+      "treebeard",
+      "sys"
+    ],
+    "treebeard\\al_tree.py": [
+      "django",
+      "treebeard"
+    ],
+    "treebeard\\exceptions.py": [],
+    "treebeard\\forms.py": [
+      "django",
+      "treebeard"
+    ],
+    "treebeard\\mp_tree.py": [
+      "treebeard",
+      "typing",
+      "django",
+      "collections",
+      "functools"
+    ],
+    "treebeard\\ns_tree.py": [
+      "django",
+      "treebeard",
+      "operator",
+      "functools"
+    ],
+    "treebeard\\numconv.py": [],
+    "treebeard\\__init__.py": [],
+    "docs\\source\\conf.py": [
+      "django",
+      "os",
+      "sys"
+    ],
+    "docs\\source\\_ext\\djangodocs.py": [],
+    "tests\\migrations\\0001_initial.py": [
+      "django",
+      "os",
+      "treebeard",
+      "uuid"
+    ],
+    "tests\\migrations\\__init__.py": [],
+    "treebeard\\ltree\\fields.py": [
+      "django",
+      "collections"
+    ],
+    "treebeard\\ltree\\__init__.py": [
+      "treebeard",
+      "typing",
+      "django",
+      "fields",
+      "string",
+      "itertools",
+      "collections",
+      "operator",
+      "functools"
+    ],
+    "treebeard\\templatetags\\admin_tree.py": [
+      "django"
+    ],
+    "treebeard\\templatetags\\admin_tree_list.py": [
+      "django",
+      "treebeard"
+    ],
+    "treebeard\\templatetags\\__init__.py": [
+      "django"
+    ]
+  }
+}

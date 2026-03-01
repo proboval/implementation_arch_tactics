@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "All code resides in a single directory with no package hierarchy (avg_fan_out=8.3 indicates tight coupling, max_directory_depth=1)",
+    "Main executable components are top-level scripts: client.py, server.py, generate_certs.py",
+    "Presence of utility shell scripts (install.sh) and service files (smtp-tunnel.service) indicates deployment-focused scripting pattern",
+    "High fan-out (8.3) and zero packages suggest monolithic procedural script behavior with heavy cross-module dependencies",
+    "No evidence of clear architectural boundaries, dependency inversion, or component separation",
+    "Script entry points (main() functions in multiple .py files) with no central orchestration or services layer"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling makes maintenance and testing difficult",
+    "Lack of modularity or component boundaries hinders scalability",
+    "High fan-out indicates poor abstraction and reusability",
+    "Single-directory flat structure limits team scalability and code organization"
+  ]
+}

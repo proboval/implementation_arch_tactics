@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 packages ('javalang' and 'javalang.test') suggest a single deployment unit with internal modularity",
+    "Clear separation of concerns into cohesive modules: tokenizer, parser, ast, tree, javadoc, util, parse",
+    "Hierarchical module dependencies (e.g., parse.py imports from parser and tokenizer, parser imports tokenizer and util)",
+    "Tree and AST modules use inheritance hierarchies typical of domain modeling in monoliths",
+    "No external communication patterns (e.g., REST, RPC) or service boundaries visible",
+    "Directory depth of 3 reflects logical module grouping (javalang/submodule/test)",
+    "Low average fan-out (1.4) indicates tight internal cohesion and limited cross-module coupling"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Risk of temporal coupling if initialization order between modules (e.g., parser, ast, tree) is not explicit",
+    "Potential for module boundary leakage if internal dependencies across submodules (e.g., tree -> ast) become overly complex",
+    "Difficulty scaling development across teams due to shared codebase without physical service boundaries"
+  ]
+}

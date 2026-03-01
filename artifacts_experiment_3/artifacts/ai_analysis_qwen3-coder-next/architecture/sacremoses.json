@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('sacremoses') with flat internal structure (no subpackages beyond data/, test/, and top-level modules)",
+    "Well-defined modules (tokenize.py, normalize.py, truecase.py, etc.) each encapsulating a single responsibility (tokenization, normalization, truecasing)",
+    "Clear dependency direction: core modules (corpus, util) are imported by higher-level modules (tokenize, truecase, etc.), indicating cohesive internal boundaries",
+    "Shared data files (nonbreaking_prefixes, perluniprops) co-located with logic in same package, no external service boundaries",
+    "CLI and test modules co-located with production code in same repository, typical of a self-contained monolith",
+    "No evidence of network boundaries, remote calls, or inter-process communication — only Python imports and local module usage"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules could hinder independent testing or reuse",
+    "Growing module count without further decomposition may reduce maintainability over time",
+    "Shared state in modules (e.g., static lookup data in corpus.py) may complicate concurrent use or parallelism"
+  ]
+}

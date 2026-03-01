@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository tree shows flat structure: no subdirectories beyond root level (max_directory_depth=1)",
+    "Zero packages reported in architecture metrics implies single monolithic script without module boundaries",
+    "launcher.py and subgen.py are top-level entry points handling orchestration and core logic respectively",
+    "High average fan-out (15.5) and many global functions indicate procedural coupling and low cohesion",
+    "Mix of web frameworks (FastAPI), ML libraries (stable_whisper, faster_whisper), and system utilities suggests a glue-script integrating multiple external tools",
+    "Functions like handle_get_request, webui, status, webhook receivers, and ASR task workers coexist without clear separation or interfaces",
+    "Code uses global state (e.g., DeduplicatedQueue, threading primitives, mutable globals) rather than encapsulated components"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "mvc"
+  ],
+  "risks": [
+    "High technical debt due to tight coupling and lack of separation of concerns",
+    "Difficult to test, maintain, or scale individual functional areas",
+    "Long-term evolveability hindered by monolithic script size and implicit dependencies",
+    "Fragility due to shared mutable state across unrelated responsibilities"
+  ]
+}

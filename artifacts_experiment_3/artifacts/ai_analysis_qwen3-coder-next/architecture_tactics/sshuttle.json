@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The sshuttle repository exhibits poor localization of change scope: core modules like helpers.py, ssnet.py, and cmdline.py are heavily reused across client, server, and firewall layers, but module boundaries are not enforced — e.g., client.py imports both helpers.py and multiple platform-specific firewall methods, while firewall.py imports both methods and helpers. Platform-specific implementations (nat.py, pf.py, tproxy.py) inherit from BaseMethod but also import platform-specific helper functions (e.g., ipt, ipt_ttl, ipt_chain_exists from linux.py), creating cross-layer dependencies that prevent isolated modification. Localized Modification (AT38) directly addresses this by encouraging high cohesion and tight grouping of related responsibilities, narrowing the scope of changes and reducing ripple effects. In this repository, changes to one platform (e.g., pf.py firewall rule update) currently ripple into shared helpers and linux.py functions, violating maintainability. AT38 targets exactly these problematic interdependencies by promoting encapsulation of platform behavior within their own modules.",
+  "target_components": [
+    "sshuttle/methods/nat.py",
+    "sshuttle/methods/pf.py",
+    "sshuttle/methods/tproxy.py",
+    "sshuttle/methods/__init__.py",
+    "sshuttle/linux.py",
+    "sshuttle/helpers.py",
+    "sshuttle/firewall.py",
+    "sshuttle/client.py"
+  ],
+  "expected_architectural_change": "Platform-specific methods (nat/pf/tproxy) will encapsulate their dependencies (e.g., ipt rules, socket operations, platform detection) into their own modules, removing direct imports of linux.py or helpers.py where possible. BaseMethod in methods/__init__.py will gain clearer contracts (e.g., interface contracts for required firewall commands), and helper functions like family_to_string will be moved into shared, stable utility modules (e.g., sshuttle/encoding.py or sshuttle/utils.py) — but only if truly domain-independent. FirewallClient and related classes will be decoupled from method implementations via well-defined strategy interfaces, reducing the reach of platform-specific logic changes to their own modules only.",
+  "implementation_strategy": "1. Identify cohesive groups: e.g., pf.py already has Generic/FreeBsd/OpenBsd/Darwin classes — keep them together. 2. Extract platform-specific constants and logic (e.g., path to pfctl, ipt binary names, timeout values) into platform-specific modules (pf_config.py, nat_config.py) inside methods/. 3. Replace linux.py imports in methods/ with direct, minimal dependencies; move shared helpers (family_to_string) into a utility submodule (e.g., sshuttle/sockopt.py or sshuttle/netutils.py) only if used by all methods, and ensure it doesn’t depend on platform-specific modules. 4. Refactor BaseMethod to enforce required methods via abstract methods (abc.ABC), clarifying boundary contracts. 5. Introduce a method factory that hides platform detection, reducing coupling between client.py/firewall.py and platform-specific logic.",
+  "risks": "Over-encapsulation may increase indirection and hurt readability if taken to extremes (e.g., excessive configuration classes). Some shared logic (e.g., family_to_string) is small and likely to remain shared — that is acceptable if confined to truly generic utilities. Risk of temporary regression in testability during refactoring unless tests are kept running in parallel; mitigated by incremental changes and test coverage on target methods (e.g., test_methods_*.py already exist and can guide refactoring)"
+}

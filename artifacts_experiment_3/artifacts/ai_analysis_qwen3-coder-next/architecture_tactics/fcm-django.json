@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows several maintainability issues where changes ripple across tightly coupled components due to low cohesion and high coupling. For instance, fcm_django/models.py contains both core device model logic and complex business logic (e.g., send_message, topic handling) that should be separated for localized modification. Similarly, fcm_django/admin.py contains heavy business logic (e.g., send_messages, handle_topic_subscription) that duplicates logic from models.py—violating separation of concerns. The tests/swapped_models/ directory demonstrates that model swapping is supported but tightly coupled through swapper, meaning changes to model interfaces require coordinated updates across models, admin, and API layers. The static analysis factor 'C1' (complex modules) and 'C2' (coupling) confirm this. Localized Modification directly addresses this by increasing cohesion within modules and narrowing the scope of changes—e.g., isolating FCM message-sending logic into a dedicated service layer, decoupling admin-specific behavior from the model, and encapsulating topic subscription logic in a cohesive component—reducing ripple effects when modifying features.",
+  "target_components": [
+    "fcm_django/models.py",
+    "fcm_django/admin.py",
+    "fcm_django/api/rest_framework.py",
+    "fcm_django/api/tastypie.py",
+    "fcm_django/api/__init__.py"
+  ],
+  "expected_architectural_change": "Refactor monolithic modules (e.g., models.py and admin.py) by extracting cohesive responsibilities into separate domain service modules. For example, create a new module fcm_django/services/ containing FCMMessageSender, TopicSubscriptionHandler, and DeviceLifecycleService classes. The Device model would delegate to these services, while admin and API layers would invoke them via well-defined interfaces, reducing duplication and ensuring that modifications to topic subscription logic, for example, require changes only in the TopicSubscriptionHandler—not across admin.py, models.py, and API modules.",
+  "implementation_strategy": "Step 1: Identify high-coupling hotspots (e.g., Device.send_message, Device.handle_topic_subscription, DeviceAdmin.send_message). Step 2: Extract these into new service classes in a new fcm_django/services/ package with clear interfaces (e.g., FirebaseMessageService, FirebaseTopicService). Step 3: Refactor models.py to delegate to services instead of implementing logic directly, and update admin.py to use services instead of internal duplicated logic. Step 4: Introduce a simple factory or DI mechanism (e.g., via Django’s app config or settings) to bind service implementations—avoiding hard dependencies on firebase_admin in core logic. This preserves backward compatibility while progressively increasing cohesion and reducing ripple changes.",
+  "risks": "Initial refactoring may temporarily increase code complexity due to added indirection; without strict interface contracts, it could introduce subtle coupling through service signatures. However, the risk is mitigated by the modular_monolith’s bounded contexts and existing test coverage—changes can be validated incrementally via targeted unit tests, especially around fcm_django/models.py and test_models.py. Also, the use of swapper for model abstraction supports this pattern, as services can be swapped independently of model structure."
+}

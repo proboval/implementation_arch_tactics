@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear package/module structure with bounded domains (core, database, extractors, gui, persistence, scheduling, utils, viewmodels)",
+    "Strong cohesion within modules: e.g., extractors for content extraction, database models for persistence, gui for UI presentation",
+    "Interdependencies between modules (e.g., core depends on database, extractors depend on core and database) indicate tightly integrated components in a single deployment unit",
+    "Shared domain models (database/models.py) used across core and extractors confirms cohesive domain modeling",
+    "No evidence of external process communication (RPC, message queues), indicating monolithic deployment",
+    "Use of shared in-memory components (MessageReceiver, injector, scheduler) suggests integrated runtime",
+    "UI (PyQt), business logic (core), and data (SQLAlchemy) are in distinct modules but closely coupled"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc",
+    "unclear"
+  ],
+  "risks": [
+    "High coupling between modules (e.g., core ↔ database ↔ extractors) may reduce testability and maintainability over time",
+    "Monolithic architecture could limit scalability and deployment flexibility for future growth",
+    "GUI layer directly depends on core and database (e.g., DownloaderForRedditGUI imports core and database components), blurring separation of concerns",
+    "Shared state via injector and message queue may introduce concurrency challenges in large-scale use"
+  ]
+}

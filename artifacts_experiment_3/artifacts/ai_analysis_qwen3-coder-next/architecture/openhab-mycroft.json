@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single Python package with no visible inter-package dependency layers",
+    "Flat directory structure (max_directory_depth: 1) with grouped resources (dialog, regex, vocab) but no explicit architectural layers",
+    "All functionality resides in a single class openHABSkill inheriting from MycroftSkill, with multiple intent handlers — consistent with modular monolith behavior",
+    "Use of internal modules (adapt.intent, mycroft.skills.core) suggests integration with a larger framework, but no inter-module dependencies between self-defined modules",
+    "High average fan-out (6.0) indicates tight coupling to various modules and external libraries (requests, rapidfuzz, mycroft)",
+    "Dialog, regex, and vocab resources are language-scoped but not decoupled as separate layers or services"
+  ],
+  "alternatives": [
+    "script_based",
+    "unclear"
+  ],
+  "risks": [
+    "Potential lack of separation of concerns — many responsibilities in one class",
+    "Low maintainability metrics (mi_avg = 0) suggest technical debt or unmaintainable code",
+    "Hard to test in isolation due to high fan-out and lack of ports/adapters",
+    "Scaling or modularity improvements may require significant refactoring"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and poor modularity despite being labeled a 'modular monolith'. Static analysis shows a single package with average fan-out of 5.875 and files (e.g., CYNITE/commands.py, pm_filter.py) importing from all major modules (database, utils, info, pyrogram), creating tight interdependencies. The mi_avg of 0 indicates critically poor maintainability. Real maintainability problems include: (1) circular import risks via shared global temp in utils.py, (2) modules directly depending on concrete database implementations instead of interfaces, (3) lack of clear boundaries causing scripts.py, info.py, utils.py to act as god-objects. Decomposability addresses this by enforcing modular boundaries to isolate problems, improve testability (e.g., via mocks), and reduce ripple effects—exactly what's needed in this tangled structure.",
+  "target_components": [
+    "CYNITE/commands.py",
+    "CYNITE/pm_filter.py",
+    "utils.py",
+    "database/ia_filterdb.py",
+    "database/users_chats_db.py",
+    "info.py"
+  ],
+  "expected_architectural_change": "The current flat modular structure will evolve toward a layered decomposition: introducing clear domains (e.g., 'filters', 'users', 'media') where each domain encapsulates its own logic, data access, and business rules. Database modules will be abstracted via well-defined interfaces (e.g., using ABC or protocol classes), and utilities like 'temp' will be refactored into domain-specific services or removed. The current flat CYNITE/* directory becomes logically grouped by domain rather than function, reducing cross-module dependencies.",
+  "implementation_strategy": "Step 1: Identify cohesive subsystems (e.g., filter management, user management, media indexing) based on usage patterns in static analysis. Step 2: Extract interfaces for database access (e.g., FilterRepository interface in database/, implemented by filters_mdb.py, gfilters_mdb.py, etc.). Step 3: Refactor CYNITE modules to depend on interfaces instead of concrete implementations—e.g., pm_filter.py imports FilterRepository instead of filters_mdb directly. Step 4: Move shared utilities like temp into domain-aware services (e.g., UserService, FilterService) or extract only pure functions. Step 5: Introduce domain-specific __init__.py to define clear module boundaries and public APIs. This is incremental and can start with one domain (e.g., filters) and propagate outward.",
+  "risks": "Risk of over-engineering: introducing excessive abstraction layers too early could increase complexity. Mitigation: start with high-impact, high-coupling modules (e.g., pm_filter.py) and validate with test coverage before and after. Another risk is temporary test failure during refactoring; mitigate by writing unit tests for selected domains before refactoring. Since the repo uses Pyrogram (event-driven) and motor (async), ensure the new abstractions preserve async behavior."
+}

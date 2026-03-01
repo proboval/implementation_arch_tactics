@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single-file script (mailcat.py) with no package structure, flat directory depth (1), zero packages, and mi_avg=0 — indicating near-zero modularity and maintainability. Static analysis confirms high fan-out (19.0) and unstructured global functions/classes (e.g., stub_progress, AsyncExecutor, randstr, via_proxy). This violates separation of concerns: mail handling, proxy routing, async execution, progress tracking, and utilities are all interwoven. Decomposability (AT41) directly addresses this by splitting the monolith into cohesive, testable modules (e.g., proxy adapters, email senders, executors), reducing coupling, increasing cohesion, and improving testability and analyzability — all without requiring architectural rewriting.",
+  "target_components": [
+    "mailcat.py"
+  ],
+  "expected_architectural_change": "Single-file mailcat.py will be reorganized into a modular monolith with discrete subdirectories: /core (async runner, executor), /email (sender, validation), /proxies (adapter, rotation), /utils (randstr, progress stubs), and /cli (argument parsing, banner). Each module exposes well-defined interfaces (e.g., SMTPClient, ProxyBroker) with internal cohesion and loose interdependencies via explicit dependencies (e.g., constructor injection), enabling isolated unit testing and incremental refactoring.",
+  "implementation_strategy": "Refactor mailcat.py in place: (1) Extract AsyncExecutor and AsyncioProgressbarQueueExecutor into core/executor.py with a clear Executor interface. (2) Move proxy-related functions (via_proxy, via_tor, simple_session) into proxies/adapter.py. (3) Extract email-sending logic (aiosmtplib integration) into email/sender.py with an EmailSender interface. (4) Isolate utility functions (randstr, stub_progress) into utils/. (5) Use relative imports and type hints to formalize abstractions. Each step preserves functionality while improving modularity; files can be added incrementally without breaking the existing entry point (e.g., main() still imports from new package).",
+  "risks": "Risk of temporary instability during refactoring if module boundaries are poorly designed or dependencies are cyclic. Mitigation: keep original mailcat.py as entry point, use wrapper imports during transition; test each module in isolation before integration. Over-decomposition (e.g., too many tiny modules) is unlikely given the codebase size but must be avoided by anchoring modules to functional responsibilities (e.g., 'email sending', not 'SMTP methods')."
+}

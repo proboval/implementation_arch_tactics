@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.85,
+  "evidence": [
+    "Only two top-level packages ('google_images_download' and 'tests') with flat internal structure (max_directory_depth = 2)",
+    "All logic is centralized in a single class 'googleimagesdownload' within google_images_download.py, with minimal separation of concerns",
+    "Entry points are simple scripts (__main__.py, setup.py) without explicit architectural layers or adapters",
+    "No evidence of ports/adapters, layered separation, or modular boundaries; core logic directly handles I/O (download_image, download, etc.)",
+    "Low average fan-out (3.25) and absence of external service interactions or abstraction layers suggest procedural/script-style execution"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between presentation (CLI), business logic, and I/O operations",
+    "Low testability due to lack of dependency injection or clear boundaries for mocking",
+    "Scalability limitations as all functionality resides in monolithic class",
+    "Difficulty maintaining or extending without risking side effects across methods"
+  ]
+}

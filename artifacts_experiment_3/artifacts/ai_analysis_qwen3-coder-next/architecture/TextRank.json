@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package (packages: 1) with flat module structure and no clear separation into architectural layers",
+    "All functionality appears to be encapsulated in one top-level package ('textrank') with minimal internal structure",
+    "Main entry point is a single 'main.py' script using 'click' for CLI, common for script-based tools",
+    "Package imports heavy NLP/ML dependencies (nltk, networkx) and contains utility functions, typical of standalone text processing scripts",
+    "No ports/adapters separation, no domain/core boundaries, no view/controller patterns",
+    "Directory depth is only 2, indicating minimal structural abstraction (textrank/ + subdirs for artifacts)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling likely due to shared global state and direct imports across components",
+    "Limited scalability and reusability due to lack of architectural boundaries",
+    "Difficult to test individual concerns in isolation without refactoring",
+    "Brittle as script grows — changes in one utility may affect unrelated functionality"
+  ]
+}

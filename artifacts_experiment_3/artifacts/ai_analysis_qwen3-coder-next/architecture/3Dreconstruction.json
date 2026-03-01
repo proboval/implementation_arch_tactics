@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0)",
+    "All modules reside at root level (max_directory_depth: 1)",
+    "High average fan-out (3.86) with cross-module dependencies between most files",
+    "No clear boundaries or abstractions for layers, ports, or components",
+    "Main scripts (example.py, cube_reconstruction.py) import and use multiple modules directly without intermediate layers",
+    "Functions defined at module level without clear encapsulation or formal service interfaces",
+    "Dependencies form a tangled web rather than directional flow (e.g., camera.py uses processor & transformers, but processor and transformers have no dependencies)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between modules reduces reusability and testability",
+    "Lack of separation of concerns makes maintenance difficult as system grows",
+    "Absence of explicit interfaces increases risk of circular dependencies",
+    "Testing requires mocking many low-level dependencies due to direct imports"
+  ]
+}

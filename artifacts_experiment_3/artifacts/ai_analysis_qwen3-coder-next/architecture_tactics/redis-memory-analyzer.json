@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The maintainability risks explicitly identified in the architecture description are: (1) mixing of concerns in rule modules (analysis logic + Redis I/O + formatting), and (2) application layer (application.py) having many responsibilities violating Single Responsibility Principle. Static analysis confirms high fan-out (2.38) with rule modules importing directly from rma.redis (e.g., rma/rule/Hash.py imports *), rma.helpers, and rma.redis_types, creating tight coupling and low cohesion. The repository structure shows rule modules (e.g., rma/rule/Hash.py, KeyString.py) contain both analysis logic and Redis-specific code, making unit testing difficult and changing Redis behavior risky. Decomposability directly addresses this by aggressively modularizing these responsibilities—separating analysis logic, Redis data access, and output formatting—without requiring architectural overhaul.",
+  "target_components": [
+    "rma/rule/Hash.py",
+    "rma/rule/KeyString.py",
+    "rma/rule/List.py",
+    "rma/rule/Set.py",
+    "rma/rule/ValueString.py",
+    "rma/rule/GlobalKeySpace.py",
+    "rma/application.py"
+  ],
+  "expected_architectural_change": "Current rule modules will be decomposed into: (1) domain-specific analysis classes (pure logic, no I/O), (2) Redis-specific data access layer (e.g., RedisHashDataLoader), and (3) output formatting layer (possibly reused from reporters). The application.py will be reduced to orchestration only (e.g., instantiating decomposed components, wiring dependencies), eliminating its multiple responsibilities. Files like rma/redis.py may be split to separate client abstraction from Redis-specific size estimation logic.",
+  "implementation_strategy": "Step 1: Extract Redis I/O from rule modules into dedicated data access classes (e.g., HashDataLoader using rma.redis.RmaRedis) with interfaces defined in a new rma/data_access subpackage. Step 2: Refactor rule modules to depend only on data access interfaces (e.g., Hash(analyzer=HashAnalyzer, loader=HashDataLoader)). Step 3: Introduce simple interfaces (e.g., DataAggregator, ResultFormatter) to decouple analysis from formatting. Step 4: Reduce application.py responsibilities by extracting rule orchestration and Redis connection logic into dedicated services. Each step is incremental, maintains current file structure, and improves testability via dependency injection.",
+  "risks": "Risk of over-engineering if decomposed interfaces become too generic before usage patterns are clear. Mitigation: start with concrete interfaces per rule type, keep interfaces minimal, and defer generic abstractions until multiple rules share patterns. Another risk is initial performance overhead from additional call layers; mitigated by keeping interfaces thin and using direct calls internally where safe. Since all modules are internal, there is no network overhead, making decomposition low-cost and high-impact."
+}

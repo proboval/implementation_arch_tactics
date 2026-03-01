@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling via wildcard imports (e.g., 'from website_actions import *' in downloader.py) and direct cross-references between website action modules (e.g., each website-specific class imports 'website_actions' as a package in addition to abstract classes), indicating tight coupling. This violates the principle of loose coupling: changes to any website action module may ripple into downloader.py and other modules, increasing modification scope and test complexity. The static analysis confirms high fan-out (avg_fan_out: 4.33) and evidence notes 'moderate coupling via imports and shared Downloader'. Reducing coupling will directly address the risk of tight coupling if website action modules evolve independently without strong interface discipline, making future additions safer and more isolated.",
+  "target_components": [
+    "downloader.py",
+    "website_actions/__init__.py",
+    "website_actions/bookwalker_jp_actions.py",
+    "website_actions/bookwalker_tw_actions.py",
+    "website_actions/cmoa_jp_actions.py",
+    "website_actions/coma_jp_novel.py",
+    "website_actions/takeshobo_co_jp_actions.py"
+  ],
+  "expected_architectural_change": "The 'from website_actions import *' in downloader.py will be replaced with explicit imports of a well-defined registry or factory interface. A new module (e.g., website_actions/registry.py) will be introduced to decouple downloader.py from concrete website action classes, centralizing registration and discovery. Website action modules will remove the unnecessary 'import website_actions' statement, as they only need to inherit from WebsiteActions; this reduces internal circular import potential and unnecessary package dependency. Cohesion within each website action module remains high; coupling between downloader.py and concrete implementations will be replaced with coupling to an abstraction (registry/factory).",
+  "implementation_strategy": "1. Remove wildcard import in downloader.py and replace with explicit import of a registry interface (e.g., from website_actions.registry import WebsiteActionRegistry). 2. Create a new module website_actions/registry.py that provides a centralized registry class using class attributes or a dict to store subclass references via __init_subclass__ or explicit registration decorators. 3. Update all website action subclasses to either auto-register via __init_subclass__ or use a @register action decorator to register with the registry. 4. Update downloader.py to use the registry to resolve website action instances dynamically. 5. Remove redundant 'import website_actions' from each concrete action file, since inheritance from WebsiteActions is sufficient. This change affects 7 files but is implementable incrementally: registry.py is added first, existing action classes are updated in a non-breaking way (backward-compatible registration), and downloader.py updated last.",
+  "risks": "Risk of over-engineering if the registry abstraction is over-complex; however, due to the small number of websites (6 concrete classes), a simple dict-based registry with optional __init_subclass__ registration suffices. No runtime performance regression expected. Lack of clear separation between layers (UI, business, persistence) is not solved by this tactic alone, but reduced coupling here is a foundational step toward layered architecture and easier testing. The tactic does not increase complexity or reduce cohesion and aligns with the modular monolith's existing polymorphic design pattern (WebsiteActions base class)."
+}

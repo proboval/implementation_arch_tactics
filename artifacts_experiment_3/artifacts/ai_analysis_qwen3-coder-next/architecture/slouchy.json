@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.92,
+  "evidence": [
+    "No packages or directory structure (max_directory_depth = 1, packages = 0)",
+    "Flat repository with all modules at root level (e.g., slouchy.py, main.py, config.py, arg.py)",
+    "Direct cross-module imports without explicit separation of layers or layers (e.g., slouchy.py imports from main and config directly)",
+    "Single-file entry point (slouchy.py) containing GUI application logic, threading, and UI components",
+    "Absence of ports/adapters or clear separation of concerns (e.g., no domain/infrastructure boundary)",
+    "Low fan-out (avg_fan_out = 2.5) and no modular boundaries typical of monolithic scripts"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor testability due to tight coupling and lack of dependency injection",
+    "Difficulty scaling or modifying functionality without cascading changes",
+    "Low reusability of components (e.g., GUI and logic intertwined)",
+    "Hard to maintain as complexity grows due to flat structure and interdependence"
+  ]
+}

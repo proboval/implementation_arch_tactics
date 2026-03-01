@@ -1,0 +1,21 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.87,
+  "evidence": [
+    "Clear separation into ingestion, transformation (silver/gold layers), orchestration, RAG, and data layers — typical of data lakehouse layering",
+    "Ingestion module uses bronze → silver → gold transformation pipeline, a hallmark of layered data architecture",
+    "Transformation layer uses dbt with clearly defined SQL models in silver and gold, indicating semantic layering",
+    "Orchestration layer (Dagster) depends on transformation layer but is separate, supporting separation of concerns",
+    "High cohesive modules (ingestion/utils, transformation/silver, transformation/gold) with vertical data flow direction",
+    "Low average fan-out (2.29) suggests dependency directions follow layering (e.g., bronze → utils → silver)",
+    "Flat module structure (max directory depth = 3) with no cross-layer circular dependencies visible"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between orchestration layer and dbt transformation layer may reduce independent deployability",
+    "Heavy reliance on Spark and dbt within a monolithic codebase could hinder scalability if transformation needs evolve to heterogeneous engines",
+    "Minimal maintainability metrics reported (mi_avg=0, files_analyzed=0) suggests potential lack of automated quality gates despite good structural layering"
+  ]
+}

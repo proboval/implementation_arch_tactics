@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high module coupling and cross-module interdependencies, as evidenced by the average fan-out of 3.6 and analysis factors C1 (Cohesion) and A3 (Availability/Changeability). Static analysis shows many modules directly import from other modules without intermediate abstractions (e.g., modules/admin.py imports from function/pluginhelpers.py and services/pyrogram.py; modules/feds.py imports from Shadow.modules.utils.connections, Shadow.services.mongo, Shadow.services.telethon, etc.), leading to ripple effects when changes occur. The high average files per package (23.14) and deep directory structure (depth 4) with tight imports (e.g., modules/notes.py imports from utils/notes.py, utils/user_details.py, and utils/message.py) increase the scope of modification. Localized Modification addresses this by clustering related responsibilities within cohesive modules to reduce the reachable change set per unit, directly targeting the maintainability issues observed in the codebase.",
+  "target_components": [
+    "Shadow/modules/feds.py",
+    "Shadow/modules/notes.py",
+    "Shadow/modules/greetings.py",
+    "Shadow/modules/restrictions.py",
+    "Shadow/modules/purges.py",
+    "Shadow/modules/utils/message.py",
+    "Shadow/modules/utils/notes.py",
+    "Shadow/modules/utils/user_details.py",
+    "Shadow/modules/utils/restrictions.py"
+  ],
+  "expected_architectural_change": "Refactor tightly-coupled module groups (e.g., feds, greetings, notes, restrictions, purges) to increase cohesion by co-locating related domain logic. Introduce cohesive submodules per bounded context (e.g., a 'fed_management' module containing fed-related logic currently scattered across feds.py, connections.py, and user_details.py), reduce cross-module imports outside boundaries, and replace brittle imports with local abstractions (e.g., extract domain services from utils and services layers). This will narrow the modification scope and reduce ripple effects when changes occur in fed, note, or user restriction functionality.",
+  "implementation_strategy": "Step 1: Identify cohesive clusters from the import graph (e.g., feds.py, connections.py, user_details.py, restrictions.py, and database helpers). Step 2: Extract new submodules under modules/ (e.g., Shadow/modules/fedManagement/) containing domain-focused services, aggregating helper functions and database interactions used exclusively for federation. Step 3: Replace direct imports like Shadow.modules.utils.connections in feds.py with abstractions in the new fedManagement module. Step 4: Gradually migrate test cases and caller imports to the new modules, isolating change risk to localized units. Step 5: Apply same pattern to notes/greetings/restrictions clusters to improve overall maintainability.",
+  "risks": "Initial refactoring may increase temporary complexity as modules are restructured. There is risk of breaking existing behavior during migration if dependencies are misidentified or order is incorrect. Testing coverage must be established or improved before refactoring each cluster to ensure correctness is maintained. However, risks are acceptable given the current maintainability debt and the incremental nature of the tactic."
+}

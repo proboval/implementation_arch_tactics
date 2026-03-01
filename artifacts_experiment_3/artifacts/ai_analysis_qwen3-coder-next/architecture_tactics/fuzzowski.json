@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits low modularity in key shared modules (e.g., `session.py`, `mutants/spike.py`) that couple unrelated responsibilities — Session orchestrates graph traversal, monitoring, target connections, and persistence in one monolithic class, while spike.py mixes request construction, mutation, and response handling with global state (`s_*` functions). Static analysis confirms high intra-package coupling (e.g., `session.py` imports 15+ modules including `connections`, `graph`, `loggers`, `restarters`, `responses`) and deep call chains (max depth=4), increasing change risk and test scope. AT38 directly addresses this by localizing responsibilities into cohesive, narrowly-focused modules, reducing ripple effects and enabling targeted changes without full-system retesting.",
+  "target_components": [
+    "fuzzowski/session.py",
+    "fuzzowski/mutants/spike.py",
+    "fuzzowski/graph/graph.py",
+    "fuzzowski/monitors/imonitor.py",
+    "fuzzowski/responses/response.py"
+  ],
+  "expected_architectural_change": "Session will be split into focused orchestrator components (e.g., ExecutionController, StateRepository, MonitorCoordinator) rather than handling graph navigation, target restarting, and logging in one class. The spike module’s global procedural API will be replaced by object-based, localizable fluent interfaces bound to specific Request/Block instances. Graph operations will be decoupled from TestCase/Session via explicit dependencies.",
+  "implementation_strategy": "1. Introduce bounded interfaces: Extract Session behavior into SessionController (high-level orchestration), SessionState (persistent state), and ExecutionEngine (step-wise mutation/transmission). 2. Move spike functions into RequestBuilder class bound to Session/Request instances, eliminating global state. 3. Decouple graph traversal by introducing a PathResolver interface implemented by graph-aware components (e.g., Session, TestRunner) instead of hard-calling graph methods inside Session. 4. Isolate response parsing into a new ResponseAnalyzer component used by TestCase rather than mixed in Session. 5. Refactor helpers/helpers.py into context-specific utilities (e.g., CrcCalculator, IPConverter) with narrow responsibilities.",
+  "risks": "Risk of temporary increased indirection during decomposition; may cause transient instability if interfaces are not carefully designed. Mitigation: Use extract-and-rename refactoring pattern, start with small slices (e.g., extract StateRepository first), and ensure tests remain green throughout. Low risk due to existing test coverage and clear module boundaries."
+}

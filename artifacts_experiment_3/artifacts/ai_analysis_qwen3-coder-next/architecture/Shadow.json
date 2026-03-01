@@ -1,0 +1,26 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Project has a single entry point (__main__.py) with unified bot execution, indicating one deployable artifact",
+    "Clear separation into logical modules (modules/, services/, db/, utils/, Addons/) with hierarchical directory structure (max depth 4)",
+    "Modules are interdependent but co-deployed; no inter-process/network communication between logical components",
+    "Service layer (services/) abstracts external dependencies (Mongo, Redis, Pyrogram, Telethon) consistently used across modules",
+    "Shared utilities (utils/) and helpers are reused across modules, typical of monolithic designs",
+    "Data persistence handled via both SQL (SQLAlchemy) and NoSQL (MongoDB, Odmantic) within the same process space",
+    "Event-driven command handling via decorators and registered handlers across modules, but within single runtime",
+    "Multiple Telegram clients (Pyrogram/Telethon) integrated directly as libraries, not via external services",
+    "No evidence of network boundaries, service discovery, or inter-service communication patterns"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between modules increases risk of cascading changes and regression",
+    "Scaling requires full application replication rather than component-level scaling",
+    "Testing complexity grows with module interdependencies",
+    "Single point of failure for the entire bot functionality",
+    "Potential for module dependency cycles given high average fan-out (3.6)"
+  ]
+}

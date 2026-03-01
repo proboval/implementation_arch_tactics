@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "All code resides in a flat directory structure (max_directory_depth=1, packages=0)",
+    "Multiple top-level Python files (general_json2yolo.py, labelbox_json2yolo.py, utils.py) without explicit module/package boundaries",
+    "High average fan-out (7.67) indicating tight coupling and frequent cross-file dependencies",
+    "All functions appear to be utility-level conversion or processing operations without clear separation of concerns like controllers, domains, or adapters",
+    "Heavily shared global state via 'from utils import *'",
+    "No evidence of layered dependencies (e.g., no domain/core layer cleanly separated from infrastructure/presentation)",
+    "Repository tree shows no subdirectories for modules, services, or components"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor maintainability due to tight coupling and lack of encapsulation",
+    "Difficult to test components in isolation",
+    "Risk of name collisions and implicit dependencies via wildcard imports",
+    "Limited scalability and extensibility as functionality grows",
+    "No clear separation between I/O, business logic, and data transformation"
+  ]
+}

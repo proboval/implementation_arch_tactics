@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear modular structure with 8 well-separated packages (bokeh, analyzer_tables, schemes, etc.) each with focused responsibilities",
+    "No external service interfaces or network calls indicating decoupled services; all functionality is within a single Python package",
+    "Use of shared utilities and internal imports (e.g., backtrader_plotting.utils used across modules) indicates tight integration",
+    "All demos and tests directly import and use core components (Bokeh, OptBrowser) without inter-service communication",
+    "Folder structure reflects domain decomposition (bokeh for visualization, analyzer_tables for result reporting, schemes for styling, live for streaming)",
+    "Shared data models and utilities (utils.py) used across modules without external APIs",
+    "No message queues, REST/gRPC endpoints, or container-based deployment signatures"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Risk of growing module coupling if new cross-cutting concerns are added without clear boundaries",
+    "Testing isolation may be challenging if modules are not explicitly designed for decoupling",
+    "Scaling options are limited to process-level (monolith), not service-level"
+  ]
+}

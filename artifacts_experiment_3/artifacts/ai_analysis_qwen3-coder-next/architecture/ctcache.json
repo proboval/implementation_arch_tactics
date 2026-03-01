@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package ('ctcache') with multiple modules (clang_tidy_cache.py, clang_tidy_cache_server.py) indicating clear separation of concerns within one deployable unit",
+    "Clear logical layering: CLI/client entry point (clang_tidy_cache.py), server backend (clang_tidy_cache_server.py), and tooling scripts (tools/, doc/latex/tools/) — but no inter-process communication or network boundaries",
+    "High fan-out (avg 8.11) reflects internal module interdependencies typical of a monolithic design where modules depend on shared utilities and domain logic",
+    "Shared data models (e.g., ClangTidyCacheOpts, cache interfaces) and dependency injection via class composition across core modules",
+    "Tooling scripts reuse common modules (e.g., doc/latex/tools/* imports from common.py), indicating internal modularity without separation into services",
+    "Deployed as a unified artifact (Dockerfile, systemd services) with no indication of distributed components"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between server and client logic could hinder maintainability as project scales",
+    "Monolithic deployment model limits independent scaling and fault isolation",
+    "Shared state in multi-cache and stats modules may introduce concurrency issues under load"
+  ]
+}

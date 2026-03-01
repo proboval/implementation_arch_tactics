@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository structure shows top-level Python scripts (doubles.py, doubles_all.py, etc.) without hierarchical package organization (packages=0)",
+    "No clear modularity or separation of concerns beyond ad-hoc scripts testing various implementations",
+    "Limited directory depth (max 2) and no architecture-breaking boundaries (e.g., no clear domain/core layer)",
+    "Mixed language extensions (C, Rust) are used via direct imports but tightly coupled in test scripts rather than abstracted via ports/adapters",
+    "Function names and file names indicate experimental/test scripts (test_*, doubles_*) rather than production architecture",
+    "Code maintainability metrics indicate low complexity (mi_avg=0, mi_min=0), typical of small or prototype scripts",
+    "No evidence of layered dependencies, ports/adapters, or service boundaries — all logic is in monolithic test files"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor scalability due to lack of modularity",
+    "High coupling between test scripts and implementations",
+    "Limited testability and maintainability without clear boundaries",
+    "Difficult to reuse components outside current script context"
+  ]
+}

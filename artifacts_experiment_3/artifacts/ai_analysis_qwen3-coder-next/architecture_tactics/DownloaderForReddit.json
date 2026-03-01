@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from tight coupling between core, database, and extractors layers (e.g., core/submission_handler imports database and extractors directly, extractors depend on core/database, GUI directly instantiates core and database components). Static analysis confirms high average fan-out (3.03) and deep nesting (max depth 5), indicating poor modularity. The maintainability risk section explicitly identifies 'High coupling between modules may reduce testability and maintainability'. Decomposability (AT41) directly addresses this by enforcing modular separation of concerns, reducing coupling, and isolating responsibilities—fitting the current modular monolith structure where modules like core/, database/, extractors/, gui/, persistence/ already exist but are improperly decoupled.",
+  "target_components": [
+    "DownloaderForReddit/core/submission_handler.py",
+    "DownloaderForReddit/core/comment_handler.py",
+    "DownloaderForReddit/core/content_runner.py",
+    "DownloaderForReddit/core/download_runner.py",
+    "DownloaderForReddit/database/database_handler.py",
+    "DownloaderForReddit/database/model_manager.py",
+    "DownloaderForReddit/extractors/base_extractor.py",
+    "DownloaderForReddit/extractors/imgur_extractor.py",
+    "DownloaderForReddit/core/submittable_creator.py",
+    "DownloaderForReddit/gui/downloader_for_reddit_gui.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces/abstractions between core business logic (core/), persistence (database/), content extraction (extractors/), and GUI layers. Core components will depend on abstractions (e.g., interface for database access, extraction strategy) rather than concrete implementations, enabling testability and reducing ripple effects. GUI will delegate to a simplified service layer instead of importing core/database components directly.",
+  "implementation_strategy": "Step 1: Extract abstraction interfaces (e.g., DatabaseRepository, ContentExtractor, SubmissionProducer) in core/ or a new service/ layer. Step 2: Refactor core modules to depend on interfaces instead of concrete classes (e.g., SubmissionHandler depends on an interface for post persistence). Step 3: Introduce adapter implementations for database and extractors behind those interfaces. Step 4: Create a simplified Service Facade to decouple GUI from core/database—gui/ imports only this facade. Step 5: Inject dependencies through a lightweight factory/injector (already partially present in utils/injector.py) to avoid tight coupling. This can be done incrementally module-by-module.",
+  "risks": "Risk of over-engineering if interfaces are over-specified early; but since the monolith has shared runtime, the worst outcome is improved modularity without runtime overhead. Tight integration of GUI with core/database (e.g., downloader_for_reddit_gui.py imports many core/database classes) makes refactoring risky, so changes must be staged and tested incrementally."
+}

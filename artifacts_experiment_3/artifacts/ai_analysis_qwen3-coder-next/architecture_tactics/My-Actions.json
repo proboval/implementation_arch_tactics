@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from severe lack of decomposability: all notification logic is duplicated across multiple files (e.g., function/bika/sendNotify.py, function/bilibili/sendNotify.py, function/xiaomi_sports/sendNotify.py), shared functionality is imported ad-hoc via relative file-level imports without encapsulation, and services lack clear interfaces or boundaries. This makes understanding, testing, and modifying any service require navigating duplicated code and tight coupling. AT41 directly addresses this by structuring the system into well-defined, decoupled modules with separation of concerns — enabling each service (bika, bilibili, etc.) to depend on a shared, abstracted notification interface rather than duplicating or tightly coupling to implementation files.",
+  "target_components": [
+    "function/sendNotify.py",
+    "function/bika/sendNotify.py",
+    "function/bilibili/sendNotify.py",
+    "function/xiaomi_sports/sendNotify.py",
+    "function/bika/bika.py",
+    "function/bilibili/bilibili.py",
+    "function/xiaomi_sports/xiaomi.py",
+    "function/cloud189/checkin.py"
+  ],
+  "expected_architectural_change": "A new shared module (e.g., function/shared/notify.py or function/core/notify.py) will be introduced containing a single, abstracted notification component with clear interfaces (e.g., INotifier, NotificationService). All service scripts will depend only on this interface, not on local sendNotify.py duplicates. Each service will remain a standalone script (no major refactor to full package), but imports will shift from `from sendNotify import *` to `from shared.notify import get_notifier`. Directories like function/shared/ will emerge as a dedicated layer, improving separation.",
+  "implementation_strategy": "Step 1: Create function/shared/notify.py with a unified NotificationService class and a minimal registry (e.g., get_notifier(service_name='bika') -> notifier). Step 2: Refactor each service script (bika.py, bilibili.py, xiaomi.py) to import only from shared.notify and remove local sendNotify.py duplicates. Step 3: Replace wildcard imports with explicit dependency on the abstract interface. Step 4: Add simple factory or registry to support environment-based configuration (e.g., via env vars), deferring binding of notifier behavior to runtime without changing core logic. This preserves script-based structure while enabling incremental adoption and testability.",
+  "risks": "Temporary duplication during migration; possible breaking if services rely on undocumented behavior in old sendNotify implementations (e.g., side effects in module initialization). Mitigated by preserving backward-compatible stubs in early phases and verifying functional parity with unit tests for the shared module. Minimal risk due to incremental nature — services can be migrated one-by-one without blocking other work."
+}

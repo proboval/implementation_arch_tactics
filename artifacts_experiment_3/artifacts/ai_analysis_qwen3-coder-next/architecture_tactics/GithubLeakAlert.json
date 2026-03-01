@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single-file script (dorker.py) with no module or package structure, resulting in zero modularity (packages: 0, max_directory_depth: 1) and critically poor maintainability indicators (mi_avg=0, mi_min=0). Static analysis confirms flat structure and high fan-out (8.0) from direct imports of github3, pymongo, requests, etc., indicating tight coupling between I/O, business logic, and data access. This violates separation of concerns and makes component testing impossible. Decomposability directly addresses this by dividing the monolithic script into cohesive, testable modules—e.g., isolating GitHub API calls, data parsing, and persistence—thereby improving analyzability, testability, and maintainability via modular boundaries.",
+  "target_components": [
+    "dorker.py"
+  ],
+  "expected_architectural_change": "Single-file dorker.py will be decomposed into a multi-file module: e.g., github/', 'persistence/', 'parsing/', and 'core/' directories with well-defined interfaces. Each submodule will encapsulate a single responsibility (e.g., GitHubClient, IssueManager, LeakParser), replacing current flat function calls with inter-module dependencies via explicit interfaces.",
+  "implementation_strategy": "1. Identify logical responsibilities from current functions: (a) GitHub interaction (github3), (b) MongoDB persistence (pymongo), (c) leak parsing (regex, base64, json), (d) orchestration (main, isAlive, create_issues). 2. Refactor dorker.py into a package: create directory structure (dorker/__init__.py, dorker/github.py, dorker/db.py, dorker/parser.py, dorker/cli.py). 3. Extract related functions into each submodule (e.g., getsftp, parse_line → parser.py; create_issues → github.py; MongoClient usage → db.py). 4. Introduce interfaces or base classes for core abstractions (e.g., LeakSource, StorageBackend) to reduce coupling. 5. Update imports in cli.py to use new module structure.",
+  "risks": "Risk of over-engineering if applied too aggressively; however, since the change is incremental (starting with splitting into 2–3 key submodules), and the current architecture is already non-modular, the risk is low. Care must be taken to avoid introducing circular imports during refactoring."
+}

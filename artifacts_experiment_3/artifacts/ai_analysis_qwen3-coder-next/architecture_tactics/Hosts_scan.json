@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: scripts like IP_hosts_scan.py and IP_hosts_scan_multithreading.py mix scanning logic, network I/O, progress UI, and file parsing in procedural blocks (e.g., direct 'requests' calls, embedded bar handling, no module boundaries). Static analysis confirms only 1 package with no separation (max_directory_depth=2, avg_files_per_package=4.0). The flat structure (e.g., top-level .py files, no subpackages) directly impedes isolating tests, understanding responsibilities, and isolating changes—exactly what Decomposability (AT41) solves by enforcing modular boundaries that reduce ripple effects and improve testability and analyzability.",
+  "target_components": [
+    "IP_hosts_scan.py",
+    "IP_hosts_scan_multithreading.py",
+    "lib/processbar.py"
+  ],
+  "expected_architectural_change": "The current monolithic scripts will be split into distinct, cohesive modules: (1) domain models (host, scan target), (2) scanning orchestration logic (input parsing, scan loop), (3) network infrastructure (requests wrapper), (4) UI/progress abstraction (ProcessBar interface), and (5) entry points. This creates sub-packages under 'lib' (e.g., lib/domain, lib/scanning, lib/ui) to separate responsibilities and enforce low coupling.",
+  "implementation_strategy": "Step 1: Extract scanning logic from scripts into a lib.scanning module using a ScanningService class with abstract methods. Step 2: Define a lib.ui.ProgressBar interface and make ProcessBar implement it. Step 3: Replace direct 'requests' usage in scripts with a lib.network.HttpClient interface. Step 4: Create lib.domain.Host and lib.domain.ScanTarget classes to replace ad-hoc data structures. Step 5: Refactor entry points (IP_hosts_scan.py, IP_hosts_scan_multithreading.py) to compose these modules, keeping only orchestration and CLI glue. This preserves functionality while enabling independent testing, reuse, and incremental evolution.",
+  "risks": "Risk of over-engineering small scripts; however, since the scripts already import external modules and include multi-threading, they are complex enough to benefit from decomposition. Tight coupling to tqdm via processbar.py means initial changes must preserve backward compatibility. Minimal risk: changes are local and incremental, with tests可 added per module before integration."
+}

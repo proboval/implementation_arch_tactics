@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from moderate cross-cutting dependencies and implicit coupling between evaluation and modeling components, as seen in tools/test_net.py and tools/train_net.py importing entire evaluation modules (e.g., fsdet.evaluation.*) while fsdet/evaluation/*.py modules import core modeling constructs (e.g., detectron2.structures, fsdet.modeling.*) directly. Static analysis confirms non-trivial fan-out (avg 4.48) and high inter-package import density (e.g., fsdet/evaluation/coco_evaluation.py imports 15+ modules including detectron2, torch, numpy, fsdet.utils, and other fsdet modules). The data preparation scripts (datasets/) duplicate overlapping logic (e.g., JSON/YAML parsing, random seed generation, annotation splitting) without shared abstractions, increasing change risk. Localized Modification directly addresses this by encouraging cohesion: grouping related responsibilities (e.g., evaluation logic per dataset) into self-contained units and minimizing ripple effects during modifications. This tactic is implementable via refactoring modules (e.g., fsdet/evaluation/*) into cohesive, stable interfaces—no architectural rewrite needed.",
+  "target_components": [
+    "fsdet/evaluation/coco_evaluation.py",
+    "fsdet/evaluation/lvis_evaluation.py",
+    "fsdet/evaluation/pascal_voc_evaluation.py",
+    "fsdet/evaluation/evaluator.py",
+    "datasets/prepare_coco_few_shot.py",
+    "datasets/prepare_lvis_few_shot.py",
+    "datasets/prepare_voc_few_shot.py"
+  ],
+  "expected_architectural_change": "Evaluation logic for each dataset (COCO, LVIS, PascalVOC) will be consolidated into a single cohesive unit with internal dependencies only on fsdet.modeling and detectron2.data, removing circular references to fsdet.modeling.roi_heads. A common interface (e.g., BaseDatasetEvaluator) will be introduced to decouple evaluation consumers (train_net.py, test_net.py) from dataset-specific logic, reducing coupling. Data preparation scripts will be unified into a shared module (e.g., fsdet.data.preprocess) with dataset-agnostic helpers (e.g., annotation loader, split manager) to eliminate duplicated parsing and randomization logic.",
+  "implementation_strategy": "Step 1: Extract evaluator interfaces from fsdet.evaluation to form a stable public API. Step 2: Refactor each evaluator (COCO/LVIS/PascalVOCEvaluator) to depend only on this interface and core utilities, removing direct imports from fsdet.modeling.roi_heads.* and fsdet.utils. Step 3: Create a new fsdet.data.preprocess module containing shared functionality for annotation splitting, filtering, and seed generation, and refactor datasets/ scripts to delegate to it. Step 4: Update train_net.py/test_net.py to use the evaluator API only (e.g., build_evaluator(dataset_name)), eliminating direct imports of specific evaluator classes. Changes are incremental, targeted, and preserve backward compatibility through versioned API."
+}

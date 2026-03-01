@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package structure with clear domain-specific modules (website_actions) and entry points (main.py, downloader.py)",
+    "Abstract base class (WebsiteActions) used for polymorphic behavior across website-specific implementations (BookwalkerJP, CmoaJP, etc.)",
+    "All components in one repository, no inter-process or network boundaries between components",
+    "High cohesion within modules (each website action file handles one website's logic), moderate coupling via imports and shared Downloader",
+    "Architecture metrics show low package count (1), shallow directory depth (2), and moderate average fan-out (4.3)",
+    "Use of inheritance and common interface suggests intentional modularity but no separation of concerns into layers or distinct architectural layers (e.g., no persistence/api/service separation)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Risk of tight coupling if website action modules evolve independently without strong interface discipline",
+    "Lack of process isolation may cause stability issues if one website scraper crashes the entire application",
+    "No clear separation between UI/business logic/persistence makes testing and maintenance harder as project scales"
+  ]
+}

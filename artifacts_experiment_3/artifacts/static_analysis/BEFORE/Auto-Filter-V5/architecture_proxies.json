@@ -1,0 +1,134 @@
+{
+  "python_files": 23,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 23.0,
+  "imports_graph": {
+    "bot.py": [
+      "database",
+      "math",
+      "utils",
+      "typing",
+      "pyrogram",
+      "pytz",
+      "info",
+      "os",
+      "datetime",
+      "logging",
+      "aiohttp",
+      "CYNITE"
+    ],
+    "utils.py": [
+      "database",
+      "asyncio",
+      "requests",
+      "typing",
+      "pyrogram",
+      "info",
+      "re",
+      "os",
+      "datetime",
+      "logging",
+      "aiohttp",
+      "imdb",
+      "bs4"
+    ],
+    "CYNITE\\broadcast.py": [
+      "database",
+      "asyncio",
+      "time",
+      "utils",
+      "pyrogram",
+      "info",
+      "datetime"
+    ],
+    "CYNITE\\channel.py": [
+      "database",
+      "pyrogram",
+      "info"
+    ],
+    "CYNITE\\connection.py": [
+      "database",
+      "logging",
+      "pyrogram",
+      "info"
+    ],
+    "CYNITE\\filters.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "io"
+    ],
+    "CYNITE\\genlink.py": [
+      "database",
+      "utils",
+      "base64",
+      "re",
+      "pyrogram",
+      "info",
+      "json",
+      "os",
+      "logging"
+    ],
+    "CYNITE\\gfilters.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "io"
+    ],
+    "CYNITE\\index.py": [
+      "database",
+      "asyncio",
+      "utils",
+      "re",
+      "pyrogram",
+      "info",
+      "logging"
+    ],
+    "CYNITE\\inline.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "logging"
+    ],
+    "CYNITE\\__init__.py": [
+      "aiohttp"
+    ],
+    "database\\connections_mdb.py": [
+      "pymongo",
+      "logging",
+      "info"
+    ],
+    "database\\filters_mdb.py": [
+      "pymongo",
+      "logging",
+      "pyrogram",
+      "info"
+    ],
+    "database\\gfilters_mdb.py": [
+      "pymongo",
+      "logging",
+      "pyrogram",
+      "info"
+    ],
+    "database\\ia_filterdb.py": [
+      "pymongo",
+      "base64",
+      "re",
+      "pyrogram",
+      "info",
+      "motor",
+      "umongo",
+      "logging",
+      "marshmallow",
+      "struct"
+    ],
+    "database\\users_chats_db.py": [
+      "motor",
+      "info"
+    ]
+  }
+}

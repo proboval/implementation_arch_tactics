@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling in the solution modules (e.g., Hand, Wholebody, Wholebody3d), which directly import concrete detector/estimator classes (RTMDet, RTMPose, YOLOX) rather than abstractions — as evidenced by: (1) solution/ files importing specific implementations from tools/ (e.g., hand.py imports RTMDet and RTMPose directly), (2) static analysis flagging 'A3' (abstraction violation) and 'C2' (high coupling) as risk factors, (3) high fan-in on solution components due to hard-coded dependencies (e.g., Hand imports two detector/estimator classes), and (4) the risk of accidental tight coupling if solution modules import internal model implementations instead of base interfaces. This coupling increases ripple effects: changes to detector or estimator implementations force recompilation and retesting of solution modules, reducing maintainability. This problem is actionable and real — not theoretical — and targets the concrete modules identified in the dependency graph.",
+  "target_components": [
+    "rtmlib/tools/solution/hand.py",
+    "rtmlib/tools/solution/wholebody.py",
+    "rtmlib/tools/solution/wholebody3d.py",
+    "rtmlib/tools/solution/__init__.py",
+    "rtmlib/tools/pose_estimation/__init__.py",
+    "rtmlib/tools/object_detection/__init__.py",
+    "rtmlib/tools/base.py"
+  ],
+  "expected_architectural_change": "Introduce abstract interfaces for detector and estimator components (e.g., BaseDetector, BaseEstimator) that all concrete implementations (RTMDet, YOLOX, RTMPose, etc.) inherit, and refactor solution modules to depend only on these interfaces — not concrete classes. Currently, Hand imports RTMDet and RTMPose by name; instead, it should accept a detector and estimator interface in its constructor. This change preserves all current functionality while decoupling the solution layer from implementation details.",
+  "implementation_strategy": "1. Extend rtmlib/tools/base.py: define clear abstract base classes for detector (e.g., BaseDetector) and estimator (e.g., BaseEstimator), with minimal shared interface (e.g., inference method, required pre/post-processing hooks). 2. Have existing concrete classes (RTMDet, YOLOX, RTMPose, etc.) inherit from the appropriate base class. 3. Refactor solution modules to accept detector/estimator instances via constructor (dependency injection), defaulting to provided concrete instances via module factory functions if none given. 4. Move factory functions (e.g., create_default_hand_system()) into a new rtmlib/tools/factories/ module to reduce coupling in __init__.py and solution/__init__.py. This incremental approach maintains backward compatibility while enabling future extensibility and testability.",
+  "risks": "Risk of interface over-engineering if base classes are too broad; mitigated by deriving abstractions strictly from existing shared usage patterns in solution modules. Temporary risk of backward-incompatible changes if solution classes’ constructors are altered without defaults — mitigated by providing sensible defaults and deprecation warnings during migration."
+}

@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "dorker/github_client.py",
+  "content": "\"\"\"\nGitHub client module for interacting with GitHub API.\n\"\"\"\nfrom github3 import GitHub\n\n\nclass GitHubClient:\n    def __init__(self, token):\n        \"\"\"Initialize GitHub client with authentication token.\"\"\"\n        self.client = GitHub(token=token)\n\n    def search_code(self, query, sort='indexed', order='desc'):\n        \"\"\"Search for code matching the given query.\"\"\"\n        return self.client.search_code(query, sort=sort, order=order)\n\n    def repository(self, owner, name):\n        \"\"\"Get a repository by owner and name.\"\"\"\n        return self.client.repository(owner, name)\n"
+}

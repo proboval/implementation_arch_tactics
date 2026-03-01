@@ -1,0 +1,98 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "tools\\hits_ratios_graph.py": [
+      "sys",
+      "matplotlib",
+      "math",
+      "json",
+      "os",
+      "argparse"
+    ],
+    "tools\\render_histogram_video.py": [
+      "sys",
+      "cv2",
+      "matplotlib",
+      "math",
+      "json",
+      "os",
+      "argparse",
+      "io",
+      "numpy"
+    ],
+    "doc\\latex\\tools\\common.py": [
+      "os",
+      "argparse",
+      "json",
+      "gzip"
+    ],
+    "doc\\latex\\tools\\plot-build-speedup.py": [
+      "sys",
+      "matplotlib",
+      "math",
+      "statistics",
+      "os",
+      "common",
+      "numpy"
+    ],
+    "doc\\latex\\tools\\plot-build-time.py": [
+      "sys",
+      "matplotlib",
+      "math",
+      "statistics",
+      "os",
+      "common",
+      "numpy"
+    ],
+    "doc\\latex\\tools\\plot-system-load.py": [
+      "sys",
+      "matplotlib",
+      "math",
+      "statistics",
+      "os",
+      "common",
+      "numpy"
+    ],
+    "src\\ctcache\\clang_tidy_cache.py": [
+      "requests",
+      "logging",
+      "traceback",
+      "getpass",
+      "errno",
+      "tempfile",
+      "typing",
+      "os",
+      "shlex",
+      "shutil",
+      "sys",
+      "redis",
+      "json",
+      "subprocess",
+      "google",
+      "botocore",
+      "boto3",
+      "time",
+      "re",
+      "hashlib"
+    ],
+    "src\\ctcache\\clang_tidy_cache_server.py": [
+      "sys",
+      "gzip",
+      "flask",
+      "matplotlib",
+      "gevent",
+      "math",
+      "time",
+      "re",
+      "json",
+      "os",
+      "argparse",
+      "io",
+      "shutil"
+    ],
+    "src\\ctcache\\__init__.py": []
+  }
+}

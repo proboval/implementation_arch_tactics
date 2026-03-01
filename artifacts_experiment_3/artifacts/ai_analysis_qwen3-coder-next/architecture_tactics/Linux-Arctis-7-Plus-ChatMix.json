@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT50",
+    "name": "Impact Analysis",
+    "primary_qa_impact": "Maintainability, Analyzability",
+    "positive_impact": "Analyzability(+), Risk reduction(+)",
+    "negative_impact": "Analysis effort"
+  },
+  "justification": "The repository exhibits high maintainability risk due to code duplication between two near-identical scripts (AllSound7P_ChatMix.py and Arctis_7_Plus_ChatMix.py) with identical class structures and method signatures, zero packages (packages: 0), and no abstraction layer over USB/OS dependencies. This leads to poor analyzability (mi_avg = 0) and makes impact assessment of changes nearly impossible without manual effort. Impact Analysis (AT50) directly addresses this by enabling systematic identification of change effects *before* modification—critical here because duplicative logic means a bug fix or feature in one script likely affects the other. Performing impact analysis on the current structure reveals the exact ripple paths (e.g., 'modify Arctis_7_Plus_ChatMix.py → also modify AllSound7P_ChatMix.py'), guiding incremental refactoring (e.g., extracting shared logic into a module). This tactic is implementable via static dependency analysis (already possible given clear imports graph) and does not require code changes upfront, making it the most pragmatic first step in this script-based architecture.",
+  "target_components": [
+    "AllSound7P_ChatMix.py",
+    "Arctis_7_Plus_ChatMix.py"
+  ],
+  "expected_architectural_change": "Transition from flat, duplicated procedural scripts to a shared abstract module (e.g., `arctis_base.py`) that both scripts depend on, with device-specific logic isolated in adapters. Impact Analysis will first expose the exact set of modifications required to each script when a change occurs, enabling targeted extraction.",
+  "implementation_strategy": "Step 1: Run impact analysis on the two scripts using static analysis (e.g., parse import/export graphs, track method usage across both files) to map dependencies and duplication points. Step 2: Identify common functionality (e.g., USB device handling, signal management) that appears in both scripts. Step 3: Document exact change impact (e.g., 'modifying _init_VAC() requires identical edits in both files') to establish baseline risk. Step 4: Use this analysis to plan minimalrefactor: extract shared classes/functions into a new `Arctis7PlusBase` module and refactor both scripts to inherit or delegate to it—without redesigning the system. This ensures low effort, high ROI, and incremental maintainability gain.",
+  "risks": "Manual impact analysis is time-consuming for large scripts, but the repository has only two small scripts, making this low-effort. Without this analysis, refactoring may miss implicit coupling, leading to inconsistent behavior post-refactor. However, since documentation shows docstring_coverage: 1.0 and no complex business logic, risks are minimal and manageable."
+}

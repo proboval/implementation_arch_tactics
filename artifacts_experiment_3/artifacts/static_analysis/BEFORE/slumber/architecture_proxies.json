@@ -1,0 +1,60 @@
+{
+  "python_files": 10,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "setup.py": [
+      "sys",
+      "os",
+      "setuptools"
+    ],
+    "docs\\conf.py": [
+      "sys",
+      "os"
+    ],
+    "slumber\\exceptions.py": [
+      "utils"
+    ],
+    "slumber\\serialize.py": [
+      "yaml",
+      "slumber",
+      "json"
+    ],
+    "slumber\\utils.py": [
+      "posixpath",
+      "urllib",
+      "urlparse"
+    ],
+    "slumber\\__init__.py": [
+      "urllib",
+      "serialize",
+      "urlparse",
+      "requests",
+      "utils"
+    ],
+    "tests\\resource.py": [
+      "sys",
+      "requests",
+      "slumber",
+      "unittest2",
+      "mock"
+    ],
+    "tests\\serializer.py": [
+      "slumber",
+      "unittest"
+    ],
+    "tests\\utils.py": [
+      "sys",
+      "slumber",
+      "unittest2"
+    ],
+    "tests\\__init__.py": [
+      "utils",
+      "os",
+      "serializer",
+      "resource",
+      "unittest"
+    ]
+  }
+}

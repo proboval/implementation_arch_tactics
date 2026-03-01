@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single executable entry point (__main__.py, crypto_trading.py, backtest.py) with clear separation of concerns",
+    "Logical grouping into high-cohesion modules: models, strategies, API interfaces (binance_*_manager), utilities (logger, database, notifications, scheduler)",
+    "No inter-service communication or remote calls; all dependencies are internal Python imports",
+    "Shared domain models (Coin, Pair, Trade, etc.) used consistently across modules",
+    "Strategies inherit from a core class (AutoTrader), indicating vertical layering within a single deployment unit",
+    "Database and config are singletons/services shared across modules (e.g., AutoTrader, backtest, api_server)",
+    "API server uses in-process Flask + SocketIO, not a separate service, indicating single-binary architecture"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "High fan-out (avg 4.96) and shared mutable state (e.g., Database, Config) may reduce testability and increase coupling over time",
+    "Lack of explicit ports/adapters boundaries could make future evolution toward microservices more costly",
+    "Strategy pattern is implemented via inheritance; could be more flexible via composition in larger systems"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor maintainability due to cross-cutting concerns and high coupling between domain responsibilities. For example, clienttrader.py imports from grid_strategies, refresh_strategies, config, utils, and log — while follower.py imports from exceptions, log, and indirectly depends on trader logic via shared abstractions. Trader implementations (e.g., gf_clienttrader.py, yh_clienttrader.py, xqtrader.py) duplicate logic for login, balance, position, and trade flows across files with inconsistent encapsulation (e.g., HTML parsing duplicated in xqtrader.py vs shared in webtrader.py). The follower and trader patterns share almost identical trade execution pipelines but are implemented in separate module hierarchies (follower.py vs clienttrader.py), causing ripple changes when adding a new broker or strategy. Localized Modification (AT38) directly addresses this by increasing cohesion: grouping responsibilities per module (e.g., consolidating all XueQiuTrader logic into a single cohesive unit) and reducing modification scope per change scenario, thus improving maintainability without restructuring the entire architecture.",
+  "target_components": [
+    "easytrader/clienttrader.py",
+    "easytrader/webtrader.py",
+    "easytrader/follower.py",
+    "easytrader/xqtrader.py",
+    "easytrader/xq_follower.py",
+    "easytrader/grid_strategies.py",
+    "easytrader/refresh_strategies.py",
+    "easytrader/pop_dialog_handler.py",
+    "easytrader/gf_clienttrader.py",
+    "easytrader/gj_clienttrader.py",
+    "easytrader/ht_clienttrader.py",
+    "easytrader/htzq_clienttrader.py",
+    "easytrader/yh_clienttrader.py"
+  ],
+  "expected_architectural_change": "Modules will evolve toward single-responsibility and high cohesion: e.g., XueQiuTrader encapsulates its full trading lifecycle (login, portfolio, order submission) without leaking into global modules; grid_strategies and refresh_strategies become injectable strategies with minimal internal knowledge; trader-specific logic is moved from shared base classes into concrete implementations only where needed. New abstractions (e.g., IOrderSubmitStrategy, IPortfolioSyncStrategy) may be introduced where duplication is identified, but only as localized improvements—not a full hexagonal refactoring.",
+  "implementation_strategy": "1. Identify high-coupling cycles via import graph (e.g., clienttrader → grid_strategies → clienttrader via IClientTrader). 2. Refactor each trader implementation to define its own strategy interfaces internally instead of pulling from shared module (e.g., xqtrader.py declares IGridStrategy locally instead of importing grid_strategies.IGridStrategy). 3. Group related state and behavior: move all XueQiu follower logic (xq_follower.py + xqtrader.py) into a single module hierarchy, removing duplicated transaction extraction and slippage logic. 4. Replace duplicated cross-cutting utilities (e.g., captcha, win_gui calls) with well-defined extension points via composition. Incrementally refactor one module at a time (e.g., start with xqtrader), measured via decreased fan-out and improved MI metrics.",
+  "risks": "Short-term risk of temporary duplication during transition if shared interfaces are removed too early; long-term risk of module bloat if localization is overapplied without balancing abstraction. However, the repository’s modular monolith structure and low architectural complexity (max depth 3, 5 packages) make these risks manageable, especially compared to the cost of global restructuring."
+}

@@ -1,0 +1,25 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.92,
+  "evidence": [
+    "No packages defined (packages: 0)",
+    "Flat directory structure with max_directory_depth = 1 (all files at root level, no nested package folders)",
+    "Low average fan-out (1.5) indicating minimal inter-module dependencies",
+    "Main application logic centralized in main.py with many top-level functions (e.g., index, auth, new_chat, get_balance)",
+    "Supporting utilities (log_util.py, LRU_cache.py) are standalone modules without clear architectural boundaries",
+    "Flask routes are implemented as top-level functions without explicit layering (controllers mixed with business logic)",
+    "Frontend is static HTML/CSS/JS served directly with no clear separation into frontend architecture",
+    "No ports/adapters, no clear domain/core layer, no service layer or data access abstraction"
+  ],
+  "alternatives": [
+    "mvc",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Lack of modularity leads to tight coupling and difficulty in testing",
+    "Monolithic flat structure hinders maintainability as codebase grows",
+    "Global functions in main.py increase cognitive load and risk of side effects",
+    "No separation of concerns between presentation, business logic, and data access",
+    "Limited scalability and testability without clear boundaries"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "siuba/ops/abstract_translator.py",
+  "content": "from abc import ABC, abstractmethod\nfrom typing import Any, Protocol\n\n\nclass AbstractTranslator(ABC):\n    \"\"\"Abstract base class for translators.\n    \n    This interface allows both pandas and SQL translators to share a common\n    protocol, decoupling them from internal details like ops/utils.py.\n    \"\"\"\n    \n    @abstractmethod\n    def translate(self, expr, window: bool = True) -> Any:\n        \"\"\"Convert an expression tree into a target-specific representation.\"\"\"\n        pass\n    \n    @abstractmethod\n    def shape_call(\n        self,\n        call: Any,\n        window: bool = True,\n        str_accessors: bool = False,\n        verb_name: str | None = None,\n        arg_name: str | None = None,\n    ) -> Any:\n        \"\"\"Produce a dialect-specific call object.\"\"\"\n        pass\n\n\nclass HasTranslate(Protocol):\n    \"\"\"Protocol for objects that have a translate method.\"\"\"\n    \n    def translate(self, expr, window: bool = True) -> Any:\n        ...\n"
+}

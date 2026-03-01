@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: the entire image downloading logic resides in a single monolithic class `googleimagesdownload` in `google_images_download/google_images_download.py` (~25+ methods handling CLI input parsing, URL building, HTML parsing, download orchestration, and I/O operations all in one place). Static analysis confirms low fan-out (3.25) and flat directory structure (max depth 2), and evidence states 'core logic directly handles I/O' with 'minimal separation of concerns'. This causes tight coupling between presentation (CLI via `__main__.py`), business logic (download coordination), and I/O (file saving, network requests), directly contributing to the stated risks: 'Low testability', 'difficulty maintaining or extending without risking side effects across methods', and 'scarcity of modularity'. Decomposability directly solves this by enabling modular separation of these concerns—dividing the monolith into distinct modules (e.g., `search`, `fetch`, `download`, `cli`)—thereby narrowing change impact, enabling focused testing, and improving maintainability in a realistic incremental manner for this script-based codebase.",
+  "target_components": [
+    "google_images_download/google_images_download.py",
+    "google_images_download/__main__.py",
+    "tests/test_google_images_download.py"
+  ],
+  "expected_architectural_change": "The single `googleimagesdownload` class will be decomposed into cohesive modules: a `cli` module to handle argument parsing, a `search` module for URL building and page analysis, a `fetch` module for HTTP/HTML interactions, and a `store` module for file system I/O. The `download()` method will become a composition orchestrating these loosely-coupled modules via well-defined interfaces (e.g., using interfaces or duck-typed protocols). This introduces a 3–4 level directory structure (e.g., `google_images_download/operations/`, `google_images_download/io/`) while preserving the existing top-level package layout.",
+  "implementation_strategy": "Start by identifying logical responsibilities within `googleimagesdownload.download()` and its helper methods: (1) extract `build_search_url`/`build_url_parameters` into `search/builder.py`; (2) extract `download_page`/`get_all_tabs`/`_get_all_items` into `fetch/parser.py`; (3) extract `download_image`, `create_directories`, `file_size` into `store/saver.py`. Introduce minimal interfaces (e.g., `SearchStrategy`, `Downloader`) as abstract base classes or simple duck-typed interfaces in `google_images_download/interfaces.py`. Update `__main__.py` to use composition instead of direct class instantiation. Refactor `test_google_images_download.py` to mock interfaces instead of real implementation—enabling unit testing. All changes are backward compatible; existing CLI entry point remains unchanged.",
+  "risks": "Risk of temporary regression during decomposition is mitigated by incremental steps and existing test `test_download_images_to_default_location`—it can be retained as a high-level integration test while new unit tests are added. Since the monolith already handles CLI and I/O side effects, decoupling via interfaces preserves behavior while increasing testability. No external dependencies are required beyond `selenium` (used in core logic), making this change portable and low-friction."
+}

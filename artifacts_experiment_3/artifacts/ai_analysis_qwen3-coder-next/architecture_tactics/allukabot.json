@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: all 104 Python files are crammed into 4 packages with no internal separation by functional boundary or dependency direction. Static analysis confirms high fan-out (~4.4) and evidence shows circular imports between modules (e.g., chat_status ↔ connection) and module-level import chains that prevent isolated testing (e.g., admin.py imports __main__, which imports modules, which import admin.py again). The modular monolith pattern is broken because modules directly import other modules instead of bounded contexts or service interfaces, causing ripple effects during change and blocking parallel development and unit testing.",
+  "target_components": [
+    "alluka/modules/helper_funcs/chat_status.py",
+    "alluka/modules/connection.py",
+    "alluka/modules/helper_funcs/telethon/chat_status.py",
+    "alluka/modules/antiflood.py",
+    "alluka/modules/antispam.py",
+    "alluka/modules/warns.py",
+    "alluka/modules/sql/connection_sql.py",
+    "alluka/modules/sql/antiflood_sql.py",
+    "alluka/modules/sql/antispam_sql.py",
+    "alluka/modules/sql/warns_sql.py",
+    "alluka/modules/modules.py",
+    "alluka/modules/admin.py"
+  ],
+  "expected_architectural_change": "Introduce bounded contexts by grouping related modules (e.g., user-moderation, content-moderation, settings) and enforce clear dependency direction: modules in a context depend only on shared interfaces and data layers, not on concrete modules in other contexts. The helper_funcs and sql directories will be restructured into self-contained contexts, with a new 'ports_and_adapters' layer for core domain services and an 'adapters' layer for Telegram/SQL integration.",
+  "implementation_strategy": "Step 1: Extract shared interfaces (e.g., IChatModerator, IUserModerator) from concrete helpers like chat_status.py and extract_telethon/chat_status.py. Step 2: Group modules into contexts: user-moderation (admin, bans, muting, warns), content-moderation (antiflood, blacklist, antispam), and system (connection, modules, utils). Step 3: Replace direct cross-module imports with dependency injection via a lightweight service locator or context-aware constructor injection, deferring concrete bindings to runtime. Step 4: Create dedicated test fixtures per context to enable isolated testing. This will reduce direct module-to-module coupling and improve testability while allowing incremental migration without a Big Bang rewrite.",
+  "risks": "Initial refactoring may increase import indirection and require careful module renaming to avoid circular imports. However, the shallow depth (max 5) and flat structure make this highly refactorable. Risks are mitigated by incremental approach: one context at a time, with continuous integration to verify no regressions."
+}

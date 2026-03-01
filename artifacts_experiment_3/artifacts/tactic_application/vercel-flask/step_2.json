@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "api/index.py",
+  "content": "from flask import Flask, render_template\nfrom .services import hello_logic, test_logic, result_logic\n\napp = Flask(__name__)\n\n\n@app.route('/')\ndef hello():\n    return hello_logic()\n\n\n@app.route('/test')\ndef test():\n    return test_logic()\n\n\n@app.route('/result')\ndef result():\n    dict_data = {'phy': 50, 'che': 60, 'maths': 70}\n    return render_template('result.html', result=dict_data)\n"
+}

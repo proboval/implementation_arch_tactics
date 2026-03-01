@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Code is organized into high-cohesion modules (e.g., 'commands/', 'players/', 'listview/', 'content/') with clear boundaries and responsibilities",
+    "Modules communicate via explicit imports and shared state (e.g., global 'g.py', 'c.py', 'config.py' modules), indicating internal coupling typical of monoliths",
+    "No inter-process or network communication patterns—everything is in-process Python module interaction",
+    "The structure follows domain-driven logical decomposition (e.g., 'content.py', 'playlist.py', 'player.py') rather than technical layers (e.g., UI/Service/DB)",
+    "Single entry point ('main.py') orchestrates the application, but logic is distributed across functional modules",
+    "Low 'packages' count (4 top-level modules under mps_youtube) with deep nesting (max depth 3), consistent with modular monolith over microservices",
+    "Fan-out average of 5.0 suggests moderate interdependence, not loose coupling required for microservices"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling via shared global state in 'g.py' and 'c.py' may reduce testability and maintainability",
+    "Lack of strict separation between presentation and domain logic (e.g., 'screen.py' interacts heavily with content state)",
+    "No clear ports/adapters boundary—pafy.py combines external API logic (YouTube) with internal data fetching",
+    "Mixing of command-line parsing, UI rendering, and business logic in modules like 'main.py' and 'commands/*.py' hints at some layered bleed"
+  ]
+}

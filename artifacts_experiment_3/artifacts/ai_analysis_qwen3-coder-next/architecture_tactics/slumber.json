@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight internal coupling between modules: slumber/exceptions.py imports from slumber/utils.py, and slumber/serialize.py imports directly from slumber (the package root) — which creates circular and non-directional dependencies. Static analysis confirms 'C1' and 'A3' factors (likely high coupling and inadequate separation), and the evidence notes 'tight internal coupling possible due to mutual imports'. In slumber/__init__.py, the API and Resource classes directly import concrete modules (serialize, utils, exceptions), violating inversion and increasing ripple-effect risk. Reducing coupling here will make changes to serialization, utilities, or exception handling localized and testable — directly addressing the maintainability debt implied by mi_avg=0 and low package count.",
+  "target_components": [
+    "slumber/exceptions.py",
+    "slumber/serialize.py",
+    "slumber/utils.py",
+    "slumber/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce clean abstraction layers (e.g., Serializer interface, ExceptionFactory, UrlUtils) and invert dependencies so that higher-level modules (API/Resource) depend on abstractions, not concrete implementations. Current directional imports (exceptions → utils, serialize → slumber root) will become unidirectional with clear boundaries: exceptions, utils, serialize become independent and depended-upon, not cross-dependent. slumber/__init__.py will depend only on abstractions, not concrete classes.",
+  "implementation_strategy": "1. Extract interfaces or abstract base classes (e.g., BaseSerializer is already present — extend to define clean contract). 2. Replace direct imports (e.g., `from slumber import exceptions`) with dependency injection via factory or constructor (e.g., pass serializer/exception_factory to Resource/API). 3. Refactor imports: exceptions should not import utils unless strictly necessary; serialize should depend on exceptions only via interface. 4. Use composition over inheritance: Resource/API accept dependencies instead of creating them internally. 5. Introduce a small `slumber.interfaces` or `slumber._api` module if needed to host abstractions — minimal module addition allowed.",
+  "risks": "Refactoring internal imports may temporarily increase complexity during migration. However, because the system is small (10 files, 4 core modules), this can be done incrementally (e.g., refactor utils/serialize first, then API). Risk of breaking functionality is low if tests (which already cover integration) are run after each incremental change. No security or performance degradation expected."
+}

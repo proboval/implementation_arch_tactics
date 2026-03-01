@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT40",
+    "name": "Deferred Binding Time",
+    "primary_qa_impact": "Maintainability, Changeability, Portability",
+    "positive_impact": "Changeability(+), Flexibility(+)",
+    "negative_impact": "Runtime overhead"
+  },
+  "justification": "The current plugin template uses a singleton-based class hierarchy with hard-coded method signatures but no pluggable discovery or configuration mechanism. Static analysis shows only one module and a flat structure where plugin behavior is locked at compile time. The `AbstractSingleton` and stub methods indicate intention for extensibility, but without deferred binding — i.e., late resolution of plugin implementations — adding or swapping plugins requires modifying the core template, violating maintainability. Deferred Binding Time allows the system to resolve which plugin to load and how at runtime (e.g., via entry points, config, or class scanning), directly addressing the risk of 'tight coupling' and 'lack of separation' identified in the architecture description. This is implementable incrementally in the current `__init__.py` and `run_pylint.py` files without restructuring the entire project.",
+  "target_components": [
+    "src/auto_gpt_plugin_template/__init__.py",
+    "run_pylint.py"
+  ],
+  "expected_architectural_change": "Introduction of a plugin registry/discovery mechanism (e.g., via `entry_points` or configurable factory) that decouples the core template from concrete plugin implementations; `AutoGPTPluginTemplate` will shift from a singleton container to an abstract base for registered plugins, and plugin selection will occur at runtime rather than compile time.",
+  "implementation_strategy": "Refactor `__init__.py` to define an abstract plugin interface (extending `abc.ABC`) and a registry loader (e.g., using `importlib.metadata.entry_points`). Replace singleton instantiation with dynamic plugin loading based on configuration or environment. Move `run_pylint.py` from hardcoded subprocess usage to a generic runner that loads plugins via the registry. Introduce a minimal config file (e.g., `pyproject.toml` plugin section) to declare plugin entry points. This preserves the current flat structure while enabling loose coupling and late binding.",
+  "risks": "Adding runtime loading introduces dependency resolution complexity; if not implemented carefully, may reduce startup reliability or introduce obscure import-time errors. However, risks are minimal for this skeleton and can be mitigated via early validation and fallbacks."
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows modularity at the file level (cli.py, diff.py, test files) but maintains low cohesion and unclear separation of responsibilities. Static analysis reveals mi_avg=0 (no maintainability index calculated), docstring_coverage=0.0, and high average files per package (7.0 in a single package), suggesting procedural code with merged responsibilities. The Installer and CommandParser classes in cli.py are likely doing too much (e.g., file manipulation, git config, CLI parsing), while diff.py blends VBA extraction and diff logic. Localized Modification improves maintainability by tightening cohesion within modules — grouping related behavior and reducing ripple effects when changes occur. In this repo, this means isolating installer responsibilities (e.g., separating git config vs. file management), extracting VBA parsing from diff logic, and splitting test files per single responsibility — directly addressing the 'monolithic decay risk' noted in risks.",
+  "target_components": [
+    "src/cli.py",
+    "src/diff.py",
+    "src/tests/test_cli.py",
+    "src/tests/test_diff.py"
+  ],
+  "expected_architectural_change": "The current flat single-package structure will evolve toward higher cohesion: cli.py will split into CLI routing, installer, and configuration modules; diff.py will separate VBA parsing and diff-rendering logic into dedicated modules; tests will mirror these modules. No network or process boundaries are introduced — maintaining the modular monolith style — but internal boundaries will be enforced via interfaces or clear module boundaries.",
+  "implementation_strategy": "Step 1: Extract Installer into separate Installer, GitConfigManager, and FileUpdater modules in src/. Step 2: Extract VBA parsing from diff.py into src/vba_reader.py, leaving diff.py with only diff formatting logic. Step 3: Refactor test files to mirror this decomposition (e.g., test_installer.py, test_vba_reader.py, test_diff_formatter.py). Introduce minimal interfaces where modules interact (e.g., a DiffRenderer interface in diff.py used by CLI, with concrete implementations available). Keep all modules in same package initially — no packaging changes required — but ensure each module has one clear reason to change.",
+  "risks": "Minimal risk: tactic is backward-compatible, incremental, and does not require changing public APIs or CLI behavior. Risks include temporary test failures during refactoring and initial difficulty identifying precise boundaries — mitigated by pairing with unit tests and small, focused commits. No external dependencies or build tools need modification."
+}

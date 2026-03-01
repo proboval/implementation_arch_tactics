@@ -1,0 +1,30 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, non-decomposable structure where all 12 koan modules reside in a single directory (koans/), each importing only koans_plugs and defining isolated procedural test functions. There is no grouping by concept, no shared abstractions, and no separation between test scaffolding (koans_plugs), helper utilities (koans/helpers), and test bodies. This violates decomposability: problems cannot be isolated to small modules, dependencies cannot be traced cleanly, and adding new test categories (e.g., 'about_collections') causes unbounded directory sprawl. Static analysis confirms avg_files_per_package = 9.0 with max_directory_depth = 3 and no meaningful package hierarchy. Decomposability directly addresses this by introducing modular boundaries to isolate test concerns (e.g., grouping 'about_sequences', 'about_control_flow'), enabling focused analysis and change.",
+  "target_components": [
+    "koans/about_bool.py",
+    "koans/about_conditions.py",
+    "koans/about_compound_conditions.py",
+    "koans/about_for_loop.py",
+    "koans/about_dictionaries.py",
+    "koans/about_lists.py",
+    "koans/about_set.py",
+    "koans/about_slices.py",
+    "koans/about_strings.py",
+    "koans/about_floats.py",
+    "koans/about_integers.py",
+    "koans/about_variables.py",
+    "koans/helpers/comparators.py",
+    "koans/__init__.py",
+    "koans_plugs.py"
+  ],
+  "expected_architectural_change": "The flat koans/ directory will be restructured into semantically coherent sub-packages (e.g., koans/control_flow/, koans/collections/, koans/sequences/, koans/types/) based on language features. Each sub-package will encapsulate related tests and internal helpers. koans_plugs will evolve into a minimal API module. This creates bounded contexts where changes to one concept minimally affect others, enabling focused testing and analysis.",
+  "implementation_strategy": "1) Cluster related about_*.py files into new subdirectories (e.g., koans/control_flow/ contains about_bool, about_conditions, about_compound_conditions, about_for_loop; koans/collections/ contains about_dictionaries, about_lists, about_set, about_slices; koans/strings_and_types/ contains about_strings, about_floats, about_integers, about_variables). 2) Introduce __init__.py files with cohesive module docstrings and internal exports. 3) Refactor koans_plugs.py into a clear, stable test runner API module (e.g., koans.api) that abstracts assertion and test execution. 4) Move koans/helpers/comparators.py into a dedicated koans.testing.helpers module. 5) Update all imports in about_*.py files to use relative imports within new sub-packages (e.g., from .. import helpers).",
+  "risks": "Risk of over-engineering for an educational repository with limited scope. However, since the project already contains 12 koan files and helpers, moderate decomposition (2–3 levels) is low effort and incrementally beneficial. Minimal coordination overhead due to procedural nature of tests; no logic reuse is expected, but clear grouping will improve navigation, review, and future extension (e.g., adding more koans)."
+}

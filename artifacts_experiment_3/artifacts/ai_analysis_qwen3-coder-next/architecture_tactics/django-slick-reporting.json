@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from excessive cross-module coupling, especially in report generation and computation field logic, where internal modules like slick_reporting/fields.py, slick_reporting/generator.py, slick_reporting/forms.py, and slick_reporting/views.py are deeply entangled via direct imports and shared mutable state (e.g., field_registry). Static analysis reveals average fan-out of 2.2, but inspection of imports_graph shows high fan-out in files like slick_reporting/generator.py (imports: dataclasses, datetime, django, app_settings, helpers, registry, logging, fields, dateutil, inspect), slick_reporting/views.py, and slick_reporting/fields.py — indicating poor separation of concerns. The registry is heavily used for global lookup of fields and forms but lacks explicit interfaces, making changes risky. The 'registry pattern' is applied informally (via global state), and the decorator-based registration (decorators.py, form_factory.py) couples registration logic to domain-specific field definitions, reducing modularity and testability. Localized Modification directly addresses this by encouraging encapsulation: changes to field computation, form behavior, or report generation should be isolated to cohesive modules with well-defined contracts (e.g., interfaces for ComputationField subclasses), reducing ripple effects and making module boundaries explicit — precisely what maintainability tactics like AT38 target.",
+  "target_components": [
+    "slick_reporting/fields.py",
+    "slick_reporting/generator.py",
+    "slick_reporting/registry.py",
+    "slick_reporting/forms.py",
+    "slick_reporting/form_factory.py",
+    "slick_reporting/decorators.py",
+    "tests/report_generators.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces (e.g., abstract base class for report computation logic, strategy interfaces for report customization), refactoring the global registry into a well-defined service contract (e.g., RegistryService with clear registration/validation boundaries), and grouping related responsibilities into cohesive modules (e.g., a dedicated 'computation_engine.py' or 'field_strategies.py' to isolate computation behavior). This isolates change scope: modifying a computation field will no longer affect view or form logic unless explicitly invoked via public API.",
+  "implementation_strategy": "1. Extract ComputationField subclasses into a dedicated 'computation_strategies/' module, each implementing a strategy interface. 2. Replace direct registry manipulation via decorators with a StrategyRegistry that enforces validation and exposes only typed registration/unregistration. 3. Refactor ReportGenerator to depend on abstractions (e.g., ComputationFieldStrategy) rather than concrete fields. 4. Use interface segregation for ReportGenerator behavior: introduceReportExecutor, ReportRenderer, ReportFilterBuilder abstractions to decouple generation from rendering/formatting. 5. Move shared logic (e.g., crosstab/time-series handling) into dedicated helper classes, not buried in ReportGenerator. 6. Update tests to mock strategy interfaces rather than internal modules.",
+  "risks": "Risk of increased indirection and abstraction overhead if interfaces are over-engineered; risk of temporary regression in test coverage during refactoring; risk of delayed progress if strategy interfaces are not carefully aligned with existing usage patterns — but these can be mitigated with incremental, test-driven refactoring using existing test suite."
+}

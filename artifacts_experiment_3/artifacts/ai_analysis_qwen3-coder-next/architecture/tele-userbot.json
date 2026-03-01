@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "All code resides in a single directory level (max_directory_depth: 1)",
+    "No packages defined (packages: 0)",
+    "Main application logic is centralized in main.py with many standalone utility functions (e.g., mock_text, vapor_text, etc.)",
+    "Flask app in app.py is minimal and likely secondary (welcomeNone stub)",
+    "Configuration is in simple config.py with imports only",
+    "No explicit layering (e.g., no models/, views/, controllers/ directories)",
+    "Functions have stub signatures (None: ...) indicating incomplete structure",
+    "Large number of utility functions suggests script-like organization rather than modular design"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor scalability due to lack of separation of concerns",
+    "High coupling and difficulty in testing individual components",
+    "Maintenance burden increases as features grow",
+    "No clear boundaries for domain vs infrastructure logic"
+  ]
+}

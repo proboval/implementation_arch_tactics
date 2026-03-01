@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Flask app structure with clearly separated modules (app/auth, app/main, app/api) grouped by domain/function rather than technical layer",
+    "No inter-process communication; all components run in same process and share in-memory state",
+    "Use of Blueprints for modular routing and concerns, indicating internal modularity within a single deployable unit",
+    "Shared database access via SQLAlchemy ORM, with models in app/models.py",
+    "Configurable environment-specific setups (config.py) without external service boundaries",
+    "Tests co-located in tests/ directory alongside application code, typical of monolithic test strategy",
+    "Avg fan-out of ~3.4 and max directory depth of 3 suggest moderate coupling within a single codebase",
+    "No evidence of bounded contexts, external adapters, or service boundaries typical of microservices/hexagonal"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight integration may complicate scaling or team independence over time",
+    "Changes in core modules (e.g., models.py) may ripple across many modules",
+    "Deployment and recovery are tied to monolithic release cycles"
+  ]
+}

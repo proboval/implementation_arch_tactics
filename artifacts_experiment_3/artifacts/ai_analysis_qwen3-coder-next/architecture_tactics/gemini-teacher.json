@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single-file script (starter.py) with no modularization (0 packages, max_directory_depth=1, avg_fan_out=0), causing tight coupling and poor separation of concerns—evidenced by mixed responsibilities (WebSocket handling, audio I/O, TTS, business logic) in one file. This makes testing, debugging, and future extension difficult. Decomposability directly addresses this by splitting the monolithic file into well-defined, cohesive modules (e.g., audio, websocket, TTS, orchestration), enabling localized changes, independent testing, and improved understandability—exactly matching the static analysis findings (architecture_maintainability: factors=['C1','C2','A3']; code_maintainability: factors=['T4','A1']). No existing packages or layers allow incremental decomposition without rewriting the entire system, and this tactic scales from extracting one module at a time.",
+  "target_components": [
+    "starter.py"
+  ],
+  "expected_architectural_change": "The single-file 'script_based' structure will evolve into a modular monolith with at least three to five Python packages (e.g., audio/, websocket/, elevenlabs/, core/, utils/), each encapsulating a single responsibility. The flat starter.py will be replaced by modular entry points and a clear composition graph, reducing cyclomatic complexity and enabling unit testing per module.",
+  "implementation_strategy": "Begin by extracting the largest coherent responsibilities into new directories: (1) audio/ — encapsulate PyAudio and audio processing (current AudioLoop placeholder); (2) websocket/ — encapsulate WebSocket connection logic and event handlers; (3) elevenlabs/ — wrap ElevenLabs client and TTS playback. Keep shared types/configs in core/ or common/. Refactor starter.py to instantiate and wire these components via dependency injection. Start with moving AudioLoop into audio/loop.py and introducing an AudioController interface to break tight coupling with pyaudio. Incrementally move code, introduce interfaces (e.g., via ABCs), and write tests for each new module—keeping the original starter.py as a thin orchestration layer during transition.",
+  "risks": "Risk of over-engineering during incremental extraction if scope is too broad per step; must enforce strict local reasoning per module. Temporarily duplicating configuration imports (e.g., .env loading) across modules until centralized in core/. Initial refactoring may temporarily increase_lines_of_code and require test updates, but this is justified by long-term maintainability gains shown in static analysis."
+}

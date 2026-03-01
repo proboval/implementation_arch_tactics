@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module structure with a single top-level package 'eulerian_magnification' and 'tests'",
+    "Packages are organized by concern (base, io, pyramid, transforms) but not separated into distinct services or layers with strict dependencies",
+    "Low fan-out (avg 2.91) and small number of packages (2) indicate a tightly integrated system",
+    "No explicit ports/adapters boundaries (e.g., interfaces in core module decoupling from infrastructure)",
+    "Main entry point 'replicate_study.py' directly imports from core modules, not through a well-defined adapter interface",
+    "Shared data types (e.g., numpy arrays, cv2 objects) pass freely between modules without serialization boundaries",
+    "Directory depth is minimal (2), typical of a monolith with flat module hierarchy",
+    "All code resides in one process; no external service dependencies or network calls inside core modules"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between core modules (e.g., transforms imports from base and vice versa via circular dependencies are possible)",
+    "Testing code depends on internal implementation details (e.g., test imports private functions like _load_video)",
+    "Lack of explicit boundaries makes it harder to evolve specific concerns independently",
+    "No clear separation between application core and infrastructure concerns"
+  ]
+}

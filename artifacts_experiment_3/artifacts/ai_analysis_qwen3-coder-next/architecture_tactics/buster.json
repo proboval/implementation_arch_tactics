@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a script-based architecture with only 3 Python files in a single package, indicating a lack of separation of concerns and poor modularity. Static analysis confirms only 1 package, flat directory structure, and minimal fan-out, with evidence suggesting no layering or ports/adapters separation. This leads to high risk of tight coupling and low testability as features grow. Decomposability directly addresses this by vertically splitting the monolithic buster.py module into logically cohesive submodules (e.g., parsing, validation, execution), improving modularity, testability, and maintainability without requiring a full architectural rewrite.",
+  "target_components": [
+    "buster/buster.py",
+    "buster/__init__.py"
+  ],
+  "expected_architectural_change": "The current flat single-module structure (buster/buster.py) will be refactored into a modular package: buster/ directory will gain submodules such as buster/parsing.py, buster/validation.py, buster/core.py, and buster/cli.py. The __init__.py will act as a minimal façade or aggregator. This introduces logical layering (e.g., CLI → core → validation/parsing), reducing coupling and increasing cohesion per module.",
+  "implementation_strategy": "Step 1: Identify cohesive responsibilities within buster.py (e.g., CLI argument handling, input parsing, validation, processing, output generation). Step 2: Extract each responsibility into its own module file under buster/ (e.g., parsing.py, cli.py, processing.py). Step 3: Replace imports in buster.py with internal package imports. Step 4: Refactor __init__.py to expose only a minimal public API. This can be done incrementally—starting with extracting parsing logic first—while preserving the existing behavior. No changes to setup.py or entry point needed, preserving compatibility.",
+  "risks": "Risk of over-decomposition (creating too many tiny modules), which could increase cognitive load if not guided by clear domain boundaries. However, this is mitigated by starting with only 2–3 meaningful groupings based on actual responsibilities in the code. Since the codebase is small, the overhead is low, and the tactic can be rolled out in small PRs without disrupting existing functionality."
+}

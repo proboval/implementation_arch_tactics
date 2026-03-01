@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals high average fan-out (4.96) and widespread direct coupling to shared mutable singletons like Database and Config across multiple modules (e.g., auto_trader.py, backtest.py, database.py, api_server.py all import both). This tight coupling creates ripple effects: changes to database.py or config.py risk breaking unrelated modules, and testing individual components is difficult because they instantiate or depend on real global singletons. The architecture description confirms this: 'shared mutable state (e.g., Database, Config) may reduce testability and increase coupling over time'. This is a concrete, code-level coupling problem visible in imports and usage—e.g., binance_api_manager.py directly depends on database.py and config.py instead of through interfaces, and auto_trader.py imports both database.py and binance_api_manager.py in ways that prevent substitution or mocking. Reduced Coupling directly addresses this by enabling dependency injection and interface-based programming.",
+  "target_components": [
+    "binance_trade_bot/auto_trader.py",
+    "binance_trade_bot/backtest.py",
+    "binance_trade_bot/database.py",
+    "binance_trade_bot/config.py",
+    "binance_trade_bot/binance_api_manager.py",
+    "binance_trade_bot/api_server.py"
+  ],
+  "expected_architectural_change": "Current direct imports of concrete classes (e.g., from .database import Database) will be replaced with interface abstractions (e.g., DatabaseInterface). Concrete implementations (Database, Config) will be passed at construction time or via DI container, rather than imported as singletons. For instance, Database will be used as an interface (e.g., through dependency injection), and backtest.py can inject MockDatabase via its constructor rather than inheriting from or tightly coupling to the production Database class.",
+  "implementation_strategy": "1. Define minimal abstractions (interfaces) for core dependencies: DatabaseInterface (e.g., with db_session, set_coins, get_coins), ConfigInterface (e.g., with get_ methods), and potentially BinanceAPIManagerInterface. 2. Refactor constructors of AutoTrader, BinanceAPIManager, etc., to accept these interfaces as parameters. 3. In backtest.py, replace the MockXxx inheritance pattern with interface-based composition and injection (inject MockDatabase, MockConfig instead of subclassing). 4. Update crypto_trading.py and __main__.py to wire dependencies (e.g., using a simple factory or DI container), delaying binding time. 5. Introduce clear ports/adapters boundaries: models become the core domain (ports), and adapters (database.py, config.py) implement the ports.",
+  "risks": "Initial refactoring may introduce temporary code duplication or over-abstraction if interfaces are too broad; this can be mitigated by starting with coarse-grained abstractions and applying AT48 (Adding New Components) for extension points. Minimal runtime overhead if dependencies are passed explicitly (not via reflection). Possible short-term productivity dip during refactoring, but long-term gain in testability and changeability."
+}

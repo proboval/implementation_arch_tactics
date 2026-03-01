@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Modules are organized in a clear hierarchical structure under `SaitamaRobot/modules/`, each module encapsulating a specific feature (e.g., admin.py, bans.py, warns.py).",
+    "Each module follows consistent import patterns, importing from `SaitamaRobot.modules.*` and central services like `dispatcher`, `telethn`, and SQL modules.",
+    "Shared functionality is centralized in reusable helper modules (`helper_funcs/`) and utility modules (`utils/`).",
+    "SQL persistence is handled via a dedicated SQL layer (`modules/sql/`) using a shared session/base pattern with SQLAlchemy.",
+    "Core components (e.g., `__main__.py`, `igris.py`, `events.py`) coordinate event routing and dispatching, indicating a single application process with internal modularity.",
+    "High average fan-out (~3.9) suggests modules depend on multiple shared services, typical of cohesive monoliths.",
+    "No external communication interfaces (e.g., HTTP clients, gRPC stubs) or process separation—everything is imported and runs in-process.",
+    "Configuration is stored in config classes (e.g., `sample_config.py`) and environment variables, with a unified `__init__.py` startup."
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules may reduce testability and make large-scale refactoring harder.",
+    "Growing number of modules increases risk of circular dependencies and implicit dependencies through shared state (e.g., `dispatcher`, `telethn`, DB session).",
+    "Single-threaded event loop (Telegram SDKs) limits concurrency scaling without careful design."
+  ]
+}

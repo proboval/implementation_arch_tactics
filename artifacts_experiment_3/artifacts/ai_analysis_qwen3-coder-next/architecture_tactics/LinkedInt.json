@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository has a single-file, flat architecture (LinkedInt.py only) with high fan-out (15.0) and procedural function names (e.g., getCookiesNone, loginNone), indicating severe lack of decomposition. Static analysis confirms 0 packages, max_directory_depth=1, and all logic in one file—violating separation of concerns and causing tight coupling. Decomposability directly addresses this by splitting functionality into modules (e.g., auth, scraping, config), improving modularity, testability, and reducing ripple effects. This is implementable incrementally by moving related functions into separate Python files with clear boundaries.",
+  "target_components": [
+    "LinkedInt.py"
+  ],
+  "expected_architectural_change": "Transition from a single-file script to a modular monolith with bounded contexts: e.g., extract authentication logic into auth.py, web scraping logic into scraper.py, config handling into config.py, and CLI entrypoint into cli.py. Files will be organized under a top-level package directory (e.g., linkedint/), with well-defined interfaces and reduced internal coupling.",
+  "implementation_strategy": "1. Identify cohesive groups of functions in LinkedInt.py (e.g., login/authentication, search, cookie management, I/O handling). 2. Create package structure (linkedint/) and move each group into its own module (auth.py, scraper.py, config.py, utils.py). 3. Replace direct imports from stdlib within functions with module-level imports and define clear interfaces between modules. 4. Create a minimal cli.py to orchestrate calls, preserving original CLI semantics. 5. Replace inline logic with function calls to new modules. This is incremental: start with one module (e.g., config), refactor it, test, then proceed.",
+  "risks": "Risk of temporary duplication during refactoring or breaking change if module interfaces are poorly defined; mitigated by keeping public APIs stable and using existing function names initially. Over time, refactoring reduces risk by isolating changes and enabling targeted unit testing."
+}

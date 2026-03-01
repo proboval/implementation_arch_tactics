@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from duplicated and uncoordinated handling of configuration, file paths, and ingestion logic across ingestion/bronze modules (e.g., chargenet_ingest.py, ecoride_ingest.py, vehicle_health_ingest.py all duplicate imports of config_loader, file_path_manager, spark_utils, and data_ingestor). This duplication increases change risk: modifying how spark sessions are initialized or how file paths are constructed requires updates in multiple places, violating high cohesion and localized modification principles. The low docstring coverage (5.9%) and absence of automated maintainability metrics (mi_avg=0, files_analyzed=0) indicate missing consistency guards. Localized modification directly addresses this by grouping related responsibilities into single, stable units—specifically, consolidating ingestion patterns into reusable abstractions—to ensure changes affect only one cohesive module rather than ripple across multiple copy-paste clones.",
+  "target_components": [
+    "ingestion/bronze/chargenet_ingest.py",
+    "ingestion/bronze/ecoride_ingest.py",
+    "ingestion/bronze/vehicle_health_ingest.py",
+    "ingestion/bronze/documents_ingest.py",
+    "ingestion/utils/data_ingestor.py",
+    "ingestion/utils/file_path_manager.py",
+    "ingestion/utils/spark_utils.py"
+  ],
+  "expected_architectural_change": "Current bronze ingestion modules (chargenet, ecoride, vehicle_health, documents) will be refactored to delegate all domain-specific logic to a new cohesive component (e.g., ingestion/bronze/registered_ingestors.py or ingestion/bronze/strategy/), while common utilities (spark, config, paths) remain in utils. The bronze layer will shift from ad-hoc, repeated setup code to a registry or strategy pattern where new ingestion types are added by *extending* one unified entry point rather than *copying* boilerplate across modules. This raises cohesion in the bronze layer and ensures changes to Spark initialization, schema enforcement, or file path conventions affect only the unified entry or the strategy base class—drastically reducing modification scope.",
+  "implementation_strategy": "1. Introduce an abstract base class (e.g., IngestorStrategy) in ingestion/bronze/strategy/ or ingestion/bronze/__init__.py that defines common hooks (e.g., prepare_spark, load_sources, persist). 2. Implement concrete strategies (ChargenetIngestor, EcoRideIngestor, etc.) that override only domain-specific parts. 3. Replace current bronze/ module classes with factory calls (e.g., get_ingestor('chargenet').run()). 4. Migrate duplicated imports, config usage, and file path logic into the base class or inject via dependency injection. 5. Add unit tests per strategy to enforce correctness. This is incremental: strategies can be added one-by-one while maintaining backward compatibility until all are migrated.",
+  "risks": "Risk of temporary dual maintenance during migration (old vs new patterns), but this is mitigated by incremental adoption. Over-abstraction is unlikely since ingestion schemas are already somewhat similar (vehicle, charging, customer, documents), and the layered architecture already has clear separation—this tactic only tightens cohesion *within* the bronze layer without altering cross-layer dependencies."
+}

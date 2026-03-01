@@ -1,0 +1,104 @@
+{
+  "python_files": 19,
+  "packages": 5,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 3.8,
+  "imports_graph": {
+    "setup.py": [
+      "os",
+      "io",
+      "setuptools"
+    ],
+    "es\\baseapi.py": [
+      "collections",
+      "urllib",
+      "const",
+      "es",
+      "typing",
+      "elasticsearch",
+      "opensearchpy"
+    ],
+    "es\\basesqlalchemy.py": [
+      "__future__",
+      "es",
+      "typing",
+      "logging",
+      "sqlalchemy"
+    ],
+    "es\\const.py": [],
+    "es\\exceptions.py": [],
+    "es\\__init__.py": [
+      "es"
+    ],
+    "utils\\export.py": [
+      "requests",
+      "json"
+    ],
+    "es\\elastic\\api.py": [
+      "es",
+      "typing",
+      "re",
+      "packaging",
+      "elasticsearch"
+    ],
+    "es\\elastic\\sqlalchemy.py": [
+      "__future__",
+      "es",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "types"
+    ],
+    "es\\elastic\\__init__.py": [
+      "es"
+    ],
+    "es\\opendistro\\api.py": [
+      "__future__",
+      "es",
+      "boto3",
+      "typing",
+      "re",
+      "requests_aws4auth",
+      "opensearchpy"
+    ],
+    "es\\opendistro\\sqlalchemy.py": [
+      "__future__",
+      "es",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "types"
+    ],
+    "es\\opendistro\\__init__.py": [
+      "es"
+    ],
+    "es\\tests\\test_0_fixtures.py": [
+      "os",
+      "fixtures",
+      "unittest"
+    ],
+    "es\\tests\\test_dbapi.py": [
+      "os",
+      "unittest",
+      "es"
+    ],
+    "es\\tests\\test_sqlalchemy.py": [
+      "es",
+      "boto3",
+      "typing",
+      "os",
+      "sqlalchemy",
+      "unittest",
+      "opensearchpy"
+    ],
+    "es\\tests\\__init__.py": [],
+    "es\\tests\\fixtures\\fixtures.py": [
+      "typing",
+      "json",
+      "os",
+      "elasticsearch",
+      "opensearchpy"
+    ],
+    "es\\tests\\fixtures\\__init__.py": []
+  }
+}

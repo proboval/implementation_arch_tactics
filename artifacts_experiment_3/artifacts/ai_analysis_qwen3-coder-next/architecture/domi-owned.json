@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package 'domi_owned' with flat module structure (max_directory_depth=2, packages=1)",
+    "Multiple specialized modules (bruteforce, enumerate, fingerprint, hashdump, quickconsole, utilities) with cohesive responsibilities",
+    "Strong dependency on a shared core 'DomiOwned' class via inheritance, indicating modular cohesion",
+    "Shared utilities and logging components reused across modules, typical of monoliths",
+    "Central entry point 'domi-owned.py' orchestrating module usage",
+    "Architecture factors C1 (Coupling), C2 (Coupling), A3 (Availability) suggest internal cohesion and moderate coupling but no external distribution"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High fan-out (avg 4.56) suggests tight coupling between modules, reducing modularity and testability",
+    "Inheritance-heavy design (all classes extend DomiOwned) may create tight dependencies and reduce flexibility",
+    "No clear layer separation (e.g., presentation/domain/persistence) makes layered refactoring difficult later"
+  ]
+}

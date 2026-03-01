@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package ('kittentts') with flat directory structure (max depth 2)",
+    "Low average fan-out (1.75) indicating limited cross-module dependencies",
+    "Clear separation of concerns: get_model.py for orchestration, onnx_model.py for core inference logic",
+    "Modules are loosely coupled via imports within same package, no external submodules or services",
+    "Single binary entry point (__index__.py) exporting main API",
+    "No evidence of network boundaries, separate processes, or multi-service communication"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "As project grows, flat structure may lead to monolithic coupling",
+    "Tight dependency on external libraries (misaki, phonemizer, huggingface_hub) may limit modularity",
+    "Lack of explicit layering (e.g., presentation/logic/data) could reduce testability over time"
+  ]
+}

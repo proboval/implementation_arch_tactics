@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository structure is flat: max_directory_depth = 1, no packages (packages: 0)",
+    "All functionality resides in a single file (LinkedInt.py)",
+    "High average fan-out (15.0) indicates heavy internal coupling to standard library modules",
+    "Functions like getCookiesNone, loginNone, get_searchNone, authenticateNone suggest procedural top-level logic",
+    "Use of configparser, argparse, and direct I/O operations typical of utility scripts",
+    "No evidence of bounded contexts, modules, layers, or ports/adapters patterns"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor scalability and maintainability due to lack of modularity",
+    "Tight coupling and high fan-out increase risk of cascading failures",
+    "Flat structure limits reuse and testability",
+    "Mixing of concerns (e.g., I/O, parsing, logic) in single file"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Highly organized directory structure with semantically grouped modules (cache, Downloaders, helpers, Misery, plugins)",
+    "Packages are logically cohesive with clear responsibilities (e.g., helpers for utilities/filters/decorators, Downloaders for external service integration)",
+    "Strong interdependence: modules import from multiple other modules (e.g., helpers/admins imports from cache/admins, Misery files import from helpers and config)",
+    "No evidence of process boundaries or network communication (no service discovery, RPC, or REST clients)",
+    "Single entry point (__main__.py) orchestrating the application",
+    "Shared domain model via config.py and centralized use of pyrogram/pytgcalls libraries",
+    "Fan-out is low to moderate (avg_fan_out=2.1), consistent with cohesive modules",
+    "No external interfaces defined (e.g., abstract ports), ruling out hexagonal"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., helpers/admins depending directly on cache/admins) may hinder future refactoring or testing",
+    "Monolithic scaling limitations if load increases significantly",
+    "Potential for uncontrolled dependency cycles as the codebase grows (e.g., Misery modules import both helpers and plugins, creating feedback loops)",
+    "Lack of clear interface boundaries makes it harder to replace components (e.g., changing video downloader service)"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor localized modification due to cross-app dependencies and spread responsibilities, especially in components like drf_admin/common/permissions.py (imports system.models directly), drf_admin/utils/exceptions.py (imports models from monitor and oauth), drf_admin/utils/permissions.py (imports from common.permissions and system.models), and drf_admin/common/redis.py (used across apps without abstraction). Static analysis flags C1 (low cohesion) and A3 (high fan-out in imports graph) as issues. For example, drf_admin/utils/exceptions.py has fan-out 11 imports from multiple domains (monitor, oauth, redis, traceback), indicating violation of separation of concerns. This creates ripple effects: changes to OAuth or Monitor models directly impact error handling utilities. Localized Modification mitigates this by confining changes to narrowly scoped, cohesive modules—e.g., moving cross-app data access behind domain-specific abstractions (services or DTOs) to reduce coupling and restrict modification scope.",
+  "target_components": [
+    "drf_admin/utils/exceptions.py",
+    "drf_admin/utils/permissions.py",
+    "drf_admin/common/permissions.py",
+    "drf_admin/apps/oauth/utils.py",
+    "drf_admin/apps/monitor/notification.py",
+    "drf_admin/apps/monitor/signals.py",
+    "drf_admin/apps/system/signals.py",
+    "drf_admin/apps/system/jobs/decorators.py",
+    "drf_admin/common/models.py",
+    "drf_admin/common/redis.py"
+  ],
+  "expected_architectural_change": "Introduction of bounded service boundaries (e.g., service layer modules inside each app: cmdb.services, system.services, oauth.services) to encapsulate domain logic and cross-app data coordination. Cross-app dependencies via direct model imports will be replaced with interfaces (e.g., interfaces.py modules) or explicit service calls via public APIs. Shared utilities like permissions and redis will be accessed through well-defined, versioned service contracts rather than low-level model access. This reduces fan-out, increases per-module cohesion, and narrows the scope of modifications to localized changes within service layers.",
+  "implementation_strategy": "1. Extract domain services: For each cross-app concern (e.g., permission retrieval in utils/permissions.py), create a `oauth.services.UserAuthService` or `system.services.PermissionsService` to encapsulate model logic and Redis interactions. 2. Replace direct model imports (e.g., system.models, monitor.models) in utility modules with service calls and DTOs. 3. Add `services/` subpackages under each app (cmdb, system, oauth, monitor) and refactor shared logic into these layers. 4. Introduce `interfaces.py` or `contracts.py` in drf_admin/common/ to define service interfaces, enabling late binding and reducing coupling. 5. Update signals, middleware, and jobs to depend on services, not models directly. 6. Refactor utils/permissions.py to call system.services.PermissionsService instead of drf_admin.common.permissions.redis_storage_permissions, isolating permission logic.",
+  "risks": "Initial refactoring may temporarily increase module count and require careful sequencing to avoid breaking existing imports. Risk of over-abstraction if services become thin wrappers—must enforce business logic containment. Some legacy code (e.g., drf_admin/utils/exceptions.py) may require iterative decomposition rather than one-time change. However, incremental application within the modular monolith allows low-risk, component-by-component rollout without architectural overhaul."
+}

@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package (whisper_ctranslate2) with clear module separation (commandline, diarization, transcribe, live, writers, etc.) indicating logical modularity",
+    "Direct imports between modules within the same package (e.g., from .transcribe import Transcribe) showing tight internal coupling but clean interface usage",
+    "Central entry point (main) in whisper_ctranslate2.py orchestrating components without external orchestration layer",
+    "Directory structure shows clear separation of concerns: src/, tests/, e2e-tests/ but all within one process/runtime",
+    "No evidence of service boundaries, network calls, or external process interaction indicating microservices",
+    "All modules share dependencies (faster_whisper, numpy, etc.) and likely share memory/process space",
+    "Fan-out of ~3.7 suggests cohesive modularity rather than deep dependency chains typical of layered architectures"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "High coupling may increase if modules are not carefully maintained",
+    "Lack of explicit boundaries could lead to accidental cross-module dependencies over time",
+    "Limited scalability options without refactoring to service boundaries"
+  ]
+}

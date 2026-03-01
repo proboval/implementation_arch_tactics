@@ -1,0 +1,22 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear separation into logical layers: 'models' (data/domain), 'services' (business logic orchestration), 'utils' (cross-cutting utilities), 'routes' (presentation/controller layer)",
+    "Routes depend on services, utils, and models, but not vice versa — unidirectional dependency flow",
+    "Services abstract external interactions (HTTP, CSE) with dedicated client classes",
+    "Models encapsulate data and configuration without direct knowledge of higher layers",
+    "App directory structure mirrors classic layered architecture (presentation → business → data)",
+    "Flask app instance in __init__.py coordinates layers, typical of layered designs",
+    "Low package count (5) and shallow depth (3) indicate centralized but well-organized layering"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "mvc"
+  ],
+  "risks": [
+    "High fan-out (avg 4.36) suggests some modules are too aware of many others — could indicate leaking abstraction boundaries",
+    "Some utilities (e.g., utils/misc.py) contain diverse functionality — risk of becoming a 'dump' module",
+    "Direct import of app in test files may create tight coupling between test and app internals"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "python_files": 7,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "example.py": [
+      "kittentts",
+      "soundfile"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "kittentts\\get_model.py": [
+      "os",
+      "onnx_model",
+      "huggingface_hub",
+      "json"
+    ],
+    "kittentts\\preprocess.py": [
+      "unicodedata",
+      "re",
+      "typing"
+    ],
+    "kittentts\\__index__.py": [
+      "kittentts"
+    ],
+    "kittentts\\__init__.py": [
+      "kittentts"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages or modules (packages: 0)",
+    "Flat directory structure (max_directory_depth: 1)",
+    "All functions defined at module level with no classes or clear separation of concerns",
+    "Direct usage of external libraries (github3, pymongo, requests) without adapters or abstraction layers",
+    "All functionality appears consolidated into a single main script (dorker.py)",
+    "Low maintainability indicators (mi_avg=0, mi_min=0)",
+    "Typical script-style function definitions with None as body stubs"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Poor maintainability due to lack of modularity",
+    "Tight coupling between data access, business logic, and I/O",
+    "Difficult to test components in isolation",
+    "Hard to scale or reuse individual functions",
+    "High risk of spaghetti code evolution"
+  ]
+}

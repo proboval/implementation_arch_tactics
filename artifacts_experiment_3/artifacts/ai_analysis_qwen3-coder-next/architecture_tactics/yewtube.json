@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The architecture exhibits tight coupling and low cohesion through widespread direct dependencies on global modules (e.g., 'g.py', 'c.py') and heavy cross-module dependencies (e.g., 'config.py' imports 'pylast', 'pickle', 'urllib' and depends on 'g.py' and 'c.py'; 'pafy.py' mixes YouTube API interaction with internal fetching logic). This forces changes in one domain (e.g., content display) to ripple across many modules (e.g., 'content.py' touches 'g', 'c', 'config', and external dependencies like 'qrcode', 'math'). Localized Modification (AT38) directly addresses this by increasing cohesion and narrowing the scope of change — for example, by bundling configuration-related logic into a dedicated Config service module and removing direct imports of 'g.py'/'c.py' into unrelated modules like 'commands/config.py' or 'pafy.py'. The tactic targets modules with mixed responsibilities: 'pafy.py' (mixes YouTube API and local data handling), 'config.py' (handles config persistence plus external service interaction), 'g.py' (acts as a global data dumping ground), and modules like 'screen.py' and 'content.py' that share state via globals instead of explicit interfaces. This is implementable incrementally: first extract 'g.py' state into a context object, then migrate direct global dependencies to dependency injection or service locators within the same module tree.",
+  "target_components": [
+    "mps_youtube/g.py",
+    "mps_youtube/c.py",
+    "mps_youtube/config.py",
+    "mps_youtube/pafy.py",
+    "mps_youtube/content.py",
+    "mps_youtube/screen.py",
+    "mps_youtube/util.py"
+  ],
+  "expected_architectural_change": "Current flat module structure with shared global state will evolve toward a service-oriented modular monolith with clearly bounded contexts: (1) a dedicated ConfigService module to encapsulate configuration persistence and external services (LastFM), (2) a YouTubeAPIContext or VideoService module to replace 'pafy.py'’s dual role, (3) a ContentContext or ApplicationState object replacing 'g.py', and (4) explicit interfaces between layers (e.g., commands depend on interfaces, not concrete modules). This localizes side effects — e.g., changing video metadata handling affects only VideoService and its consumers, not modules like 'playlist.py' or 'cache.py'.",
+  "implementation_strategy": "Start by identifying cohesive subdomains: (a) Configuration (move 'config.py' logic into config/ module with config/settings.py, config/backend.py), (b) YouTube interaction (extract API calls and parsing into youtube_api/ with client.py, search.py), (c) Application state (create state/ with context.py replacing 'g.py'). Then refactor: 1) In 'config.py', replace global 'g'/'c' imports with explicit parameters or a passed context, 2) Move 'g.py'-shared variables into a Context object injected via constructor or function parameters, 3) In 'pafy.py', split YouTube API calls (yt_dlp, youtubesearchpython) from local utilities into youtube_api/ client, keeping only video metadata accessors. This reduces fan-out per file (currently avg 5.0) and increases module cohesion (measured via maintainability index), especially in high-coupling files like 'config.py', 'pafy.py', and 'util.py'.",
+  "risks": "Risk of temporary code duplication during refactoring (e.g., transitional 'g.py' ↔ Context object adapters), which can be mitigated by adding thin adapter wrappers before full migration. Also, injecting context/state may increase constructor signatures in existing code; this can be mitigated incrementally by keeping backward-compatible global accessors initially (marked deprecated) while migrating callers. The tactics does not require architectural overhaul — only disciplined separation within current module tree — aligning with the existing modular_monolith structure."
+}

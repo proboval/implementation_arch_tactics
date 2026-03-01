@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: 0 packages despite multiple modules, flat file hierarchy (max_directory_depth=2), no __init__.py, and procedural functions coexisting with classes without clear boundaries. Static analysis confirms low maintainability (mi_avg: 0, mi_min: 0), and the imports graph shows tight cross-file dependencies (e.g., example.py directly importing NumPyCNN and pygad.cnn). The core issue is the lack of modularization—related components (e.g., convolution operations, pooling layers) are scattered across files without encapsulation. Decomposability directly addresses this by forcing separation of concerns into well-defined, testable modules (e.g., grouping conv/pooling/activation into an 'layers' module, data handling into 'data', etc.), which is implementable incrementally by introducing __init__.py and refactoring file contents—not by rewriting code logic.",
+  "target_components": [
+    "cnn.py",
+    "NumPyCNN.py",
+    "TutorialProject/NumPyCNN.py",
+    "TutorialProject/example.py",
+    "example.py"
+  ],
+  "expected_architectural_change": "Conversion from script-based flat structure to a package-based modular monolith: replace single-file modules (cnn.py, NumPyCNN.py) with logically grouped packages (e.g., numpy_cnn/layers/, numpy_cnn/utils/, numpy_cnn/models/) containing cohesive, single-responsibility modules with explicit public interfaces via __all__ and __init__.py. This introduces explicit component boundaries (e.g., layers.Conv2D), reduces cross-file coupling (e.g., example.py imports via stable entrypoints), and enables isolated testing of components.",
+  "implementation_strategy": "1. Create package structure (numpy_cnn/) with __init__.py, defining public API. 2. Extract layers: move CNN classes (Input2D, Conv2D, etc.) into numpy_cnn/layers/__init__.py, aligning with class cohesion. 3. Group procedural helpers (conv_, relu_, etc.) into numpy_cnn/utils/ (e.g., operations.py, weight_handlers.py). 4. Move Model class to numpy_cnn/models/. 5. Update imports in example.py and TutorialProject files to use package-level imports (e.g., from numpy_cnn.layers import Conv2D). 6. Remove duplicate code (NumPyCNN.py vs cnn.py) by consolidating into single authoritative source.",
+  "risks": "Risk of temporary import instability during transition; risk of premature over-abstraction if modules are split too granularly before understanding usage patterns. Mitigation: apply in small, testable steps—start with one package (e.g., layers/), verify tests pass before refactoring others."
+}

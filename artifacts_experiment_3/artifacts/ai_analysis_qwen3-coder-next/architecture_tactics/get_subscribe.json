@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits zero modular decomposition: no packages (packages: 0), flat file structure (max_directory_depth: 1), and only two monolithic scripts with mixed concerns (scraping, email, logging, visualization). This violates separation of concerns and creates high coupling — e.g., get_projaec_info.py mixes data fetching (requests), plotting (matplotlib), and data handling (pandas), while main.py combines feed parsing, email sending, and logging. Decomposability directly addresses this by enabling modular partitioning into cohesive units (e.g., 'fetcher', 'emailer', 'parser', 'logger'), thereby reducing complexity, improving testability (via isolated modules), and enabling incremental refactoring. This is the most foundational and implementable tactic for a flat script-based codebase with no architectural structure.",
+  "target_components": [
+    "get_projaec_info.py",
+    "main.py"
+  ],
+  "expected_architectural_change": "Current monolithic scripts will be refactored into a directory-based module structure (e.g., src/ or app/) with loosely coupled, single-responsibility modules (e.g., src/fetcher.py, src/emailer.py, src/parser.py, src/logger.py, src/visualizer.py), separated by domain concerns instead of technical operations. Files will define classes/functions that interact through well-defined interfaces rather than ad-hoc calls, and a main entry point will orchestrate interactions.",
+  "implementation_strategy": "1. Create a new src/ directory with __init__.py. 2. Identify cohesive logic blocks: (a) data fetching (RSS, web requests), (b) email composition/sending, (c) log writing, (d) data visualization. 3. Extract each block into dedicated modules with clear input/output contracts. 4. Replace stub functions (e.g., get_project_infoNone: ...) with real implementations in appropriate modules, introducing abstractions like FetcherABC or EmailSenderABC if needed. 5. Refactor main.py and get_projaec_info.py to instantiate and compose modules via dependency injection (simple object construction). 6. Gradually move logic from stubs into modules — e.g., feedparser usage in main.py → feed_parser.py; matplotlib plotting → visualizer.py. This is fully incremental: start by splitting one concern (e.g., logging) into a module, then iteratively extract others.",
+  "risks": "Initial refactoring may temporarily increase complexity if modules are poorly bounded; risk mitigated by extracting small, observable units first and verifying with unit tests. Risk of over-architecting — counterbalanced by keeping modules minimal and domain-focused. Risk of breaking CI pipelines if entry points (main.py, get_projaec_info.py) are not preserved as thin adapters."
+}

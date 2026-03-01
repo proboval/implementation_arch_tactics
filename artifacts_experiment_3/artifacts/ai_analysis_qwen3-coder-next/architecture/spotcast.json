@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package (packages: 1) with high cohesion within a single directory hierarchy (custom_components/spotcast/)",
+    "Clear module separation by concern (cast.py, spotify_controller.py, spotcast_controller.py, helpers.py, etc.)",
+    "Low directory depth (max 3) indicating flat but organized structure",
+    "Inter-module dependencies are internal (e.g., spotcast_controller.py imports from helpers, crypto, error, spotify_controller), with no inter-service communication patterns",
+    "No evidence of separate services/process boundaries or network calls between logical components",
+    "Home Assistant custom component pattern: all code lives under one custom_components/spotcast namespace, serving as a monolithic extension module",
+    "High average fan-out (7.0) suggests tight integration and reuse of shared modules (helpers, const, crypto), typical of modular monoliths"
+  ],
+  "alternatives": [
+    "script_based",
+    "microservices_like"
+  ],
+  "risks": [
+    "Risk of increasing coupling as more functionality is added to shared modules like helpers.py and spotcast_controller.py",
+    "Limited test isolation across modules without explicit mocking boundaries",
+    "Potential scalability bottleneck if business logic grows too large in a single process"
+  ]
+}

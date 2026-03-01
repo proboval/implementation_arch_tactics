@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between generation modules (e.g., GeneratorAuto, GeneratorSnippets, and GeneratorBase share heavy implicit dependencies via direct class usage and shared mutable structures like Node and ProjectContext). Static analysis confirms low fan-out (2.375) but high fan-in — many modules depend on core types like Node and ProjectContext, creating ripple effects. The risk section explicitly warns about 'high coupling between generation modules could hinder future modularity or testing'. Localized Modification directly addresses this by reducing the scope of change: encapsulating variants (e.g., between auto and snippet generation) behind abstractions so modifications (e.g., adding new snippet types or templates) only affect the narrow implementation rather than the entire generation pipeline. This targets the mkdoxy/generator*.py files where logic is mixed across formats and responsibilities.",
+  "target_components": [
+    "mkdoxy/generatorBase.py",
+    "mkdoxy/generatorAuto.py",
+    "mkdoxy/generatorSnippets.py",
+    "mkdoxy/node.py",
+    "mkdoxy/project.py"
+  ],
+  "expected_architectural_change": "Introduction of clear abstractions (e.g., GeneratorStrategy interface or template-based variant manager) decoupling the 'what to generate' from 'how to generate it'. Currently, GeneratorSnippets and GeneratorAuto both inherit from GeneratorBase but duplicate logic (e.g., _setLinkPrefix*, call_doxy_by_name). After the change, new generators (like a hypothetical GeneratorInline) would be added as new strategy implementations without touching existing generator code, enabling independent testing and evolution.",
+  "implementation_strategy": "Step 1: Extract common generation contract (e.g., GenerateStrategy) from GeneratorBase to serve as a single abstraction for all generator implementations. Step 2: Refactor GeneratorAuto and GeneratorSnippets to implement this interface, removing shared logic (e.g., template rendering, project lookup) into a common strategy base class or utility. Step 3: Introduce a GeneratorRegistry (or Plugin-style factory) to decouple generator selection from implementation. Step 4: Gradually migrate internal calls from direct instantiation to strategy-based dispatch (e.g., via plugin.py), ensuring each generator can be tested in isolation. This fits the current modular_monolith structure — no network boundaries or service layers needed — only tighter internal modularity.",
+  "risks": "Risk of temporary code duplication during refactoring; risk of over-abstracting if strategy hierarchy becomes too deep. Mitigation: refactor incrementally (start with shared template/renderer separation), validate via existing tests, avoid prematuregeneralization. The tactic focuses on localizing *changes*, not adding layers — minimal structural change with high maintainability gain."
+}

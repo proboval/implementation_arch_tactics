@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, script-based architecture with no modularity (0 packages, max_directory_depth=1), as confirmed by static analysis and repository tree. All Python files (createCatalog.py, validate.py) reside at the root level, import only standard/external libraries, and lack internal cohesion beyond procedural execution. This structure directly harms maintainability: adding new validation rules or catalog sources requires modifying existing scripts, increasing coupling and cognitive load. Decomposability addresses this by structuring the system into clearly separated, testable modules—e.g., isolating model loading, validation logic, and catalog generation into distinct packages—enabling independent testing, easier change impact analysis, and reduced ripple effects.",
+  "target_components": [
+    "createCatalog.py",
+    "validate.py",
+    "models/"
+  ],
+  "expected_architectural_change": "The flat root-level structure will be replaced with a modular layout: e.g., a `catalog/` package containing submodules like `loader/`, `validator/`, and `generator/`, and a `validation/` package to encapsulate schema-aware checking. Each module will expose well-defined interfaces (e.g., `CatalogLoader.load(path)`, `SchemaValidator.validate(model, schema)`), replacing direct in-script logic. Tests can then be organized per-submodule, and dependencies will shift from ad-hoc imports to explicit, constrained module boundaries.",
+  "implementation_strategy": "Step 1: Extract `validate.py`'s validation logic into `validation/schema.py`, with a `SchemaValidator` class. Step 2: Create `catalog/loader.py` to handle JSON model loading, decoupling filesystem I/O from business logic. Step 3: Refactor `createCatalog.py` to orchestrate `loader.load_all(models_dir)` and build catalog, removing subprocess/os calls from core logic. Step 4: Introduce a `__init__.py` to form a `catalog` package. This enables incremental migration: start with loader, then validator, then refactoring of orchestration scripts—without changing functionality or requiring full rewrite.",
+  "risks": "Risk of over-engineering given the current small scale (only 2 Python scripts), but the tactic is low-risk due to incremental nature: each module can be prototyped and tested in isolation before integration. Potential temporary duplication during migration is acceptable given the repository’s minimal current surface area and high maintainability return."
+}

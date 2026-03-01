@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0) and minimal directory depth (2), suggesting flat structure",
+    "Single main entry point file (geowifi.py) containing all core logic, imports, and functions",
+    "All functions (e.g., apple_bssidNone, search_networksNone) are defined at module level with no clear separation into classes or modules",
+    "Imports include CLI (argparse), utilities (os, re, concurrent), third-party libraries (requests, folium, rich, protobuf), and local helper modules—typical of procedural scripts",
+    "No evidence of layering, ports/adapters, or bounded contexts; no controllers, services, or domain layers",
+    "Repository tree shows mostly data files (yaml, proto, protobuf-generated code) and a monolithic Python file"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Lack of modularity increases coupling and reduces testability",
+    "Single-file design makes maintenance and scaling difficult as project grows",
+    "Low code maintainability (mi_avg: 0) indicates technical debt risk",
+    "Limited reuse and composability of functionality"
+  ]
+}

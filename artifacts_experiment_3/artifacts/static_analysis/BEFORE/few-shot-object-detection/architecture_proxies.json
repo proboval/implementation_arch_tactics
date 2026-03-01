@@ -1,0 +1,315 @@
+{
+  "python_files": 48,
+  "packages": 11,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 4.363636363636363,
+  "imports_graph": {
+    "datasets\\prepare_coco_few_shot.py": [
+      "random",
+      "os",
+      "argparse",
+      "json"
+    ],
+    "datasets\\prepare_lvis_few_shot.py": [
+      "random",
+      "os",
+      "argparse",
+      "json"
+    ],
+    "datasets\\prepare_voc_few_shot.py": [
+      "copy",
+      "fsdet",
+      "os",
+      "numpy",
+      "argparse",
+      "random",
+      "xml"
+    ],
+    "datasets\\split_lvis_annotation.py": [
+      "os",
+      "argparse",
+      "json"
+    ],
+    "demo\\demo.py": [
+      "tqdm",
+      "cv2",
+      "detectron2",
+      "fsdet",
+      "multiprocessing",
+      "time",
+      "os",
+      "demo",
+      "argparse",
+      "glob"
+    ],
+    "demo\\predictor.py": [
+      "cv2",
+      "collections",
+      "detectron2",
+      "fsdet",
+      "multiprocessing",
+      "bisect",
+      "torch",
+      "atexit"
+    ],
+    "fsdet\\__init__.py": [],
+    "tools\\aggregate_seeds.py": [
+      "matplotlib",
+      "math",
+      "json",
+      "os",
+      "argparse",
+      "numpy"
+    ],
+    "tools\\ckpt_surgery.py": [
+      "os",
+      "argparse",
+      "torch"
+    ],
+    "tools\\run_experiments.py": [
+      "os",
+      "yaml",
+      "argparse",
+      "subprocess",
+      "ast"
+    ],
+    "tools\\test_net.py": [
+      "detectron2",
+      "fsdet",
+      "time",
+      "json",
+      "os",
+      "numpy"
+    ],
+    "tools\\train_net.py": [
+      "detectron2",
+      "os",
+      "fsdet"
+    ],
+    "tools\\visualize_data.py": [
+      "PIL",
+      "cv2",
+      "detectron2",
+      "itertools",
+      "os",
+      "argparse",
+      "numpy"
+    ],
+    "tools\\visualize_json_results.py": [
+      "tqdm",
+      "cv2",
+      "collections",
+      "detectron2",
+      "fsdet",
+      "json",
+      "os",
+      "argparse",
+      "numpy"
+    ],
+    "tools\\__init__.py": [],
+    "fsdet\\checkpoint\\catalog.py": [
+      "detectron2"
+    ],
+    "fsdet\\checkpoint\\__init__.py": [
+      "detectron2"
+    ],
+    "fsdet\\config\\compat.py": [
+      "defaults",
+      "config",
+      "logging",
+      "typing"
+    ],
+    "fsdet\\config\\config.py": [
+      "defaults",
+      "logging",
+      "compat",
+      "fvcore"
+    ],
+    "fsdet\\config\\defaults.py": [
+      "detectron2"
+    ],
+    "fsdet\\config\\__init__.py": [
+      "config",
+      "compat"
+    ],
+    "fsdet\\data\\builtin.py": [
+      "detectron2",
+      "meta_pascal_voc",
+      "builtin_meta",
+      "meta_lvis",
+      "os",
+      "meta_coco"
+    ],
+    "fsdet\\data\\builtin_meta.py": [
+      "lvis_v0_5_categories"
+    ],
+    "fsdet\\data\\lvis_v0_5_categories.py": [],
+    "fsdet\\data\\meta_coco.py": [
+      "detectron2",
+      "fsdet",
+      "pycocotools",
+      "os",
+      "io",
+      "contextlib",
+      "numpy"
+    ],
+    "fsdet\\data\\meta_lvis.py": [
+      "detectron2",
+      "fsdet",
+      "os",
+      "logging",
+      "lvis",
+      "lvis_v0_5_categories",
+      "fvcore"
+    ],
+    "fsdet\\data\\meta_pascal_voc.py": [
+      "detectron2",
+      "fsdet",
+      "os",
+      "numpy",
+      "xml"
+    ],
+    "fsdet\\data\\__init__.py": [],
+    "fsdet\\engine\\defaults.py": [
+      "collections",
+      "detectron2",
+      "fsdet",
+      "os",
+      "logging",
+      "argparse",
+      "torch",
+      "fvcore"
+    ],
+    "fsdet\\engine\\hooks.py": [
+      "detectron2",
+      "os",
+      "json",
+      "fsdet"
+    ],
+    "fsdet\\engine\\__init__.py": [
+      "defaults",
+      "hooks",
+      "fsdet"
+    ],
+    "fsdet\\evaluation\\coco_evaluation.py": [
+      "collections",
+      "copy",
+      "detectron2",
+      "fsdet",
+      "pycocotools",
+      "itertools",
+      "tabulate",
+      "json",
+      "os",
+      "logging",
+      "io",
+      "torch",
+      "contextlib",
+      "numpy"
+    ],
+    "fsdet\\evaluation\\evaluator.py": [
+      "collections",
+      "detectron2",
+      "time",
+      "datetime",
+      "logging",
+      "torch",
+      "contextlib"
+    ],
+    "fsdet\\evaluation\\lvis_evaluation.py": [
+      "collections",
+      "copy",
+      "detectron2",
+      "fsdet",
+      "itertools",
+      "json",
+      "os",
+      "logging",
+      "torch",
+      "lvis"
+    ],
+    "fsdet\\evaluation\\pascal_voc_evaluation.py": [
+      "collections",
+      "detectron2",
+      "fsdet",
+      "tempfile",
+      "os",
+      "numpy",
+      "logging",
+      "torch",
+      "functools",
+      "xml"
+    ],
+    "fsdet\\evaluation\\testing.py": [
+      "sys",
+      "collections",
+      "pprint",
+      "logging",
+      "numpy"
+    ],
+    "fsdet\\evaluation\\__init__.py": [
+      "pascal_voc_evaluation",
+      "testing",
+      "evaluator",
+      "lvis_evaluation",
+      "coco_evaluation"
+    ],
+    "fsdet\\modeling\\__init__.py": [
+      "meta_arch",
+      "roi_heads"
+    ],
+    "fsdet\\model_zoo\\model_zoo.py": [
+      "detectron2",
+      "fsdet",
+      "pkg_resources",
+      "os",
+      "torch"
+    ],
+    "fsdet\\model_zoo\\__init__.py": [
+      "model_zoo"
+    ],
+    "fsdet\\utils\\file_io.py": [
+      "iopath"
+    ],
+    "fsdet\\modeling\\meta_arch\\build.py": [
+      "detectron2"
+    ],
+    "fsdet\\modeling\\meta_arch\\rcnn.py": [
+      "detectron2",
+      "fsdet",
+      "logging",
+      "torch",
+      "build"
+    ],
+    "fsdet\\modeling\\meta_arch\\__init__.py": [
+      "rcnn",
+      "build"
+    ],
+    "fsdet\\modeling\\roi_heads\\box_head.py": [
+      "torch",
+      "detectron2",
+      "numpy",
+      "fvcore"
+    ],
+    "fsdet\\modeling\\roi_heads\\fast_rcnn.py": [
+      "detectron2",
+      "logging",
+      "torch",
+      "numpy",
+      "fvcore"
+    ],
+    "fsdet\\modeling\\roi_heads\\roi_heads.py": [
+      "detectron2",
+      "box_head",
+      "typing",
+      "logging",
+      "torch",
+      "fast_rcnn",
+      "numpy"
+    ],
+    "fsdet\\modeling\\roi_heads\\__init__.py": [
+      "box_head",
+      "roi_heads"
+    ]
+  }
+}

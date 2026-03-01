@@ -1,0 +1,25 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only one top-level module (app.py) contains main application logic with direct imports and function definitions, no clear package structure",
+    "No packages reported (packages: 0)",
+    "Flat directory structure (max_directory_depth: 1)",
+    "Large average fan-out (5.0) indicates functions across modules depend on many external libraries and each other without clear modular boundaries",
+    "Highly interconnected procedural functions (e.g., encrypt_aes, encode_uid, create_protobuf) called directly without abstraction layers",
+    "Mixing of concerns in single files: web routing, crypto, protobuf, database, async HTTP clients all in app.py",
+    "All module contents appear as top-level functions or simple classes (e.g., TokenManager), lacking layering or separation of concerns",
+    "absence of explicit ports/adapters or domain boundaries, and no versioning/modularization"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Low maintainability due to tight coupling and lack of modularity",
+    "Difficulty in testing individual components due to absence of abstractions or dependency injection",
+    "Scalability limitations from monolithic procedure calls and shared global state (e.g., tokens)",
+    "Security risks from ad-hoc crypto implementations without clear encapsulation",
+    "Fragility from shared mutable imports (e.g., protobuf classes used directly across modules)"
+  ]
+}

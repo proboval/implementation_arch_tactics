@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, script-based architecture with a single top-level package ('conn') and minimal internal structure, as confirmed by static analysis (packages=1, max_directory_depth=1, avg_fan_out=2.0). Files like 'conn', 'connhost', 'connplay', 'script', 'scriptreplay', and 'record.py' appear to be utility scripts packed at root level with no module boundaries — indicating low cohesion and high coupling. This violates maintainability principles by making it difficult to locate, understand, test, and modify specific concerns. Decomposability directly addresses this by introducing modular separation (e.g., separating connection handling, recording, playback logic) to isolate functionality, reduce ripple effects, and improve testability — all essential for a growing codebase that currently lacks structure.",
+  "target_components": [
+    "__init__.py",
+    "conn",
+    "connhost",
+    "connplay",
+    "record.py",
+    "script",
+    "scriptreplay",
+    "connection.py"
+  ],
+  "expected_architectural_change": "The flat 'conn' package will be restructured into logically cohesive submodules (e.g., conn/connection, conn/recording, conn/playback), each with clear single responsibilities and well-defined interfaces. The root-level scripts ('conn', 'connhost', etc.) will become CLI entry points that compose functionality from these modules, promoting reuse and separation of concerns.",
+  "implementation_strategy": "Refactor by extracting domain responsibilities: (1) group connection-related logic into conn/connection.py, (2) move recording features into conn/recording.py, (3) extract playback into conn/playback.py. Replace direct imports and duplicated logic with modular dependencies and shared abstractions (e.g., interfaces for stream I/O). Rename flat scripts to modules with clear roles and reduce direct logic nesting. The __init__.py will be updated to expose only stable public APIs, not raw imports like 'os', 'sys'.",
+  "risks": "Risk of over-engineering if the project is intentionally minimal; however, given evidence of growing functionality (multiple utility scripts) and the stated maintainability risks, incremental modularization avoids big-bang rewrite while enabling measurable improvements. Initial refactoring may temporarily increase cognitive load during transition but will improve long-term cohesion."
+}

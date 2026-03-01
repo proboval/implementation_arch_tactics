@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The system exhibits poor localization of change impact due to tight cross-module coupling and unmodularized concerns. Static analysis shows high fan-out (avg 4.55), and imports reveal that critical modules like server/frame_processor.py and server/byoc.py directly import the core Pipeline class, while server/utils_byoc.py duplicates utility functions also present in src/comfystream/utils.py. This duplication and direct imports cause ripple effects: any change to pipeline state transitions or prompt conversion logic forces changes across server/, nodes/, and scripts/ directories. For example, frame_processor.py imports Pipeline directly instead of an abstraction, and both server/byoc.py and nodes/api/__init__.py import server modules, creating bidirectional dependencies across logical layers. The risk assessment confirms 'tight integration between WebRTC server and ComfyUI node execution' hinders testability. AT38 (Localized Modification) directly addresses this by increasing cohesion and reducing ripple effects—ensuring each change affects only one cohesive module.",
+  "target_components": [
+    "server/frame_processor.py",
+    "server/byoc.py",
+    "server/utils_byoc.py",
+    "src/comfystream/utils.py",
+    "src/comfystream/pipeline.py",
+    "nodes/api/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce clear domain abstraction layers (e.g., a FrameProcessingStrategy interface and StreamParameterContract) to decouple server implementations from core domain. server/frame_processor.py and server/byoc.py will depend on abstractions, not concrete Pipeline. src/comfystream/utils.py will be refactored to avoid duplication with nodes/, and utility functions will be centralized in src/comfystream/ with explicit contracts. nodes/ and server/ modules will depend on shared abstractions defined in src/comfystream/, eliminating cross-module direct imports and reducing coupling between infrastructure and domain.",
+  "implementation_strategy": "1) Extract a FrameProcessingStrategy interface from ComfyStreamFrameProcessor in src/comfystream/, moving only pipeline orchestration concerns there. 2) Introduce a StreamParameters contract in src/comfystream/ and replace ComfyStreamParamsUpdateRequest in server/utils_byoc.py with an adapter. 3) Remove duplicate convert_prompt logic: keep only in src/comfystream/utils.py and deprecate server/utils_byoc.py's convert_prompt call. 4) Update imports to use comfystream.pipeline, comfystream.utils, comfystream.modalities—never nodes.* or server.* from core modules. 5) Refactor nodes/api/__init__.py to depend only on comfystream.server.metrics.* via an adapter interface.",
+  "risks": "Risk of temporary duplication during migration and initial API instability. Mitigation: Implement incrementally—start by extracting abstractions in src/comfystream/ without deleting code, then update usages in server/ and nodes/ incrementally, and use static imports instead of wildcard imports to ensure compile-time safety."
+}

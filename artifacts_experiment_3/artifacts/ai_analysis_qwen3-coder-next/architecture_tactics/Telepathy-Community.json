@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, monolithic structure where core logic (e.g., Group_Chat_Analisys, Telepathy_cli) resides in a single module (src/telepathy/telepathy.py) alongside utility functions in src/telepathy/utils.py, with no clear module boundaries. Static analysis confirms 'packages: 0' and 'factors: [C1, C2, A3]' under architecture_maintainability—C1 (coarse-grained decomposition), C2 (no layered structure), and A3 (lack of separation of concerns) directly indicate poor decomposability. This leads to tight coupling (e.g., Telepathy_cli directly instantiating Group_Chat_Analisys and importing raw I/O libraries like requests/bs4 in utils.py), low testability (tests import from raw src.telepathy.telepathy without interfaces), and high refactoring cost. Decomposability addresses this by structuring the system into well-defined, bounded modules (e.g., domain, service, infrastructure), isolating responsibilities and reducing ripple effects.",
+  "target_components": [
+    "src/telepathy/telepathy.py",
+    "src/telepathy/utils.py",
+    "tests/test_telepathy.py"
+  ],
+  "expected_architectural_change": "The monolithic 'telepathy.py' module will be split into separate modules: e.g., 'domain/' (core models like ChatAnalysis, Message), 'services/' (orchestration classes like GroupChatAnalysisService), 'infrastructure/' (external I/O like TelegramFetcher, HtmlParser), and 'cli/' (TelepathyCli). utils.py functions will be migrated into appropriate domain or infrastructure modules with明确 interfaces (e.g., MessageParser, DateFormatter). Tests will import from new service interfaces rather than raw classes, enabling dependency injection and mocking.",
+  "implementation_strategy": "1. Identify cohesive subdomains: extract domain logic (e.g., message analysis, user aggregation) into domain/models.py and domain/services.py. 2. Move I/O-bound utilities (e.g., parse_html_page, process_message) into infrastructure/adapter/ and wire them via interfaces. 3. Refactor Telepathy_cli to depend on service interfaces, not concrete implementations. 4. Replace direct imports in utils.py (e.g., requests, bs4) with dedicated adapter classes in a new 'infrastructure' folder. 5. Introduce minimal interfaces (e.g., MessageRepository, HtmlParser) to decouple layers. 6. Update tests to mock service interfaces. This is incremental: start with domain isolation, then services, then adapters—no rewrite needed.",
+  "risks": "Over-decomposition may increase complexity for a small codebase; must balance modularity with simplicity. Risk of temporary test breakage during refactoring. Dependencies in setup.py may require updates if new package structure emerges (e.g., telepathy.domain, telepathy.infrastructure)."
+}

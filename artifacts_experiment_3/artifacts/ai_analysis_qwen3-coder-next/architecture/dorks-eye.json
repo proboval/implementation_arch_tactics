@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.98,
+  "evidence": [
+    "Single Python file (dorks-eye.py) containing the entire application logic",
+    "No packages (packages: 0) and max_directory_depth: 1 indicate flat structure",
+    "Average fan-out: 0 suggests no modular function calls or dependencies between components",
+    "All functions (duckduckgoNone, bingNone, etc.) are defined at module level with stub names suggesting script-style implementation",
+    "Use of standard CLI-like imports (sys, time, requests, bs4) without明显的 separation of concerns",
+    "Repository tree shows only static assets (Img/) and one core script file"
+  ],
+  "alternatives": [
+    "unclear",
+    "layered"
+  ],
+  "risks": [
+    "No separation of concerns leads to tight coupling and difficulty in testing",
+    "Lack of modularity makes reuse and maintenance challenging",
+    "All functionality in one file can cause scalability and concurrency issues",
+    "No input validation or error handling patterns visible, risking runtime failures"
+  ]
+}

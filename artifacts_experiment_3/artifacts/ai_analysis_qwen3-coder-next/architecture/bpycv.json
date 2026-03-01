@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Two top-level packages: 'bpycv' (main library) and 'dataset_utils' (submodule), indicating logical grouping without loose coupling typical of microservices",
+    "High average fan-out (5.0) suggests tight interdependence between modules within the same process",
+    "All modules share imports across the same namespace (e.g., .material_utils in domain_randomzition.py), indicating tight integration rather than strict boundaries",
+    "Present use of Python package structure with one main module (bpycv) and hierarchical submodules (dataset_utils), consistent with modular monoliths",
+    "No evidence of network communication, containers, or deployment autonomy required for microservices or hexagonal architecture",
+    "Architecture supports internal high cohesion (e.g., domain_randomzition uses object_utils, material_utils) but low coupling (modular separation of concerns), typical of well-structured monoliths",
+    "Use of context managers and inheritance (e.g., StatuRecover, activate_obj) indicates abstractions within a single deployment unit"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)",
+    "script_based"
+  ],
+  "risks": [
+    "High average fan-out may increase risk of circular dependencies if not carefully managed",
+    "Lack of explicit layer boundaries (e.g., no clear separation between presentation, business, data layers) could lead to architectural drift over time",
+    "Heavy use of shared state and direct internal imports may reduce testability without mocking layers"
+  ]
+}

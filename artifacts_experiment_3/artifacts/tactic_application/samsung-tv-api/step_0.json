@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "samsungtv/keys/mapper.py",
+  "content": "import logging\n\n\nclass KeyMapper:\n    \"\"\"Maps semantic key names to Samsung TV protocol payloads.\"\"\"\n\n    def __init__(self, key_interval=1.5):\n        self.key_interval = key_interval\n\n    def map_key(self, key, repeat=1):\n        \"\"\"Build a protocol payload for a given key.\"\"\"\n        return {\n            'method': 'ms.remote.control',\n            'params': {\n                'Cmd': 'Click',\n                'DataOfCmd': key,\n                'Option': 'false',\n                'TypeOfRemote': 'SendRemoteKey'\n            }\n        }\n\n    def send_key(self, websocket, key, repeat=1):\n        \"\"\"Send a key with optional repeat count.\"\"\"\n        for n in range(repeat):\n            payload = self.map_key(key)\n            logging.info('Sending key %s', key)\n            websocket.send(payload)\n            if n < repeat - 1:  # Wait only between repeats, not after final one\n                import time\n                time.sleep(self.key_interval)\n"
+}

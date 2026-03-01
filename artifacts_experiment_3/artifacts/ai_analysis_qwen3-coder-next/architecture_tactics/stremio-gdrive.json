@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits non-trivial inter-module coupling: sgd/utils.py imports from sgd/cache, sgd/gdrive.py and sgd/meta.py both import from sgd.cache, and sgd/routes.py imports from multiple domain modules (gdrive, meta, streams) creating bidirectional dependencies. Static analysis shows avg_fan_out=3.28 with imports cross-listed in sgd\\*.py files (e.g., gdrive.py imports 'sgd', meta.py imports 'sgd.utils' and 'sgd.cache', utils.py imports 'sgd.cache'). This tight coupling increases ripple effect risk during changes and complicates testing. Reduced Coupling directly addresses this by decoupling modules via abstractions (e.g., interfaces or protocols) to minimize direct imports, aligning with the modular monolith's need for internal modularity without full service decomposition.",
+  "target_components": [
+    "sgd/cache.py",
+    "sgd/gdrive.py",
+    "sgd/meta.py",
+    "sgd/utils.py",
+    "sgd/routes.py",
+    "sgd/streams.py"
+  ],
+  "expected_architectural_change": "Introduce abstractions (e.g., base interfaces or dataclasses) to decouple modules. For example: (1) define a CacheInterface in cache.py that gdrive.py and meta.py depend on instead of concrete Pickle/Json; (2) define a MetadataProvider protocol for meta.py that gdrive.py and routes.py can depend on; (3) have routes.py depend on an AbstractGDriveService instead of importing GoogleDrive directly; (4) avoid circular imports between modules by moving shared data structures to a new 'interfaces.py' or 'domain.py' module.",
+  "implementation_strategy": "Refactor imports to depend on abstractions rather than concrete implementations. Step 1: Create a new module sgd/interfaces.py (or extend sgd/__init__.py) to define abstract base classes/protocols (e.g., BaseCache, BaseMetadataProvider, BaseGDriveClient). Step 2: Update sgd/cache.py to expose interfaces and make Pickle/Json implement them. Step 3: Update sgd/gdrive.py, sgd/meta.py to depend only on interface types, injected at instantiation. Step 4: Refactor sgd/routes.py to receive dependencies via constructor or factory instead of direct imports. Step 5: Introduce dependency injection in sgd/__init__.py to wire components. This is incremental, preserves monolithic structure, and directly addresses identified coupling in imports_graph.",
+  "risks": "Risk of over-engineering if interfaces are over-specified; must ensure abstractions reflect real usage patterns. Initial refactoring may require updating instantiation calls, but can be done piecemeal. Since the architecture is modular monolith, coupling reduction here directly improves testability (easier mocking) and makes future service extraction safer if needed later."
+}

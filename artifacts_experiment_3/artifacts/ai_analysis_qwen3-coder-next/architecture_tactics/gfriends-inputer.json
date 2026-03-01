@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, script-based architecture with no separation of concerns: a single 'Gfriends Inputer.py' contains all logic (UI/CLI orchestration, I/O, business logic, image processing) and stubbed functions with no implementations; 'Lib/cv2dnn.py' is a minimal helper with stubs, indicating unstructured procedural code. Static analysis confirms 'packages: 0', 'max_directory_depth: 2', and 'factors: ['T4', 'A1']' in code_maintainability — reflecting poor testability and analyzability. The flat structure prevents isolating functionality, making changes risky and testing infeasible. Decomposability directly addresses this by structuring the system into cohesive, decoupled modules (e.g., separating I/O, business logic, and infrastructure), enabling incremental modularization without a full rewrite.",
+  "target_components": [
+    "Gfriends Inputer.py",
+    "Lib/cv2dnn.py"
+  ],
+  "expected_architectural_change": "The monolithic 'Gfriends Inputer.py' will be restructured into dedicated modules: e.g., `core/` (business logic), `io/` (file/network I/O), `infrastructure/` (external API wrappers like cv2, PIL, requests), and `cli/` (CLI glue). 'Lib/cv2dnn.py' will be moved to `infrastructure/face_detection.py` with a defined interface. The directory depth will increase to ≥3, enabling package structure and clear module boundaries.",
+  "implementation_strategy": "1. Extract business logic (e.g., avatar validation, download, input) into a new `core/` package with clear interfaces. 2. Move I/O operations (file writing, reading, download) into `io/` package with interfaces. 3. Refactor 'Lib/cv2dnn.py' into `infrastructure/face_detection.py` implementing a stable interface (e.g., FaceDetector). 4. Reduce direct external dependencies (cv2, PIL, requests) in top-level logic by injecting adapters. 5. Begin by splitting 'Gfriends Inputer.py' into a `main.py` CLI entry point and submodules. 6. Implement tests per module to validate decomposition. All changes are additive and backward-compatible in early stages.",
+  "risks": "Initial decomposition may temporarily increase complexity if modules are poorly bounded; requires discipline to avoid introducing new coupling. However, this is mitigated by incremental approach and clear separation (e.g., only extracting one responsibility per release). No major downsides — negative impacts are none for this tactic."
+}

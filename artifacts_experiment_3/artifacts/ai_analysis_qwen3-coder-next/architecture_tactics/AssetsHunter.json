@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor modularity and high coupling: the central entry point (AssetsHunter.py → Console) imports ALL modules directly, and many modules import directly from Core and Config instead of using stable abstractions. For example, Modules_Active/whatcms.py, Modules_Passive/asn_cidr.py, and Tools/kill_repeat.py all import from Core.decorators, meaning a change to decorators.py (e.g., renaming or signature change) will break multiple modules. This creates a high risk of cascading changes and reduces testability. The 'Localized Modification' tactic directly addresses this by increasing cohesion and narrowing the scope of modifications—each module should be responsible only for its own concerns and interact through clearly defined, stable interfaces. This tactic is implementable via small, incremental refactorings: first by extracting interfaces from shared decorators, then moving shared behavior into well-defined utility modules.",
+  "target_components": [
+    "Core/decorators.py",
+    "Modules_Active/whatcms.py",
+    "Modules_Passive/asn_cidr.py",
+    "Modules_Passive/censys_ip.py",
+    "Tools/kill_repeat.py",
+    "Modules_Passive/crt_domain.py",
+    "Tools/email_dig.py",
+    "Core/console.py"
+  ],
+  "expected_architectural_change": "A new 'Common' or 'Core.Abstractions' submodule will be introduced to host interfaces and base classes for decorators (e.g., decorator interface with 'before_hook', 'after_hook', or 'log_result'). Existing decorators (Print_info, Save_info) will implement those interfaces or inherit from base classes, allowing modules to depend only on abstractions. Console.py will stop importing concrete modules and instead use a registry or plugin-based approach to load modules by name, reducing its fan-out from 12 to ~2–3.",
+  "implementation_strategy": "Step 1: Introduce core.decorators.interface_decorator as an abstract base class. Step 2: Update Print_info and Save_info to inherit from it and retain current behavior. Step 3: Refactor modules to import from Core.decorators.interface_decorator instead of concrete decorators—reducing coupling and increasing cohesion. Step 4: Extract a module loader registry in a new Core/plugin.py to decouple Console from concrete modules. This can be done incrementally: one module at a time, preserving backward compatibility via inheritance and type hints. Expected structural change: flat dependency graph (All → Core → Config) evolves into layered architecture: Module → Plugin Abstraction → Concrete Implementation.",
+  "risks": "Risk of over-engineering if abstractions are not grounded in actual usage patterns; however, since multiple modules already duplicate decorator usage and all modules share the same console entry point, the abstraction is justified by existing patterns. Risk of temporary test regressions during refactoring can be mitigated by retaining original decorator implementations and using backward-compatible wrappers during transition."
+}

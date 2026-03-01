@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Flat directory structure with all modules in a single top-level package (alluka.modules) showing cohesive ownership",
+    "All modules share the same runtime process and depend on shared state (dispatcher, updater, database session, config)",
+    "Centralized event dispatching via Telegram.ext (sync) and Telethon (async) event handlers",
+    "SQL-based persistence layer using shared SQLAlchemy session and BASE pattern across all modules",
+    "Shared utilities (helper_funcs) used across modules, with tight integration and circular dependencies (e.g., connection_status calling connection module)",
+    "No explicit service boundaries or inter-process communication; all functionality logically grouped by domain (e.g., admin, warns, notes)",
+    "Low number of packages (4), low average fan-out (~4.4), and shallow depth (5) consistent with a cohesive monolith",
+    "Modules directly import from each other (e.g., antiflood imports chat_status, sql), indicating tight coupling and shared memory space"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules impedes independent deployment and testing",
+    "Shared database session and global state (dispatcher, updater) creates hidden dependencies and testability issues",
+    "Circular import potential (e.g., chat_status depending on connection module while connection depends on chat_status)",
+    "Lack of clear boundaries makes scalability and maintainability harder as codebase grows"
+  ]
+}

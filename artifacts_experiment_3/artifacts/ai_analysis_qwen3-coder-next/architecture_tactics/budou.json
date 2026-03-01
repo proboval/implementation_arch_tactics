@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The Parser class in budou/parser.py directly imports and instantiates concrete Segmenter subclasses (MecabSegmenter, NLAPISegmenter, TinysegmenterSegmenter), creating tight coupling. This is evident in the imports_graph where parser.py imports all segmenter modules, and in its __init__ methods that directly instantiate segmenter classes. This coupling reduces maintainability because: (1) adding a new segmenter requires modifying Parser and its subclasses, violating open/closed principle; (2) testing segmenter-specific logic requires mocking multiple dependencies; (3) circular dependencies exist between Parser and Segmenter modules (e.g., segmenter.py has low fan-out but parser.py has fan-out of 7). Static analysis confirms 'C1' (coupling) is a factor. The evidence also identifies 'Tight coupling between Parser and multiple Segmenter implementations may reduce testability and extensibility' as a known risk. This problem is localized and actionable: it involves only parser.py and segmenter-related modules, making it suitable for incremental refactoring.",
+  "target_components": [
+    "budou/parser.py",
+    "budou/mecabsegmenter.py",
+    "budou/nlapisegmenter.py",
+    "budou/tinysegmentersegmenter.py",
+    "budou/segmenter.py"
+  ],
+  "expected_architectural_change": "Parser and its subclasses (NLAPIParser, MecabParser, TinysegmenterParser) will be refactored to depend on an abstract factory or factory method instead of concrete segmenter classes. The Parser class will receive a segmenter instance via constructor or dependency injection, decoupling it from segmenter implementation details. This may involve introducing a factory interface or using a registry pattern to allow dynamic segmenter selection without modifying Parser code.",
+  "implementation_strategy": "1. Refactor get_parser() to accept a segmenter factory or registration configuration instead of hardcoding segmenter types; 2. Move segmenter instantiation logic out of Parser subclasses and into dedicated factory classes; 3. Introduce a SegmenterFactory interface that Parser depends on (abstraction); 4. Update budou.py's parse() to pass segmenter dependencies instead of creating them internally; 5. Ensure tests receive segmenter mocks via constructor injection. Structure change: Parser → depends on SegmenterFactory → realized by MecabSegmenterFactory etc., instead of Parser → directly imports and instantiates Segmenter implementations.",
+  "risks": "Low risk of regression as changes are localized to parser module; existing tests provide partial regression coverage; backward compatibility of public APIs (e.g., get_parser) must be preserved via adapter or overloading. Potential temporary increase in code verbosity during transition until all segmenters are properly registered."
+}

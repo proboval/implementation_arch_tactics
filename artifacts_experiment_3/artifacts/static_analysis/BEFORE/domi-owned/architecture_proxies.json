@@ -1,0 +1,66 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "domi-owned.py": [
+      "argparse",
+      "domi_owned"
+    ],
+    "domi_owned\\bruteforce.py": [
+      "sys",
+      "inflect",
+      "tabulate",
+      "time",
+      "os",
+      "random",
+      "main"
+    ],
+    "domi_owned\\enumerate.py": [
+      "sys",
+      "asyncio",
+      "itertools",
+      "os",
+      "aiohttp",
+      "main",
+      "signal"
+    ],
+    "domi_owned\\fingerprint.py": [
+      "requests",
+      "main"
+    ],
+    "domi_owned\\hashdump.py": [
+      "sys",
+      "asyncio",
+      "inflect",
+      "aiohttp",
+      "main",
+      "signal",
+      "bs4"
+    ],
+    "domi_owned\\main.py": [
+      "sys",
+      "utilities",
+      "requests",
+      "re",
+      "bs4"
+    ],
+    "domi_owned\\quickconsole.py": [
+      "cmd",
+      "sys",
+      "utilities",
+      "requests",
+      "re",
+      "hashlib",
+      "main"
+    ],
+    "domi_owned\\utilities.py": [
+      "sys",
+      "logging",
+      "re",
+      "tqdm"
+    ],
+    "domi_owned\\__init__.py": []
+  }
+}
