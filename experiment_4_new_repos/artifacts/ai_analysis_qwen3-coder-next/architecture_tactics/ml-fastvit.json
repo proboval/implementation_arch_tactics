@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and high fan-out (4.73), with modules like models/fastvit.py directly importing internal modules from models.modules (e.g., MobileOneBlock, ReparamLargeKernelConv) and models/__init__.py re-exporting them, creating implicit dependencies across layers. The train.py and validate.py scripts import models and misc at the top level and directly reference internal functions (e.g., reparameterize_model), violating separation of concerns. This makes changes risky and testing difficult. Decomposability directly addresses this by enforcing modular boundaries—splitting responsibilities into clearly defined layers (e.g., data, model, training orchestration) and reducing cross-module dependencies—thereby improving testability and maintainability without requiring a full rewrite.",
+  "target_components": [
+    "models/fastvit.py",
+    "models/__init__.py",
+    "models/modules/mobileone.py",
+    "models/modules/replknet.py",
+    "train.py",
+    "validate.py",
+    "export_model.py"
+  ],
+  "expected_architectural_change": "Introduce a clear module hierarchy: (1) models.base for abstract model interfaces, (2) models.blocks for reusable building blocks (e.g., MobileOneBlock, ReparamLargeKernelConv), (3) models.architectures for concrete model classes (e.g., FastViT), and (4) a training package (e.g., train.core, train.runner) to orchestrate training logic. The top-level scripts (train.py, validate.py, export_model.py) will depend only on the public API of the training and model packages—not internal modules. This reduces fan-out, increases cohesion, and clarifies dependency direction.",
+  "implementation_strategy": "Step 1: Refactor models/fastvit.py to import only from models.blocks and models.architectures (not models.modules.* directly). Step 2: Move internal blocks (MobileOneBlock, ReparamLargeKernelConv) into models.blocks and expose them via models.blocks.__init__. Step 3: Create models/architectures/__init__.py to expose only model constructors (e.g., fastvit_t8). Step 4: Refactor train.py and validate.py to import models from models.architectures and use a training runner interface (e.g., from train.runner import Trainer). Step 5: Introduce a minimal models/__init__.py that re-exports only public APIs. This can be done incrementally—e.g., start with models.blocks, then refactor train.py, then update models/fastvit.py.",
+  "risks": "Risk of temporary duplication during refactoring (e.g., old and new paths coexisting). However, since the repository is small (11 Python files) and the structure is flat, this is manageable. The main risk is incomplete refactoring leading to inconsistent import paths, but this can be mitigated with CI checks enforcing import rules (e.g., disallowing models.modules.* imports outside internal modules)."
+}

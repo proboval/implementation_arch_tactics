@@ -1,0 +1,80 @@
+{
+  "python_files": 11,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 3.6666666666666665,
+  "imports_graph": {
+    "export_model.py": [
+      "argparse",
+      "models",
+      "os",
+      "torch",
+      "coremltools"
+    ],
+    "train.py": [
+      "misc",
+      "collections",
+      "datetime",
+      "wandb",
+      "argparse",
+      "contextlib",
+      "apex",
+      "torchvision",
+      "yaml",
+      "math",
+      "logging",
+      "os",
+      "timm",
+      "glob",
+      "models",
+      "torch",
+      "time"
+    ],
+    "validate.py": [
+      "collections",
+      "argparse",
+      "contextlib",
+      "apex",
+      "torch",
+      "logging",
+      "os",
+      "timm",
+      "glob",
+      "models",
+      "csv",
+      "time"
+    ],
+    "misc\\cosine_annealing.py": [
+      "math"
+    ],
+    "misc\\distillation_loss.py": [
+      "torch"
+    ],
+    "misc\\__init__.py": [],
+    "models\\fastvit.py": [
+      "typing",
+      "mmcv",
+      "copy",
+      "mmseg",
+      "mmdet",
+      "os",
+      "timm",
+      "functools",
+      "models",
+      "torch"
+    ],
+    "models\\__init__.py": [
+      "fastvit"
+    ],
+    "models\\modules\\mobileone.py": [
+      "typing",
+      "copy",
+      "torch"
+    ],
+    "models\\modules\\replknet.py": [
+      "typing",
+      "torch"
+    ],
+    "models\\modules\\__init__.py": []
+  }
+}

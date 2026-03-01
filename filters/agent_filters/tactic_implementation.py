@@ -19,77 +19,32 @@ def build_refactor_prompt(
     repo_files: dict[str, str],
     applied_steps: List[dict],
 ) -> str:
-    return f"""
-You are an automated refactoring agent.
+    return f"""You are a Python refactoring agent. Apply {json.dumps(tactic, indent=2)} to {repo_name} via ONE safe, local change.
 
-You work on an EXISTING Python repository.
-Your goal is to APPLY the given architectural tactic
-using SAFE, INCREMENTAL, LOCAL changes.
-
-Repository:
-{repo_name}
-
-====================
-Repository structure
-====================
+Structure:
 {repo_tree}
 
-====================
-Relevant file excerpts
-====================
-{"".join(
-    f"\n--- {path} ---\n{content}\n"
-    for path, content in repo_files.items()
-)}
+Files:
+{"".join(f"\n--- {path} ---\n{content}\n" for path, content in repo_files.items())}
 
-====================
-Architectural tactic
-====================
-{json.dumps(tactic, indent=2)}
+Applied: {json.dumps(applied_steps, indent=2)}
 
-====================
-Already applied changes
-====================
-{json.dumps(applied_steps, indent=2)}
+STRICT RULES:
+- ONE change, ONE file
+- SMALL/LOCAL, prefer refactor > new code
+- NO redesign/abstractions
+- Large file: FULL content, COMPLETE JSON
+- Impossible: STOP
 
-====================
-Rules (STRICT)
-====================
-- Propose EXACTLY ONE change
-- Modify ONLY ONE file
-- The change must be SMALL and LOCAL
-- Prefer refactoring over new code
-- Do NOT redesign architecture
-- Do NOT introduce new abstractions
-- If no safe change exists → STOP
-
-- If modifying a large file:
-  - Return the FULL file content
-  - Ensure the JSON object is COMPLETE and CLOSED
-  - Do NOT truncate the response
-
-
-====================
-Output format (CRITICAL)
-====================
-Return EXACTLY ONE JSON OBJECT.
-NO explanations.
-NO code fences.
-NO additional text.
-The response MUST end with a single closing brace `}}`.
-Nothing is allowed after it.
-
-
-Schema:
+Output ONLY JSON:
 {{
   "action": "modify_file" | "create_file" | "STOP",
   "path": "relative/path.py",
-  "content": "FULL file content (omit only if action=STOP)"
+  "content": "FULL content (omit if STOP)"
 }}
-
-If no change is safe:
-{{ "action": "STOP" }}
+Response ends with }}. No extra text.[web:8][web:9][web:11]
 """
+
 
 
 
@@ -226,6 +181,7 @@ class ArchitecturalTacticImplementationAgent(Filter):
 
         try:
             response = self.call_llm(prompt, model=self.model_name)
+
             return self._extract_step_from_llm_response(response)
         except Exception as e:
             self.logger.error(f"LLM call failed: {e}")

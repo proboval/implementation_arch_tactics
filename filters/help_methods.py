@@ -1,7 +1,9 @@
+import shutil
 from pathlib import Path
 import ast
 from typing import Dict
 import re
+from filters.config import MODEL_NAME
 import json
 
 EXCLUDED_DIRS = {
@@ -180,6 +182,21 @@ def safe_llm_json(response: str) -> str:
 import csv
 import json
 from pathlib import Path
+import os
+
+
+def del_extra_dir(csv_file: Path, artifacts_dir: Path):
+    with open(csv_file, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            full_name = row["full_name"]
+            repo_name = full_name.split("/")[-1]
+            try:
+                shutil.rmtree(str(artifacts_dir / repo_name))
+            except Exception as e:
+                print(e)
+
+
 
 
 def add_maintainability_to_csv(
@@ -199,6 +216,8 @@ def add_maintainability_to_csv(
 
     before_dir = artifacts_dir / "static_analysis" / "BEFORE"
     after_dir = artifacts_dir / "static_analysis" / "AFTER"
+    arch_dir = artifacts_dir / f"ai_analysis_{MODEL_NAME.split(":")[0]}" / "architecture"
+    arch_tactic_dir = artifacts_dir / f"ai_analysis_{MODEL_NAME.split(":")[0]}" / "architecture_tactics"
 
     rows = []
 
@@ -219,6 +238,8 @@ def add_maintainability_to_csv(
             repo_name = full_name.split("/")[-1]
             row["mi_before"] = read_mi(repo_name, before_dir)
             row["mi_after"] = read_mi(repo_name, after_dir)
+            row["architecture_summary"] = read_arch(repo_name, arch_dir)
+            row["chosen_tactic"] = read_arch_tactic(repo_name, arch_tactic_dir)
 
             rows.append(row)
 
@@ -228,6 +249,31 @@ def add_maintainability_to_csv(
         writer.writerows(rows)
 
     print("Done. Maintainability added.")
+
+def read_arch(repo_name: str, base_dir: Path):
+    json_file = base_dir / f"{repo_name}.json"
+
+    if not json_file.exists():
+        return None
+    try:
+        with open(json_file, encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("architecture_type")
+    except Exception as e:
+        return None
+
+
+def read_arch_tactic(repo_name: str, base_dir: Path):
+    json_file = base_dir / f"{repo_name}.json"
+
+    if not json_file.exists():
+        return None
+    try:
+        with open(json_file, encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("selected_tactic").get("name")
+    except Exception as e:
+        return None
 
 def read_mi(repo_name: str, base_dir: Path):
     json_file = base_dir / repo_name / "code_maintainability.json"

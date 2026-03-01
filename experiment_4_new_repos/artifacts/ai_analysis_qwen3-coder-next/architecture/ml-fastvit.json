@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Three top-level packages (models, misc, docs) with clear separation of concerns: models for core architecture, misc for utilities, docs for documentation",
+    "High average fan-out (4.73) indicates tight internal coupling across modules, typical of monolithic designs where modules freely depend on each other",
+    "No external communication patterns (e.g., no message queues, REST/gRPC endpoints, or service discovery mechanisms)",
+    "Single entry points (train.py, validate.py, export_model.py) that orchestrate the core models and utilities",
+    "Shared dependencies (e.g., models.fastvit imports models.modules.mobileone and models.modules.replknet)",
+    "Directory depth of 3 suggests hierarchical but single-process organization without network boundaries",
+    "All code resides in one repository with no indication of separate deployments or service boundaries"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules may reduce testability and maintainability over time",
+    "Monolithic deployment model limits scalability and fault isolation",
+    "Shared state and dependencies across modules could increase regression risk during updates"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "python_files": 24,
+  "packages": 5,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.8,
+  "imports_graph": {
+    "test.py": [
+      "numpy",
+      "argparse",
+      "torchvision",
+      "face_recognition",
+      "cv2",
+      "utils",
+      "pickle",
+      "os",
+      "models",
+      "glob",
+      "options",
+      "torch",
+      "PIL"
+    ],
+    "train.py": [
+      "collections",
+      "data",
+      "options",
+      "utils",
+      "models",
+      "os",
+      "time"
+    ],
+    "data\\custom_dataset_data_loader.py": [
+      "data",
+      "torch"
+    ],
+    "data\\dataset.py": [
+      "torchvision",
+      "data",
+      "os",
+      "torch",
+      "PIL"
+    ],
+    "data\\prepare_au_annotations.py": [
+      "numpy",
+      "argparse",
+      "pickle",
+      "tqdm",
+      "os",
+      "glob",
+      "re"
+    ],
+    "data\\__init__.py": [],
+    "models\\__init__.py": [],
+    "networks\\discriminator_wasserstein_gan.py": [
+      "torch",
+      "numpy",
+      "networks"
+    ],
+    "networks\\generator_wasserstein_gan.py": [
+      "torch",
+      "numpy",
+      "networks"
+    ],
+    "networks\\__init__.py": [],
+    "options\\base_options.py": [
+      "argparse",
+      "torch",
+      "utils",
+      "os"
+    ],
+    "options\\test_options.py": [
+      "base_options"
+    ],
+    "options\\train_options.py": [
+      "base_options"
+    ],
+    "options\\__init__.py": [],
+    "utils\\cv_utils.py": [
+      "matplotlib",
+      "cv2",
+      "numpy"
+    ],
+    "utils\\face_utils.py": [
+      "numpy",
+      "skimage",
+      "warnings",
+      "face_recognition",
+      "cv2"
+    ],
+    "utils\\plots.py": [
+      "matplotlib",
+      "numpy",
+      "__future__"
+    ],
+    "utils\\tb_visualizer.py": [
+      "numpy",
+      "tensorboardX",
+      "time",
+      "os"
+    ],
+    "utils\\util.py": [
+      "numpy",
+      "torchvision",
+      "math",
+      "os",
+      "__future__",
+      "PIL"
+    ],
+    "utils\\__init__.py": []
+  }
+}

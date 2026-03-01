@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a modular monolith with only 1 package and 5 Python files in a flat structure (max_directory_depth=2), indicating poor modularity. Static analysis flags 'C1' (coupling) and 'A3' (architecture proxies) as factors, while code maintainability shows low cyclomatic complexity but poor testability (mi_min=52.16 in syncserver/__init__.py). The __init__.py file imports Pyramid, mozsvc, and tokenserver components directly, mixing WSGI setup, configuration, and domain logic (e.g., includeme, get_configurator, main). This tight coupling reduces testability and makes it hard to isolate components for unit testing or independent evolution. Decomposability directly addresses this by dividing the system into cohesive, loosely-coupled modules—e.g., separating configuration, WSGI setup, and node assignment logic—improving testability and maintainability without requiring a full microservice refactor.",
+  "target_components": [
+    "syncserver/__init__.py",
+    "syncserver/staticnode.py",
+    "syncserver/wsgi_app.py"
+  ],
+  "expected_architectural_change": "The current monolithic __init__.py will be split into dedicated modules: config/, wsgi/, and assignment/ (or similar). Each module will encapsulate a single responsibility—e.g., config/settings.py for environment handling, wsgi/app.py for Pyramid configurator setup, assignment/node.py for INodeAssignment implementation. This creates clear boundaries, reduces fan-out (currently avg_fan_out=5.8), and enables targeted testing per module.",
+  "implementation_strategy": "Refactor __init__.py by extracting functions into new modules: (1) Create syncserver/config.py to house import_settings_from_environment_variables, str_to_bool, generate_random_hex_key; (2) Create syncserver/wsgi.py to encapsulate includeme and get_configurator; (3) Keep staticnode.py as-is but ensure it depends only on config/wsgi via interfaces, not direct imports. Introduce a new syncserver/__init__.py that orchestrates module imports minimally. This preserves the single deployment unit while improving modularity and testability incrementally.",
+  "risks": "Risk of over-engineering in a small codebase; however, with only 5 core Python files, the refactor is low-effort and low-risk. Minimal runtime overhead is expected. No breaking changes to external interfaces if module boundaries are kept internal."
+}

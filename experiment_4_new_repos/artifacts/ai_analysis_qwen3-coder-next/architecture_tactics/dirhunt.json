@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules, especially in core components like crawler.py, processors.py, and url_info.py, which directly import many internal modules (e.g., crawler.py imports 12+ internal modules including processors, sessions, sources, url_info, etc.). Static analysis confirms high fan-out (avg 3.67, max in crawler.py likely >10) and evidence notes 'Heavy internal imports between modules without explicit service boundaries'. This coupling increases ripple effects during changes, reduces testability (e.g., testing processors requires mocking multiple concrete classes), and violates separation of concerns. Reducing coupling—by introducing abstractions like interfaces or dependency injection—will isolate modules, narrow change scope, and improve modularity.",
+  "target_components": [
+    "dirhunt/crawler.py",
+    "dirhunt/processors.py",
+    "dirhunt/url_info.py",
+    "dirhunt/sessions.py",
+    "dirhunt/sources/base.py",
+    "dirhunt/crawler_url.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., abstract base classes) for core responsibilities (e.g., 'UrlProcessor', 'SourceProvider', 'SessionFactory') and refactor concrete classes to depend on these interfaces rather than concrete implementations. For example, Crawler should depend on an abstract Source interface rather than importing specific source modules directly. This will decouple module dependencies, reduce fan-out, and enable easier substitution and testing.",
+  "implementation_strategy": "1. Identify high-coupling modules (e.g., crawler.py, processors.py) and extract their dependencies into interfaces (e.g., define abstract Source, Processor, Session classes). 2. Refactor concrete implementations (e.g., CommonCrawl, CrtSh, ProcessHtmlRequest) to implement these interfaces. 3. Inject dependencies via constructor or factory patterns instead of direct imports (e.g., Crawler.__init__ accepts Sources interface, not concrete classes). 4. Update imports to reference only interfaces, not concrete modules. 5. Add adapter/factory modules (e.g., dirhunt/factories/sources.py) to centralize concrete instantiation. 6. Incrementally refactor test files to mock interfaces instead of concrete classes.",
+  "risks": "Initial refactoring may increase complexity temporarily due to additional abstraction layers. Requires careful sequencing to avoid breaking existing functionality. Risk of over-engineering if interfaces are too generic; must be grounded in actual usage patterns (e.g., Sources already has a base class, which can be extended)."
+}

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: 9 Python files in a flat 'scripts' folder with no module/package structure, high average fan-out (13.22), mutual circular imports (e.g., Berry_Method imports berry_utility and stable_diffusion_processing, while Ebsynth_Processing imports both), and no separation of concerns (UI, business logic, and external service calls mixed in same files). The maintainability index averages 54.04 (below recommended 65), with files like berry_utility.py (mi=31.6) and sd-TemporalKit-UI.py (mi=32.6) showing critical complexity. Decomposability directly addresses this by introducing modular boundaries—grouping related functionality into cohesive, loosely-coupled modules (e.g., 'video_processing/', 'ui/', 'sd_integration/')—to isolate problems, reduce ripple effects, and improve testability. This tactic is implementable incrementally via file/folder reorganization without rewriting logic.",
+  "target_components": [
+    "scripts/Berry_Method.py",
+    "scripts/berry_utility.py",
+    "scripts/Ebsynth_Processing.py",
+    "scripts/optical_flow_raft.py",
+    "scripts/optical_flow_simple.py",
+    "scripts/sd-TemporalKit-UI.py",
+    "scripts/stable_diffusion_processing.py",
+    "scripts/TemporalKitImg2ImgTab.py"
+  ],
+  "expected_architectural_change": "Current flat 'scripts' folder will be restructured into logical subdirectories (e.g., 'video/', 'flow/', 'ui/', 'sd/') with clear module boundaries. Each module will expose well-defined interfaces (e.g., via a single public function or class per module), and cross-module dependencies will be inverted using dependency injection or interfaces to eliminate circular imports. Internal imports like 'import scripts.berry_utility as utilityb' will be replaced with 'from temporalkit.video import utilityb' style imports.",
+  "implementation_strategy": "1. Analyze function usage patterns across files to identify cohesive groups (e.g., video processing, optical flow, UI rendering). 2. Create new directories (e.g., 'temporalkit/video/', 'temporalkit/flow/') and move related files into them. 3. Extract shared utilities into a dedicated 'temporalkit/core/' module. 4. Replace mutual imports with explicit interfaces (e.g., define abstract base classes for 'FrameProcessor' or 'VideoIO'). 5. Introduce a top-level 'temporalkit/__init__.py' to expose clean public API. 6. Refactor imports to use relative imports within packages. 7. Add minimal module-level docstrings to clarify responsibilities.",
+  "risks": "Risk of temporary build breakage during refactoring due to import path changes; requires careful testing. May initially increase cognitive load as developers adapt to new structure. However, these are mitigated by incremental implementation (e.g., refactor one module at a time) and automated test coverage (which should be added concurrently)."
+}
