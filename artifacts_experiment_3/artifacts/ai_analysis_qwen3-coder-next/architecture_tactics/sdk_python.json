@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor localized change isolation due to tightly coupled generated and internal model layers. Core internal models (e.g., NotificationFilterPushUserInternal, PaymentServiceProviderCredentialInternal) inherit directly from generated API response classes in bunq/sdk/model/generated/, creating ripple effects when API contracts evolve. The static analysis flags 'C1' (coupling) and 'C2' (complexity), and the risks explicitly warn: 'Generated models and internal models are somewhat tightly coupled (e.g., internal model classes inherit from generated ones), which may reduce flexibility if API contracts evolve'. This tight coupling forces simultaneous changes across many files when the API changes—e.g., modifying a generated class like PaymentApiObject requires cascading updates across its internal subclasses, adapters, converters, and tests. Localized Modification (AT38) directly addresses this by increasing cohesion and narrowing modification scope.",
+  "target_components": [
+    "bunq/sdk/model/core/notification_filter_push_user_internal.py",
+    "bunq/sdk/model/core/notification_filter_url_monetary_account_internal.py",
+    "bunq/sdk/model/core/notification_filter_url_user_internal.py",
+    "bunq/sdk/model/core/payment_service_provider_credential_internal.py",
+    "bunq/sdk/model/generated/endpoint.py",
+    "bunq/sdk/model/core/device_server_internal.py",
+    "bunq/sdk/json/anchor_object_adapter.py",
+    "bunq/sdk/json/converter.py",
+    "bunq/sdk/model/core/bunq_model.py",
+    "bunq/sdk/model/core/anchor_object_interface.py"
+  ],
+  "expected_architectural_change": "Replace direct inheritance from generated models with composition: internal model classes will hold a reference to the generated model instance rather than extending it. This decouples the domain-specific internal representation from API response structure. Converters and adapters will handle transformation, and core models will encapsulate domain logic instead of mirroring API shape.",
+  "implementation_strategy": "1. Introduce an interface (e.g., InternalModelInterface) in the core layer that defines the required domain contract. 2. Refactor internal model classes to be composition-based—e.g., NotificationFilterPushUserInternal contains NotificationFilterPushUser and delegates only required fields/methods. 3. Extract adapter methods from converter.py to handle mapping between internal and generated representations. 4. Gradually move domain behavior from generated subclasses into core internal models. 5. Remove public API method overrides in internal subclasses, reducing ripple effects.",
+  "risks": "Incremental migration may temporarily increase code duplication (adapter boilerplate). Requires careful refactoring to avoid breaking test compatibility. Initial effort is moderate (hours per file) but yields strong long-term maintainability. No runtime performance impact expected."
+}

@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe maintainability issues caused by high coupling between modules and platform-specific code duplication. Static analysis confirms tight coupling (e.g., Linux/Mac/Windows modules importing from shared directories like 'lazagne.config.constant', 'lazagne.config.module_info', and 'lazagne.config.write_output' but also importing each other across directories, e.g., 'Linux/lazagne/softwares/memory/memorydump.py' imports 'memorpy' and 'lazagne', while Windows and Mac have near-identical structures). The directory tree shows duplicated 'config', 'softwares', and 'lib/memorpy' hierarchies across platforms (Linux/, Mac/, Windows/), causing ripple effects: modifying platform-specific logic (e.g., 'constant.py', 'write_output.py') requires cross-file updates across all three OS directories, violating modular cohesion. The 'MemWorker' class in 'memorpy' is duplicated in all three platforms, with platform-specific subclasses (e.g., 'LinProcess.py', 'WinProcess.py') tightly coupling low-level system calls directly to the core memory operations, increasing change scope. This localization problem makes bug fixes and feature additions risky and error-prone. AT38 directly addresses this by encouraging encapsulation of platform-specific logic into cohesive modules, localizing changes to small, well-defined units.",
+  "target_components": [
+    "Linux/lazagne/config/constant.py",
+    "Mac/lazagne/config/constant.py",
+    "Windows/lazagne/config/constant.py",
+    "Linux/lazagne/config/write_output.py",
+    "Mac/lazagne/config/write_output.py",
+    "Windows/lazagne/config/write_output.py",
+    "Linux/lazagne/config/lib/memorpy/LinProcess.py",
+    "Mac/lazagne/config/lib/memorpy/OSXProcess.py",
+    "Windows/lazagne/config/lib/memorpy/WinProcess.py",
+    "Linux/lazagne/softwares/memory/memorydump.py",
+    "Mac/lazagne/softwares/memory/memorydump.py",
+    "Windows/lazagne/softwares/memory/memorydump.py"
+  ],
+  "expected_architectural_change": "The platform-specific constants, output handling, and process management modules will be refactored into cohesive abstraction layers. Instead of having three copies of 'constant.py', a single 'config/constants/base.py' with platform-specific overrides (e.g., via factory or configuration strategy) will be introduced. Similarly, the 'memorpy' module will shift from deep inheritance hierarchies (e.g., 'LinProcess', 'OSXProcess' inheriting from 'BaseProcess' but tightly coupled to platform-specific code) to composition-based platform adapters, where a unified 'ProcessManager' uses platform-specific strategy objects. Platform-specific software modules (e.g., 'system/chainbreaker.py' only on Mac) will be encapsulated in their own interfaces, preventing cross-contamination.",
+  "implementation_strategy": "1. Extract shared constants (e.g., debug formatting, logging prefixes) into 'config/constants/base.py' and introduce a platform resolver (e.g., 'config/constants/platform.py') using a simple factory that selects platform-specific values (e.g., temp paths, credential file locations). 2. Refactor 'write_output.py' by extracting platform-dependent I/O into a separate 'OutputAdapter' interface, with concrete implementations for Linux/Mac/Windows (e.g., 'TerminalOutput', 'ansi_color_handler'). 3. Refactor the 'memorpy' module: decouple 'BaseProcess' from platform-specific logic by introducing an 'ISystemAccess' interface (e.g., 'IProcessLister', 'IMemoryReader') with platform-specific implementations (e.g., 'LinuxSystemAccess', 'WindowsSystemAccess'). 4. For 'memory/memorydump.py', replace direct imports of 'memorpy' platform modules with dependency injection, allowing platform-aware 'MemoryScanner' to be composed via configuration. This allows modifying one platform's behavior without touching core logic.",
+  "risks": "Risk of temporary feature regression during migration if platform-specific edge cases are not covered. Mitigation: Introduce comprehensive unit tests for each refactored component before merging. Another risk is over-engineering—if abstractions become too generic, flexibility may decrease; this is mitigated by starting with concrete patterns (e.g., strategy for constants, adapter for I/O) and evolving gradually while measuring cyclomatic complexity. Platform-specific duplicate files may appear during transition; these should be removed incrementally and only after all platform behaviors are fully covered."
+}

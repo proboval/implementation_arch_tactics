@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages directory exists (packages: 0), indicating flat module organization",
+    "All core logic (AirplaneEnv, Passenger, Lobby, etc.) is duplicated across main.py and new.py instead of being centralized in a shared module",
+    "Most functionality resides directly in top-level files without internal package structure (max_directory_depth: 1)",
+    "High code duplication across files suggests loose coupling and lack of formal modular boundaries",
+    "Core simulation classes and environment are defined inline in multiple files rather than isolated into cohesive modules",
+    "boarding_strategies.py contains strategy functions but remains flat and ungrouped"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "High maintainability debt due to duplicated code",
+    "Difficult to test and refactor without unintended side effects",
+    "Risk of feature duplication across scripts",
+    "Lack of encapsulation or clear boundaries between responsibilities"
+  ]
+}

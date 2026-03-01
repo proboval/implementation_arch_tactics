@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a monolithic Python script (silenthound.py) with 0 packages and maximum directory depth of 1, violating modular separation. Static analysis confirms: avg_fan_out=11.0 indicates tight coupling to 11 external dependencies (ldap3, colorama, etc.), mi_avg=0 indicates critical maintainability issues, and all methods in Pickler and Hound classes are stubbed (None) indicating no implementation boundaries. This tactic directly solves the root cause—lack of modular decomposition—by dividing the script into cohesive, loosely-coupled modules (e.g., authentication, LDAP, output, persistence), enabling testability and isolating changes. It targets the single file silenthound.py where all responsibilities (LDAP querying, printing, serialization, parsing) are mixed without abstraction.",
+  "target_components": [
+    "silenthound.py"
+  ],
+  "expected_architectural_change": "Transition from single-file script to modular monolith: extract Hound into multiple domain-specific modules (e.g., ldap_client.py, output.py, persistence.py, kerberoast.py) with clear boundaries; replace direct ldap3 imports with adapter interfaces; reduce fan-out by introducing abstraction layers (e.g., LdapClient interface); split Pickler into a dedicated persistence module.",
+  "implementation_strategy": "1. Refactor silenthound.py by extracting related responsibilities into new modules: (a) create ldap/ldap_client.py for LDAP interactions, (b) output/printing.py for table/graphic output, (c) persistence/serializer.py for Pickler, (d) core/kerberoast.py for Kerberoast logic. 2. Introduce well-defined interfaces (e.g., from abc import ABC) to abstract dependencies (ldap3, colorama), reducing direct coupling. 3. Replace top-level function calls with module-level methods and explicit dependency injection. 4. Gradually replace stubbed methods with concrete implementations per module. This preserves functionality while improving cohesion, testability, and readability incrementally without rewrites.",
+  "risks": "Short-term risk is temporary duplication during extraction; long-term risk is over-engineering if modules are too fine-grained. Mitigate by evolving modules incrementally and keeping module boundaries driven by actual usage patterns (e.g., colorama usage is isolated to print functions). Since repository has no existing tests, new modules should be unit-tested before refactoring legacy code paths."
+}

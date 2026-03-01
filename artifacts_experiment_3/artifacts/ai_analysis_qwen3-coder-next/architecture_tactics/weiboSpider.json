@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis shows low average fan-out (2.97) but hidden internal coupling exists: Parser modules directly depend on internal util functions (e.g., comment_parser imports from parser.util), Writers duplicate I/O logic (e.g., mysql_writer and mongo_writer both contain write_user/write_weibo without shared base behavior), and core domain classes (User, Weibo) are directly referenced across modules (e.g., info_parser imports User, page_parser imports Weibo), making changes ripple across unrelated modules. This coupling violates modularity in the modular monolith and risks architectural drift. Reduced coupling directly addresses this by introducing abstraction boundaries—specifically between writers and parsers via a decoupled domain model interface—and allows independent evolution of storage backends and parsing logic without requiring shared mutable state or concrete class dependencies.",
+  "target_components": [
+    "weibo_spider/parser/util.py",
+    "weibo_spider/writer/mysql_writer.py",
+    "weibo_spider/writer/mongo_writer.py",
+    "weibo_spider/writer/post_writer.py",
+    "weibo_spider/parser/comment_parser.py",
+    "weibo_spider/parser/page_parser.py",
+    "weibo_spider/parser/info_parser.py",
+    "weibo_spider/Weibo.py",
+    "weibo_spider/User.py"
+  ],
+  "expected_architectural_change": "Introduce a dedicated domain model interface (e.g., DataRecord, abstractions for User/Weibo) and decouple writers from parser internals by ensuring parsers return only interface-compliant objects (not concrete models). Remove direct cross-module imports of concrete classes (e.g., info_parser should import from .parser, not directly from user.py). Each writer should depend only on the Writer interface and a serializable data contract, not on concrete implementations like Weibo class. The parser/util.py module should be refactored into helper-only modules (e.g., html, text) to eliminate circular and deep dependency chains.",
+  "implementation_strategy": "Step 1: Define a minimal serializable DataRecord interface (e.g., via Protocol or abstract base class) that Weibo/User must implement. Step 2: Refactor parsers to return only DataRecord instances (not concrete Weibo/User), ensuring parse() returns standardized objects. Step 3: Update writers to consume only DataRecord, removing all imports of concrete classes (weibo.Weibo, user.User) except via the shared contract. Step 4: Extract parser/util.py into stateless utility modules (e.g., html_parser, encoding) with no module-level state. Step 5: Replace internal direct imports (e.g., comment_parser → parser.util) with interface-based references or move shared functions to a new shared.util package with bounded scope.",
+  "risks": "Short-term: Refactoring parsers may increase initial effort and risk regressions if data contracts are misdefined. Long-term: Without strict enforcement, new modules may reintroduce coupling. Mitigation: Add integration tests per writer/parser pair, enforce contract compliance in CI, and gradually audit imports using static analysis (e.g., flake8-import-constraints or custom pre-commit hooks)."
+}

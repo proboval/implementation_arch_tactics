@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core WebSocket logic and testing infrastructure: tests/conftest.py subclasses WebsocketServer and tests/test_text_messages.py and tests/test_message_lengths.py import websocket_server directly without abstraction, while websocket_server/websocket_server.py internally imports from .thread (circular-like internal dependency within same package). The imports graph shows tests/conftest.py imports websocket_server directly and tests/test_handshake.py imports only WebSocketHandler, indicating inconsistent coupling patterns. The static analysis flags 'A3' (likely coupling-related factor) and 'A1' (likely cohesion-related factor), and docstring_coverage is 0% (U2/U3), indicating poor internal documentation that compounds coupling issues. Since the architecture is a modular monolith with low fan-out (3.5 avg), but no clear abstraction layers, the primary maintainability risk is ripple effects when modifying internal behavior (e.g., WebSocketHandler or WebsocketServer internals). This can be remediated incrementally by introducing explicit interfaces/abstractions between core components.",
+  "target_components": [
+    "websocket_server/websocket_server.py",
+    "websocket_server/thread.py",
+    "tests/conftest.py",
+    "tests/test_handshake.py"
+  ],
+  "expected_architectural_change": "Introduce explicit abstraction interfaces (e.g., HandshakeHandler, MessageHandler, ClientManager) that decouple core responsibilities. WebsocketServer will depend on interfaces rather than concrete implementations, enabling injection and testing isolation. Currently, WebsocketServer inherits ThreadingMixIn + TCPServer + API (God class smell), and WebSocketHandler contains both network I/O and business logic (handshake, message parsing, connection management). Reduced coupling will separate these concerns: WebSocketHandler becomes a thin adapter, with message/protocol handling delegated via abstractions.",
+  "implementation_strategy": "Step 1: Extract interfaces from WebsocketServer (e.g., ClientManager, MessageBroadcaster) and WebSocketHandler (e.g., FrameReader, FrameWriter, HandshakeValidator). Step 2: Refactor websocket_server.py to depend on these interfaces (via composition, not inheritance of ThreadingMixIn directly into API). Step 3: Introduce adapter modules (e.g., websocket_server/adapters.py) with concrete implementations. Step 4: Update tests to mock abstractions via dependency injection (e.g., conftest.py injects mocks into server constructor). This yields modularization without changing deployment unit.",
+  "risks": "Increased indirection may slightly complicate initial understanding for new contributors; however, the current lack of tests and documentation already compensates for this. The existing ThreadingMixIn pattern tightly couples server threading to protocol logic—decoupling may require minor API evolution (e.g., move run_forever to a separate runner class), but this can be done incrementally. No risk of breaking functionality: backward compatibility is maintained by keeping public API unchanged while refactoring internal structure."
+}

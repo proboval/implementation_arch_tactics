@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from tight coupling between business logic (e.g., User_Functions, InsertData) and infrastructure (direct mysql.connector usage scattered across core/Checks.py, core/InsertData.py, core/User_Functions.py). This causes ripple effects: changes to database connections or schema require modifications in multiple unrelated modules. Static analysis confirms high fan-out and cross-module dependencies (e.g., InsertData imports core, Checks imports core.InsertData), and architecture description explicitly cites 'tight coupling between business logic and infrastructure' as a key risk. Reduced coupling directly addresses this by introducing abstraction layers (e.g., a data access layer) to isolate database dependencies, enabling isolated testing and localized changes. This tactic is implementable incrementally (e.g., extract database operations into an adapter module) and fits the current flat module structure without requiring a full rewrite.",
+  "target_components": [
+    "core/Checks.py",
+    "core/InsertData.py",
+    "core/User_Functions.py"
+  ],
+  "expected_architectural_change": "Introduction of a new abstraction layer (e.g., core/database_adapter.py) that encapsulates all mysql.connector logic. Business modules (Checks, InsertData, User_Functions) will depend on this adapter via a well-defined interface, eliminating direct mysql.connector imports from them. Core modules will no longer import each other directly for data access; instead, they will delegate to the adapter.",
+  "implementation_strategy": "1. Extract all database-related functions (e.g., connection, queries) into a new core/database.py module that defines interfaces (e.g., DatabaseClient) without business logic. 2. Update core/InsertData.py, core/Checks.py, and core/User_Functions.py to depend on this new module via dependency injection or constructor parameters instead of direct mysql.connector imports. 3. Replace 'import mysql' in existing modules with 'from core.database import DatabaseClient'. 4. Introduce minimal dependency injection (e.g., pass db instance to functions or use a simple registry). 5. Keep existing function signatures initially to minimize disruption while decoupling the actual database implementation.",
+  "risks": "Temporary increase in code volume during transition, potential for circular imports if abstraction isn’t carefully designed, and risk of over-engineering if the adapter becomes too generic. However, these risks are mitigated by incremental implementation (start with database access only, not full domain logic) and the flat module structure allows easy module addition without package restructuring."
+}

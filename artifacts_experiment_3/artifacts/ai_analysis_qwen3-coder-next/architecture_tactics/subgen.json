@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a flat script-based monolith (0 packages, depth=1) with high fan-out (15.5) and dozens of mixed-responsibility functions (e.g., webhooks, transcription, subtitle naming, metadata refresh, ASR workers) all in subgen.py. This violates maintainability: low cohesion, high coupling, and poor testability. Decomposability directly addresses this by forcing modular separation of concerns—e.g., isolating webhook handling (Plex/Jellyfin/Tautulli), ASR orchestration, subtitle generation, and metadata refresh into distinct modules. This is implementable incrementally: extract subgen.py’s functional areas into subdirectories (e.g., subgen/webhooks/, subgen/asr/, subgen/subtitles/), breaking global state dependencies and enabling focused testing.",
+  "target_components": [
+    "subgen.py",
+    "launcher.py",
+    "subgen/webhooks",
+    "subgen/asr",
+    "subgen/subtitles",
+    "subgen/media"
+  ],
+  "expected_architectural_change": "Conversion from flat script (monolithic file) to a modular monolith with logical domain modules (e.g., subgen/asr/worker.py, subgen/webhooks/plex.py). Each module encapsulates related responsibilities (e.g., transcription workers only handle ASR, not webhooks), reducing global coupling and enabling independent testing. DeduplicatedQueue and global state can be gradually migrated to injected dependencies.",
+  "implementation_strategy": "Step 1: Identify cohesive function groups (e.g., webhook receivers → subgen/webhooks/, transcription/ASR workers → subgen/asr/, subtitle naming/writing → subgen/subtitles/). Step 2: Create corresponding directories and __init__.py files; move related functions/classes into modules, extracting interfaces (e.g., WebhookReceiver) to decouple handlers from logic. Step 3: Replace global function imports with explicit module imports and inject shared state (DeduplicatedQueue) via constructor or factory, rather than global access. Step 4: Refactor subgen.py to act as an entry-point orchestrator, delegating to modules. This preserves the current execution flow while progressively improving cohesion and testability.",
+  "risks": "Risk of breaking runtime behavior during incremental extraction due to circular imports or hidden dependencies on global state (e.g., threading locks, model caches). Mitigation: write smoke tests for each extracted module before refactoring, and use dependency injection for global resources (e.g., queue, model manager) rather than direct access. Also, ensure backward compatibility of launcher.py’s entrypoint by keeping minimal glue in the root."
+}

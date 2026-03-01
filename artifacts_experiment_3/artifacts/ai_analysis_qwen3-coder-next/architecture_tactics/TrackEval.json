@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (5.1), extensive cross-package imports, and deep inheritance chains — e.g., BURST and TAO datasets inherit from _BaseDataset but also call into trackeval.datasets.burst_helpers.format_converter and other nested modules, indicating weak modularity and blurred separation of responsibilities. Static analysis flags C1 (cyclic dependencies), C2 (coupling), and A3 (lack of layered structure) — all pointing to poor decomposability. The burst_helpers/ subpackage is nested directly under datasets/ without clear adapter or boundary interfaces, violating module encapsulation. Introducing decomposability will isolate dataset-specific logic (e.g., BURST, TAO), expose stable adapters, and decouple dataset parsing from evaluation logic (eval.py), improving testability and changeability.",
+  "target_components": [
+    "trackeval/datasets/_base_dataset.py",
+    "trackeval/datasets/burst_helpers/format_converter.py",
+    "trackeval/datasets/burst.py",
+    "trackeval/datasets/tao.py",
+    "trackeval/eval.py",
+    "trackeval/datasets/__init__.py",
+    "scripts/run_*.py"
+  ],
+  "expected_architectural_change": "Introduce a dedicated adapters layer (e.g., trackeval/adapters/) where dataset-specific format converters (e.g., format_converter.py, burst_helpers/*) become explicit adapters implementing a standardized interface (e.g., _BaseFormatAdapter). Each dataset module (e.g., burst.py, tao.py) will depend solely on its adapter interface, not internal helper files. eval.py will receive data via standardized preprocessed structures, not raw dataset internals. This eliminates direct imports like 'from .burst_helpers.format_converter import ...' in dataset files and replaces them with interface-based composition.",
+  "implementation_strategy": "1. Refactor format_converter.py and burst_helpers/* into trackeval/adapters/, each implementing _BaseFormatAdapter with methods like load_ground_truth(), load_predictions(), remap_ids(). 2. Update _BaseDataset to accept adapters via constructor, removing internal helper imports. 3. Inject adapters via factory methods in dataset __init__.py instead of direct module imports. 4. Refactor scripts/*.py to use evaluator.evaluate(config, adapters=[...]) signature. 5. Add tests per dataset using mock adapters to verify decoupling.",
+  "risks": "Intermediate risk: Requires careful migration of cross-imports; temporary duplication of adapter classes may occur. However, due to existing clean interface (_BaseDataset, _BaseMetric), change can be done incrementally per-dataset (e.g., start with BURST or DAVIS), minimizing disruption. High test coverage in tests/ mitigates regression risk."
+}

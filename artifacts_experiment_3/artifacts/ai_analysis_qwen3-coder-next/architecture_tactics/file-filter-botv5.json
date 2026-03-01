@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor modularization — it is classified as a 'modular_monolith' with 0 packages (flat Python structure), high average fan-out (5.17), and plugins directly importing database modules and shared utilities (e.g., utils.py imports database, bs4, imdb, pyrogram; plugins/broadcast.py imports database, asyncio, utils, info). This tight coupling across concerns (e.g., plugins importing db + utils + info + pyrogram) violates separation of concerns and hinders testability, change isolation, and maintainability. Static analysis confirms this via 'A3' (low decomposability factor). The directory structure (plugins/, database/) already suggests logical boundaries — decomposability tactic leverages this by formalizing them into importable packages with explicit interfaces, reducing ripple effects and improving testability.",
+  "target_components": [
+    "plugins/",
+    "database/",
+    "utils.py",
+    "info.py"
+  ],
+  "expected_architectural_change": "The current flat module structure (no __init__.py packages) will be replaced with formal Python packages (e.g., src/ plugins/, src/ database/, src/ domain/). Each module (e.g., plugins/broadcast.py, database/filters_mdb.py) will become part of a cohesive package. Cross-module dependencies will be reified through well-defined abstractions: e.g., a PluginInterface or use case layer decoupling plugins from database implementations. The current circular dependencies (e.g., utils.py ↔ database) will be broken by introducing interfaces (e.g., IDatabaseService) and moving shared types into a new domain or shared package.",
+  "implementation_strategy": "1. Create src/ top-level package with subpackages: src/plugins/, src/database/, src/domain/, src/shared/. 2. Add __init__.py files and refactor modules (e.g., move plugins/broadcast.py → src/plugins/broadcast.py). 3. Define abstractions (e.g., src/database/interfaces.py with ABC-based DatabaseABC, src/shared/services.py with abstract service contracts). 4. Refactor utils.py to depend on interfaces, not concrete database modules. 5. Refactor plugins to import via interfaces (e.g., from database.interfaces import MediaRepository). 6. Inject dependencies at plugin registration via factory or DI pattern (e.g., Bot.__init__(media_repo, user_repo)). 7. Incrementally migrate imports while preserving runtime compatibility. 8. Add test fixtures per package (e.g., tests/plugins/test_broadcast.py with mocked database dependencies).",
+  "risks": "Risk of breaking existing imports during refactoring; mitigate by keeping backward-compatible aliases (e.g., import database.* as legacy_db in old imports) and using feature branches. Tight coupling to pyrogram types in utils and plugins may require introducing adapters before full decoupling — defer that until core decomposability is in place. Initial refactoring may increase cyclomatic complexity in intermediate layers (e.g., interface adapters), but this is temporary and improves long-term maintainability."
+}

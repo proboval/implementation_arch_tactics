@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits strong modularity in its directory structure but suffers from insufficient *behavioral* decomposition: multiple high-impact modules (e.g., mmseg.models.decode_heads.decode_head, mmseg.datasets.custom, mmseg.datasets.builder) contain deeply nested conditionals, mixed concerns (training, inference, logging, evaluation), and multi-thousand-line files (e.g., train.py, test.py, custom.py). Static analysis confirms high cognitive complexity (factors include 'T4' and 'A1'). This violates maintainability principles because testability and analyzability require that each module perform a single, well-defined responsibility—currently violated in pipeline composition, dataset handling, and model building logic. The solution is to apply Decomposability: break monolithic modules into smaller, purpose-specific units without changing the registry-based extensibility, directly improving testability and reducing ripple effects during change.",
+  "target_components": [
+    "mmseg/datasets/custom.py",
+    "mmseg/datasets/builder.py",
+    "mmseg/models/decode_heads/decode_head.py",
+    "mmseg/apis/train.py",
+    "mmseg/apis/test.py",
+    "mmseg/datasets/pipelines/compose.py"
+  ],
+  "expected_architectural_change": "Monolithic core modules (custom.py, builder.py, decode_head.py) will be split into focused, single-responsibility components (e.g., DatasetLoader, AnnotationValidator, AnnotationPreprocessor, EvaluationPlanner) while preserving the existing registry abstraction boundaries. Pipeline composition will shift from a linear Compose loop to a chain of composable decorators or strategies. The public APIs remain unchanged, but internal coupling between dataset loading, transform application, evaluation, and logging will be reduced, increasing cohesion within each unit.",
+  "implementation_strategy": "1. Identify responsibilities within mmseg/datasets/custom.py: load_annotations, prepare_train_img, format_results, evaluate—each becomes a separate interface/abstract base. 2. Extract annotation loading and preprocessing into dedicated classes implementing a unified interface. 3. Refactor builder.py to delegate dataset assembly to role-specific builders (LoaderBuilder, TransformBuilder, EvaluatorBuilder) instead of one monolithic build_dataset. 4. Split train.py/test.py logic into orchestrators that compose these smaller components. 5. Introduce explicit interfaces (e.g., EvaluationPlanner, MetricAggregator) to replace inline conditional metric computation. All changes preserve the Registry's role and API signatures.",
+  "risks": "Low: Changes are additive and testable incrementally (e.g., one dataset pipeline step at a time). Risk of temporary duplication during refactoring is mitigated by the existing extensive test suite (mmseg/datasets/test_*.py), allowing safe refactoring with continuous validation. No new deployment or runtime dependencies introduced; purely internal refactoring."
+}

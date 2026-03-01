@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "data/interfaces.py",
+  "content": "from abc import ABC, abstractmethod\nimport torch.utils.data\n\n\nclass IDataLoader(ABC):\n    \"\"\"Interface for data loaders.\"\"\"\n    \n    @abstractmethod\n    def load_data(self):\n        \"\"\"Return the dataset object.\"\"\"\n        pass\n    \n    @abstractmethod\n    def __len__(self):\n        \"\"\"Return the number of batches.\"\"\"\n        pass\n\n\nclass IDatasetFactory(ABC):\n    \"\"\"Interface for dataset factories.\"\"\"\n    \n    @abstractmethod\n    def get_by_name(self, dataset_name, *args, **kwargs):\n        \"\"\"Return a dataset instance by name.\"\"\"\n        pass\n\n\nclass IDataset(ABC, torch.utils.data.Dataset):\n    \"\"\"Interface for datasets.\"\"\"\n    \n    @abstractmethod\n    def name(self):\n        \"\"\"Return dataset name.\"\"\"\n        pass\n    \n    @abstractmethod\n    def path(self):\n        \"\"\"Return dataset path.\"\"\"\n        pass\n    \n    @abstractmethod\n    def get_transform(self, opt, *args, **kwargs):\n        \"\"\"Return transform based on options.\"\"\"\n        pass\n"
+}

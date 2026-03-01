@@ -1,0 +1,29 @@
+{
+  "python_files": 4,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "darkscrape.py": [
+      "requests",
+      "modules",
+      "subprocess"
+    ],
+    "modules\\file.py": [
+      "xlrd",
+      "requests",
+      "os",
+      "csv",
+      "subprocess",
+      "face_recognition",
+      "bs4"
+    ],
+    "modules\\url.py": [
+      "os",
+      "requests",
+      "subprocess",
+      "bs4"
+    ],
+    "modules\\__init__.py": []
+  }
+}

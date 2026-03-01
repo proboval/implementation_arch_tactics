@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "scratch/math_abstractions.py",
+  "content": "from typing import List, Protocol, runtime_checkable\n\n@runtime_checkable\nclass VectorLike(Protocol):\n    def __len__(self) -> int: ...\n    def __getitem__(self, idx: int) -> float: ...\n    def __iter__(self): ...\n\nVector = List[float]\n\n@runtime_checkable\nclass MatrixLike(Protocol):\n    def __len__(self) -> int: ...\n    def __getitem__(self, idx: int) -> Vector: ...\n\nMatrix = List[Vector]\n"
+}

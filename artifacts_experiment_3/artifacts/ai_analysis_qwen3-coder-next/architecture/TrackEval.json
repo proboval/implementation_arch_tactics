@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single codebase with clear package/module boundaries: trackeval/, scripts/, tests/, datasets/, metrics/, baselines/",
+    "Central core (trackeval) with well-defined layers: datasets and metrics both inherit from abstract base classes (_BaseDataset, _BaseMetric), indicating separation of concerns and dependency inversion",
+    "Script-based entry points (scripts/*.py) that import from the core library — typical of modular monoliths where CLI tools call reusable core modules",
+    "No external service communication patterns; all functionality is within one Python package",
+    "High average fan-out (5.1) indicates modules depend on many others, consistent with cohesive monolithic architecture rather than microservices or hexagonal (which would enforce stricter isolation)",
+    "Package structure matches standard Python modular monolith: shared utilities (utils.py), domain models (datasets, metrics), and adapters (baselines)",
+    "Minimal coupling: each dataset and metric implements interface and imports only from core (no cross-dataset/metric dependencies)"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between modules (high fan-out) may reduce testability and modularity over time",
+    "Shared imports (e.g., multiple modules importing from . import utils) could create circular dependencies if unmanaged",
+    "No explicit dependency injection pattern; configuration via dict-like defaults (init_config) could reduce flexibility in complex deployments"
+  ]
+}

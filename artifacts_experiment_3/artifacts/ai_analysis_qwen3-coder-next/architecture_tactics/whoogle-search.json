@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits critical maintainability issues where utility modules like 'app/utils/misc.py' and 'app/utils/search.py' contain highly diverse, unrelated responsibilities—misc.py alone imports cryptography, httpx, flask, bs4, hashlib, re, urllib, contextlib, io, base64. This violates cohesion and makes changes risky and hard to scope (high fan-out of 4.36 confirms modules are tightly aware of many others). Static analysis flags 'C1' (likely high coupling) and 'C2' (likely low cohesion) explicitly. For example, misc.py handles URI parsing, encryption, config reading, and favicon fetching—all in one module. Similarly, search.py couples query generation, captcha detection, and result rendering. Localized Modification directly addresses this by grouping related responsibilities into cohesive, bounded modules, shrinking the scope of change and eliminating ripple effects across unrelated functionality. This is implementable incrementally without architectural overhaul.",
+  "target_components": [
+    "app/utils/misc.py",
+    "app/utils/search.py",
+    "app/filter.py",
+    "app/request.py"
+  ],
+  "expected_architectural_change": "Disaggregate high-fanout utility modules into focused submodules. For example, split misc.py into: crypto_utils.py (encryption/decryption), uri_utils.py (URL parsing/normalization), config_utils.py (config loading/validation), and favicon_utils.py. search.py could split into query_builder.py and result_parser.py. Filter.py's responsibilities (HTML parsing, CSS cleaning, link transformation) would decompose into separate strategy classes (e.g., html_sanitizer.py, css_sanitizer.py, link_transformer.py). New directories like app/utils/crypto/, app/utils/uri/, app/filter/strategy/ will emerge, each with cohesive, single-responsibility modules and reduced cross-module dependencies.",
+  "implementation_strategy": "1. Identify cohesive subdomains within misc.py/search.py/filter.py by analyzing import graph and method groupings (e.g., all encryption methods → crypto_utils.py). 2. Create new modules with minimal interface changes (prefer composition over inheritance). 3. Update imports sequentially—start with least-used functions to minimize test breakage. 4. Introduce thin adapter modules (e.g., app/utils/__init__.py re-exports for backward compatibility) during migration. 5. Enforce cohesion via linter rules (e.g., max imports per module, group imports by domain). All changes occur within existing layered structure (utils → models/services), preserving unidirectional flow. No changes to routes or app entry points needed.",
+  "risks": "Short-term risk: temporary import fragmentation during migration may cause test failures. Long-term risk: if submodules are too granular, may increase cognitive overhead (mitigated by clear module naming and documentation). However, since the repository already has shallow depth and clear layer boundaries, these risks are low and controllable. The tactic avoids breaking existing behavior—only refactors module boundaries, preserving all functionality and testing strategy."
+}

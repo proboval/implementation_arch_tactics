@@ -1,0 +1,29 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: all enumeration logic (GoogleEnum, BingEnum, etc.) is defined in a single monolithic file (sublist3r.py), sharing no abstractions beyond a shared base class. Static analysis confirms high fan-out (8.5), minimal package count (1), and zero modularity (MI=0, files_analyzed=0). This prevents independent testing of search strategies, hinders reuse of specific enumators, and creates tight coupling between discovery mechanisms and orchestration. Decomposability directly addresses this by structuring the system into clearly bounded modules—e.g., separating each domain enumator (GoogleEnum, BingEnum) into its own module or logical unit—enabling easier analysis, testing, and maintenance of individual concerns. This is implementable incrementally by extracting classes into dedicated modules (e.g., enumators/google.py, enumators/bing.py) without rewriting the entire system.",
+  "target_components": [
+    "sublist3r.py",
+    "enumratorBase",
+    "enumratorBaseThreaded",
+    "GoogleEnum",
+    "BingEnum",
+    "BaiduEnum",
+    "YahooEnum",
+    "AskEnum",
+    "NetcraftEnum",
+    "DNSdumpster",
+    "Virustotal",
+    "ThreatCrowd",
+    "CrtSearch",
+    "PassiveDNS"
+  ],
+  "expected_architectural_change": "The flat single-file structure of enumeration classes will be refactored into a module-based hierarchy: a core enumators/ package with individual modules per search engine (e.g., google.py, bing.py), possibly grouped by shared traits (e.g., google_bing.py for similar engines). The main entrypoint sublist3r.py will evolve from a direct orchestrator into a composition layer that imports and instantiates modules via a common interface, enabling dynamic loading and isolated unit testing.",
+  "implementation_strategy": "Step 1: Create new package enumators/ with __init__.py and modules for each enumator class (e.g., google.py containing GoogleEnum). Step 2: Refactor base classes into a shared base.py module under enumators/. Step 3: Import and instantiate enumators in sublist3r.py via the new modules, replacing inline definitions. Step 4: Introduce a minimal interface (e.g., BaseEnum) to decouple orchestration from concrete implementations. Step 5: Add unit test files alongside each module (e.g., enumators/test_google.py). This preserves existing behavior while introducing decomposition with minimal behavioral change.",
+  "risks": "Risk of temporary duplication if base class logic is not cleanly centralized. May introduce import-cycle dependencies if modules reference each other prematurely. However, these risks are mitigated by incremental extraction and avoiding cross-module dependencies during phase 1."
+}

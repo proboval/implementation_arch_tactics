@@ -1,0 +1,37 @@
+{
+  "python_files": 3,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "general_json2yolo.py": [
+      "utils",
+      "pandas",
+      "cv2",
+      "json",
+      "contextlib",
+      "pathlib",
+      "PIL",
+      "collections"
+    ],
+    "labelbox_json2yolo.py": [
+      "utils",
+      "tqdm",
+      "json",
+      "pathlib",
+      "requests",
+      "os",
+      "PIL",
+      "yaml"
+    ],
+    "utils.py": [
+      "numpy",
+      "tqdm",
+      "PIL",
+      "pathlib",
+      "shutil",
+      "os",
+      "glob"
+    ]
+  }
+}

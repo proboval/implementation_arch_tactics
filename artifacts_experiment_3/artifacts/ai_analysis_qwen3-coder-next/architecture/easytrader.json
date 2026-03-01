@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear module separation by domain (clienttrader, follower, webtrader, utils, config, miniqmt)",
+    "Shared core abstraction layers (IClientTrader, IGridStrategy, IRefreshStrategy, BaseFollower, WebTrader)",
+    "Bidirectional imports within the main package (e.g., clienttrader imports from grid_strategies, utils, config)",
+    "No service boundaries or inter-service communication patterns (e.g., no RPC, message queues, or REST service endpoints between modules)",
+    "Single deployment unit (single Python package 'easytrader')",
+    "Multiple trader implementations (GF, GJ, HT, etc.) follow common inheritance from BaseLoginClientTrader",
+    "Follower and Trader patterns are closely coupled within same package"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal"
+  ],
+  "risks": [
+    "Some modules (e.g., clienttrader, follower) have high coupling through shared utilities and config",
+    "WebTrader and ClientTrader branches show partial overlap but lack strict separation of concerns",
+    "No explicit ports/adapters boundary (violating hexagonal intent despite some adapter-like patterns)"
+  ]
+}

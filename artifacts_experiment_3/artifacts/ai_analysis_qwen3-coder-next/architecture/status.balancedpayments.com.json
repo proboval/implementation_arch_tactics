@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single deployable unit with all components in one repository (no separate services)",
+    "Clear separation into logical modules: 'situation' (core app), 'tests', 'venv' (dependencies)",
+    "Domain-specific modules: 'tweeter', 'sms', 'uptime', 'models', 'mailer' with focused responsibilities",
+    "Shared core 'models.py' and 'settings.py' indicating cohesive business logic",
+    "No inter-service communication patterns (e.g., no REST/gRPC clients, message queues, service discovery)",
+    "Database models use Google App Engine's db.Model (single datastore access point)",
+    "Shared dependencies in 'requirements.txt' deployed together",
+    "Static assets served from within the same app ('situation/static')"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling risk due to shared data models across modules",
+    "Potential scalability limitations without service decomposition",
+    "Module boundaries may become blurred over time without strict enforcement"
+  ]
+}

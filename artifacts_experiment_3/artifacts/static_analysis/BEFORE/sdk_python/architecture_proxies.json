@@ -1,0 +1,374 @@
+{
+  "python_files": 97,
+  "packages": 18,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 5.388888888888889,
+  "imports_graph": {
+    "run.py": [
+      "sys"
+    ],
+    "setup.py": [
+      "os",
+      "setuptools",
+      "codecs"
+    ],
+    "bunq\\__init__.py": [
+      "datetime",
+      "bunq",
+      "typing",
+      "inspect"
+    ],
+    "tests\\bunq_test.py": [
+      "time",
+      "typing",
+      "os",
+      "bunq",
+      "unittest"
+    ],
+    "tests\\config.py": [
+      "os",
+      "bunq",
+      "typing",
+      "json"
+    ],
+    "tests\\__init__.py": [],
+    "bunq\\sdk\\__init__.py": [],
+    "bunq\\sdk\\context\\api_context.py": [
+      "__future__",
+      "typing",
+      "datetime",
+      "bunq",
+      "Cryptodome"
+    ],
+    "bunq\\sdk\\context\\api_environment_type.py": [
+      "aenum"
+    ],
+    "bunq\\sdk\\context\\bunq_context.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\context\\installation_context.py": [
+      "Cryptodome"
+    ],
+    "bunq\\sdk\\context\\session_context.py": [
+      "__future__",
+      "datetime",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\context\\user_context.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\context\\__init__.py": [],
+    "bunq\\sdk\\exception\\api_exception.py": [],
+    "bunq\\sdk\\exception\\bad_request_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\bunq_exception.py": [],
+    "bunq\\sdk\\exception\\exception_factory.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\exception\\forbidden_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\method_not_allowed_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\not_found_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\please_contact_bunq_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\too_many_requests_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\unauthorized_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\uncaught_exception_error.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\unknown_api_error_exception.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\exception\\__init__.py": [],
+    "bunq\\sdk\\http\\anonymous_api_client.py": [
+      "requests",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\http\\api_client.py": [
+      "__future__",
+      "urllib",
+      "uuid",
+      "requests",
+      "typing",
+      "bunq"
+    ],
+    "bunq\\sdk\\http\\bunq_response.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\http\\bunq_response_raw.py": [
+      "typing"
+    ],
+    "bunq\\sdk\\http\\http_util.py": [
+      "typing"
+    ],
+    "bunq\\sdk\\http\\pagination.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\http\\__init__.py": [],
+    "bunq\\sdk\\json\\anchor_object_adapter.py": [
+      "__future__",
+      "bunq"
+    ],
+    "bunq\\sdk\\json\\api_environment_type_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\converter.py": [
+      "sys",
+      "__future__",
+      "inspect",
+      "re",
+      "json",
+      "typing",
+      "bunq",
+      "warnings",
+      "types"
+    ],
+    "bunq\\sdk\\json\\date_time_adapter.py": [
+      "datetime",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\float_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\geolocation_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\installation_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\installation_context_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\monetary_account_reference_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\pagination_adapter.py": [
+      "urllib",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\session_server_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\share_detail_adapter.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\json\\__init__.py": [],
+    "bunq\\sdk\\model\\__init__.py": [],
+    "bunq\\sdk\\security\\security.py": [
+      "__future__",
+      "requests",
+      "base64",
+      "re",
+      "typing",
+      "hashlib",
+      "bunq",
+      "hmac",
+      "Cryptodome"
+    ],
+    "bunq\\sdk\\security\\__init__.py": [],
+    "bunq\\sdk\\util\\type_alias.py": [
+      "typing"
+    ],
+    "bunq\\sdk\\util\\util.py": [
+      "__future__",
+      "requests",
+      "json",
+      "socket",
+      "bunq"
+    ],
+    "bunq\\sdk\\util\\__init__.py": [],
+    "bunq\\sdk\\model\\core\\anchor_object_interface.py": [],
+    "bunq\\sdk\\model\\core\\bunq_model.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\device_server_internal.py": [
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\id.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\installation.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\notification_filter_push_user_internal.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\notification_filter_url_monetary_account_internal.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\notification_filter_url_user_internal.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\oauth_access_token.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\oauth_authorization_uri.py": [
+      "__future__",
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\oauth_grant_type.py": [
+      "aenum"
+    ],
+    "bunq\\sdk\\model\\core\\oauth_response_type.py": [
+      "aenum"
+    ],
+    "bunq\\sdk\\model\\core\\payment_service_provider_credential_internal.py": [
+      "__future__",
+      "bunq",
+      "typing",
+      "json"
+    ],
+    "bunq\\sdk\\model\\core\\public_key_server.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\session_server.py": [
+      "__future__",
+      "bunq",
+      "typing"
+    ],
+    "bunq\\sdk\\model\\core\\session_token.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\uuid.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\core\\__init__.py": [],
+    "bunq\\sdk\\model\\generated\\endpoint.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\generated\\object_.py": [
+      "bunq"
+    ],
+    "bunq\\sdk\\model\\generated\\__init__.py": [],
+    "tests\\context\\test_api_context.py": [
+      "os",
+      "bunq",
+      "tests",
+      "json"
+    ],
+    "tests\\context\\test_psd2_context.py": [
+      "os",
+      "bunq",
+      "unittest",
+      "tests"
+    ],
+    "tests\\context\\test_user_context.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\context\\__init__.py": [],
+    "tests\\http\\test_bad_request_with_response_id.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\http\\test_pagination.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\http\\test_pagination_scenario.py": [
+      "bunq",
+      "time",
+      "tests",
+      "typing"
+    ],
+    "tests\\http\\__init__.py": [],
+    "tests\\model\\__init__.py": [],
+    "tests\\model\\core\\test_notification_filter.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\core\\test_oauth_authorization_uri.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\generated\\__init__.py": [],
+    "tests\\model\\generated\\endpoint\\test_attachment_public.py": [
+      "tests",
+      "bunq",
+      "typing"
+    ],
+    "tests\\model\\generated\\endpoint\\test_avatar.py": [
+      "tests",
+      "bunq",
+      "typing"
+    ],
+    "tests\\model\\generated\\endpoint\\test_card_debit.py": [
+      "random",
+      "string",
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\generated\\endpoint\\test_monetary_account_bank.py": [
+      "os",
+      "bunq",
+      "tests",
+      "secrets"
+    ],
+    "tests\\model\\generated\\endpoint\\test_monetary_account_joint.py": [
+      "os",
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\generated\\endpoint\\test_payment.py": [
+      "tests",
+      "bunq",
+      "typing"
+    ],
+    "tests\\model\\generated\\endpoint\\test_request_inquiry.py": [
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\generated\\endpoint\\test_session.py": [
+      "bunq",
+      "time",
+      "tests"
+    ],
+    "tests\\model\\generated\\endpoint\\__init__.py": [],
+    "tests\\model\\generated\\object\\test_notification_url.py": [
+      "typing",
+      "json",
+      "os",
+      "bunq",
+      "tests"
+    ],
+    "tests\\model\\generated\\object\\__init__.py": []
+  }
+}

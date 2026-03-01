@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals low cohesion and high ripple risk in product and stock modules: `projeto/produto/views.py` (42 imports including pandas, xlrd, xlwt, csv, io, datetime, forms, models, actions) and `projeto/estoque/views.py` (14 imports including forms, models, actions, protocolos) handle cross-cutting concerns (business rules, export, import, UI, validation, domain logic) in monolithic files. Directory depth 4 and fan-out 1.64 suggest modules are layered but not cohesive — especially `actions` and `views` mix I/O (CSV/XLSX), domain transformations, and Django plumbing. This violates localized modification: any change (e.g., adding a new export format) cascades across many modules and files, increasing testing scope and regression risk. This tactic directly targets these files to increase cohesion and isolate change scope.",
+  "target_components": [
+    "projeto/produto/views.py",
+    "projeto/produto/actions/export_xlsx.py",
+    "projeto/produto/actions/import_xlsx.py",
+    "projeto/estoque/views.py",
+    "projeto/estoque/forms.py",
+    "projeto/produto/forms.py",
+    "projeto/produto/models.py",
+    "projeto/estoque/models.py"
+  ],
+  "expected_architectural_change": "Refactor views to delegate to dedicated service/interactor classes (e.g., ProdutoService, EstoqueService) and move export/import logic into strategy- or policy-based modules (e.g., Exporter, Importer). Forms will become lightweight validators/transformers. Models will keep domain invariants and repository access only. Views will orchestrate only: parse request, call service, format response. This localizes changes to specific modules: e.g., adding a new CSV export variant only touches Exporter implementations, not views.",
+  "implementation_strategy": "1. Extract domain operations from `views.py` into service classes (e.g., ProdutoService, EstoqueService) in new `services.py` modules. 2. Extract data transformation/export logic from `views.py` and `actions/` into a unified `exporters/` and `importers/` package with a common interface (e.g., Exporter protocol). 3. Refactor `forms.py` to expose clean DTOs only. 4. Introduce dependency injection in views to accept services/formatters, reducing hard dependencies. 5. Gradually move business rules currently in views and models into domain services, keeping models thin (single responsibility per class). This can be done incrementally per feature flow (e.g., start with produto list/detail, then add import/export flows).",
+  "risks": "Short-term: increased file count and indirection may reduce immediate readability for developers unfamiliar with the new structure. Medium-term: wrong service boundaries could create large service classes (anti-pattern); must enforce small, focused services (e.g.,ProdutoExportService, ProdutoImportService, EstoqueMovimentacaoService) and use composition over inheritance. Mitigation: define clear cohesive boundaries using domain concepts (e.g., export is a cross-cutting concern, not a view responsibility) and use linters to prevent module size creep."
+}

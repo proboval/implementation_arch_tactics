@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The codebase is a modular monolith with flat module structure (packages=0) and high average fan-out (5.375), indicating tight inter-module coupling—e.g., lib/subnet.py imports from lib/cyclic, lib/errors, and lib/util, while lib/util imports many stdlib and internal modules, and lib/ssh.py imports from lib/util and lib/errors. Static analysis confirms low analyzability (factor A3) and zero testability (mi_avg=0). This leads to poor maintainability: changes risk ripple effects across modules, testing is impractical, and modules are hard to reason about in isolation. Decomposability directly addresses this by enforcing modular boundaries (e.g., introducing clear abstractions between network proxy logic, utility functions, and error handling) and enabling testable units. It targets the core structural flaw: lack of decoupled, analyzable modules despite the superficial folder hierarchy.",
+  "target_components": [
+    "trevorproxy/lib/subnet.py",
+    "trevorproxy/lib/ssh.py",
+    "trevorproxy/lib/socks.py",
+    "trevorproxy/lib/util.py",
+    "trevorproxy/lib/cyclic.py",
+    "trevorproxy/lib/logger.py"
+  ],
+  "expected_architectural_change": "Modules will gain internal coherence and external decoupling via well-defined interfaces. For example, subnet.py and ssh.py both depend heavily on util.py, which in turn has 12+ functions spanning IP math, process execution, and user interaction—this violates separation of concerns. Decomposability will refactor util.py into focused submodules (e.g., ip_utils.py, process_utils.py, security_utils.py), with clean dependency flow: high-level modules (ssh, socks) depend on abstractions (e.g., IProcessExecutor, IIpAddressPool), not concrete implementations in util.py.",
+  "implementation_strategy": "1. Identify cohesive subgroups within lib/ (e.g., utility functions can be split by responsibility: IP/ subnet handling vs subprocess management). 2. Extract high-cohesion groups into new modules (e.g., move autodetect_* and range_to_cidrs to subnet_utils.py, move sudo_run and ssh_key_* to security_utils.py). 3. Introduce minimal abstractions (e.g., protocols or base classes in lib/interfaces.py) to decouple high-level modules from concrete implementations. 4. Update imports incrementally, ensuring each refactoring step is testable. 5. Gradually add stub test files to validate isolation. Structure shifts from flat 3-level hierarchy (trevorproxy/lib/*.py) to a more explicit tree (trevorproxy/lib/util/*.py, trevorproxy/lib/net/*.py), reducing fan-out and increasing understandability.",
+  "risks": "Refactoring may temporarily increase import complexity if abstractions are over-engineered. Risk is mitigated by starting with minimal, concrete interfaces and iterating: e.g., first split util.py into two modules with no new abstraction, then add interfaces in a second pass. Also, without tests, refactor correctness must be verified via integration smoke tests until test coverage is rebuilt."
+}

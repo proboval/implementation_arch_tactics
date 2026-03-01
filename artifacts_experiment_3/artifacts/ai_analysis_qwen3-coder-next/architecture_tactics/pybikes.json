@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "This tactic addresses the key maintainability issue in the pybikes repository: excessive functional coupling and mixing of concerns across system-specific scrapers and shared infrastructure. Static analysis shows that 34 out of 96 Python files directly import lxml/html, re, json, and other external dependencies without abstraction, creating tight coupling to specific implementation patterns. For example, files like keolis.py, meiob.py, mobhis.py, and veloway.py each independently parse HTML using lxml, while nextbike.py and bixi.py independently parse XML using lxml.etree. This duplication violates separation of concerns and makes it difficult to isolate testing, understand dependencies, or refactor parsing logic. The dependency graph shows high fan-in to shared modules like utils.py and data.py, indicating these modules are being used as dumping grounds for cross-cutting concerns rather than well-defined abstractions. Decomposability directly addresses this by enabling modular separation of parsing strategies, test fixtures, and implementation details.",
+  "target_components": [
+    "pybikes/keolis.py",
+    "pybikes/meiob.py",
+    "pybikes/mobhis.py",
+    "pybikes/veloway.py",
+    "pybikes/bicycle.py",
+    "pybikes/bixi.py",
+    "pybikes/nextbike.py",
+    "pybikes/data.py",
+    "pybikes/utils.py",
+    "pybikes/gbfs.py"
+  ],
+  "expected_architectural_change": "Current structure where system modules directly implement HTTP requests, HTML/XML parsing, and data extraction will be reorganized into layered components: 1) A dedicated parsing layer with strategy classes for HTML, XML, and JSON formats; 2) A separate data transformation layer to convert raw responses to domain models; 3) Refactored base classes (BikeShareSystem, BikeShareStation) will declare abstract methods for parsing steps instead of concrete implementations, forcing consistent extension points. This creates clear dependency inversion: scrapers depend on parsing abstractions rather than concrete libraries like lxml or re.",
+  "implementation_strategy": "Step 1: Identify common parsing patterns across 15+ files (e.g., HTML table parsing, JSON API endpoints) and extract into ParsingStrategy interface (e.g., HtmlTableParser, JsonAPIParser) with concrete implementations. Step 2: Introduce a ResponseTransformer layer between parsers and system modules to handle data normalization. Step 3: Refactor base classes to define hooks like 'def _parse_stations(self, raw_response)' that parsers implement. Step 4: Update system modules to compose with parsing strategies instead of importing re/lxml directly. Step 5: Add unit tests for parsers in isolation (no network calls), increasing test coverage from 5.1% to meaningful metrics. This is incrementally implementable: start with 2-3 files showing pattern, then propagate.",
+  "risks": "Risk of over-engineering if parsing strategies become too generic; must balance commonality with system-specific variations. Early stages may increase code complexity before reducing it. Requires consistent application across all system modules to realize benefits – partial implementation will leave mixed patterns that increase cognitive load."
+}

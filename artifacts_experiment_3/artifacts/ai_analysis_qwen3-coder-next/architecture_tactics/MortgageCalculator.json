@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a classic monolithic script with tightly coupled UI, business logic, and infrastructure concerns (e.g., MDApp subclass containing calculation, dialog, localization, and UI management). Static analysis confirms zero packages, max_directory_depth=1, and avg_fan_out=9.0 — indicating poor modularity and high interdependence. This directly harms maintainability: changes to one concern (e.g., UI widget) risk breaking unrelated calculations. Decomposability (AT41) directly addresses this by structuring the system into cohesive, isolated modules/layers (e.g., separating calculation logic, UI controller, localization, data persistence), thereby improving analyzability, testability, and maintainability. Unlike alternatives (e.g., abstraction or separation of concerns), this tactic is concrete: it mandates a physical module split, which is measurable and implementable incrementally in the existing flat file structure.",
+  "target_components": [
+    "main.py",
+    "main.py:MortgageCalculator",
+    "main.py:Lang",
+    "main.py:ContentNavigationDrawer",
+    "main.py:Tab",
+    "main.py:ContentDialogSend"
+  ],
+  "expected_architectural_change": "The single-file 'main.py' monolith will be restructured into a layered, modular directory structure (e.g., src/mortgage/calc/, src/mortgage/ui/, src/mortgage/i18n/, src/mortgage/storage/). Each layer encapsulates a single responsibility: e.g., calc module handles loan amortization formulas; ui module handles Kivy widgets, dialogs, and view logic; i18n wraps the gettext/Lang interface. The monolithic MDApp subclass will be split into an orchestrator (App subclass) and domain/UI components with explicit interfaces, reducing coupling and increasing cohesion.",
+  "implementation_strategy": "1. Identify cohesive groups of methods in MortgageCalculator: e.g., calc_1st_screen, calc_table → MortgageCalculatorService; get_date, set_item → DateService; show_confirmation_dialog, share_it → DialogService; on_lang, switch_lang → LocalizationService. 2. Extract each group into new modules (e.g., src/mortgage/services.py, src/mortgage/i18n.py), defining clear interfaces (e.g., using abstract base classes or protocols). 3. Replace inlined logic with imports and dependency injection (e.g., pass service instances to UI components). 4. Gradually refactor Kivy UI code (e.g., ContentNavigationDrawer, Tab) into its own src/mortgage/ui/ module, decoupling from calculation logic. 5. Introduce minimal interfaces between layers (e.g., CalculatorService.calc_amortization(...) returns structured data, not Kivy widgets). This is implementable incrementally: start with one extraction (e.g., calculation logic), test via unit tests, and iterate.",
+  "risks": "Risk of premature abstraction or over-engineering if modules are split too granularly before understanding the actual耦合 patterns. Risk of temporary regression in testability if dependencies are not properly injected during refactoring. Mitigation: target only clear boundaries (e.g., pure calculation methods are easier to extract than event handlers); use existing test infrastructure (if any) to validate post-refactoring behavior; avoid circular imports by enforcing layer directionality (UI → Service → Domain)."
+}

@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single deployable unit with one main entry point (sshuttle/__main__.py) and clear separation of concerns",
+    "Packages are grouped by responsibility (client, server, methods, helpers, firewall, tests) but all co-located in one repo and import each other freely",
+    "Strong module boundaries: methods/ contains platform-specific firewall implementations (nat, pf, tproxy) with BaseMethod abstracting variation",
+    "Core modules (ssnet, helpers, options) act as shared utilities used across layers",
+    "No explicit external communication boundaries (e.g., no RPC, message brokers, or service discovery)",
+    "Minimal package count (2 packages, implied by setuptools) and shallow directory depth (3 levels) typical of monoliths",
+    "Fan-out (avg ~4.9) is moderate — indicating modular interdependence but no heavy cross-cutting or distributed coupling"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., client → helpers → server indirectly) may reduce testability and deployability flexibility",
+    "Platform-specific firewall methods are conditionally imported and inherit from a common base, which is good — but not enforced strictly enough to prevent drift"
+  ]
+}

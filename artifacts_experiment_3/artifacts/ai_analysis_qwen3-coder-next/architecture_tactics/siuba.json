@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits significant cross-cutting concerns and violation of separation of concerns, particularly evident in the ops/translate.py module which directly depends on both ops/utils.py and siu/calls.py, and in verbs.py which imports and orchestrates functionality across dply/verbs.py, sql/translate.py, and experimental modules. Static analysis shows high average fan-out (3.69) and complex import dependencies (e.g., verbs.py has fan-out of 9), indicating modules with too many responsibilities and tightly coupled dependencies. The ops module hierarchy (ops/generics.py -> ops/utils.py -> ops/support/base.py) shows indirect coupling where changing one part ripples through others. The experimental modules (experimental/pivot, experimental/pd_groups) share functionality and data structures (e.g., pivot utils used by both pandas and SQL pivot implementations) without a clear abstraction layer. Localized Modification increases cohesion by isolating related changes, reducing ripple effects when modifying specific functionality. This is implementable incrementally by extracting shared behavior into cohesive modules.",
+  "target_components": [
+    "siuba/dply/verbs.py",
+    "siuba/sql/translate.py",
+    "siuba/ops/generics.py",
+    "siuba/ops/utils.py",
+    "siuba/ops/support/base.py",
+    "siuba/experimental/pivot/pivot_long.py",
+    "siuba/experimental/pivot/pivot_wide.py",
+    "siuba/experimental/pivot/utils.py"
+  ],
+  "expected_architectural_change": "Refactoring ops/translate.py to remove direct dependency on ops/utils.py and instead use an interface (e.g., via siu abstract layer). Merging related sql verbs into cohesive modules (e.g., sql/verbs/conditional.py with mutate/filter patterns). Creating a dedicated translation abstraction layer for experimental features that reduces coupling between pivot implementations. Extracting shared logic between experimental/pd_groups and experimental/pivot into common interfaces.",
+  "implementation_strategy": "Step 1: Introduce an abstract translator interface in siu module that both ops/translate and sql/translate implement. Step 2: Refactor ops/translate.py to depend only on the abstract translator interface, removing direct import of ops/utils.py. Step 3: Consolidate related sql/verbs/*.py modules (e.g., merge filter, mutate into a common operations module) with cohesive interfaces. Step 4: Extract common pivot logic into a dedicated pivot/abstract.py module that both pandas and SQL implementations inherit or delegate to, reducing duplication and coupling.",
+  "risks": "Risk of introducing breaking changes during refactoring; need for extensive test coverage to ensure behavior preservation; temporary increase in complexity during transition; potential performance overhead from added abstraction layers if not carefully designed."
+}

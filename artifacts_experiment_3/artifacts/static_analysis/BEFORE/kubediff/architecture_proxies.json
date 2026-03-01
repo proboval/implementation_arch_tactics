@@ -1,0 +1,58 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "setup.py": [
+      "os",
+      "setuptools"
+    ],
+    "kubedifflib\\_diff.py": [
+      "sys",
+      "__future__",
+      "collections",
+      "numbers",
+      "fnmatch",
+      "builtins",
+      "json",
+      "yaml",
+      "os",
+      "subprocess",
+      "_kube",
+      "difflib",
+      "functools",
+      "future",
+      "operator"
+    ],
+    "kubedifflib\\_images.py": [
+      "__future__",
+      "builtins",
+      "yaml",
+      "attr",
+      "os",
+      "_kube",
+      "future"
+    ],
+    "kubedifflib\\_kube.py": [
+      "__future__",
+      "builtins",
+      "yaml",
+      "os",
+      "logging",
+      "attr",
+      "subprocess"
+    ],
+    "kubedifflib\\__init__.py": [
+      "_images",
+      "_diff"
+    ],
+    "kubedifflib\\tests\\test_diff.py": [
+      "__future__",
+      "copy",
+      "hypothesis",
+      "kubedifflib",
+      "random"
+    ]
+  }
+}

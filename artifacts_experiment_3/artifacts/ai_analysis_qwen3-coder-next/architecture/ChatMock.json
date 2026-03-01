@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package 'chatmock' containing multiple cohesive modules (CLI, app, routes_ollama, routes_openai, oauth, utils, etc.)",
+    "Clear module separation by responsibility (e.g., routes_*.py for HTTP endpoints, utils.py for cross-cutting helpers, models.py for data structures)",
+    "Flask-based web server with Blueprints (openai_bp, ollama_bp) indicating modular routing",
+    "High average fan-out (7.33) suggests internal modules depend on many other internal modules, typical of tightly-coupled modular monoliths",
+    "gui.py and app.py separate GUI and backend logic, but both are in the same process and share modules",
+    "No evidence of inter-process communication, service discovery, or distributed deployment"
+  ],
+  "alternatives": [
+    "mvc",
+    "script_based"
+  ],
+  "risks": [
+    "High fan-out may lead to circular dependencies over time",
+    "Monolithic deployment and scaling limitations under high load",
+    "Limited fault isolation—if one component fails, whole application is affected"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a script-based monolith with all logic in a single file 't.py' (0 packages, avg_directory_depth=1), causing tight coupling between domain logic, persistence, and CLI handling. This flat structure directly violates maintainability principles: the TaskDict class handles both in-memory task management and file I/O, while _main() handles parsing, validation, and orchestration. Static analysis confirms high average fan-out (4.5) and factors C1/C2/A3 (likely cohesion, coupling, and complexity issues). Decomposability directly addresses this by enabling separation of concerns via modular decomposition — moving domain logic out of TaskDict into a dedicated 'domain' module, persistence into 'storage', and CLI into 'cli', each with clear boundaries and reduced interdependencies.",
+  "target_components": [
+    "t.py",
+    "tests/"
+  ],
+  "expected_architectural_change": "A 't/' package structure with submodules (e.g., t/domain.py, t/storage.py, t/cli.py) will replace the monolithic t.py. TaskDict will be split into a Task model class and a TaskRepository interface/implementation. Command-line parsing logic in _build_parser/_main will move to a new cli module. The tests/ directory will gain subdirectories mirroring the new module structure (e.g., tests/domain/, tests/storage/).",
+  "implementation_strategy": "Refactor incrementally: 1) Extract TaskDict's core business methods (add_task, finish_task, etc.) into t/domain.py as a DomainTask class; 2) Introduce t/storage.py with a minimal file-based persistence abstraction; 3) Move CLI concerns (_build_parser, _main, option parsing) to t/cli.py; 4) Update imports in t.py (now a thin entrypoint) and tests/ files to use new modules. This maintains backward compatibility via t.py calling cli.main() and allows parallel development and focused testing per module.",
+  "risks": "Risk of temporary duplication during refactoring (e.g., duplicated code in old and new modules); risk of introducing subtle file I/O inconsistencies if persistence logic is incorrectly extracted; risk of test infrastructure lagging if test imports are not synchronized with module restructuring. Mitigation: Use iterative small commits, keep t.py as a facade until all new modules stabilize, and ensure all tests pass after each refactoring step."
+}

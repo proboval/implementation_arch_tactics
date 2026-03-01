@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 packages (bin, test) with shallow directory depth (max 2), indicating minimal modular structure",
+    "Single main entry point file bin/q.py (~1200 lines) with monolithic control flow and direct CLI handling",
+    "High average fan-out (7.67) across modules suggests tight coupling rather than decoupled layers",
+    "Direct imports of sqlite3, csv, argparse, six, io, etc. without adapter/abstraction layers",
+    "Test suite in test/test_suite.py imports directly from bin.q, indicating procedural dependency",
+    "No clear separation of concerns (e.g., no separate controller/model/view or adapter layers)",
+    "Core logic resides in QTextAsData class with execute() method that orchestrates input parsing, SQL execution, and output in a single flow",
+    "MaterializedState hierarchy uses inheritance but remains tightly coupled to SQLite operations and file I/O",
+    "Exception classes defined at module level alongside core logic, not grouped in dedicated layers"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Difficulty scaling due to monolithic command-line tool nature",
+    "Hard to test core logic in isolation due to high fan-out and direct I/O",
+    "Low reusability of data processing logic outside CLI context",
+    "Potential maintenance challenges as codebase grows linearly without architectural boundaries"
+  ]
+}

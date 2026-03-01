@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('packages': 1) with deep directory structure ('max_directory_depth': 3) indicates internal module separation but no inter-service boundaries",
+    "Clear logical grouping of components: _base, _configs, _elements, _functions, _pages, _units; each with cohesive responsibilities",
+    "High average fan-out (4.84) suggests tight coupling between modules rather than decoupled service communication",
+    "Layered-like organization: _base contains core abstractions (BaseParser, BasePage), _units provide services, _pages implement domain entities",
+    "No evidence of external RPC/API communication, shared database, or deployment separation typical of microservices or hexagonal architecture",
+    "Use of inheritance and composition across modules (e.g., ChromiumPage inherits from ChromiumBase) indicates monolithic internal design",
+    "All imports are relative within the same package, confirming internal coupling without explicit service interfaces"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "High coupling between modules may reduce testability and maintainability over time",
+    "Tight dependencies in _pages and _units could complicate future horizontal scaling or partial replacement attempts",
+    "Lack of deployment boundaries means failures in any module can affect the entire application",
+    "Possible monolith decay if modularity boundaries are not strictly enforced in future development"
+  ]
+}

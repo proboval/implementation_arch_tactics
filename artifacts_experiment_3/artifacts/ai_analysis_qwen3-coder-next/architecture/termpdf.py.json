@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single-file main module (termpdf.py) with no package structure (packages=0, max_directory_depth=1)",
+    "Flat module with ~40+ top-level functions and a few classes (Config, Buffers, Screen, Document, etc.)",
+    "Heavy use of global state (e.g., Document subclasses, curses interaction, global config loading)",
+    "Dominant procedural logic flow: main() orchestrates the application with minimal separation of concerns",
+    "No explicit ports/adapters, layers, or modular boundaries; all functionality tightly coupled in one file",
+    "All core logic (PDF rendering, navigation, UI, external tools) embedded directly in class methods/functions without abstraction layers"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Low modularity makes testing, reuse, and maintenance difficult",
+    "High coupling increases risk of side effects when modifying any component",
+    "Scalability and extensibility are severely limited",
+    "Lack of separation of concerns violates core design principles for maintainable systems"
+  ]
+}

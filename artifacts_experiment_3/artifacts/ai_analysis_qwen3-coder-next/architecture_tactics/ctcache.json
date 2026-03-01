@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits low cohesion and high coupling, especially in the main cache modules (clang_tidy_cache.py, clang_tidy_cache_server.py), which handle multiple responsibilities: CLI parsing, caching strategies (local, S3, GCS, Redis), stats tracking, and server logic—all in the same modules. The high average fan-out (8.11) and large method counts in core classes (e.g., ClangTidyCacheOpts has 40+ methods, ClangTidyCache server class has 50+ methods) indicate violation of single responsibility. The maintainability risk of tight coupling is confirmed in the architecture description, especially around shared state (MultiCache) and concurrent access patterns. Localized Modification directly addresses this by encouraging encapsulation of each responsibility into separate, focused modules, narrowing the scope of changes and reducing ripple effects across the codebase.",
+  "target_components": [
+    "src/ctcache/clang_tidy_cache.py",
+    "src/ctcache/clang_tidy_cache_server.py"
+  ],
+  "expected_architectural_change": "The monolithic cache module will be decomposed into focused submodules: e.g., options/, cache/backends/ (local.py, s3.py, gcs.py, redis.py), stats/, policy/, and server/, each with well-defined interfaces. Core domain logic (e.g., hashing, cache operations) will be separated from CLI glue and server presentation logic.",
+  "implementation_strategy": "Refactor clang_tidy_cache.py by extracting responsibilities: (1) move argument-parsing and CLI handling into a new cli/ module; (2) move cache backend implementations (ClangTidyLocalCache, S3Cache, GcsCache, RedisCache) into src/ctcache/cache/backends/; (3) introduce a cache/policy.py module for multiplexed behaviors (MultiCache, WithStats); (4) extract stats handling into src/ctcache/stats.py. Similarly, split clang_tidy_cache_server.py into src/ctcache/server/app.py (Flask integration), src/ctcache/server/cache.py (cache state management), and src/ctcache/server/handlers.py (HTTP endpoints). New interfaces (e.g., CacheBackend interface) will be introduced to reduce coupling between core and backends.",
+  "risks": "Risk of temporary duplication during refactoring and minor API instability while interfaces stabilize. However, this is a low-risk tactic since changes are local and backward-compatible interfaces (e.g., via adapters) can preserve existing calling patterns."
+}

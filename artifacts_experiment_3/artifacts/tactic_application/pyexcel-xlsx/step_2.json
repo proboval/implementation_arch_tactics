@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "pyexcel_xlsx/interfaces.py",
+  "content": "\"\"\"\npyexcel_xlsx.interfaces\n~~~~~~~~~~~~~~~~~~~~~~~~\n\nInternal interfaces to decouple openpyxl dependencies and improve decomposability.\n\n:copyright: (c) 2015-2025 by Onni Software Ltd & its contributors\n:license: New BSD License\n\"\"\"\n\n\nclass ISheetReader:\n    \"\"\"Interface for sheet reading operations.\"\"\"\n\n    def row_iterator(self):\n        \"\"\"Iterate over rows.\"\"\"\n        raise NotImplementedError\n\n    def column_iterator(self, row):\n        \"\"\"Iterate over columns in a given row.\"\"\"\n        raise NotImplementedError\n\n\nclass ISheetWriter:\n    \"\"\"Interface for sheet writing operations.\"\"\"\n\n    def write_row(self, row):\n        \"\"\"Write a row of data.\"\"\"\n        raise NotImplementedError\n\n    def close(self):\n        \"\"\"Close the sheet writer.\"\"\"\n        raise NotImplementedError\n"
+}

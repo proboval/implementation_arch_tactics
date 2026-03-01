@@ -1,0 +1,31 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The modular monolith structure exhibits tight coupling between resources and models (e.g., resources directly instantiate concrete model types like in mendeley/resources/documents.py importing and using all classes from mendeley/models/documents.py), which hinders isolating concerns for testing and maintenance. Static analysis confirms high interdependence via imports graph (e.g., mendeley/resources/__init__.py imports 7 modules, mendeley/resources/annotations.py imports 2 base resource classes and concrete annotation models). The test suite shows duplication: manual tests and resources tests redundantly import and construct domain objects (e.g., test/manual/documents/__init__.py contains __create, create_document, assert_* helpers that duplicate factory logic). This violates decomposability—modules cannot be analyzed or tested in isolation. Decomposability directly addresses this by enforcing separation of concerns and reducing ripple effects.",
+  "target_components": [
+    "mendeley/resources/annotations.py",
+    "mendeley/resources/base.py",
+    "mendeley/resources/base_documents.py",
+    "mendeley/resources/documents.py",
+    "mendeley/resources/files.py",
+    "mendeley/resources/groups.py",
+    "mendeley/resources/profiles.py",
+    "mendeley/resources/trash.py",
+    "mendeley/models/annotations.py",
+    "mendeley/models/documents.py",
+    "mendeley/models/files.py",
+    "mendeley/models/groups.py",
+    "mendeley/models/profiles.py",
+    "test/manual/documents/__init__.py",
+    "test/manual/files/__init__.py",
+    "test/manual/groups/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces/abstractions for resource operations (e.g., DocumentService interface in resources.base), move domain object construction and validation logic out of test helpers and into domain factories, and ensure resources depend on abstractions not concrete model classes. This decouples resources from specific model implementations and isolates domain behavior for independent testing.",
+  "implementation_strategy": "1. Define interfaces for core domain operations (e.g., in resources.base: class DocumentService(abc.ABC): @abc.abstractmethod def create(...): ...) 2. Refactor concrete resources (Documents, Groups, etc.) to depend on service interfaces 3. Extract domain factories (e.g., DocumentFactory) from test/__init__.py and manual helpers to mendeley/domain/factories.py 4. Replace direct model instantiation in resources with factory abstractions. New modules: mendeley/domain/services.py, mendeley/domain/factories.py",
+  "risks": "Incremental introduction of interfaces may temporarily increase code verbosity. Requires discipline to avoid bypassing abstractions. Initial refactoring may break manual tests until factories/services stabilize."
+}

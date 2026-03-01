@@ -1,0 +1,26 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling across modules via direct imports (e.g., radarr.py → varken.helpers, structures, iniparser) without clear boundaries or abstraction layers. The static analysis shows high average fan-out (4.6875), single-package structure (1 package), and flat directory depth (max 2), with modules like dbmanager.py, helpers.py, and iniparser.py acting as shared, low-cohesion utility hubs reused across domains. This violates separation of concerns: for example, helpers.py contains 8 unrelated utility functions (hashit, rfc1918_ip_check, connection_handler, etc.) and is imported by 9 of 12 modules. Decomposability directly addresses this by enabling modular decomposition into independent, testable units—critical given risks like 'difficulty scaling specific integrations' and 'limited testability due to direct imports'. This tactic is implementable incrementally: starting with extraction of cohesive submodules (e.g., extraction of 'geoip' logic from helpers.py into varken.geoip) and creating clear interfaces between layers.",
+  "target_components": [
+    "varken/helpers.py",
+    "varken/dbmanager.py",
+    "varken/iniparser.py",
+    "varken/structures.py",
+    "varken/radarr.py",
+    "varken/sonarr.py",
+    "varken/tautulli.py",
+    "varken/ombi.py",
+    "varken/lidarr.py",
+    "varken/sickchill.py",
+    "varken/unifi.py"
+  ],
+  "expected_architectural_change": "The flat, tightly-coupled single-package structure will evolve into a layered, compositional architecture: (1) a core services layer (e.g., varken.core.config, varken.core.db, varken.core.config) with well-defined interfaces; (2) domain-specific modules (e.g., varken.domains.radarr, varken.domains.tautulli) that depend only on abstract interfaces, not concrete utilities; (3) extraction of cross-cutting concerns (e.g., geoip → varken.services.geoip, connection handling → varken.services.network) to reduce fan-out and increase cohesion. Direct imports between domain modules (e.g., radarr.py importing helpers.py directly) will be replaced with dependency injection or interface-based calls via core services.",
+  "implementation_strategy": "Step 1: Refactor helpers.py by extracting logically cohesive groups of functions into new modules (e.g., move IP-related functions into varken.services.geoip, move request wrappers into varken.services.network). Step 2: Define minimal interfaces (e.g., varken.core.db.DBClient, varken.core.config.ConfigReader) for shared infrastructure components. Step 3: Refactor integration modules (radarr.py, sonarr.py, etc.) to depend on interfaces, not implementations—inject required services via constructor. Step 4: Introduce optional abstract layers (e.g., varken.core.http.HttpClient) to replace direct requests.Session usage in API modules. This preserves the monolithic deployment model while improving modularity, testability (via mockable interfaces), and maintainability (by narrowing ripple effects).",
+  "risks": "Modest risk of increased initial complexity during refactoring; possible temporary performance overhead if deep call chains are introduced. However, since the system is CLI-threaded (not latency-critical) and already uses direct imports (no serialization overhead), the impact is acceptable. No runtime dependencies change—only internal organization. Mitigation: implement incrementally, starting with helpers.py extraction and one representative domain module (e.g., radarr.py), then validate via existing tests."
+}

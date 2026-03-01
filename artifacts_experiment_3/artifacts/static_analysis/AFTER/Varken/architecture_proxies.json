@@ -1,0 +1,131 @@
+{
+  "python_files": 18,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 18.0,
+  "imports_graph": {
+    "Varken.py": [
+      "varken",
+      "os",
+      "sys",
+      "queue",
+      "argparse",
+      "logging",
+      "schedule",
+      "time",
+      "threading",
+      "platform",
+      "distro"
+    ],
+    "utilities\\grafana_build.py": [
+      "requests",
+      "json",
+      "sys"
+    ],
+    "utilities\\historical_tautulli_import.py": [
+      "logging",
+      "os",
+      "argparse",
+      "varken"
+    ],
+    "varken\\dbmanager.py": [
+      "logging",
+      "influxdb",
+      "requests",
+      "sys"
+    ],
+    "varken\\helpers.py": [
+      "hashlib",
+      "logging",
+      "datetime",
+      "json",
+      "requests",
+      "tarfile",
+      "time",
+      "os",
+      "urllib",
+      "urllib3",
+      "ipaddress"
+    ],
+    "varken\\iniparser.py": [
+      "re",
+      "varken",
+      "configparser",
+      "logging",
+      "shutil",
+      "os"
+    ],
+    "varken\\lidarr.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\ombi.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\radarr.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\sickchill.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\sonarr.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\structures.py": [
+      "logging",
+      "typing",
+      "sys"
+    ],
+    "varken\\tautulli.py": [
+      "varken",
+      "logging",
+      "requests",
+      "datetime",
+      "influxdb",
+      "geoip2"
+    ],
+    "varken\\unifi.py": [
+      "logging",
+      "requests",
+      "datetime",
+      "varken"
+    ],
+    "varken\\varkenlogger.py": [
+      "logging",
+      "varken"
+    ],
+    "varken\\__init__.py": [],
+    "varken\\services\\geoip.py": [
+      "varken",
+      "hashlib",
+      "logging",
+      "datetime",
+      "tarfile",
+      "time",
+      "os",
+      "geoip2",
+      "urllib"
+    ],
+    "varken\\services\\network.py": [
+      "logging",
+      "json",
+      "requests",
+      "urllib",
+      "urllib3"
+    ]
+  }
+}

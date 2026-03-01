@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a script-based monolith with all code in a single directory depth (1), zero packages, and main.py acting as a dumping ground for over 20 standalone utility functions (e.g., mock_text, vapor_text, leet_speak, etc.) alongside core logic. This creates high coupling, poor modularity, and an untestable 'God module' — static analysis confirms 'packages: 0', 'max_directory_depth: 1', and 'factors: [T4, A1]' indicating testability and analyzability issues. Decomposability directly addresses this by dividing the monolithic main.py into logical, cohesive modules (e.g., text_utils/, feature_handlers/, data_services/), enabling isolated testing, narrower change impact, and clearer separation of concerns — all realizable without architectural overhaul.",
+  "target_components": [
+    "main.py",
+    "app.py"
+  ],
+  "expected_architectural_change": "The flat structure will evolve into a layered modular monolith: main.py shrinks to entry point orchestration, while utilities split into purpose-driven subdirectories (e.g., text/ for text transformations, utils/ for helpers, features/ for bot functionality), each with clear public interfaces. Packages will be introduced, directory depth will increase (≥2), and internal dependencies will become explicit via imports.",
+  "implementation_strategy": "1. Identify logical groupings: e.g., text manipulation (mock_text, vapor_text, leet_speak), utility helpers (format_time, is_valid_url, safe_eval), bot handlers (role-related functions), and data persistence (load_data, save_data). 2. Extract each group into a dedicated module under new directories (e.g., src/text/__init__.py, src/utils/__init__.py). 3. Introduce a small public API per module and refactor imports in main.py to use them. 4. Replace stub function signatures with real implementations. 5. Refactor main.py to orchestrate module interactions instead of containing logic. 6. Add package __init__.py files to enforce module boundaries.",
+  "risks": "Risk of premature or over-fragmentation — groups must be cohesively sized (not too fine-grained) to avoid introducing complexity. Static analysis shows no tests currently exist, so regression risk during refactoring is high; incremental refactoring with targeted unit tests per module must be adopted. Tactic succeeds only with disciplined boundary enforcement; without it, modules may reaccumulate code."
+}

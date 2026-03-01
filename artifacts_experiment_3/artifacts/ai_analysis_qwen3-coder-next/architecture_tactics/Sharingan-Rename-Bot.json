@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between plugins and database modules: multiple plugins (custom_thumbnail.py, help_text.py, rename_file.py) directly import and use database.database and database.db via 'from database.database import *' and 'from database.db import *'. This violates separation of concerns — plugins should not depend on low-level ORM models. High fan-out (6.4) and absence of a service or domain layer indicate that business logic and persistence are intermingled, making changes to database schema ripple across all plugins. Reducing coupling by introducing a clear data access layer will improve testability, allow independent modification of persistence logic, and prevent unnecessary recompilation/redeployment of plugins when DB changes occur.",
+  "target_components": [
+    "plugins/custom_thumbnail.py",
+    "plugins/help_text.py",
+    "plugins/rename_file.py",
+    "plugins/video_converter.py",
+    "database/database.py",
+    "database/db.py"
+  ],
+  "expected_architectural_change": "Introduce a new 'services' or 'data_access' layer (e.g., database/services.py or database/repository.py) that encapsulates database interactions via well-defined interfaces (e.g., ThumbnailRepository, CaptionRepository). Plugins will depend only on abstractions (e.g., AbstractThumbnailStore) rather than concrete ORM classes. Database.py/db.py will be refactored to expose methods for CRUD operations instead of being imported directly.",
+  "implementation_strategy": "Step 1: Create new module 'database/repository.py' defining abstract interfaces (e.g., 'ThumbnailRepository', 'CaptionRepository') with methods like 'get_thumbnail(user_id)', 'save_caption(user_id, caption)'. Step 2: Implement concrete classes (e.g., 'SQLThumbnailRepository') that wrap session/logic from database/database.py and database/db.py. Step 3: Replace all 'from database.database import *' and 'from database.db import *' in plugins with 'from database.repository import thumbnail_repo' (injectable instance). Step 4: Add factory or dependency injection (e.g., via config.py) to instantiate repositories. This preserves existing functionality while decoupling plugins from persistence details.",
+  "risks": "Initial refactoring requires careful migration to avoid breaking imports; test coverage is low (docstring_coverage: 0.0), increasing risk of regressions — mitigated by incremental implementation and targeted unit tests. Introducing abstraction layers may slightly increase call depth, but this is offset by improved maintainability and testability."
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits critical maintainability issues due to a flat, monolithic structure: all functionality is consolidated into a single `openHABSkill` class in `__init__.py`, with high fan-out (6.0) to external libraries (requests, rapidfuzz, mycroft), and zero code-level modularity (only one Python file, mi_avg=0). The resource files (dialog/, regex/, vocab/) are language-scoped but not wired into coherent modules—they’re referenced ad-hoc by string paths in the skill class, increasing coupling and brittle dependencies. Decomposability directly addresses this by vertically slicing responsibilities (e.g., state retrieval, command execution, natural language understanding, device-specific handling) into cohesive, isolated modules. This enables testability (e.g., mocking `openhab_client` instead of live `requests` calls), improves analyzability (fewer dependencies per module), and reduces ripple effects—changes to dialog handling won’t require touching command-sending logic.",
+  "target_components": [
+    "openhab-mycroft/__init__.py",
+    "openhab-mycroft/dialog",
+    "openhab-mycroft/regex",
+    "openhab-mycroft/vocab"
+  ],
+  "expected_architectural_change": "Current flat monolith (`__init__.py` only) will evolve into a layered modular structure: (1) a core `openhab_skill.py` as the entry point inheriting from `MycroftSkill`, (2) dedicated modules like `openhab_client.py` (encapsulating HTTP requests, config, caching), `nlu_parser.py` (intent parsing using dialog/regex/vocab), `device_handler.py` (device-agnostic logic for on/off/dimmer/thermostat), and `i18n_support.py` (language-scoped resource loading). Each module will have narrow cohesion and minimal cross-dependencies. `dialog/`, `regex/`, `vocab/` will be organized into language-aware loaders with explicit APIs instead of string-path usage.",
+  "implementation_strategy": "Step 1: Extract `openhab_client.py` to encapsulate `requests`, config loading (`get_config`), and authentication—introduce `OpenHABClient` class with methods like `get_item_status()`, `send_command()`. Step 2: Create `nlu_parser.py` with a `NLUEngine` that uses `dialog/`, `regex/`, `vocab/` via structured APIs (e.g., `load_dialog(lang, name)`), replacing raw string interpolation and `IntentBuilder` coupling. Step 3: Refactor `openHABSkill` methods (e.g., `handle_onoff_status_intent`) to delegate to `NLUEngine.parse()`, `OpenHABClient.get_item_status()`, etc., reducing method size and direct coupling. Step 4: Introduce `device_handler.py` to abstract device-type-specific logic (e.g., thermostat vs dimmer). Step 5: Add test fixtures for each module and a `tests/` subpackage.",
+  "risks": "Risk of over-engineering if modules become too granular; must avoid premature abstractions (e.g., excessive interfaces). Requires careful dependency management to prevent circular imports during migration. Initial refactoring may temporarily increase complexity before improving maintainability. Language-scoped resources must retain seamless fallbacks for missing translations during transition."
+}

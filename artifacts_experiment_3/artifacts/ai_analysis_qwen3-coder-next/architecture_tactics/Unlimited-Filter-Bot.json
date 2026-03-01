@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling (avg_fan_out=5.0) and zero package-level isolation (packages=0), indicating that modules are not decomposed cleanly, leading to poor testability and high ripple effect risk. Static analysis explicitly flags 'A3' (lack of decomposition) as a factor, and the import graph shows scripts like plugins/commands.py directly importing 14 modules (including other plugins, database, and core libraries), violating separation of concerns. In this modular monolith, all database and plugin modules reside at top-level subdirectories (database/, plugins/) but lack internal grouping—no subpackages exist despite functional diversity (e.g., commands.py mixes heroku3, shutil, math, requests, and plugins). Decomposability (AT41) directly addresses this by subdividing modules into cohesive submodules (e.g., grouping filter-related plugins, separating admin vs. user-facing commands), isolating failure modes, and enabling unit testing per decomposition boundary—precisely matching the repository’s flat hierarchy where modules grow in scope.",
+  "target_components": [
+    "plugins/commands.py",
+    "plugins/filters.py",
+    "plugins/callbacks.py",
+    "plugins/connections.py",
+    "database/filters_mdb.py",
+    "database/connections_mdb.py",
+    "database/users_mdb.py"
+  ],
+  "expected_architectural_change": "Current flat directory structure (database/, plugins/) will be enriched with cohesive subpackages: e.g., plugins/commands/ (with submodules like admin.py, user.py), plugins/filters/, plugins/callbacks/, and database/filters/, database/users/. This creates bounded contexts where cross-dependencies (e.g., commands.py importing from helpers, script, and all three database modules) are reduced by introducing abstractions (e.g., FilterService, ConnectionService) and narrowing import scope to local submodules only.",
+  "implementation_strategy": "Step 1: Analyze import dependencies to form clusters (e.g., filters, connections, user management). Step 2: Create new subdirectories (e.g., plugins/commands/admin/, plugins/commands/common/, plugins/filters/handlers/). Step 3: Move related files into subpackages and replace direct imports with package-level imports (e.g., from plugins.commands.admin import ban_user instead of from plugins.helpers import humanbytes + direct heroku3 calls). Step 4: Introduce service-layer abstractions (e.g., filters_service.py in plugins/filters/) to decouple business logic from view/controller (pyrogram-based handlers). No rewrite needed—refactor in-place, then reorganize imports.",
+  "risks": "Ripple effects during migration of imports and potential circular dependencies if subpackage boundaries are poorly chosen. Mitigation: use gradual migration (e.g., keep top-level imports in sync temporarily, add tests per submodule before moving, enforce import rules via pre-commit hooks)."
+}

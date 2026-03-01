@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, script-based architecture with all modules at root level (max_directory_depth = 1, packages = 0), tight coupling (slouchy.py directly imports from main, config, and depends on specific functions like 'take_picture' and 'slouching_results_what'), and poor separation of concerns (GUI, threading, and business logic in one file). Static analysis confirms low modularity (avg_fan_out = 2.5, no packages), and the imports graph shows config.py importing from arg.py while slouchy.py imports from main.py — indicating circular-ish dependencies and lack of layered boundaries. This makes testing, change analysis, and maintenance difficult. Decomposability (AT41) directly addresses these issues by introducing modular boundaries and layered separation, enabling isolation of GUI, business logic, and infrastructure components — even incrementally.",
+  "target_components": [
+    "slouchy.py",
+    "main.py",
+    "config.py",
+    "arg.py"
+  ],
+  "expected_architectural_change": "A new directory structure will emerge (e.g., src/ or app/) with a layered or modular hierarchy. For example: src/gui/, src/domain/, src/infrastructure/. The monolithic slouchy.py will be split into module entry points and core components; main.py (currently containing core logic and direct GUI interaction) will be decomposed to isolate posture analysis logic; config.py will depend on arg.py via an abstraction, not direct import; cross-module dependencies will be inverted (e.g., GUI depends on config via an interface).",
+  "implementation_strategy": "Begin by extracting core logic from slouchy.py into a domain module (e.g., src/domain/posture.py), then a GUI module (src/gui/tray.py), and an infrastructure module (src/infrastructure/config.py). Introduce dependency injection to decouple components: e.g., SlouchingThread receives a posture detector interface instead of importing main directly. Introduce a minimal interface or abstract base class for configuration (e.g., ConfigInterface) to replace direct config.py import. Start with small refactors: move SlouchingThread into src/gui/threads.py, then replace direct function calls to main.py with injected dependencies via a factory or DI container. This is incremental and can be done file-by-file without rewriting the entire system.",
+  "risks": "Risk of over-engineering if decomposition goes too deep too quickly. However, this can be mitigated by applying the tactic incrementally: start with coarse-grained modules (e.g., gui/, logic/, util/) and refine only when complexity arises. Early decomposition may temporarily increase complexity if abstractions are poorly chosen, so naming and clear contract boundaries must be prioritized."
+}

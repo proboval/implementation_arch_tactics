@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear module-based grouping (plugins/, helper_funcs/, database/) suggests separation of concerns without full decoupling",
+    "Shared dependencies across modules (e.g., plugins importing from helper_funcs, database, translation)",
+    "No explicit service boundaries or inter-process communication (e.g., no gRPC, REST clients, message queues)",
+    "Single entry point (bot.py) and shared configuration (Config in sample_config.py)",
+    "Database layer tightly coupled with business logic (SQLAlchemy ORM classes and sessions in database/)",
+    "High average fan-out (6.2) indicates modules depend on many others, typical of tightly coupled monoliths"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling between modules (e.g., plugins directly importing and using database tables) reduces testability and maintainability",
+    "No isolation between concerns — business logic, UI (Telegram API), and persistence are intertwined",
+    "Scalability limitations due to single-process deployment (monolith)",
+    "Testing difficulty as modules cannot be unit-tested in isolation without mocks for shared state (e.g., database session)"
+  ]
+}

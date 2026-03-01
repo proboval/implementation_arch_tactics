@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, monolithic structure with all logic in a single 'textrank' package and minimal internal separation — evidenced by only 1 package, 2-level directory depth, and 3 Python files collectively handling CLI, NLP graph building, sentence extraction, key phrase identification, and file I/O without clear boundaries. This makes the system hard to test in isolation, analyze for dependencies, and maintain as changes risk unintended side effects across unrelated functions (e.g., 'extract_key_phrases' may inadvertently affect 'summarize_all' via shared state or imports). Decomposability directly addresses this by dividing the system into cohesive, loosely coupled modules (e.g., separation of graph construction, text preprocessing, output handling), reducing cognitive load, improving testability per concern, and enabling targeted refactoring — critical given the maintainability risk of 'brittleness as script grows'.",
+  "target_components": [
+    "textrank/__init__.py",
+    "main.py"
+  ],
+  "expected_architectural_change": "The monolithic 'textrank/__init__.py' will be split into multiple modules: e.g., 'textrank/preprocess.py', 'textrank/graph.py', 'textrank/extract.py', 'textrank/io.py'. 'main.py' will evolve from a direct caller of global functions to an adapter/orchestrator that depends on well-defined abstractions (interfaces or interfaces-as-contracts) and individual modules, enabling separation of CLI concerns from domain logic.",
+  "implementation_strategy": "Start by identifying cohesive responsibilities within 'textrank/__init__.py': group related functions (e.g., 'normalize', 'filter_for_tags' → 'preprocess.py'; 'build_graph' → 'graph.py'; 'extract_sentences', 'extract_key_phrases', 'summarize_all' → 'extract.py'; 'write_files', 'setup_environment' → 'io.py'). Introduce a minimal interface layer (e.g., 'textrank/core.py' or 'textrank/api.py') that re-exports necessary components cleanly. Refactor 'main.py' to depend on this interface, not raw functions. Incrementally move functions, add minimal docstrings, and write unit tests for each new module before moving on.",
+  "risks": "Over-decomposition could increase complexity if modules become too fine-grained; however, given the current monolithic state, this is low-risk and can be done iteratively. Initial refactoring may temporarily increase coupling if modules are not cleanly separated, but each small step (e.g., one module at a time) mitigates this. Risk is acceptable given the flat structure currently offers no natural boundaries to violate."
+}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "clear separation into logical modules (function/, utils/, utils/saver/) with cohesive responsibilities",
+    "modules interact via direct imports (no message queues, REST, or RPC — e.g., utils.spider_controller imports function modules)",
+    "single executable entry point (main.py) orchestrating workflow",
+    "shared state/configuration via module-level globals (global_config, spider_config, logger)",
+    "no isolation between components — dependencies are direct function/class imports and instantiation",
+    "fan-out is low (avg_fan_out=1.25), indicating weak coupling between modules, typical of well-structured monoliths",
+    "directory depth (max=3) and package count (3) align with manageable monolithic structure"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling through shared configuration and state (e.g., global_config, spider_config)",
+    "Difficulty scaling vertically/horizontally due to monolithic packaging",
+    "Testing may require heavy mocking of shared modules",
+    "Risk of module boundary erosion as features grow"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package (websocket_server) encapsulating core WebSocket logic, with clear separation of concerns (thread.py, websocket_server.py)",
+    "Server logic centralized in WebsocketServer class and WebSocketHandler, with clear module boundaries but no inter-service communication",
+    "Use of ThreadingMixIn and Thread-based concurrency within one process indicates single deployable unit",
+    "Server.py serves as a simple script entry point but imports and uses the core module, not a distributed service",
+    "Test suite is co-located with source and directly tests internal modules, not external APIs"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Low modularity outside of package boundaries may lead to tight coupling if module responsibilities grow",
+    "Thread-based concurrency model could become a scalability bottleneck under high load",
+    "Lack of clearly defined ports/adapters suggests limited testability isolation for external dependencies"
+  ]
+}

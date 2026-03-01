@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (5.0) and deep inter-module dependencies (e.g., render_utils.py imports 10+ internal modules, exr_image_parser.py imports 9 modules including pseudo_color and camera_utils), creating ripple-effect risk. Static analysis flags 'C1' (coupling) and 'A3' (modularity) as factors, and the architecture evidence highlights 'heavy use of shared state and direct internal imports may reduce testability without mocking layers'. For instance, object_utils.py imports material_utils, while material_utils.py imports statu_recover and utils, and pose_utils.py imports both physic_utils and object_utils — forming a dense dependency web. Localized Modification directly addresses this by grouping related responsibilities into cohesive, tightly bound units to narrow the scope of change. This is implementable in the modular monolith structure: modules like render_utils.py and exr_image_parser.py (high fan-in/fan-out) are prime targets — their logic can be reorganized into cohesive submodules (e.g., separating parsing, annotation handling, and rendering into dedicated, internally coupled units) to reduce cross-module dependencies.",
+  "target_components": [
+    "bpycv/render_utils.py",
+    "bpycv/exr_image_parser.py",
+    "bpycv/pose_utils.py",
+    "bpycv/material_utils.py",
+    "bpycv/object_utils.py"
+  ],
+  "expected_architectural_change": "Several high-coupling modules will be decomposed or restructured to increase internal cohesion and reduce external coupling. For example, render_utils.py — currently importing 10+ modules — will be split into logical units (e.g., annotation_rendering, exr_processing, state_recovery), each with well-defined interfaces, reducing direct internal imports and enabling cleaner dependency flow. New modules like bpycv.rendering.annotation.py or bpycv.rendering.exr.py may emerge, replacing deep transitive imports (e.g., render_utils → exr_image_parser → pseudo_color → camera_utils) with explicit, limited abstractions (e.g., render_utils → RendererAbstraction → ExrResult). This aligns with the modular monolith’s bounded package structure, preserving deployment unity while improving changeability.",
+  "implementation_strategy": "Start with render_utils.py (highest internal fan-out) and exr_image_parser.py: (1) Identify natural cohesion boundaries — e.g., ImageWithAnnotation and parser_exr in exr_image_parser.py can become bpycv.io.exr; (2) Introduce internal interfaces/protocols (e.g., using ABC or duck typing) for inter-module contracts instead of direct imports (e.g., render_utils → dependency on PoseProvider interface, not direct pose_utils); (3) Group high-cohesion functions into new submodule files (e.g., move all EXR-specific logic from pseudo_color.py into bpycv.io.exr.color); (4) Update __init__.py exports to use submodule paths, reducing circular import risk. This is incremental — start with one module (e.g., render_utils → bpycv.rendering), verify test coverage, then proceed. No architectural overhaul; stays within modular monolith constraints.",
+  "risks": "Over-localization may create excessive small modules that increase navigation overhead; incomplete abstraction boundaries (e.g., overly complex interfaces replacing direct calls) could reintroduce coupling. Also, refactoring shared utilities like utils.py or boxx usage may cause ripple if not carefully versioned. However, these risks are low since changes are confined to Python modules and do not require infrastructure or API changes."
+}

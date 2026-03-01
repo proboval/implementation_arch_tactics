@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows a script-based architecture with no clear modularity: all logic resides in monolithic test scripts (e.g., doubles.py, doubles_all.py) with high fan-out (5.0), tight coupling to native libraries (myclib, myrustlib), and zero packages. Files mix data parsing, algorithm implementations, and test harnesses in the same module, making changes risky and tests brittle. Decomposability directly addresses this by introducing module boundaries to isolate concerns — for instance, separating core double-counting algorithms, test utilities, and foreign-function interfaces — enabling targeted testing, localized analysis, and maintainable evolution without affecting unrelated components.",
+  "target_components": [
+    "doubles.py",
+    "doubles_all.py",
+    "doubles_with_c_swig.py",
+    "doubles_with_rust.py",
+    "pyext-myclib/myclib.c",
+    "pyext-myrustlib/src/lib.rs"
+  ],
+  "expected_architectural_change": "Current flat script files will be reorganized into a hierarchical package structure: a `core/` module for pure algorithm implementations, a ` adapters/` module for FFI bindings (SWIG/C, Rust), and a `tests/` module for parameterized test utilities — breaking the current monolithic 'all-in-one' test scripts into coherent, testable, and reusable modules.",
+  "implementation_strategy": "1) Create `src/` directory and move algorithm logic into `src/doubles/core.py`, isolating pure counting functions (count_doubles_once, count_doubles_itertools, etc.). 2) Introduce `src/doubles/adapters/` to abstract native library access via stable Python interfaces (e.g., `src/doubles/adapters/rust.py`, `src/doubles/adapters/c_swig.py`). 3) Refactor test scripts into `tests/` with a single unified test runner using these abstractions. 4) Replace inline imports (e.g., import myrustlib, import myclib) with adapter interfaces. This preserves functionality while enabling independent testing, reuse, and future extension.",
+  "risks": "Initial refactoring may increase cognitive load during migration, and adapter interfaces may require balancing performance (e.g., bytes vs strings in Rust/C), but these are localized risks: each module can be incrementally migrated and tested in isolation, with regression risk mitigated by existing test suite."
+}

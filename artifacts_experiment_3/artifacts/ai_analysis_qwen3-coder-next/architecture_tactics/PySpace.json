@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high intermodule coupling through shallow, flat module imports (e.g., folding.py, geo.py, coloring.py, object.py all importing directly from .util and depending on shared utilities with no boundary enforcement). Static analysis shows avg_fan_out=3.0 and max_directory_depth=2, indicating tightly coupled modules exchanging internal dependencies without clear boundaries. The static analysis factors C1 (Coupling) and A3 (Abstraction) confirm structural weaknesses. Localized Modification directly addresses this by increasing cohesion within modules and narrowing modification scope—e.g., by grouping related responsibilities (like geometric primitives with their rendering logic) into cohesive units, preventing ripple effects across the codebase when one fractal or object type changes.",
+  "target_components": [
+    "pyspace/fold.py",
+    "pyspace/geo.py",
+    "pyspace/coloring.py",
+    "pyspace/object.py",
+    "pyspace/util.py"
+  ],
+  "expected_architectural_change": "Modules will evolve from being utility-heavy shared interfaces (e.g., geo.py and folding.py both importing .util and duplicating glsl generation patterns) to cohesive units where each fractal family (e.g., Menger, Sierpinski) encapsulates its geometry, folding logic, and rendering GLSL generation in a single cohesive class or sub-module. This reduces cross-module dependencies and isolates change to localized scope—e.g., modifying the Sierpinski fold will no longer risk unintended impact on Box geometry or OrbitSum coloring logic.",
+  "implementation_strategy": "Refactor by identifying cohesive responsibility clusters: (1) Extract each fold class (e.g., FoldSierpinski) with its glsl generation into a self-contained 'fractal primitive' module; (2) Move shared GLSL helpers from util.py into each geometry or fold class's private or module-level scope; (3) Replace global imports like from .util import * with explicit, minimal dependencies and introduce local helper methods (e.g.,FoldSierpinski._glsl_fold()) to reduce import fan-out. Gradually form submodules (e.g., pyspace.fractals.sierpinski) without breaking existing entry points in ray_marcher_demo.py.",
+  "risks": "Initial refactoring may increase module count and complexity if not done incrementally; temporary duplication of GLSL code during transition must be avoided via extraction of shared templates into an appropriate abstraction layer (e.g., pyspace.glsl.helpers). However, risks are low due to the flat structure’s flexibility for stepwise modularization without requiring full architectural overhaul."
+}

@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, script-based structure with no module boundaries (0 packages, max_directory_depth=1), high fan-out (7.67), and wildcard imports (e.g., 'from utils import *') causing tight coupling and poor encapsulation. Static analysis confirms C1 (high coupling), C2 (low cohesion), A3 (lack of modularity). This creates maintainability issues: functions in general_json2yolo.py and labelbox_json2yolo.py are directly coupled to all utility functions and external libraries, making isolated testing impossible and changes risky. The 'Decomposability' tactic directly addresses this by introducing logical modules (e.g., 'converters/', 'utils/', 'io/') to isolate responsibilities, reduce cross-file dependencies, and expose clear interfaces—enabling testability and change analysis as demanded by the analysis.",
+  "target_components": [
+    "general_json2yolo.py",
+    "labelbox_json2yolo.py",
+    "utils.py"
+  ],
+  "expected_architectural_change": "The flat file structure will be refactored into a modular monolith: 'general_json2yolo.py' and 'labelbox_json2yolo.py' will be split into converter modules (e.g., 'converters/coco.py', 'converters/labelbox.py'), 'utils.py' will be split into focused submodules (e.g., 'io/readers.py', 'io/writers.py', 'processing/filters.py'), and shared abstractions (e.g., base Converter interface) will be introduced to decouple conversion logic from I/O and utility operations.",
+  "implementation_strategy": "Step 1: Create directories 'converters/', 'io/', and 'processing/' and move related functions into each (e.g., COCO conversion functions → converters/coco.py). Step 2: Replace 'from utils import *' with explicit imports from module-specific paths (e.g., 'from converters.coco import convert_coco_json'). Step 3: Introduce minimal interfaces (e.g., 'BaseConverter' abstract base class) to enforce separation between conversion logic, file I/O, and data processing. This enables unit testing per module and reduces fan-out from 7.67 toward <3 per module.",
+  "risks": "Risk of over-engineering if modules become too fine-grained, but this can be mitigated by incremental adoption (e.g., refactor one converter at a time). Minimal impact on functionality if refactoring preserves existing API behavior during migration."
+}

@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('varken') with one main entry point (Varken.py), indicating one cohesive deployable unit",
+    "Domains are well-factored into logically related modules (e.g., per-integration APIs: sonarr.py, radarr.py, tautulli.py) but all in same package and process",
+    "Shared infrastructure components (dbmanager, helpers, iniparser, structures) are reused across modules without loose coupling or isolation",
+    "No service boundaries or inter-process communication—modules interact via direct imports and function calls",
+    "CLI-only execution model with scheduled threads (using 'schedule' library), typical of data aggregation monoliths",
+    "Minimal directory depth (max 2) and flat structure, avoiding layered or service-oriented layering",
+    "Use of NamedTuples (structures.py) for data exchange within same process, not over network protocols"
+  ],
+  "alternatives": [
+    "script_based",
+    "microservices_like",
+    "layered"
+  ],
+  "risks": [
+    "Risk of tight coupling as domain modules (e.g., radarr.py, tautulli.py) share utilities and structures but have no clear boundary enforcement",
+    "Threading model using 'schedule' + Thread suggests potential scalability issues under load",
+    "Single-point-of-failure: failure in one integration or the DB manager can halt entire application",
+    "Limited testability due to direct imports across modules without abstraction layers",
+    "Difficulty scaling or deploying specific integrations independently"
+  ]
+}

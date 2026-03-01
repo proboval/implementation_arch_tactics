@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single-file main entry point (bot.py) with no package structure (packages: 0, max_directory_depth: 1)",
+    "All logic appears in one file without clear module separation or dependency injection patterns",
+    "High average fan-out (6.0) suggests direct coupling to multiple external libraries (pyrogram, motor, os, asyncio, datetime, time) without abstraction layers",
+    "Missing package imports using dot notation (e.g., from package.module import X), indicating flat structure",
+    "Use of environment variables and direct API calls (e.g., env, Client()) without adapters or interfaces",
+    "No evidence of bounded contexts or domain/core layers"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor testability due to lack of separation of concerns",
+    "High coupling between infrastructure (e.g., Telegram API, database) and business logic",
+    "Scalability limitations from monolithic script design",
+    "Maintainability challenges as feature set grows"
+  ]
+}

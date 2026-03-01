@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between high-level domain models and low-level operations/connection logic, particularly in the model layer where classes like Dataset, Datatable, and Database inherit directly from GetOperation/ListOperation, which in turn depend on Connection and Util. The imports graph shows model modules importing connection.py, api_config.py, and util.py directly, creating ripple effects when low-level components change. The static analysis identifies factors 'C1' (coupling) and 'A3' (availability) as issues. This coupling impedes testing (e.g., models require real Connection instances) and makes it difficult to swap access patterns (e.g., replacing REST with gRPC). Reduced coupling directly addresses this by decoupling domain behavior from infrastructure concerns, enabling easier substitution and testing.",
+  "target_components": [
+    "nasdaqdatalink/model/dataset.py",
+    "nasdaqdatalink/model/datatable.py",
+    "nasdaqdatalink/model/database.py",
+    "nasdaqdatalink/model/point_in_time.py",
+    "nasdaqdatalink/operations/get.py",
+    "nasdaqdatalink/operations/list.py",
+    "nasdaqdatalink/operations/operation.py"
+  ],
+  "expected_architectural_change": "Introduce an interface-based abstraction layer between the model layer and the operation layer, where GetOperation/ListOperation would depend on an abstract data access interface (e.g., DataRepository) rather than directly on Connection. This shifts from inheritance-based reuse (Dataset inherits GetOperation) to composition (Dataset has a DataRepository), reducing coupling and enabling dependency inversion.",
+  "implementation_strategy": "1. Define a minimal DataRepository interface in nasdaqdatalink/operations/. 2. Refactor Connection to implement this interface. 3. Refactor GetOperation and ListOperation to accept DataRepository via constructor or setter (dependency injection). 4. Update model classes to accept DataRepository instead of inheriting operation classes directly, moving behavior into composition. 5. Adjust import paths: models no longer import connection.py directly; instead, the application composes repositories. 6. Gradually replace inheritance with composition in Dataset/Datatable/Database classes, while preserving backward compatibility through adapter wrappers.",
+  "risks": "Temporary increase in code verbosity during transition; potential for subtle runtime errors if injection contracts are mismatched; requires disciplined adherence to new interface contracts in new code."
+}

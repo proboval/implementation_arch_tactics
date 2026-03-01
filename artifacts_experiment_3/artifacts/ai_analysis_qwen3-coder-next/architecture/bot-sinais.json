@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "All code resides in a single main.py file with no package structure (packages=0, max_directory_depth=1)",
+    "Functions are named generically (e.g., MartingaleNone, PayoutNone) without clear module boundaries or encapsulation",
+    "High average fan-out (9.0) indicates many dependencies across the codebase, typical of tightly coupled script-style code",
+    "Use of global-like function patterns (e.g., None suffix implies placeholder functions with shared mutable state)",
+    "Lack of separation of concerns—configuration, trading logic, Telegram integration, and metrics calculation appear intermingled",
+    "No ports/adapters, layers, or domain boundaries observable"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Poor testability due to tight coupling and lack of dependency injection",
+    "High maintenance cost as changes in one area likely affect others",
+    "Limited scalability and reusability of components",
+    "Difficulty in onboarding new developers due to lack of explicit structure"
+  ]
+}

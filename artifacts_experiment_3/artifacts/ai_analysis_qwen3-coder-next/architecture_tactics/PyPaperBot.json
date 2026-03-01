@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between domain modules, as evidenced by Crossref.py importing from PapersFilters.py and Paper.py, Scholar.py importing from Crossref.py and HTMLparsers.py, and Downloader.py importing from HTMLparsers.py — yet these modules represent distinct domain responsibilities (metadata fetching, paper parsing, download orchestration, etc.). The imports_graph shows direct bidirectional dependencies between peer modules (e.g., Scholar → Crossref, Crossref → Paper), creating ripple-effect risk: changing Crossref's interface would necessitate changes in both Scholar and Paper. This contradicts the 'modular_monolith' classification since true modularity requires stable contracts and minimized inter-dependencies. Reduced Coupling directly addresses this by introducing interfaces or abstractions to decouple modules, thereby limiting change impact and improving testability (e.g., mocking dependencies).",
+  "target_components": [
+    "PyPaperBot/Scholar.py",
+    "PyPaperBot/Crossref.py",
+    "PyPaperBot/Downloader.py",
+    "PyPaperBot/PapersFilters.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces (e.g., in a new PyPaperBot/interfaces.py or via abstract base classes) for shared behaviors: a DocumentSource interface (implemented by Crossref and Scholar), a MetadataFetcher interface, and a PaperFilter interface. Module dependencies will shift from concrete implementations to abstractions, reducing fan-out among domain modules and enabling substitution without code modification.",
+  "implementation_strategy": "Step 1: Identify shared contracts (e.g., Scholar and Crossref both fetch paper metadata → extract MetadataFetcher interface). Step 2: Refactor concrete modules to implement the interface and depend only on it (e.g., Scholar imports from .interfaces import MetadataFetcher instead of .Crossref). Step 3: Introduce a factory or DI container (e.g., PyPaperBot/fetchers.py) to wire implementations at runtime. Step 4: Gradually replace direct imports with interface-based dependencies, preserving functionality while reducing coupling.",
+  "risks": "Temporary increase in LOC due to interface definitions and adapter layers; initial test coverage must be ensured before refactoring to avoid behavioral regressions; over-abstraction (e.g., premature interfaces for single-use cases) must be avoided — only introduce abstractions where reuse or substitution is plausible (e.g., multiple metadata sources)"
+}

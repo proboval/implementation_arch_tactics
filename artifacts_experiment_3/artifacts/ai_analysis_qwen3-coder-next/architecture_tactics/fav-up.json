@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a flat single-file Python script (favUp.py) with no modularity, zero packages, and extremely high fan-out (12.0), indicating tight coupling to external libraries and procedural glue code. Static analysis confirms 'packages': 0, 'max_directory_depth': 1, and factors C1/C2 ( cohesion and complexity) as problematic. The empty class skeleton ('def runNone: ...') shows stubbed functionality without actual separation of concerns. Decomposability directly addresses this by breaking the monolithic script into well-defined, single-responsibility modules (e.g., 'core', 'engines', 'io', 'cli'), enabling local reasoning, targeted testing, and reduced ripple effects—exactly what the current flat structure prevents.",
+  "target_components": [
+    "favUp.py"
+  ],
+  "expected_architectural_change": "The single-file favUp.py will be replaced by a package structure (e.g., favup/core.py, favup/engines/shodan_engine.py, favup/io/file_handler.py, favup/cli.py), where each module has high cohesion and low coupling. Business logic currently embedded in runNone will migrate to dedicated domain modules, and CLI glue code will be isolated in a cli.py module.",
+  "implementation_strategy": "Step 1: Extract core functionality (favicon hashing, HTML parsing) into favup/core.py. Step 2: Wrap external tool integrations (Shodan, IPWhois) into favup/engines/*.py modules implementing shared interfaces. Step 3: Move file I/O and serialization logic into favup/io/*.py. Step 4: Isolate argparse logic into favup/cli.py with dependency injection to core modules. This incremental refactoring requires only renaming, moving, and adding a __init__.py—no new external dependencies or architectural style changes.",
+  "risks": "Risk of over-engineering if granularity is too fine; mitigated by starting with 3–4 logical modules and iterating. Initial migration may temporarily reduce readability if abstractions are poorly defined; mitigated by using clear module names and introducing minimal abstraction layers only where necessary (e.g., only introduce interfaces for Shodan/IPWhois if their usage patterns diverge significantly)."
+}

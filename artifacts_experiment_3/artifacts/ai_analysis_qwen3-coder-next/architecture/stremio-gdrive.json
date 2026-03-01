@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('sgd') with multiple modules, indicating tight integration without service boundaries",
+    "Clear module separation by concern (cache, gdrive, meta, ptn, routes, streams, utils) with low coupling",
+    "Routes module imports domain modules (gdrive, meta, streams) but does not act as a strict controller (no MVC separation of view)",
+    "No evidence of service communication, messaging, or deployment boundaries",
+    "Flask used as monolithic web framework with route handlers co-located with domain logic",
+    "All code resides in a single Python package with 2-level directory depth, typical of a modular monolith"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc",
+    "script_based"
+  ],
+  "risks": [
+    "Risk of tight coupling over time due to mutual imports between modules (e.g., utils imports from cache, routes imports from multiple modules)",
+    "Monolithic scaling limitations for high-traffic scenarios",
+    "Testing may require complex mocking of interdependent modules"
+  ]
+}

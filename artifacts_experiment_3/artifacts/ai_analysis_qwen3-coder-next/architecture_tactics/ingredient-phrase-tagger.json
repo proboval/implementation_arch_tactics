@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and lack of modularity, with CLI scripts in 'bin/' directly importing from 'ingredient_phrase_tagger.training.utils', and 'utils.py' mixing tokenization, feature extraction, file I/O, and display logic. This makes testing difficult (no isolation of pure functions) and changing one concern risks breaking others. AT41 (Decomposability) directly addresses this by vertically slicing the current monolithic 'training.utils' module into focused, single-responsibility modules (e.g., 'tokenizer.py', 'features.py', 'io.py'), enabling testability, localizing change, and improving analyzability. The flat structure (only 2 packages) and minimal depth (3) confirms the need for decomposition rather than layers.",
+  "target_components": [
+    "ingredient_phrase_tagger/training/utils.py",
+    "ingredient_phrase_tagger/training/cli.py",
+    "bin/parse-ingredients.py",
+    "bin/convert-to-json.py"
+  ],
+  "expected_architectural_change": "The current single 'utils.py' will be split into multiple cohesive modules: e.g., 'tokenizer.py' (tokenize, cleanUnicodeFractions, joinLine), 'features.py' (getFeatures, singularize, normalizeToken), 'formatter.py' (displayIngredient, smartJoin), and 'io.py' (import_data, export_data). A new 'domain/' or 'core/' module may emerge to hold pure business logic (e.g., singularization rules) separate from I/O and formatting. CLI scripts will depend on well-defined interfaces or stable modules, not on a monolithic utils bag.",
+  "implementation_strategy": "Step 1: Identify cohesive groups of functions in utils.py based on shared vocabulary and side effects (e.g., I/O-only vs pure computation). Step 2: Extract each group into new files with clear names and minimal dependencies (avoid circularity). Step 3: Introduce minimal abstractions (e.g., a single 'parse_ingredients()' function in a new 'core/parser.py') that coordinate the modules. Step 4: Refactor bin/*.py to import from these new modules instead of utils directly. Step 5: Write unit tests per new module to validate behavior in isolation.",
+  "risks": "Refactoring utils.py risks breaking backward compatibility for external users of its functions; however, the repository shows no public API or versioning. Temporary duplication of logic may occur during migration, but it can be mitigated by keeping utils.py as a facade that re-exports from new modules. The main risk is over-engineering—keeping modules coarse-grained to avoid unnecessary complexity."
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits moderate cohesion within modules but suffers from blurred separation between concerns — notably, the admin module (treenode/admin.py) directly manipulates model internals and logic (e.g., display formatting tied to model tree structure), and cache/signals/utils are used transitively with implicit contracts rather than explicit interfaces. Static analysis confirms 'C1' and 'C2' factors (likely cohesion and coupling issues), and imports graph shows treenode/models.py directly imports from many internal modules (cache, signals, debug, memory, utils), increasing ripple-risk. The modular monolith structure is present, but the absence of strict layering (e.g., services, domain, interface) creates tight interdependence. Introducing Decomposability via bounded subsystems (e.g., a dedicated 'tree_engine' layer between models and higher layers) will isolate core tree logic, improve testability (by enabling unit testing of core algorithms without Django ORM), and reduce ripple effects during changes (e.g., admin display changes won’t require touching models).",
+  "target_components": [
+    "treenode/models.py",
+    "treenode/admin.py",
+    "treenode/signals.py",
+    "treenode/cache.py"
+  ],
+  "expected_architectural_change": "A new internal layer ('tree_engine') will be introduced between treenode.models and higher layers. Core tree operations (e.g., parent/child traversal, tree restructuring, validation) will be extracted from TreeNodeModel into a pure-Python Engine class, with models becoming thin wrappers around database persistence. Admin will interact with the engine via a clear interface, decoupling UI logic from persistence and caching. Signals and cache will be used through well-defined adapters rather than direct imports.",
+  "implementation_strategy": "Step 1: Extract core tree algorithm logic (e.g., parent/child checks, tree walk, update_tree, get_*_pks) into a new treenode/engine.py module as a stateless Engine class that operates on PKs or plain dictionaries, not Django models. Step 2: Refactor TreeNodeModel to delegate algorithmic behavior to Engine, keeping only ORM/metadata concerns. Step 3: Introduce a Service layer (e.g., treenode/service.py) to encapsulate transactional operations (e.g., move, update_tree) and coordinate engine + cache + signals via dependency injection. Step 4: Refactor admin.py to call the Service, not models directly. This preserves Django semantics but creates testable, reusable logic units with lower coupling.",
+  "risks": "Risk of over-engineering if engine abstraction becomes too generic before needs are validated. Mitigation: Start with minimal extraction (only tree validation and update logic), and use existing tests to ensure behavior parity. Also, initial migration may temporarily increase cyclomatic complexity during refactoring; however, this is transient and offset by improved maintainability."
+}

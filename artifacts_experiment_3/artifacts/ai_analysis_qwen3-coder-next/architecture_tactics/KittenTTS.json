@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat modular monolith structure with only one package ('kittentts') and max directory depth of 2. Static analysis shows low fan-out (1.75) but lacks explicit separation into meaningful subsystems; the existing modules (get_model.py, onnx_model.py) mix concerns (e.g., onnx_model.py handles both text preprocessing and audio generation). The docstring coverage is 0% and there is no layering, reducing testability and analyzability. Decomposability directly addresses this by introducing clear boundaries—separating orchestration, inference logic, data preparation, and utility components—making the system more modular, testable, and analyzable without requiring full restructuring.",
+  "target_components": [
+    "kittentts/get_model.py",
+    "kittentts/onnx_model.py",
+    "kittentts/__init__.py",
+    "kittentts/__index__.py"
+  ],
+  "expected_architectural_change": "The single-package structure will evolve into a layered, compositional hierarchy: e.g., a top-level 'api' or 'orchestration' layer (handling model loading and public interface), a 'preprocessing' layer (text tokenization, cleaning), a 'core' or 'inference' layer (ONNX execution), and a 'io' or 'output' layer (file streaming, audio I/O). This enables isolated unit testing, clearer import boundaries, and reduced ripple effects during maintenance.",
+  "implementation_strategy": "1. Extract text preprocessing logic from onnx_model.py into a new 'preprocessing.py' module; 2. Create a dedicated 'audio_io.py' module for soundfile handling and file output; 3. Refactor get_model.py to act purely as an orchestration layer (factory + configuration); 4. Introduce clear interfaces (e.g., TTSProcessor, AudioRenderer) via __init__.py; 5. Ensure dependencies flow inward (orchestration → preprocessing → core → io) with no reverse imports. All changes are backward-compatible for __index__.py entry point.",
+  "risks": "Risk of over-engineering is low due to small codebase, but implementation must avoid introducing unnecessary layers or circular dependencies during refactoring. Temporary duplication during transition should be minimized via incremental commits and clear versioning in __init__.py exports."
+}

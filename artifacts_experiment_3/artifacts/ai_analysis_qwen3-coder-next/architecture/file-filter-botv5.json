@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Flat directory structure with clear modules (database/, plugins/, root-level utilities) — characteristic of a modular monolith",
+    "No packages defined (packages: 0) but logical grouping via directories suggests internal modularity without formal packaging",
+    "Single entry point (bot.py) coordinating all functionality via imports from modules",
+    "Plugins depend directly on database modules and shared utilities (utils.py, info.py), indicating tight cohesion within modules but low inter-module decoupling — typical of modular monoliths",
+    "All components run in a single process (bot.py instantiates one Pyrogram Client); no inter-process or network boundaries"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling between plugins and database layers limits testability and maintainability",
+    "No explicit dependency boundaries increase risk of circular dependencies as the project scales",
+    "Single point of failure — failure in one module can cascade across the entire application",
+    "Lack of packaging (packages: 0) suggests limited modularity in build/deployment, reducing flexibility for future decomposition"
+  ]
+}

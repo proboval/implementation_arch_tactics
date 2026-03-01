@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "weibo_spider/parser/data_model.py",
+  "content": "from typing import Protocol, runtime_checkable\n\n\n@runtime_checkable\nclass DataRecord(Protocol):\n    \"\"\"Minimal interface for serializable data records used by parsers and writers.\"\"\"\n    \n    def to_dict(self) -> dict:\n        \"\"\"Return a dictionary representation suitable for serialization.\"\"\"\n        ...\n\n\n__all__ = ['DataRecord']\n"
+}

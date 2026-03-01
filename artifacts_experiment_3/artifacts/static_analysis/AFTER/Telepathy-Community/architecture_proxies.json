@@ -1,0 +1,27 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "tests\\test_telepathy.py": [
+      "pytest",
+      "src",
+      "asyncio"
+    ],
+    "build\\lib\\telepathy\\const.py": [],
+    "build\\lib\\telepathy\\utils.py": [
+      "random",
+      "bs4",
+      "textwrap",
+      "colorama",
+      "requests",
+      "telepathy",
+      "googletrans"
+    ],
+    "src\\telepathy\\const.py": []
+  }
+}

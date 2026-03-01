@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only one top-level Python file (sync_octopus_tado.py) contains all application logic",
+    "No packages or directory structure beyond root and standard repo folders (.github, etc.)",
+    "max_directory_depth is 1, indicating flat structure",
+    "All dependencies imported directly (no internal module boundaries)",
+    "High average fan-out (6.0) suggests heavy coupling to external libraries without internal decomposition",
+    "All functions are at module scope with no clear separation into components or layers",
+    "Repository tree shows minimal organization (single script, config files, docs)",
+    "Code maintainability metrics show no measured decomposition (mi_avg=0, files_analyzed=0)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Lack of modularity hinders maintainability and testability",
+    "Tight coupling to external services (Octopus, Tado, Playwright) makes changes risky",
+    "No test structure or separation of concerns increases regression risk",
+    "Single-file design does not scale with feature growth"
+  ]
+}

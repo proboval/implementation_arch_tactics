@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.9,
+  "evidence": [
+    "No packages defined (packages: 0) and all code in single module (main.py)",
+    "Very low directory depth (max_directory_depth: 1), flat project structure",
+    "High average fan-out (9.0) suggests functions calling many unrelated modules",
+    "Main.py contains monolithic App class with many domain, UI, and glue logic methods",
+    "All functionality appears tightly coupled: UI (Kivy/Material), calculations, localization, dialog management in same class",
+    "No clear separation of concerns: no services, repositories, controllers, or domain layer abstractions",
+    "Presence of build artifacts and binary DLLs alongside source suggests ad-hoc deployment (typical of script-based desktop apps)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "mvc"
+  ],
+  "risks": [
+    "Poor testability due to tight coupling",
+    "Difficult to maintain or extend as features grow",
+    "Low reusability of business logic",
+    "Hard to isolate failures (UI changes affecting core calculations)"
+  ]
+}

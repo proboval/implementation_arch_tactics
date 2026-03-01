@@ -1,0 +1,190 @@
+{
+  "python_files": 27,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 13.5,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools_scm",
+      "setuptools"
+    ],
+    "docs\\conf.py": [
+      "setuptools_scm"
+    ],
+    "sshuttle\\assembler.py": [
+      "sys",
+      "sshuttle",
+      "zlib",
+      "imp"
+    ],
+    "sshuttle\\client.py": [
+      "sys",
+      "errno",
+      "time",
+      "re",
+      "socket",
+      "os",
+      "sshuttle",
+      "platform",
+      "subprocess",
+      "signal"
+    ],
+    "sshuttle\\cmdline.py": [
+      "sys",
+      "sshuttle",
+      "re",
+      "socket"
+    ],
+    "sshuttle\\firewall.py": [
+      "sys",
+      "errno",
+      "socket",
+      "os",
+      "sshuttle",
+      "platform",
+      "traceback",
+      "signal"
+    ],
+    "sshuttle\\helpers.py": [
+      "sys",
+      "errno",
+      "random",
+      "socket"
+    ],
+    "sshuttle\\hostwatch.py": [
+      "sys",
+      "select",
+      "errno",
+      "time",
+      "re",
+      "socket",
+      "os",
+      "sshuttle",
+      "platform",
+      "subprocess"
+    ],
+    "sshuttle\\linux.py": [
+      "sshuttle",
+      "subprocess",
+      "socket"
+    ],
+    "sshuttle\\netutils.py": [
+      "sshuttle",
+      "socket"
+    ],
+    "sshuttle\\options.py": [
+      "sys",
+      "getopt",
+      "textwrap",
+      "re",
+      "termios",
+      "os",
+      "struct",
+      "fcntl"
+    ],
+    "sshuttle\\server.py": [
+      "sys",
+      "time",
+      "re",
+      "socket",
+      "os",
+      "sshuttle",
+      "traceback",
+      "platform",
+      "subprocess",
+      "struct"
+    ],
+    "sshuttle\\ssh.py": [
+      "sys",
+      "zlib",
+      "re",
+      "socket",
+      "imp",
+      "os",
+      "sshuttle",
+      "subprocess"
+    ],
+    "sshuttle\\ssnet.py": [
+      "select",
+      "errno",
+      "socket",
+      "os",
+      "sshuttle",
+      "struct"
+    ],
+    "sshuttle\\ssyslog.py": [
+      "sys",
+      "os",
+      "subprocess"
+    ],
+    "sshuttle\\stresstest.py": [
+      "select",
+      "time",
+      "struct",
+      "socket"
+    ],
+    "sshuttle\\__init__.py": [],
+    "sshuttle\\__main__.py": [
+      "sys",
+      "sshuttle"
+    ],
+    "sshuttle\\methods\\nat.py": [
+      "sshuttle",
+      "socket"
+    ],
+    "sshuttle\\methods\\pf.py": [
+      "sys",
+      "ctypes",
+      "re",
+      "socket",
+      "os",
+      "sshuttle",
+      "subprocess",
+      "struct",
+      "fcntl"
+    ],
+    "sshuttle\\methods\\tproxy.py": [
+      "socket_ext",
+      "sshuttle",
+      "struct",
+      "socket"
+    ],
+    "sshuttle\\methods\\__init__.py": [
+      "errno",
+      "socket",
+      "os",
+      "sshuttle",
+      "struct",
+      "importlib"
+    ],
+    "sshuttle\\tests\\test_firewall.py": [
+      "sshuttle",
+      "mock",
+      "io"
+    ],
+    "sshuttle\\tests\\test_helpers.py": [
+      "sys",
+      "socket",
+      "sshuttle",
+      "io",
+      "mock"
+    ],
+    "sshuttle\\tests\\test_methods_nat.py": [
+      "socket",
+      "sshuttle",
+      "pytest",
+      "mock",
+      "struct"
+    ],
+    "sshuttle\\tests\\test_methods_pf.py": [
+      "sshuttle",
+      "pytest",
+      "mock",
+      "socket"
+    ],
+    "sshuttle\\tests\\test_methods_tproxy.py": [
+      "sshuttle",
+      "mock"
+    ]
+  }
+}

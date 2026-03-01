@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules: commands/__init__.py and inline/__init__.py both import internal implementation details (BASE_URL, get_lang, search_sub) directly from subtitle/__init__.py. This violates encapsulation and creates ripple effects—any change to subtitle's internal API requires simultaneous updates in both commands and inline modules. Static analysis confirms this via 'C1' and 'C2' factors (likely coupling and cohesion metrics). Since the modular monolith structure has only 3 flat packages and shared imports across modules (e.g., subtitle internals imported by multiple packages), reducing coupling directly addresses the primary maintainability risk: brittle dependencies that hinder independent evolution of modules. This tactic targets the root cause observed in evidence: 'shared dependencies across modules...indicating cohesion and internal coupling'.",
+  "target_components": [
+    "subtitle/__init__.py",
+    "commands/__init__.py",
+    "inline/__init__.py"
+  ],
+  "expected_architectural_change": "The subtitle module will expose a stable, minimal interface (e.g., a dedicated service interface or protocol) instead of exposing internal functions and constants. commands and inline will depend on this abstraction (e.g., via interface segregation or dependency injection), not on subtitle's internal implementation. This decouples high-level modules from low-level details, reducing the change ripple effect. The flat 2-level directory structure remains, but module responsibilities become stricter: subtitle provides an abstraction, commands/inline depend only on that abstraction.",
+  "implementation_strategy": "1. Create a new interface or abstraction in subtitle (e.g., subtitle/service.py or subtitle/api.py) that exposes only the required methods (e.g., SearchSubService, LangService) and hides internal details like BASE_URL. 2. Update subtitle/__init__.py to re-export only the interface, not internal functions. 3. Refactor commands/__init__.py and inline/__init__.py to import only the abstraction (e.g., from subtitle.api import SearchSubService), not subtitle internals directly. 4. Pass required configuration via dependency injection (e.g., constructor or factory), avoiding direct module-level imports of config-like constants. 5. Introduce minimal runtime changes—no new files beyond abstractions; the structure remains modular monolith with improved separation.",
+  "risks": "Risk of over-engineering in a small monolith—introducing too many layers prematurely. However, since the codebase is minimal (5 Python files), the abstraction can be introduced gradually without major refactoring. Secondary risk: temporary test fragility during refactoring, but this is mitigated by small scope and existing testability-friendly structure (e.g., CommandHandler patterns)."
+}

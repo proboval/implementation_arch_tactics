@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository has a flat, script-based architecture with a single app.py file and zero packages (packages: 0), leading to tight coupling (avg_fan_out: 5.0), poor modularity, and low maintainability. Static analysis confirms lack of separation of concerns (factors C1, C2, A3). This tactic directly addresses the core maintainability issue by enforcing modular decomposition—splitting app.py into logical modules (e.g., controllers, services, utilities)—to isolate concerns, reduce coupling, and improve testability. Since app.py contains Flask startup logic, routing, and procedural code (as inferred from imports and flat structure), decomposing it into a package hierarchy (e.g., webapp/ app.py, views/, services/, utils/) is the most actionable maintainability improvement that fits the current repository structure without requiring full rewrite.",
+  "target_components": [
+    "app.py"
+  ],
+  "expected_architectural_change": "Single-file monolith (script-based) → package-based modular monolith: app.py becomes entry point; Flask app instantiation and routing moved into a views module; business logic extracted into services/; helper functions isolated into utils/; templates directory retained; no new external tools required.",
+  "implementation_strategy": "Step 1: Convert webapp-color/ into a Python package: rename app.py → app/__init__.py (with app factory pattern). Step 2: Extract routes into app/views.py (blueprint separation), Step 3: Move rendering/random/socket logic into app/services/ (e.g., app/services/color_service.py), Step 4: Move CLI argument parsing into app/utils/cli.py. Each extraction reduces fan-out in the entry point, improves cohesion, and makes each module testable in isolation. All changes are additive and backward-compatible (old app.py becomes obsolete).",
+  "risks": "Risk of premature abstraction if modules grow too small, but given current flat state, even coarse decomposition (3–4 modules) provides high maintainability gain. No architectural drift risk since tactic aligns with alternatives (modular_monolith) and existing Flask ecosystem patterns."
+}

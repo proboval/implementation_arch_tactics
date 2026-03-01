@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a monolithic, single-file script (termpdf.py) with ~40+ top-level functions and tightly coupled classes handling PDF rendering, UI (curses), file I/O, external tool integration (neovim), citation handling, and state management all in one file. Static analysis confirms high average fan-out (15.5), zero packages, and no directory structure, with factors C1/C2 (complexity/coupling) and T4/A1 (testability/abstraction issues). This violates maintainability principles: low modularity impedes testing, reuse, and independent evolution. Decomposability directly addresses this by enabling modular decomposition — dividing responsibilities into separate modules — to improve testability, analyzability, and maintainability. Unlike other tactics (e.g., checkpoint, audit trail), this is purely structural and matches the flat, procedural reality of the codebase.",
+  "target_components": [
+    "termpdf.py"
+  ],
+  "expected_architectural_change": "The single-file termpdf.py will be split into a minimal package structure (e.g., termpdf/ with core/, ui/, pdf/, tools/ submodules), separating concerns such as UI (curses), document handling (PDF operations), and integration (neovim, bibtex). Classes like Document, Screen, and Config will move to dedicated modules. Global state (e.g., Document subclasses, global config) will be scoped to module interfaces or passed explicitly. Fan-out within each module will be reduced, and module-level cohesion will increase.",
+  "implementation_strategy": "Start by extracting core responsibilities into modules: (1) pdf.py for Document subclass logic, pagelabels, rendering, and navigation; (2) ui.py for Screen, status_bar, shortcuts, curses handling; (3) tools.py for external integrations (neovim, citekey helpers, subprocess calls); (4) config.py for Config class and config loading. Use import statements to wire modules together (e.g., from .pdf import Document). Refactor global state into module-scoped singletons or dependency injection points. Begin with unit-testable subsets (e.g., pdf.py → test_pdf.py) to validate correctness before further decomposition.",
+  "risks": "Risk of temporary breaking of functionality during refactoring due to implicit coupling in global state. Mitigation: add small integration tests after each module extraction; avoid deep changes to logic until modules stabilize. Long-term, introducing imports increases complexity slightly but pays off in maintainability and testability."
+}

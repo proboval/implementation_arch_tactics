@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis reveals high coupling between views and models (e.g., students.py and teachers.py import models, forms, decorators directly and embed business logic), and the views themselves contain excessive domain logic (e.g., transaction decorators, form processing, validation in views), bordering on Active Record anti-pattern. This tight coupling means changes to domain logic ripple across multiple view files. The repository's MVC structure is compromised — views act as both controller AND business logic coordinator, increasing modification scope. Localized Modification directly targets this by increasing cohesion: grouping related responsibilities into cohesive modules (e.g., business rules, workflows, use cases) and narrowing the scope of change to minimal modules, reducing ripple effects when domain logic changes.",
+  "target_components": [
+    "django_school/classroom/views/students.py",
+    "django_school/classroom/views/teachers.py",
+    "django_school/classroom/models.py",
+    "django_school/classroom/decorators.py",
+    "django_school/classroom/forms.py"
+  ],
+  "expected_architectual_change": "Introduce distinct service/operation modules (e.g., take_quiz, assign_interests, create_quiz) that encapsulate cohesive business workflows — moving transactional logic, form processing, and model interaction out of views and into these service modules. Views become thin coordinators that delegate to services. Models retain domain rules but shed persistence-aware business orchestration. Forms remain for validation but services coordinate form interaction. This yields higher cohesion per module and lower coupling between layers.",
+  "implementation_strategy": "Refactor view files to delegate to new service classes (e.g., TakeQuizService, StudentInterestUpdateService) that handle end-to-end workflows: form instantiation, validation, model persistence, and error handling. Keep views responsible only for request/response concerns (e.g., login_required check, redirect, messages). Extract domain workflow code from decorators (e.g., teacher_required) into policy objects if needed. Introduce new directory e.g., 'services/' in classroom/ for service modules. Start incrementally with one use case (e.g., quiz taking) and iterate.",
+  "risks": "Initial refactoring may increase module count and require careful design to avoid service bloat. If not applied consistently, services may become god-classes; therefore, each service must adhere to single responsibility. Risk of over-abstraction is mitigated by focusing on high-cohesion workflow units observed in current code (e.g., take_quiz already has cohesive steps)."
+}

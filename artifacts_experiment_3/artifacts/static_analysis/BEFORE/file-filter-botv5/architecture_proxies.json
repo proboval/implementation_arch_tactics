@@ -1,0 +1,136 @@
+{
+  "python_files": 21,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "bot.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "logging"
+    ],
+    "info.py": [
+      "os",
+      "re"
+    ],
+    "sample_info.py": [],
+    "utils.py": [
+      "database",
+      "asyncio",
+      "requests",
+      "typing",
+      "pyrogram",
+      "info",
+      "re",
+      "os",
+      "datetime",
+      "logging",
+      "imdb",
+      "bs4"
+    ],
+    "database\\connections_mdb.py": [
+      "pymongo",
+      "logging",
+      "info"
+    ],
+    "database\\filters_mdb.py": [
+      "pymongo",
+      "logging",
+      "info"
+    ],
+    "database\\ia_filterdb.py": [
+      "pymongo",
+      "base64",
+      "re",
+      "pyrogram",
+      "info",
+      "motor",
+      "umongo",
+      "logging",
+      "marshmallow",
+      "struct"
+    ],
+    "database\\users_chats_db.py": [
+      "motor",
+      "info"
+    ],
+    "plugins\\banned.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info"
+    ],
+    "plugins\\broadcast.py": [
+      "database",
+      "asyncio",
+      "time",
+      "utils",
+      "pyrogram",
+      "info",
+      "datetime"
+    ],
+    "plugins\\channel.py": [
+      "database",
+      "pyrogram",
+      "info"
+    ],
+    "plugins\\connection.py": [
+      "database",
+      "logging",
+      "pyrogram",
+      "info"
+    ],
+    "plugins\\filters.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "io"
+    ],
+    "plugins\\genlink.py": [
+      "database",
+      "utils",
+      "base64",
+      "re",
+      "pyrogram",
+      "info",
+      "json",
+      "os",
+      "logging"
+    ],
+    "plugins\\index.py": [
+      "database",
+      "asyncio",
+      "utils",
+      "re",
+      "pyrogram",
+      "info",
+      "logging"
+    ],
+    "plugins\\inline.py": [
+      "database",
+      "utils",
+      "pyrogram",
+      "info",
+      "logging"
+    ],
+    "plugins\\misc.py": [
+      "utils",
+      "time",
+      "pyrogram",
+      "info",
+      "os",
+      "datetime",
+      "logging"
+    ],
+    "plugins\\p_ttishow.py": [
+      "database",
+      "Script",
+      "utils",
+      "pyrogram",
+      "info"
+    ]
+  }
+}

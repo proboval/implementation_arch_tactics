@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from a flat, monolithic script (geowifi.py) with 20+ functions defined at module level, zero packages (packages: 0), and high fan-out (avg_fan_out: 6.0), indicating tight coupling and low cohesion. Static analysis flags 'C1' (cohesion) and 'A3' (architectural integrity), while code_maintainability shows mi_avg: 0—zero maintainability index. Decomposability directly addresses this by dividing the system into cohesive, isolated modules (e.g., API clients, core logic, utilities), reducing ripple effects and enabling focused testing. This tactic targets the core anti-pattern: the lack of modularity in the single-file script and absence of package boundaries (max_directory_depth: 2, avg_files_per_package: 0). It can be implemented incrementally without rewriting the entire system.",
+  "target_components": [
+    "geowifi.py",
+    "helpers/BSSIDApple_pb2.py"
+  ],
+  "expected_architectural_change": "The current monolithic geowifi.py module will be split into a package-based structure (e.g., geowifi/ directory becomes a package with submodules like api/, core/, cli/, map/). Functions like apple_bssidNone, google_bssidNone will be grouped into API clients module; search_networksNone and create_mapNone into core logic; CLI entrypoint into cli/main.py. helpers/ will remain as a separate package for protobuf-generated bindings, decoupled from business logic.",
+  "implementation_strategy": "1. Convert geowifi.py into a package: rename to geowifi/ and create __init__.py. 2. Extract related functions into cohesive submodules: api/ (all *bssidNone and *ssidNone functions), core/ (search_networks, create_map, is_valid_bssid), cli/ (banner, print_results_table, arg parsing). 3. Move utility imports (rich, yaml, argparse) into cli; move google.protobuf usage into helpers/ with strict boundaries. 4. Define clear interfaces (e.g., ServiceInterface base class) to abstract external API calls and reduce direct coupling. 5. Update main.py entry point to import from new modules instead of monolithic module.",
+  "risks": "Minimal: Incremental decomposition avoids system-wide rewrite risk. Potential risk is scope creep if module boundaries are over-engineered—must stick to functional grouping (e.g., per responsibility, not per feature). Dependency on helpers/BSSIDApple_pb2.py must remain abstracted to avoid protobuf coupling leaking into business logic."
+}

@@ -1,0 +1,29 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: all 18 Python files are top-level with no directory structure (max_directory_depth: 1), and circular dependencies exist (e.g., utils.py → bilibili.py → printer.py → utils.py via call chains), indicating strong coupling and low cohesion. Static analysis shows avg_fan_out: 6.29 — modules depend on many others — and direct imports without abstraction (e.g., bilibili.py imports Printer directly, login.py imports bilibili directly). run.py imports 17 modules directly, acting as a central orchestrator — a classic sign of script-based monolith. Decomposability directly addresses this by introducing modular boundaries (e.g., separating concerns into domain, infrastructure, use cases, and interface layers), isolating problems, and enabling testability — exactly what’s missing. Unlike ABSTRACTION or DEPENDENCY_INVERSION (not in catalog), AT41 is explicitly defined as modularization with separation of concerns, fitting the script-based monolith’s need for layering.",
+  "target_components": [
+    "bilibili.py",
+    "bilibiliCilent.py",
+    "printer.py",
+    "configloader.py",
+    "utils.py",
+    "run.py",
+    "login.py",
+    "statistics.py",
+    "rafflehandler.py",
+    "Tasks.py",
+    "OnlineHeart.py",
+    "TCP_monitor.py",
+    "schedule.py",
+    "MultiRoom.py"
+  ],
+  "expected_architectural_change": "The flat 1-level structure will be reorganized into nested directories with semantic layering: e.g., domain/ (e.g., reward, user, room), infrastructure/ (e.g., http_client, storage, logging), usecases/ (orchestrating domain logic), and interface/ (CLI, TCP handlers, scheduling). Currently tightly coupled modules (e.g., bilibili.py, login.py, statistics.py) will be decoupled via interface abstractions (e.g., interface.RewardService, infrastructure.HTTPClient). run.py will be reduced to a minimal entry point delegating to usecase layers, and circular dependencies will be broken via dependency inversion.",
+  "implementation_strategy": "Step 1: Identify high-cohesion groups via import analysis (e.g., bilibili, login, configloader → infrastructure/auth; statistics, printer → infrastructure/logging; rafflehandler, bilibiliClient, TCP_monitor → domain/raffle). Step 2: Create directories (e.g., core/, infra/, app/), move related modules, and introduce interfaces (e.g., abstract HTTP client, config loader, printer). Step 3: Refactor imports to depend on interfaces (e.g., usecase uses interface.Printer, not module printer), inject dependencies instead of direct import. Step 4: Extract utility functions into shared infra/common.py if needed, and reduce run.py to main entry only. This is incremental: start with 1–2 modules per iteration (e.g., infra/http.py), and verify with local runs.",
+  "risks": "High initial refactoring effort if done too aggressively; risk of breaking existing behavior during import rewrites. Circular dependencies may require reordering module initialization (e.g., lazy loading). Short-term test coverage risk if test harness not adjusted. Mitigation: write targeted unit tests per layer before refactoring; use git branches per subsystem; avoid changing behavior beyond structural refactoring."
+}

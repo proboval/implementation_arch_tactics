@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only one top-level package ('modules') with flat structure (max directory depth = 2)",
+    "Main script 'darkscrape.py' contains high-level orchestration logic and imports modules directly",
+    "Modules (file.py, url.py) contain mixed responsibilities (e.g., file parsing + URL handling + face recognition)",
+    "No clear separation into layers (e.g., no distinct data, business, UI layers)",
+    "Functional-style modules with global procedures ( functions like 'scrap', 'main', 'banner')",
+    "Very low fan-out (avg=3.5) and minimal cross-module dependencies",
+    "All modules live in one directory without clear architectural boundaries"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between modules due to shared imports and overlapping responsibilities (e.g., 'face_re' function appears in both modules)",
+    "Hard to test individual components in isolation due to lack of interfaces or dependency injection",
+    "Limited scalability and maintainability as functionality grows",
+    "Violation of single responsibility principle in modules"
+  ]
+}

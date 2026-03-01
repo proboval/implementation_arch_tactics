@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns into domain-agnostic modules: downloader/, parser/, writer/, with internal cohesion (e.g., multiple parser subclasses inheriting from common Parser base class)",
+    "Shared domain model (User, Weibo classes in weibo_spider/) used across modules, indicating tight coupling within the same process space",
+    "Single entry point (__main__.py → spider.main) orchestrating the flow, but with modular internal structure",
+    "No explicit inter-service communication patterns (e.g., HTTP clients to external services beyond the target API, no message broker usage beyond optional adapters like KafkaWriter which are pluggable implementations within same process)",
+    "Package dependency fan-out is low to moderate (avg_fan_out ≈ 3), consistent with modular monolith where modules depend on a few core interfaces",
+    "Inheritance hierarchy (e.g., Downloader → ImgDownloader → *PictureDownloader; Parser → *Parser; Writer → *Writer) reflects modular abstraction within one runtime",
+    "Test structure (tests/ top-level, parallel to source) confirms standard Python project layout with internal module testing, not distributed system testing"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Monolithic deployment and scaling — cannot independently scale components",
+    "Tight domain coupling may emerge as more output targets (writers) or parsing logic evolve",
+    "No strict boundary enforcement between modules (e.g., writer modules may indirectly depend on parser internals via Weibo/User classes), risking gradual architectural drift"
+  ]
+}

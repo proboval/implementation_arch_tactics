@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT40",
+    "name": "Deferred Binding Time",
+    "primary_qa_impact": "Maintainability, Changeability, Portability",
+    "positive_impact": "Changeability(+), Flexibility(+)",
+    "negative_impact": "Runtime overhead"
+  },
+  "justification": "The architecture suffers from tight runtime coupling via direct inheritance and hard dependency on tiktoken in GPT4Tokenizer (visible in minbpe/gpt4.py importing tiktoken directly at module level and inheriting from RegexTokenizer). The static analysis confirms strong inheritance chain (BasicTokenizer → RegexTokenizer → GPT4Tokenizer) and identifies risk: 'GPT4Tokenizer has external dependency on tiktoken (runtime coupling could evolve toward microservices if external service abstraction grows)'. This makes it hard to swap tokenizer strategies (e.g., add a new GPT tokenizer or mock tiktoken for tests) without touching the core inheritance hierarchy. Deferred Binding Time enables late decision making (e.g., via factory or strategy injection), allowing new tokenizer implementations to be added without modifying the inheritance chain and decoupling GPT4Tokenizer from tiktoken at compile time—only required at runtime when configured.",
+  "target_components": [
+    "minbpe/gpt4.py",
+    "minbpe/regex.py",
+    "minbpe/__init__.py",
+    "minbpe/base.py"
+  ],
+  "expected_architectural_change": "Current tight inheritance chain (GPT4Tokenizer extends RegexTokenizer) will evolve toward composition and factory-based instantiation. The GPT4Tokenizer will no longer inherit tiktoken logic at the class level but use a tiktoken-based tokenizer delegate, and the choice of tokenizer strategy will be configurable at runtime (e.g., via a registry or factory method). The __init__.py may evolve from static imports to dynamic selection based on configuration. This maintains modularity while enabling pluggable tokenizers.",
+  "implementation_strategy": "1. Extract a TiktokenTokenizer interface (e.g., in minbpe/tiktoken_compat.py) implementing Tokenizer protocol. 2. Refactor GPT4Tokenizer to delegate to an instance of TiktokenTokenizer instead of inheriting from RegexTokenizer. 3. Add a tokenizer factory (e.g., minbpe/factory.py) that selects/constructs appropriate tokenizer based on configuration or environment. 4. Export tokenizer selection via get_tokenizer(name: str) in __init__.py. 5. Update train.py/tests to use the factory, not direct class instantiation, for tokenizer selection. 6. Keep backward compatibility by preserving GPT4Tokenizer class but making it a thin wrapper around TiktokenTokenizer delegate.",
+  "risks": "Runtime overhead from indirection; increased complexity during transition; tests must be updated to mock factory or tokenizer delegate instead of relying on inheritance-only mocking."
+}

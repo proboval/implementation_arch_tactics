@@ -1,0 +1,20 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear separation into logical layers: context, http, json, model (core/generated), security, util, exception, each with distinct responsibilities",
+    "Model layer split into core (domain abstractions, interfaces like BunqModel, AnchorObjectInterface) and generated (API response models), indicating strict layered separation",
+    "HTTP layer depends on context and model layers but not vice versa; JSON layer depends on model; context depends on HTTP and security — unidirectional dependencies typical of layered architecture",
+    "Fan-out average of 1.98 and max directory depth of 5 suggest controlled internal coupling and layered structure",
+    "Tests follow the same layering (e.g., test_context, test_http, test_model), reinforcing the layered organization",
+    "Core interfaces (e.g., AnchorObjectInterface) and abstract models (BunqModel) encapsulate domain logic, while adapters (JSON adapters) and clients (HttpClient) isolate external concerns—classic layered pattern with adapters"
+  ],
+  "alternatives": [
+    "hexagonal (ports and adapters)",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Generated models and internal models are somewhat tightly coupled (e.g., internal model classes inherit from generated ones), which may reduce flexibility if API contracts evolve",
+    "Some services (e.g., ApiContext) coordinate across multiple layers—risk of overloading high-level components if not carefully managed"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and ambiguous module boundaries: 'eulerian_magnification/base.py' imports from 'eulerian_magnification/transforms.py', while 'eulerian_magnification/io.py' imports from 'eulerian_magnification/transforms.py', and 'eulerian_magnification/__init__.py' aggregates only two components ('base', 'io') despite three logical modules ('base', 'io', 'transforms') existing — indicating uncontrolled module growth and unclear separation. Static analysis confirms 'C1', 'C2', 'A3' factors (likely coupling, cohesion, and lack of abstraction). Tests directly import internal functions like '_load_video' (e.g., 'tests/test_transforms.py'), revealing tests depend on implementation details rather than contracts. 'Decomposability' directly solves this by structuring modules around cohesive responsibilities and enforcing clear boundaries (e.g., separating data I/O, signal processing, and pyramid operations into self-contained units), enabling isolated testing and localized analysis. This is implementable incrementally via file/module reorganization without requiring a full rewrite.",
+  "target_components": [
+    "eulerian_magnification/base.py",
+    "eulerian_magnification/io.py",
+    "eulerian_magnification/transforms.py",
+    "eulerian_magnification/pyramid.py",
+    "tests/test_pyramid.py",
+    "tests/test_transforms.py"
+  ],
+  "expected_architectural_change": "Currently flat module structure ('base', 'io', 'transforms', 'pyramid') will evolve into clearly defined, self-contained layers: (1) a 'domain' module for core logic (e.g., 'eulerian_magnification.domain magnify') with minimal external dependencies; (2) a 'signals' module for transforms (bandpass, conversions) with no circular dependencies; (3) a 'storage' module for I/O with strict interfaces and no internal module knowledge; (4) a 'pyramids' module for multi-scale processing. Each module will expose well-defined public interfaces (via __all__ or explicit protocols) and depend only on abstraction (e.g., via explicit interfaces or duck-typed contracts), removing cross-module imports like 'from eulerian_magnification.transforms import ...' inside core logic.",
+  "implementation_strategy": "Step 1: Identify cohesive groupings: 'pyramid.py' is already high-cohesion → treat as 'pyramids' module. 'transforms.py' (pure math/converts) → 'signals' module. 'io.py' (file I/O, playback) → 'storage' module. 'base.py' (orchestrates all others) → split: move pure logic to 'domain', keep orchestration in 'main.py'. Step 2: Introduce minimal interfaces (e.g., stub classes or type hints) for data flow between modules (e.g., signal processing should accept 'VideoData' interface, not rely on specific types like numpy arrays directly). Step 3: Refactor tests to import from new module interfaces, not internal functions. Step 4: Remove circular dependencies via dependency injection or explicit contracts. Each step is local, testable, and reversible.",
+  "risks": "Initial refactoring may temporarily increase coupling if modules are not properly separated (e.g., new imports added before interfaces defined). Test coverage must be preserved during refactoring — 'tests/test_pyramid.py' and 'tests/test_transforms.py' currently test integration; new unit tests must target isolated modules. Care must be taken not to over-engineer (e.g., avoiding interfaces where duck typing suffices), as the system is small (11 Python files). However, risks are mitigated by incremental, file-by-file adoption and preserved behavior."
+}

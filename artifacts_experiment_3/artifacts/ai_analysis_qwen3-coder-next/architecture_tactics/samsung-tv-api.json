@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a flat, monolithic structure with a single 'samsungtv' package containing only two files and one tightly coupled class with 28+ public methods (remote.py). Static analysis confirms 'C1' (high complexity due to large class), 'C2' (low modularity), and 'A3' (lack of separation of concerns) as maintainability factors. The example.py directly imports and uses the concrete class without abstraction, indicating tight coupling between usage and implementation. This violates core maintainability principles: changes to any aspect (e.g., adding new key types, changing communication protocol) would ripple through the entire class, making testing, understanding, and modification difficult. Decomposability directly addresses this by enabling separation of concerns into distinct, testable units.",
+  "target_components": [
+    "samsungtv/remote.py",
+    "samsungtv/__init__.py"
+  ],
+  "expected_architectural_change": "The monolithic SamsungTV class will be split into cohesive, loosely-coupled modules: e.g., a communication layer (handling WebSocket protocol and heartbeat), a key mapping layer (mapping semantic keys to protocol-specific payloads), and a device control layer (orchestrating high-level operations). The __init__.py will begin to re-export *abstractions* rather than a single class. New sub-packages (e.g., 'protocol/', 'keys/') may emerge, increasing directory depth beyond 2 and improving fan-out structure.",
+  "implementation_strategy": "Step 1: Extract WebSocket interaction logic into a new 'protocol' module (e.g., samsungtv/protocol/websocket_client.py). Step 2: Extract key-sending logic into 'keys' module (e.g., samsungtv/keys/mapper.py). Step 3: Refactor SamsungTV class to depend on abstractions (interfaces) of these modules, reducing its method count and internal complexity. Step 4: Update __init__.py to re-export the high-level interface, not the internal implementation. All changes are incremental: new modules can be added without breaking existing imports, and the original SamsungTV class can be retained as a facade during transition.",
+  "risks": "Risk of over-engineering if decomposition is too fine-grained; however, given the 28+ methods and flat structure, even moderate decomposition (e.g., 2-3 new modules) significantly improves maintainability without excessive complexity. The main risk is temporary test gap during refactoring, mitigated by ensuring new modules are tested in isolation and existing example usage remains stable."
+}

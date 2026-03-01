@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The current modular monolith suffers from modules with overlapping responsibilities and high fan-out (avg 3.14), indicating implicit coupling across modules (e.g., tokenize.py imports corpus, util, indic; truecase.py imports corpus, util; normalize.py uses regex and chain). The repository tree shows no subpackages beyond data/ and test/, and many top-level modules (tokenize, normalize, truecase, sent_tokenize, subwords) share low-level dependencies (Perluniprops, NonbreakingPrefixes from corpus.py), causing ripple effects when any core utility or shared data changes. AT38—Localized Modification—directly addresses this by increasing cohesion and limiting the scope of change. It targets the need to isolate stateful components (e.g., corpus.py’s Perluniprops and NonbreakingPrefixes, which hold static data) and reduce cross-module leakage (e.g., tokenize.py importing util.py for is_cjk instead of having CJK-related logic local to appropriate modules). Implementing this tactic reduces ripple effects, improves testability, and makes modules more self-contained—exactly what maintainability metrics (T4, A1) and risks point to.",
+  "target_components": [
+    "sacremoses/corpus.py",
+    "sacremoses/tokenize.py",
+    "sacremoses/truecase.py",
+    "sacremoses/normalize.py",
+    "sacremoses/sent_tokenize.py",
+    "sacremoses/indic.py",
+    "sacremoses/util.py"
+  ],
+  "expected_architectural_change": "Modules will become more self-contained with higher cohesion: shared state (e.g., Perluniprops, NonbreakingPrefixes) will be encapsulated in dedicated interfaces or immutable data containers, and logic currently scattered across multiple modules (e.g., CJK detection in util.py and tokenization) will be moved into modules where that behavior is used. This reduces direct imports between high-level modules (e.g., tokenize.py importing indic.py directly) and instead rely on well-defined abstractions or internal helper modules, resulting in a flatter but more cohesive module hierarchy without requiring subpackages.",
+  "implementation_strategy": "1. Identify cross-module dependencies where modules import other modules only to access narrow functionality (e.g., tokenize.py → util.is_cjk, normalize.py → regex). 2. Move tightly coupled logic into the consuming module or into a new low-coupling utility package (e.g., sacremoses/cjk.py). 3. Replace static data in corpus.py with read-only, lazily-loaded data classes or immutable singletons to prevent accidental mutation. 4. Refactor modules to declare dependencies via explicit interfaces (e.g., nonbreaking prefix lookups via an abstract interface) rather than direct class instantiation. 5. Gradually split high-fan-out modules like tokenize.py by extracting tokenization rules into rule-specific modules (e.g., sacremoses/rules/numeric.py, sacremoses/rules/punctuation.py), reducing cohesion violation. This is incremental: start with one module at a time, and each change improves localizability of modifications.",
+  "risks": "Risk of temporary increased complexity during refactoring if abstraction boundaries are poorly chosen (e.g., over-engineering simple data structures); mitigation: keep extracted modules small and focused, validate with existing tests. Also, introducing too many small modules could increase module count and import overhead—but this is mitigated by co-locating related files in data/ or rules/ subdirectories while preserving the single-package monolith constraint."
+}

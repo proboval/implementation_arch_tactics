@@ -1,0 +1,63 @@
+{
+  "python_files": 6,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 3.0,
+  "imports_graph": {
+    "conftest.py": [],
+    "setup.py": [
+      "setuptools"
+    ],
+    "bin\\q.py": [
+      "datetime",
+      "csv",
+      "traceback",
+      "codecs",
+      "collections",
+      "os",
+      "io",
+      "fileinput",
+      "glob",
+      "sys",
+      "__future__",
+      "math",
+      "json",
+      "locale",
+      "six",
+      "gzip",
+      "uuid",
+      "sqlite3",
+      "time",
+      "re",
+      "hashlib",
+      "argparse"
+    ],
+    "bin\\__init__.py": [],
+    "test\\test_suite.py": [
+      "itertools",
+      "codecs",
+      "functools",
+      "collections",
+      "tempfile",
+      "pprint",
+      "os",
+      "pytest",
+      "glob",
+      "sys",
+      "__future__",
+      "json",
+      "bin",
+      "locale",
+      "subprocess",
+      "six",
+      "gzip",
+      "uuid",
+      "sqlite3",
+      "time",
+      "re",
+      "random",
+      "unittest"
+    ],
+    "test\\__init__.py": []
+  }
+}

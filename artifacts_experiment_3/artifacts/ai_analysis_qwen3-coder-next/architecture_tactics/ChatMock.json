@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a modular monolith with high fan-out (7.33) and excessive interdependencies across modules (e.g., cli.py imports 15+ internal modules, routes_ollama.py and routes_openai.py depend on overlapping sets of internal modules). Static analysis confirms 'C1' (high coupling) and 'A3' (low modularity) as key factors. Real code shows a 'hub-and-spoke' anti-pattern where utils.py, config.py, and http.py act as central dependency hubs—every route file imports from at least 6 internal modules, and many modules depend on each other directly. Decomposability directly addresses this by forcing clear boundaries: grouping cohesive responsibilities into submodules (e.g., isolating upstream request logic from routes), reducing ripple effects, and improving testability—especially critical since 0% docstring coverage (T5 factor) obscures intent and makes targeted refactoring risky. This tactic targets *measurable* coupling hotspots, not abstract theory.",
+  "target_components": [
+    "chatmock/routes_ollama.py",
+    "chatmock/routes_openai.py",
+    "chatmock/utils.py",
+    "chatmock/upstream.py",
+    "chatmock/http.py"
+  ],
+  "expected_architectural_change": "Breaking the central 'utils' hub into purpose-specific modules (e.g., auth/utils.py, transform/utils.py, serialization/utils.py) and introducing well-defined layers between routing, transformation, and upstream communication. Routes will depend on narrow interfaces (e.g., ' UpstreamGateway' instead of raw upstream.py functions), reducing fan-out. The modular monolith evolves from a single flat package with 18 tightly-coupled modules to a two-level hierarchy: core/, routes/, services/, and utilities/ with explicit API contracts.",
+  "implementation_strategy": "Step 1: Identify cohesive clusters using import frequency data—e.g., routes_ollama.py and routes_openai.py both depend on config, limits, reasoning, transform, upstream, utils → create a 'services' module for upstream request orchestration and rate limiting. Step 2: Extract shared logic into services (e.g., move upstream.py functions into services/upstream_gateway.py with a clean interface). Step 3: Replace direct imports (e.g., from .upstream import ...) with interface-based injection (e.g., from .services import UpstreamGateway). Step 4: Split utils.py: move auth-related functions to services/auth_utils.py, serialization to services/serialization_utils.py, etc. This is incrementally implementable—each file pair (e.g., routes_*.py) can be refactored independently.",
+  "risks": "Refactoring utils.py into specialized modules may temporarily increase complexity if abstraction boundaries are poorly chosen. However, the high fan-out already represents high risk—this tactic mitigates the *current* maintainability debt without requiring system rewrite or architectural overhaul. Risks are minimized by localizing changes to the identified hotspots (routes_*.py, utils.py, upstream.py) and using type hints for interface contracts."
+}

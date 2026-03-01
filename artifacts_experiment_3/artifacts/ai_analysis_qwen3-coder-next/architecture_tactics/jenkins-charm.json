@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The layered architecture of this charm exhibits poor decomposability: the reactive layer contains 30+ top-level functions (e.g., 'install_jenkins', 'configure_admin', 'upgrade_jenkins') that are tightly coupled to charm-specific lifecycle hooks and internal state, while domain logic modules (e.g., 'api.py', 'plugins.py') contain embedded orchestration code (e.g., 'plugins.py' imports and calls 'Api.wait()'). Static analysis shows reactive/jenkins.py imports 18 modules (avg_fan_out=4.54, high for a single orchestration unit), and unit tests show repeated duplication of state setup (e.g., 'AptInstalledJenkins', 'JenkinsConfiguredAdmin' fixtures), indicating poor module isolation. The layered design is undermined by tight temporal coupling (e.g., 'unitdata' shared state) and lack of clear boundaries for change—modifying installation logic requires touching both reactive and domain layers. This blocks incremental testing, analysis, and evolution—core maintainability failures. Targeting decomposition separates orchestration from domain logic via strict entry-point modules.",
+  "target_components": [
+    "reactive/jenkins.py",
+    "lib/charms/layer/jenkins/__init__.py",
+    "lib/charms/layer/jenkins/service.py",
+    "actions/install-dependencies",
+    "actions/upgrade"
+  ],
+  "expected_architectural_change": "Introduce formal orchestration modules in the reactive layer—specifically, decompose 'reactive/jenkins.py' into discrete modules (e.g., 'reactive/install.py', 'reactive/configure.py', 'reactive/plugins.py') that each implement a single lifecycle stage and interact with domain modules *only* through well-defined, testable interfaces. Domain modules will avoid charm-specific hooks or state access, becoming pure function classes. The 'actions/' directory will get thin wrappers that delegate to domain modules. This enforces unidirectional dependency flow: actions → reactive orchestration modules → domain modules.",
+  "implementation_strategy": "Step 1: Extract 'reactive/jenkins.py' into 3-4 orchestration modules by grouping functions by concern (e.g., 'install.py' for install/upgrade/bootstrap; 'configure.py' for admin/plugins/website; 'lifecycle.py' for relation hooks and state transitions). Step 2: Move charm-specific imports (hookenv, unitdata, charms.reactive helpers) into a single 'reactive/orchestrator.py' module that all new modules import—but domain modules *must not* import this. Step 3: Add explicit interfaces in domain modules (e.g., 'service.py' defines 'check_ready' as a method, not one-off helpers) and create integration tests verifying only orchestration modules interact with charm runtime. Step 4: Use existing action files (e.g., 'install-dependencies') as models for delegation, then refactor reactive hooks to delegate to them.",
+  "risks": "Risk of temporary duplication during refactoring; risk of over-decomposition if orchestration granularity is too fine (e.g., splitting into >5 modules). Mitigation: Use git branches and integration tests to validate each decomposition step; prioritize refactoring based on high-coupling files from static analysis (e.g., 'reactive/jenkins.py', 'plugins.py')."
+}

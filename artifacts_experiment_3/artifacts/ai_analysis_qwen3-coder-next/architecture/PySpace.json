@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Project uses a single top-level Python package (pyspace) with clearly separated modules (camera.py, coloring.py, geo.py, etc.) indicating logical decomposition",
+    "No packages array in metrics implies flat module structure rather than nested package hierarchy typical of layered/microservices",
+    "High average fan-out (3.0) and low max directory depth (2) align with tightly-knit, cohesive modules exchanging dependencies without strict layers",
+    "Shared utilities (util.py) and consistent cross-module imports (e.g., coloring.py imports from .util) indicate internal coupling without strong architectural layers",
+    "Main entry point (ray_marcher_demo.py) orchestrates multiple components directly, typical of monolithic modular design",
+    "All code resides in a single repository without external services or adapters, ruling out microservices/ports-and-adapters"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Risk of tight coupling if modules increasingly depend on each other's internals",
+    "No clear boundary enforcement may lead to erosion of modularity over time",
+    "Lack of explicit layering may complicate testing and evolution toward service-oriented patterns"
+  ]
+}

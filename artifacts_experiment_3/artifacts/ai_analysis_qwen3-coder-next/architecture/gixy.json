@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module-based organization by domain (core, directives, parser, plugins, formatters, cli, utils) with bounded responsibilities",
+    "Plugins follow a common interface (Plugin base class) and are managed centrally via PluginsManager — typical modular monolith pattern",
+    "Core infrastructure (context, config, variable, regexp, etc.) is isolated and reused across modules without loose coupling",
+    "Parser and directives layers handle parsing and AST representation, indicating layered concerns within the monolith",
+    "Formatters are decoupled from analysis logic, supporting pluggable output formats without tight dependencies",
+    "CLI layer is separate but integrated into the same package, not externally exposed as services",
+    "No external communication or service boundaries (e.g., no RPC, messaging, REST interfaces); all components run in-process"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between parser, directives, and plugins may hinder independent evolution",
+    "Shared state in Context may become a bottleneck or source of bugs as modularity grows",
+    "Monolithic structure may reduce testability in isolation without careful separation"
+  ]
+}

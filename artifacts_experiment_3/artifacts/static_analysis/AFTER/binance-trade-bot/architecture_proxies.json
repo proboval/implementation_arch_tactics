@@ -1,0 +1,194 @@
+{
+  "python_files": 27,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "backtest.py": [
+      "datetime",
+      "binance_trade_bot"
+    ],
+    ".pre-commit-hooks\\sort-coins-file.py": [
+      "pathlib"
+    ],
+    "binance_trade_bot\\api_server.py": [
+      "re",
+      "sqlalchemy",
+      "database",
+      "logger",
+      "models",
+      "typing",
+      "datetime",
+      "flask_socketio",
+      "flask",
+      "config",
+      "flask_cors",
+      "itertools"
+    ],
+    "binance_trade_bot\\auto_trader.py": [
+      "sqlalchemy",
+      "binance_api_manager",
+      "database",
+      "logger",
+      "models",
+      "typing",
+      "datetime",
+      "config"
+    ],
+    "binance_trade_bot\\backtest.py": [
+      "binance_api_manager",
+      "traceback",
+      "database",
+      "strategies",
+      "logger",
+      "models",
+      "typing",
+      "datetime",
+      "sqlitedict",
+      "config",
+      "collections",
+      "binance_stream_manager"
+    ],
+    "binance_trade_bot\\binance_api_manager.py": [
+      "traceback",
+      "math",
+      "database",
+      "cachetools",
+      "logger",
+      "binance",
+      "models",
+      "typing",
+      "config",
+      "time",
+      "binance_stream_manager"
+    ],
+    "binance_trade_bot\\binance_stream_manager.py": [
+      "sys",
+      "logger",
+      "unicorn_binance_websocket_api",
+      "binance",
+      "typing",
+      "contextlib",
+      "config",
+      "time",
+      "threading"
+    ],
+    "binance_trade_bot\\config.py": [
+      "os",
+      "models",
+      "configparser"
+    ],
+    "binance_trade_bot\\crypto_trading.py": [
+      "binance_api_manager",
+      "strategies",
+      "database",
+      "logger",
+      "config",
+      "time",
+      "scheduler"
+    ],
+    "binance_trade_bot\\database.py": [
+      "sqlalchemy",
+      "socketio",
+      "logger",
+      "models",
+      "typing",
+      "json",
+      "contextlib",
+      "datetime",
+      "config",
+      "time",
+      "os"
+    ],
+    "binance_trade_bot\\interfaces.py": [
+      "typing",
+      "models",
+      "abc"
+    ],
+    "binance_trade_bot\\logger.py": [
+      "logging",
+      "notifications"
+    ],
+    "binance_trade_bot\\notifications.py": [
+      "queue",
+      "apprise",
+      "os",
+      "threading"
+    ],
+    "binance_trade_bot\\scheduler.py": [
+      "datetime",
+      "schedule",
+      "logging",
+      "traceback"
+    ],
+    "binance_trade_bot\\__init__.py": [
+      "backtest",
+      "crypto_trading",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot\\__main__.py": [
+      "crypto_trading"
+    ],
+    "binance_trade_bot\\models\\base.py": [
+      "sqlalchemy"
+    ],
+    "binance_trade_bot\\models\\coin.py": [
+      "sqlalchemy",
+      "base"
+    ],
+    "binance_trade_bot\\models\\coin_value.py": [
+      "enum",
+      "sqlalchemy",
+      "datetime",
+      "base",
+      "coin"
+    ],
+    "binance_trade_bot\\models\\current_coin.py": [
+      "datetime",
+      "sqlalchemy",
+      "coin",
+      "base"
+    ],
+    "binance_trade_bot\\models\\pair.py": [
+      "sqlalchemy",
+      "coin",
+      "base"
+    ],
+    "binance_trade_bot\\models\\scout_history.py": [
+      "datetime",
+      "sqlalchemy",
+      "pair",
+      "base"
+    ],
+    "binance_trade_bot\\models\\trade.py": [
+      "enum",
+      "sqlalchemy",
+      "datetime",
+      "base",
+      "coin"
+    ],
+    "binance_trade_bot\\models\\__init__.py": [
+      "current_coin",
+      "trade",
+      "pair",
+      "base",
+      "coin",
+      "scout_history",
+      "coin_value"
+    ],
+    "binance_trade_bot\\strategies\\default_strategy.py": [
+      "random",
+      "binance_trade_bot",
+      "datetime",
+      "sys"
+    ],
+    "binance_trade_bot\\strategies\\multiple_coins_strategy.py": [
+      "datetime",
+      "binance_trade_bot"
+    ],
+    "binance_trade_bot\\strategies\\__init__.py": [
+      "importlib",
+      "os"
+    ]
+  }
+}

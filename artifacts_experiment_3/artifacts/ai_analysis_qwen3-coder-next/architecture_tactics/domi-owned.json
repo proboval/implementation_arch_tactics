@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (avg 4.56) and tight coupling via mutual imports among modules (e.g., bruteforce.py, enumerate.py, hashdump.py, quickconsole.py all import 'main' which itself imports 'utilities', and 'quickconsole.py' imports 'utilities' twice). This creates ripple effects: modifying core classes like DomiOwned or Utilities impacts many modules. The flat monolithic structure (1 package, depth 2) and inheritance-heavy pattern (all modules extend DomiOwned) reinforce tight coupling, reducing modularity and testability. Reduced Coupling directly addresses this by introducing explicit interfaces or dependency injection, limiting direct references to concrete classes, and narrowing the scope of change. In this repository, it can be applied to break hard dependencies between modules and the core DomiOwned class, and to isolate Utilities from modules that only need lightweight functionality.",
+  "target_components": [
+    "domi_owned/main.py",
+    "domi_owned/utilities.py",
+    "domi_owned/bruteforce.py",
+    "domi_owned/enumerate.py",
+    "domi_owned/hashdump.py",
+    "domi_owned/quickconsole.py",
+    "domi_owned/fingerprint.py"
+  ],
+  "expected_architectural_change": "The 'DomiOwned' base class will be refactored to provide only essential, stable interface contracts; module-specific behavior will be injected via composition or adapter interfaces instead of inheritance. Utility functions will be moved into a service layer (e.g., domi_owned/services/) or extracted into separate, stateless modules with clear boundaries. Import dependencies among modules will be removed — modules will depend only on interfaces, not concrete classes. The architecture will shift from inheritance-driven cohesion to interface-driven loose coupling.",
+  "implementation_strategy": "1. Introduce abstract base classes or protocols (e.g., AuthStrategy, CredentialParser) to replace concrete implementation in DomiOwned.__init__ and authenticate methods. 2. Extract utilities into smaller, idempotent services (e.g., domi_owned/services/logging.py, domi_owned/services/url_utils.py) and replace imports of utilities.py with imports of specific services. 3. Refactor module constructors to accept dependencies via __init__ instead of inheriting and calling super(). 4. Use dependency injection in main.py to wire modules. 5. Introduce interfaces (e.g., via typing.Protocol) for shared abstractions like IEnumerator, IHashDumper. 6. Replace direct import of .main in all modules with optional injection points. 7. This can be done incrementally: start by isolating utilities, then refactor Auth methods, finally replace inheritance.",
+  "risks": "Initial refactoring may increase boilerplate (e.g., constructor parameters), and misdesigned interfaces could introduce new complexity. However, risks are mitigated by the existing flat module structure (easy to locate usage), well-defined responsibilities per module, and absence of external consumers (internal CLI tool), making safe, incremental rollout feasible."
+}

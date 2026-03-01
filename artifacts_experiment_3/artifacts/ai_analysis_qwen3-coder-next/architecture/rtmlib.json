@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "The project has a clear directory-based modularity (tools/, visualization/, solution/) with self-contained submodules for object_detection, pose_estimation, and solution-specific use cases (e.g., body, hand, wholebody)",
+    "All components are in a single Python package (rtmlib) with shared dependencies, no external communication boundaries (e.g., no REST/gRPC), and no deployment separation",
+    "Core logic is organized into cohesive modules with well-defined responsibilities; classes like RTMPose, Wholebody, and Hand combine object detection and pose estimation components internally",
+    "High cohesion within modules (e.g., pose_estimation/ includes all inference-related components: pre/post_processings and model wrappers)",
+    "Low coupling: fan-out is modest (avg 2.78), and dependency graph is mostly internal; tools depend on base and utility modules but not across domains (e.g., solution/ uses only object_detection/ and pose_estimation/ via imports)",
+    "The solution modules (e.g., Body, Hand) serve as facade components combining underlying detector/estimator tools without enforcing external interfaces"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Potential for accidental tight coupling if solution modules directly import internal model implementations instead of base/abstraction interfaces",
+    "No runtime separation or fault isolation — failure in one module could affect all others",
+    "Scalability limitations: cannot scale individual components independently (e.g., pose estimation vs. visualization)",
+    "Testing complexity increases as modules are tightly integrated in imports (e.g., Hand imports RTMDet and RTMPose directly)"
+  ]
+}

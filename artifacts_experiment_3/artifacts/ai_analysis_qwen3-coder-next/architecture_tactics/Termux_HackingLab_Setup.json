@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: six Python files at the root level with duplicated functions (e.g., 'line_print', 'banner', 'install_module'), no package structure (0 packages, max_directory_depth=2), no __init__.py files, and mixed responsibilities (installation, tool setup, module management, startup logic all in flat files). This forces tight coupling and prevents isolated testing or localizable change. Decomposability directly addresses this by introducing modular boundaries—grouping related functionality into packages/modules—to isolate concerns, reduce ripple effects, and enable testing per module. It targets the core maintainability failure: absence of logical componentization.",
+  "target_components": [
+    "install.py",
+    "pkg_installer.py",
+    "python_modules.py",
+    "start.py",
+    "tools_setup.py"
+  ],
+  "expected_architectural_change": "Creation of a clean module/package structure (e.g., src/hackinglab/) with bounded contexts: 'core' (shared utilities like banner/line_print), 'installer' (install logic), 'module_manager' (pip/pkg installation), 'tool_orchestrator' (tool setup/installation), 'cli' (entry point/startup). Each module encapsulates a single responsibility; duplicate functions eliminated via abstraction or shared core module. Subdirectories replace flat hierarchy; __init__.py added to make packages importable.",
+  "implementation_strategy": "Step 1: Extract shared utilities (banner, line_print) into src/hackinglab/core/utils.py. Step 2: Refactor install.py → src/hackinglab/installer/main.py. Step 3: Merge pkg_installer.py and python_modules.py logic into src/hackinglab/module_manager/ with clear interface. Step 4: Refactor tools_setup.py → src/hackinglab/tool_orchestrator/ per-tool handlers (e.g., sqlmap.py, seeker.py). Step 5: Reduce start.py to CLI glue code using the new modules. All changes preserve functionality while enforcing separation: each module has one reason to change, fan-in/fan-out reduced via explicit interfaces, and functions gain return types and testability.",
+  "risks": "Risk of temporary duplication during migration; risk of incomplete extraction leading to partial coupling if modules leak responsibilities (e.g., tools_setup importing module_manager directly). Mitigated by incremental refactoring: extract one module at a time, add integration tests post-refactor, and enforce linting rules (e.g., circular import detection, import graph rules)."
+}

@@ -1,0 +1,21 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single top-level module file (fbpca.py) containing most functionality",
+    "No package structure (packages: 0)",
+    "Shallow directory depth (max_directory_depth: 2)",
+    "Tests defined as unit test classes directly inside the main module",
+    "Simple flat file layout with only docs/ subdirectory and root-level scripts",
+    "Low average fan-out (3.3) suggests minimal module interdependencies"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Poor scalability due to lack of modularity",
+    "Testing tightly coupled with core logic in same file",
+    "Limited reusability across projects",
+    "Difficult to maintain as codebase grows"
+  ]
+}

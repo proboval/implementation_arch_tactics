@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows evidence of tightly coupled modules where changes in core abstractions (e.g., ModelAdmin2, Admin2) likely ripple across many domain apps. Static analysis shows average fan-out of ~2, but analysis of imports graph reveals that core modules like djadmin2/types.py, djadmin2/views.py, and djadmin2/actions.py are heavily imported by domain modules (e.g., example/blog/admin2.py, example/polls/admin2.py). This tight coupling increases the risk of unintended side effects when modifying core logic. Additionally, the modular monolith structure relies heavily on inheritance and implicit contracts via ModelAdmin2, which makes modifications error-prone. Localized Modification directly addresses this by encouraging high cohesion within modules and narrowing modification scope—e.g., ensuring each admin2.py file contains domain-specific customizations in a contained manner rather than relying on deep inheritance chains across the core library.",
+  "target_components": [
+    "djadmin2/types.py",
+    "djadmin2/views.py",
+    "djadmin2/actions.py",
+    "example/blog/admin2.py",
+    "example/polls/admin2.py",
+    "example/files/admin2.py"
+  ],
+  "expected_architectural_change": "Refactor ModelAdmin2 and view/action classes to encapsulate domain-specific variation points via composition over inheritance (e.g., using Strategy or Template Method patterns), reduce cross-module dependencies by extracting domain-specific behavior into pluggable handlers, and ensure each admin2.py module contains only tightly related concerns—e.g., grouping form, renderer, and permission overrides locally rather than relying on inherited defaults from core modules.",
+  "implementation_strategy": "1. Extract view customization hooks (e.g., list display, filters, actions) from core views (djadmin2/views.py) into small, composable mixins or callable objects. 2. Replace deep inheritance chains in example/*/admin2.py with explicit configuration patterns (e.g., 'actions = [DeleteSelectedAction, CustomPublishAction]' instead of subclassing BaseListAction unnecessarily). 3. Introduce a convention where domain modules define variations in isolation—e.g., move form widgets or permission checks directly into domain admin2.py files rather than overriding core form classes. 4. Refactor ModelAdmin2 to delegate view configuration to a separate configuration object (e.g., ViewConfig) instead of method overriding.",
+  "risks": "Risk of increased indirection if composition is over-applied; need to avoid creating too many small classes. Also, existing domain admin2.py files may require moderate refactoring effort to decouple from core, but this can be done incrementally per domain app."
+}

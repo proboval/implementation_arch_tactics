@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Two packages (budou and tests), with no separate service boundaries or network communication",
+    "Clear module separation in budou/ directory with focused responsibilities (segmenter, chunk, parser, cache)",
+    "Segmenter classes (MecabSegmenter, NLAPISegmenter, TinysegmenterSegmenter) inherit from a common abstract base (Segmenter), indicating polymorphic but cohesive design",
+    "Parser classes depend on multiple Segmenter implementations and Chunk utilities, showing interdependent but encapsulated modules",
+    "No remote procedure calls, message queues, or external service dependencies visible",
+    "Single codebase deployed as one unit (setup.py, setup.cfg, no separate deployments)",
+    "Directory structure (budou/, tests/, docs/) follows typical modular monolith layout"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between Parser and multiple Segmenter implementations may reduce testability and extensibility",
+    "Use of abstract base classes is good, but dynamic parser instantiation via get_parser() suggests some flexibility, though still within one process"
+  ]
+}

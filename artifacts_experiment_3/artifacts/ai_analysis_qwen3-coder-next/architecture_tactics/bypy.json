@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: the monolithic ByPy class in bypy.py (over 200 methods) bundles uploading, downloading, syncing, auth, GUI interaction, and CLI parsing into one module. Static analysis confirms tight coupling via shared modules (gvar.py, util.py, printer.py) used heavily across modules, and the imports graph shows util.py depending on printer and printer_util, which in turn import from util — creating circular dependencies. The GUI (gui.py) and CLI (bypy.py) share the same ByPy class, violating separation of concerns. This hinders testability (difficult to mock only upload logic), analyzability (hard to isolate failure points), and maintainability (any change risks side effects across unrelated behaviors). Decomposability directly addresses this by enabling modular division of responsibilities — isolating concerns like upload, download, auth, CLI, and GUI into separate modules with well-defined interfaces.",
+  "target_components": [
+    "bypy/bypy.py",
+    "bypy/gui.py",
+    "bypy/__main__.py",
+    "bypy/util.py",
+    "bypy/gvar.py",
+    "bypy/requester.py",
+    "bypy/printer.py"
+  ],
+  "expected_architectural_change": "The monolithic ByPy class will be decomposed into focused domain modules: e.g., a new 'uploader.py' with upload-specific logic, a 'downloader.py' for download orchestration, an 'authenticator.py' for token handling, and a 'cli.py' for argument parsing. GUI responsibilities (currently in gui.py) will be isolated into a view layer that depends on the core domain modules. Core utilities (util.py, gvar.py) will be reduced by extracting state and logic into their respective domain modules. Dependencies will flow top-down: CLI → domain modules → requester/printer → utilities, with dependencies on shared modules minimized and abstractions introduced (e.g., Requester and Printer used via interfaces, not concrete implementations).",
+  "implementation_strategy": "1. Identify functional clusters in bypy.py using method signatures: group methods like upload methods (upload, rapidupload, stream), download methods (download, downdir), auth methods (_auth, _refresh_token), etc. 2. Extract each cluster into new modules (e.g., uploader.py, downloader.py, auth.py) with minimal internal dependencies. 3. Introduce abstractions: define Requester interface (already exists partially), Printer interface (printer.ConsolePrinter, printer.GuiPrinter), and domain interfaces (e.g., UploadStrategy). 4. Refactor ByPy to become a coordinator that composes domain modules, not a monolithic class. 5. Move GUI-specific logic from ByPy into gui.py and have gui.py use the domain modules directly. 6. Reduce shared global state (gvar.py) by injecting dependencies where possible. 7. Refactor util.py to contain only pure helper functions without side-effecting imports. 8. Incrementally update tests to target new modules before removing logic from bypy.py.",
+  "risks": "Risk of introducing regressions during extraction; risk of creating anemic domain modules if too much logic is moved to the coordinator; temporary increase in module count may reduce understandability if interfaces are poorly designed. These risks are mitigated by incremental extraction (targeting one responsibility at a time), preserving existing tests as regression guards, and ensuring each new module has clear Single Responsibility."
+}

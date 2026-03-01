@@ -1,0 +1,61 @@
+{
+  "python_files": 11,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.5,
+  "imports_graph": {
+    "replicate_study.py": [
+      "os",
+      "requests",
+      "eulerian_magnification"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "eulerian_magnification\\base.py": [
+      "cv2",
+      "scipy",
+      "matplotlib",
+      "eulerian_magnification",
+      "numpy"
+    ],
+    "eulerian_magnification\\io.py": [
+      "cv2",
+      "os",
+      "eulerian_magnification",
+      "numpy"
+    ],
+    "eulerian_magnification\\pyramid.py": [
+      "cv2",
+      "numpy"
+    ],
+    "eulerian_magnification\\transforms.py": [
+      "numpy",
+      "scipy"
+    ],
+    "eulerian_magnification\\__init__.py": [
+      "io",
+      "base"
+    ],
+    "tests\\base.py": [
+      "cv2",
+      "tempfile",
+      "requests",
+      "pathlib",
+      "hashlib",
+      "os"
+    ],
+    "tests\\test_pyramid.py": [
+      "eulerian_magnification",
+      "numpy",
+      "tests",
+      "base"
+    ],
+    "tests\\test_transforms.py": [
+      "eulerian_magnification",
+      "tests",
+      "base"
+    ],
+    "tests\\__init__.py": []
+  }
+}

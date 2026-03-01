@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Flat directory structure (max_depth=2, no packages defined)",
+    "Single main module (heatmap.py) with procedural main() and many top-level functions",
+    "All test files live directly in test/ subdirectory without modular separation",
+    "Files import directly using 'import heatmap as hm' rather than modular package imports",
+    "Low fan-out (avg ~4.7) and minimal inter-module dependencies suggest monolithic execution flow",
+    "Presence of standalone example scripts (numpy_example.py, random_example.py, two_pass_example.py) typical of script-based projects",
+    "Classes primarily model domain data (Coordinate, Projection, Matrix, etc.) rather than architectural layers",
+    "No evidence of ports/adapters separation or clean domain boundaries"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling between I/O, business logic, and presentation (e.g., OSM background fetching mixed with core logic)",
+    "Difficulty scaling or maintaining as features grow due to lack of modularity",
+    "Testing heavily dependent on file system and external dependencies (OSM, GDAL) due to procedural style",
+    "Hard to enforce architectural invariants or enforce separation of concerns"
+  ]
+}

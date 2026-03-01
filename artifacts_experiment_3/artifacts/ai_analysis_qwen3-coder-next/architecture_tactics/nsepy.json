@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high cross-module coupling and lack of encapsulation: modules like commons.py and urls.py are heavily imported via wildcard imports (`from nsepy.commons import *`, `from nsepy.urls import *`) across history.py, live.py, and test files, causing ripple effects when internals change. Static analysis confirms high fan-out (avg 3.8, max in commons.py = 11+ imports including nsepy itself), and the imports graph shows repeated direct dependencies on internal implementation (e.g., live.py imports from liveurls.py via raw URL functions, derivatives/archives.py imports from nsepy.archives which doesn’t exist in root — indicating broken or duplicated contracts). This architecture makes changes risky: modifying commons.py affects all modules, violating cohesion and making localized change difficult. The tactic 'Localized Modification' (AT38) directly addresses this by increasing cohesion and narrowing modification scope — by introducing clear, stable module interfaces (e.g., replacing wildcard imports with explicit API functions and introducing abstraction layers like a `DataFetcher` interface), so changes to one module’s internals (e.g., changing how URLs are built or tables parsed) do not propagate. This is implementable incrementally by refactoring import statements and extracting internal contracts, and fits the modular monolith structure without requiring process boundaries.",
+  "target_components": [
+    "nsepy/commons.py",
+    "nsepy/urls.py",
+    "nsepy/constants.py",
+    "nsepy/history.py",
+    "nsepy/live.py",
+    "nsepy/liveurls.py",
+    "nsepy/derivatives/archives.py",
+    "nsepy/symbols.py"
+  ],
+  "expected_architectural_change": "Current direct cross-module imports (especially wildcard `import *`) will be replaced with explicit interface calls and abstraction layers (e.g., a `Fetcher` interface in a new `fetch` module, or public methods in `commons`/`urls` that hide internal implementation). Modules like `history.py` and `live.py` will depend on abstractions (e.g., `Fetcher` interface) rather than concrete modules like `commons.URLFetch` or `urls.*`, reducing coupling and localizing modifications to the fetcher implementation alone. New internal modules may be added (e.g., `nsepy/fetch.py`, `nsepy/api.py`) to define and enforce module contracts.",
+  "implementation_strategy": "1. Identify high-coupling modules: commons.py, urls.py, liveurls.py. 2. Refactor wildcard imports: replace `from nsepy.commons import *` with explicit imports (e.g., `from nsepy.commons import URLFetch`) and expose only required public APIs. 3. Introduce a `Fetcher` abstraction (e.g., `nsepy/fetch.py`) that encapsulates URLFetch and URL handling — history.py, live.py, and tests depend on this interface, not concrete modules. 4. Move shared utility logic (e.g., parsing, data adaptation) into dedicated helper modules (e.g., `nsepy/parser.py`) with clear contracts. 5. Update tests to depend only on public APIs. 6. Add interface documentation to each module’s docstring specifying stable contracts.",
+  "risks": "Risk of increased indirection if abstraction is over-engineered; however, this can be mitigated incrementally — starting with small focused interfaces (e.g., one `Fetcher` abstraction, one `URLBuilder` abstraction) rather than full re-architecture. Also, renaming or moving modules may temporarily break tests, but tests are already mirrored to modules and can be updated with minimal regression if done module-by-module. Overall risk is low to moderate and reversible."
+}

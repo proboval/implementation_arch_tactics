@@ -1,0 +1,20 @@
+{
+  "architecture_type": "mvc",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into models (models.py), views (views/classroom.py, students.py, teachers.py), and templates (templates/)",
+    "Django's built-in class-based views (ListView, CreateView, UpdateView, etc.) follow MVC convention where views handle request logic and templates handle presentation",
+    "Views import models and forms, and render templates—classic MVC flow",
+    "URL routing (urls.py) maps endpoints to view classes/functions, decoupling routing from business logic",
+    "Models define domain entities (User, Quiz, Question, etc.) with business logic and persistence concerns",
+    "Directory structure organizes concerns per app (classroom/) with subcomponents for models, views, templates—typical Django MVC pattern"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between Django ORM models and views through forms and decorators could reduce testability",
+    "View layer is more active than in strict MVC (e.g., business logic in views like login() + transaction decorators), bordering on Active Record anti-pattern in places"
+  ]
+}

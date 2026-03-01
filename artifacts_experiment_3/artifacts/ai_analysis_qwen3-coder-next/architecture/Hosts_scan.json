@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only one top-level package ('lib') with minimal structure, indicating no formal architectural decomposition",
+    "Main scripts ('IP_hosts_scan.py', 'IP_hosts_scan_multithreading.py') are top-level modules with no apparent separation of concerns or layered responsibilities",
+    "Heavy use of utility code embedded directly in scripts rather than modularized layers",
+    "No distinct layers (e.g., no controllers, services, domain, data access separation)",
+    "No ports/adapters or domain-core separation evident",
+    "Files contain procedural logic (e.g., 'def host_checkNone: ...', 'from lib.processbar import ProcessBar') rather than interface-driven or hexagonal patterns",
+    "Repository tree shows flat structure with minimal nesting, consistent with ad-hoc scripting"
+  ],
+  "alternatives": [
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling due to direct imports between scripts and libraries without abstractions",
+    "Low testability and maintainability due to mixed concerns in monolithic scripts",
+    "Scalability limitations as functionality grows",
+    "Difficulty in identifying and isolating business logic vs infrastructure concerns"
+  ]
+}

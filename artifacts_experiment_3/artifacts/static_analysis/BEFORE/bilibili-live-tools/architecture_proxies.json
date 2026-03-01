@@ -1,0 +1,124 @@
+{
+  "python_files": 18,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "bilibili.py": [
+      "sys",
+      "urllib",
+      "asyncio",
+      "uuid",
+      "printer",
+      "requests",
+      "time",
+      "base64",
+      "hashlib",
+      "imp",
+      "os",
+      "datetime",
+      "rsa",
+      "aiohttp",
+      "configloader"
+    ],
+    "biliconsole.py": [
+      "asyncio",
+      "printer",
+      "statistics",
+      "utils",
+      "traceback",
+      "threading"
+    ],
+    "configloader.py": [
+      "configparser",
+      "codecs"
+    ],
+    "login.py": [
+      "PIL",
+      "printer",
+      "requests",
+      "time",
+      "base64",
+      "io",
+      "bilibili",
+      "configloader"
+    ],
+    "LotteryResult.py": [
+      "statistics",
+      "asyncio"
+    ],
+    "main.py": [
+      "sys",
+      "time",
+      "subprocess"
+    ],
+    "MultiRoom.py": [
+      "random",
+      "asyncio",
+      "bilibili",
+      "printer"
+    ],
+    "printer.py": [
+      "colorama",
+      "termcolor",
+      "time",
+      "inspect"
+    ],
+    "rafflehandler.py": [
+      "asyncio",
+      "bilibiliCilent"
+    ],
+    "run.py": [
+      "LotteryResult",
+      "asyncio",
+      "Tasks",
+      "connect",
+      "OnlineHeart",
+      "printer",
+      "statistics",
+      "utils",
+      "schedule",
+      "TCP_monitor",
+      "os",
+      "login",
+      "bilibili",
+      "biliconsole",
+      "configloader",
+      "rafflehandler",
+      "threading"
+    ],
+    "schedule.py": [
+      "asyncio",
+      "time",
+      "printer"
+    ],
+    "statistics.py": [
+      "asyncio",
+      "printer",
+      "utils",
+      "time",
+      "datetime",
+      "traceback"
+    ],
+    "Tasks.py": [
+      "asyncio",
+      "printer",
+      "time",
+      "utils",
+      "datetime",
+      "os",
+      "traceback",
+      "bilibili",
+      "configloader",
+      "ast"
+    ],
+    "TCP_monitor.py": [
+      "asyncio",
+      "printer",
+      "json",
+      "traceback",
+      "rafflehandler",
+      "struct"
+    ]
+  }
+}

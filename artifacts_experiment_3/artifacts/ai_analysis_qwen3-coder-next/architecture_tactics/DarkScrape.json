@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository suffers from flat, monolithic modules with mixed responsibilities: 'file.py' handles CSV/Excel parsing, file downloading, face recognition, and subprocess calls; 'url.py' parses URLs and also contains a duplicated 'face_re' function. This violates the Single Responsibility Principle and causes tight coupling (e.g., 'face_recognition' imported in 'file.py' but used redundantly in 'url.py'), making the system hard to test, maintain, and extend. Decomposability directly addresses this by dividing the system into cohesive, isolated modules—e.g., separating face recognition logic into its own module, splitting file parsing by format (csv, excel), and decoupling URL parsing from file handling—thereby improving testability and maintainability through clear boundaries.",
+  "target_components": [
+    "modules/file.py",
+    "modules/url.py",
+    "darkscrape.py"
+  ],
+  "expected_architectural_change": "The current single 'modules' package will evolve into logical submodules (e.g., 'modules/parsers/file/', 'modules/parsers/url/', 'modules/processing/face_recognition/'), reducing directory depth to 3 but increasing semantic modularity. Each new module will have a single responsibility (e.g., 'csv_parser.py', 'face_detector.py'), and 'darkscrape.py' will orchestrate via well-defined interfaces instead of importing raw procedures.",
+  "implementation_strategy": "Step 1: Extract face recognition logic (duplicated in both 'file.py' and 'url.py') into a new module 'modules/processing/face_recognition.py'. Step 2: Split 'modules/file.py' into format-specific parsers: 'modules/parsers/csv_file.py', 'modules/parsers/excel_file.py', and 'modules/parsers/text_file.py'. Step 3: Isolate URL parsing logic in 'modules/parsers/url.py' and remove any non-URL-related responsibilities. Step 4: Update imports in 'darkscrape.py' to use new modular interfaces (e.g., 'from modules.parsers.csv_file import parse_csv'). Step 5: Introduce a 'modules/__init__.py' that exports a minimal, stable API surface, enabling future layering.",
+  "risks": "Temporary increase in import complexity during refactoring; risk of breaking existing functionality if dependencies on internal module structure (e.g., direct 'from modules.file import choose_file') are not properly managed. Mitigation: Implement changes incrementally with unit tests per module, and use adapter wrappers where needed to preserve backward compatibility."
+}

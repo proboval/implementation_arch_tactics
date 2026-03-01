@@ -1,0 +1,20 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear modular separation by concern: 'database', 'plugins' directories with specific responsibilities",
+    "All code resides in a single repository with shared dependencies (pyrogram, pymongo), no inter-service communication patterns",
+    "Central entry point (bot.py) orchestrating modules; no explicit service boundaries or independent deployments",
+    "Shared database access layer with explicit modules (connections_mdb, filters_mdb, users_mdb)",
+    "Plugins depend on shared script.py and database modules, indicating tight integration but functional separation"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High coupling observed in fan-out (avg_fan_out=5.0) may hinder testability and maintainability",
+    "Lack of package-level isolation (packages=0) risks increasing technical debt as module boundaries blur",
+    "No versioning or deployment isolation prevents independent scaling or release cycles"
+  ]
+}

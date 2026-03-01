@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals tight coupling between CLI and main modules: src/dotenv/cli.py imports from .main, src/dotenv/ipython.py imports from .main, and src/dotenv/__init__.py exposes main functions directly. The imports graph shows cli.py has fan-out 10 including direct import of main symbols (dotenv_values, set_key, unset_key), while main.py imports from parser and variables, creating interdependent layers. The modular monolith evidence notes 'CLI imports from main' and 'layers are not strictly decoupled'. This coupling hinders testability (tests must mock full main module), increases ripple effects (cli changes may require main changes), and violates separation of concerns where CLI should be thin adapter layer. Reduced coupling directly addresses this by decoupling CLI from concrete main implementation through abstractions, improving testability and modifiability.",
+  "target_components": [
+    "src/dotenv/cli.py",
+    "src/dotenv/ipython.py",
+    "src/dotenv/__init__.py",
+    "src/dotenv/main.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces or abstractions (e.g., via abstract base classes or protocols) for environment variable operations that main implements but CLI consumes. CLI module would depend on abstractions instead of concrete main module. This creates a dependency inversion: CLI → abstraction ← main, replacing current CLI → main and ipython → main direct dependencies. The module structure remains intact, but the intra-module dependencies will shift from concrete to abstract, reducing coupling while preserving existing functionality.",
+  "implementation_strategy": "1. Define minimal interfaces (e.g., EnvironmentManager protocol or ABC) capturing CLI-required operations (load_dotenv, get_key, set_key, unset_key, find_dotenv). 2. Have main module implement this interface (e.g., via mixin or explicit implementation). 3. Refactor cli.py to accept an EnvironmentManager dependency (defaulting to main implementation but injectable for tests). 4. Refactor ipython.py similarly. 5. Export the interface in __init__.py as public API for extensibility. This allows incremental adoption: begin with internal-only interface, gradually update callers, maintain backward compatibility. No new modules needed—changes stay within existing module boundaries.",
+  "risks": "Low risk: Implementation can be done incrementally without breaking changes—existing public APIs remain unchanged. Interface design may require refinement but can be iterated safely using typing.Protocol (Python 3.8+) for duck-typed interface. Potential risk is over-engineering if interface becomes too broad; mitigated by keeping interface strictly CLI-relevant (e.g., only load_dotenv and value-read/write operations, not internal helpers like find_dotenv unless needed by CLI)."
+}

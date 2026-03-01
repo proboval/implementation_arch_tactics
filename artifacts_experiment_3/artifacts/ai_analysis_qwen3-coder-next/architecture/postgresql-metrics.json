@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('postgresql_metrics') containing all core logic — no separate service boundaries or deployment units",
+    "Clear modularity with domain-separated modules (e.g., metrics_gatherer, postgres_queries, prepare_db, metrics_logic)",
+    "High cohesion within modules (e.g., metrics_gatherer aggregates gather functions for each metric, postgres_queries encapsulates all DB access)",
+    "Dependencies flow from higher-level modules (metrics_logic) to lower-level modules (common, postgres_queries) without visible inversion of control or formal ports/adapters pattern",
+    "No explicit adapters, drivers, or domain core separation (ruling out hexagonal)",
+    "No strict layers (e.g., presentation/business/data access) — logic and data access are interleaved (e.g., postgres_queries contains both querying and parsing logic)",
+    "Entry point is a main() function in metrics_logic — typical of monolithic CLI tools",
+    "Repository depth is shallow (max depth=2), no complex hierarchical subsystems",
+    "FAN_OUT is low (~2.2), indicating loosely coupled modules without heavy cross-dependencies"
+  ],
+  "alternatives": [
+    "script_based",
+    "unclear"
+  ],
+  "risks": [
+    "As the system evolves, tight coupling between modules (e.g., metrics_gatherer imports all metric-specific and DB-specific functions) may hinder testability",
+    "Mixing SQL queries, parsing, and stateful logic in postgres_queries may lead to违反 separation of concerns",
+    "Lack of formal dependency boundaries could increase maintenance cost over time",
+    "Metrics gatherer's monolithic import list suggests potential violation of Single Responsibility and Interface Segregation Principles"
+  ]
+}

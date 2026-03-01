@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "The project is a Django app (fcm-django) with clear separation into logical modules: models, api, admin, fields, settings, migrations, tests, etc.",
+    "APIs are implemented as separate modules (rest_framework.py, tastypie.py) but co-located within the same package, indicating bounded contexts rather than decoupled services.",
+    "All components (models, API endpoints, admin, tests) are part of a single deployable Python package (fcm_django), with no indication of inter-process or network communication.",
+    "Use of Django’s internal mechanisms (ORM, migrations, admin, signals) tightly binds data and behavior within one runtime.",
+    "No external service dependencies beyond Firebase Admin SDK (used synchronously in code), confirming no microservice-style async/remote dependencies.",
+    "Strong cohesion within modules (e.g., fcm_django/api/ contains all API logic) and low coupling via well-defined interfaces (e.g., swapper for model abstraction)."
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight integration with Django internals may reduce portability or increase refactoring effort for future decoupling.",
+    "Monolithic deployment scope limits scalability and team autonomy compared to true microservices.",
+    "Possible coupling through shared models (Device) and global settings (FCM_DJANGO_SETTINGS) could hinder modularity over time if not carefully managed."
+  ]
+}

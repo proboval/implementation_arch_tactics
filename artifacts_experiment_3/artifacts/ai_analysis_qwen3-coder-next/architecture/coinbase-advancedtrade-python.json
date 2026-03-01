@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear logical separation into modules: models, services, utils, config — all in a single Python package (coinbase_advanced_trader)",
+    "Services depend on each other (e.g., OrderService used by PriceService and strategy services), indicating tight coupling but high cohesion within a single deployable unit",
+    "No evidence of network-bound interfaces, separate processes, or discrete services communicating via APIs or message queues — all imports are internal (relative or local)",
+    "Shared domain models (Order, Product) and cross-service dependencies (e.g., EnhancedRESTClient imports multiple services)",
+    "Single entry points at package level (alphasquared_trader.py, __init__.py), consistent with monolithic orchestration",
+    "Test structure mirrors module structure (tests/), typical for unit/integration tests in a monolith"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between services may reduce testability and increase regression risk",
+    "No clear port/adapter boundary — external dependencies (e.g., coinbase.rest) embedded directly in core services (EnhancedRESTClient), making it harder to swap or mock I/O",
+    "Single failure domain: a crash in any module likely affects the entire application",
+    "Limited scalability options due to monolithic deployment"
+  ]
+}

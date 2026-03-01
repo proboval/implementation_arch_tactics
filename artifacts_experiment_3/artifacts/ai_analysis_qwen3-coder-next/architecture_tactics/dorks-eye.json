@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository consists of a single Python file (dorks-eye.py) with no modularity — static analysis confirms 'packages: 0', 'max_directory_depth: 1', and 'avg_fan_out: 0'. Functions are defined at module level with stub names (e.g., duckduckgoNone, bingNone) and share no visible internal calls, indicating no component boundaries. This flat script structure causes tight coupling, poor testability, and makes isolating logic (e.g., search engine logic vs. logging vs. CLI handling) impossible. Decomposability directly addresses this by dividing the monolithic file into cohesive, loosely-coupled modules (e.g., engines/, core/, cli/), improving maintainability through smaller, analyzable units and enabling isolated testing.",
+  "target_components": [
+    "dorks-eye.py"
+  ],
+  "expected_architectural_change": "Current flat structure (1 file) → hierarchical structure with separated modules (e.g., dorks_eye/engines/, dorks_eye/core/, dorks_eye/cli/), where each engine (DuckDuckGo, Bing, Google) resides in its own module, shared utilities are consolidated, and CLI entry point is decoupled from search logic.",
+  "implementation_strategy": "1. Extract engine-specific logic (e.g., duckduckgoNone, bingNone, googleNone) into engine modules under dorks_eye/engines/. 2. Create a shared dorks_eye/core/ module for common utilities (logger, dorks management, search orchestration). 3. Move CLI handling to dorks_eye/cli/main.py. 4. Replace module-level stubs with structured class/function abstractions. 5. Use interfaces or protocols to define engine contracts. 6. Introduce a factory or registry to select engines dynamically. This preserves existing functionality while adding cohesion and reducing coupling — achievable incrementally by moving one engine at a time.",
+  "risks": "Initial decomposition may increase complexity if boundaries are poorly defined; however, risks are mitigated by incremental refactoring and testing after each extraction. No negative impact specified in the tactic catalog, and the repository’s single-file constraint makes low-risk incremental decomposition the most feasible path."
+}

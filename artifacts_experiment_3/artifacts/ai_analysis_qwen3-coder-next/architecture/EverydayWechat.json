@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Clear package/module structure based on business domains (e.g., control/bot, control/weather, control/calendar) with dedicated modules per data source/service",
+    "Low average fan-out (1.15) and shallow directory depth (max 4) indicate cohesive, minimally coupled modules",
+    "Centralized entry points (main.py, run.py) orchestrate modules without heavy inter-module dependencies",
+    "No network-based service communication; all interaction is via direct Python imports and function calls",
+    "Shared utilities (utils/*) and domain-specific control modules (control/*) follow modular monolith conventions",
+    "Tests mirror module structure (tests/test_control, tests/test_db), suggesting localized responsibility",
+    "Use of scheduling (APScheduler) and event-driven微信 handling fits a single-process, cohesive application"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Moderate risk of increasing coupling due to direct cross-module imports observed (e.g., data_collection → control modules)",
+    "No runtime isolation between modules — failure in one can impact entire application",
+    "Limited scalability if more services/features are added without architectural refactoring"
+  ]
+}

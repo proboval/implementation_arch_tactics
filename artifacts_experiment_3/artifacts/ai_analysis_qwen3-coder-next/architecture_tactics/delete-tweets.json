@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The static analysis shows high average files per package (5.0 in a single package) and flat directory structure with minimal depth (2), indicating tight coupling and insufficient modular separation. The codebase bundles distinct responsibilities—reading tweets, destroying tweets, CLI orchestration, and testing—in a single package without internal package boundaries (e.g., deletetweets.py contains both TweetReader and TweetDestroyer classes plus a top-level delete function). This leads to poor testability (e.g., FakeReader and FakeTwitterApi are defined in test file, suggesting lack of test seams), increased cognitive load, and difficulty isolating changes. Decomposability directly addresses this by partitioning the monolithic deletetweets package into logical submodules (e.g., core, io, cli), improving modularity, testability, and maintainability.",
+  "target_components": [
+    "deletetweets/deletetweets.py",
+    "deletetweets/__main__.py",
+    "deletetweets/__init__.py"
+  ],
+  "expected_architectural_change": "Split the monolithic deletetweets.py into separate modules: e.g., deletetweets/io/reader.py (TweetReader + FakeReader), deletetweets/io/destroyer.py (TweetDestroyer + FakeTwitterApi), and deletetweets/core.py (delete function, coordinating components). The CLI entry point in __main__.py would import from structured submodules instead of a flat module. This creates clear boundaries, reduces fan-out per module, and isolates changes to specific submodules.",
+  "implementation_strategy": "1. Create new subpackages: deletetweets/io/, deletetweets/core/. 2. Move TweetReader and FakeReader into io/reader.py; move TweetDestroyer and FakeTwitterApi into io/destroyer.py; move the top-level delete() function and coordination logic into core/__init__.py. 3. Update imports: __main__.py imports from deletetweets.core instead of deletetweets.deletetweets. 4. Update __init__.py to expose clean public API (e.g., from .core import delete). 5. Refactor test module to import from new module paths.",
+  "risks": "Risk of breaking existing imports during refactoring if not done incrementally; mitigated by introducing backward-compatible aliases in deletetweets/__init__.py early and updating callers gradually. Initial refactoring may increase module count but reduces long-term coupling and supports future independent testing and deployment."
+}

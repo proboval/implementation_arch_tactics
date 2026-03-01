@@ -1,0 +1,65 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "downloader.py": [
+      "PIL",
+      "website_actions",
+      "time",
+      "base64",
+      "os",
+      "selenium",
+      "logging",
+      "io",
+      "random",
+      "undetected_chromedriver"
+    ],
+    "main.py": [
+      "downloader"
+    ],
+    "website_actions\\abstract_website_actions.py": [
+      "abc"
+    ],
+    "website_actions\\bookwalker_jp_actions.py": [
+      "selenium",
+      "base64",
+      "abstract_website_actions",
+      "website_actions"
+    ],
+    "website_actions\\bookwalker_tw_actions.py": [
+      "selenium",
+      "base64",
+      "abstract_website_actions",
+      "website_actions"
+    ],
+    "website_actions\\cmoa_jp_actions.py": [
+      "PIL",
+      "abstract_website_actions",
+      "website_actions",
+      "base64",
+      "selenium",
+      "io"
+    ],
+    "website_actions\\coma_jp_novel.py": [
+      "abstract_website_actions",
+      "website_actions",
+      "time",
+      "base64",
+      "selenium"
+    ],
+    "website_actions\\takeshobo_co_jp_actions.py": [
+      "PIL",
+      "abstract_website_actions",
+      "website_actions",
+      "base64",
+      "selenium",
+      "io"
+    ],
+    "website_actions\\__init__.py": [
+      "os",
+      "glob"
+    ]
+  }
+}

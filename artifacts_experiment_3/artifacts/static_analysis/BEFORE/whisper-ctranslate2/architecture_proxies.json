@@ -1,0 +1,90 @@
+{
+  "python_files": 15,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 15.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "pathlib"
+    ],
+    "e2e-tests\\testcmd.py": [
+      "tempfile",
+      "json",
+      "os",
+      "unittest",
+      "shutil"
+    ],
+    "tests\\testdiarization.py": [
+      "unittest",
+      "whisper_ctranslate2"
+    ],
+    "tests\\testlive.py": [
+      "unittest",
+      "whisper_ctranslate2"
+    ],
+    "tests\\testwriters.py": [
+      "whisper_ctranslate2",
+      "tempfile",
+      "json",
+      "os",
+      "faster_whisper",
+      "unittest"
+    ],
+    "src\\whisper_ctranslate2\\commandline.py": [
+      "argparse",
+      "version",
+      "languages"
+    ],
+    "src\\whisper_ctranslate2\\diarization.py": [
+      "collections",
+      "torch",
+      "faster_whisper",
+      "pyannote",
+      "numpy"
+    ],
+    "src\\whisper_ctranslate2\\exit_code.py": [
+      "enum"
+    ],
+    "src\\whisper_ctranslate2\\languages.py": [],
+    "src\\whisper_ctranslate2\\live.py": [
+      "transcribe",
+      "sounddevice",
+      "numpy",
+      "typing"
+    ],
+    "src\\whisper_ctranslate2\\transcribe.py": [
+      "sys",
+      "tqdm",
+      "languages",
+      "writers",
+      "typing",
+      "faster_whisper",
+      "numpy"
+    ],
+    "src\\whisper_ctranslate2\\version.py": [],
+    "src\\whisper_ctranslate2\\whisper_ctranslate2.py": [
+      "sys",
+      "live",
+      "languages",
+      "commandline",
+      "exit_code",
+      "writers",
+      "typing",
+      "datetime",
+      "os",
+      "traceback",
+      "warnings",
+      "diarization",
+      "transcribe",
+      "numpy"
+    ],
+    "src\\whisper_ctranslate2\\writers.py": [
+      "re",
+      "os",
+      "typing",
+      "json"
+    ],
+    "src\\whisper_ctranslate2\\__init__.py": []
+  }
+}

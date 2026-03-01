@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a monolithic script architecture (bin/q.py, ~1200 lines) where core responsibilities — CLI parsing, input handling, SQL execution, caching, and output formatting — are deeply interwoven within QTextAsData.execute() and MaterializedState subclasses. Static analysis confirms high fan-out (7.67), tight coupling (direct imports of sqlite3, csv, argparse, etc.), and shallow modularity (only 2 packages, max depth 2). This makes independent testing of logic extremely difficult (test suite imports directly from bin.q) and any change risky due to ripple effects. Decomposability directly addresses this by introducing layering and模块 boundaries, separating concerns like input parsing, query execution, and output formatting into distinct, testable modules. This tactic targets the exact structural problems revealed: the lack of separation between concerns and the inability to test components in isolation.",
+  "target_components": [
+    "bin/q.py",
+    "bin/q.py:QTextAsData",
+    "bin/q.py:MaterializedState",
+    "bin/q.py:DelimitedFileReader",
+    "bin/q.py:Sqlite3DB",
+    "bin/q.py:Sql",
+    "bin/q.py:TableColumnInferer",
+    "bin/q.py:TableCreator",
+    "test/test_suite.py"
+  ],
+  "expected_architectural_change": "The monolithic bin/q.py will be reorganized into domain-aligned modules: (1) an input module (handling file/stdio parsing and caching), (2) a query engine module (SQL compilation and SQLite orchestration), and (3) an output module (formatting and printing). A new high-level coordinator (e.g., QueryProcessor) will orchestrate them via clear interfaces. MaterializedState subclasses will be consolidated or refactored into strategy classes under the input module. SQLite and parsing logic will be abstracted behind interfaces (e.g., IDataReader, IExecutor), enabling mocking in tests and reducing coupling to specific I/O mechanisms.",
+  "implementation_strategy": "Step 1: Extract data parsing and caching logic from MaterializedState and DelimitedFileReader into a new input package (e.g., q.input.reader, q.input.cache). Introduce IDataReader interface. Step 2: Extract SQL orchestration (Sql, Sqlite3DB, TableColumnInferer) into q.engine, with IExecutor interface. Step 3: Extract QOutputPrinter and formatting concerns into q.output. Step 4: Refactor QTextAsData.execute() to delegate to the three modules via well-defined contracts. Step 5: Replace direct bin.q imports in tests with mocked interfaces, enabling unit tests for each module in isolation. This can be done incrementally without altering CLI behavior or requiring full rewrite.",
+  "risks": "Modest risk of over-engineering if modules are too fine-grained; need to avoid adding abstraction layers without clear benefit. However, given the high coupling and current test dependency on bin.q, even coarse decomposition into input/engine/output significantly improves maintainability with minimal added complexity. Risk of temporary test breakage is mitigated by maintaining backward compatibility during refactor."
+}

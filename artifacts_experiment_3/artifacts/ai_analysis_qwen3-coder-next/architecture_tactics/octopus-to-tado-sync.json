@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a single flat Python file (sync_octopus_tado.py) containing all application logic with no internal module boundaries, resulting in zero measured decomposition (mi_avg=0, files_analyzed=0). Static analysis confirms extreme lack of modularity: 0 packages, 1 file, max_directory_depth=1, and high fan-out (6.0) due to direct imports of external dependencies without internal separation. This causes poor testability (no tests in tree), poor maintainability (all functions at module scope), and no separation of concerns (login, API calls, reading, and orchestration interwoven). Decomposability directly addresses this by decomposing the monolithic script into independent modules—e.g., separating Octopus API interaction, Tado integration, reading logic, and orchestration—thereby isolating faults, enabling unit testing, and reducing ripple effects during change.",
+  "target_components": [
+    "sync_octopus_tado.py"
+  ],
+  "expected_architectural_change": "The single flat script will be restructured into a modular monolith with clearly defined internal packages: e.g., src/octopus/, src/tado/, src/readings/, src/orchestrator/, and src/config/. Each package will encapsulate related responsibilities (e.g., OctopusAPIClient, TadoClient, MeterReadingProcessor), with well-defined interfaces. Function signatures and dependencies will be preserved, but internal call graphs will shift from module-scoped calls to package-bound and interface-based interactions.",
+  "implementation_strategy": "Refactor sync_octopus_tado.py by extracting logical units into separate modules: (1) create src/ directory with __init__.py; (2) extract authentication logic into src/tado/auth.py; (3) extract Octopus data fetching into src/octopus/api.py; (4) extract reading computation into src/readings/processor.py; (5) extract orchestration flow into src/orchestrator/__init__.py. Replace inline function definitions with imports and dependency injection via interfaces (e.g., OctopusReader, TadoPoster). Introduce a main.py entry point to orchestrate components. This is incremental: begin with one module (e.g., readings), refactor, test, then proceed. The existing function signatures can guide extraction boundaries.",
+  "risks": "Risk of temporary regression during refactoring due to broken imports or untested module interfaces. Mitigation: retain original function behavior, use feature flags, and add targeted unit tests per module before integrating. Also, introducing module boundaries prematurely may increase complexity if over-engineered; strategy keeps design minimal and behavior-preserving."
+}

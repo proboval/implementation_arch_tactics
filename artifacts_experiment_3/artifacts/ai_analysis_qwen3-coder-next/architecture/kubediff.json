@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single 'kubedifflib' package containing core logic modules (_diff.py, _images.py, _kube.py) — indicates internal modularity without inter-process boundaries",
+    "Average fan-out of 6.33 suggests moderate internal coupling typical of a monolithic module, not loosely coupled microservices",
+    "Python-only project with vendored Go dependencies (vendor/), suggesting CLI tooling that embeds or wraps Go binaries, but Python code itself is tightly integrated",
+    "Clear separation of concerns within kubedifflib: _kube handles K8s abstractions, _diff handles comparison logic, _images handles image parsing — modular but single-deployment",
+    "No evidence of network calls, HTTP clients/servers, or service discovery mechanisms; all components import and call each other directly",
+    "Directory depth of 3 and single top-level package indicate flat, cohesive structure typical of a monolith",
+    "Usage of 'attr' and standard library suggests lightweight internal domain model, not distributed messaging protocols"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Monolithic scaling limitations — all components deployed together, cannot scale independently",
+    "High coupling risk: moderate fan-out + shared imports could lead to circular dependencies if not carefully managed",
+    "Testing may be harder due to shared state (e.g., global imports like yaml, subprocess in core modules), though tests exist",
+    "Vendor directory indicates static dependency vendoring, suggesting difficulty in maintaining/updating Go dependencies independently"
+  ]
+}

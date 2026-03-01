@@ -1,0 +1,129 @@
+{
+  "python_files": 19,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.5,
+  "imports_graph": {
+    "tests\\conftest.py": [
+      "pytest",
+      "click"
+    ],
+    "tests\\test_cli.py": [
+      "sys",
+      "typing",
+      "dotenv",
+      "pathlib",
+      "sh",
+      "os",
+      "pytest",
+      "subprocess"
+    ],
+    "tests\\test_fifo_dotenv.py": [
+      "sys",
+      "dotenv",
+      "pathlib",
+      "os",
+      "pytest",
+      "threading"
+    ],
+    "tests\\test_ipython.py": [
+      "sys",
+      "IPython",
+      "os",
+      "pytest",
+      "unittest"
+    ],
+    "tests\\test_is_interactive.py": [
+      "sys",
+      "unittest",
+      "builtins",
+      "dotenv"
+    ],
+    "tests\\test_main.py": [
+      "sys",
+      "textwrap",
+      "dotenv",
+      "sh",
+      "os",
+      "pytest",
+      "logging",
+      "io",
+      "unittest",
+      "stat"
+    ],
+    "tests\\test_parser.py": [
+      "pytest",
+      "io",
+      "dotenv"
+    ],
+    "tests\\test_utils.py": [
+      "dotenv"
+    ],
+    "tests\\test_variables.py": [
+      "pytest",
+      "dotenv"
+    ],
+    "tests\\test_zip_imports.py": [
+      "sys",
+      "zipfile",
+      "child1",
+      "textwrap",
+      "typing",
+      "sh",
+      "os",
+      "pytest",
+      "unittest"
+    ],
+    "tests\\__init__.py": [],
+    "src\\dotenv\\cli.py": [
+      "sys",
+      "click",
+      "version",
+      "json",
+      "typing",
+      "os",
+      "contextlib",
+      "subprocess",
+      "shlex",
+      "main"
+    ],
+    "src\\dotenv\\ipython.py": [
+      "IPython",
+      "main"
+    ],
+    "src\\dotenv\\main.py": [
+      "sys",
+      "collections",
+      "variables",
+      "parser",
+      "tempfile",
+      "typing",
+      "pathlib",
+      "os",
+      "logging",
+      "io",
+      "contextlib",
+      "stat",
+      "shutil"
+    ],
+    "src\\dotenv\\parser.py": [
+      "typing",
+      "re",
+      "codecs"
+    ],
+    "src\\dotenv\\variables.py": [
+      "abc",
+      "typing",
+      "re"
+    ],
+    "src\\dotenv\\version.py": [],
+    "src\\dotenv\\__init__.py": [
+      "ipython",
+      "main",
+      "typing"
+    ],
+    "src\\dotenv\\__main__.py": [
+      "cli"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals high average fan-out (3.95) and tight cross-module coupling, especially in services/ (e.g., services/subscription.py imports 14+ modules, services/common.py and services/tasks.py directly call services.cloudflare.register, services.account calls services.cloudflare.updatePublicKey — creating circular-like dependencies). The repository tree shows modules importing from each other without clear dependency direction, violating module boundaries. This coupling increases ripple effects during change and degrades testability (e.g., tests/test_utils.py is the only test and only covers utils, not services/models). Implementing reduced coupling will isolate modules, allowing independent evolution and testing.",
+  "target_components": [
+    "services/account.py",
+    "services/cloudflare.py",
+    "services/common.py",
+    "services/subscription.py",
+    "services/tasks.py",
+    "services/web_service.py",
+    "utils/entrypoints.py",
+    "models/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce abstractions (e.g., AccountRepository, EntrypointProvider, CloudflareService) to break direct inter-service dependencies. Services will depend on interfaces instead of concrete implementations, flattening the imports graph. Modules like services/cloudflare.py and services/common.py will no longer import each other, and shared data (e.g., Account, Entrypoint) will be passed via well-defined contracts instead of direct access.",
+  "implementation_strategy": "Step 1: Extract interfaces for shared behaviors (e.g., CloudflareClient interface in services/, used by services/account.py and services/common.py). Step 2: Use dependency injection (e.g., via factory or minimal DI container) instead of direct imports in services/cloudflare.py → services/common.py. Step 3: Move common utilities used across services into shared interfaces or domain abstractions (e.g., EntrypointAggregator for utils/entrypoints.py). Step 4: Refactor services/cloudflare.py to be the only module importing models.Account directly; other services receive Account objects as arguments or via service methods.",
+  "risks": "Initial refactoring may increase complexity due to new interfaces; risk of over-engineering if abstraction layers are premature. However, given the clear modular structure (e.g., services/, models/, utils/ directories) and current monolithic coupling, incremental application (starting with high-fan-out modules like services/subscription.py and services/tasks.py) mitigates this. Testing coverage must be preserved by adding tests for new abstractions."
+}

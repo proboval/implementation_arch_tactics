@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis shows high average fan-out (3.46) and deep directory nesting (max 4), with modules like backtrader_plotting/bokeh/bokeh.py (≈20+ dependencies) and backtrader_plotting/utils.py acting as central dependency hubs. Real file evidence reveals that 'bokeh.py' imports 17+ modules including backtrader, pandas, bokeh, jinja2, and all internal submodules — violating separation of concerns. Similarly, analyzer_tables submodules (e.g., annualreturn.py, calmar.py) all depend on backtrader_plotting.bokeh.datatable but cannot be tested in isolation due to implicit coupling through shared utils and schemes. The tests module imports heavily across modules (e.g., test_backtest.py imports 9+ modules), indicating poor test decoupling. This tight coupling creates ripple effects: changes in utils.py affect nearly all modules. Decomposability (AT41) directly addresses this by enforcing modular boundaries, enabling independent testing and localized analysis.",
+  "target_components": [
+    "backtrader_plotting/bokeh/bokeh.py",
+    "backtrader_plotting/utils.py",
+    "backtrader_plotting/analyzer_tables/__init__.py",
+    "backtrader_plotting/schemes/__init__.py",
+    "backtrader_plotting/html/metadata.py",
+    "tests/test_backtest.py",
+    "tests/test_labelizer.py",
+    "tests/test_plots_lines.py"
+  ],
+  "expected_architectural_change": "Current monolithic internal modules will be reorganized using clear layer boundaries: (1) core domain layer (e.g., data models, core logic) isolated from presentation (bokeh visualization) and infrastructure (plot generation); (2) analyzer_tables will be decoupled into an interface-driven extension point, where individual analyzers implement a common interface without direct imports of UI components; (3) utils.py will be split into purpose-specific modules with explicit contracts (e.g., *clock_utils.py*, *plot_utils.py*); (4) dependencies between modules (e.g., schemes → schemes) will be inverted to depend on abstractions instead of concrete classes. New internal interfaces will be introduced (e.g., IAnalyzerTable, IPlotSource) to enable pluggable behavior.",
+  "implementation_strategy": "Step 1: Extract a common interface for analyzer tables (e.g., IDataTableGenerator) and refactor each table module (annualreturn.py, drawdown.py, etc.) to implement it — removing their hard dependency on bokeh.datatable. Step 2: Refactor backtrader_plotting.utils.py: identify high-cohesion groups (e.g., time-related, pandas conversion) and extract into separate modules (e.g., backtrader_plotting/timeutils.py). Step 3: Introduce a 'bokeh.core' package containing shared abstractions (e.g., IDataSource, IRenderer) that bokeh components depend on, instead of depending on high-level modules like bokeh.py directly. Step 4: Refactor test modules to mock interfaces rather than import concrete implementations (e.g., test_labelizer.py imports real labelizer but could use a test-double implementing ILabelizer). Step 5: Add package-level __all__ and import hygiene rules (e.g., only allow bottom-up imports: schemes → utils, not reverse). Each step can be done incrementally without disrupting current functionality.",
+  "risks": "Risk of over-decomposition: splitting utils.py into too many tiny modules may increase cognitive load. Mitigation: use domain-driven modularization (group by business concept, not just lines of code). Risk of circular dependencies during refactoring (e.g., schemes ↔ utils). Mitigation: use dependency inversion (introduce interfaces in a new 'interfaces' package). Risk of delayed ROI if abstractions are guessed incorrectly. Mitigation: derive interfaces from existing concrete usage patterns in tests (e.g., test_backtest.py patterns can guide core domain interfaces)."
+}

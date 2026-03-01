@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "proxy/service.py",
+  "content": "\"\"\"\nService layer for proxy functionality.\n\nThis module provides a stable interface between URL routing and view logic,\nreducing coupling between Django layers (AT39 - Reduced Coupling).\n\"\"\"\nfrom proxy.views import proxy_view as _proxy_view\n\n\ndef get_proxy_url_pattern():\n    \"\"\"\n    Return the URL pattern tuple for proxy routing.\n    \n    Enables URL configuration to depend on a stable interface rather than\n    concrete view functions, supporting decoupling and easier testing.\n    \"\"\"\n    return r'^proxy/(?P<url>.*)$', _proxy_view\n"
+}

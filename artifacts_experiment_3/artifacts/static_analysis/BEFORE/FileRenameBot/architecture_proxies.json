@@ -1,0 +1,90 @@
+{
+  "python_files": 12,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "bot.py": [
+      "sample_config",
+      "config",
+      "pyrogram",
+      "os",
+      "logging"
+    ],
+    "sample_config.py": [
+      "os"
+    ],
+    "database\\database.py": [
+      "asyncio",
+      "sample_config",
+      "os",
+      "sqlalchemy",
+      "threading"
+    ],
+    "database\\db.py": [
+      "asyncio",
+      "sample_config",
+      "os",
+      "sqlalchemy",
+      "threading"
+    ],
+    "helper_funcs\\display_progress.py": [
+      "translation",
+      "sample_config",
+      "math",
+      "time",
+      "config",
+      "pyrogram",
+      "os",
+      "logging"
+    ],
+    "helper_funcs\\help_Nekmo_ffmpeg.py": [
+      "asyncio",
+      "time",
+      "os",
+      "hachoir",
+      "logging"
+    ],
+    "helper_funcs\\help_uploadbot.py": [
+      "os",
+      "requests",
+      "logging"
+    ],
+    "plugins\\custom_thumbnail.py": [
+      "PIL",
+      "database",
+      "translation",
+      "sample_config",
+      "config",
+      "pyrogram",
+      "os",
+      "logging"
+    ],
+    "plugins\\help_text.py": [
+      "PIL",
+      "database",
+      "translation",
+      "sample_config",
+      "config",
+      "time",
+      "pyrogram",
+      "os",
+      "helper_funcs",
+      "logging",
+      "hachoir"
+    ],
+    "plugins\\video_converter.py": [
+      "PIL",
+      "translation",
+      "sample_config",
+      "config",
+      "time",
+      "pyrogram",
+      "os",
+      "helper_funcs",
+      "logging",
+      "hachoir",
+      "random"
+    ]
+  }
+}

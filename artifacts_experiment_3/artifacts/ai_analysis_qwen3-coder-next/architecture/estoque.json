@@ -1,0 +1,21 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear separation into core, estoque, and produto modules, each implementing layered structure (models, views, forms, admin, urls, templates)",
+    "Directory depth of 4 reflects typical layered layout: project/layer/app/sublayer (e.g., projeto/produto/actions)",
+    "Low average fan-out (1.64) indicates loose coupling and layer-based isolation",
+    "Views import from models, forms, and other modules in same layer or lower layers, not cross-layer peer dependencies",
+    "Django's built-in MVT (Model-View-Template) aligns with layered architecture where presentation, business logic, and data layers are separated",
+    "No external ports/adapters or application-core boundary patterns typical of hexagonal architecture"
+  ],
+  "alternatives": [
+    "mvc",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Tight coupling to Django framework may reduce testability and flexibility for domain logic",
+    "Templating logic mixed with view logic in Django views may violate strict separation of concerns",
+    "No explicit ports/adapters boundaries may hinder integration with non-web interfaces in future"
+  ]
+}

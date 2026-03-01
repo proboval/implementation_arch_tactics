@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear directory structure with logical separation of concerns: 'model/', 'operations/', 'utils/', 'errors/'",
+    "Domain models (Dataset, Database, Datatable, Data, PointInTime) implemented as classes with behavior (not just DTOs)",
+    "Operations layer (GetOperation, ListOperation) reused by models via inheritance, promoting DRY",
+    "Dependency flow: high-level domain classes (e.g., Dataset) depend on lower-level utilities/connection, but packages are organized by domain capability rather than technical layering",
+    "Minimal cross-boundary coupling; each module (e.g., model, operations) has cohesive responsibilities",
+    "No explicit messaging infrastructure, service discovery, or deployment boundaries typical of microservices",
+    "Single package namespace (nasdaqdatalink) used throughout—no service boundaries or process isolation",
+    "Inheritance used heavily for operation reuse (e.g., Dataset inherits GetOperation, ListOperation)",
+    "Tests organized in parallel structure to source, reflecting modular cohesion"
+  ],
+  "alternatives": [
+    "layered"
+  ],
+  "risks": [
+    "Some classes (e.g., Dataset, Datatable) contain both data and behavior across multiple responsibilities (data access + business logic)",
+    "Heavy use of inheritance (e.g., multiple inheritance in Data class) may reduce flexibility and increase coupling",
+    "Tight coupling between model and operations layer could hinder future decoupling or replacement of access patterns"
+  ]
+}

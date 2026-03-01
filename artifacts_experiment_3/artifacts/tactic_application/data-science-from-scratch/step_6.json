@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "scratch/math_abstractions.py",
+  "content": "from typing import List, Protocol, runtime_checkable\n\n@runtime_checkable\nclass SupportsVectorAdd(Protocol):\n    def __add__(self, other: 'SupportsVectorAdd') -> 'SupportsVectorAdd': ...\n    def __sub__(self, other: 'SupportsVectorAdd') -> 'SupportsVectorAdd': ...\n    def __mul__(self, scalar: float) -> 'SupportsVectorAdd': ...\n    def __rmul__(self, scalar: float) -> 'SupportsVectorAdd': ...\n\nVector = List[float]\n\nMatrix = List[List[float]]"
+}

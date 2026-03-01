@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module-based structure with well-defined packages (e.g., fuzzers, monitors, restarters, mutants, connections, loggers) that encapsulate related functionality",
+    "Consistent use of interface-based abstraction (e.g., IFuzzer, IMonitor, IRestarter, ITargetConnection, IMutant) with concrete implementations inside modules",
+    "Heavy intra-module dependencies within the same package hierarchy; low inter-package coupling (avg_fan_out=2.85, max depth=4)",
+    "Shared core modules (e.g., primitives, blocks, mutants, graph, session) are composed together at runtime rather than deployed separately",
+    "No evidence of network-transparent service boundaries, deployment isolation, or independent versioning (rules out microservices_like)",
+    "No strict separation of presentation/business/persistence layers (rules out layered)",
+    "Main entry point in __main__.py orchestrates modules rather than routing through adapters (rules out hexagonal)",
+    "No clear model-view-controller separation in core architecture (rules out mvc)",
+    "Not script-based as it has strong object-oriented structure, abstractions, and modularity beyond procedural scripts"
+  ],
+  "alternatives": [
+    "layered",
+    "microservices_like",
+    "hexagonal"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., session depends directly on many components) may hinder independent testing or replacement",
+    "Monolithic deployment may limit scalability or operational flexibility for large deployments",
+    "Missing service boundaries could complicate horizontal scaling or distributed deployments"
+  ]
+}

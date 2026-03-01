@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Clear separation into logical modules (e.g., mochi_preview/, fp8_optimization.py, infer.py, nodes.py) with well-defined responsibilities",
+    "Packages reflect domain concepts (DIT, VAE, inference), not technical layers",
+    "High average fan-out (4.1) indicates tight internal coordination between modules, typical of monoliths",
+    "Nodes.py exposes ComfyUI-compatible nodes — central integration point with external framework, but not decoupled via adapters",
+    "No clear separation into independent services or processes (no network APIs, messaging, or deployment boundaries)",
+    "Directory depth 4 reflects nesting of submodules, not client-server or microservice layers",
+    "No ports/adapters pattern: modules depend directly on each other (e.g., nodes.py imports mochi_preview.* directly)"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between inference core (infer.py) and UI layer (nodes.py) may hinder testability and maintainability",
+    "Lack of explicit boundaries may make future scalability or alternative UI/backend integration harder",
+    "High fan-out and deep nesting may increase cognitive load and circular dependency risk over time"
+  ]
+}

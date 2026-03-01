@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between inference logic (infer.py) and ComfyUI node definitions (nodes.py), with nodes.py directly importing internal modules like mochi_preview.t2v_synth_mochi and mochi_preview.vae.model. This coupling increases cognitive load (evidenced by max_directory_depth=4 and avg_fan_out=4.1), reduces testability (no isolation between inference core and UI layer), and risks ripple effects during changes — all critical maintainability issues. Decomposability directly addresses this by enforcing modular boundaries via separation of concerns, isolating the inference engine, VAE, and Diffusion components from UI concerns. This is implementable incrementally in this monolith: each subpackage (mochi_preview/dit, mochi_preview/vae) can be stabilized with internal interfaces before introducing clean layer boundaries.",
+  "target_components": [
+    "nodes.py",
+    "infer.py",
+    "mochi_preview/t2v_synth_mochi.py",
+    "mochi_preview/vae/model.py",
+    "mochi_preview/dit/joint_model/asymm_models_joint.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces/adapters between UI layer (nodes.py), core inference layer (infer.py), and implementation modules (mochi_preview/). Specifically, nodes.py will depend on a thin inference interface rather than concrete classes; infer.py will expose a clean API without direct ComfyUI dependencies; internal modules will be decoupled via well-defined contracts (e.g., via abc.ABC or duck-typed interfaces). This creates a layered structure within the monolith: UI → inference controller → inference core → model components.",
+  "implementation_strategy": "1. Define minimal interfaces for T2VSynthMochiModel (e.g., run_inference()) and VAE decoder (e.g., decode_latents()). 2. Refactor infer.py to expose clean functions using only these interfaces (no direct imports of mochi_preview modules). 3. Refactor nodes.py to depend on infer.py’s API and inject model interfaces (e.g., via factory functions). 4. Gradually extract model-specific logic (e.g., DiT, VAE) behind stable abstractions within mochi_preview/. 5. Introduce unit tests for interfaces and inference core without UI dependencies.",
+  "risks": "Short-term:增加 refactoring effort and risk of breaking ComfyUI integration during transition. Long-term: Poor interface design may lead to additional churn. Mitigation: Start with infer.py and nodes.py as primary targets; keep internal mochi_preview modules unchanged initially; use duck typing before committing to explicit interfaces."
+}

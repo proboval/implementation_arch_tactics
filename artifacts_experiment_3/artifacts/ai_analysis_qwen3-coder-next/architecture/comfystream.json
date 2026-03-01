@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single codebase with clear module separation by domain (nodes/, src/, server/, workflows/, ui/), each with internal cohesion and explicit dependencies",
+    "Multiple layers exist within modules (e.g., src/comfystream/ contains core domain logic like pipeline.py, client.py, modalities.py), but no strict layering (e.g., domain classes import from multiple submodules freely)",
+    "nodes/ directory hosts ComfyUI-compatible nodes (LCA pattern), integrating tightly with ComfyUI ecosystem via imports like from comfy.api... and node class registrations",
+    "server/app.py and server/byoc.py expose HTTP/WebRTC endpoints, but no separate service processes or inter-process communication; all logic runs in same runtime (Python)",
+    "Shared components like tensor_cache.py, pipeline.py, and exceptions.py are used across server and client, indicating shared-core architecture rather than strict separation",
+    "Web UI (ui/) and backend (Python) are co-located in repo, with UI depending on backend APIs, but both part of one deployable artifact (see docker/, install.py)",
+    "Low avg_fan_out (4.55) suggests decoupled modules rather than highly interconnected microservices",
+    "Presence of nodes/__init__.py with NODE_CLASS_MAPPINGS indicates plugin-style extensibility within a monolithic framework (ComfyUI extension pattern)"
+  ],
+  "alternatives": [
+    "hexagonal (ports and adapters)",
+    "layered"
+  ],
+  "risks": [
+    "Tight integration between WebRTC server and ComfyUI node execution (server/frame_processor.py imports Pipeline directly) may hinder scalability or testability",
+    "UI (Next.js) and backend share repository but not runtime; deployment coupling could complicate independent updates",
+    "Limited separation between infrastructure concerns (e.g., server/entrypoint.sh) and core domain could reduce maintainability over time"
+  ]
+}

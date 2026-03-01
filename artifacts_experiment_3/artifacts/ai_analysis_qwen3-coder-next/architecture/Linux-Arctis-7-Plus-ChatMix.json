@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Repository tree shows no package structure (packages: 0), flat file layout with top-level .py files",
+    "Minimal directory depth (max_directory_depth: 1), consistent with single-file or small-script projects",
+    "High average fan-out (7.0) indicates direct dependencies on many external modules (e.g., usb.core, logging, sys) with no intermediate abstraction layers",
+    "Identical class structure and method signatures across both main scripts suggest duplicated procedural logic rather than shared abstractions",
+    "Lack of package separation (packages: 0) contradicts layered/hexagonal/modular_monolith patterns that require module boundaries",
+    "No module system or dependency injection evidence in code (e.g., __init__.py files, interfaces, adapters)",
+    "Scripts likely intended as standalone CLI utilities (install scripts, direct USB device interaction)"
+  ],
+  "alternatives": [
+    "unclear",
+    "modular_monolith"
+  ],
+  "risks": [
+    "Code duplication between two near-identical scripts",
+    "Hard to test due to lack of separation of concerns and dependency injection",
+    "Tight coupling to USB and OS-level resources without adapters",
+    "Poor maintainability (mi_avg = 0) and potential stability issues without error handling encapsulation"
+  ]
+}

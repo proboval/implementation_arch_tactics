@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high intra-package coupling and shared mutable state via the Context object, as evidenced by multiple modules (cli.py, execution.py, contextio.py, completer.py) directly importing and mutating http_prompt.context.Context. Static analysis confirms high average fan-out (3.39) and cross-module dependencies — e.g., execution.py imports from context, completion, output, utils, and io, while contextio.py imports from context, execution, and transform. The flat package structure with no internal boundaries makes changes propagate unpredictably: modifying a core module (like execution.py) risks breaking unrelated components (e.g., completer) due to implicit dependencies on Context state. Localized Modification directly addresses this by improving cohesion and reducing modification scope: isolating related behavior (e.g., mutation handling, command interpretation, context persistence) into dedicated, self-contained units limits ripple effects. This is especially critical in the execution module, which currently combines parsing, state mutation, HTTP execution, output formatting, and shell integration — a violation of separation of concerns.",
+  "target_components": [
+    "http_prompt/execution.py",
+    "http_prompt/completer.py",
+    "http_prompt/contextio.py",
+    "http_prompt/cli.py",
+    "http_prompt/context/transform.py"
+  ],
+  "expected_architectural_change": "The execution module will be decomposed into orthogonal services: a mutation executor (handling cd, rm, env mutations), an HTTP executor (handling actual HTTP calls via httpie), and a command interpreter (parsing, sequencing, shell substitution). Context mutation logic will be moved into cohesive modules (e.g., http_prompt/mutation/manager.py), reducing fan-out of execution.py and increasing its cohesion. Similarly, completer.py and contextio.py will depend on stable interfaces (e.g., MutationContextAdapter) rather than internal Context structure, localizing changes to mutation-related functionality.",
+  "implementation_strategy": "1. Extract mutation-handling logic from ExecutionVisitor (e.g., visit_mutkey, visit_mutation, visit_env) into a dedicated MutationExecutor module. 2. Define clean interfaces for Context interaction (e.g., apply_mutation() → new_context). 3. Refactor execution.py to delegate mutation and persistence to these services instead of performing them inline. 4. Introduce context adapters to decouple completer and contextio from Context internals (e.g., contextio loads/saves via SerializedContext format, not raw dict manipulations). 5. Apply similar separation to CLI: separate parsing, command routing, and execution orchestration. This preserves the monolith structure but increases internal cohesion and reduces intermodule coupling.",
+  "risks": "Risk of temporary duplication during refactoring (e.g., intermediate adapters), and initial performance overhead from interface indirection. However, since the system is a CLI tool with small runtime, performance impact is negligible. Mitigation: apply incremental refactoring with test coverage, and avoid premature abstraction; only extract modules where coupling is proven problematic (execution.py first)."
+}

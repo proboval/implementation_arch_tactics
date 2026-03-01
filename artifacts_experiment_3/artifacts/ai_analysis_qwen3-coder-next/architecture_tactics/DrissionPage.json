@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (4.84) and deep cross-module dependencies—e.g., _pages/chromium_page.py imports from _pages, _functions, _base, _units—and _units/selector.py imports only from _functions despite being domain-specific. This violates cohesion: modules like _units/ and _pages/ contain domain responsibilities that span multiple layers, causing ripple changes. For example, modifying _functions/tools.py affects _units/clicker.py, _units/waiter.py, _configs/session_options.py, and many others. Localized Modification directly targets this by increasing cohesion: grouping related responsibilities into cohesive units, narrowing the scope of changes. The directory structure with clear logical groupings (_units, _pages, _elements, _functions) provides ideal granularity for applying this tactic without major architectural overhaul.",
+  "target_components": [
+    "DrissionPage/_units/clicker.py",
+    "DrissionPage/_units/waiter.py",
+    "DrissionPage/_units/selector.py",
+    "DrissionPage/_units/actions.py",
+    "DrissionPage/_pages/chromium_page.py",
+    "DrissionPage/_pages/mix_tab.py",
+    "DrissionPage/_functions/tools.py",
+    "DrissionPage/_functions/settings.py"
+  ],
+  "expected_architectural_change": "Split _functions/tools.py into cohesive utility modules (e.g., _utils/ or domain-specific submodules like _utils/network.py, _utils/path.py), move browser-agnostic tools into a new _utils/ module and browser-specific ones into _utils/chromium/ or _utils/desktop/. Group related _units/ components (e.g., waiter and clicker) into cohesive modules like _utils/waiting/ and _utils/clicking/. Consolidate domain behaviors in _pages/* that currently delegate to many _units/* into dedicated page-specific units (e.g., ChromiumPageActions, ChromiumPageWaiter). This reduces cross-module imports: _pages will import fewer, higher-cohesion units instead of many low-cohesion functions.",
+  "implementation_strategy": "1. Identify high-coupling modules: _functions/tools.py and _units/clicker.py/_units/waiter.py are top candidates (most fan-in/fan-out). 2. Extract tools used across multiple modules into cohesive submodules under _utils/ (e.g., path manipulation → _utils/path.py, browser launching → _utils/browser.py). 3. Create page-specific units by moving domain-specific behavior from _units/ into _pages/_utils.py or new _pages/_actions.py, _pages/_waiters.py. 4. Refactor imports to use new modules: _units/clicker.py imports tools only from _utils/ and _functions/, not from arbitrary modules. 5. Add module boundary rules via import-checking tooling (e.g., deptry) to prevent cross-layer violations. This preserves the monolith but improves modularity and testability incrementally.",
+  "risks": "Risk of temporary regression in development velocity during migration. If extraction boundaries are too fine-grained, it may increase cognitive load; over-coarsening preserves coupling. Testing coverage is needed to ensure behavior stays unchanged. However, risks are mitigated by the fact that the repository already has clear module structure—changes are localized, reversible, and do not require altering public APIs."
+}

@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "All functionality resides within a single codebase (fsdet, tools, demo, datasets) with no separate services or network boundaries",
+    "Clear separation of concerns via directory structure (configs, datasets, fsdet/*, tools, demo, docs), indicating modular decomposition",
+    "fsdet package provides core abstraction layers (modeling, data, engine, evaluation) with internal dependencies but minimal external coupling",
+    "High cohesion within modules (e.g., fsdet/engine contains training logic, fsdet/evaluation contains evaluation logic)",
+    "Use of registries and configuration (CfgNode) to enable extensibility while keeping the system monolithic",
+    "Main entry points are command-line tools (tools/train_net.py, tools/test_net.py, demo/demo.py) integrated with core modules, typical of modular monoliths",
+    "Low average fan-out (4.48) suggests bounded module coupling",
+    "No evidence of inter-service communication patterns (HTTP/gRPC/messaging)",
+    "Repository depth of 4 levels indicates reasonable nesting without excessive fragmentation"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight integration between modules may reduce testability and composability compared to hexagonal architecture",
+    "As the system grows, risk of implicit dependencies between modules increases without strict layer enforcement",
+    "Limited deployment flexibility compared to microservices",
+    "No explicit adaptors/ports to isolate core domain from infrastructure concerns"
+  ]
+}

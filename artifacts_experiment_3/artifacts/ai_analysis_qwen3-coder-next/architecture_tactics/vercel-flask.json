@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository has a single monolithic file 'api/index.py' containing all logic (bare function stubs like 'helloNone', 'testNone', 'resultNone'), with zero packages, no separation of concerns, and zero modularity (MI scores = 0). This causes poor testability (no testable units), poor analyzability (no module boundaries to trace), and poor maintainability (any change affects the entire file). Decomposability directly addresses this by dividing the system into logical modules (e.g., controllers, services, routes) to isolate problems and enable focused testing and understanding—exactly what is missing in this script-based structure.",
+  "target_components": [
+    "api/index.py"
+  ],
+  "expected_architectural_change": "The single flat file 'api/index.py' will be refactored into multiple modules with clear separation of concerns (e.g., a 'routes/' directory for handlers, 'services/' for business logic, and 'models/' if data structures emerge), creating package boundaries and introducing import relationships between them. Directory depth may increase slightly (e.g., api/routes.py, api/services/), enabling modular testing and localized changes.",
+  "implementation_strategy": "Refactor api/index.py by extracting related functionality into separate modules: (1) create 'api/routes.py' to define Flask route handlers (decoupling routing from logic); (2) create 'api/services/__init__.py' and module(s) to encapsulate core logic (e.g., 'process_input', 'validate_output'); (3) introduce a simple 'app.py' or use existing Flask factory pattern for app instantiation. Each new module will have a single responsibility, enabling unit testing and reducing coupling. Start with small extractions (e.g., move 'hello' logic into api/services/hello.py), then refactor test stubs into testable functions.",
+  "risks": "Initial refactoring may introduce import errors or circular dependencies if modules are poorly structured; however, since the codebase is minimal (1 file, Flask-only), risks are low and manageable via incremental steps. Care must be taken not to break the existing Vercel+Flask deployment model (per vercel.json), so the entry point (api/index.py) must remain as a minimal aggregation module exporting the WSGI app."
+}

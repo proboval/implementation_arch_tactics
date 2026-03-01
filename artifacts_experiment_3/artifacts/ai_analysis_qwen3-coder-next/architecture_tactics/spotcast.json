@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The modular monolith structure shows excessive coupling and low cohesion in shared modules like helpers.py (19 functions with diverse responsibilities: Spotify lookup, Chromecast discovery, URL parsing, track search/queueing) and spotcast_controller.py (token management, device resolution, playback control, playlist handling). Static analysis confirms high fan-out (7.0) and deep cross-module imports (e.g., helpers imports 12+ modules including spotipy, requests, asyncio), violating separation of concerns. This creates ripple effects: modifying Spotify API logic may break Chromecast device resolution, and test isolation is impossible due to bidirectional dependencies between helpers.py and other modules. Decomposability addresses this by forcing module boundaries aligned with business capability (e.g., Spotify API client, device resolver, playlist manager), reducing coupling, increasing cohesion, and enabling testability.",
+  "target_components": [
+    "custom_components/spotcast/helpers.py",
+    "custom_components/spotcast/spotcast_controller.py",
+    "custom_components/spotcast/spotify_controller.py"
+  ],
+  "expected_architectural_change": "Creation of 3-4 new cohesive submodules under custom_components/spotcast/: (1) 'spotify/client.py' encapsulating Spotipy client management, token refresh, and API operations; (2) 'device/resolver.py' for Chromecast/Spotify device discovery and matching; (3) 'playlist/manager.py' for playlist/track lookup, search, and queue operations; while keeping helpers.py minimal (only utility functions). This replaces the current monolithic helpers.py with bounded contexts, enforcing one-directional dependency flow: __init__.py → spotcast_controller → {client, resolver, manager} → helpers/const/error.",
+  "implementation_strategy": "1) Identify cohesive function groups in helpers.py (e.g., Spotify API calls → client.py; device discovery → resolver.py; playlist operations → manager.py). 2) Create new module files with explicit interfaces (e.g., SpotifyClient.get_track(uri), DeviceResolver.find_cast_device(hass, name)). 3) Refactor spotcast_controller.py to depend only on new interfaces, not direct helpers.py calls. 4) Move helpers.py to a pure utility module (e.g., string parsing, async wrappers). 5) Introduce dependency injection in __init__.py to reduce implicit module imports.",
+  "risks": "Risk of over-engineering if granularity is too fine, but incremental decomposition (starting with helpers.py split) mitigates this. Short-term, increased import paths may reduce readability until abstractions stabilize. However, given the flat directory structure and Home Assistant's event-driven lifecycle, vertical layering is safe and improves long-term maintainability."
+}

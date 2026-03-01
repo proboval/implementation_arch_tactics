@@ -1,0 +1,5 @@
+{
+  "action": "modify_file",
+  "path": "dirhunt/sources/interfaces.py",
+  "content": "import abc\nfrom dirhunt.pool import Pool\n\n\nclass Source(abc.ABC, Pool):\n    \"\"\"\n    Abstract base class for all source implementations.\n    Defines the contract for sources that feed URLs into the crawler.\n    \"\"\"\n\n    @abc.abstractmethod\n    def add_domain(self, domain):\n        \"\"\"Add a domain to be scanned by this source.\"\"\"\n        pass\n\n    @abc.abstractmethod\n    def callback(self, result):\n        \"\"\"Process a result from the source.\"\"\"\n        pass\n\n    @abc.abstractmethod\n    def add_result(self, url):\n        \"\"\"Add a discovered URL to the crawler.\"\"\"\n        pass\n\n    @abc.abstractmethod\n    def add_error(self, error):\n        \"\"\"Handle an error encountered during scanning.\"\"\"\n        pass\n"
+}

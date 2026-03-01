@@ -1,0 +1,237 @@
+{
+  "python_files": 40,
+  "packages": 5,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 8.0,
+  "imports_graph": {
+    "app\\filter.py": [
+      "urllib",
+      "html",
+      "flask",
+      "re",
+      "cssutils",
+      "os",
+      "app",
+      "bs4"
+    ],
+    "app\\request.py": [
+      "httpx",
+      "urllib",
+      "flask",
+      "stem",
+      "os",
+      "app",
+      "defusedxml"
+    ],
+    "app\\routes.py": [
+      "httpx",
+      "validators",
+      "cryptography",
+      "datetime",
+      "traceback",
+      "functools",
+      "bs4",
+      "urllib",
+      "flask",
+      "base64",
+      "os",
+      "io",
+      "sys",
+      "werkzeug",
+      "json",
+      "app",
+      "uuid",
+      "re",
+      "argparse",
+      "waitress"
+    ],
+    "app\\version.py": [
+      "os"
+    ],
+    "app\\__init__.py": [
+      "sys",
+      "flask",
+      "stem",
+      "base64",
+      "dotenv",
+      "json",
+      "werkzeug",
+      "datetime",
+      "app",
+      "logging",
+      "os",
+      "warnings",
+      "threading",
+      "bs4"
+    ],
+    "app\\__main__.py": [
+      "routes"
+    ],
+    "misc\\generate_uas.py": [
+      "sys",
+      "os",
+      "app",
+      "random"
+    ],
+    "misc\\replit.py": [
+      "subprocess"
+    ],
+    "misc\\update-translations.py": [
+      "httpx",
+      "json",
+      "pathlib"
+    ],
+    "test\\conftest.py": [
+      "httpx",
+      "test",
+      "app",
+      "pytest",
+      "random"
+    ],
+    "test\\test_alts.py": [
+      "os",
+      "copy",
+      "app",
+      "bs4"
+    ],
+    "test\\test_autocomplete.py": [
+      "app"
+    ],
+    "test\\test_autocomplete_xml.py": [
+      "app"
+    ],
+    "test\\test_http_client.py": [
+      "httpx",
+      "pytest",
+      "app",
+      "types"
+    ],
+    "test\\test_json.py": [
+      "pytest",
+      "app",
+      "json",
+      "types"
+    ],
+    "test\\test_misc.py": [
+      "app",
+      "cryptography"
+    ],
+    "test\\test_results.py": [
+      "urllib",
+      "dateutil",
+      "test",
+      "datetime",
+      "app",
+      "bs4"
+    ],
+    "test\\test_routes.py": [
+      "app",
+      "test",
+      "json"
+    ],
+    "test\\test_routes_json.py": [
+      "pytest",
+      "app",
+      "json"
+    ],
+    "test\\test_tor.py": [
+      "pytest",
+      "app"
+    ],
+    "test\\__init__.py": [],
+    "app\\models\\config.py": [
+      "inspect",
+      "flask",
+      "base64",
+      "typing",
+      "cryptography",
+      "hashlib",
+      "brotli",
+      "os",
+      "app",
+      "logging",
+      "json",
+      "cssutils"
+    ],
+    "app\\models\\endpoint.py": [
+      "enum"
+    ],
+    "app\\models\\g_classes.py": [
+      "bs4"
+    ],
+    "app\\models\\__init__.py": [],
+    "app\\services\\cse_client.py": [
+      "httpx",
+      "urllib",
+      "flask",
+      "typing",
+      "dataclasses"
+    ],
+    "app\\services\\http_client.py": [
+      "httpx",
+      "ssl",
+      "time",
+      "h2",
+      "typing",
+      "os",
+      "cachetools",
+      "threading"
+    ],
+    "app\\services\\provider.py": [
+      "os",
+      "app",
+      "typing"
+    ],
+    "app\\services\\__init__.py": [],
+    "app\\utils\\bangs.py": [
+      "httpx",
+      "urllib",
+      "json",
+      "os",
+      "glob"
+    ],
+    "app\\utils\\misc.py": [
+      "httpx",
+      "urllib",
+      "flask",
+      "base64",
+      "re",
+      "cryptography",
+      "hashlib",
+      "os",
+      "io",
+      "contextlib",
+      "bs4"
+    ],
+    "app\\utils\\search.py": [
+      "flask",
+      "typing",
+      "re",
+      "cryptography",
+      "os",
+      "app",
+      "bs4"
+    ],
+    "app\\utils\\session.py": [
+      "cryptography",
+      "flask"
+    ],
+    "app\\utils\\ua_generator.py": [
+      "typing",
+      "json",
+      "os",
+      "datetime",
+      "random"
+    ],
+    "app\\utils\\widgets.py": [
+      "bs4",
+      "pathlib"
+    ],
+    "app\\utils\\__init__.py": [],
+    "app\\filter\\strategy\\clean_html.py": [
+      "warnings",
+      "re",
+      "bs4"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: all 3 Python source files reside in the root with no subpackages, causing tight coupling (fan-out 4.0), no separation of concerns (business logic embedded in streamlit_app.py), and difficulty testing modules in isolation. Static analysis confirms zero packages and max_directory_depth=1. This flat structure violates modularity principles and directly causes maintainability issues like ripple effects and poor testability. Decomposability tactics (modularization via layering or domain boundaries) directly address this by introducing physical and logical boundaries to isolate responsibilities, making changes localized and testing feasible. This tactic is implementable incrementally via directory restructuring and introduces only essential abstractions (e.g., interfaces) without over-engineering.",
+  "target_components": [
+    "plots.py",
+    "portfolio.py",
+    "streamlit_app.py"
+  ],
+  "expected_architectural_change": "Current flat structure (3 files in root) will evolve into a layered/modular monolith with clear packages (e.g., /domain/, /application/, /ui/), where Portfolio logic resides in a domain layer, plotting in a visualization layer, and Streamlit UI acts as an adapter. Initial step: create /portfolio/ and /plots/ subpackages, each with __init__.py, moving classes/functions accordingly, then逐步 decouple streamlit_app.py via interfaces.",
+  "implementation_strategy": "1. Create directories: /domain/, /ui/, /visualization/. 2. Move Portfolio class to /domain/, export via __init__.py. 3. Move plots functions to /visualization/. 4. Introduce minimal interfaces (e.g., in /domain/__init__.py) to abstract data sources (e.g., PortfolioDataRepository) without concrete implementations yet. 5. Refactor streamlit_app.py to import only via domain and visualization interfaces, not concrete classes directly. 6. In parallel, add __main__.py or entry point wrapper to ui/. This incremental refactoring maintains functionality while improving modularity, testability (each layer can be tested standalone), and separation of concerns.",
+  "risks": "Risk of over-engineering if interfaces are over-specified; must avoid premature abstractions. Mitigation: start with physical separation only (packages/folders), then introduce interfaces only where dependencies become evident (e.g., yfinance import in streamlit_app.py should be abstracted to a data loader interface). Also risk of temporary breaking imports during refactoring; mitigate by doing it in small, atomic commits."
+}

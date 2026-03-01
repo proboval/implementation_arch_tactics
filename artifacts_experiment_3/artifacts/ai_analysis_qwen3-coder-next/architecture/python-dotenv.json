@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Project has a single deployable unit (no separate services)",
+    "Clear module separation by responsibility: cli, main, parser, variables, ipython",
+    "Low package count (2) with shallow directory depth (3) typical of compact monoliths",
+    "Imports are all internal relative imports within the same module, indicating tight cohesion within boundaries",
+    "Test suite mirrors source structure with per-module test files, consistent with modular monolith patterns",
+    "Code is organized into logical layers (CLI interface, business logic in main.py, parsing/variable handling), but layers are not strictly decoupled (e.g., CLI imports from main)",
+    "Average fan-out of 4.47 suggests moderate internal coupling, common in well-organized monoliths"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between CLI and main modules may reduce testability and maintainability over time",
+    "Limited architectural separation could hinder future decomposition into services if needed"
+  ]
+}

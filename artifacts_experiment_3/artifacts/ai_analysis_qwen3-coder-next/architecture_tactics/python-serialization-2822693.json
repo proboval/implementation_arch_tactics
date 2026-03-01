@@ -1,0 +1,29 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: it is organized as a flat set of chapter-based directories (Ch01, Ch02, etc.) with no formal package hierarchy (packages: 0), zero inter-module coupling beyond sibling-file imports, and no separation of concerns across architectural layers. Static analysis confirms high coupling (via direct imports like `from metric import metric`) and low cohesion across directories (e.g., Ch03/challenge and Ch03/solution contain identical concerns like `log.py`). Files such as Ch01/01_04/metric_*.py duplicate the same `metric` object and parsing logic across multiple formats without a shared abstraction, increasing change impact and test complexity. Decomposability directly addresses these by enforcing modular boundaries—grouping related responsibilities into well-defined packages (e.g., a `serializers/` package with modular format handlers), isolating serialization logic from business data, and enabling localized changes and testing—exactly matching the flat, script-based structure where such refactoring is both feasible and high-impact.",
+  "target_components": [
+    "Ch01/01_04/metric.py",
+    "Ch01/01_04/metric_json.py",
+    "Ch01/01_04/metric_xs.py",
+    "Ch01/01_04/metric_yt.py",
+    "Ch03/03_01/basic.py",
+    "Ch03/03_01/event.py",
+    "Ch03/03_02/custom.py",
+    "Ch03/03_02/event.py",
+    "Ch05/05_01/metric.py",
+    "Ch05/05_03/metric.py",
+    "Ch05/challenge/etl.py",
+    "Ch05/solution/etl.py",
+    "Ch02/02_03/config.py",
+    "Ch02/02_03/load_config.py"
+  ],
+  "expected_architectural_change": "Introduction of a hierarchical package structure (e.g., `serialization/`, `data/`, `config/`) with clearly bounded responsibilities: a `serialization` package exposing a unified `Serializer` interface (e.g., via `Serializer` base class and format-specific subclasses like `JsonSerializer`, `XmlSerializer`, `YamlSerializer`), with implementations factored out of current script files. Each chapter’s self-contained logic (e.g., `metric_*.py`, `event.py`, `custom.py`) will be moved into standardized modules under `serialization/`, reducing duplication and coupling. The current flat directory tree (max_depth=3) will evolve into a layered structure (data model → serialization → format adapters) with explicit imports through package-level `__init__.py` exports.",
+  "implementation_strategy": "Step 1: Create a `serialization/` package with an abstract `Serializer` interface (e.g., using `abc.ABC`). Step 2: Extract common serialization logic from existing files (e.g., `Ch01/01_04/metric_json.py`, `Ch05/05_03/metric.py`) into concrete serializer subclasses (e.g., `JsonSerializer`, `XmlSerializer`), accepting and returning domain objects like `Metric` instead of hardcoding structures. Step 3: Group related data models into a `data/` package (e.g., `Metric`, `Event`, `Trade`) to decouple data from serialization. Step 4: Refactor current imports (e.g., `from metric import metric`) to use `from data import Metric; from serialization import JsonSerializer`. Step 5: Replace inline `exec`/`importlib` config loading in `Ch02/02_03/` with a `ConfigLoader` in a `config/` package for standardized loading strategies. This incremental refactoring preserves functionality while progressively improving modularity, testability, and changeability.",
+  "risks": "Low risk if done incrementally: the current structure allows for parallel file refactorings without breaking the build (each `.py` is self-contained). Risks include temporary duplication during migration and minor test adjustments, but no system-wide changes are required. No external dependencies or build pipeline changes are needed. Risk of introduction of circular dependencies is mitigated by enforcing one-directional module dependencies (data → serialization → config → application)."
+}
