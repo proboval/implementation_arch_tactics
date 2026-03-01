@@ -1,0 +1,281 @@
+% !TEX root = main.tex
+
+\documentclass[sigconf,review,anonymous]{acmart}
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{underscore}
+\usepackage{booktabs}
+\providecommand{\mathdefault}[1]{#1}
+
+\acmConference[EASE 2026]{The 30th International Conference on Evaluation and Assessment in Software Engineering}{Tue 9 - Fri 12 June 2026}{Glasgow, United Kingdom}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\usepackage[english]{babel}
+
+% === CHECK marker system (REMOVE BEFORE SUBMISSION) ===
+\usepackage{xcolor}
+\usepackage{soul}
+\newcommand{\CHECK}[2]{\sethlcolor{yellow}\hl{<<#1>> #2}}
+% Usage: \CHECK{DATA}{162} or \CHECK{STAT}{p=0.001} or \CHECK{CLAIM}{verify}
+% ======================================================
+
+% acmart uses natbib-compatible bibliography by default
+\bibliographystyle{ACM-Reference-Format}
+
+%%% CCS Concepts (required by ACM)
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10011007.10011074.10011099.10011102.10011103</concept_id>
+       <concept_desc>Software and its engineering~Software maintenance tools</concept_desc>
+       <concept_significance>500</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10011007.10011006.10011039</concept_id>
+       <concept_desc>Software and its engineering~Software architectures</concept_desc>
+       <concept_significance>300</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10010147.10010178.10010179</concept_id>
+       <concept_desc>Computing methodologies~Natural language processing</concept_desc>
+       <concept_significance>300</concept_significance>
+   </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software maintenance tools}
+\ccsdesc[300]{Software and its engineering~Software architectures}
+\ccsdesc[300]{Computing methodologies~Natural language processing}
+
+\begin{document}
+
+\title{Can LLMs Implement Architectural Tactics? Early Results}
+
+\author{Saveliy Chertkov}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{s.chertkov@innopolis.university}
+
+\author{Andrey Sadovykh}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{a.sadovykh@innopolis.ru}
+
+\begin{abstract}
+
+Software maintainability is a critical quality attribute that directly affects system evolution cost and reliability. Improving maintainability often requires architectural-level modifications demanding specialized expertise and significant manual effort. While Large Language Models (LLMs) have shown strong capabilities in code understanding and generation, their potential for systematic architecture-level software quality improvement remains largely unexplored.
+
+This paper presents an automated pipeline that leverages an LLM to improve software maintainability through architectural tactic implementation. The pipeline operates in three stages: (1) architecture detection, where the LLM analyzes repository structure and identifies the dominant architectural pattern; (2) architectural tactic selection, where the LLM chooses an appropriate tactic from a predefined catalog based on the detected architecture and expected maintainability impact; and (3) iterative incremental tactic implementation with automated verification. The pipeline follows a Pipes and Filters architecture and operates without manual intervention.
+
+We applied the pipeline to \CHECK{DATA}{162} open-source Python backend repositories collected and filtered from GitHub. Of \CHECK{DATA}{121} repositories that completed the full pipeline, \CHECK{DATA}{22} showed measurable MI improvement (mean $\Delta$MI = \CHECK{STAT}{+2.89}), \CHECK{DATA}{92} remained stable, and \CHECK{DATA}{7} showed minor degradation. A Wilcoxon signed-rank test confirmed a statistically significant positive shift (\CHECK{STAT}{W = 75.0, p = 0.001}), though with \CHECK{STAT}{negligible} effect size. Decomposability was the most frequently selected tactic (\CHECK{DATA}{63.6\%}). Baseline maintainability was measured using the Radon static analysis tool, with the Maintainability Index as the primary metric.
+
+This work contributes a reproducible methodology for LLM-driven architectural improvement and provides early empirical evidence on both the potential and limitations of LLMs for architecture-level modifications.
+
+\keywords{software maintainability, architectural tactics, large language models, automated software improvement, static analysis, software architecture}
+
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Modern software engineering faces a persistent maintenance challenge, with studies indicating that 60--80\% of total lifecycle costs are dedicated to post-deployment modifications~\cite{bass2021software}. While code-level refactoring is well-established, there is a significant gap in the automated application of higher-level design decisions---what we term the ``Transformation Gap'' between detecting the need for architectural change and implementing it automatically. This paper investigates the intersection of architectural tactics, quality attribute models, and the emerging capabilities of Large Language Models (LLMs) in automating structural transformations.
+
+We address the following research questions:
+\begin{itemize}[nosep]
+    \item \textbf{RQ1:} Can an automated LLM-based pipeline detect architectural patterns and select appropriate tactics in real-world repositories?
+    \item \textbf{RQ2:} To what extent do LLM-implemented architectural tactics improve software maintainability as measured by the Maintainability Index?
+    \item \textbf{RQ3:} How do architecture type and tactic choice influence improvement outcomes?
+\end{itemize}
+
+The remainder of this paper is organized as follows: Section~2 reviews background and related work; Section~3 describes the methodology; Section~4 details the implementation; Section~5 presents results and discussion; Section~6 discusses threats to validity; and Section~7 concludes.
+
+\section{Background and Related Work}
+
+\subsection{Architectural Tactics and Quality Attributes}
+Software architecture is fundamentally defined by its elements, form, and rationale~\cite{perry1992foundations}, or alternatively, as a collection of components and connectors in a specific configuration~\cite{garlan1993introduction}. Within these frameworks, \textit{architectural tactics} serve as fine-grained design decisions intended to achieve specific quality attribute responses~\cite{bass2021software}.
+
+The ISO/IEC 25010 standard decomposes maintainability into modularity, analysability, modifiability, reusability, and testability~\cite{bass2021software}. Research by Rahmati suggests that while architectural patterns (e.g., MVC, Layered) provide a structural foundation, their effectiveness is highly context-dependent; misapplication can lead to a \CHECK{SOURCE}{10\%} increase in maintenance effort~\cite{rahmati2021ensuring}. Consequently, the selection and implementation of specific tactics, such as ``Use an Intermediary'' or ``Split Module,'' are critical for targeted quality improvement~\cite{bass2021software}.
+
+\subsection{LLMs in Software Refactoring}
+Recent multi-agent frameworks such as MANTRA have demonstrated an \CHECK{SOURCE}{82.8\%} success rate in producing compilable, test-passing refactored code~\cite{xu2025mantra}. However, empirical analysis of AI coding agents reveals a significant scale limitation: approximately \CHECK{SOURCE}{96.3\%} of current agentic refactorings are confined to a single file~\cite{horikawa2025agentic}.
+
+Research into prompt engineering indicates that while LLMs can identify up to \CHECK{SOURCE}{86.7\%} of refactoring opportunities, their performance in complex tactic synthesis remains limited~\cite{liu2025exploring}. In security-related tactic implementation, models may achieve high syntactic correctness (95\%) but fail significantly in semantic correctness (5\%) due to an inability to coordinate inter-procedural changes across multiple classes~\cite{shokri2024ipsynth}.
+
+\subsection{Research Gaps}
+The synthesis of current literature identifies three key gaps:
+\begin{itemize}[nosep]
+    \item \textbf{Contextual Constraints:} Current LLM-based tools operate primarily at the method or class level, lacking system-wide awareness for architectural restructuring~\cite{martinez2025refactoring, horikawa2025agentic}.
+    \item \textbf{Measurement Inconsistency:} There is a documented lack of agreement among static analysis tools (less than 0.4\% in some cases), complicating quality validation~\cite{lenarduzzi2023critical}.
+    \item \textbf{Implementation Void:} While methods exist for detecting the need for architectural tactics, automated LLM-driven mechanisms for concrete multi-file changes are lacking~\cite{marquez2022architectural, shokri2024ipsynth}.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Research Design}
+This study employs a quantitative pre-test/post-test experimental design. The independent variable is the application of LLM-based architectural tactics; the dependent variable is software maintainability. Each repository serves as its own control, allowing paired-sample comparison before and after the intervention.
+
+\subsection{Experimental Pipeline}
+The pipeline is structured into seven sequential phases:
+(1) Automated repository selection;
+(2) Baseline static analysis;
+(3) Architectural pattern detection;
+(4) Tactic selection based on detected deficiencies;
+(5) Iterative tactic implementation;
+(6) Post-intervention static analysis;
+(7) Comparative statistical analysis.
+
+\subsection{Dataset Preparation}
+Repositories were sourced from public Python-based backend projects on GitHub. A multi-stage filtering process excluded toy projects and focused on maintainable industrial-like codebases~\cite{rahmati2021ensuring}. Inclusion criteria required:
+\begin{itemize}[nosep]
+    \item Presence of a valid \texttt{requirements.txt} for dependency analysis;
+    \item A minimum threshold of Python source files to ensure architectural complexity;
+    \item Exclusion of ML-heavy projects (e.g., Jupyter Notebooks);
+    \item Assessment of project maturity through star counts and commit history.
+\end{itemize}
+After filtering, \CHECK{DATA}{162} repositories were retained for the experiment.
+
+\subsection{Maintainability Measurement}
+The primary metric is the Maintainability Index (MI), calculated via the Radon framework, aligned with ISO/IEC 25010~\cite{bass2021software}. Recognizing the documented inconsistency among static analysis tools~\cite{lenarduzzi2023critical}, we supplement MI with:
+\begin{itemize}[nosep]
+    \item \textbf{Structural Complexity:} Average fan-out and package coupling;
+    \item \textbf{Documentation Quality:} Docstring coverage and README presence;
+    \item \textbf{Delta Measurement:} $\Delta MI = MI_{after} - MI_{before}$.
+\end{itemize}
+
+\subsection{LLM-Driven Transformation}
+The transformation leverages an LLM in three layers:
+
+\paragraph{Architecture Detection:} The model analyzes directory structure and module relationships to infer the architectural style (e.g., Layered, Modular Monolith)~\cite{perry1992foundations, garlan1993introduction}.
+
+\paragraph{Tactic Selection:} Based on identified structural deficiencies, the system selects a tactic from the catalog established by Bass et al.~\cite{bass2021software}.
+
+\paragraph{Tactic Implementation:} The implementation follows an \textit{iterative incremental approach}, where the LLM performs small, verifiable changes. While literature suggests that Test-Driven Development (TDD) significantly improves reliability of LLM refactoring~\cite{xu2025mantra, piao2025refactoring}, a full TDD cycle is designated for \textbf{future work}.
+
+\section{Implementation}
+The framework is implemented as an automated Python-based orchestration engine using a Pipes and Filters architecture. Target repositories are shallow-cloned, processed sequentially, and purged after data extraction to ensure isolation and reproducibility.
+
+The LLM component uses \CHECK{DATA}{Qwen3-coder-next:cloud} (via Ollama, 256k context window, temperature = \CHECK{DATA}{0.2}) with structured prompt engineering enforcing JSON-formatted outputs for automated parsing of architectural decisions. By maintaining a global architectural context in prompts, the implementation enables coordination of changes across multiple modules---addressing the single-file limitation identified in recent studies~\cite{piao2025refactoring}. All artifacts, including LLM reasoning logs and intermediate code states, are preserved for full traceability.
+
+\section{Results and Discussion}
+
+\subsection{Overall Quantitative Impact}
+
+Table~\ref{tab:descriptive} summarizes the overall results across \CHECK{DATA}{162} repositories. Of these, \CHECK{DATA}{41} (\CHECK{DATA}{25.3\%}) failed to complete the pipeline (null \texttt{mi\_after}), leaving \CHECK{DATA}{121} with paired before/after measurements.
+
+\begin{table}[htbp]
+\caption{\CHECK{DATA}{Descriptive statistics for repositories with paired MI measurements (N = 121).}}
+\label{tab:descriptive}
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+\textbf{Metric} & \textbf{MI\textsubscript{before}} & \textbf{MI\textsubscript{after}} \\
+\midrule
+Mean & 65.11 & 65.59 \\
+Median & 68.42 & 68.67 \\
+Std. Dev. & 19.17 & 19.22 \\
+\midrule
+Mean $\Delta$MI & \multicolumn{2}{c}{+0.48} \\
+Median $\Delta$MI & \multicolumn{2}{c}{0.00} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A Wilcoxon signed-rank test on the \CHECK{DATA}{29} non-zero deltas yields \CHECK{STAT}{W = 75.0, p = 0.001}, indicating a statistically significant positive shift in MI. However, the Cliff's delta effect size is \CHECK{STAT}{0.017 (negligible)}, reflecting that the magnitude of improvement is small in aggregate.
+
+As illustrated in Figure~\ref{fig:mi_dist}, a majority of projects maintained baseline stability. In \CHECK{DATA}{56.8\%} of completed cases, the MI remained unchanged, suggesting the LLM's internal refactoring did not always produce changes detectable by Radon's MI formula.
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/distribution.pgf}}
+    \caption{Distribution of MI scores: Baseline vs.\ Post-Intervention.}
+    \label{fig:mi_dist}
+\end{figure}
+
+\subsection{Success Cases and Tactic Efficacy}
+
+\CHECK{DATA}{22} repositories (\CHECK{DATA}{13.6\%}) showed measurable MI improvement (Figure~\ref{fig:top10_shifts}). The largest gain was in \textit{get\_subscribe} ($\Delta$MI = \CHECK{DATA}{+13.52}), where the \textbf{Decomposability} tactic decomposed large scripts into modular components---a change highly rewarded by the MI formula. Similarly, \textit{whoogle-search} improved from \CHECK{DATA}{67.06} to \CHECK{DATA}{69.74} via \textbf{Localized Modification} in a layered architecture.
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/top_improvements.pgf}}
+    \caption{Top 10 MI improvements by applied tactic.}
+    \label{fig:top10_shifts}
+\end{figure}
+
+Table~\ref{tab:tactic} breaks down results by tactic. \textbf{Reduced Coupling} showed the highest improvement rate (\CHECK{DATA}{8}/\CHECK{DATA}{18} improved, \CHECK{STAT}{44.4\%}), while \textbf{Decomposability}---the most frequently selected tactic (\CHECK{DATA}{103} repos)---had the highest null rate (\CHECK{DATA}{29}/\CHECK{DATA}{103}, \CHECK{DATA}{28.2\%}), suggesting that decomposing unstructured code is a higher-risk transformation.
+
+\begin{table}[htbp]
+\caption{\CHECK{DATA}{Results by architectural tactic.}}
+\label{tab:tactic}
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Tactic} & \textbf{N} & \textbf{Null} & \textbf{Impr.} & \textbf{Stable} & \textbf{$\overline{\Delta}$MI} \\
+\midrule
+Decomposability & 103 & 29 & 7 & 63 & +0.55 \\
+Localized Mod. & 32 & 5 & 6 & 19 & +0.13 \\
+Reduced Coupling & 23 & 5 & 8 & 9 & +0.70 \\
+Other & 4 & 2 & 1 & 1 & +0.67 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Failure Rates and Robustness}
+Figure~\ref{fig:impact_pie} shows that \CHECK{DATA}{25.3\%} of repositories resulted in pipeline failure (null status), representing cases where the LLM introduced syntax errors, broken dependencies, or changes that prevented execution. An additional \CHECK{DATA}{4.3\%} (\CHECK{DATA}{7} repos) showed minor MI degradation (mean $\Delta$MI = \CHECK{STAT}{-0.78}). This underscores the necessity of verification mechanisms for automated architectural modifications.
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/impact_pie.pgf}}
+    \caption{Intervention impact: improved, stable, degraded, and failed (null).}
+    \label{fig:impact_pie}
+\end{figure}
+
+\subsection{Architectural Influence}
+Figure~\ref{fig:arch_dist} shows the dataset is dominated by \textbf{modular monolith} (\CHECK{DATA}{51.2\%}) and \textbf{script-based} (\CHECK{DATA}{43.8\%}) architectures. Script-based projects showed the highest mean improvement (\CHECK{STAT}{+0.81}) but also the highest variance, with the top 3 gains all in script-based repos \CHECK{CLAIM}{(get\_subscribe, ps4-exploit-host, DXY-COVID-19-Crawler)}. Modular monoliths showed more modest but consistent gains (\CHECK{STAT}{+0.22}). \CHECK{CLAIM}{All 7 degradation cases occurred in modular monolith repositories}, suggesting that modifications to well-structured codebases carry higher risk of disrupting existing quality.
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/arch_distribution.pgf}}
+    \caption{Distribution of baseline architectures.}
+    \label{fig:arch_dist}
+\end{figure}
+
+\section{Threats to Validity}
+
+\textbf{Internal validity:} Each repository uses itself as a control, but MI changes could be influenced by factors beyond the tactic applied (e.g., code formatting changes). A single LLM model was used without comparison to alternatives or manual implementation.
+
+\textbf{External validity:} Results are limited to Python repositories from GitHub. The Qwen3-coder-next model's behavior may not generalize to other LLMs, languages, or project types.
+
+\textbf{Construct validity:} MI is a composite metric that may not capture all dimensions of maintainability. Architecture detection was performed by the LLM without human validation. The documented inconsistency among static analysis tools~\cite{lenarduzzi2023critical} further limits metric reliability.
+
+\textbf{Conclusion validity:} While the Wilcoxon test shows statistical significance, the effect size is negligible. The effective sample of improved repositories (\CHECK{DATA}{22}/\CHECK{DATA}{162}) is small, limiting the strength of conclusions.
+
+\section{Conclusion}
+
+This study investigated the potential of LLMs to automate architectural tactic implementation for software maintainability improvement. Regarding our research questions:
+
+\textbf{RQ1:} The pipeline successfully detected architecture and selected tactics for all \CHECK{DATA}{162} repositories, demonstrating that LLMs can perform architecture-level analysis on real-world codebases.
+
+\textbf{RQ2:} LLM-implemented tactics produced a statistically significant but small positive effect on MI (mean $\Delta$MI = \CHECK{STAT}{+0.48}, \CHECK{STAT}{p = 0.001}). \CHECK{DATA}{22} repositories showed measurable improvement, though \CHECK{DATA}{56.8\%} remained unchanged and \CHECK{DATA}{25.3\%} failed.
+
+\textbf{RQ3:} Script-based architectures showed the highest improvement potential, while modular monoliths exhibited both modest gains and all observed degradations. Reduced Coupling was the most effective tactic by improvement rate.
+
+The high failure rate (\CHECK{DATA}{25.3\%}) and prevalence of neutral results highlight limitations of current LLM pipelines for architecture-level modifications. Future work should integrate Test-Driven Development for verification, explore multi-LLM comparison, and extend beyond Python to evaluate generalizability.
+
+\begin{acks}
+% <<TODO: Add acknowledgments if needed>>
+\end{acks}
+
+\bibliography{ref}
+
+\end{document}

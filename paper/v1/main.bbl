@@ -1,0 +1,185 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{12}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Bass et~al\mbox{.}(2021)]%
+        {bass2021software}
+\bibfield{author}{\bibinfo{person}{Len Bass}, \bibinfo{person}{Paul Clements},
+  {and} \bibinfo{person}{Rick Kazman}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Software Architecture in Practice}
+  (\bibinfo{edition}{4th} ed.)}.
+\newblock \bibinfo{publisher}{Addison-Wesley}.
+\newblock
+\showISBNx{978-0136886099}
+
+
+\bibitem[Garlan and Shaw(1993)]%
+        {garlan1993introduction}
+\bibfield{author}{\bibinfo{person}{David Garlan} {and} \bibinfo{person}{Mary
+  Shaw}.} \bibinfo{year}{1993}\natexlab{}.
+\newblock \showarticletitle{An introduction to software architecture}.
+\newblock  \bibinfo{volume}{1}, \bibinfo{number}{3} (\bibinfo{year}{1993}).
+\newblock
+
+
+\bibitem[Horikawa et~al\mbox{.}(2025)]%
+        {horikawa2025agentic}
+\bibfield{author}{\bibinfo{person}{Kosei Horikawa}, \bibinfo{person}{Hao Li},
+  \bibinfo{person}{Yutaro Kashiwa}, \bibinfo{person}{Bram Adams},
+  \bibinfo{person}{Hajimu Iida}, {and} \bibinfo{person}{Ahmed~E. Hassan}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Agentic Refactoring: An Empirical Study of {AI}
+  Coding Agents}. In \bibinfo{booktitle}{\emph{arXiv preprint
+  arXiv:2511.04824}}.
+\newblock
+\showeprint[arxiv]{2511.04824}
+
+
+\bibitem[Lenarduzzi et~al\mbox{.}(2023)]%
+        {lenarduzzi2023critical}
+\bibfield{author}{\bibinfo{person}{Valentina Lenarduzzi},
+  \bibinfo{person}{Fabiano Pecorelli}, \bibinfo{person}{Nyyti Saarimaki},
+  \bibinfo{person}{Savanna Lujan}, {and} \bibinfo{person}{Fabio Palomba}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A critical comparison on six static analysis tools:
+  Detection, agreement, and precision}.
+\newblock   \bibinfo{volume}{198} (\bibinfo{year}{2023}),
+  \bibinfo{pages}{111575}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2025)]%
+        {liu2025exploring}
+\bibfield{author}{\bibinfo{person}{Bo Liu}, \bibinfo{person}{Yanjie Jiang},
+  \bibinfo{person}{Yuxia Zhang}, \bibinfo{person}{Nan Niu},
+  \bibinfo{person}{Guangjie Li}, {and} \bibinfo{person}{Hui Liu}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Exploring the potential of general purpose {LLMs}
+  in automated software refactoring: An empirical study}.
+\newblock \bibinfo{journal}{\emph{Automated Software Engineering}}
+  \bibinfo{volume}{32}, \bibinfo{number}{1} (\bibinfo{year}{2025}).
+\newblock
+\href{https://doi.org/10.1007/s10515-025-00500-0}{doi:\nolinkurl{10.1007/s10515-025-00500-0}}
+
+
+\bibitem[M{\'a}rquez et~al\mbox{.}(2022)]%
+        {marquez2022architectural}
+\bibfield{author}{\bibinfo{person}{Gast{\'o}n M{\'a}rquez},
+  \bibinfo{person}{Hern{\'a}n Astudillo}, {and} \bibinfo{person}{Rick Kazman}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Architectural tactics in software architecture: A
+  systematic mapping study}.
+\newblock \bibinfo{journal}{\emph{Journal of Systems and Software}}
+  \bibinfo{volume}{197} (\bibinfo{year}{2022}), \bibinfo{pages}{111558}.
+\newblock
+\href{https://doi.org/10.1016/j.jss.2022.111558}{doi:\nolinkurl{10.1016/j.jss.2022.111558}}
+
+
+\bibitem[Martinez et~al\mbox{.}(2025)]%
+        {martinez2025refactoring}
+\bibfield{author}{\bibinfo{person}{Sofia Martinez}, \bibinfo{person}{Luo Xu},
+  \bibinfo{person}{Mariam Elnaggar}, {and} \bibinfo{person}{Eman~Abdullah
+  AlOmar}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Software refactoring research with large language
+  models: A systematic literature review}.
+\newblock \bibinfo{journal}{\emph{Journal of Systems and Software}}
+  (\bibinfo{year}{2025}), \bibinfo{pages}{112762}.
+\newblock
+\href{https://doi.org/10.1016/j.jss.2025.112762}{doi:\nolinkurl{10.1016/j.jss.2025.112762}}
+
+
+\bibitem[Perry and Wolf(1992)]%
+        {perry1992foundations}
+\bibfield{author}{\bibinfo{person}{Dewayne~E. Perry} {and}
+  \bibinfo{person}{Alexander~L. Wolf}.} \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Foundations for the study of software
+  architecture}.
+\newblock  \bibinfo{volume}{17}, \bibinfo{number}{4} (\bibinfo{year}{1992}),
+  \bibinfo{pages}{40--52}.
+\newblock
+\href{https://doi.org/10.1145/141874.141884}{doi:\nolinkurl{10.1145/141874.141884}}
+
+
+\bibitem[Piao et~al\mbox{.}(2025)]%
+        {piao2025refactoring}
+\bibfield{author}{\bibinfo{person}{Yonnel Chen~Kuang Piao},
+  \bibinfo{person}{Jean~Carlos Paul}, \bibinfo{person}{L. Da~Silva},
+  \bibinfo{person}{Arghavan~Moradi Dakhel}, \bibinfo{person}{Mohammad Hamdaqa},
+  {and} \bibinfo{person}{Foutse Khomh}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Refactoring with {LLMs}: Bridging Human Expertise
+  and Machine Understanding}. In \bibinfo{booktitle}{\emph{arXiv preprint
+  arXiv:2510.03914}}.
+\newblock
+\showeprint[arxiv]{2510.03914}
+
+
+\bibitem[Rahmati and Tanhaei(2021)]%
+        {rahmati2021ensuring}
+\bibfield{author}{\bibinfo{person}{Zahed Rahmati} {and}
+  \bibinfo{person}{Mohammad Tanhaei}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Ensuring software maintainability at software
+  architecture level using architectural patterns}.
+\newblock  \bibinfo{volume}{2}, \bibinfo{number}{1} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{81--102}.
+\newblock
+\href{https://doi.org/10.22060/ajmc.2021.19232.1044}{doi:\nolinkurl{10.22060/ajmc.2021.19232.1044}}
+
+
+\bibitem[Shokri and Khatchadourian(2024)]%
+        {shokri2024ipsynth}
+\bibfield{author}{\bibinfo{person}{Seyyed~Ehsan Shokri} {and}
+  \bibinfo{person}{Raffi Khatchadourian}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{IPSynth}: Interprocedural Program Synthesis for
+  Software Architecture Recovery and Architectural Tactics Detection}. In
+  \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2403.10836}}.
+\newblock
+\showeprint[arxiv]{2403.10836}
+
+
+\bibitem[Xu et~al\mbox{.}(2025)]%
+        {xu2025mantra}
+\bibfield{author}{\bibinfo{person}{Yisen Xu}, \bibinfo{person}{Feng Lin},
+  \bibinfo{person}{Jinqiu Yang}, \bibinfo{person}{Tse-Hsun Chen}, {and}
+  \bibinfo{person}{Nikolaos Tsantalis}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{{MANTRA}: Enhancing Automated Method-Level
+  Refactoring with Contextual {RAG} and Multi-Agent {LLM} Collaboration}. In
+  \bibinfo{booktitle}{\emph{arXiv preprint arXiv:2503.14340}}.
+\newblock
+\showeprint[arxiv]{2503.14340}
+
+
+\end{thebibliography}
