@@ -1,4 +1,208 @@
 \chapter{Implementation}
-\label{chap:impl}
 
-\ldots
+\section{System Architecture}
+
+The experimental framework was implemented as an automated pipeline designed to analyze, modify, and evaluate open-source Python repositories. The system follows a modular architecture based on the Pipes and Filters architectural pattern, where each processing stage is implemented as an independent filter component.
+
+This design enables reproducibility, extensibility, and isolation of experimental stages. Each filter receives structured input, performs a specific task, and produces output that is passed to the next stage.
+
+The overall implementation consists of the following main subsystems:
+
+\begin{itemize}
+\item Dataset preparation subsystem
+\item Static analysis subsystem
+\item LLM-based architecture improvement subsystem
+\item Maintainability evaluation subsystem
+\item Results storage and artifact management subsystem
+\end{itemize}
+
+The entire pipeline operates automatically without manual intervention.
+
+\section{Technology Stack}
+
+The system was implemented using Python due to its extensive ecosystem, availability of static analysis tools, and compatibility with modern Large Language Models.
+
+The core technologies used in the implementation are summarized below:
+
+\begin{itemize}
+\item Programming language: Python 3.12
+\item Version control interaction: Git
+\item Repository hosting platform: GitHub
+\item Static analysis tool: Radon
+\item LLM access: Ollama API
+\item Data storage format: CSV and JSON
+\item Architecture pattern: Pipes and Filters
+\end{itemize}
+
+Python was selected due to its suitability for automation, availability of maintainability analysis tools, and relevance to backend software development.
+
+\section{Dataset Preparation Implementation}
+
+The dataset preparation process was implemented as a sequence of automated filters.
+
+The first component collected candidate repositories from GitHub using predefined search criteria. Repository metadata, including name, clone URL, and star count, was retrieved via the GitHub REST API.
+
+The second component cloned each repository locally using shallow cloning to minimize network and storage overhead:
+
+\begin{verbatim}
+git clone --depth 1 <repository_url>
+\end{verbatim}
+
+Each repository was analyzed to determine whether it represents a backend system. The following conditions were verified:
+
+\begin{itemize}
+\item Presence of a \texttt{requirements.txt} file
+\item Presence of Python source code files
+\item Absence of machine learning libraries in dependencies
+\item Absence of experimental or notebook-based project structures
+\end{itemize}
+
+Repositories that satisfied these criteria were included in the dataset.
+
+Repositories were deleted immediately after analysis to minimize storage usage.
+
+\section{Static Analysis Implementation}
+
+Maintainability metrics were collected using automated static analysis.
+
+The Radon tool was used to compute Maintainability Index values:
+
+\begin{verbatim}
+radon mi --json <repository_path>
+\end{verbatim}
+
+The output was parsed and stored in structured JSON format.
+
+Three categories of maintainability metrics were collected:
+
+\begin{itemize}
+\item Code maintainability metrics
+\item Architecture metrics
+\item Documentation metrics
+\end{itemize}
+
+Results were stored in the artifacts directory structure:
+
+\begin{verbatim}
+artifacts/static_analysis/BEFORE/<repository_name>/
+artifacts/static_analysis/AFTER/<repository_name>/
+\end{verbatim}
+
+This enabled direct comparison between the original and modified repository versions.
+
+\section{LLM Integration Implementation}
+
+Large Language Models were integrated to perform architectural analysis and improvements.
+
+The LLM was used for three independent tasks:
+
+\begin{itemize}
+\item Architecture detection
+\item Architectural tactic selection
+\item Architectural tactic implementation
+\end{itemize}
+
+Repository structure and file contents were extracted and provided to the model as structured input.
+
+To reduce token usage, only relevant information was included:
+
+\begin{itemize}
+\item Repository file tree
+\item File contents (imports and signatures)
+\item Static analysis results
+\end{itemize}
+
+LLM responses were required to follow strict JSON format, which enabled automatic parsing and execution.
+
+\section{Architectural Tactic Implementation}
+
+Architectural improvements were implemented automatically using LLM-generated code modifications.
+
+The system enforced Test-Driven Development principles during implementation.
+
+Each modification followed the sequence:
+
+\begin{enumerate}
+\item Generate a failing test
+\item Implement minimal production code
+\item Verify test execution
+\end{enumerate}
+
+The LLM generated structured instructions specifying file creation or modification.
+
+These instructions were executed automatically within the repository.
+
+All modifications were stored locally.
+
+\section{Maintainability Re-evaluation}
+
+After architectural improvements were applied, static analysis was executed again.
+
+The same metrics collected before modification were recalculated for the modified repository.
+
+This ensured consistency and comparability of results.
+
+The Maintainability Index average value was used as the primary quantitative indicator.
+
+\section{Data Storage and Artifact Management}
+
+All experimental results were stored for further analysis and reproducibility.
+
+The system stored:
+
+\begin{itemize}
+\item Repository metadata
+\item Static analysis results
+\item LLM outputs
+\item Maintainability metrics
+\item Final evaluation dataset
+\end{itemize}
+
+The final dataset was stored in CSV format.
+
+Each record contained:
+
+\begin{itemize}
+\item Repository name
+\item Repository URL
+\item Stars count
+\item Maintainability Index before improvement
+\item Maintainability Index after improvement
+\end{itemize}
+
+This dataset was used for final evaluation.
+
+\section{Automation and Execution Workflow}
+
+The entire experimental process was automated.
+
+For each repository, the system performed the following steps:
+
+\begin{enumerate}
+\item Clone repository
+\item Run static analysis
+\item Detect architecture using LLM
+\item Select architectural tactic
+\item Implement tactic
+\item Run static analysis again
+\item Store results
+\item Delete repository
+\end{enumerate}
+
+This process was repeated sequentially for all repositories in the dataset.
+
+Sequential execution ensured isolation and prevented interference between experiments.
+
+\section{Reproducibility Considerations}
+
+To ensure reproducibility, the implementation incorporated the following measures:
+
+\begin{itemize}
+\item Fixed analysis procedure
+\item Automated execution
+\item Structured artifact storage
+\item Version-controlled codebase
+\item Deterministic static analysis tools
+\end{itemize}
+
+All experimental results can be reproduced by executing the pipeline with the same dataset.

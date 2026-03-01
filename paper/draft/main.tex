@@ -1,0 +1,187 @@
+% !TEX root = main.tex
+
+\documentclass[sigconf,review]{acmart}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{underscore}
+\providecommand{\mathdefault}[1]{#1}
+
+\acmConference[EASE 2026]{The 30th International Conference on Evaluation and Assessment in Software Engineering}{Tue 9 - Fri 12 June 2026}{Glasgow, United Kingdom}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+
+\geometry{margin=1in}
+
+\usepackage[english]{babel}
+% acmart uses natbib-compatible bibliography by default
+\bibliographystyle{ACM-Reference-Format}
+
+\begin{document}
+
+\title{Can LLMs Implement Architectural Tactics? Early Results}
+
+\author{Saveliy Chertkov}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{s.chertkov@innopolis.university}
+
+\author{Andrey Sadovykh}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{a.sadovykh@innopolis.ru}
+
+\begin{abstract}
+
+Software maintainability is a critical quality attribute that directly affects system evolution cost and reliability. Improving maintainability often requires architectural-level modifications demanding specialized expertise and significant manual effort. While Large Language Models (LLMs) have shown strong capabilities in code understanding and generation, their potential for systematic architecture-level software quality improvement remains largely unexplored.
+
+This paper presents an automated pipeline that leverages an LLM to improve software maintainability through architectural tactic implementation. The pipeline operates in three stages: (1) architecture detection, where the LLM analyzes repository structure and identifies the dominant architectural pattern; (2) architectural tactic selection, where the LLM chooses an appropriate tactic from a predefined catalog based on the detected architecture and expected maintainability impact; and (3) tactic implementation using a Test-Driven Development approach to ensure correctness. The pipeline follows a Pipes and Filters architecture and operates without manual intervention.
+
+We applied the pipeline to 158 open-source Python backend repositories collected and filtered from GitHub. Preliminary results show that the LLM successfully detected architectural patterns (e.g., modular monolith, layered, script-based) in 106 repositories and selected contextually appropriate tactics for 77 repositories, with Reduced Coupling being the most frequently chosen tactic. Baseline maintainability was measured using the Radon static analysis tool, with the Maintainability Index as the primary metric.
+
+This work contributes a reproducible methodology for LLM-driven architectural improvement and provides early empirical evidence on the feasibility of using LLMs for architecture-level analysis and tactic reasoning.
+
+\keywords{software maintainability, architectural tactics, large language models, automated software improvement, static analysis, software architecture}
+
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+Modern software engineering faces a persistent maintenance challenge, with studies indicating that 60--80\% of total lifecycle costs are dedicated to post-deployment modifications \cite{bass2021software}. While code-level refactoring is well-established, there is a significant gap in the automated application of higher-level design decisions. This review examines the intersection of architectural tactics, quality attribute models, and the emerging capabilities of Large Language Models (LLMs) in automating structural transformations.
+
+\section{Architectural Tactics and Quality Attributes}
+Software architecture is fundamentally defined by its elements, form, and rationale \cite{perry1992foundations}, or alternatively, as a collection of components and connectors in a specific configuration \cite{garlan1993introduction}. Within these frameworks, architectural tactics serve as fine-grained design decisions intended to achieve specific quality attribute responses \cite{bass2021software}.
+
+The ISO/IEC 25010 standard provides a comprehensive model for evaluating these attributes, specifically decomposing maintainability into modularity, analysability, modifiability, reusability, and testability \cite{bass2021software}. Research by Rahmati suggests that while architectural patterns (e.g., MVC, Layered) provide a structural foundation, their effectiveness is highly context-dependent; misapplication can lead to a 10\% increase in maintenance effort \cite{rahmati2021ensuring}. Consequently, the selection and implementation of specific tactics, such as "Use an Intermediary" or "Split Module," are critical for targeted quality improvement \cite{bass2021software}.
+
+\section{The Role of LLMs in Software Refactoring}
+The "LLM Revolution" has introduced new paradigms for code transformation. Recent advancements in multi-agent frameworks, such as MANTRA, have demonstrated an 82.8\% success rate in producing compilable, test-passing refactored code \cite{xu2025mantra}. However, empirical analysis of AI coding agents reveals a significant "Scale Gap": approximately 96.3\% of current agentic refactorings are confined to a single file \cite{horikawa2025agentic}.
+
+Furthermore, research into prompt engineering indicates that while LLMs can identify up to 86.7\% of refactoring opportunities, their performance in complex tactic synthesis remains limited \cite{liu2025exploring}. For instance, in security-related tactic implementation, models may achieve high syntactic correctness (95\%) but fail significantly in semantic correctness (5\%) due to an inability to coordinate inter-procedural changes across multiple classes \cite{shokri2024ipsynth}.
+
+\section{Identified Research Gaps}
+The synthesis of current literature identifies a "Transformation Gap" between tactic detection and implementation:
+\begin{itemize}
+    \item \textbf{Contextual Constraints:} Current LLM-based tools operate primarily at the method or class level, lacking the system-wide awareness required for architectural restructuring \cite{martinez2025refactoring, horikawa2025agentic}.
+    \item \textbf{Measurement Crisis:} There is a documented lack of agreement among static analysis tools (less than 0.4\% agreement in some cases), complicating the validation of quality improvements \cite{lenarduzzi2023critical}.
+    \item \textbf{Implementation Void:} While numerous methods exist for detecting the need for architectural tactics, there is a lack of automated, LLM-driven mechanisms to translate architectural intent into concrete, multi-file code changes \cite{marquez2022architectural, shokri2024ipsynth}.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Research Design}
+This study employs a quantitative pre-test/post-test experimental design to evaluate the efficacy of Large Language Models (LLMs) in structural code transformation. Following the principles of evidence-based software engineering \cite{bass2021software}, we define the independent variable as the application of LLM-based architectural tactics, while the dependent variable is software maintainability. Each repository in the dataset serves as its own control, allowing for a paired-sample comparison of metrics before and after the intervention to mitigate the impact of inherent project variance.
+
+\subsection{Experimental Pipeline}
+The systematic pipeline is structured into seven sequential phases: 
+(1) Automated repository selection; 
+(2) Baseline static analysis; 
+(3) Architectural pattern detection; 
+(4) Tactic selection based on detected deficiencies; 
+(5) Iterative tactic implementation; 
+(6) Post-intervention static analysis; 
+(7) Comparative statistical analysis.
+
+\subsection{Dataset Preparation and Filtering}
+To ensure the relevance and quality of the analyzed software, repositories were sourced from public Python-based backend projects on GitHub. We implemented a multi-stage filtering process to exclude "toy" projects and focus on maintainable industrial-like codebases \cite{rahmati2021ensuring}. The inclusion criteria required:
+\begin{itemize}
+    \item Presence of a valid \texttt{requirements.txt} for dependency analysis;
+    \item A minimum threshold of Python source files to ensure architectural complexity;
+    \item Exclusion of Machine Learning-heavy projects to avoid data-science-specific coding patterns (e.g., Jupyter Notebooks);
+    \item Assessment of project maturity through metadata such as star counts and commit history.
+\end{itemize}
+
+\subsection{Maintainability Measurement Framework}
+The evaluation of maintainability relies on the ISO/IEC 25010 standard, focusing specifically on modularity and analysability \cite{bass2021software}. The primary quantitative metric is the Maintainability Index (MI), calculated via the Radon framework. 
+
+However, recognizing the "Agreement Crisis" in static analysis—where different tools often show less than 0.4\% consensus on quality issues \cite{lenarduzzi2023critical}—our methodology supplements MI with a multi-dimensional metric suite:
+\begin{itemize}
+    \item \textbf{Structural Complexity:} Average fan-out and package coupling;
+    \item \textbf{Documentation Quality:} Docstring coverage and README presence;
+    \item \textbf{Delta Measurement:} $\Delta MI = MI_{after} - MI_{before}$, providing a normalized growth rate of code quality.
+\end{itemize}
+
+\subsection{LLM-Driven Transformation Process}
+The implementation process leverages the reasoning capabilities of LLMs, structured into three distinct logical layers:
+
+\paragraph{Architecture Detection:} The model analyzes the directory structure and module relationships to infer the underlying architectural style (e.g., Layered, Hexagonal) \cite{perry1992foundations, garlan1993introduction}.
+\paragraph{Tactic Selection:} Based on identified "smells" or high coupling, the system selects an appropriate tactic (e.g., "Use an Intermediary") from the catalog established by Bass et al. \cite{bass2021software}.
+\paragraph{Tactic Implementation:} Currently, the implementation follows an \textit{iterative incremental approach}, where the LLM performs small, verifiable changes to the codebase. While literature suggests that Test-Driven Development (TDD) significantly improves the reliability of LLM refactoring \cite{xu2025mantra, piao2025refactoring}, the integration of a full TDD cycle—including automated failing test generation and minimal implementation—is designated for \textbf{future iterative improvements} of the pipeline.
+
+\section{Implementation}
+The experimental framework is implemented as an automated Python-based orchestration engine. To ensure isolation and reproducibility, the system utilizes shallow clones of target repositories, which are processed sequentially and purged after data extraction.
+
+The LLM integration utilizes structured prompt engineering, enforcing JSON-formatted outputs to facilitate automated parsing of architectural decisions. This approach addresses the "Scale Gap" identified in recent studies, where 96.3\% of AI-driven changes are typically limited to single files \cite{piao2025refactoring}. By maintaining a global architectural context in the prompt, our implementation enables the coordination of changes across multiple modules. All artifacts, including logs of LLM reasoning and intermediate code states, are preserved to ensure full traceability of the architectural evolution.
+
+\section{Results and Discussion}
+
+\subsection{Overall Quantitative Impact on Maintainability}
+
+The experimental results across the analyzed repositories reveal a nuanced impact of LLM-based architectural interventions on the Maintainability Index (MI). As illustrated in the comparative distribution (Figure \ref{fig:mi_dist}), a significant portion of the projects maintained their baseline stability or showed incremental improvements. 
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/distribution.pgf}}
+    \caption{Distribution of Maintainability Index (MI) scores: Baseline vs. Post-Intervention.}
+    \label{fig:mi_dist}
+\end{figure}
+
+The data highlights a "Stability Plateau": in approximately 58\% of cases (e.g., \textit{DrissionPage}, \textit{Sublist3r}), the MI remained unchanged. This suggests that while the LLM successfully performed internal refactoring, the changes were either not extensive enough to shift the aggregate MI score, or the static analysis tool (Radon) did not perceive the specific structural changes as complexity reductions.
+
+\subsection{Analysis of Success Cases and Tactic Efficacy}
+The implementation of architectural tactics led to measurable success in several instances. As shown in the analysis of the most significant shifts (Figure \ref{fig:top10_shifts}), the highest improvement in MI was recorded in the \textit{get-subscribe} repository. 
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/top_improvements.pgf}}
+    \caption{Top 10 Maintainability Index (MI) improvements categorized by applied tactic.}
+    \label{fig:top10_shifts}
+\end{figure}
+
+This success was achieved through the \textbf{Decomposability} tactic applied to a \textbf{script\_based} architecture. By decomposing large, dense scripts into modular components, the LLM effectively reduced individual file complexity, which is highly rewarded by the MI formula. Similarly, in the \textit{whoogle-search} repository, the MI increased from 67.06 to 69.74 after applying \textbf{Localized Modification}, representing a clear enhancement in code health within a layered system.
+
+\subsection{System Robustness and Failure Rates}
+A critical finding of this study is the high risk associated with automated architectural shifts without human oversight. While many projects remained stable, Figure \ref{fig:impact_pie} demonstrates that in \textbf{25.3\%} of cases, the intervention resulted in a "Regression (Null)" status. 
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/impact_pie.pgf}}
+    \caption{Summary of intervention impact: percentage of improved, stable, and failed (null) projects.}
+    \label{fig:impact_pie}
+\end{figure}
+
+These cases represent instances where the LLM introduced syntax errors, broken dependencies, or architectural changes that made the project impossible to launch. This "fragility" of automated refactoring underscores the necessity of the proposed TDD-based verification loop to ensure that tactical improvements do not compromise fundamental system integrity.
+
+\subsection{Architectural Influence on LLM Performance}
+The distribution of architectures in the dataset (Figure \ref{fig:arch_dist}) shows a predominance of \textbf{modular monoliths} systems. 
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{0.5\textwidth}{!}{\input{plots/arch_distribution.pgf}}
+    \caption{Distribution of baseline architectures across the analyzed repositories.}
+    \label{fig:arch_dist}
+\end{figure}
+
+The results suggest that "Modular Monoliths" and "Layered" systems provided a more predictable context for the LLM, leading to more consistent refactoring. In contrast, "Script-based" projects, while showing the highest potential for gain (as seen in \textit{get-subscribe}), also lacked the structural boundaries required for complex tactics like "Deferred Binding Time". This aligns with the "Context Blindness" identified in recent studies \cite{horikawa2025agentic}, where LLMs struggle to manage large-scale architectural shifts in unstructured codebases without explicit modular cues.
+
+\section{Conclusion}
+
+This study investigated the potential of Large Language Models to automate the implementation of architectural tactics for software maintainability. Our findings lead to several key conclusions:
+
+First, LLMs are capable of identifying and implementing architectural tactics that result in measurable improvements in code maintainability, particularly in well-structured layered systems. The successful improvement of the Maintainability Index in several repositories demonstrates that AI can move beyond simple code-level refactoring to address higher-level design concerns.
+
+Second, the "Transformation Gap" remains a significant hurdle. The prevalence of neutral results (no change in MI) and occasional regressions highlight that current LLM pipelines lack the sophisticated architectural reasoning required to consistently improve complex systems. The reliance on a single metric (MI) may also fail to capture the qualitative benefits of better separation of concerns.
+
+Finally, while the current iterative incremental approach is promising, it is limited by the absence of a robust verification loop. Future work should focus on integrating the proposed Test-Driven Development (TDD) framework to ensure that architectural changes preserve behavioral semantics while improving structure. Moving forward, the development of architecture-aware agents that can maintain global context across multiple files will be essential for bridging the gap between architectural theory and automated practice.
+
+\bibliography{ref}
+
+\end{document}
