@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package (packages: 1) indicates one deployable unit",
+    "Repository structure shows a single Python module (syncserver/) with core logic, WSGI entry point, and static assignment logic",
+    "Use of Pyramid framework (includeme, configurator) and Zope interfaces suggests a cohesive web application architecture",
+    "StaticNodeAssignment implements INodeAssignment interface — typical of domain-focused modular monoliths",
+    "No evidence of inter-service communication, separate services, or bounded contexts beyond internal modules",
+    "CLI script (bin/delete_user_data.py) and WSGI app coexist in same repo, common in monoliths",
+    "Moderate fan-out (5.8) suggests internal module dependencies but not excessive coupling"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Low modularity may hinder future scaling or independent deployment of components",
+    "Tight coupling between web layer (Pyramid), domain logic (StaticNodeAssignment), and infrastructure (SQLAlchemy) could reduce testability",
+    "Single deployment unit limits independent evolution of subsystems"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and lack of separation of concerns: service/crawler.py directly imports and uses DB, userAgent, and nameMap without abstraction layers, and contains multiple parsing responsibilities (overall, province, area, abroad, news, rumor) in a single class. Static analysis confirms 'packages: 0' and 'max_directory_depth: 2', indicating flat structure with no modular boundaries. This makes testing difficult (no testable boundaries), increases cognitive load, and hinders independent evolution of components. Decomposability directly addresses this by introducing modular boundaries—separating concerns into distinct layers or modules—to isolate problems, improve testability, and simplify analysis—exactly the maintainability gap identified in the architecture description.",
+  "target_components": [
+    "service/crawler.py",
+    "service/db.py",
+    "service/userAgent.py",
+    "service/nameMap.py"
+  ],
+  "expected_architectural_change": "The current flat structure will evolve into a layered or modular architecture: (1) introduce a domain layer (e.g., models or entities) to encapsulate data structures; (2) extract parsing logic into dedicated parser modules (e.g., parser/overall.py, parser/province.py); (3) abstract data access behind an interface (e.g., repository pattern) so crawler depends on an interface, not concrete DB; (4) isolate external service concerns (e.g., user agent rotation, name mapping) into injectable strategy components. This creates clear boundaries and reduces ripple effects.",
+  "implementation_strategy": "Start incrementally: (1) Extract crawler’s parsing methods into separate parser classes (e.g., create service/parser/ directory with classes like OverallParser, ProvinceParser); (2) Define an interface (e.g., abstract base class or protocol) for data persistence (e.g., DataStore) and refactor DB to implement it; (3) Inject the DataStore interface into Crawler instead of importing DB directly; (4) Move nameMap and userAgent usage behind small abstraction layers (e.g., NameMapper, UserAgentProvider). Each step preserves functionality while increasing modularity and testability—e.g., parsers can be unit tested in isolation, and DB can be mocked via the interface.",
+  "risks": "Risk of over-engineering if abstraction layers are added prematurely; however, given the script-based nature and current tight coupling, even minimal decomposition (e.g., separating parsers and introducing one interface) yields measurable maintainability gains. Risk is mitigated by incremental implementation and keeping changes localized to service/ directory."
+}

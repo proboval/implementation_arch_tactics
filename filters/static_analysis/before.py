@@ -29,7 +29,7 @@ class StaticAnalysisFilter(Filter):
             if not repo.local_path:
                 continue
 
-            repo_dir = self.before_dir / repo.name
+            repo_dir = self.before_dir / repo.name.split("/")[-1]
 
             if repo_dir.exists():
                 self.logger.info(f"{repo_dir} exists")

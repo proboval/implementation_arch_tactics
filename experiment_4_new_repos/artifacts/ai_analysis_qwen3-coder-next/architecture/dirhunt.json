@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Clear module separation by domain (sources, processors, sessions, url, etc.) with well-defined responsibilities",
+    "Packages are organized into logical modules (dirhunt/sources, dirhunt/processors, dirhunt/tests) indicating high cohesion and low coupling",
+    "Heavy internal imports between modules (e.g., crawler.py imports processors, sessions, sources, etc.) without explicit service boundaries",
+    "Single executable entry point (dirhunt/cli.py → dirhunt/management.py → main) typical of monolithic tools",
+    "No evidence of network communication, RPC, or inter-process communication — all components run in-process",
+    "Shared data structures (Url, Sessions, Pool) used across modules indicate tight integration",
+    "Test suite organized per module, not per service, supporting monolithic structure"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Risk of tight coupling over time due to cross-module dependencies (e.g., Crawler imports many modules directly)",
+    "Limited scalability beyond single-process execution",
+    "Testing may become slower as test suite grows (all tests in same process space)"
+  ]
+}

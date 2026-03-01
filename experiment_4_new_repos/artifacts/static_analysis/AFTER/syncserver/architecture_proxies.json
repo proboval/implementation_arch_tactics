@@ -1,0 +1,51 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "bin\\delete_user_data.py": [
+      "hashlib",
+      "fxa",
+      "argparse",
+      "urlparse",
+      "requests",
+      "__future__",
+      "sys",
+      "getpass",
+      "six",
+      "hawkauthlib",
+      "urllib"
+    ],
+    "syncserver\\config.py": [
+      "binascii",
+      "os"
+    ],
+    "syncserver\\staticnode.py": [
+      "tokenserver",
+      "mozsvc",
+      "urlparse",
+      "sqlalchemy",
+      "zope",
+      "time",
+      "urllib"
+    ],
+    "syncserver\\wsgi_app.py": [
+      "syncserver"
+    ],
+    "syncserver\\__init__.py": [
+      "tokenserver",
+      "mozsvc",
+      "urlparse",
+      "binascii",
+      "requests",
+      "logging",
+      "os",
+      "pyramid",
+      "urllib"
+    ]
+  }
+}

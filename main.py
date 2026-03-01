@@ -40,13 +40,13 @@ implementation_filter = ArchitecturalTacticImplementationAgent(
             call_llm=call_llm,
             model_name=MODEL_NAME,
             artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}/artifacts"),
-            max_iterations=100,
-            repo_path=Path(f"./{ARTIFACTS_DIR_NAME}/repos")
+            max_iterations=10,
+            repo_root=Path(f"./{ARTIFACTS_DIR_NAME}/repos")
         )
 
 def maintainability_filter_factory(step: str):
     return StaticAnalysisFilter(
-        artifacts_dir=Path("artifacts"),
+        artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}/artifacts"),
         step=step,
     )
 
@@ -54,7 +54,7 @@ pipeline = Pipeline(
     filters=[
         DatasetLLMImprovementRunner(
             input_csv=Path(f"./{ARTIFACTS_DIR_NAME}/maintainability_dataset.csv"),
-            output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/improvement_maintainability_dataset.csv"),
+            output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/improvement_maintainability_experiment_3.csv"),
             workdir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),
             architecture_filter=architecture_filter,
             tactic_filter=tactic_filter,

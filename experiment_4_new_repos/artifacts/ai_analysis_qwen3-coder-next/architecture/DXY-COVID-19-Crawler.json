@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.85,
+  "evidence": [
+    "No packages defined (packages: 0), indicating lack of formal module/package structure",
+    "Very low average fan-out (0.67), suggesting minimal inter-module dependencies",
+    "Shallow directory depth (max 2), with flat service/ directory containing tightly coupled modules",
+    "main.py imports only one class from service.crawler, acting as a simple entry point",
+    "service/crawler.py imports multiple local modules (db, userAgent, nameMap) directly without abstraction layers",
+    "No ports/adapters, controllers, or clear separation of concerns (e.g., no domain layer)",
+    "Code maintainability metrics show moderate quality but no evidence of architectural patterns (e.g., no testable boundaries)",
+    "Files like crawler.py contain both scraping logic, parsing, and data access — typical of script-based designs"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between data access (DB), business logic (crawler), and presentation/coordination (main.py)",
+    "Low testability due to missing abstraction layers (e.g., no interfaces for DB or external services)",
+    "Difficulty scaling or evolving components independently",
+    "Harder to maintain as logic is interwoven across modules without clear boundaries"
+  ]
+}

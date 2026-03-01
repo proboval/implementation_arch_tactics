@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules, especially in high-fan-out files like test.py (imports 13 modules including data, models, utils, options, and third-party libs) and train.py (imports 6 modules directly). Static analysis confirms 'C1' (high coupling) and 'A3' (lack of architectural boundaries) as key maintainability factors. The absence of explicit interfaces or adapters (e.g., no ports/adapters pattern) means modules like train.py directly depend on concrete implementations (e.g., CustomDatasetDataLoader, ModelsFactory), making it difficult to swap implementations or test modules in isolation. This coupling increases ripple effects during changes and hinders testability—e.g., modifying data loading requires touching train.py. Reducing coupling directly addresses these issues by decoupling orchestration from implementation.",
+  "target_components": [
+    "train.py",
+    "test.py",
+    "models/models.py",
+    "data/dataset.py",
+    "data/custom_dataset_data_loader.py",
+    "options/base_options.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., IDataset, IModel, IOptions) and dependency injection at module boundaries. For example, train.py would depend on an interface like ITrainer or IModelFactory rather than concrete ModelsFactory, and data loading would be abstracted via an interface like IDataLoader. Options parsing could be decoupled via an interface like IOptionsParser. This transforms direct imports into interface-based dependencies, reducing coupling and enabling easier substitution and testing.",
+  "implementation_strategy": "1. Define minimal interfaces in new files (e.g., data/interfaces.py, models/interfaces.py) that declare contracts for data loaders, models, and options. 2. Refactor concrete classes (e.g., CustomDatasetDataLoader, DatasetFactory, ModelsFactory) to implement these interfaces. 3. Update train.py and test.py to accept dependencies via constructor or factory injection (e.g., pass an IDataLoader instance instead of importing CustomDatasetDataLoader directly). 4. Gradually replace direct imports with interface-based references. 5. Add adapter layers where needed (e.g., OptionsAdapter) to isolate option parsing from business logic. This preserves the modular monolith structure while improving modularity and testability incrementally.",
+  "risks": "Initial refactoring may increase boilerplate (interface definitions), and incorrect interface design could lead to over-abstraction. However, risks are mitigated by starting with high-impact modules (train.py, test.py) and using small, incremental steps. The shallow directory depth (max 2) and cohesive packages make this feasible without restructuring the entire codebase."
+}
