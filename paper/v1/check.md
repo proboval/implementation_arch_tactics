@@ -1,10 +1,10 @@
 # Validation Checklist — paper/v1/main.tex
 
-Every `\CHECK{}` marker and unchecked claim that needs verification before submission.
+All `\CHECK{}` markers removed. All 21 CRITICAL issues resolved. Paper ready for submission review.
 
 **Run scripts to verify:** `PYTHONUTF8=1 python paper/v1/scripts/verify_data.py` (and `verify_stats.py`, `verify_artifacts.py`)
 
-Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
+Legend: OK = verified against data, !! = mismatch found (FIXED), ?? = needs manual check
 
 ---
 
@@ -18,8 +18,8 @@ Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
 | 77 | STAT | +2.89 | mean dMI of 22 improved | `verify_data.py → mean_delta_mi_improved_only` | OK |
 | 77 | DATA | 92 | stable repos | `verify_data.py → stable_count` | OK |
 | 77 | DATA | 7 | degraded repos | `verify_data.py → degraded_count` | OK |
-| 77 | STAT | W=75.0, p=0.001 | Wilcoxon test | `verify_stats.py → wilcoxon_W` | !! W convention differs (scipy=360.0) |
-| 77 | STAT | negligible | Cliff's delta class | `verify_stats.py → cliffs_delta` | OK (0.017=negligible) but wrong metric for paired data |
+| 77 | STAT | W=360.0, p=0.001 | Wilcoxon test | `verify_stats.py → wilcoxon_W` | OK (FIXED: updated to scipy T+ convention) |
+| 77 | STAT | r=0.28 (small) | rank-biserial | `verify_stats.py → rank_biserial` | OK (FIXED: replaced Cliff's delta with paired effect size) |
 | 77 | DATA | 63.6% | Decomposability frequency | `verify_data.py → most_frequent_pct` | OK |
 
 ---
@@ -41,8 +41,8 @@ Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
 
 | Line | Type | Value in Paper | Verify Against | Script | Status |
 |------|------|----------------|----------------|--------|--------|
-| 147 | DATA | 5 Python source files minimum | pipeline config / filter code | manual | !! MISMATCH: `dataset_create.py` only checks `len(py_files) > 0` (at least 1, not 5) |
-| 149 | DATA | star counts >= 10 | pipeline config / filter code | manual | !! MISLEADING: config.py STARS=(1000,2000); actual dataset range 20-11889. ">= 10" is technically true but understates actual filtering |
+| 147 | DATA | Presence of Python source files | pipeline config / filter code | manual | OK (FIXED: changed from "5 files min" to match code) |
+| 149 | DATA | star counts 20–12,000 | pipeline config / filter code | manual | OK (FIXED: changed from ">= 10" to actual range) |
 | 151 | DATA | 162 repos retained | CSV row count | `verify_data.py → total_repos` | OK |
 
 ---
@@ -73,10 +73,10 @@ Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
 | 210 | DATA | Mean dMI=+0.48 | | `verify_data.py → mean_delta_mi` | OK |
 | 211 | DATA | Median dMI=0.00 | | `verify_data.py → median_delta_mi` | OK |
 | 216 | DATA | 29 non-zero deltas | | `verify_data.py → nonzero_delta_count` | OK |
-| 216 | STAT | W=75.0 | Wilcoxon W | `verify_stats.py` | !! scipy gives W=360.0 (different convention) |
+| 216 | STAT | W=360.0 | Wilcoxon W | `verify_stats.py` | OK (FIXED: T+ convention) |
 | 216 | STAT | p=0.001 | Wilcoxon p | `verify_stats.py` | OK |
-| 216 | STAT | 0.017 (negligible) | Cliff's delta | `verify_stats.py` | OK value, but !! wrong metric for paired data |
-| 218 | DATA | 56.8% of completed cases | stable % | `verify_data.py → stable_pct_of_paired` | !! MISMATCH: 92/121=76.0%, not 56.8%. Paper uses 92/162=56.8% but says "of completed cases" |
+| 216 | STAT | r=0.28 (small) | rank-biserial | `verify_stats.py` | OK (FIXED: replaced Cliff's delta) |
+| 218 | DATA | 76.0% of completed cases | stable % | `verify_data.py → stable_pct_of_paired` | OK (FIXED: corrected from 56.8%) |
 
 ---
 
@@ -127,7 +127,7 @@ Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
 | 283 | DATA | 25.3% failure rate | | `verify_data.py → null_pct` | OK |
 | 283 | DATA | 13.6% improvement rate | | `verify_data.py → improved_pct_of_total` | OK |
 | 283 | SOURCE | MANTRA 82.8% | Xu 2025 paper | manual | OK (verified, CHECK marker removed) |
-| 285 | DATA | 56.8% stable | | | !! same denominator issue as line 218 |
+| 285 | DATA | 76.0% stable | | | OK (FIXED: corrected from 56.8%) |
 
 ---
 
@@ -154,7 +154,7 @@ Legend: OK = verified against data, !! = mismatch found, ?? = needs manual check
 | 314 | STAT | mean dMI=+0.48 | | `verify_data.py → mean_delta_mi` | OK |
 | 314 | STAT | p=0.001 | | `verify_stats.py` | OK |
 | 314 | DATA | 22 improved | | `verify_data.py → improved_count` | OK |
-| 314 | DATA | 56.8% unchanged | | | !! denominator issue |
+| 314 | DATA | 76.0% unchanged | | | OK (FIXED: corrected from 56.8%) |
 | 314 | DATA | 25.3% failed | | `verify_data.py → null_pct` | OK |
 | 318 | DATA | 25.3% | | `verify_data.py → null_pct` | OK |
 
@@ -179,24 +179,26 @@ Source: `verify_data.py → Tactic Distribution`
 |------|-------|----------------|--------|
 | 89 | "60-80% lifecycle costs" | Bass 2021 book | OK (standard figure; also in Abdelmoez 2006: "60-80% of the overall software system cost") |
 | 103 | Kim 2009 "systematically improve quality attributes" | Kim 2009 paper | OK (Kim provides systematic quality-driven approach with feature models and RBML specs for tactic selection) |
-| 103 | Bogner 2019 "coupling reduction leads to measurable improvements" | Bogner 2019 paper | !! OVERSTATEMENT: Bogner did qualitative mapping of modifiability tactics to service patterns, NOT quantitative measurement. Should say "coupling reduction is systematically addressed through modifiability tactics" |
+| 103 | Bogner 2019 "coupling reduction systematically addressed" | Bogner 2019 paper | OK (FIXED: changed from overstatement to accurate qualitative description) |
 | 112 | Shokri: "95% syntactic correctness, 5% semantic" | Shokri 2024 paper | OK (verified: 19/20 syntactic, 1/20 semantic from converted paper) |
 | 127 | "non-normally distributed" (implies Shapiro-Wilk was done) | `verify_stats.py → Shapiro-Wilk` | OK (W=0.34, p<0.001) |
-| 187 | "catalog of over 40 architectural tactics" | Marquez 2022 + actual CSV | !! MISMATCH: actual catalog CSV has 32 tactics (not "over 40"); §3.5 lists only 4 used. Should fix to "32" or "over 30" |
+| 103 | "mapping tactics across 12 quality attributes based on 91 primary studies" | Marquez 2022 SMS | OK (FIXED: changed from "over 40 tactics" to accurate SMS description) |
 | 263 | "15 of 67 completed modular_monolith improved" | CSV | OK (verified: 83 total - 16 null = 67 paired; 15 improved) |
 
 ---
 
 ## Summary of Issues Found
 
-| Severity | Issue | Lines |
-|----------|-------|-------|
-| !! | **stable_pct denominator**: paper says "56.8% of completed cases" but 92/121=76.0%. The 56.8%=92/162 is of total repos, not completed. Fix text or number. | 218, 285, 314 |
-| !! | **Wilcoxon W value**: paper says W=75.0, scipy gives W=360.0. Different conventions — need to clarify which (T+ vs T-). | 77, 216 |
-| !! | **Cliff's delta wrong for paired**: Should use matched-pairs rank-biserial (r=0.280, "small" effect) instead. | 77, 216 |
-| !! | **Table 2 missing Degraded column**: 7 degraded repos not visible in per-tactic table. | 240-255 |
-| !! | **"Over 40 tactics" vs "4 tactics"**: Implementation §4 says 40+, actual catalog has 32, Methodology §3.5 lists 4. | 163, 187 |
-| !! | **"5 Python source files minimum"**: Code only checks `len(py_files) > 0`. No minimum of 5 enforced. | 147 |
-| !! | **"star counts >= 10"**: Misleading — actual filter ranges were (1-20), (100-1200), (1000-2000). Min in dataset is 20 stars, not 10. | 149 |
-| !! | **Bogner 2019 overstatement**: Paper claims "coupling reduction leads to measurable quality improvements" but Bogner did qualitative mapping, not quantitative measurement. | 103 |
-| FIXED | **Horikawa 96.3% fabricated**: "96.3% single-file refactorings" did not exist in Horikawa 2025. Replaced with qualitative description. | 110 |
+All issues below have been FIXED in the current draft.
+
+| Severity | Issue | Lines | Status |
+|----------|-------|-------|--------|
+| !! | **stable_pct denominator**: was "56.8% of completed cases", corrected to 76.0% | 218, 285, 314 | FIXED |
+| !! | **Wilcoxon W value**: was W=75.0, corrected to W=360.0 (scipy T+ convention) | 77, 216 | FIXED |
+| !! | **Cliff's delta wrong for paired**: replaced with rank-biserial r=0.28 | 77, 216 | FIXED |
+| !! | **Table 2 missing Degraded column**: added | 240-255 | FIXED |
+| !! | **"Over 40 tactics" inconsistency**: Background changed to Márquez SMS description; §4 says "32" | 103, 187 | FIXED |
+| !! | **"5 Python source files minimum"**: changed to "Presence of Python source files" | 147 | FIXED |
+| !! | **"star counts >= 10"**: changed to "star counts across multiple ranges from 20 to 12,000" | 149 | FIXED |
+| !! | **Bogner 2019 overstatement**: changed to accurate qualitative description | 103 | FIXED |
+| !! | **Horikawa 96.3% fabricated**: replaced with qualitative description | 110 | FIXED |

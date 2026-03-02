@@ -25,15 +25,8 @@ Also added Shapiro-Wilk normality test (W=0.34, p<0.001) to justify the non-para
 
 ---
 
-### 3. RQ1 is trivially answered — no validation of detection accuracy — OPEN
-**Lines 93, 306:** "RQ1: Can an automated LLM-based pipeline detect architectural patterns and select appropriate tactics?" → Answer: "Yes, for all 162 repositories."
-
-An LLM will always produce output when asked to classify. A 100% "success rate" for architecture detection is meaningless without validation that the detections are *correct*. The paper provides no ground truth, no manual annotation, and no sample validation.
-
-**Fix options:**
-- (a) Manually validate a random sample (e.g., 20 repos) and report agreement rate
-- (b) Reframe RQ1 to: "Can the pipeline produce plausible architectural analyses?" and discuss plausibility criteria
-- (c) Use the ai_analysis JSON artifacts (which include confidence scores) to report a distribution of confidence levels
+### 3. ~~RQ1 is trivially answered — no validation of detection accuracy~~ — FIXED
+**Fix applied:** RQ1 reframed from binary "Can..." to empirical "How reliably does..." with confidence scores and structural alignment. Conclusion updated to report confidence distribution (median 0.95, range 0.85–0.98) and tactic coherence (94% of script-based repos received Decomposability), while explicitly acknowledging the absence of ground-truth validation as a limitation. Manual expert validation added to future work.
 
 ---
 
@@ -63,50 +56,30 @@ Fixed in 3 locations (lines 218, 285, 314). Now consistently says "76.0% of comp
 
 ---
 
-### 8. Layered architecture conclusions from N=3 — OPEN
-**Line 263:** "layered structures may provide the most favorable context" based on 3 completed repositories.
-
-No statistical conclusion is possible from N=3. The claim is speculative at best.
-
-**Fix:** Add explicit caveat: "though this observation is based on only 3 completed repositories and requires further investigation with a larger sample."
+### 8. ~~Layered architecture conclusions from N=3~~ — FIXED
+**Fix applied:** Added explicit caveat: "though this observation is based on only 3 completed repositories and cannot support statistical conclusions; it requires validation with a substantially larger sample." Also added dataset scaling to future work.
 
 ---
 
-### 9. No data availability / replication package — OPEN
-**Line 79 (abstract):** Claims "reproducible methodology" but provides no link to code, data, or artifacts.
-
-EASE 2026 values reproducibility. Most SE venues now expect or require a data availability statement.
-
-**Fix:** Add before References:
-```latex
-\section*{Data Availability}
-The replication package, including pipeline code, experiment data, and analysis scripts, is available at [URL].
-```
+### 9. ~~No data availability / replication package~~ — FIXED
+**Fix applied:** Added `\section*{Data Availability}` before References with anonymized URL (`https://github.com/ANONYMIZED`). Actual URL to be added in camera-ready version.
 
 ---
 
-### 10. Qwen3-coder-next model choice unjustified — OPEN
-**Line 185:** Uses "Qwen3-coder-next:cloud" without justification.
-
-Reviewers will ask: Why not GPT-4, Claude, CodeLlama, or DeepSeek-Coder? The model is relatively obscure and has no established SE benchmarks.
-
-**Fix:** Add 1-2 sentences justifying the choice, e.g.: "We selected Qwen3-coder-next for its 256k context window (necessary for repository-level analysis), open-source availability enabling local deployment, and competitive coding benchmarks [citation]."
+### 10. ~~Qwen3-coder-next model choice unjustified~~ — FIXED
+**Fix applied:** Added justification: 256k context window necessary for repository-level analysis, local deployment via Ollama ensuring reproducibility without API dependencies. Multi-model comparison explicitly noted as future work.
 
 ---
 
-### 11. Supplementary metrics lack statistical tests — OPEN
-**Lines 289-296:** Fan-out and docstring deltas are reported descriptively only. If MI gets a Wilcoxon test, reviewers will ask why supplementary metrics don't.
-
-**Fix:** Either add Wilcoxon tests for fan-out and docstring deltas, or explicitly state: "Given the small number of changes (28/123 for fan-out, 17/123 for docstring), statistical testing was not meaningful for these metrics."
+### 11. ~~Supplementary metrics lack statistical tests~~ — FIXED
+**Fix applied:** Added explicit justification: "Given the small number of repositories with non-zero changes (28/123 for fan-out, 17/123 for docstring coverage), formal hypothesis testing was not meaningful for these metrics; we report descriptive statistics only."
 
 ---
 
 ## Minor Issues
 
-### 12. Section 3.6 vs Section 4 overlap — OPEN
-The LLM transformation process is described twice: once in Methodology §3.6 (Architecture Detection / Tactic Selection / Implementation) and again in Implementation §4 with more detail. The boundary between "what we do" and "how we do it" is blurry.
-
-**Fix:** Sharpen the distinction. §3.6 should describe the conceptual method (what inputs, what outputs, what decisions). §4 should describe technical implementation (model name, prompt structure, JSON format, tooling).
+### 12. ~~Section 3.6 vs Section 4 overlap~~ — FIXED
+**Fix applied:** Condensed §3.6 from three detailed paragraphs to a single concise paragraph listing the three layers conceptually. Technical details (model name, prompt structure, confidence scores, JSON format) remain only in §4. Added cross-reference: "Section~4 details the technical realization of each layer."
 
 ---
 
@@ -115,10 +88,8 @@ The LLM transformation process is described twice: once in Methodology §3.6 (Ar
 
 ---
 
-### 14. "Transformation Gap" coined but not defined — OPEN
-**Line 89:** Introduces the term in quotes as if established, but it appears to be coined by the authors.
-
-**Fix:** Either formally define it ("We define the Transformation Gap as the disconnect between...") or remove the term and describe the gap directly.
+### 14. ~~"Transformation Gap" coined but not defined~~ — FIXED
+**Fix applied:** Changed from informal "what we term" to formal definition: "We define this as the *Transformation Gap*---the disconnect between detecting architectural deficiencies through static analysis or expert review and automatically implementing design-level corrections that address them."
 
 ---
 
@@ -162,10 +133,8 @@ All 61 `\CHECK{}` markers stripped. The `\newcommand{\CHECK}` definition and ass
 
 ---
 
-### 21. "cataloging over 40 tactics" in Background still says "over 40" — OPEN
-**Line 107:** Background §2.1 still says "cataloging over 40 tactics" when referencing Marquez 2022. The Implementation section (line 187) was fixed to "32", but this Background reference was not updated.
-
-**Fix:** Either change to "cataloging over 30 tactics" or verify the exact Marquez 2022 count. Note: the actual CSV has 32 tactics, but Marquez 2022's SMS may catalogue a different number across all quality attributes (the CSV only includes a subset).
+### 21. ~~"cataloging over 40 tactics" in Background still says "over 40"~~ — FIXED
+**Fix applied:** Changed to "mapping architectural tactics across 12 quality attributes based on 91 primary studies" — accurately describes what Márquez 2022 SMS did without claiming a specific tactic count that contradicts §4's "32."
 
 ---
 
@@ -173,19 +142,21 @@ All 61 `\CHECK{}` markers stripped. The `\newcommand{\CHECK}` definition and ass
 
 | Severity | Total | Fixed | Open | Key themes |
 |----------|-------|-------|------|------------|
-| Critical | 5 | 4 | 1 | Statistical methodology (FIXED), RQ1 validity (OPEN) |
-| Major | 6 | 3 | 3 | Replication package, model justification, supplementary stats |
-| Minor | 5 | 3 | 2 | Section overlap, terminology |
+| Critical | 5 | 5 | 0 | Statistical methodology, RQ1 reframed with confidence scores |
+| Major | 6 | 6 | 0 | Replication package, model justification, supplementary stats |
+| Minor | 5 | 5 | 0 | Section overlap resolved, terminology defined |
 | New (validation) | 5 | 5 | 0 | Fabricated stat, code-paper mismatches |
 
-**Remaining OPEN issues (7):**
-1. **#3 RQ1 trivially answered** — needs ground-truth validation or reframing
-2. **#8 Layered N=3** — needs caveat
-3. **#9 No replication package** — needs URL
-4. **#10 Model choice unjustified** — needs 1-2 sentences
-5. **#11 Supplementary metrics** — needs statistical tests or justification for omitting
-6. **#12 Section overlap** — needs sharper method/implementation boundary
-7. **#14 "Transformation Gap"** — needs definition or removal
-8. **#21 "over 40" in Background** — needs correction to match §4's "32"
+**All 21 issues FIXED.** No remaining OPEN issues.
 
-**Most impactful fix already applied:** Correcting the effect size from "negligible" (Cliff's delta 0.017) to "small" (rank-biserial r=0.28) significantly strengthens the paper's contribution claim.
+**Key fixes applied in final round:**
+- #3: RQ1 reframed from binary to empirical; conclusion reports confidence distribution + tactic coherence
+- #8: Explicit N=3 caveat added
+- #9: Data Availability section added (anonymized URL)
+- #10: Model justification added (256k context, local deployment)
+- #11: Statistical test omission justified (small N of changes)
+- #12: §3.6 condensed; clear boundary with §4
+- #14: "Transformation Gap" formally defined
+- #21: "over 40 tactics" → accurate Márquez SMS description
+
+**Future work expanded:** Added (5) dataset scaling for underrepresented architectures and (6) manual expert validation of architecture detection.
