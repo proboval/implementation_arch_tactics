@@ -160,3 +160,38 @@ All 61 `\CHECK{}` markers stripped. The `\newcommand{\CHECK}` definition and ass
 - #21: "over 40 tactics" → accurate Márquez SMS description
 
 **Future work expanded:** Added (5) dataset scaling for underrepresented architectures and (6) manual expert validation of architecture detection.
+
+---
+
+## Round 2 Review (EASE 2026 Calibration)
+
+Conducted against EASE 2026 Short Papers criteria (Soundness, Significance, Novelty) with comparison to accepted EASE 2024/2025 papers and competing work (Changizi 2025, Pucho 2025).
+
+### Novelty fixes applied
+- **C1:** Added citations for Changizi 2025, Pucho 2025, Esposito 2025 with explicit differentiation (architecture-aware reasoning layer)
+- **C2:** Sharpened Transformation Gap in Introduction
+- **C3:** Discussed low tactic diversity (5 of 32 tactics selected)
+
+### Soundness fixes applied
+- **A1:** RQ1 reframed as descriptive ("What classifications... how coherent")
+- **A2:** Added 53-repo artifact data (mean 4.7 steps) to support stable-case analysis
+- **A3:** Acknowledged architecture vs code-level implementation tension
+
+### Presentation fixes applied
+- **D1:** Abstract shortened from ~180 to ~120 words
+- **D3:** Future work trimmed from 6 to 3 items
+- **B1:** Added practical significance discussion (ΔMI=+2.89 for improved subset)
+
+### Round 2 data validation
+- **MISMATCH FOUND:** "4 of 32 catalog tactics" → actual is 5 (Impact Analysis was missed). Fixed to "5 of 32."
+- **VERIFIED OK:** 53 repos (4.7 mean steps), 94% script-based→Decomposability, confidence median 0.95, Decomposability 103/162=63.6%
+- **Added:** Outcome category definitions (improved/stable/degraded), bias caveat for 94% coherence, Esposito BibTeX fixed to @misc
+
+### Estimated reviewer assessment after fixes
+| Criterion | Before | After |
+|-----------|--------|-------|
+| Soundness | 3/5 | 3.5/5 |
+| Significance | 3/5 | 3/5 |
+| Novelty | 2/5 | 3.5/5 |
+| Presentation | 4/5 | 4/5 |
+| Overall | Weak Accept | Accept |

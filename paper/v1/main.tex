@@ -176,7 +176,7 @@ All artifacts, including LLM reasoning logs, intermediate code states, and metri
 
 \subsection{Overall Quantitative Impact}
 
-Table~\ref{tab:descriptive} summarizes the overall results across 162 repositories. Of these, 41 (25.3\%) failed to complete the pipeline (null \texttt{mi\_after}), leaving 121 with paired before/after measurements.
+Table~\ref{tab:descriptive} summarizes the overall results across 162 repositories. Of these, 41 (25.3\%) failed to complete the pipeline (null \texttt{mi\_after}), leaving 121 with paired before/after measurements. We classify completed cases as \textit{improved} ($\Delta$MI $> 0$), \textit{stable} ($\Delta$MI $= 0$), or \textit{degraded} ($\Delta$MI $< 0$).
 
 \begin{table}[htbp]
 \caption{Descriptive statistics for repositories with paired MI measurements (N = 121).}
@@ -219,7 +219,7 @@ As illustrated in Figure~\ref{fig:mi_dist}, a majority of projects maintained ba
     \label{fig:top10_shifts}
 \end{figure}
 
-Table~\ref{tab:tactic} breaks down results by tactic. \textbf{Reduced Coupling} showed the highest improvement rate (8/18 improved, 44.4\%), while \textbf{Decomposability}---the most frequently selected tactic (103 repos, 63.6\%)---had the highest null rate (29/103, 28.2\%), suggesting that decomposing unstructured code is a higher-risk transformation. The low tactic diversity (only 4 of 32 catalog tactics selected) likely reflects the dataset composition: Python backend projects predominantly exhibit monolithic structure or loose coupling, making Decomposability the natural first-choice tactic.
+Table~\ref{tab:tactic} breaks down results by tactic. \textbf{Reduced Coupling} showed the highest improvement rate (8/18 improved, 44.4\%), while \textbf{Decomposability}---the most frequently selected tactic (103 repos, 63.6\%)---had the highest null rate (29/103, 28.2\%), suggesting that decomposing unstructured code is a higher-risk transformation. The low tactic diversity (only 5 of 32 catalog tactics selected) likely reflects the dataset composition: Python backend projects predominantly exhibit monolithic structure or loose coupling, making Decomposability the natural first-choice tactic.
 
 \begin{table}[htbp]
 \caption{Results by architectural tactic.}
@@ -266,7 +266,7 @@ MVC & 2 & 50.0 & 0 & 0 & 0.00 \\
 \subsection{Discussion}
 Our results can be contextualized against prior findings. The 25.3\% pipeline failure rate is notably lower than the 95\% semantic failure rate reported by Shokri and Khatchadourian for security tactic implementation~\cite{shokri2024ipsynth}, though their task (inter-procedural synthesis) is arguably more complex. Our overall improvement rate (13.6\%) is modest compared to MANTRA's 82.8\% compilable refactoring rate~\cite{xu2025mantra}; however, MANTRA targets code-level refactoring within single files, while our pipeline attempts architecture-level changes across entire repositories.
 
-The prevalence of stable results (76.0\% of completed cases) raises an important methodological question: does unchanged MI imply no meaningful modification? Among the 53 repositories with preserved tactic application artifacts, all contained at least one code modification step (mean 4.7 steps per repository), confirming that the LLM did produce code changes even in MI-stable cases. These modifications (e.g., extracting helper classes, reorganizing imports) may improve readability or separation of concerns without affecting MI's complexity-based formula. This aligns with the known limitation of MI as a quality proxy~\cite{lenarduzzi2023critical} and suggests that complementary evaluation methods (e.g., expert review, coupling metrics) are needed to fully assess the impact of architectural improvements.
+The prevalence of stable results (76.0\% of completed cases) raises an important methodological question: does unchanged MI imply no meaningful modification? Among the 53 repositories for which step-by-step tactic application artifacts were preserved, all contained at least one code modification step (mean 4.7 steps per repository), confirming that the LLM did produce code changes even in MI-stable cases. These modifications (e.g., extracting helper classes, reorganizing imports) may improve readability or separation of concerns without affecting MI's complexity-based formula. This aligns with the known limitation of MI as a quality proxy~\cite{lenarduzzi2023critical} and suggests that complementary evaluation methods (e.g., expert review, coupling metrics) are needed to fully assess the impact of architectural improvements.
 
 While the aggregate effect ($\Delta$MI = +0.48) is small, the improved subset shows a practically meaningful mean gain of +2.89, with individual improvements exceeding +10 MI points. This suggests that the pipeline's value lies not in uniform improvement but in identifying and transforming receptive repositories. The strong performance of the Decomposability tactic on script-based repositories points to a practical sweet spot: projects with low initial structure and high file-level complexity offer the clearest path for automated decomposition, where even simple modularization yields measurable MI gains. This finding echoes Kim et al.'s industrial study at Microsoft~\cite{kim2014refactoring}, which identified that developers most frequently refactor to improve readability and decomposition---precisely the transformations where our pipeline showed the greatest success.
 
@@ -293,7 +293,7 @@ These supplementary metrics indicate that the LLM's interventions primarily affe
 
 This study investigated the potential of LLMs to automate architectural tactic implementation for software maintainability improvement. Regarding our research questions:
 
-\textbf{RQ1:} The pipeline produced architecture classifications for all 162 repositories with high self-reported confidence (median 0.95, range 0.85--0.98). Tactic selection was coherent with detected architectures (e.g., 94\% of script-based repositories received Decomposability), suggesting plausible reasoning. However, without independent ground-truth labels, detection accuracy cannot be formally validated---a key limitation.
+\textbf{RQ1:} The pipeline produced architecture classifications for all 162 repositories with high self-reported confidence (median 0.95, range 0.85--0.98). Tactic selection aligned with detected architectures (e.g., 94\% of script-based repositories received Decomposability), though this high concentration could also reflect systematic bias rather than genuine architectural reasoning. Without independent ground-truth labels, detection accuracy cannot be formally validated---a key limitation.
 
 \textbf{RQ2:} LLM-implemented tactics produced a statistically significant but small positive effect on MI (mean $\Delta$MI = +0.48, p = 0.001). 22 repositories showed measurable improvement, though 76.0\% of completed cases remained unchanged and 25.3\% failed.
 
