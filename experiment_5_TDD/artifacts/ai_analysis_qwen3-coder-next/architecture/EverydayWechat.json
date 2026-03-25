@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear directory-based modularity with domain-aligned subdirectories under 'control/' (e.g., airquality, bot, weather) and 'tests/'",
+    "Shared core utilities in 'utils/' (config, db_helper, data_collection) used across modules, indicating tight integration",
+    "Single entry point (main.py) orchestrating background scheduler and message handlers, with no inter-process communication",
+    "Low average fan-out (1.15) and shallow directory depth (4) suggest cohesive, non-distributed modules",
+    "All modules import from the same package ('everyday_wechat') with no external service boundaries",
+    "Shared database via db_helper and config, indicating a single data store",
+    "Use of itchat for monolithic bot logic without decoupled service boundaries"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., data_collection imports multiple control modules directly)",
+    "Potential for module boundary violations due to shared state in config and db_helper",
+    "Limited scalability due to single-process architecture"
+  ]
+}

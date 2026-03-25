@@ -1,0 +1,118 @@
+{
+  "python_files": 17,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 17.0,
+  "imports_graph": {
+    "bot.py": [
+      "logging",
+      "config",
+      "os",
+      "pyrogram"
+    ],
+    "config.py": [
+      "os"
+    ],
+    "database\\database.py": [
+      "sqlalchemy",
+      "os",
+      "threading",
+      "sample_config",
+      "asyncio"
+    ],
+    "database\\db.py": [
+      "sqlalchemy",
+      "os",
+      "threading",
+      "sample_config",
+      "asyncio"
+    ],
+    "helper_funcs\\help_Nekmo_ffmpeg.py": [
+      "hachoir",
+      "os",
+      "asyncio",
+      "logging",
+      "time"
+    ],
+    "helper_funcs\\help_uploadbot.py": [
+      "logging",
+      "requests",
+      "os"
+    ],
+    "plugins\\custom_thumbnail.py": [
+      "os",
+      "sample_config",
+      "database",
+      "config",
+      "pyrogram",
+      "logging",
+      "PIL",
+      "translation"
+    ],
+    "plugins\\help_text.py": [
+      "helper_funcs",
+      "hachoir",
+      "os",
+      "logging",
+      "sample_config",
+      "database",
+      "config",
+      "pyrogram",
+      "PIL",
+      "translation",
+      "time"
+    ],
+    "plugins\\rename_file.py": [
+      "helper_funcs",
+      "hachoir",
+      "os",
+      "logging",
+      "sample_config",
+      "database",
+      "config",
+      "pyrogram",
+      "PIL",
+      "translation",
+      "time"
+    ],
+    "plugins\\video_converter.py": [
+      "random",
+      "helper_funcs",
+      "hachoir",
+      "os",
+      "sample_config",
+      "config",
+      "pyrogram",
+      "logging",
+      "PIL",
+      "translation",
+      "time"
+    ],
+    "tests\\test_tactic.py": [
+      "os",
+      "importlib",
+      "database",
+      "unittest",
+      "pytest",
+      "sys"
+    ],
+    "database\\repositories\\base.py": [
+      "abc",
+      "typing"
+    ],
+    "database\\repositories\\sqlalchemy_caption.py": [
+      "sqlalchemy",
+      "database",
+      "typing"
+    ],
+    "database\\repositories\\sqlalchemy_thumbnail.py": [
+      "sqlalchemy",
+      "base",
+      "database",
+      "typing"
+    ],
+    "database\\repositories\\__init__.py": [
+      "database"
+    ]
+  }
+}

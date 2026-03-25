@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 1 package with flat directory structure (max depth 2, no sub-packages)",
+    "Very low average fan-out (1.5) indicating minimal inter-module dependencies",
+    "Two top-level Python scripts (IP_hosts_scan.py, IP_hosts_scan_multithreading.py) serving as entry points",
+    "Shared utility code in a single lib/processbar.py module with no clear separation of concerns",
+    "No evidence of layered separation (e.g., no distinct presentation/domain/data layers)",
+    "No ports/adapters pattern (no clear boundary between core logic and infrastructure)",
+    "Low maintainability index (avg 75.47) typical of ad-hoc scripts",
+    "Files suggest standalone tools rather than a cohesive application architecture"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between scripts and shared library",
+    "Limited scalability due to lack of architectural boundaries",
+    "Difficult to test components in isolation",
+    "Hard to maintain as feature set grows without architectural refactoring"
+  ]
+}

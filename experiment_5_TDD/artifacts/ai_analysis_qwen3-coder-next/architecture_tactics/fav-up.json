@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe tight coupling: all functionality is embedded in a single monolithic class (favUp.py) with direct dependencies on 12 external libraries (requests, shodan, bs4, etc.) and no internal abstractions. Static analysis confirms zero packages, max directory depth of 1, and fan-out of 12.0—indicating the class directly instantiates and uses concrete implementations (e.g., Shodan(), BeautifulSoup(), IPWhois()) without interfaces or wrappers. This makes testing impossible (no mocks), refactoring risky (any change affects all callers), and reuse infeasible. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for favicon fetching, search, and HTTP clients) via dependency injection, decoupling core logic from external tools and enabling modular evolution.",
+  "target_components": [
+    "favUp.py"
+  ],
+  "expected_architectural_change": "The single-file monolith will be refactored into a layered structure: (1) domain interfaces (e.g., FaviconFetcher, SearchEngine, HtmlParser), (2) concrete adapters (e.g., RequestsFaviconFetcher, ShodanSearchEngine), and (3) a high-level orchestrator (e.g., FavUpService) that depends only on abstractions. This replaces direct library calls with injected dependencies, reducing ripple effects and enabling testability.",
+  "implementation_strategy": "Step 1: Extract interfaces for key responsibilities (e.g., favicon hashing, HTML parsing, Shodan search) from monolithic methods like run(), searchFaviconHTML(), shodanSearch(). Step 2: Create adapter classes (e.g., ShodanAdapter, BeautifulSoupAdapter) that wrap external library calls. Step 3: Refactor FavUp.__init__ to accept dependencies via constructor injection instead of instantiating libraries directly. Step 4: Replace direct library usage in methods with interface-based calls. This can be done incrementally—e.g., start with favicon hashing logic, then expand to search components—without rewriting the entire system.",
+  "risks": "Risk of over-engineering if interfaces are too broad; must be kept minimal and driven by actual usage patterns. Initial refactoring may increase lines of code but will reduce long-term maintenance cost. Temporary performance overhead from indirection is negligible compared to I/O-bound operations (HTTP requests) already present."
+}

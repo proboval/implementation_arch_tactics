@@ -18,35 +18,58 @@ def build_refactor_prompt(
     repo_tree: str,
     repo_files: dict[str, str],
     applied_steps: List[dict],
+    current_phase: str,  # 'RED' or 'GREEN'
+    test_results: dict   # {'success': bool, 'stdout': str, 'stderr': str}
 ) -> str:
-    return f"""You are a Python refactoring agent. Apply {json.dumps(tactic, indent=2)} to {repo_name} via ONE safe, local change.
+    # Извлекаем подробности ошибки для фазы GREEN
+    error_context = ""
+    if current_phase == "GREEN" and not test_results.get("success"):
+        stdout = test_results.get("stdout", "")
+        stderr = test_results.get("stderr", "")
+        # Берем последние 30 строк, чтобы не раздувать контекст, но видеть суть
+        error_logs = (stdout + stderr).splitlines()[-30:]
+        error_context = "\n".join(error_logs)
 
-Structure:
+    phase_instr = (
+        f"PHASE: RED (Test Creation). \n"
+        f"Your goal: Create a NEW pytest file (e.g., 'tests/test_tactic.py') that FAILS. "
+        f"The test MUST define the expected behavior for: {tactic.get('Tactic_Name')}."
+        if current_phase == "RED" else
+        f"PHASE: GREEN (Implementation). \n"
+        f"Your goal: Modify the code to make the tests PASS. \n"
+        f"CRITICAL: Examine the test failure below and fix the specific cause:\n"
+        f"--- TEST FAILURE LOGS ---\n{error_context}\n-------------------------"
+    )
+
+    return f"""You are a TDD Python Specialist. Use Pytest style.
+Tactic: {json.dumps(tactic, indent=2)}
+
+{phase_instr}
+
+Current Repository State:
 {repo_tree}
 
-Files:
+File Contents:
 {"".join(f"\n--- {path} ---\n{content}\n" for path, content in repo_files.items())}
 
-Applied: {json.dumps(applied_steps, indent=2)}
+Work History: 
+{json.dumps(applied_steps, indent=2)}
 
 STRICT RULES:
-- ONE change, ONE file
-- SMALL/LOCAL, prefer refactor > new code
-- NO redesign/abstractions
-- Large file: FULL content, COMPLETE JSON
-- Impossible: STOP
+1. One change per turn. If a file exists, use "action": "modify_file".
+2. In GREEN phase, DO NOT create empty files. Write the actual logic to fix the FAILURES shown above.
+3. If you see 'ModuleNotFoundError', it means you forgot to add logic to a file or didn't create it.
+4. If ALL tests pass and the tactic is fully implemented, return "action": "STOP".
+5. Use 'assert' for Pytest. No 'unittest.TestCase'.
 
-Output ONLY JSON:
+Response must be ONLY JSON:
 {{
   "action": "modify_file" | "create_file" | "STOP",
   "path": "relative/path.py",
-  "content": "FULL content (omit if STOP)"
+  "content": "FULL FILE CONTENT",
+  "thought": "Analysis of the error and plan to fix it"
 }}
-Response ends with }}. No extra text.[web:8][web:9][web:11]
 """
-
-
-
 
 # =====================================================
 # Memory model
@@ -107,76 +130,62 @@ class ArchitecturalTacticImplementationAgent(Filter):
     # -------------------------------------------------
     # Core loop
     # -------------------------------------------------
-
     def _process_repo(self, repo: Repository) -> None:
         tactic = self._load_selected_tactic(repo)
-        if not tactic:
-            self.logger.info(f"{repo.name}: no tactic selected")
-            return
-
-        if not repo.repo_tree or not repo.repo_files:
-            self.logger.error(f"{repo.name}: missing repo_tree or repo_files")
-            return
+        if not tactic: return
 
         repo_path = self.repo_root / repo.name
 
-        # if not self._install_requirements(repo_path):
-        #     self.logger.error(f"{repo.name}: dependency installation failed")
-        #     return
-
-        artifact_dir = self.artifacts_dir / "tactic_application" / repo.name
-        artifact_dir.mkdir(parents=True, exist_ok=True)
+        if not self._ensure_pytest_installed(repo_path):
+            self.logger.error(f"Failed to setup testing environment for {repo.name}")
+            return
 
         applied_steps: List[AppliedStep] = []
+        current_phase = "RED"
+
+        test_results = ""
 
         for iteration in range(self.max_iterations):
-            step = self._ask_llm_for_step(repo, tactic, applied_steps)
+            step = self._ask_llm_for_step(repo, tactic, applied_steps, current_phase, test_results)
+            if step["action"] == "STOP": break
 
-            if step["action"] == "STOP":
-                self.logger.info(f"{repo.name}: STOP requested")
-                break
+            test_results = self._apply_step(repo_path, step)
 
-            if not self._validate_step(step):
-                self.logger.warning(f"{repo.name}: invalid step proposed, stopping")
-                break
-
-            self._apply_step(repo_path, step)
+            if current_phase == "RED":
+                if not test_results["success"]:
+                    self.logger.info("RED Phase OK: Test failed as expected.")
+                    current_phase = "GREEN"
+                else:
+                    self.logger.warning("RED Phase Fail: Test passed immediately.")
+            else:  # GREEN
+                if test_results["success"]:
+                    self.logger.info("GREEN Phase OK: Tests passed.")
+                    current_phase = "RED"
+                else:
+                    self.logger.warning("GREEN Phase Fail: Tests still failing.")
 
             applied_steps.append(
                 AppliedStep(
                     iteration=iteration,
                     action=step["action"],
                     path=step.get("path"),
-                    summary=f"{step['action']} {step.get('path')}",
+                    summary=f"[{current_phase}] {step.get('thought', '')}",
                 )
             )
-
-            self._save_artifacts(
-                artifact_dir=artifact_dir,
-                iteration=iteration,
-                step=step,
-                test_result=[],
-            )
-
-            # if not test_result["success"]:
-            #     self.logger.warning(f"{repo.name}: tests failed")
 
     # -------------------------------------------------
     # LLM interaction
     # -------------------------------------------------
 
-    def _ask_llm_for_step(
-        self,
-        repo: Repository,
-        tactic: dict,
-        applied_steps: List[AppliedStep],
-    ) -> dict:
+    def _ask_llm_for_step(self, repo, tactic, applied_steps, current_phase, test_result) -> dict:
         prompt = build_refactor_prompt(
             repo_name=repo.name,
             tactic=tactic,
             repo_tree=repo.repo_tree,
             repo_files=repo.repo_files,
             applied_steps=[s.to_prompt_dict() for s in applied_steps],
+            current_phase=current_phase,
+            test_results=test_result
         )
 
         try:
@@ -246,23 +255,42 @@ class ArchitecturalTacticImplementationAgent(Filter):
     # Step application
     # -------------------------------------------------
 
-    def _apply_step(self, repo_path: Path, step: dict) -> None:
+    def _ensure_pytest_installed(self, repo_path: Path) -> bool:
+        self.logger.info("Ensuring pytest is installed...")
+        try:
+            subprocess.run(["pip", "install", "pytest"], check=True, capture_output=True)
+            self._install_requirements(repo_path)
+            return True
+        except subprocess.CalledProcessError as e:
+            self.logger.error(f"Pip installation failed: {e.stderr}")
+            return False
+
+    def _apply_step(self, repo_path: Path, step: dict) -> dict:
         action = step["action"]
         path = repo_path / step["path"]
         content = step["content"]
 
         if action == "create_file":
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(content, encoding="utf-8")
-            self.logger.info(f"Created file: {path}")
-            return
 
-        if action == "modify_file":
-            if not path.exists():
-                self.logger.error(f"File not found: {path}")
-                return
-            path.write_text(content, encoding="utf-8")
-            self.logger.info(f"Modified file: {path}")
+        path.write_text(content, encoding="utf-8")
+        self.logger.info(f"Applied {action} to {step['path']}")
+
+        return self._run_tests(repo_path)
+
+
+    def _run_tests(self, repo_path: Path) -> dict:
+        result = subprocess.run(
+            ["pytest", "-v"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+        )
+        return {
+            "success": result.returncode == 0,
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+        }
 
     # -------------------------------------------------
     # Infrastructure
@@ -285,19 +313,6 @@ class ArchitecturalTacticImplementationAgent(Filter):
             return False
 
         return True
-
-    def _run_tests(self, repo_path: Path) -> dict:
-        result = subprocess.run(
-            ["pytest"],
-            cwd=repo_path,
-            capture_output=True,
-            text=True,
-        )
-        return {
-            "success": result.returncode == 0,
-            "stdout": result.stdout,
-            "stderr": result.stderr,
-        }
 
     # -------------------------------------------------
     # Artifacts

@@ -1,0 +1,45 @@
+{
+  "python_files": 8,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 8.0,
+  "imports_graph": {
+    "Main.py": [
+      "time",
+      "core"
+    ],
+    "core\\Checks.py": [
+      "mysql",
+      "core"
+    ],
+    "core\\database.py": [
+      "abc",
+      "mysql",
+      "typing"
+    ],
+    "core\\InsertData.py": [
+      "mysql",
+      "csv"
+    ],
+    "core\\Other.py": [
+      "os",
+      "time"
+    ],
+    "core\\User_Functions.py": [
+      "random",
+      "datetime",
+      "os",
+      "mysql",
+      "time"
+    ],
+    "core\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "core",
+      "importlib",
+      "unittest",
+      "inspect",
+      "pytest",
+      "sys"
+    ]
+  }
+}

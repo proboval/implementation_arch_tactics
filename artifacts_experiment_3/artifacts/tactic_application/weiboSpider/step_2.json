@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "weibo_spider/parser/data_model.py",
-  "content": "from typing import Protocol, Dict, Any, Optional\nfrom datetime import datetime\n\n\nclass DataRecord(Protocol):\n    \"\"\"Minimal interface for parsed domain records (User/Weibo).\"\"\"\n    \n    id: str\n    \n    def to_dict(self) -> Dict[str, Any]:\n        \"\"\"Return a serializable dictionary.\"\"\"\n        ...\n\n\nclass RawData(Protocol):\n    \"\"\"Contract for raw parsed data (loosely typed, fully serializable).\"\"\"\n    \n    def to_dict(self) -> Dict[str, Any]:\n        ...\n"
-}

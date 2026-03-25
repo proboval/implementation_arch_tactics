@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight cross-module coupling: routes.py directly imports sgd.gdrive, sgd.meta, and sgd.streams; gdrive.py imports sgd.cache; meta.py imports sgd.utils and sgd.cache; utils.py imports sgd.cache. This creates ripple effects — e.g., changing cache implementation requires updates in multiple modules. Static analysis confirms high fan-out (3.29) and imports graph shows dense interdependencies. The modular monolith structure lacks clear boundaries; modules leak implementation details instead of exposing abstractions. This violates separation of concerns and increases maintenance cost when evolving functionality.",
+  "target_components": [
+    "sgd/routes.py",
+    "sgd/gdrive.py",
+    "sgd/meta.py",
+    "sgd/utils.py",
+    "sgd/cache.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces/abstractions (e.g., CacheBackend, StorageService, MetadataProvider) to decouple modules. For example, routes.py should depend on an abstract StreamsProvider interface rather than concrete Streams class; gdrive.py should depend on a Cache interface rather than concrete Pickle/Json classes. This reduces coupling by ensuring modules depend on abstractions, not concretions.",
+  "implementation_strategy": "1. Extract interfaces from concrete classes (e.g., define CacheBackend interface in sgd/cache.py). 2. Refactor sgd/gdrive.py to depend on CacheBackend, not Pickle/Json. 3. Refactor sgd/meta.py to depend on sgd.utils via a well-defined interface (e.g., TextProcessor). 4. Refactor sgd/routes.py to depend on abstract services (e.g., StreamProvider, MetadataProvider) injected via factory or dependency container. 5. Introduce sgd/interfaces.py or sgd/abstractions.py to host shared interfaces. This preserves the modular monolith structure while improving modularity and testability.",
+  "risks": "Risk of over-engineering if interfaces are introduced prematurely; however, given current tight coupling and static analysis evidence (low mi_min=36.9 in streams.py), incremental abstraction extraction is low-risk and high-value. Minimal runtime overhead expected; main risk is temporary increase in LOC during refactoring, mitigated by small, focused commits."
+}

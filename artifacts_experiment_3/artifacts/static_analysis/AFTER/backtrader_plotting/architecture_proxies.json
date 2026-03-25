@@ -8,139 +8,139 @@
       "setuptools"
     ],
     "backtrader_plotting\\utils.py": [
-      "enum",
-      "math",
-      "pandas",
-      "numpy",
-      "typing",
       "datetime",
-      "logging",
+      "enum",
+      "typing",
+      "math",
+      "operator",
       "backtrader",
+      "pandas",
       "bisect",
+      "numpy",
       "itertools",
-      "operator"
+      "logging"
     ],
     "backtrader_plotting\\__init__.py": [
       "backtrader_plotting"
     ],
     "demos\\blackly_single.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\blackly_tabs.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\data_live.py": [
-      "utils",
-      "__future__",
       "datetime",
+      "__future__",
       "logging",
-      "backtrader"
+      "backtrader",
+      "utils"
     ],
     "demos\\data_live_multi.py": [
-      "utils",
-      "__future__",
       "datetime",
+      "__future__",
       "logging",
-      "backtrader"
+      "backtrader",
+      "utils"
     ],
     "demos\\data_replay.py": [
       "utils",
+      "datetime",
       "backtrader_plotting",
       "__future__",
-      "datetime",
-      "logging",
-      "backtrader"
+      "backtrader",
+      "logging"
     ],
     "demos\\optimization.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\optimization_columns.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\ordered_optimization.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\tradimo_single.py": [
       "datetime",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader"
     ],
     "demos\\utils.py": [
+      "backtrader_plotting",
       "datetime",
       "logging",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader"
     ],
     "tests\\testcommon.py": [
       "os"
     ],
     "tests\\test_backtest.py": [
-      "strategies",
-      "asserts",
+      "datetime",
       "backtrader_plotting",
+      "strategies",
       "testcommon",
       "backtrader",
-      "datetime",
+      "asserts",
       "pytest"
     ],
     "tests\\test_issue10.py": [
       "datetime",
+      "backtrader_plotting",
       "backtrader",
-      "testcommon",
-      "backtrader_plotting"
+      "testcommon"
     ],
     "tests\\test_issue30.py": [
       "datetime",
+      "backtrader_plotting",
       "backtrader",
-      "testcommon",
-      "backtrader_plotting"
+      "testcommon"
     ],
     "tests\\test_issue36.py": [
       "pandas",
+      "backtrader_plotting",
       "os",
-      "backtrader",
-      "backtrader_plotting"
+      "backtrader"
     ],
     "tests\\test_issue37.py": [
       "datetime",
+      "backtrader_plotting",
       "backtrader",
-      "testcommon",
-      "backtrader_plotting"
+      "testcommon"
     ],
     "tests\\test_issue44.py": [
+      "datetime",
       "backtrader_plotting",
-      "testcommon",
-      "backtrader",
       "json",
-      "datetime"
+      "testcommon",
+      "backtrader"
     ],
     "tests\\test_issue63.py": [
-      "random",
-      "backtrader",
+      "backtrader_plotting",
       "testcommon",
-      "backtrader_plotting"
+      "random",
+      "backtrader"
     ],
     "tests\\test_labelizer.py": [
-      "backtrader",
       "datetime",
-      "testcommon",
-      "backtrader_plotting"
+      "backtrader_plotting",
+      "backtrader",
+      "testcommon"
     ],
     "tests\\test_plots_lines.py": [
       "datetime",
+      "backtrader_plotting",
       "backtrader",
-      "testcommon",
-      "backtrader_plotting"
+      "testcommon"
     ],
     "backtrader_plotting\\analyzer_tables\\annualreturn.py": [
       "backtrader_plotting"
@@ -176,97 +176,97 @@
       "backtrader_plotting"
     ],
     "backtrader_plotting\\analyzer_tables\\__init__.py": [
-      "sharperatio",
-      "drawdown",
-      "tradeanalyzers",
-      "vwr",
-      "transactions",
-      "leverage",
-      "backtrader",
-      "logging",
-      "annualreturn",
-      "timereturn",
       "sqn",
-      "calmar"
+      "calmar",
+      "backtrader",
+      "timereturn",
+      "transactions",
+      "sharperatio",
+      "tradeanalyzers",
+      "annualreturn",
+      "vwr",
+      "leverage",
+      "logging",
+      "drawdown"
     ],
     "backtrader_plotting\\bokeh\\bokeh.py": [
-      "re",
-      "IPython",
-      "sys",
-      "pandas",
-      "numpy",
-      "jinja2",
       "bokeh",
-      "backtrader_plotting",
-      "typing",
       "datetime",
-      "logging",
-      "backtrader",
-      "bisect",
-      "tempfile",
+      "typing",
+      "backtrader_plotting",
+      "operator",
       "os",
+      "IPython",
+      "backtrader",
       "itertools",
-      "operator"
+      "bisect",
+      "re",
+      "sys",
+      "numpy",
+      "pandas",
+      "jinja2",
+      "tempfile",
+      "logging"
     ],
     "backtrader_plotting\\bokeh\\bokeh_webapp.py": [
-      "webbrowser",
+      "bokeh",
+      "backtrader_plotting",
+      "threading",
       "sys",
       "jinja2",
-      "backtrader_plotting",
-      "bokeh",
-      "threading"
+      "webbrowser"
     ],
     "backtrader_plotting\\bokeh\\datatable.py": [
-      "enum",
+      "bokeh",
       "utils",
-      "bokeh",
-      "typing",
+      "enum",
+      "collections",
       "backtrader",
-      "collections"
-    ],
-    "backtrader_plotting\\bokeh\\figure.py": [
-      "backtrader_plotting",
-      "pandas",
-      "numpy",
-      "bokeh",
-      "typing",
-      "backtrader",
-      "collections"
-    ],
-    "backtrader_plotting\\bokeh\\hover_container.py": [
-      "backtrader",
-      "itertools",
-      "bokeh",
       "typing"
     ],
-    "backtrader_plotting\\bokeh\\labelizer.py": [
+    "backtrader_plotting\\bokeh\\figure.py": [
+      "bokeh",
+      "backtrader_plotting",
+      "collections",
       "backtrader",
-      "operator"
+      "pandas",
+      "numpy",
+      "typing"
+    ],
+    "backtrader_plotting\\bokeh\\hover_container.py": [
+      "itertools",
+      "typing",
+      "backtrader",
+      "bokeh"
+    ],
+    "backtrader_plotting\\bokeh\\labelizer.py": [
+      "operator",
+      "backtrader"
     ],
     "backtrader_plotting\\bokeh\\marker.py": [],
     "backtrader_plotting\\bokeh\\optbrowser.py": [
-      "backtrader_plotting",
-      "pandas",
       "bokeh",
-      "typing",
+      "backtrader_plotting",
+      "functools",
       "collections",
-      "functools"
+      "pandas",
+      "typing"
     ],
     "backtrader_plotting\\bokeh\\utils.py": [
-      "jinja2",
-      "matplotlib",
       "bokeh",
-      "backtrader_plotting"
+      "jinja2",
+      "backtrader_plotting",
+      "matplotlib"
     ],
     "backtrader_plotting\\bokeh\\__init__.py": [
       "backtrader_plotting"
     ],
     "backtrader_plotting\\html\\metadata.py": [
-      "math",
       "backtrader_plotting",
-      "inspect",
+      "math",
       "backtrader",
-      "markdown2"
+      "markdown2",
+      "inspect"
     ],
     "backtrader_plotting\\html\\__init__.py": [],
     "backtrader_plotting\\schemes\\blackly.py": [
@@ -282,35 +282,35 @@
       "blackly"
     ],
     "backtrader_plotting\\schemes\\__init__.py": [
-      "tradimo",
-      "blackly"
+      "blackly",
+      "tradimo"
     ],
     "backtrader_plotting\\bokeh\\live\\liveclient.py": [
-      "backtrader_plotting",
-      "pandas",
-      "numpy",
       "bokeh",
-      "copy",
-      "typing",
       "datetime",
+      "backtrader_plotting",
+      "collections",
       "logging",
       "backtrader",
-      "collections"
+      "pandas",
+      "numpy",
+      "copy",
+      "typing"
     ],
     "backtrader_plotting\\bokeh\\live\\plotlistener.py": [
-      "enum",
-      "backtrader_plotting",
-      "pandas",
-      "numpy",
       "bokeh",
-      "typing",
       "datetime",
-      "logging",
-      "asyncio",
+      "enum",
+      "typing",
+      "backtrader_plotting",
+      "collections",
       "backtrader",
-      "tornado",
+      "pandas",
       "threading",
-      "collections"
+      "numpy",
+      "tornado",
+      "logging",
+      "asyncio"
     ],
     "backtrader_plotting\\bokeh\\live\\__init__.py": [],
     "tests\\asserts\\asserts.py": [

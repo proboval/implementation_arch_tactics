@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module-based organization with 14 packages (e.g., siuba.dply, siuba.sql, siuba.siu, siuba.experimental) reflecting cohesive functional domains",
+    "High cohesion within modules: each package has focused responsibilities (e.g., verbs.py for core dplyr-style operations, translate.py for SQL translation)",
+    "Low inter-package coupling: avg_fan_out of ~3.7 indicates limited dependencies between modules",
+    "Shared core components (siu package) used across modules (dply, sql, ops) without tight coupling",
+    "Backend abstraction via AbstractBackend and dialect-specific implementations (dialects/ directory) without service boundaries",
+    "No evidence of service communication patterns (no RPC frameworks, message queues, or network endpoints)",
+    "Single deployment unit (setup.py, single repository tree)",
+    "Symbolic expression engine (siu) and verb implementations (verbs.py) are tightly integrated but cleanly separated by concern"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Risk of increasing coupling between modules as experimental features grow (e.g., experimental/pivot, experimental/pd_groups)",
+    "Potential for siu module to become a monolithic dependency if symbolic expression logic isn't carefully maintained",
+    "Backend-specific logic is embedded in dialect modules rather than cleanly abstracted via ports/adapters"
+  ]
+}

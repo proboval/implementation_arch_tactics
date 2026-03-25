@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "scratch/math_abstractions.py",
-  "content": "\"\"\"Math abstraction interfaces to decouple linear_algebra and probability modules.\n\nThis module defines interface classes (e.g., Vector) that concrete implementations\nmust satisfy. High-fan-out modules should depend on these interfaces instead of\nconcrete modules like scratch.linear_algebra.\n\"\"\"\n\nfrom typing import Protocol, List, runtime_checkable\n\n\n@runtime_checkable\nclass Vector(Protocol):\n    \"\"\"Interface for a numerical vector.\n\n    Concrete implementations must support:\n        - len(v)\n        - v[i]\n        - v[i] = value (assignment)\n        - element-wise operations (add, subtract, scalar_multiply, dot)\n    \"\"\"\n    def __len__(self) -> int: ...\n    def __getitem__(self, i: int) -> float: ...\n    def __setitem__(self, i: int, value: float) -> None: ...\n\n\nclass VectorInterface:\n    \"\"\"Base class that concrete vectors can inherit from to satisfy the Vector protocol.\"\"\"\n    pass\n\n\n# Minimal type aliases for backwards compatibility\nVectorAlias = List[float]\nMatrixAlias = List[List[float]]\n"
-}

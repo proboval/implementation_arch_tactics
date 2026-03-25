@@ -1,126 +1,128 @@
 {
-  "python_files": 19,
+  "python_files": 20,
   "packages": 2,
   "max_directory_depth": 3,
-  "avg_files_per_package": 9.5,
+  "avg_files_per_package": 10.0,
   "imports_graph": {
     "tests\\conftest.py": [
-      "pytest",
-      "click"
+      "click",
+      "pytest"
     ],
     "tests\\test_cli.py": [
-      "sys",
-      "typing",
+      "os",
       "dotenv",
       "pathlib",
-      "sh",
-      "os",
       "pytest",
-      "subprocess"
+      "tests",
+      "typing"
     ],
     "tests\\test_fifo_dotenv.py": [
-      "sys",
+      "os",
       "dotenv",
       "pathlib",
-      "os",
-      "pytest",
-      "threading"
+      "threading",
+      "sys",
+      "pytest"
     ],
     "tests\\test_ipython.py": [
-      "sys",
-      "IPython",
       "os",
+      "IPython",
+      "sys",
       "pytest",
       "unittest"
     ],
     "tests\\test_is_interactive.py": [
-      "sys",
-      "unittest",
       "builtins",
-      "dotenv"
+      "sys",
+      "dotenv",
+      "unittest"
+    ],
+    "tests\\test_lib.py": [
+      "pathlib",
+      "typing",
+      "subprocess"
     ],
     "tests\\test_main.py": [
-      "sys",
-      "textwrap",
-      "dotenv",
-      "sh",
       "os",
-      "pytest",
-      "logging",
+      "dotenv",
       "io",
+      "subprocess",
+      "sys",
+      "pytest",
+      "textwrap",
+      "logging",
       "unittest",
       "stat"
     ],
     "tests\\test_parser.py": [
       "pytest",
-      "io",
-      "dotenv"
+      "dotenv",
+      "io"
     ],
     "tests\\test_utils.py": [
       "dotenv"
     ],
     "tests\\test_variables.py": [
-      "pytest",
-      "dotenv"
+      "dotenv",
+      "pytest"
     ],
     "tests\\test_zip_imports.py": [
-      "sys",
+      "posixpath",
+      "os",
       "zipfile",
-      "child1",
+      "sys",
+      "subprocess",
       "textwrap",
       "typing",
-      "sh",
-      "os",
-      "pytest",
+      "child1",
       "unittest"
     ],
     "tests\\__init__.py": [],
     "src\\dotenv\\cli.py": [
-      "sys",
-      "click",
-      "version",
       "json",
-      "typing",
-      "os",
-      "contextlib",
-      "subprocess",
       "shlex",
-      "main"
+      "contextlib",
+      "os",
+      "version",
+      "sys",
+      "subprocess",
+      "main",
+      "typing",
+      "click"
     ],
     "src\\dotenv\\ipython.py": [
       "IPython",
       "main"
     ],
     "src\\dotenv\\main.py": [
-      "sys",
+      "typing",
       "collections",
+      "contextlib",
       "variables",
+      "os",
+      "io",
+      "pathlib",
+      "sys",
       "parser",
       "tempfile",
-      "typing",
-      "pathlib",
-      "os",
       "logging",
-      "io",
-      "contextlib",
-      "stat",
-      "shutil"
+      "stat"
     ],
     "src\\dotenv\\parser.py": [
-      "typing",
-      "re",
-      "codecs"
-    ],
-    "src\\dotenv\\variables.py": [
-      "abc",
+      "codecs",
       "typing",
       "re"
+    ],
+    "src\\dotenv\\variables.py": [
+      "re",
+      "typing",
+      "abc"
     ],
     "src\\dotenv\\version.py": [],
     "src\\dotenv\\__init__.py": [
       "ipython",
-      "main",
-      "typing"
+      "typing",
+      "main"
     ],
     "src\\dotenv\\__main__.py": [
       "cli"

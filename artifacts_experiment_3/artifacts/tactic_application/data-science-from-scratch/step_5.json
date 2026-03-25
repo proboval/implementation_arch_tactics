@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "scratch/math_abstractions.py",
-  "content": "\"\"\"Abstractions (interfaces) for math modules to reduce coupling.\"\"\"\n\nfrom typing import Protocol, List\n\n\nclass Vector(Protocol):\n    \"\"\"Interface for a vector (list of floats).\"\"\"\n    def __getitem__(self, index: int) -> float: ...\n    def __len__(self) -> int: ...\n    def __iter__(self): ...\n\n\nclass Matrix(Protocol):\n    \"\"\"Interface for a matrix (list of lists of floats).\"\"\"\n    def __getitem__(self, index: int) -> List[float]: ...\n    def __len__(self) -> int: ...\n"
-}

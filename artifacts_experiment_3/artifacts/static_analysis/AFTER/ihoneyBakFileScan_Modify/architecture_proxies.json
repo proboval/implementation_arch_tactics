@@ -5,14 +5,17 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "ihoneyBakFileScan_Modify.py": [
-      "fake_headers",
-      "concurrent",
+      "urllib",
+      "typing",
       "argparse",
-      "copy",
+      "concurrent",
+      "fake_useragent",
+      "tqdm",
+      "threading",
+      "pathlib",
+      "humanize",
       "requests",
-      "logging",
-      "datetime",
-      "hurry"
+      "logging"
     ]
   }
 }

@@ -8,20 +8,20 @@
       "setuptools"
     ],
     "deletetweets\\deletetweets.py": [
-      "sys",
-      "dateutil",
-      "twitter",
       "json",
-      "os",
       "datetime",
-      "io"
+      "os",
+      "twitter",
+      "io",
+      "sys",
+      "dateutil"
     ],
     "deletetweets\\__init__.py": [],
     "deletetweets\\__main__.py": [
-      "sys",
-      "os",
       "deletetweets",
-      "argparse"
+      "os",
+      "argparse",
+      "sys"
     ],
     "tests\\test_deletetweets.py": [
       "deletetweets",

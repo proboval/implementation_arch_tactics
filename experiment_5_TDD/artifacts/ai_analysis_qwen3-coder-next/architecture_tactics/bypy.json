@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (4.65) and tight internal coupling, as evidenced by static analysis and the imports graph. For example, 'bypy/util.py' imports 14 modules including 'printer', 'printer_console', 'printer_util', 'cached', 'bypy', and standard library modules — violating separation of concerns. Similarly, 'bypy/gui.py' imports 'bypy' directly, creating circular dependency risk (bypy imports gui via monkey.py, and gui imports bypy). The 'bypy.py' monolith orchestrates all functionality and imports nearly every module, making it a central coupling point. This tight coupling increases ripple effects during changes, reduces testability (e.g., mocking printer or caching is difficult), and hinders parallel development. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for printing, caching, request handling) and dependency injection, limiting direct module-to-module dependencies.",
+  "target_components": [
+    "bypy/bypy.py",
+    "bypy/util.py",
+    "bypy/gui.py",
+    "bypy/printer.py",
+    "bypy/printer_console.py",
+    "bypy/printer_gui.py",
+    "bypy/cached.py",
+    "bypy/requester.py",
+    "bypy/monkey.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., PrinterInterface, RequesterInterface, CacheInterface) and refactor modules to depend on abstractions rather than concrete implementations. For instance, 'bypy.py' would accept a Printer interface via constructor instead of importing concrete printer modules directly. 'util.py' would no longer import 'printer' or 'printer_console' but receive logging dependencies externally. 'monkey.py' would be replaced by a dependency injection mechanism (e.g., factory or DI container) to bind concrete implementations at runtime, eliminating monkey-patching and reducing cross-module coupling.",
+  "implementation_strategy": "1. Define minimal interfaces for core concerns (e.g., Printer, Requester, Cache, PathResolver). 2. Refactor 'bypy.py' to accept these interfaces via __init__ (dependency injection), removing direct imports of concrete modules. 3. Extract printer logic: create PrinterFactory or use strategy pattern to switch between console/gui without tight coupling. 4. Refactor 'util.py' to remove printer dependencies — pass logging callbacks or use a logger interface. 5. Replace 'monkey.py' with a configuration-based binding mechanism (e.g., registry of adapters). 6. Update imports to depend only on interfaces, not concrete modules. 7. Incrementally update tests to inject mocks via interfaces.",
+  "risks": "Initial refactoring may increase complexity if interfaces are poorly defined; risk of over-engineering if interfaces are added prematurely. However, given the high fan-out and clear separation of concerns in existing modules (e.g., printer_*.py, requester.py), the risk is low and incremental adoption mitigates it. No negative impact on runtime behavior is expected."
+}

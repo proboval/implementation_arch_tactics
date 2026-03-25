@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between I/O, business logic, and external dependencies (e.g., googletrans, requests, bs4) directly within utility functions like utils.py. Static analysis confirms low maintainability index (14.7 in telepathy.py) and high fan-in on global imports (e.g., utils.py imports 7+ external libraries and internal modules directly). The flat script-based structure lacks interfaces or abstraction layers, causing ripple effects when dependencies change. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for translation, web scraping, and I/O), enabling isolation of side-effecting operations and improving testability and modifiability.",
+  "target_components": [
+    "src/telepathy/utils.py",
+    "src/telepathy/telepathy.py",
+    "tests/test_telepathy.py"
+  ],
+  "expected_architectural_change": "Introduction of interface-based abstraction layers (e.g., TranslationService, WebScraper, ReportGenerator) that decouple business logic from concrete implementations and external libraries. This will shift from a flat script structure toward a layered or modular monolith with clear separation of concerns: domain/core (business rules), adapters (I/O, external APIs), and infrastructure (library bindings).",
+  "implementation_strategy": "1. Extract interfaces from concrete usages in utils.py (e.g., Translator → TranslationService interface). 2. Refactor utils.py to depend on interfaces, not concrete classes. 3. Introduce adapter classes (e.g., GoogleTransAdapter) that implement the interfaces and wrap external libraries. 4. Inject dependencies via constructor or factory instead of direct imports. 5. Update telepathy.py to use injected adapters. 6. Update tests to mock interfaces instead of concrete implementations. This can be done incrementally per responsibility (e.g., start with translation, then scraping).",
+  "risks": "Initial refactoring may increase code verbosity; risk of over-engineering if interfaces are not grounded in real usage patterns. However, given the low maintainability index and tight coupling, the risk of *not* decoupling (e.g., brittle tests, difficulty adding new I/O sources) is higher. Careful incremental adoption and keeping interfaces small and purpose-specific mitigates this."
+}

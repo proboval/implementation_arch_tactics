@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between modules, especially in models.py which imports app, flask_login, and multiple Flask extensions directly, and in views.py files that import models, forms, and decorators across modules (e.g., app/main/views.py imports from ..decorators and ..models). The imports_graph shows app/models.py imports 'app' (circular risk), and app/api/authentication.py imports from ..models and .errors, while .errors imports from app.exceptions — creating tight cross-module dependencies. This coupling increases ripple effects: changing a model or exception requires recompiling and redeploying the entire monolith despite its modular appearance. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces, DTOs, dependency injection) to decouple modules, reducing modification range and improving testability.",
+  "target_components": [
+    "app/models.py",
+    "app/exceptions.py",
+    "app/api/authentication.py",
+    "app/api/errors.py",
+    "app/main/views.py",
+    "app/auth/views.py",
+    "app/decorators.py",
+    "app/api/decorators.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces/protocols (e.g., via abc.ABC or Python protocols) for core domain services (e.g., IPasswordHasher, ITokenGenerator, IEmailSender), and refactor module dependencies to depend on abstractions rather than concrete implementations. For example, app/models.py should not import 'app'; instead, app/__init__.py should register models via a factory or registry. Similarly, app/api/errors.py should depend on an exception interface rather than importing app.exceptions directly. This will reduce fan-out (currently avg 3.41) and break circular dependencies.",
+  "implementation_strategy": "1. Extract domain interfaces: create app/interfaces.py with abstract base classes for core services (e.g., ITokenService, IEmailService). 2. Refactor models.py to remove direct 'app' import and instead use dependency injection for app-level services (e.g., via Flask's current_app for config, not direct app reference). 3. Refactor app/api/errors.py to accept ValidationError via parameter or interface rather than importing app.exceptions. 4. Introduce a service layer (e.g., app/services/) to encapsulate cross-cutting logic (e.g., password hashing, token generation), reducing direct model-to-model coupling. 5. Update imports to depend on interfaces, not concrete modules. This can be done incrementally per module without full rewrite.",
+  "risks": "Risk of over-engineering if interfaces are introduced prematurely; must balance abstraction with simplicity. Initial refactoring may increase complexity temporarily until abstractions stabilize. Requires careful testing to avoid breaking existing functionality during dependency inversion."
+}

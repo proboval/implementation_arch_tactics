@@ -5,52 +5,52 @@
   "avg_files_per_package": 18.0,
   "imports_graph": {
     "setup.py": [
-      "os",
+      "setuptools",
       "re",
-      "setuptools"
+      "os"
     ],
     "sacremoses\\chinese.py": [
       "functools"
     ],
     "sacremoses\\cli.py": [
-      "copy",
       "functools",
-      "click",
       "os",
-      "sacremoses"
+      "sacremoses",
+      "copy",
+      "click"
     ],
     "sacremoses\\corpus.py": [
-      "os",
-      "pkgutil"
+      "pkgutil",
+      "os"
     ],
     "sacremoses\\sent_tokenize.py": [
-      "sacremoses",
-      "re"
-    ],
-    "sacremoses\\subwords.py": [
-      "__future__",
-      "copy",
-      "collections",
-      "functools",
+      "re",
       "sacremoses"
     ],
-    "sacremoses\\tokenize.py": [
+    "sacremoses\\subwords.py": [
+      "functools",
+      "collections",
+      "__future__",
       "sacremoses",
-      "re"
+      "copy"
+    ],
+    "sacremoses\\tokenize.py": [
+      "re",
+      "sacremoses"
     ],
     "sacremoses\\truecase.py": [
-      "__future__",
+      "functools",
       "collections",
+      "__future__",
       "itertools",
       "re",
-      "sacremoses",
-      "functools"
+      "sacremoses"
     ],
     "sacremoses\\util.py": [
-      "tqdm",
       "itertools",
       "xml",
-      "joblib"
+      "joblib",
+      "tqdm"
     ],
     "sacremoses\\__init__.py": [
       "sacremoses"
@@ -59,22 +59,22 @@
       "sacremoses"
     ],
     "sacremoses\\test\\test_corpus.py": [
-      "sys",
       "sacremoses",
       "unittest",
+      "sys",
       "doctest"
     ],
     "sacremoses\\test\\test_no_redos_has_numeric_only.py": [
-      "collections",
       "sacremoses",
       "time",
-      "unittest"
+      "unittest",
+      "collections"
     ],
     "sacremoses\\test\\test_truecaser.py": [
-      "os",
       "sacremoses",
-      "unittest",
-      "urllib"
+      "urllib",
+      "os",
+      "unittest"
     ]
   }
 }

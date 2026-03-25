@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "sshuttle/netutils.py",
-  "content": "\"\"\"\nNet utilities for sshuttle.\n\nThis module provides network-related utility functions that are\nshared across platform-specific firewall methods but are independent\nof platform-specific logic.\n\"\"\"\nimport socket\n\n\ndef family_to_string(family):\n    \"\"\"Convert socket.AF_* constants to human-readable strings.\n    \n    Used primarily for logging and error messages in firewall methods.\n    \"\"\"\n    if family == socket.AF_INET6:\n        return \"AF_INET6\"\n    elif family == socket.AF_INET:\n        return \"AF_INET\"\n    else:\n        return str(family)\n"
-}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear hierarchical module structure with well-defined packages (mmseg/apis, mmseg/models, mmseg/datasets, mmseg/core, etc.)",
+    "High average maintainability index (mi_avg=92.4) and low fan-out (1.1) indicate cohesive, loosely coupled modules",
+    "Centralized builder pattern (mmseg/models/builder.py, mmseg/datasets/builder.py) with Registry pattern for extensibility",
+    "Shared core components (mmseg/core, mmseg/utils) used across modules, indicating tight internal cohesion",
+    "Configuration-driven design with extensive YAML configs in configs/ directory, typical of modern ML frameworks",
+    "Single deployable unit (setup.py, no inter-service communication patterns)",
+    "Layered separation of concerns: data pipelines, models, segmentors, losses, evaluation, APIs",
+    "Modular backbones, decode heads, and necks with clear interfaces (BaseDecodeHead inheritance hierarchy)"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Potential for tight coupling if builder patterns are bypassed",
+    "Risk of monolith scaling issues as feature count grows",
+    "Limited deployment flexibility compared to microservices"
+  ]
+}

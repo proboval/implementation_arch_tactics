@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between domain modules (e.g., function/detail.py imports from utils, and function/get_encryption_requests.py imports from function/detail.py), and utility modules depend on each other circularly (e.g., utils/database_utils.py imports from utils, utils/requests_utils.py imports from utils/cache.py, utils/config.py, utils/logger.py, utils/get_file_map.py, utils/cookie_utils.py, utils/spider_config.py). The spider_controller.py acts as a central orchestrator importing all domain modules and saver modules, creating a high fan-in bottleneck. This coupling increases ripple effects: changes to one utility (e.g., logger interface) propagate across many modules, and testing requires mocking multiple interdependent utilities. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for saver, logger, requests) and dependency injection, breaking direct module-to-module dependencies.",
+  "target_components": [
+    "utils/spider_controller.py",
+    "function/get_encryption_requests.py",
+    "function/detail.py",
+    "utils/requests_utils.py",
+    "utils/database_utils.py",
+    "utils/saver/saver.py",
+    "utils/saver/csv_saver.py",
+    "utils/saver/mongo_saver.py",
+    "utils/logger.py",
+    "utils/config.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., SaverInterface, LoggerInterface, RequestsInterface) in utils/ to define contracts for core services. Refactor domain modules (function/*) and utility modules to depend on interfaces rather than concrete implementations. Replace direct imports (e.g., from utils.logger import logger) with dependency injection via constructor or factory. spider_controller.py will shift from direct instantiation to composition through interfaces, reducing its role from orchestrator to coordinator. The saver hierarchy will gain a common interface, decoupling saving logic from concrete implementations (CSV, Mongo).",
+  "implementation_strategy": "1. Define interface classes in utils/interfaces.py (e.g., SaverInterface with save_data, save_search_list, etc.). 2. Refactor utils/saver/saver.py to inherit from SaverInterface and update csv_saver.py/mongo_saver.py to implement it. 3. Create a dependency injection container or factory in utils/di.py to wire concrete classes to interfaces. 4. Refactor function/detail.py, function/review.py, function/search.py, and function/get_encryption_requests.py to accept logger, saver, and requests_util as constructor parameters instead of importing them globally. 5. Update spider_controller.py to instantiate concrete savers and inject them into domain components. 6. Replace direct logger/config imports with injected interfaces.",
+  "risks": "Initial refactoring may increase complexity temporarily due to interface definitions and DI setup. Requires disciplined adherence to interface contracts to avoid hidden coupling. Slight runtime overhead from DI lookup if not optimized, but negligible compared to I/O-bound scraping operations."
+}

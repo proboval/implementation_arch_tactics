@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only one source file (dorker.py) exists in the root directory with no package structure (packages: 0, max_directory_depth: 1)",
+    "All functionality is implemented as top-level functions without clear module boundaries or separation of concerns",
+    "High average fan-out (8.0) indicates tight coupling to many external libraries (github3, requests, pymongo, etc.)",
+    "Low maintainability index (46.9) suggests poor modularity and cohesion",
+    "Repository tree shows flat structure with no logical grouping of components",
+    "Functions like main(), parse_line(), create_issues() suggest procedural script execution rather than architectural layers or patterns"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Lack of modularity makes testing, reuse, and maintenance difficult",
+    "Tight coupling to external dependencies increases fragility and versioning risks",
+    "No clear separation between business logic, I/O, and infrastructure concerns",
+    "Scalability and evolution are hindered by monolithic procedural design"
+  ]
+}

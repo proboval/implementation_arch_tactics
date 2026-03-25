@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "dirhunt/sources/interfaces.py",
-  "content": "\"\"\"Abstract interfaces for Sources to reduce coupling.\"\"\"\nfrom abc import ABC, abstractmethod\nfrom dirhunt.pool import Pool\n\n\nclass SourceInterface(ABC):\n    \"\"\"Interface for all source providers.\"\"\"\n\n    @abstractmethod\n    def add_domain(self, domain):\n        \"\"\"Add a domain to be scanned.\"\"\"\n        pass\n\n    @abstractmethod\n    def callback(self, result):\n        \"\"\"Process a result from the source.\"\"\"\n        pass\n\n    @abstractmethod\n    def add_result(self, result):\n        \"\"\"Add a result to be processed.\"\"\"\n        pass\n\n    @abstractmethod\n    def add_error(self, error):\n        \"\"\"Handle an error from the source.\"\"\"\n        pass\n\n\nclass SourcesInterface(ABC):\n    \"\"\"Interface for the Sources manager.\"\"\"\n\n    @abstractmethod\n    def add_domain(self, domain):\n        \"\"\"Add a domain to all registered sources.\"\"\"\n        pass\n\n    @abstractmethod\n    def finished(self):\n        \"\"\"Check if all sources have finished.\"\"\"\n        pass\n"
-}

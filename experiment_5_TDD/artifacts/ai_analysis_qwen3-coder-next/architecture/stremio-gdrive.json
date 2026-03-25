@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single package 'sgd' with 8 modules indicates one cohesive deployment unit",
+    "Clear module separation by responsibility (cache, gdrive, meta, ptn, routes, streams, utils)",
+    "Cross-module dependencies exist but are bounded (e.g., routes imports from gdrive, meta, streams)",
+    "No evidence of inter-process communication, service discovery, or distributed deployment",
+    "Flask app instantiated in __init__.py with routes registered locally",
+    "Average fan-out of ~3.3 suggests moderate coupling between modules, typical of modular monoliths",
+    "Directory depth of 2 indicates flat but organized structure without deep hierarchies"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., routes directly importing domain classes) may hinder future modularity",
+    "Single deployment unit could become a scalability bottleneck as functionality grows",
+    "Lack of explicit boundaries may lead to increasing technical debt over time"
+  ]
+}

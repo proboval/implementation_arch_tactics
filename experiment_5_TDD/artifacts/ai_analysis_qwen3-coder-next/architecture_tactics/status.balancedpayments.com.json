@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core domain modules and external dependencies, particularly in situation/tweeter.py which directly imports situation/models.py, and situation/sms.py and situation/mailer.py which import settings directly without abstraction. This coupling increases ripple effects during changes: modifying models.py affects tweeter.py, and changing SMS/email providers requires touching multiple domain modules. The imports_graph shows situation/tweeter.py → models, situation/sms.py → settings, and situation/mailer.py → settings, confirming direct module-to-module dependencies. This violates separation of concerns and makes testing harder (tests must mock real models/settings instead of interfaces). The modular monolith structure already has clear module boundaries (e.g., tweeter, sms, mailer, uptime), making it ideal for introducing abstractions to decouple them.",
+  "target_components": [
+    "situation/tweeter.py",
+    "situation/sms.py",
+    "situation/mailer.py",
+    "situation/models.py",
+    "situation/settings.py"
+  ],
+  "expected_architectural_change": "Introduce domain interfaces (e.g., TweetRepository, SubscriberRepository, NotificationService) to abstract data access and external service calls. Replace direct imports (e.g., import models, import settings) with dependency injection via constructor or factory patterns. For example, tweeter.py would depend on an abstract TweetRepository interface instead of models.Tweet, and sms.py/mailer.py would depend on a NotificationService interface instead of direct settings and twilio/mail imports.",
+  "implementation_strategy": "1. Define minimal interfaces in a new situation/interfaces.py module (e.g., Repository, NotificationSender). 2. Refactor models.py to implement Repository interfaces. 3. Refactor tweeter.py to accept a TweetRepository dependency instead of importing models directly. 4. Refactor sms.py and mailer.py to accept a NotificationSender dependency instead of importing settings and twilio/mail directly. 5. Update main.py to wire dependencies at application startup. 6. Incrementally update tests to use mock implementations of interfaces.",
+  "risks": "Initial refactoring may increase code volume and require careful backward compatibility handling. Temporary duplication of interfaces and implementations could occur during transition. However, risks are low due to the existing modular structure and test coverage, allowing incremental adoption without system-wide rewrite."
+}

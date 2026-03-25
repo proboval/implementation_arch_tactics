@@ -1,0 +1,25 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single package (CYNITE) with 14 modules handling distinct concerns (filters, commands, broadcast, etc.)",
+    "Clear separation of concerns: CYNITE/ for core bot logic, database/ for data access, utils.py for shared helpers",
+    "High average fan-out (5.875) indicates tight internal coupling across modules — typical of monoliths",
+    "No evidence of inter-process communication, service boundaries, or deployment isolation",
+    "Shared database (MongoDB via motor/umongo) accessed directly by multiple modules",
+    "Single entry point (bot.py) orchestrating the application",
+    "Low directory depth (2) and flat module structure consistent with Python monoliths",
+    "All modules share the same runtime and dependencies (pyrogram, aiohttp, pymongo, etc.)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., CYNITE modules directly importing from database/) hinders testability and maintainability",
+    "Low maintainability index (avg 46.46, min 0.0) suggests high technical debt and risk of regression",
+    "Shared global state (e.g., temp class) increases risk of side effects and concurrency issues",
+    "Monolithic scaling limitations — cannot independently scale components (e.g., filtering vs. user DB)",
+    "Difficult to isolate failures — a bug in one module (e.g., broadcast) can crash the entire bot"
+  ]
+}

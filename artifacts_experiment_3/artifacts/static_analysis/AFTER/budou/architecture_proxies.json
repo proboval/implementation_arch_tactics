@@ -1,107 +1,101 @@
 {
-  "python_files": 25,
+  "python_files": 24,
   "packages": 2,
   "max_directory_depth": 2,
-  "avg_files_per_package": 12.5,
+  "avg_files_per_package": 12.0,
   "imports_graph": {
     "gae_test_runner.py": [
-      "sys",
       "argparse",
       "appengine_config",
-      "unittest",
-      "dev_appserver",
+      "google",
       "os",
-      "google"
+      "sys",
+      "dev_appserver",
+      "unittest"
     ],
     "poc.py": [
       "html5lib"
     ],
     "setup.py": [
-      "codecs",
       "setuptools",
+      "codecs",
       "os"
     ],
     "testcase_manager.py": [
-      "budou",
-      "io",
-      "__future__",
-      "argparse",
       "json",
-      "six"
+      "argparse",
+      "six",
+      "__future__",
+      "io",
+      "budou"
     ],
     "budou\\budou.py": [
-      "parser",
-      "warnings",
-      "sys",
-      "__future__",
       "__version__",
-      "docopt"
+      "__future__",
+      "docopt",
+      "parser",
+      "sys",
+      "warnings"
     ],
     "budou\\cachefactory.py": [
-      "pickle",
       "six",
-      "abc",
+      "pickle",
+      "google",
       "os",
-      "google"
+      "abc"
     ],
     "budou\\chunk.py": [
       "xml",
+      "html5lib",
       "unicodedata",
-      "collections",
-      "html5lib"
+      "collections"
     ],
     "budou\\mecabsegmenter.py": [
       "MeCab",
-      "sys",
-      "chunk",
-      "logging",
       "six",
-      "segmenter"
+      "chunk",
+      "sys",
+      "segmenter",
+      "logging"
     ],
     "budou\\nlapisegmenter.py": [
-      "hashlib",
-      "google_auth_httplib2",
-      "chunk",
-      "__future__",
-      "logging",
-      "googleapiclient",
-      "builtins",
-      "segmenter",
       "google",
-      "cachefactory"
+      "__future__",
+      "googleapiclient",
+      "cachefactory",
+      "chunk",
+      "segmenter",
+      "google_auth_httplib2",
+      "builtins",
+      "logging",
+      "hashlib"
     ],
     "budou\\parser.py": [
-      "re",
-      "abc",
-      "chunk",
-      "xml",
+      "nlapisegmenter",
+      "mecabsegmenter",
       "six",
+      "tinysegmentersegmenter",
       "html5lib",
-      "segmenter"
+      "xml",
+      "re",
+      "abc"
     ],
     "budou\\segmenter.py": [
       "six",
       "abc"
     ],
-    "budou\\segmenterfactory.py": [
-      "mecabsegmenter",
-      "abc",
-      "nlapisegmenter",
-      "tinysegmentersegmenter",
-      "six"
-    ],
     "budou\\tinysegmentersegmenter.py": [
-      "sys",
-      "chunk",
-      "tinysegmenter",
-      "logging",
       "six",
-      "segmenter"
+      "chunk",
+      "sys",
+      "segmenter",
+      "logging",
+      "tinysegmenter"
     ],
     "budou\\__init__.py": [
-      "budou",
+      "parser",
       "cachefactory",
-      "parser"
+      "budou"
     ],
     "budou\\__version__.py": [],
     "docs\\conf.py": [
@@ -109,44 +103,44 @@
       "sys"
     ],
     "tests\\context.py": [
-      "budou",
+      "sys",
       "os",
-      "sys"
+      "budou"
     ],
     "tests\\test_budou.py": [
+      "context",
       "mock",
-      "unittest",
-      "context"
+      "unittest"
     ],
     "tests\\test_chunk.py": [
-      "budou",
+      "context",
       "unittest",
-      "context"
+      "budou"
     ],
     "tests\\test_mecabsegmenter.py": [
-      "unittest",
-      "context"
+      "context",
+      "unittest"
     ],
     "tests\\test_nlpapisegmenter.py": [
       "json",
-      "unittest",
-      "mock",
       "os",
-      "context"
+      "mock",
+      "context",
+      "unittest"
     ],
     "tests\\test_parser.py": [
-      "unittest",
-      "context"
+      "context",
+      "unittest"
     ],
     "tests\\test_tinysegmentersegmenter.py": [
-      "unittest",
-      "context"
+      "context",
+      "unittest"
     ],
     "tests\\__init__.py": [],
     "tests_gae\\test_cachefactory.py": [
-      "budou",
+      "google",
       "unittest",
-      "google"
+      "budou"
     ]
   }
 }

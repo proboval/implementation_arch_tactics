@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe coupling issues: plugins directly import database internals (e.g., `plugins/custom_thumbnail.py` imports `database.database as sql` and `from database.database import *`), and multiple plugins import both `database.database` and `database.db` simultaneously (e.g., `plugins/help_text.py`, `plugins/rename_file.py`). Static analysis confirms high average fan-out (6.4) and zero packages, indicating flat, tightly coupled modules. This coupling increases ripple effects during changes, reduces testability (plugins cannot be unit-tested without database setup), and violates separation of concerns. The `Reduced Coupling` tactic directly addresses this by introducing abstractions (e.g., repository interfaces) to decouple plugins from concrete database implementations, aligning with the evidence of shared mutable state and lack of layering boundaries.",
+  "target_components": [
+    "plugins/custom_thumbnail.py",
+    "plugins/help_text.py",
+    "plugins/rename_file.py",
+    "plugins/video_converter.py",
+    "database/database.py",
+    "database/db.py"
+  ],
+  "expected_architectural_change": "Introduction of a repository layer with abstract interfaces (e.g., `database/repositories/__init__.py` defining `ThumbnailRepository`, `CustomCaptionRepository`) that plugins depend on via dependency injection. Concrete implementations (`database/repositories/sqlalchemy_thumbnail.py`) will handle database-specific logic. This creates a clear dependency direction: plugins → repository interfaces → database implementations, replacing current bidirectional imports.",
+  "implementation_strategy": "1. Create `database/repositories/` directory with abstract base classes (e.g., `base.py` defining interfaces). 2. Refactor `database/database.py` and `database/db.py` to implement these interfaces (e.g., `sqlalchemy_thumbnail.py`, `sqlalchemy_caption.py`). 3. Update plugins to import only repository interfaces (e.g., `from database.repositories.thumbnail import ThumbnailRepository`) and inject instances via factory or constructor. 4. Remove wildcard imports (`from database.database import *`) and direct imports of `database.db`/`database.database` in plugins. 5. Add a dependency injection container (e.g., simple factory in `database/__init__.py`) to wire implementations.",
+  "risks": "Initial refactoring may increase boilerplate; however, the flat structure and small codebase (12 files) make incremental adoption feasible. Risk of temporary test instability during transition is mitigated by the high maintainability index (MI > 51) of existing files, indicating low complexity per file."
+}

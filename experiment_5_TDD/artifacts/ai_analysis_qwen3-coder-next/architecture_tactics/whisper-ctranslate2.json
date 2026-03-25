@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling to external libraries (e.g., faster_whisper) and internal modules (e.g., transcribe.py imports writers, languages, and faster_whisper directly; live.py imports transcribe directly). Static analysis shows high fan-out (avg 3.67) and modules like whisper_ctranslate2.py import 12 internal modules directly, indicating central orchestration without abstraction layers. This coupling increases ripple-effect risk: changes to faster_whisper APIs or internal module signatures require cascading updates across multiple files (e.g., diarization.py, transcribe.py, live.py). The lack of explicit dependency inversion (e.g., no interfaces for transcription or diarization) makes testing difficult (tests mock entire modules) and hinders future extensibility (e.g., swapping inference backends). This directly aligns with the identified risk: 'Tight coupling to external libraries (faster_whisper) could reduce testability and flexibility'.",
+  "target_components": [
+    "src/whisper_ctranslate2/transcribe.py",
+    "src/whisper_ctranslate2/diarization.py",
+    "src/whisper_ctranslate2/live.py",
+    "src/whisper_ctranslate2/whisper_ctranslate2.py",
+    "src/whisper_ctranslate2/writers.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers (e.g., interfaces/protocols) for core behaviors: 1) A TranscriptionBackend interface decoupling faster_whisper usage from Transcribe class; 2) A DiarizationBackend interface for speaker assignment logic; 3) A StreamSource interface for live audio input (replacing direct sounddevice usage). This shifts from direct imports (e.g., 'from faster_whisper import ...') to dependency injection via constructor parameters, reducing direct coupling between modules and external libraries.",
+  "implementation_strategy": "Step 1: Define minimal protocols (e.g., in src/whisper_ctranslate2/interfaces.py) for TranscriptionBackend (with inference() method) and DiarizationBackend (with run_model() method). Step 2: Refactor Transcribe to accept a TranscriptionBackend instance instead of importing faster_whisper directly. Step 3: Refactor Diarization to accept a DiarizationBackend instance. Step 4: Update whisper_ctranslate2.py to inject concrete implementations (e.g., FasterWhisperBackend) at startup. Step 5: Replace direct sounddevice imports in live.py with a StreamSource protocol. This preserves current behavior while enabling testability (mock backends) and future flexibility (pluggable backends).",
+  "risks": "Risk of over-engineering if abstractions are too broad; mitigated by starting with minimal, behavior-focused interfaces (e.g., only extracting what's needed for current tests). Initial effort is moderate but pays off in test speed and refactoring safety. No breaking changes to public API since injection happens internally at startup."
+}

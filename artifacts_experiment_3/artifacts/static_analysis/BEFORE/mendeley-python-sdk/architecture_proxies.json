@@ -12,12 +12,12 @@
       "os"
     ],
     "mendeley\\auth.py": [
-      "oauthlib",
-      "requests",
       "json",
-      "requests_oauthlib",
       "mendeley",
-      "future"
+      "requests_oauthlib",
+      "oauthlib",
+      "future",
+      "requests"
     ],
     "mendeley\\exception.py": [],
     "mendeley\\models.py": [
@@ -29,17 +29,17 @@
     ],
     "mendeley\\response.py": [],
     "mendeley\\session.py": [
-      "oauthlib",
-      "platform",
-      "requests_oauthlib",
+      "future",
       "mendeley",
-      "future"
+      "requests_oauthlib",
+      "platform",
+      "oauthlib"
     ],
     "mendeley\\version.py": [],
     "mendeley\\__init__.py": [
+      "random",
       "string",
       "os",
-      "random",
       "mendeley",
       "future"
     ],
@@ -47,17 +47,17 @@
       "vcr"
     ],
     "test\\__init__.py": [
-      "time",
-      "test",
       "vcr",
-      "yaml",
       "os",
-      "mendeley"
+      "time",
+      "mendeley",
+      "yaml",
+      "test"
     ],
     "mendeley\\models\\annotations.py": [
+      "json",
       "arrow",
-      "mendeley",
-      "json"
+      "mendeley"
     ],
     "mendeley\\models\\base_documents.py": [
       "mendeley"
@@ -73,14 +73,14 @@
       "json",
       "os",
       "arrow",
-      "mimetypes",
-      "mendeley"
+      "mendeley",
+      "mimetypes"
     ],
     "mendeley\\models\\files.py": [
       "re",
+      "json",
       "os",
-      "mendeley",
-      "json"
+      "mendeley"
     ],
     "mendeley\\models\\groups.py": [
       "arrow",
@@ -97,8 +97,8 @@
       "mendeley"
     ],
     "mendeley\\resources\\base.py": [
-      "mendeley",
-      "future"
+      "future",
+      "mendeley"
     ],
     "mendeley\\resources\\base_documents.py": [
       "mendeley"
@@ -123,21 +123,21 @@
     ],
     "mendeley\\resources\\__init__.py": [
       "files",
+      "annotations",
+      "catalog",
+      "trash",
       "profiles",
       "documents",
-      "groups",
-      "catalog",
-      "annotations",
-      "trash"
+      "groups"
     ],
     "test\\auth\\test_client_credentials.py": [
-      "pytest",
       "oauthlib",
-      "test"
+      "test",
+      "pytest"
     ],
     "test\\auth\\test_implicit_grant.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\auth\\__init__.py": [],
     "test\\manual\\__init__.py": [],
@@ -146,38 +146,38 @@
       "test"
     ],
     "test\\response\\test_response_object.py": [
-      "pytest",
-      "test"
+      "test",
+      "pytest"
     ],
     "test\\response\\__init__.py": [
       "mendeley"
     ],
     "test\\manual\\annotations\\test_add_annotation.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\manual\\annotations\\test_delete_annotations.py": [
       "test"
     ],
     "test\\manual\\annotations\\test_get_annotation.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\manual\\annotations\\test_iter_annotations.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\manual\\annotations\\test_list_annotations.py": [
       "test"
     ],
     "test\\manual\\annotations\\test_update_annotations.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\manual\\annotations\\__init__.py": [],
     "test\\manual\\auth\\test_authorization_code.py": [
-      "mendeley",
-      "test"
+      "test",
+      "mendeley"
     ],
     "test\\manual\\auth\\__init__.py": [],
     "test\\manual\\documents\\test_create_document.py": [
@@ -207,9 +207,9 @@
       "test"
     ],
     "test\\manual\\documents\\test_list_advanced_search.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\documents\\test_list_documents.py": [
       "test"
@@ -218,17 +218,17 @@
       "test"
     ],
     "test\\manual\\documents\\test_list_search.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\documents\\test_update_document.py": [
       "test"
     ],
     "test\\manual\\documents\\__init__.py": [
+      "test",
       "arrow",
-      "mendeley",
-      "test"
+      "mendeley"
     ],
     "test\\manual\\files\\test_delete_file.py": [
       "test"
@@ -248,40 +248,40 @@
     ],
     "test\\manual\\files\\__init__.py": [],
     "test\\manual\\groups\\test_get_group.py": [
-      "pytest",
+      "test",
       "arrow",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\groups\\test_iter_groups.py": [
-      "pytest",
-      "test"
+      "test",
+      "pytest"
     ],
     "test\\manual\\groups\\test_iter_group_members.py": [
-      "pytest",
+      "test",
       "arrow",
-      "test"
+      "pytest"
     ],
     "test\\manual\\groups\\test_list_groups.py": [
-      "arrow",
-      "test"
+      "test",
+      "arrow"
     ],
     "test\\manual\\groups\\test_list_group_members.py": [
-      "arrow",
-      "test"
+      "test",
+      "arrow"
     ],
     "test\\manual\\groups\\__init__.py": [],
     "test\\manual\\profiles\\test_get_my_profile.py": [
-      "pytest",
+      "test",
       "arrow",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\profiles\\test_get_profile.py": [
-      "pytest",
+      "test",
       "arrow",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\profiles\\__init__.py": [],
     "test\\manual\\trash\\test_delete_trash_document.py": [
@@ -305,23 +305,23 @@
       "test"
     ],
     "test\\manual\\trash\\test_move_to_trash.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\manual\\trash\\test_restore_from_trash.py": [
       "test"
     ],
     "test\\manual\\trash\\__init__.py": [],
     "test\\resources\\catalog\\test_get_catalog_by_id.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\resources\\catalog\\test_get_catalog_by_identifier.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\resources\\catalog\\test_iter_search.py": [
       "itertools",
@@ -334,9 +334,9 @@
       "test"
     ],
     "test\\resources\\catalog\\test_lookup.py": [
-      "pytest",
+      "test",
       "mendeley",
-      "test"
+      "pytest"
     ],
     "test\\resources\\catalog\\__init__.py": []
   }

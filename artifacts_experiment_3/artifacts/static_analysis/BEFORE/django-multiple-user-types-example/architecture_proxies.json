@@ -5,8 +5,8 @@
   "avg_files_per_package": 4.5,
   "imports_graph": {
     "django_school\\manage.py": [
-      "sys",
       "os",
+      "sys",
       "django"
     ],
     "django_school\\classroom\\apps.py": [
@@ -16,15 +16,15 @@
       "django"
     ],
     "django_school\\classroom\\forms.py": [
-      "django",
-      "classroom"
+      "classroom",
+      "django"
     ],
     "django_school\\classroom\\models.py": [
       "django"
     ],
     "django_school\\classroom\\urls.py": [
-      "django",
-      "views"
+      "views",
+      "django"
     ],
     "django_school\\classroom\\__init__.py": [],
     "django_school\\django_school\\settings.py": [
@@ -32,8 +32,8 @@
       "django"
     ],
     "django_school\\django_school\\urls.py": [
-      "django",
-      "classroom"
+      "classroom",
+      "django"
     ],
     "django_school\\django_school\\wsgi.py": [
       "os",
@@ -52,15 +52,15 @@
     ],
     "django_school\\classroom\\views\\students.py": [
       "forms",
+      "decorators",
       "django",
-      "models",
-      "decorators"
+      "models"
     ],
     "django_school\\classroom\\views\\teachers.py": [
       "forms",
+      "decorators",
       "django",
-      "models",
-      "decorators"
+      "models"
     ],
     "django_school\\classroom\\views\\__init__.py": []
   }

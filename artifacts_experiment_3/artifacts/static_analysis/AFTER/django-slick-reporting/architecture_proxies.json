@@ -5,106 +5,106 @@
   "avg_files_per_package": 7.0,
   "imports_graph": {
     "runtests.py": [
-      "django",
-      "os",
       "argparse",
-      "sys"
+      "os",
+      "sys",
+      "django"
     ],
     "setup.py": [
       "setuptools"
     ],
     "demo_proj\\manage.py": [
-      "django",
       "os",
-      "sys"
+      "sys",
+      "django"
     ],
     "slick_reporting\\apps.py": [
       "django"
     ],
     "slick_reporting\\app_settings.py": [
-      "django",
-      "datetime"
+      "datetime",
+      "django"
     ],
     "slick_reporting\\decorators.py": [
-      "registry",
-      "fields"
+      "fields",
+      "registry"
     ],
     "slick_reporting\\fields.py": [
-      "django",
-      "registry",
+      "warnings",
       "__future__",
-      "warnings"
+      "registry",
+      "django"
     ],
     "slick_reporting\\forms.py": [
-      "django",
       "helpers",
-      "collections",
-      "crispy_forms"
+      "crispy_forms",
+      "django",
+      "collections"
     ],
     "slick_reporting\\form_factory.py": [
-      "forms",
-      "warnings"
+      "warnings",
+      "forms"
     ],
     "slick_reporting\\generator.py": [
-      "app_settings",
-      "dataclasses",
+      "datetime",
       "registry",
+      "helpers",
+      "dataclasses",
+      "dateutil",
+      "django",
       "inspect",
       "fields",
-      "datetime",
       "logging",
-      "django",
-      "helpers",
-      "dateutil"
+      "app_settings"
     ],
     "slick_reporting\\helpers.py": [
       "django",
       "collections"
     ],
     "slick_reporting\\registry.py": [
-      "django",
-      "__future__"
+      "__future__",
+      "django"
     ],
     "slick_reporting\\views.py": [
-      "csv",
-      "app_settings",
-      "warnings",
-      "generator",
       "datetime",
+      "simplejson",
       "django",
+      "generator",
+      "csv",
+      "warnings",
       "forms",
-      "simplejson"
+      "app_settings"
     ],
     "slick_reporting\\__init__.py": [],
     "tests\\models.py": [
       "django"
     ],
     "tests\\report_generators.py": [
+      "datetime",
+      "models",
       "slick_reporting",
       "__future__",
-      "models",
-      "datetime",
       "django"
     ],
     "tests\\settings.py": [
       "os"
     ],
     "tests\\tests.py": [
-      "slick_reporting",
-      "tests",
-      "models",
-      "report_generators",
       "datetime",
+      "models",
+      "slick_reporting",
       "django",
-      "unittest"
+      "tests",
+      "unittest",
+      "report_generators"
     ],
     "tests\\test_generator.py": [
-      "slick_reporting",
-      "tests",
-      "models",
-      "report_generators",
       "datetime",
-      "django"
+      "models",
+      "slick_reporting",
+      "django",
+      "tests",
+      "report_generators"
     ],
     "tests\\urls.py": [
       "django"
@@ -120,20 +120,20 @@
       "django"
     ],
     "demo_proj\\demo_app\\forms.py": [
-      "django",
-      "slick_reporting"
+      "slick_reporting",
+      "django"
     ],
     "demo_proj\\demo_app\\helpers.py": [
       "django"
     ],
     "demo_proj\\demo_app\\models.py": [
-      "django",
-      "uuid"
+      "uuid",
+      "django"
     ],
     "demo_proj\\demo_app\\reports.py": [
-      "slick_reporting",
-      "models",
       "datetime",
+      "models",
+      "slick_reporting",
       "django",
       "forms"
     ],
@@ -143,21 +143,21 @@
     ],
     "demo_proj\\demo_app\\__init__.py": [],
     "demo_proj\\demo_proj\\asgi.py": [
-      "django",
-      "os"
+      "os",
+      "django"
     ],
     "demo_proj\\demo_proj\\settings.py": [
       "pathlib",
       "os"
     ],
     "demo_proj\\demo_proj\\urls.py": [
-      "django",
-      "demo_app"
+      "demo_app",
+      "django"
     ],
     "demo_proj\\demo_proj\\wsgi.py": [
-      "django",
       "os",
-      "sys"
+      "sys",
+      "django"
     ],
     "demo_proj\\demo_proj\\__init__.py": [],
     "demo_proj\\demo_app\\migrations\\0001_initial.py": [
@@ -170,8 +170,8 @@
       "django"
     ],
     "demo_proj\\demo_app\\migrations\\0004_client_country_product_sku.py": [
-      "django",
-      "uuid"
+      "uuid",
+      "django"
     ],
     "demo_proj\\demo_app\\migrations\\0005_product_size.py": [
       "django"
@@ -181,20 +181,20 @@
     ],
     "demo_proj\\demo_app\\migrations\\__init__.py": [],
     "demo_proj\\demo_app\\templatetags\\slick_reporting_demo_tags.py": [
-      "django",
-      "helpers"
+      "helpers",
+      "django"
     ],
     "demo_proj\\demo_app\\templatetags\\__init__.py": [],
     "demo_proj\\demo_app\\management\\commands\\create_entries.py": [
       "datetime",
-      "models",
+      "random",
       "django",
-      "random"
+      "models"
     ],
     "docs\\source\\conf.py": [
-      "django",
       "os",
-      "sys"
+      "sys",
+      "django"
     ],
     "slick_reporting\\templatetags\\slick_reporting_tags.py": [
       "django",

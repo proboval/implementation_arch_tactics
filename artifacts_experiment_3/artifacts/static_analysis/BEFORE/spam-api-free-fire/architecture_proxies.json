@@ -5,23 +5,23 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "app.py": [
-      "asyncio",
       "psycopg2",
+      "datetime",
+      "like_count_pb2",
+      "aiohttp",
       "google",
-      "flask",
-      "requests",
+      "os",
       "dotenv",
       "binascii",
-      "urllib3",
-      "datetime",
-      "os",
-      "logging",
-      "byte",
-      "aiohttp",
-      "uid_generator_pb2",
+      "flask",
+      "threading",
       "Crypto",
-      "like_count_pb2",
-      "threading"
+      "byte",
+      "uid_generator_pb2",
+      "urllib3",
+      "requests",
+      "logging",
+      "asyncio"
     ],
     "byte.py": [
       "Crypto"

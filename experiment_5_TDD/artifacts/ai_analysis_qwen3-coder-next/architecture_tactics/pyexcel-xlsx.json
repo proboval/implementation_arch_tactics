@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis shows moderate coupling (avg_fan_out=3.65) and the architecture description identifies 'Single point of failure if core modules become tightly coupled over time' as a key risk. Real code reveals concrete coupling issues: (1) pyexcel_xlsx/xlsxr.py and xlsxw.py directly import openpyxl *and* pyexcel_io, creating dual external dependencies; (2) tests/test_multiple_sheets.py imports 'base' from local tests directory, indicating test-level coupling that could bleed into production code; (3) pyexcel_xlsx/__init__.py re-exports from pyexcel_io.io and pyexcel_io.plugins, creating a leaky abstraction layer that bypasses internal modularity. These couplings increase ripple effects: changes to openpyxl or pyexcel_io APIs would require coordinated changes across multiple modules. The modular monolith structure (book.py, xlsxr.py, xlsxw.py) is already present but not isolated enough—introducing explicit interfaces and dependency injection would reduce direct dependencies between core modules and external libraries.",
+  "target_components": [
+    "pyexcel_xlsx/xlsxr.py",
+    "pyexcel_xlsx/xlsxw.py",
+    "pyexcel_xlsx/__init__.py",
+    "tests/test_multiple_sheets.py"
+  ],
+  "expected_architectural_change": "Current modules will gain explicit interfaces (e.g., IXLSXReader, IXLSXWriter) and use dependency injection instead of direct imports of openpyxl/pyexcel_io. pyexcel_xlsx/__init__.py will stop re-exporting pyexcel_io components and instead delegate through well-defined adapter classes. Tests will depend on interfaces, not concrete implementations or local test base classes.",
+  "implementation_strategy": "1. Extract interfaces from ISheet/IReader/IWriter in xlsxr.py and xlsxw.py to define clean contracts. 2. Create adapter classes in pyexcel_xlsx that wrap openpyxl and pyexcel_io, injecting them via constructor. 3. Refactor pyexcel_xlsx/__init__.py to use adapters instead of direct pyexcel_io imports. 4. Update tests to depend on interfaces (e.g., via mock adapters) and remove direct imports of pyexcel_io from test files. 5. Add factory methods to instantiate adapters with default dependencies, preserving backward compatibility.",
+  "risks": "Risk of over-engineering if interfaces are too broad; must be applied incrementally. Initial refactoring may increase lines of code but reduce future change cost. Test suite may require updates to accommodate new dependency injection patterns, but this improves testability long-term."
+}

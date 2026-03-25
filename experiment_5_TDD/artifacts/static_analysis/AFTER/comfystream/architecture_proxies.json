@@ -1,0 +1,333 @@
+{
+  "python_files": 50,
+  "packages": 12,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 4.166666666666667,
+  "imports_graph": {
+    "benchmark.py": [
+      "torch",
+      "numpy",
+      "argparse",
+      "comfystream",
+      "asyncio",
+      "json",
+      "logging",
+      "av",
+      "time"
+    ],
+    "example.py": [
+      "torch",
+      "asyncio",
+      "json",
+      "comfystream"
+    ],
+    "install.py": [
+      "comfy_compatibility",
+      "os",
+      "tempfile",
+      "urllib",
+      "argparse",
+      "toml",
+      "zipfile",
+      "logging",
+      "sys",
+      "pathlib",
+      "subprocess"
+    ],
+    "prestartup_script.py": [],
+    "setup.py": [
+      "setuptools"
+    ],
+    "__init__.py": [
+      "nodes"
+    ],
+    "nodes\\server_manager.py": [
+      "pathlib",
+      "os",
+      "threading",
+      "socket",
+      "urllib",
+      "asyncio",
+      "logging",
+      "sys",
+      "abc",
+      "atexit",
+      "subprocess"
+    ],
+    "nodes\\settings_storage.py": [
+      "os",
+      "threading",
+      "json",
+      "logging",
+      "pathlib"
+    ],
+    "nodes\\__init__.py": [
+      "web",
+      "comfy_compatibility",
+      "os",
+      "audio_utils",
+      "api",
+      "video_stream_utils",
+      "tensor_utils"
+    ],
+    "scripts\\monitor_pid_resources.py": [
+      "threading",
+      "csv",
+      "click",
+      "psutil",
+      "pynvml",
+      "typing",
+      "subprocess",
+      "pathlib",
+      "time"
+    ],
+    "server\\app.py": [
+      "torch",
+      "twilio",
+      "aiortc",
+      "os",
+      "aiohttp",
+      "argparse",
+      "comfystream",
+      "asyncio",
+      "json",
+      "logging",
+      "sys"
+    ],
+    "server\\byoc.py": [
+      "torch",
+      "os",
+      "aiohttp",
+      "pytrickle",
+      "argparse",
+      "comfystream",
+      "asyncio",
+      "logging",
+      "sys",
+      "frame_processor"
+    ],
+    "server\\frame_processor.py": [
+      "os",
+      "comfystream",
+      "asyncio",
+      "json",
+      "typing",
+      "logging",
+      "pytrickle",
+      "utils_byoc"
+    ],
+    "server\\utils_byoc.py": [
+      "comfystream",
+      "json",
+      "typing",
+      "pytrickle",
+      "sys",
+      "pathlib"
+    ],
+    "test\\test_utils.py": [
+      "comfy",
+      "pytest",
+      "comfystream"
+    ],
+    "tests\\test_tactic_at39_reduced_coupling.py": [
+      "ast",
+      "server",
+      "os",
+      "comfystream",
+      "inspect",
+      "typing",
+      "pytest",
+      "nodes"
+    ],
+    "comfy\\api\\components\\schema\\prompt.py": [
+      "typing"
+    ],
+    "nodes\\api\\__init__.py": [
+      "server",
+      "aiohttp",
+      "os",
+      "server_manager",
+      "logging",
+      "pathlib",
+      "webbrowser"
+    ],
+    "nodes\\audio_utils\\load_audio_tensor.py": [
+      "queue",
+      "torch",
+      "numpy",
+      "comfystream"
+    ],
+    "nodes\\audio_utils\\pitch_shift.py": [
+      "torch",
+      "numpy",
+      "librosa"
+    ],
+    "nodes\\audio_utils\\save_audio_tensor.py": [
+      "numpy",
+      "comfystream"
+    ],
+    "nodes\\audio_utils\\__init__.py": [
+      "pitch_shift",
+      "save_audio_tensor",
+      "load_audio_tensor"
+    ],
+    "nodes\\tensor_utils\\load_tensor.py": [
+      "queue",
+      "comfystream"
+    ],
+    "nodes\\tensor_utils\\save_tensor.py": [
+      "torch",
+      "comfystream"
+    ],
+    "nodes\\tensor_utils\\save_text_tensor.py": [
+      "comfystream"
+    ],
+    "nodes\\tensor_utils\\__init__.py": [
+      "save_tensor",
+      "save_text_tensor",
+      "load_tensor"
+    ],
+    "nodes\\video_stream_utils\\primary_input_load_image.py": [
+      "nodes"
+    ],
+    "nodes\\video_stream_utils\\__init__.py": [
+      "primary_input_load_image"
+    ],
+    "nodes\\web\\__init__.py": [
+      "folder_paths",
+      "os"
+    ],
+    "src\\comfystream\\client.py": [
+      "comfy",
+      "comfystream",
+      "asyncio",
+      "contextlib",
+      "typing",
+      "logging"
+    ],
+    "src\\comfystream\\exceptions.py": [
+      "logging",
+      "typing"
+    ],
+    "src\\comfystream\\interfaces.py": [
+      "torch",
+      "abc",
+      "numpy",
+      "typing"
+    ],
+    "src\\comfystream\\modalities.py": [
+      "typing"
+    ],
+    "src\\comfystream\\pipeline.py": [
+      "torch",
+      "numpy",
+      "comfystream",
+      "modalities",
+      "asyncio",
+      "typing",
+      "logging",
+      "av"
+    ],
+    "src\\comfystream\\pipeline_state.py": [
+      "enum",
+      "__future__",
+      "comfystream",
+      "asyncio",
+      "typing",
+      "logging"
+    ],
+    "src\\comfystream\\tensor_cache.py": [
+      "torch",
+      "numpy",
+      "queue",
+      "asyncio",
+      "typing"
+    ],
+    "src\\comfystream\\utils.py": [
+      "importlib",
+      "comfy",
+      "modalities",
+      "json",
+      "typing",
+      "copy"
+    ],
+    "src\\comfystream\\__init__.py": [
+      "server",
+      "exceptions",
+      "client",
+      "pipeline_state",
+      "pipeline"
+    ],
+    "src\\comfystream\\scripts\\build_trt.py": [
+      "os",
+      "comfy",
+      "argparse",
+      "sys",
+      "ComfyUI",
+      "time"
+    ],
+    "src\\comfystream\\scripts\\setup_models.py": [
+      "requests",
+      "os",
+      "argparse",
+      "yaml",
+      "utils",
+      "tqdm",
+      "pathlib"
+    ],
+    "src\\comfystream\\scripts\\setup_nodes.py": [
+      "os",
+      "argparse",
+      "yaml",
+      "utils",
+      "sys",
+      "pathlib",
+      "subprocess"
+    ],
+    "src\\comfystream\\scripts\\utils.py": [
+      "yaml",
+      "pathlib"
+    ],
+    "src\\comfystream\\scripts\\__init__.py": [
+      "setup_nodes",
+      "utils",
+      "setup_models"
+    ],
+    "src\\comfystream\\server\\__init__.py": [],
+    "src\\comfystream\\server\\metrics\\prometheus_metrics.py": [
+      "prometheus_client",
+      "aiohttp",
+      "typing"
+    ],
+    "src\\comfystream\\server\\metrics\\stream_stats.py": [
+      "aiohttp",
+      "aiortc",
+      "json",
+      "typing"
+    ],
+    "src\\comfystream\\server\\metrics\\__init__.py": [
+      "stream_stats",
+      "prometheus_metrics"
+    ],
+    "src\\comfystream\\server\\utils\\fps_meter.py": [
+      "comfystream",
+      "asyncio",
+      "collections",
+      "logging",
+      "time"
+    ],
+    "src\\comfystream\\server\\utils\\utils.py": [
+      "random",
+      "aiohttp",
+      "types",
+      "asyncio",
+      "contextlib",
+      "typing",
+      "logging"
+    ],
+    "src\\comfystream\\server\\utils\\__init__.py": [
+      "utils",
+      "fps_meter"
+    ]
+  }
+}

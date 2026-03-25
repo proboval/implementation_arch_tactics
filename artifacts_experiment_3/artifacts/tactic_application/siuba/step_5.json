@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "siuba/ops/abstract_translator.py",
-  "content": "\"\"\"\nAbstract translator interfaces for siuba operations.\n\nThis module provides abstract base classes that can be used to reduce coupling\nbetween different parts of the translation system.\n\"\"\"\n\nfrom abc import ABC, abstractmethod\nfrom typing import Protocol\n\nclass ITranslator(Protocol):\n    \"\"\"Protocol for translation operations.\"\"\"\n    \n    def translate(self, expr, window: bool = True):\n        \"\"\"Translate an expression.\"\"\"\n        ...\n\nclass AbstractTranslator(ABC):\n    \"\"\"Abstract base class for translators.\n    \n    This interface can be used to decouple translation logic from specific\n    implementations, enabling better separation of concerns.\n    \"\"\"\n    \n    @abstractmethod\n    def translate(self, expr, window: bool = True):\n        \"\"\"Translate an expression.\n        \n        Parameters\n        ----------\n        expr :\n            The expression to translate\n        window : bool\n            Whether to use window context\n        \"\"\"\n        pass\n"
-}

@@ -1,0 +1,48 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "client.py": [
+      "os",
+      "ssl",
+      "socket",
+      "argparse",
+      "asyncio",
+      "typing",
+      "struct",
+      "common",
+      "logging",
+      "dataclasses",
+      "time"
+    ],
+    "generate_certs.py": [
+      "cryptography",
+      "datetime",
+      "os",
+      "argparse",
+      "sys"
+    ],
+    "server.py": [
+      "os",
+      "ssl",
+      "argparse",
+      "asyncio",
+      "typing",
+      "struct",
+      "common",
+      "logging",
+      "dataclasses"
+    ],
+    "tests\\test_tactic.py": [
+      "ast",
+      "server",
+      "client",
+      "tests",
+      "inspect",
+      "typing",
+      "pytest"
+    ]
+  }
+}

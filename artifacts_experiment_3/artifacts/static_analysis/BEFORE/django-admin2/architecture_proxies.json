@@ -8,41 +8,41 @@
       "fabric"
     ],
     "setup.py": [
-      "sys",
-      "string",
       "setuptools",
-      "re",
+      "string",
       "os",
+      "re",
+      "sys",
       "pytest"
     ],
     "djadmin2\\actions.py": [
-      "django",
-      "viewmixins"
-    ],
-    "djadmin2\\admin2.py": [
-      "rest_framework",
-      "djadmin2",
+      "viewmixins",
       "django"
     ],
-    "djadmin2\\apiviews.py": [
-      "rest_framework",
+    "djadmin2\\admin2.py": [
+      "djadmin2",
       "django",
-      "viewmixins"
+      "rest_framework"
+    ],
+    "djadmin2\\apiviews.py": [
+      "viewmixins",
+      "django",
+      "rest_framework"
     ],
     "djadmin2\\apps.py": [
       "djadmin2",
       "django"
     ],
     "djadmin2\\core.py": [
-      "django",
-      "importlib"
+      "importlib",
+      "django"
     ],
     "djadmin2\\filters.py": [
       "collections",
+      "django",
       "itertools",
-      "django_filters",
       "utils",
-      "django"
+      "django_filters"
     ],
     "djadmin2\\forms.py": [
       "django"
@@ -52,89 +52,89 @@
       "django"
     ],
     "djadmin2\\permissions.py": [
-      "django",
+      "re",
       "logging",
-      "re"
+      "django"
     ],
     "djadmin2\\renderers.py": [
-      "os",
+      "djadmin2",
       "datetime",
-      "django",
-      "djadmin2"
+      "os",
+      "django"
     ],
     "djadmin2\\settings.py": [
       "django"
     ],
     "djadmin2\\site.py": [],
     "djadmin2\\types.py": [
-      "sys",
-      "collections",
       "extra_views",
+      "collections",
       "os",
-      "logging",
-      "django"
+      "django",
+      "sys",
+      "logging"
     ],
     "djadmin2\\utils.py": [
-      "collections",
+      "builtins",
       "django",
-      "builtins"
+      "collections"
     ],
     "djadmin2\\viewmixins.py": [
+      "utils",
       "os",
-      "django",
       "braces",
-      "utils"
+      "django"
     ],
     "djadmin2\\views.py": [
-      "extra_views",
       "filters",
-      "viewmixins",
       "datetime",
-      "django",
-      "forms",
+      "extra_views",
       "functools",
       "models",
-      "operator"
+      "operator",
+      "django",
+      "viewmixins",
+      "forms"
     ],
     "djadmin2\\__init__.py": [],
     "docs\\conf.py": [
-      "sys",
-      "os"
+      "os",
+      "sys"
     ],
     "example\\manage.py": [
-      "sys",
       "os",
+      "sys",
       "django"
     ],
     "djadmin2\\contrib\\floppyforms.py": [
+      "floppyforms",
       "copy",
-      "django",
-      "floppyforms"
+      "django"
     ],
     "djadmin2\\migrations\\0001_initial.py": [
       "django"
     ],
     "djadmin2\\migrations\\__init__.py": [],
     "djadmin2\\templatetags\\admin2_tags.py": [
-      "django",
+      "numbers",
       "datetime",
-      "numbers"
+      "django"
     ],
     "djadmin2\\templatetags\\__init__.py": [],
     "djadmin2\\tests\\models.py": [
       "django"
     ],
     "djadmin2\\tests\\test_actions.py": [
+      "actions",
       "core",
       "django",
-      "actions",
       "models"
     ],
     "djadmin2\\tests\\test_admin2tags.py": [
       "templatetags",
+      "views",
       "django",
-      "models",
-      "views"
+      "models"
     ],
     "djadmin2\\tests\\test_auth_admin.py": [
       "djadmin2",
@@ -142,11 +142,11 @@
       "admin2"
     ],
     "djadmin2\\tests\\test_core.py": [
+      "models",
       "djadmin2",
-      "core",
       "django",
-      "types",
-      "models"
+      "core",
+      "types"
     ],
     "djadmin2\\tests\\test_renderers.py": [
       "datetime",
@@ -155,15 +155,15 @@
       "models"
     ],
     "djadmin2\\tests\\test_types.py": [
-      "models",
       "core",
+      "types",
       "django",
-      "types"
+      "models"
     ],
     "djadmin2\\tests\\test_utils.py": [
+      "views",
       "django",
-      "models",
-      "views"
+      "models"
     ],
     "djadmin2\\tests\\test_views.py": [
       "django"
@@ -180,8 +180,8 @@
     "djadmin2\\tests\\migrations\\__init__.py": [],
     "djadmin2\\themes\\djadmin2theme_bootstrap3\\__init__.py": [],
     "docs\\_ext\\djangodocs.py": [
-      "sphinx",
-      "re"
+      "re",
+      "sphinx"
     ],
     "example\\blog\\actions.py": [
       "djadmin2",
@@ -192,9 +192,9 @@
       "models"
     ],
     "example\\blog\\admin2.py": [
+      "actions",
       "djadmin2",
       "django",
-      "actions",
       "models"
     ],
     "example\\blog\\models.py": [
@@ -209,8 +209,8 @@
       "os"
     ],
     "example\\example\\urls.py": [
-      "blog",
       "djadmin2",
+      "blog",
       "django"
     ],
     "example\\example\\wsgi.py": [
@@ -250,19 +250,19 @@
     ],
     "example\\blog\\migrations\\__init__.py": [],
     "example\\blog\\tests\\test_apiviews.py": [
-      "models",
+      "json",
       "djadmin2",
       "django",
-      "json"
+      "models"
     ],
     "example\\blog\\tests\\test_builtin_api_resources.py": [
-      "django",
-      "test_apiviews"
+      "test_apiviews",
+      "django"
     ],
     "example\\blog\\tests\\test_filters.py": [
+      "djadmin2",
       "django_filters",
       "django",
-      "djadmin2",
       "models"
     ],
     "example\\blog\\tests\\test_modelforms.py": [
@@ -275,8 +275,8 @@
       "models"
     ],
     "example\\blog\\tests\\test_permissions.py": [
-      "blog",
       "djadmin2",
+      "blog",
       "django"
     ],
     "example\\blog\\tests\\test_views.py": [

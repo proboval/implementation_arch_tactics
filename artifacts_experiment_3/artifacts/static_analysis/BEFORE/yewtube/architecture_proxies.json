@@ -5,10 +5,10 @@
   "avg_files_per_package": 12.75,
   "imports_graph": {
     "setup.py": [
-      "sys",
-      "os",
+      "setuptools",
       "py2exe",
-      "setuptools"
+      "os",
+      "sys"
     ],
     "doc\\conf.py": [
       "sys",
@@ -16,273 +16,273 @@
       "sphinx_rtd_theme"
     ],
     "docs\\gen_ref_nav.py": [
-      "mkdocs_gen_files",
-      "pathlib"
+      "pathlib",
+      "mkdocs_gen_files"
     ],
     "mps_youtube\\c.py": [
-      "sys",
+      "re",
       "os",
-      "re"
+      "sys"
     ],
     "mps_youtube\\cache.py": [
-      "os",
+      "util",
       "pickle",
-      "util"
+      "os"
     ],
     "mps_youtube\\config.py": [
-      "sys",
-      "urllib",
-      "copy",
-      "re",
       "json",
+      "urllib",
+      "pickle",
       "os",
       "pylast",
-      "pickle"
+      "re",
+      "sys",
+      "copy"
     ],
     "mps_youtube\\content.py": [
-      "copy",
-      "util",
+      "random",
       "math",
-      "qrcode",
       "io",
-      "random"
+      "util",
+      "qrcode",
+      "copy"
     ],
     "mps_youtube\\contentquery.py": [],
     "mps_youtube\\description_parser.py": [
-      "random",
-      "re"
+      "re",
+      "random"
     ],
     "mps_youtube\\g.py": [
+      "os",
       "sys",
-      "collections",
       "playlist",
-      "os"
+      "collections"
     ],
     "mps_youtube\\helptext.py": [
-      "urllib",
-      "util",
-      "re",
       "socket",
-      "pathlib"
+      "urllib",
+      "pathlib",
+      "re",
+      "util"
     ],
     "mps_youtube\\history.py": [
+      "playlists",
       "playlist",
-      "util",
-      "os",
       "pickle",
-      "playlists"
+      "os",
+      "util"
     ],
     "mps_youtube\\init.py": [
-      "sys",
       "colorama",
-      "multiprocessing",
-      "tempfile",
-      "util",
-      "dbus",
-      "re",
-      "os",
-      "logging",
       "argparse",
-      "platform",
-      "gi",
+      "os",
       "helptext",
       "yt_dlp",
-      "readline"
+      "multiprocessing",
+      "util",
+      "re",
+      "sys",
+      "readline",
+      "platform",
+      "tempfile",
+      "logging",
+      "dbus",
+      "gi"
     ],
     "mps_youtube\\main.py": [
-      "sys",
-      "pyreadline3",
-      "os",
-      "logging",
       "traceback",
-      "locale",
-      "readline"
+      "os",
+      "sys",
+      "readline",
+      "logging",
+      "pyreadline3",
+      "locale"
     ],
     "mps_youtube\\mpris.py": [
-      "copy",
-      "time",
-      "dbus",
-      "re",
-      "json",
       "socket",
-      "typing",
+      "json",
       "os",
-      "gi",
-      "threading"
+      "time",
+      "re",
+      "threading",
+      "copy",
+      "typing",
+      "dbus",
+      "gi"
     ],
     "mps_youtube\\pafy.py": [
-      "urllib",
-      "youtubesearchpython",
-      "requests",
       "json",
-      "re",
-      "os",
+      "urllib",
       "random",
-      "glob",
-      "yt_dlp"
+      "youtubesearchpython",
+      "os",
+      "yt_dlp",
+      "re",
+      "requests",
+      "glob"
     ],
     "mps_youtube\\paths.py": [
       "os"
     ],
     "mps_youtube\\player.py": [
-      "sys",
-      "urllib",
-      "commands",
-      "math",
-      "time",
-      "abc",
-      "util",
       "socket",
-      "os",
-      "logging",
-      "traceback",
-      "subprocess",
+      "commands",
+      "urllib",
+      "shlex",
       "random",
-      "shlex"
+      "math",
+      "traceback",
+      "os",
+      "time",
+      "util",
+      "subprocess",
+      "sys",
+      "abc",
+      "logging"
     ],
     "mps_youtube\\playlist.py": [],
     "mps_youtube\\playlists.py": [
-      "sys",
       "playlist",
       "__main__",
+      "pickle",
       "os",
-      "pickle"
+      "sys"
     ],
     "mps_youtube\\screen.py": [
-      "sys",
+      "subprocess",
       "os",
-      "subprocess"
+      "sys"
     ],
     "mps_youtube\\streams.py": [
+      "threading",
       "urllib",
       "time",
-      "traceback",
-      "threading"
+      "traceback"
     ],
     "mps_youtube\\terminalsize.py": [
-      "sys",
-      "ctypes",
+      "shutil",
+      "shlex",
       "termios",
       "os",
-      "platform",
+      "sys",
       "subprocess",
-      "shlex",
       "struct",
-      "shutil",
-      "fcntl"
+      "platform",
+      "fcntl",
+      "ctypes"
     ],
     "mps_youtube\\util.py": [
-      "sys",
-      "collections",
-      "urllib",
-      "playlist",
-      "mps_youtube",
-      "ctypes",
-      "time",
       "json",
-      "re",
-      "os",
+      "urllib",
       "datetime",
-      "logging",
-      "platform",
+      "mps_youtube",
       "unicodedata",
+      "collections",
+      "playlist",
+      "os",
+      "time",
+      "re",
       "subprocess",
-      "importlib"
+      "sys",
+      "importlib",
+      "platform",
+      "logging",
+      "ctypes"
     ],
     "mps_youtube\\__init__.py": [
       "pip"
     ],
     "mps_youtube\\commands\\album_search.py": [
       "urllib",
-      "time",
-      "re",
       "search",
-      "songlist",
+      "time",
+      "xml",
+      "re",
       "difflib",
-      "xml"
+      "songlist"
     ],
     "mps_youtube\\commands\\config.py": [],
     "mps_youtube\\commands\\download.py": [
-      "sys",
       "urllib",
-      "time",
-      "re",
+      "shlex",
+      "random",
       "search",
       "os",
+      "time",
+      "re",
+      "sys",
       "subprocess",
-      "random",
-      "shlex",
       "songlist"
     ],
     "mps_youtube\\commands\\generate_playlist.py": [
-      "random",
+      "string",
       "os",
-      "playlist",
-      "string"
+      "random",
+      "playlist"
     ],
     "mps_youtube\\commands\\lastfm.py": [
-      "pylast",
       "datetime",
+      "pylast",
       "time"
     ],
     "mps_youtube\\commands\\local_playlist.py": [
-      "playlist",
       "util",
-      "songlist",
-      "re"
+      "re",
+      "playlist",
+      "songlist"
     ],
     "mps_youtube\\commands\\misc.py": [
-      "urllib",
-      "content",
-      "re",
       "socket",
-      "datetime",
       "pyperclip",
+      "datetime",
+      "urllib",
       "traceback",
       "helptext",
-      "songlist",
-      "readline"
+      "content",
+      "re",
+      "readline",
+      "songlist"
     ],
     "mps_youtube\\commands\\play.py": [
-      "sys",
       "urllib",
-      "webbrowser",
-      "typing",
-      "search",
       "random",
-      "songlist"
+      "search",
+      "sys",
+      "songlist",
+      "typing",
+      "webbrowser"
     ],
     "mps_youtube\\commands\\search.py": [
-      "playlist",
-      "urllib",
-      "math",
-      "base64",
-      "re",
       "json",
       "typing",
-      "datetime",
-      "logging",
       "argparse",
+      "datetime",
+      "math",
+      "urllib",
+      "playlist",
       "traceback",
-      "songlist"
+      "base64",
+      "re",
+      "songlist",
+      "logging"
     ],
     "mps_youtube\\commands\\songlist.py": [
       "random",
-      "math",
-      "playlist"
+      "playlist",
+      "math"
     ],
     "mps_youtube\\commands\\spotify_playlist.py": [
-      "time",
-      "re",
       "search",
+      "time",
       "spotipy",
+      "re",
       "difflib",
       "songlist"
     ],
     "mps_youtube\\commands\\__init__.py": [
-      "collections",
+      "re",
       "main",
-      "re"
+      "collections"
     ],
     "mps_youtube\\listview\\base.py": [],
     "mps_youtube\\listview\\livestream.py": [
@@ -295,66 +295,66 @@
       "base"
     ],
     "mps_youtube\\listview\\__init__.py": [
-      "user",
-      "livestream",
+      "songtitle",
       "math",
       "re",
       "base",
-      "songtitle"
+      "user",
+      "livestream"
     ],
     "mps_youtube\\players\\GenericPlayer.py": [
+      "player",
       "os",
-      "subprocess",
-      "player"
+      "subprocess"
     ],
     "mps_youtube\\players\\mplayer.py": [
-      "sys",
-      "player",
-      "tempfile",
+      "os",
       "util",
       "re",
-      "typing",
-      "os",
-      "subprocess"
+      "player",
+      "sys",
+      "subprocess",
+      "tempfile",
+      "typing"
     ],
     "mps_youtube\\players\\mpv.py": [
-      "sys",
-      "player",
-      "tempfile",
-      "util",
-      "time",
-      "re",
-      "json",
       "socket",
+      "json",
       "os",
-      "subprocess"
+      "time",
+      "util",
+      "re",
+      "player",
+      "subprocess",
+      "sys",
+      "tempfile"
     ],
     "mps_youtube\\players\\vlc.py": [
-      "sys",
+      "player",
       "os",
-      "subprocess",
-      "player"
+      "sys",
+      "subprocess"
     ],
     "mps_youtube\\players\\__init__.py": [],
     "mps_youtube\\test\\test_main.py": [
       "mps_youtube",
-      "pytest",
-      "unittest"
+      "unittest",
+      "pytest"
     ],
     "mps_youtube\\test\\test_mpris.py": [
+      "dbus",
       "mps_youtube",
-      "pytest",
       "unittest",
-      "dbus"
+      "pytest"
     ],
     "mps_youtube\\test\\test_players_mplayer.py": [
       "mps_youtube",
-      "pytest",
-      "unittest"
+      "unittest",
+      "pytest"
     ],
     "mps_youtube\\test\\test_util.py": [
-      "pytest",
-      "mps_youtube"
+      "mps_youtube",
+      "pytest"
     ]
   }
 }

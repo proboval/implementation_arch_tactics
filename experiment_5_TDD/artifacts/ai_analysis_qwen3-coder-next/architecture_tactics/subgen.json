@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe coupling between concerns: launcher.py directly handles environment setup, package installation, and GitHub downloads; subgen.py mixes webhooks (Plex/Jellyfin/Tautulli), transcription logic, file I/O, model lifecycle management, and metadata refresh into a single module with 40+ top-level functions. Static analysis confirms high average fan-out (16.0) and zero packages, indicating no modularity boundaries. This coupling causes ripple effects: changing webhook handling may affect transcription, and model cleanup may break file I/O. Reduced Coupling directly addresses this by introducing explicit interfaces and dependency boundaries between concerns (e.g., webhook handlers, transcription engine, file system observer, model manager), reducing the ripple effect and improving testability.",
+  "target_components": [
+    "subgen.py",
+    "launcher.py",
+    "language_code.py"
+  ],
+  "expected_architectural_change": "The flat module structure will evolve into loosely coupled components: webhook handlers will depend on an abstract event interface; transcription logic will depend on an abstract ASR interface; file system observers will depend on an abstract task queue interface; model lifecycle will be managed by a dedicated service with no direct dependencies on webhooks or file I/O. Each component will expose clear interfaces (e.g., via abstract base classes) and use dependency injection for testability.",
+  "implementation_strategy": "1. Extract webhook handlers (receive_plex_webhook, receive_jellyfin_webhook, etc.) into a new 'webhooks' module with a common interface (e.g., WebhookHandler). 2. Extract transcription logic (gen_subtitles, asr_task_worker, detect_language_task) into a 'transcription' module with an abstract ASR interface. 3. Extract file system monitoring (watchdog usage, transcribe_existing, should_skip_file) into a 'filesystem' module with a TaskQueue interface. 4. Extract model lifecycle (start_model, perform_model_cleanup, delete_model) into a 'model_manager' module. 5. Replace direct imports and global function calls with injected dependencies (e.g., pass TaskQueue instance to filesystem observer, pass ASR instance to transcription worker). 6. Introduce interfaces (e.g., via abc.ABC) for each abstraction to decouple implementations.",
+  "risks": "Incremental refactoring may temporarily increase complexity during transition; requires careful sequencing to avoid breaking existing integrations. However, since the codebase is script-based with procedural logic, the risk is manageable by extracting modules one at a time while preserving backward compatibility via adapter layers."
+}

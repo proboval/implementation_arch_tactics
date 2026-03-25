@@ -1,0 +1,56 @@
+{
+  "python_files": 12,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "train.py": [
+      "minbpe",
+      "os",
+      "time"
+    ],
+    "minbpe\\base.py": [
+      "unicodedata"
+    ],
+    "minbpe\\basic.py": [
+      "base"
+    ],
+    "minbpe\\factory.py": [
+      "strategies",
+      "base",
+      "regex",
+      "basic",
+      "gpt4"
+    ],
+    "minbpe\\gpt4.py": [
+      "base",
+      "tiktoken",
+      "regex"
+    ],
+    "minbpe\\regex.py": [
+      "base",
+      "regex"
+    ],
+    "minbpe\\__init__.py": [
+      "basic",
+      "base",
+      "gpt4",
+      "regex"
+    ],
+    "tests\\test_tactic.py": [
+      "minbpe",
+      "tiktoken",
+      "ast",
+      "inspect",
+      "pytest"
+    ],
+    "tests\\__init__.py": [],
+    "minbpe\\strategies\\regex.py": [
+      "regex",
+      "typing"
+    ],
+    "minbpe\\strategies\\__init__.py": [
+      "regex"
+    ]
+  }
+}

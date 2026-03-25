@@ -1,0 +1,1260 @@
+{
+  "python_files": 252,
+  "packages": 50,
+  "max_directory_depth": 7,
+  "avg_files_per_package": 5.04,
+  "imports_graph": {
+    "Linux\\hook-sys.py": [
+      "lazagne"
+    ],
+    "Mac\\hook-sys.py": [
+      "lazagne"
+    ],
+    "tests\\test_tactic.py": [
+      "ast",
+      "os",
+      "platform",
+      "lazagne",
+      "pytest",
+      "sys"
+    ],
+    "Windows\\hook-sys.py": [
+      "lazagne"
+    ],
+    "lazagne\\core\\platform\\constant.py": [
+      "abc"
+    ],
+    "lazagne\\core\\platform\\crypto.py": [
+      "abc"
+    ],
+    "lazagne\\core\\platform\\dpapi.py": [
+      "abc"
+    ],
+    "lazagne\\core\\platform\\selector.py": [
+      "platform",
+      "lazagne"
+    ],
+    "lazagne\\core\\platform\\implementations\\windows_constant.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\__init__.py": [],
+    "Linux\\lazagne\\config\\constant.py": [
+      "sys",
+      "time"
+    ],
+    "Linux\\lazagne\\config\\dico.py": [],
+    "Linux\\lazagne\\config\\homes.py": [
+      "pwd",
+      "psutil",
+      "os"
+    ],
+    "Linux\\lazagne\\config\\manage_modules.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\config\\module_info.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\config\\run.py": [
+      "getpass",
+      "collections",
+      "lazagne",
+      "traceback"
+    ],
+    "Linux\\lazagne\\config\\soft_import_module.py": [
+      "importlib",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\config\\write_output.py": [
+      "os",
+      "socket",
+      "platform",
+      "lazagne",
+      "collections",
+      "json",
+      "getpass",
+      "logging",
+      "sys",
+      "time"
+    ],
+    "Linux\\lazagne\\config\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\__init__.py": [],
+    "Linux\\lazagne\\config\\crypto\\pbkdf2.py": [
+      "hashlib",
+      "sys",
+      "hmac",
+      "struct"
+    ],
+    "Linux\\lazagne\\config\\crypto\\pyDes.py": [
+      "sys"
+    ],
+    "Linux\\lazagne\\config\\crypto\\__init__.py": [],
+    "Linux\\lazagne\\config\\lib\\__init__.py": [],
+    "Linux\\lazagne\\config\\crypto\\pyaes\\aes.py": [
+      "copy",
+      "struct"
+    ],
+    "Linux\\lazagne\\config\\crypto\\pyaes\\blockfeeder.py": [
+      "util",
+      "aes"
+    ],
+    "Linux\\lazagne\\config\\crypto\\pyaes\\util.py": [],
+    "Linux\\lazagne\\config\\crypto\\pyaes\\__init__.py": [
+      "aes",
+      "blockfeeder"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\Address.py": [
+      "utils"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\BaseProcess.py": [
+      "utils",
+      "struct"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\LinProcess.py": [
+      "os",
+      "structures",
+      "ctypes",
+      "logging",
+      "platform",
+      "re",
+      "errno",
+      "BaseProcess",
+      "struct",
+      "copy",
+      "signal",
+      "sys"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\LinStructures.py": [],
+    "Linux\\lazagne\\config\\lib\\memorpy\\Locator.py": [
+      "copy",
+      "Address",
+      "struct",
+      "time"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\MemWorker.py": [
+      "Process",
+      "structures",
+      "re",
+      "Address",
+      "binascii",
+      "traceback",
+      "BaseProcess",
+      "utils",
+      "struct",
+      "logging",
+      "sys",
+      "string"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\OSXProcess.py": [
+      "os",
+      "structures",
+      "ctypes",
+      "logging",
+      "platform",
+      "re",
+      "errno",
+      "BaseProcess",
+      "utils",
+      "struct",
+      "copy",
+      "signal",
+      "sys",
+      "subprocess"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\Process.py": [
+      "WinProcess",
+      "SunProcess",
+      "LinProcess",
+      "BaseProcess",
+      "sys",
+      "OSXProcess"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\structures.py": [
+      "LinStructures",
+      "WinStructures",
+      "sys"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\SunProcess.py": [
+      "BaseProcess",
+      "os",
+      "struct"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\utils.py": [
+      "re",
+      "struct"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\version.py": [],
+    "Linux\\lazagne\\config\\lib\\memorpy\\WinProcess.py": [
+      "structures",
+      "ctypes",
+      "platform",
+      "pydasm",
+      "struct",
+      "copy",
+      "BaseProcess"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\WinStructures.py": [
+      "ctypes"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\wintools.py": [
+      "ctypes",
+      "threading",
+      "time"
+    ],
+    "Linux\\lazagne\\config\\lib\\memorpy\\__init__.py": [
+      "MemWorker",
+      "Process",
+      "Locator",
+      "Address",
+      "utils",
+      "logging",
+      "sys"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\chromium_based.py": [
+      "os",
+      "Crypto",
+      "shutil",
+      "hashlib",
+      "traceback",
+      "sqlite3",
+      "lazagne",
+      "struct"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\chromium_browsers.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\firefox_browsers.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\mozilla.py": [
+      "pyasn1",
+      "os",
+      "hashlib",
+      "hmac",
+      "ConfigParser",
+      "traceback",
+      "sqlite3",
+      "configparser",
+      "lazagne",
+      "json",
+      "struct",
+      "base64",
+      "binascii"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\opera.py": [
+      "os",
+      "hashlib",
+      "re",
+      "ConfigParser",
+      "configparser",
+      "lazagne",
+      "struct",
+      "binascii"
+    ],
+    "Linux\\lazagne\\softwares\\browsers\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\chats\\pidgin.py": [
+      "dbus",
+      "xml",
+      "os",
+      "traceback",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\chats\\psi.py": [
+      "xml",
+      "itertools",
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\chats\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\databases\\dbvis.py": [
+      "xml",
+      "os",
+      "array",
+      "hashlib",
+      "re",
+      "lazagne",
+      "base64",
+      "binascii"
+    ],
+    "Linux\\lazagne\\softwares\\databases\\sqldeveloper.py": [
+      "xml",
+      "os",
+      "array",
+      "Crypto",
+      "hashlib",
+      "re",
+      "lazagne",
+      "json",
+      "base64",
+      "binascii"
+    ],
+    "Linux\\lazagne\\softwares\\databases\\squirrel.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\databases\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\git\\gitforlinux.py": [
+      "os",
+      "psutil",
+      "urllib",
+      "lazagne",
+      "urlparse"
+    ],
+    "Linux\\lazagne\\softwares\\git\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\mails\\clawsmail.py": [
+      "os",
+      "platform",
+      "re",
+      "ConfigParser",
+      "traceback",
+      "configparser",
+      "lazagne",
+      "base64"
+    ],
+    "Linux\\lazagne\\softwares\\mails\\thunderbird_mails.py": [
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\mails\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\memory\\memorydump.py": [
+      "lazagne",
+      "memorpy"
+    ],
+    "Linux\\lazagne\\softwares\\memory\\mimipy.py": [
+      "os",
+      "re",
+      "traceback",
+      "lazagne",
+      "crypt"
+    ],
+    "Linux\\lazagne\\softwares\\memory\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\sysadmin\\apachedirectorystudio.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\aws.py": [
+      "configparser",
+      "lazagne",
+      "ConfigParser",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\cli.py": [
+      "os",
+      "psutil",
+      "ConfigParser",
+      "configparser",
+      "pwd",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\docker.py": [
+      "lazagne",
+      "json",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\env_variable.py": [
+      "urlparse",
+      "lazagne",
+      "psutil",
+      "urllib"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\filezilla.py": [
+      "base64",
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\fstab.py": [
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\gftp.py": [
+      "configparser",
+      "lazagne",
+      "ConfigParser",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\grub.py": [
+      "os",
+      "crypt",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\keepassconfig.py": [
+      "xml",
+      "os",
+      "ConfigParser",
+      "configparser",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\rclone.py": [
+      "os",
+      "Crypto",
+      "ConfigParser",
+      "configparser",
+      "lazagne",
+      "json",
+      "base64"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\shadow.py": [
+      "os",
+      "crypt",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\ssh.py": [
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\sysadmin\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\wallet\\kde.py": [
+      "dbus",
+      "lazagne"
+    ],
+    "Linux\\lazagne\\softwares\\wallet\\libsecret.py": [
+      "dbus",
+      "datetime",
+      "secretstorage",
+      "traceback",
+      "pwd",
+      "lazagne",
+      "jeepney",
+      "binascii"
+    ],
+    "Linux\\lazagne\\softwares\\wallet\\__init__.py": [],
+    "Linux\\lazagne\\softwares\\wifi\\wifi.py": [
+      "os",
+      "ConfigParser",
+      "configparser",
+      "lazagne",
+      "collections"
+    ],
+    "Linux\\lazagne\\softwares\\wifi\\wpa_supplicant.py": [
+      "re",
+      "lazagne",
+      "os"
+    ],
+    "Linux\\lazagne\\softwares\\wifi\\__init__.py": [],
+    "Mac\\lazagne\\__init__.py": [],
+    "Mac\\lazagne\\config\\constant.py": [
+      "time"
+    ],
+    "Mac\\lazagne\\config\\dico.py": [],
+    "Mac\\lazagne\\config\\manage_modules.py": [
+      "lazagne"
+    ],
+    "Mac\\lazagne\\config\\module_info.py": [
+      "lazagne"
+    ],
+    "Mac\\lazagne\\config\\run.py": [
+      "getpass",
+      "lazagne",
+      "traceback",
+      "subprocess"
+    ],
+    "Mac\\lazagne\\config\\soft_import_module.py": [
+      "importlib",
+      "lazagne"
+    ],
+    "Mac\\lazagne\\config\\write_output.py": [
+      "os",
+      "socket",
+      "platform",
+      "lazagne",
+      "json",
+      "getpass",
+      "logging",
+      "sys",
+      "time"
+    ],
+    "Mac\\lazagne\\config\\__init__.py": [],
+    "Mac\\lazagne\\softwares\\__init__.py": [],
+    "Mac\\lazagne\\config\\crypto\\pyDes.py": [
+      "sys"
+    ],
+    "Mac\\lazagne\\config\\crypto\\__init__.py": [],
+    "Mac\\lazagne\\config\\crypto\\pyaes\\aes.py": [
+      "copy",
+      "struct"
+    ],
+    "Mac\\lazagne\\config\\crypto\\pyaes\\blockfeeder.py": [
+      "util",
+      "aes"
+    ],
+    "Mac\\lazagne\\config\\crypto\\pyaes\\util.py": [],
+    "Mac\\lazagne\\config\\crypto\\pyaes\\__init__.py": [
+      "aes",
+      "blockfeeder"
+    ],
+    "Mac\\lazagne\\softwares\\browsers\\firefox_browsers.py": [
+      "lazagne"
+    ],
+    "Mac\\lazagne\\softwares\\browsers\\mozilla.py": [
+      "pyasn1",
+      "os",
+      "hashlib",
+      "binascii",
+      "hmac",
+      "ConfigParser",
+      "sqlite3",
+      "traceback",
+      "configparser",
+      "lazagne",
+      "json",
+      "struct",
+      "base64",
+      "sys"
+    ],
+    "Mac\\lazagne\\softwares\\browsers\\__init__.py": [],
+    "Mac\\lazagne\\softwares\\mails\\thunderbird.py": [
+      "lazagne",
+      "os"
+    ],
+    "Mac\\lazagne\\softwares\\mails\\__init__.py": [],
+    "Mac\\lazagne\\softwares\\system\\chainbreaker.py": [
+      "os",
+      "traceback",
+      "lazagne",
+      "binascii",
+      "subprocess"
+    ],
+    "Mac\\lazagne\\softwares\\system\\hashdump.py": [
+      "xml",
+      "os",
+      "hashlib",
+      "platform",
+      "traceback",
+      "lazagne",
+      "base64",
+      "binascii",
+      "subprocess"
+    ],
+    "Mac\\lazagne\\softwares\\system\\system.py": [
+      "lazagne"
+    ],
+    "Mac\\lazagne\\softwares\\system\\__init__.py": [],
+    "Mac\\lazagne\\softwares\\system\\chainbreaker_module\\chainbreaker.py": [
+      "datetime",
+      "ctypes",
+      "Schema",
+      "lazagne",
+      "struct",
+      "binascii",
+      "pbkdf2"
+    ],
+    "Mac\\lazagne\\softwares\\system\\chainbreaker_module\\pbkdf2.py": [
+      "hashlib",
+      "hmac",
+      "struct"
+    ],
+    "Mac\\lazagne\\softwares\\system\\chainbreaker_module\\Schema.py": [],
+    "Mac\\lazagne\\softwares\\system\\chainbreaker_module\\__init__.py": [],
+    "Windows\\lazagne\\__init__.py": [],
+    "Windows\\lazagne\\config\\change_privileges.py": [
+      "lazagne",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "Windows\\lazagne\\config\\constant.py": [
+      "random",
+      "os",
+      "tempfile",
+      "string",
+      "time"
+    ],
+    "Windows\\lazagne\\config\\dico.py": [],
+    "Windows\\lazagne\\config\\dpapi_structure.py": [
+      "lazagne",
+      "os",
+      "codecs"
+    ],
+    "Windows\\lazagne\\config\\execute_cmd.py": [
+      "os",
+      "re",
+      "_subprocess",
+      "lazagne",
+      "base64",
+      "subprocess"
+    ],
+    "Windows\\lazagne\\config\\manage_modules.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\config\\module_info.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\config\\run.py": [
+      "ctypes",
+      "traceback",
+      "lazagne",
+      "logging",
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\soft_import_module.py": [
+      "importlib",
+      "lazagne"
+    ],
+    "Windows\\lazagne\\config\\users.py": [
+      "ctypes",
+      "sys",
+      "os",
+      "lazagne"
+    ],
+    "Windows\\lazagne\\config\\winstructure.py": [
+      "os",
+      "ctypes",
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\write_output.py": [
+      "os",
+      "ctypes",
+      "socket",
+      "platform",
+      "traceback",
+      "lazagne",
+      "json",
+      "constant",
+      "getpass",
+      "logging",
+      "sys",
+      "time"
+    ],
+    "Windows\\lazagne\\config\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\__init__.py": [],
+    "Windows\\lazagne\\config\\crypto\\md4.py": [
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\crypto\\pyDes.py": [
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\crypto\\rc4.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\config\\crypto\\__init__.py": [],
+    "Windows\\lazagne\\config\\DPAPI\\blob.py": [
+      "lazagne",
+      "eater",
+      "traceback",
+      "codecs"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\credfile.py": [
+      "blob",
+      "eater"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\credhist.py": [
+      "hashlib",
+      "eater",
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\crypto.py": [
+      "array",
+      "hashlib",
+      "hmac",
+      "lazagne",
+      "struct",
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\eater.py": [
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\masterkey.py": [
+      "os",
+      "hashlib",
+      "eater",
+      "system",
+      "struct",
+      "lazagne",
+      "codecs",
+      "credhist",
+      "collections",
+      "binascii"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\system.py": [
+      "eater"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\vault.py": [
+      "os",
+      "codecs",
+      "eater",
+      "lazagne",
+      "struct",
+      "blob"
+    ],
+    "Windows\\lazagne\\config\\DPAPI\\__init__.py": [],
+    "Windows\\lazagne\\config\\lib\\__init__.py": [],
+    "Windows\\lazagne\\config\\crypto\\pyaes\\aes.py": [
+      "copy",
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\crypto\\pyaes\\blockfeeder.py": [
+      "util",
+      "aes"
+    ],
+    "Windows\\lazagne\\config\\crypto\\pyaes\\util.py": [],
+    "Windows\\lazagne\\config\\crypto\\pyaes\\__init__.py": [
+      "aes",
+      "blockfeeder"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\Address.py": [
+      "utils"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\BaseProcess.py": [
+      "utils",
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\LinProcess.py": [
+      "os",
+      "structures",
+      "ctypes",
+      "logging",
+      "platform",
+      "re",
+      "errno",
+      "BaseProcess",
+      "struct",
+      "copy",
+      "signal",
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\LinStructures.py": [],
+    "Windows\\lazagne\\config\\lib\\memorpy\\Locator.py": [
+      "copy",
+      "Address",
+      "struct",
+      "time"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\MemWorker.py": [
+      "Process",
+      "structures",
+      "re",
+      "Address",
+      "binascii",
+      "traceback",
+      "BaseProcess",
+      "utils",
+      "struct",
+      "logging",
+      "sys",
+      "string"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\OSXProcess.py": [
+      "os",
+      "structures",
+      "ctypes",
+      "logging",
+      "platform",
+      "re",
+      "errno",
+      "BaseProcess",
+      "utils",
+      "struct",
+      "copy",
+      "signal",
+      "sys",
+      "subprocess"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\Process.py": [
+      "WinProcess",
+      "SunProcess",
+      "LinProcess",
+      "BaseProcess",
+      "sys",
+      "OSXProcess"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\structures.py": [
+      "LinStructures",
+      "WinStructures",
+      "sys"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\SunProcess.py": [
+      "BaseProcess",
+      "os",
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\utils.py": [
+      "re",
+      "struct"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\version.py": [],
+    "Windows\\lazagne\\config\\lib\\memorpy\\WinProcess.py": [
+      "structures",
+      "ctypes",
+      "platform",
+      "pydasm",
+      "struct",
+      "copy",
+      "BaseProcess"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\WinStructures.py": [
+      "ctypes"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\wintools.py": [
+      "ctypes",
+      "threading",
+      "time"
+    ],
+    "Windows\\lazagne\\config\\lib\\memorpy\\__init__.py": [
+      "MemWorker",
+      "Process",
+      "Locator",
+      "Address",
+      "utils",
+      "logging",
+      "sys"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\chromium_based.py": [
+      "random",
+      "os",
+      "Crypto",
+      "shutil",
+      "sqlite3",
+      "traceback",
+      "lazagne",
+      "json",
+      "base64",
+      "string",
+      "tempfile"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\chromium_browsers.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\firefox_browsers.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\ie.py": [
+      "hashlib",
+      "_subprocess",
+      "traceback",
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "subprocess"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\mozilla.py": [
+      "pyasn1",
+      "os",
+      "hashlib",
+      "binascii",
+      "hmac",
+      "ConfigParser",
+      "sqlite3",
+      "traceback",
+      "configparser",
+      "lazagne",
+      "json",
+      "struct",
+      "base64",
+      "sys"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\ucbrowser.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\browsers\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\chats\\pidgin.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\chats\\psi.py": [
+      "xml",
+      "os",
+      "itertools",
+      "lazagne",
+      "glob"
+    ],
+    "Windows\\lazagne\\softwares\\chats\\skype.py": [
+      "xml",
+      "os",
+      "hashlib",
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "struct",
+      "binascii"
+    ],
+    "Windows\\lazagne\\softwares\\chats\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\databases\\dbvis.py": [
+      "xml",
+      "os",
+      "array",
+      "hashlib",
+      "re",
+      "lazagne",
+      "base64",
+      "binascii"
+    ],
+    "Windows\\lazagne\\softwares\\databases\\postgresql.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\databases\\robomongo.py": [
+      "lazagne",
+      "json",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\databases\\sqldeveloper.py": [
+      "xml",
+      "os",
+      "array",
+      "Crypto",
+      "hashlib",
+      "re",
+      "lazagne",
+      "json",
+      "base64",
+      "binascii"
+    ],
+    "Windows\\lazagne\\softwares\\databases\\squirrel.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\databases\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\games\\galconfusion.py": [
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\games\\kalypsomedia.py": [
+      "os",
+      "ConfigParser",
+      "configparser",
+      "lazagne",
+      "base64"
+    ],
+    "Windows\\lazagne\\softwares\\games\\roguestale.py": [
+      "xml",
+      "re",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\games\\turba.py": [
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\games\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\git\\gitforwindows.py": [
+      "urlparse",
+      "lazagne",
+      "urllib",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\git\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\mails\\outlook.py": [
+      "_winreg",
+      "lazagne",
+      "winreg"
+    ],
+    "Windows\\lazagne\\softwares\\mails\\thunderbird_mails.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\mails\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\maven\\mavenrepositories.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\maven\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\memory\\keepass.py": [
+      "lazagne",
+      "traceback"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\keethief.py": [
+      "sys",
+      "json",
+      "os",
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\memorydump.py": [
+      "lazagne",
+      "keethief"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\onepassword.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\multimedia\\eyecon.py": [
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "codecs"
+    ],
+    "Windows\\lazagne\\softwares\\multimedia\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\php\\composer.py": [
+      "lazagne",
+      "json",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\php\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\svn\\tortoise.py": [
+      "base64",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\svn\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\sysadmin\\apachedirectorystudio.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\coreftp.py": [
+      "_winreg",
+      "binascii",
+      "winreg",
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\cyberduck.py": [
+      "base64",
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\d3des.py": [
+      "binascii",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\filezilla.py": [
+      "base64",
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\filezillaserver.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\ftpnavigator.py": [
+      "lazagne",
+      "os",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\iisapppool.py": [
+      "os",
+      "re",
+      "lazagne",
+      "string",
+      "fnmatch",
+      "subprocess"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\iiscentralcertp.py": [
+      "random",
+      "xml",
+      "os",
+      "string",
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "base64",
+      "rsa",
+      "fnmatch"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\keepassconfig.py": [
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\mRemoteNG.py": [
+      "xml",
+      "os",
+      "Crypto",
+      "hashlib",
+      "io",
+      "lazagne",
+      "base64",
+      "glob"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\opensshforwindows.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\openvpn.py": [
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\puttycm.py": [
+      "xml",
+      "os",
+      "_winreg",
+      "lazagne",
+      "winreg"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\rclone.py": [
+      "os",
+      "Crypto",
+      "ConfigParser",
+      "configparser",
+      "lazagne",
+      "json",
+      "base64"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\rdpmanager.py": [
+      "base64",
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\unattended.py": [
+      "base64",
+      "xml",
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\vnc.py": [
+      "traceback",
+      "_winreg",
+      "lazagne",
+      "winreg",
+      "codecs",
+      "binascii"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\winscp.py": [
+      "_winreg",
+      "lazagne",
+      "winreg"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\wsl.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\sysadmin\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\wifi\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\windows\\autologon.py": [
+      "_winreg",
+      "lazagne",
+      "winreg"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\cachedump.py": [
+      "lazagne",
+      "creddump7"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\credfiles.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\credman.py": [
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\hashdump.py": [
+      "lazagne",
+      "creddump7"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\lsa_secrets.py": [
+      "lazagne",
+      "creddump7",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\ppypykatz.py": [
+      "lazagne",
+      "traceback",
+      "codecs"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\vault.py": [
+      "ctypes",
+      "lazagne"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\vaultfiles.py": [
+      "lazagne",
+      "os"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\windows.py": [
+      "_winreg",
+      "lazagne",
+      "winreg"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\common.py": [
+      "xml",
+      "io",
+      "codecs",
+      "struct",
+      "base64",
+      "crypto"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\crypto.py": [
+      "hashlib",
+      "lazagne",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\hbio.py": [
+      "io",
+      "hashlib",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\kdb4.py": [
+      "xml",
+      "io",
+      "hbio",
+      "codecs",
+      "zlib",
+      "common",
+      "gzip",
+      "base64",
+      "pureSalsa20",
+      "crypto"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\pureSalsa20.py": [
+      "lazagne",
+      "struct",
+      "array"
+    ],
+    "Windows\\lazagne\\softwares\\memory\\libkeepass\\__init__.py": [
+      "io",
+      "kdb4",
+      "contextlib",
+      "common"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\addrspace.py": [
+      "os",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\newobj.py": [
+      "operator",
+      "types",
+      "struct",
+      "object"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\object.py": [
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\types.py": [],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\__init__.py": [],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\win32\\domcachedump.py": [
+      "lsasecrets",
+      "hashlib",
+      "hmac",
+      "hashdump",
+      "lazagne",
+      "rawreg",
+      "addrspace",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\win32\\hashdump.py": [
+      "hashlib",
+      "codecs",
+      "lazagne",
+      "rawreg",
+      "addrspace",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\win32\\lsasecrets.py": [
+      "os",
+      "hashlib",
+      "hashdump",
+      "lazagne",
+      "rawreg",
+      "addrspace"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\win32\\rawreg.py": [
+      "newobj",
+      "struct"
+    ],
+    "Windows\\lazagne\\softwares\\windows\\creddump7\\win32\\__init__.py": []
+  }
+}

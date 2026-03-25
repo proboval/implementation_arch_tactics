@@ -5,8 +5,8 @@
   "avg_files_per_package": 4.214285714285714,
   "imports_graph": {
     "setup.py": [
-      "re",
-      "setuptools"
+      "setuptools",
+      "re"
     ],
     "gixy\\__init__.py": [
       "gixy"
@@ -19,15 +19,15 @@
     ],
     "tests\\__init__.py": [],
     "gixy\\cli\\argparser.py": [
-      "six",
+      "gixy",
       "configargparse",
-      "gixy"
+      "six"
     ],
     "gixy\\cli\\main.py": [
-      "sys",
-      "copy",
-      "gixy",
       "os",
+      "gixy",
+      "copy",
+      "sys",
       "logging"
     ],
     "gixy\\cli\\__init__.py": [],
@@ -38,41 +38,41 @@
       "gixy"
     ],
     "gixy\\core\\context.py": [
-      "copy",
       "logging",
+      "copy",
       "gixy"
     ],
     "gixy\\core\\exceptions.py": [],
     "gixy\\core\\issue.py": [],
     "gixy\\core\\manager.py": [
       "os",
-      "gixy",
-      "logging"
+      "logging",
+      "gixy"
     ],
     "gixy\\core\\plugins_manager.py": [
       "os",
       "gixy"
     ],
     "gixy\\core\\regexp.py": [
+      "cached_property",
+      "random",
       "six",
       "gixy",
-      "cached_property",
       "itertools",
       "re",
-      "logging",
-      "random"
+      "logging"
     ],
     "gixy\\core\\severity.py": [],
     "gixy\\core\\utils.py": [],
     "gixy\\core\\variable.py": [
-      "gixy",
+      "re",
       "logging",
-      "re"
+      "gixy"
     ],
     "gixy\\core\\__init__.py": [],
     "gixy\\directives\\block.py": [
-      "gixy",
-      "cached_property"
+      "cached_property",
+      "gixy"
     ],
     "gixy\\directives\\directive.py": [
       "gixy"
@@ -90,9 +90,9 @@
       "gixy"
     ],
     "gixy\\formatters\\json.py": [
+      "json",
       "__future__",
-      "gixy",
-      "json"
+      "gixy"
     ],
     "gixy\\formatters\\text.py": [
       "__future__",
@@ -108,19 +108,19 @@
       "gixy"
     ],
     "gixy\\parser\\nginx_parser.py": [
-      "pyparsing",
-      "gixy",
-      "fnmatch",
       "os",
       "logging",
+      "gixy",
+      "pyparsing",
+      "fnmatch",
       "glob"
     ],
     "gixy\\parser\\raw_parser.py": [
-      "six",
-      "pyparsing",
       "cached_property",
-      "logging",
-      "codecs"
+      "six",
+      "codecs",
+      "pyparsing",
+      "logging"
     ],
     "gixy\\parser\\__init__.py": [],
     "gixy\\plugins\\add_header_multiline.py": [
@@ -139,16 +139,16 @@
       "gixy"
     ],
     "gixy\\plugins\\origins.py": [
-      "gixy",
+      "re",
       "logging",
-      "re"
+      "gixy"
     ],
     "gixy\\plugins\\plugin.py": [
       "gixy"
     ],
     "gixy\\plugins\\ssrf.py": [
-      "gixy",
-      "re"
+      "re",
+      "gixy"
     ],
     "gixy\\plugins\\valid_referers.py": [
       "gixy"
@@ -163,52 +163,52 @@
       "_sre"
     ],
     "gixy\\core\\sre_parse\\sre_parse.py": [
-      "__future__",
+      "warnings",
       "sre_constants",
-      "warnings"
+      "__future__"
     ],
     "gixy\\core\\sre_parse\\__init__.py": [],
     "tests\\core\\test_context.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\test_regexp.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\test_variable.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\__init__.py": [],
     "tests\\directives\\test_block.py": [
-      "gixy",
       "tests",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\directives\\test_directive.py": [
-      "gixy",
       "tests",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\directives\\__init__.py": [],
     "tests\\parser\\test_nginx_parser.py": [
-      "gixy",
       "tests",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\parser\\test_raw_parser.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\parser\\__init__.py": [],
     "tests\\plugins\\test_simply.py": [
-      "gixy",
-      "nose",
-      "utils",
       "json",
+      "nose",
       "os",
-      "tests"
+      "gixy",
+      "tests",
+      "utils"
     ],
     "tests\\plugins\\__init__.py": []
   }

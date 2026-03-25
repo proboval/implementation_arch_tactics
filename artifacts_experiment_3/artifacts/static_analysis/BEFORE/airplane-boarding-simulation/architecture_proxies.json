@@ -5,23 +5,23 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "agent.py": [
-      "stable_baselines3",
-      "sb3_contrib",
       "gymnasium",
+      "stable_baselines3",
       "os",
+      "sb3_contrib",
       "airplane_boarding"
     ],
     "airplane_boarding.py": [
-      "enum",
-      "boarding_strategies",
       "gymnasium",
-      "pygame",
+      "enum",
       "argparse",
-      "numpy"
+      "pygame",
+      "numpy",
+      "boarding_strategies"
     ],
     "boarding_strategies.py": [
-      "gymnasium",
-      "numpy"
+      "numpy",
+      "gymnasium"
     ],
     "main.py": [
       "gymnasium",
@@ -34,9 +34,9 @@
       "numpy"
     ],
     "run_strategies.py": [
+      "numpy",
       "matplotlib",
-      "boarding_strategies",
-      "numpy"
+      "boarding_strategies"
     ]
   }
 }

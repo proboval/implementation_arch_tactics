@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling (avg_fan_out: 4.6875, factors C1/C2 in architecture_maintainability), with modules like helpers.py and structures.py being heavily imported across 12+ API client modules (sonarr.py, radarr.py, tautulli.py, etc.), and iniparser.py directly importing from structures.py and helpers.py while also being imported by utilities/. This tight coupling increases ripple effects during changes, reduces testability (modules cannot be unit-tested in isolation), and contributes to the low maintainability index (mi_avg: 52.29, mi_min: 28.64 in helpers.py and tautulli.py). Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces or protocols) to decouple API clients from concrete implementations of helpers and structures, and by removing direct cross-module dependencies (e.g., helpers.py importing from varken package root).",
+  "target_components": [
+    "varken/helpers.py",
+    "varken/structures.py",
+    "varken/iniparser.py",
+    "varken/sonarr.py",
+    "varken/radarr.py",
+    "varken/tautulli.py",
+    "varken/lidarr.py",
+    "varken/ombi.py",
+    "varken/sickchill.py",
+    "varken/unifi.py"
+  ],
+  "expected_architectural_change": "Introduction of well-defined interfaces (e.g., via Python protocols or abstract base classes) for shared services (e.g., a 'ConfigProvider' interface replacing direct iniparser usage, and a 'ConfigurableServer' interface for server structures). API client modules will depend on interfaces rather than concrete implementations, and helpers.py will be refactored to avoid importing from the varken package root (e.g., removing circular dependencies with iniparser.py). This reduces fan-out per module and increases cohesion by grouping related responsibilities into cohesive, interface-driven units.",
+  "implementation_strategy": "1. Define protocols for core abstractions (e.g., ConfigProvider, ServerConfig, APIResponseHandler) in a new varken/interfaces.py or varken/protocols.py module. 2. Refactor iniparser.py to implement ConfigProvider and inject it into API clients instead of direct imports. 3. Refactor structures.py to implement ServerConfig protocol, and update API clients to accept server configs via constructor injection. 4. Remove varken package-level imports in helpers.py (e.g., remove 'from varken.varkenlogger import BlacklistFilter' and refactor BlacklistFilter usage via dependency injection). 5. Introduce a factory or registry pattern for API client instantiation to decouple Varken.py from concrete classes. 6. Update unit tests to mock interfaces instead of concrete modules.",
+  "risks": "Initial refactoring may increase complexity temporarily due to interface proliferation. Requires disciplined adherence to dependency inversion to avoid reintroducing coupling. Testing infrastructure must be updated to validate interface contracts. However, risks are mitigated by incremental adoption: interfaces can be added gradually without breaking existing functionality, and the flat monolithic structure allows safe, localized changes without deployment concerns."
+}

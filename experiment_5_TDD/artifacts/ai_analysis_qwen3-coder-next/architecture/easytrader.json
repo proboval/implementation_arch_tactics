@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module separation by domain: clienttrader, follower, webtrader, utils, config, exceptions, log, etc., with each module having cohesive responsibilities",
+    "Shared core abstractions (IClientTrader, IGridStrategy, IRefreshStrategy, BaseFollower, WebTrader) indicate strong internal cohesion and consistent interface design",
+    "No inter-service communication patterns (e.g., no message queues, RPC stubs, or service discovery), and all components run in a single process",
+    "Multiple broker-specific trader implementations (e.g., GFClientTrader, HTClientTrader, YHClientTrader) inherit from a common base, showing modular extensibility within one deployment unit",
+    "Server module uses Flask to expose a local API, but remains tightly integrated with core trading modules rather than being decoupled as a separate service",
+    "Repository depth of 3 and 5 packages suggest a flat but organized hierarchy typical of modular monoliths",
+    "Low average fan-out (1.64) indicates modules depend on few others, supporting modularity without distributed complexity"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between UI automation (pywinauto) and business logic may hinder testability and maintainability",
+    "Multiple inheritance hierarchies (e.g., ClientTrader → BaseLoginClientTrader → concrete traders) increase complexity and risk of fragile base class problem",
+    "Shared state in follower threads and trader instances may cause concurrency issues in multi-strategy scenarios"
+  ]
+}

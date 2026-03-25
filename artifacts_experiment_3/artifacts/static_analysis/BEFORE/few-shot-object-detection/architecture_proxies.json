@@ -5,106 +5,106 @@
   "avg_files_per_package": 4.363636363636363,
   "imports_graph": {
     "datasets\\prepare_coco_few_shot.py": [
-      "random",
+      "json",
       "os",
       "argparse",
-      "json"
+      "random"
     ],
     "datasets\\prepare_lvis_few_shot.py": [
-      "random",
+      "json",
       "os",
       "argparse",
-      "json"
+      "random"
     ],
     "datasets\\prepare_voc_few_shot.py": [
-      "copy",
-      "fsdet",
-      "os",
-      "numpy",
       "argparse",
       "random",
-      "xml"
+      "os",
+      "xml",
+      "numpy",
+      "fsdet",
+      "copy"
     ],
     "datasets\\split_lvis_annotation.py": [
+      "json",
       "os",
-      "argparse",
-      "json"
+      "argparse"
     ],
     "demo\\demo.py": [
+      "argparse",
+      "os",
+      "time",
+      "demo",
+      "multiprocessing",
       "tqdm",
+      "fsdet",
       "cv2",
       "detectron2",
-      "fsdet",
-      "multiprocessing",
-      "time",
-      "os",
-      "demo",
-      "argparse",
       "glob"
     ],
     "demo\\predictor.py": [
-      "cv2",
-      "collections",
-      "detectron2",
-      "fsdet",
-      "multiprocessing",
-      "bisect",
       "torch",
+      "collections",
+      "multiprocessing",
+      "fsdet",
+      "bisect",
+      "cv2",
+      "detectron2",
       "atexit"
     ],
     "fsdet\\__init__.py": [],
     "tools\\aggregate_seeds.py": [
-      "matplotlib",
-      "math",
       "json",
-      "os",
       "argparse",
-      "numpy"
+      "math",
+      "os",
+      "numpy",
+      "matplotlib"
     ],
     "tools\\ckpt_surgery.py": [
+      "torch",
       "os",
-      "argparse",
-      "torch"
+      "argparse"
     ],
     "tools\\run_experiments.py": [
-      "os",
-      "yaml",
       "argparse",
+      "os",
       "subprocess",
+      "yaml",
       "ast"
     ],
     "tools\\test_net.py": [
-      "detectron2",
-      "fsdet",
-      "time",
       "json",
       "os",
-      "numpy"
+      "time",
+      "fsdet",
+      "numpy",
+      "detectron2"
     ],
     "tools\\train_net.py": [
-      "detectron2",
+      "fsdet",
       "os",
-      "fsdet"
+      "detectron2"
     ],
     "tools\\visualize_data.py": [
+      "argparse",
+      "os",
+      "itertools",
+      "numpy",
       "PIL",
       "cv2",
-      "detectron2",
-      "itertools",
-      "os",
-      "argparse",
-      "numpy"
+      "detectron2"
     ],
     "tools\\visualize_json_results.py": [
-      "tqdm",
-      "cv2",
-      "collections",
-      "detectron2",
-      "fsdet",
       "json",
-      "os",
       "argparse",
-      "numpy"
+      "collections",
+      "os",
+      "tqdm",
+      "fsdet",
+      "numpy",
+      "cv2",
+      "detectron2"
     ],
     "tools\\__init__.py": [],
     "fsdet\\checkpoint\\catalog.py": [
@@ -115,15 +115,15 @@
     ],
     "fsdet\\config\\compat.py": [
       "defaults",
-      "config",
+      "typing",
       "logging",
-      "typing"
+      "config"
     ],
     "fsdet\\config\\config.py": [
       "defaults",
       "logging",
-      "compat",
-      "fvcore"
+      "fvcore",
+      "compat"
     ],
     "fsdet\\config\\defaults.py": [
       "detectron2"
@@ -133,123 +133,123 @@
       "compat"
     ],
     "fsdet\\data\\builtin.py": [
-      "detectron2",
-      "meta_pascal_voc",
-      "builtin_meta",
-      "meta_lvis",
       "os",
-      "meta_coco"
+      "meta_lvis",
+      "detectron2",
+      "builtin_meta",
+      "meta_coco",
+      "meta_pascal_voc"
     ],
     "fsdet\\data\\builtin_meta.py": [
       "lvis_v0_5_categories"
     ],
     "fsdet\\data\\lvis_v0_5_categories.py": [],
     "fsdet\\data\\meta_coco.py": [
-      "detectron2",
-      "fsdet",
       "pycocotools",
+      "contextlib",
       "os",
       "io",
-      "contextlib",
-      "numpy"
+      "fsdet",
+      "numpy",
+      "detectron2"
     ],
     "fsdet\\data\\meta_lvis.py": [
-      "detectron2",
-      "fsdet",
-      "os",
-      "logging",
-      "lvis",
+      "fvcore",
       "lvis_v0_5_categories",
-      "fvcore"
+      "os",
+      "lvis",
+      "fsdet",
+      "detectron2",
+      "logging"
     ],
     "fsdet\\data\\meta_pascal_voc.py": [
-      "detectron2",
-      "fsdet",
       "os",
+      "xml",
       "numpy",
-      "xml"
+      "fsdet",
+      "detectron2"
     ],
     "fsdet\\data\\__init__.py": [],
     "fsdet\\engine\\defaults.py": [
-      "collections",
-      "detectron2",
-      "fsdet",
-      "os",
-      "logging",
-      "argparse",
       "torch",
-      "fvcore"
+      "argparse",
+      "fvcore",
+      "collections",
+      "os",
+      "fsdet",
+      "detectron2",
+      "logging"
     ],
     "fsdet\\engine\\hooks.py": [
-      "detectron2",
-      "os",
+      "fsdet",
       "json",
-      "fsdet"
+      "os",
+      "detectron2"
     ],
     "fsdet\\engine\\__init__.py": [
+      "fsdet",
       "defaults",
-      "hooks",
-      "fsdet"
+      "hooks"
     ],
     "fsdet\\evaluation\\coco_evaluation.py": [
-      "collections",
-      "copy",
-      "detectron2",
-      "fsdet",
-      "pycocotools",
-      "itertools",
-      "tabulate",
-      "json",
-      "os",
-      "logging",
-      "io",
       "torch",
+      "json",
+      "pycocotools",
       "contextlib",
-      "numpy"
+      "collections",
+      "os",
+      "io",
+      "itertools",
+      "numpy",
+      "fsdet",
+      "copy",
+      "tabulate",
+      "detectron2",
+      "logging"
     ],
     "fsdet\\evaluation\\evaluator.py": [
-      "collections",
-      "detectron2",
-      "time",
-      "datetime",
-      "logging",
       "torch",
-      "contextlib"
+      "datetime",
+      "contextlib",
+      "collections",
+      "time",
+      "detectron2",
+      "logging"
     ],
     "fsdet\\evaluation\\lvis_evaluation.py": [
+      "torch",
+      "json",
       "collections",
+      "os",
+      "lvis",
+      "itertools",
+      "fsdet",
       "copy",
       "detectron2",
-      "fsdet",
-      "itertools",
-      "json",
-      "os",
-      "logging",
-      "torch",
-      "lvis"
+      "logging"
     ],
     "fsdet\\evaluation\\pascal_voc_evaluation.py": [
-      "collections",
-      "detectron2",
-      "fsdet",
-      "tempfile",
-      "os",
-      "numpy",
-      "logging",
       "torch",
       "functools",
-      "xml"
+      "collections",
+      "os",
+      "xml",
+      "numpy",
+      "fsdet",
+      "detectron2",
+      "tempfile",
+      "logging"
     ],
     "fsdet\\evaluation\\testing.py": [
-      "sys",
       "collections",
-      "pprint",
       "logging",
-      "numpy"
+      "numpy",
+      "sys",
+      "pprint"
     ],
     "fsdet\\evaluation\\__init__.py": [
-      "pascal_voc_evaluation",
       "testing",
+      "pascal_voc_evaluation",
       "evaluator",
       "lvis_evaluation",
       "coco_evaluation"
@@ -259,11 +259,11 @@
       "roi_heads"
     ],
     "fsdet\\model_zoo\\model_zoo.py": [
-      "detectron2",
-      "fsdet",
-      "pkg_resources",
+      "torch",
       "os",
-      "torch"
+      "pkg_resources",
+      "fsdet",
+      "detectron2"
     ],
     "fsdet\\model_zoo\\__init__.py": [
       "model_zoo"
@@ -275,11 +275,11 @@
       "detectron2"
     ],
     "fsdet\\modeling\\meta_arch\\rcnn.py": [
-      "detectron2",
-      "fsdet",
-      "logging",
       "torch",
-      "build"
+      "build",
+      "fsdet",
+      "detectron2",
+      "logging"
     ],
     "fsdet\\modeling\\meta_arch\\__init__.py": [
       "rcnn",
@@ -287,29 +287,29 @@
     ],
     "fsdet\\modeling\\roi_heads\\box_head.py": [
       "torch",
-      "detectron2",
       "numpy",
-      "fvcore"
+      "fvcore",
+      "detectron2"
     ],
     "fsdet\\modeling\\roi_heads\\fast_rcnn.py": [
-      "detectron2",
-      "logging",
       "torch",
+      "fvcore",
       "numpy",
-      "fvcore"
+      "detectron2",
+      "logging"
     ],
     "fsdet\\modeling\\roi_heads\\roi_heads.py": [
-      "detectron2",
-      "box_head",
-      "typing",
-      "logging",
       "torch",
       "fast_rcnn",
-      "numpy"
+      "logging",
+      "numpy",
+      "detectron2",
+      "box_head",
+      "typing"
     ],
     "fsdet\\modeling\\roi_heads\\__init__.py": [
-      "box_head",
-      "roi_heads"
+      "roi_heads",
+      "box_head"
     ]
   }
 }

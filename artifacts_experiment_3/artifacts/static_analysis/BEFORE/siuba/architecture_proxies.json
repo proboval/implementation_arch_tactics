@@ -5,104 +5,104 @@
   "avg_files_per_package": 8.214285714285714,
   "imports_graph": {
     "setup.py": [
-      "ast",
+      "setuptools",
       "re",
-      "setuptools"
+      "ast"
     ],
     "docs\\conf.py": [
-      "alabaster",
+      "jupytext",
       "subprocess",
-      "jupytext"
+      "alabaster"
     ],
     "siuba\\meta_hook.py": [
-      "sys",
-      "pdb",
-      "warnings",
-      "siu",
       "functools",
+      "siu",
       "types",
+      "sys",
+      "readline",
+      "warnings",
       "importlib",
-      "readline"
+      "pdb"
     ],
     "siuba\\__init__.py": [
       "siu",
       "dply"
     ],
     "docs\\scripts\\generate_autodoc.py": [
-      "sys",
       "pathlib",
+      "sys",
       "ast"
     ],
     "docs\\scripts\\upload_airtable.py": [
       "pandas",
-      "airtable",
       "siuba",
-      "os"
+      "os",
+      "airtable"
     ],
     "siuba\\data\\__init__.py": [
       "pandas",
-      "pkg_resources",
-      "siuba"
+      "siuba",
+      "pkg_resources"
     ],
     "siuba\\dply\\across.py": [
       "collections",
-      "contextvars",
-      "typing",
       "verbs",
       "contextlib",
+      "contextvars",
+      "pandas",
       "siu",
-      "pandas"
+      "typing"
     ],
     "siuba\\dply\\forcats.py": [
       "pandas",
-      "collections",
       "numpy",
-      "siuba"
+      "siuba",
+      "collections"
     ],
     "siuba\\dply\\string.py": [
-      "itertools",
-      "siu",
-      "pandas",
       "functools",
-      "numpy"
+      "pandas",
+      "numpy",
+      "itertools",
+      "siu"
     ],
     "siuba\\dply\\tidyselect.py": [
+      "functools",
       "collections",
-      "siuba",
-      "itertools",
-      "typing",
       "pandas",
-      "functools"
+      "itertools",
+      "siuba",
+      "typing"
     ],
     "siuba\\dply\\vector.py": [
       "pandas",
-      "functools",
       "numpy",
-      "siuba"
+      "siuba",
+      "functools"
     ],
     "siuba\\dply\\verbs.py": [
+      "functools",
       "collections",
-      "siuba",
+      "tidyselect",
+      "pandas",
+      "numpy",
+      "vector",
       "sqlalchemy",
       "warnings",
-      "tidyselect",
-      "vector",
-      "pandas",
-      "functools",
-      "numpy"
+      "siuba"
     ],
     "siuba\\dply\\__init__.py": [],
     "siuba\\experimental\\completer.py": [
-      "siuba",
-      "typing",
-      "IPython",
+      "functools",
       "contextlib",
-      "functools"
+      "IPython",
+      "siuba",
+      "typing"
     ],
     "siuba\\experimental\\datetime.py": [
       "pandas",
-      "abc",
-      "siuba"
+      "siuba",
+      "abc"
     ],
     "siuba\\experimental\\__init__.py": [],
     "siuba\\ops\\dt.py": [
@@ -120,9 +120,9 @@
     ],
     "siuba\\ops\\utils.py": [
       "pandas",
-      "functools",
       "types",
-      "siuba"
+      "siuba",
+      "functools"
     ],
     "siuba\\ops\\__init__.py": [
       "generics",
@@ -130,17 +130,17 @@
     ],
     "siuba\\siu\\calls.py": [
       "collections",
-      "itertools",
-      "abc",
+      "operator",
       "symbolic",
-      "operator"
+      "itertools",
+      "abc"
     ],
     "siuba\\siu\\dispatchers.py": [
-      "inspect",
-      "typing",
-      "symbolic",
-      "warnings",
       "functools",
+      "symbolic",
+      "inspect",
+      "warnings",
+      "typing",
       "calls"
     ],
     "siuba\\siu\\error.py": [
@@ -152,20 +152,20 @@
       "calls"
     ],
     "siuba\\siu\\symbolic.py": [
+      "format",
       "functools",
-      "calls",
-      "format"
+      "calls"
     ],
     "siuba\\siu\\utils.py": [
       "typing",
       "inspect"
     ],
     "siuba\\siu\\visitors.py": [
-      "inspect",
       "utils",
       "error",
-      "typing",
       "symbolic",
+      "inspect",
+      "typing",
       "calls"
     ],
     "siuba\\siu\\_databackend.py": [
@@ -174,254 +174,254 @@
       "importlib"
     ],
     "siuba\\siu\\__init__.py": [
-      "calls",
       "dispatchers",
       "symbolic",
-      "visitors"
+      "visitors",
+      "calls"
     ],
     "siuba\\sql\\across.py": [
-      "siuba",
-      "utils",
       "translate",
+      "sqlalchemy",
       "backend",
-      "sqlalchemy"
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\backend.py": [
-      "functools",
-      "siuba",
-      "utils",
       "translate",
+      "functools",
       "verbs",
+      "sqlalchemy",
       "warnings",
-      "sqlalchemy"
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\translate.py": [
-      "sqlalchemy",
-      "functools",
       "warnings",
-      "siuba"
+      "siuba",
+      "functools",
+      "sqlalchemy"
     ],
     "siuba\\sql\\utils.py": [
-      "re",
       "contextlib",
       "pandas",
-      "sqlalchemy",
+      "re",
       "types",
+      "sqlalchemy",
       "importlib"
     ],
     "siuba\\sql\\__init__.py": [
-      "backend",
       "translate",
+      "backend",
       "dply"
     ],
     "siuba\\tests\\conftest.py": [],
     "siuba\\tests\\fixtures.py": [
-      "pytest",
-      "helpers"
+      "helpers",
+      "pytest"
     ],
     "siuba\\tests\\helpers.py": [
       "urllib",
-      "uuid",
       "functools",
-      "siuba",
-      "re",
-      "hashlib",
       "os",
-      "pytest",
       "pandas",
+      "re",
+      "numpy",
       "sqlalchemy",
-      "numpy"
+      "pytest",
+      "siuba",
+      "uuid",
+      "hashlib"
     ],
     "siuba\\tests\\test_data_imports.py": [
-      "importlib",
-      "siuba"
+      "siuba",
+      "importlib"
     ],
     "siuba\\tests\\test_dply_datetime.py": [
       "pandas",
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_dply_forcats.py": [
       "pandas",
-      "pytest",
       "numpy",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_dply_series_methods.py": [
       "helpers",
-      "siuba",
       "pkg_resources",
-      "pytest",
       "pandas",
-      "numpy"
+      "numpy",
+      "pytest",
+      "siuba"
     ],
     "siuba\\tests\\test_dply_vector.py": [
-      "helpers",
-      "hypothesis",
-      "siuba",
       "datetime",
+      "hypothesis",
+      "helpers",
+      "pandas",
       "pytest",
-      "pandas"
+      "siuba"
     ],
     "siuba\\tests\\test_dply_verbs.py": [
       "pandas",
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_error.py": [
+      "siuba",
       "sys",
-      "pytest",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_forcats.py": [
       "pandas",
-      "pytest",
       "numpy",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_siu.py": [
       "operator",
-      "pytest",
       "numpy",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_siu_dispatchers.py": [
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_siu_symbolic.py": [
       "pandas",
-      "pytest",
       "numpy",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_sql_misc.py": [
-      "sqlalchemy",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "sqlalchemy",
+      "pytest"
     ],
     "siuba\\tests\\test_sql_utils.py": [
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_sql_verbs.py": [
       "pandas",
+      "siuba",
+      "sqlalchemy",
+      "pytest"
+    ],
+    "siuba\\tests\\test_vector.py": [
+      "pandas",
+      "siuba",
+      "pytest"
+    ],
+    "siuba\\tests\\test_verb_across.py": [
+      "pandas",
+      "siuba",
+      "pytest"
+    ],
+    "siuba\\tests\\test_verb_arrange.py": [
+      "pandas",
+      "siuba",
+      "helpers",
+      "pytest"
+    ],
+    "siuba\\tests\\test_verb_case_when.py": [
+      "pandas",
+      "numpy",
+      "siuba",
+      "pytest"
+    ],
+    "siuba\\tests\\test_verb_count.py": [
+      "pandas",
+      "siuba",
+      "helpers",
+      "pytest"
+    ],
+    "siuba\\tests\\test_verb_distinct.py": [
+      "helpers",
+      "os",
+      "pandas",
       "sqlalchemy",
       "pytest",
       "siuba"
     ],
-    "siuba\\tests\\test_vector.py": [
-      "pandas",
-      "pytest",
-      "siuba"
-    ],
-    "siuba\\tests\\test_verb_across.py": [
-      "pandas",
-      "pytest",
-      "siuba"
-    ],
-    "siuba\\tests\\test_verb_arrange.py": [
-      "pandas",
-      "pytest",
-      "helpers",
-      "siuba"
-    ],
-    "siuba\\tests\\test_verb_case_when.py": [
-      "pandas",
-      "pytest",
-      "numpy",
-      "siuba"
-    ],
-    "siuba\\tests\\test_verb_count.py": [
-      "pandas",
-      "pytest",
-      "helpers",
-      "siuba"
-    ],
-    "siuba\\tests\\test_verb_distinct.py": [
-      "helpers",
-      "siuba",
-      "os",
-      "pytest",
-      "pandas",
-      "sqlalchemy"
-    ],
     "siuba\\tests\\test_verb_filter.py": [
       "pandas",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_verb_group_by.py": [
-      "string",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "string",
+      "pytest"
     ],
     "siuba\\tests\\test_verb_head.py": [
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_verb_join.py": [
       "pandas",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_verb_mutate.py": [
-      "string",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "string",
+      "pytest"
     ],
     "siuba\\tests\\test_verb_select.py": [
-      "string",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "string",
+      "pytest"
     ],
     "siuba\\tests\\test_verb_separate.py": [
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_verb_show_query.py": [
       "pandas",
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_verb_spread.py": [
       "pandas",
-      "pytest",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\tests\\test_verb_summarize.py": [
       "string",
       "helpers",
-      "siuba",
+      "numpy",
       "pytest",
-      "numpy"
+      "siuba"
     ],
     "siuba\\tests\\test_verb_transmute.py": [
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\test_verb_utils.py": [
       "pandas",
-      "pytest",
+      "siuba",
       "helpers",
-      "siuba"
+      "pytest"
     ],
     "siuba\\tests\\__init__.py": [],
     "siuba\\experimental\\pd_groups\\dialect.py": [
-      "groupby",
-      "siuba",
       "translate",
+      "groupby",
+      "pandas",
       "warnings",
-      "pandas"
+      "siuba"
     ],
     "siuba\\experimental\\pd_groups\\groupby.py": [
       "pandas",
@@ -429,87 +429,87 @@
       "inspect"
     ],
     "siuba\\experimental\\pd_groups\\test_pd_groups.py": [
-      "siuba",
-      "typing",
       "dialect",
+      "pandas",
       "pytest",
-      "pandas"
+      "siuba",
+      "typing"
     ],
     "siuba\\experimental\\pd_groups\\translate.py": [
       "groupby",
-      "pandas",
-      "siuba"
+      "siuba",
+      "pandas"
     ],
     "siuba\\experimental\\pd_groups\\__init__.py": [
       "dialect"
     ],
     "siuba\\experimental\\pivot\\pivot_long.py": [
-      "siuba",
       "utils",
-      "typing",
-      "re",
-      "pandas",
-      "numpy"
-    ],
-    "siuba\\experimental\\pivot\\pivot_wide.py": [
-      "siuba",
-      "utils",
-      "typing",
       "pandas",
       "numpy",
-      "operator"
+      "re",
+      "siuba",
+      "typing"
+    ],
+    "siuba\\experimental\\pivot\\pivot_wide.py": [
+      "typing",
+      "operator",
+      "pandas",
+      "numpy",
+      "siuba",
+      "utils"
     ],
     "siuba\\experimental\\pivot\\sql_pivot_long.py": [
-      "siuba",
-      "json",
       "pivot_long",
+      "json",
       "pandas",
-      "sqlalchemy"
+      "sqlalchemy",
+      "siuba"
     ],
     "siuba\\experimental\\pivot\\sql_pivot_wide.py": [
-      "siuba",
-      "utils",
-      "sql_pivot_long",
       "pivot_wide",
+      "sql_pivot_long",
       "pandas",
-      "sqlalchemy"
+      "sqlalchemy",
+      "siuba",
+      "utils"
     ],
     "siuba\\experimental\\pivot\\test_pivot.py": [
       "pandas",
-      "pytest",
       "numpy",
-      "siuba"
+      "siuba",
+      "pytest"
     ],
     "siuba\\experimental\\pivot\\test_pivot_wide.py": [
-      "test_pivot",
-      "siuba",
-      "pytest",
       "pandas",
-      "numpy"
+      "numpy",
+      "pytest",
+      "siuba",
+      "test_pivot"
     ],
     "siuba\\experimental\\pivot\\utils.py": [
       "pandas",
-      "collections",
       "re",
-      "typing"
+      "typing",
+      "collections"
     ],
     "siuba\\experimental\\pivot\\__init__.py": [
-      "pivot_long",
-      "pivot_wide"
+      "pivot_wide",
+      "pivot_long"
     ],
     "siuba\\ops\\support\\base.py": [
-      "siuba",
-      "pkg_resources",
       "json",
+      "pkg_resources",
+      "pandas",
       "yaml",
-      "pandas"
+      "siuba"
     ],
     "siuba\\ops\\support\\__init__.py": [
       "base"
     ],
     "siuba\\sql\\dialects\\base.py": [
-      "functools",
       "sqlalchemy",
+      "functools",
       "siuba"
     ],
     "siuba\\sql\\dialects\\bigquery.py": [
@@ -517,11 +517,11 @@
       "sqlalchemy"
     ],
     "siuba\\sql\\dialects\\duckdb.py": [
-      "siuba",
-      "postgresql",
-      "base",
       "translate",
-      "sqlalchemy"
+      "base",
+      "postgresql",
+      "sqlalchemy",
+      "siuba"
     ],
     "siuba\\sql\\dialects\\mysql.py": [
       "translate",
@@ -529,9 +529,9 @@
     ],
     "siuba\\sql\\dialects\\postgresql.py": [
       "translate",
+      "base",
       "sqlalchemy",
-      "siuba",
-      "base"
+      "siuba"
     ],
     "siuba\\sql\\dialects\\redshift.py": [
       "translate",
@@ -539,119 +539,119 @@
     ],
     "siuba\\sql\\dialects\\snowflake.py": [
       "translate",
-      "sqlalchemy",
-      "base"
-    ],
-    "siuba\\sql\\dialects\\sqlite.py": [
-      "siuba",
-      "utils",
       "base",
-      "translate",
       "sqlalchemy"
     ],
-    "siuba\\sql\\dialects\\_dt_generics.py": [
+    "siuba\\sql\\dialects\\sqlite.py": [
+      "translate",
       "sqlalchemy",
-      "siuba"
+      "siuba",
+      "base",
+      "utils"
+    ],
+    "siuba\\sql\\dialects\\_dt_generics.py": [
+      "siuba",
+      "sqlalchemy"
     ],
     "siuba\\sql\\dialects\\__init__.py": [],
     "siuba\\sql\\dply\\string.py": [
-      "sqlalchemy",
-      "siuba"
+      "siuba",
+      "sqlalchemy"
     ],
     "siuba\\sql\\dply\\vector.py": [
-      "siuba",
       "translate",
       "dialects",
+      "sqlalchemy",
       "warnings",
-      "sqlalchemy"
+      "siuba"
     ],
     "siuba\\sql\\dply\\__init__.py": [],
     "siuba\\sql\\verbs\\arrange.py": [
-      "backend",
       "translate",
+      "siuba",
       "utils",
-      "siuba"
+      "backend"
     ],
     "siuba\\sql\\verbs\\compute.py": [
-      "backend",
+      "siuba",
       "utils",
-      "siuba"
+      "backend"
     ],
     "siuba\\sql\\verbs\\conditional.py": [
-      "siuba",
-      "utils",
       "translate",
-      "warnings",
+      "sqlalchemy",
       "backend",
-      "sqlalchemy"
+      "warnings",
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\count.py": [
-      "siuba",
-      "utils",
       "translate",
       "mutate",
       "backend",
-      "sqlalchemy"
+      "sqlalchemy",
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\distinct.py": [
-      "backend",
-      "utils",
-      "mutate",
-      "siuba"
-    ],
-    "siuba\\sql\\verbs\\explain.py": [
-      "backend",
-      "utils",
-      "siuba"
-    ],
-    "siuba\\sql\\verbs\\filter.py": [
       "siuba",
       "utils",
-      "translate",
       "backend",
-      "sqlalchemy"
+      "mutate"
+    ],
+    "siuba\\sql\\verbs\\explain.py": [
+      "siuba",
+      "utils",
+      "backend"
+    ],
+    "siuba\\sql\\verbs\\filter.py": [
+      "translate",
+      "sqlalchemy",
+      "backend",
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\group_by.py": [
-      "backend",
+      "siuba",
       "utils",
-      "mutate",
-      "siuba"
+      "backend",
+      "mutate"
     ],
     "siuba\\sql\\verbs\\head.py": [
-      "backend",
-      "siuba"
+      "siuba",
+      "backend"
     ],
     "siuba\\sql\\verbs\\join.py": [
       "collections",
-      "siuba",
-      "utils",
-      "warnings",
+      "sqlalchemy",
       "backend",
-      "sqlalchemy"
+      "warnings",
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\mutate.py": [
-      "siuba",
-      "utils",
       "translate",
+      "sqlalchemy",
       "backend",
-      "sqlalchemy"
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\select.py": [
-      "backend",
       "pandas",
-      "utils",
-      "siuba"
-    ],
-    "siuba\\sql\\verbs\\summarize.py": [
       "siuba",
       "utils",
+      "backend"
+    ],
+    "siuba\\sql\\verbs\\summarize.py": [
       "mutate",
       "backend",
-      "sqlalchemy"
+      "sqlalchemy",
+      "siuba",
+      "utils"
     ],
     "siuba\\sql\\verbs\\__init__.py": [
-      "backend",
-      "warnings"
+      "warnings",
+      "backend"
     ]
   }
 }

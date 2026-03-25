@@ -5,78 +5,78 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "heatmap.py": [
-      "csv",
-      "math",
-      "colorsys",
-      "argparse",
-      "shutil",
-      "subprocess",
-      "cPickle",
+      "collections",
+      "os",
+      "PIL",
+      "itertools",
       "xml",
+      "sys",
+      "ogr",
       "platform",
       "glob",
-      "collections",
-      "logging",
-      "osgeo",
+      "colorsys",
+      "cPickle",
+      "csv",
+      "subprocess",
+      "osmviz",
       "tempfile",
-      "itertools",
-      "PIL",
-      "sys",
-      "pickle",
-      "os",
-      "ogr",
-      "osmviz"
+      "logging",
+      "math",
+      "osgeo",
+      "shutil",
+      "argparse",
+      "pickle"
     ],
     "numpy_example.py": [
       "random",
-      "sys",
-      "numpy",
       "heatmap",
-      "__future__",
       "argparse",
+      "__future__",
+      "numpy",
+      "sys",
       "logging"
     ],
     "random_example.py": [
       "random",
-      "sys",
       "heatmap",
-      "__future__",
       "argparse",
+      "__future__",
+      "sys",
       "logging"
     ],
     "two_pass_example.py": [
-      "logging",
-      "heatmap",
       "PIL",
-      "sys"
+      "logging",
+      "sys",
+      "heatmap"
     ],
     "test\\helper.py": [
-      "subprocess",
       "coverage",
+      "os",
       "sys",
-      "unittest",
-      "os"
+      "subprocess",
+      "unittest"
     ],
     "test\\test.py": [
+      "sys",
       "heatmap",
-      "unittest",
-      "sys"
+      "unittest"
     ],
     "test\\test_animation.py": [
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "unittest"
     ],
     "test\\test_background.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ],
     "test\\test_configuration.py": [
+      "sys",
       "heatmap",
-      "unittest",
-      "sys"
+      "unittest"
     ],
     "test\\test_coordinates.py": [
       "heatmap",
@@ -87,64 +87,64 @@
       "unittest"
     ],
     "test\\test_gradients.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ],
     "test\\test_numpy.py": [
-      "subprocess",
-      "unittest2",
-      "sys",
       "helper",
-      "unittest",
-      "os"
+      "unittest2",
+      "os",
+      "sys",
+      "subprocess",
+      "unittest"
     ],
     "test\\test_old_cmdline_support.py": [
-      "subprocess",
+      "helper",
       "os",
-      "helper"
+      "subprocess"
     ],
     "test\\test_projections.py": [
       "heatmap",
       "unittest"
     ],
     "test\\test_projection_scale.py": [
-      "subprocess",
-      "sys",
-      "heatmap",
       "helper",
-      "unittest",
-      "os"
+      "heatmap",
+      "os",
+      "sys",
+      "subprocess",
+      "unittest"
     ],
     "test\\test_random.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ],
     "test\\test_shp_file.py": [
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "unittest"
     ],
     "test\\test_system.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ],
     "test\\test_system_csv.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ],
     "test\\test_system_gpx.py": [
-      "subprocess",
+      "helper",
       "os",
-      "unittest",
-      "helper"
+      "subprocess",
+      "unittest"
     ]
   }
 }

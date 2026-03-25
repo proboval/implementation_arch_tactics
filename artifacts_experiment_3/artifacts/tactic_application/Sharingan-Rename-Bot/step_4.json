@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "database/repository.py",
-  "content": "import database.database as db\nimport database.db as caption_db\n\n\nclass ThumbnailRepository:\n    async def save(self, user_id: int, msg_id: int):\n        await db.df_thumb(user_id, msg_id)\n\n    async def delete(self, user_id: int):\n        await db.del_thumb(user_id)\n\n    async def get(self, user_id: int):\n        return await db.thumb(user_id)\n\n\nclass CaptionRepository:\n    async def save(self, user_id: int, caption: str):\n        await caption_db.update_cap(user_id, caption)\n\n    async def delete(self, user_id: int):\n        await caption_db.del_caption(user_id)\n\n    async def get(self, user_id: int):\n        caption_obj = await caption_db.get_caption(user_id)\n        return caption_obj.caption if caption_obj else None\n\n\n# Expose singleton-like instances for injection\nthumbnail_repo = ThumbnailRepository()\ncaption_repo = CaptionRepository()\n"
-}

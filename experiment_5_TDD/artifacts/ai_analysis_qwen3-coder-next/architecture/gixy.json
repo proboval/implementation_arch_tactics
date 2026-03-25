@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear package/module structure with well-defined responsibilities (core, parser, directives, plugins, formatters, cli, utils)",
+    "Plugins follow a consistent interface (Plugin base class) and are dynamically loaded via PluginsManager",
+    "Core components (context, variable, regexp, config) are shared across modules, indicating tight integration",
+    "No explicit inter-process communication or service boundaries; all components run in a single process",
+    "Parser, formatter, and plugin systems are decoupled but tightly integrated within the same codebase",
+    "Directory depth of 4 and 14 packages suggest moderate modularity without distributed service boundaries",
+    "Test structure mirrors production structure, indicating monolithic testing approach"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between core modules (e.g., variable ↔ context ↔ regexp) may hinder independent evolution",
+    "Plugin system is modular but embedded in monolith — scaling or deploying plugins independently is not possible",
+    "Shared state via global context (CONTEXTS, get_context/push_context/pop_context) could complicate concurrent execution"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT23",
+    "name": "Exception",
+    "primary_qa_impact": "Reliability, Maintainability",
+    "positive_impact": "Reliability, Fault handling",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository contains a single-file script (starter.py) with no error handling visible in the provided signature, and static analysis flags 'T4' (lack of error handling) and 'A1' (poor error management) under code_maintainability. The script integrates WebSocket I/O, audio processing, and external APIs (ElevenLabs, proxy connections), all of which are high-risk areas for runtime failures. Without explicit exception handling, failures in any of these I/O-bound operations will cause ungraceful crashes, making debugging and maintenance difficult. Introducing structured exception handling directly addresses this maintainability gap by localizing fault detection and recovery, improving readability of failure paths, and enabling modular testing of error scenarios—without requiring structural overhauls.",
+  "target_components": [
+    "starter.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit try/except blocks around I/O operations (WebSocket connections, audio streaming, API calls) and business logic (e.g., pronunciation scoring), with typed exception hierarchies or custom exceptions for domain-specific failures. This will not change the file count or directory structure but will add fault-handling boundaries within the existing procedural flow.",
+  "implementation_strategy": "Refactor starter.py by: (1) defining custom exception classes for I/O (e.g., WebSocketConnectionError, AudioStreamError, ElevenLabsAPIError), (2) wrapping WebSocket connection logic (proxy_connect, connect), audio I/O (pyaudio), and API calls (ElevenLabs.play) in try/except blocks, (3) adding logging or console reporting for recoverable vs. fatal errors, and (4) extracting error-handling logic into small helper functions if needed. This can be done incrementally—starting with the most critical I/O points—while preserving the existing single-file structure.",
+  "risks": "Overuse of broad exception clauses (e.g., bare except) may mask bugs; exceptions must be specific and actionable. Adding exception handling without corresponding logging may reduce debuggability. However, these risks are mitigated by disciplined use of exception types and integration with existing rich.console for user feedback."
+}

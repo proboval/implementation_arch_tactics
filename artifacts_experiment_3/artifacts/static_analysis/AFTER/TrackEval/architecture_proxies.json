@@ -8,420 +8,420 @@
       "setuptools"
     ],
     "scripts\\comparison_plots.py": [
+      "trackeval",
+      "sys",
+      "os"
+    ],
+    "scripts\\run_bdd.py": [
+      "argparse",
       "os",
+      "multiprocessing",
       "trackeval",
       "sys"
     ],
-    "scripts\\run_bdd.py": [
-      "sys",
-      "argparse",
-      "multiprocessing",
-      "trackeval",
-      "os"
-    ],
     "scripts\\run_burst.py": [
-      "tabulate",
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "tabulate",
+      "sys"
     ],
     "scripts\\run_burst_ow.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_davis.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_headtracking_challenge.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_kitti.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_kitti_mots.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_mots_challenge.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_mot_challenge.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_person_path_22.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_rob_mots.py": [
-      "csv",
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "csv",
+      "numpy",
+      "sys"
     ],
     "scripts\\run_tao.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_tao_ow.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "scripts\\run_youtube_vis.py": [
-      "sys",
       "argparse",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "sys"
     ],
     "tests\\test_all_quick.py": [
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "numpy",
+      "sys"
     ],
     "tests\\test_davis.py": [
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "numpy",
+      "sys"
     ],
     "tests\\test_metrics.py": [
-      "pytest",
+      "trackeval",
       "numpy",
-      "trackeval"
+      "pytest"
     ],
     "tests\\test_mot17.py": [
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "numpy",
+      "sys"
     ],
     "tests\\test_mots.py": [
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "numpy",
+      "sys"
     ],
     "trackeval\\eval.py": [
-      "utils",
+      "functools",
       "traceback",
-      "metrics",
-      "tqdm",
-      "multiprocessing",
-      "time",
       "os",
-      "functools"
+      "time",
+      "multiprocessing",
+      "tqdm",
+      "metrics",
+      "utils"
     ],
     "trackeval\\plotting.py": [
-      "os",
-      "matplotlib",
+      "numpy",
       "utils",
-      "numpy"
+      "os",
+      "matplotlib"
     ],
     "trackeval\\utils.py": [
+      "csv",
       "os",
-      "collections",
       "argparse",
-      "csv"
+      "collections"
     ],
     "trackeval\\_timing.py": [
-      "inspect",
       "time",
-      "functools"
+      "functools",
+      "inspect"
     ],
     "trackeval\\__init__.py": [
       "eval"
     ],
     "trackeval\\baselines\\baseline_utils.py": [
-      "csv",
-      "scipy",
-      "numpy",
       "pycocotools",
+      "os",
+      "PIL",
+      "csv",
+      "numpy",
       "copy",
       "trackeval",
-      "os",
-      "PIL"
+      "scipy"
     ],
     "trackeval\\baselines\\non_overlap.py": [
-      "multiprocessing",
-      "os",
       "trackeval",
-      "sys"
+      "os",
+      "sys",
+      "multiprocessing"
     ],
     "trackeval\\baselines\\pascal_colormap.py": [],
     "trackeval\\baselines\\stp.py": [
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "numpy",
+      "sys"
     ],
     "trackeval\\baselines\\thresholder.py": [
-      "multiprocessing",
-      "os",
       "trackeval",
-      "sys"
+      "os",
+      "sys",
+      "multiprocessing"
     ],
     "trackeval\\baselines\\vizualize.py": [
-      "multiprocessing",
-      "os",
       "trackeval",
-      "sys"
+      "os",
+      "sys",
+      "multiprocessing"
     ],
     "trackeval\\baselines\\__init__.py": [
-      "vizualize",
-      "stp",
       "pascal_colormap",
-      "baseline_utils",
+      "vizualize",
       "thresholder",
+      "baseline_utils",
+      "stp",
       "non_overlap"
     ],
     "trackeval\\datasets\\bdd100k.py": [
-      "scipy",
-      "utils",
-      "numpy",
       "json",
       "_base_dataset",
-      "os"
+      "os",
+      "numpy",
+      "scipy",
+      "utils"
     ],
     "trackeval\\datasets\\burst.py": [
       "os",
-      "pycocotools",
-      "burst_helpers"
+      "burst_helpers",
+      "pycocotools"
     ],
     "trackeval\\datasets\\burst_ow.py": [
       "json",
       "os",
-      "pycocotools",
-      "burst_helpers"
+      "burst_helpers",
+      "pycocotools"
     ],
     "trackeval\\datasets\\davis.py": [
-      "csv",
-      "utils",
-      "numpy",
-      "pycocotools",
       "_base_dataset",
+      "pycocotools",
       "os",
-      "PIL"
+      "PIL",
+      "csv",
+      "numpy",
+      "utils"
     ],
     "trackeval\\datasets\\head_tracking_challenge.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "configparser",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\kitti_2d_box.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\kitti_mots.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "pycocotools",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\mots_challenge.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "pycocotools",
-      "configparser",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\mot_challenge_2d_box.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "configparser",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\person_path_22.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "configparser",
-      "_base_dataset",
-      "os"
-    ],
-    "trackeval\\datasets\\rob_mots.py": [
-      "csv",
-      "scipy",
-      "utils",
-      "numpy",
-      "pycocotools",
       "_base_dataset",
       "os",
-      "datasets"
+      "csv",
+      "numpy",
+      "configparser",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\kitti_2d_box.py": [
+      "_base_dataset",
+      "os",
+      "csv",
+      "numpy",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\kitti_mots.py": [
+      "_base_dataset",
+      "pycocotools",
+      "os",
+      "csv",
+      "numpy",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\mots_challenge.py": [
+      "_base_dataset",
+      "pycocotools",
+      "os",
+      "csv",
+      "numpy",
+      "configparser",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\mot_challenge_2d_box.py": [
+      "_base_dataset",
+      "os",
+      "csv",
+      "numpy",
+      "configparser",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\person_path_22.py": [
+      "_base_dataset",
+      "os",
+      "csv",
+      "numpy",
+      "configparser",
+      "scipy",
+      "utils"
+    ],
+    "trackeval\\datasets\\rob_mots.py": [
+      "_base_dataset",
+      "pycocotools",
+      "os",
+      "csv",
+      "numpy",
+      "scipy",
+      "datasets",
+      "utils"
     ],
     "trackeval\\datasets\\rob_mots_classmap.py": [],
     "trackeval\\datasets\\run_rob_mots.py": [
-      "csv",
-      "sys",
-      "numpy",
+      "os",
       "multiprocessing",
       "trackeval",
-      "os"
+      "csv",
+      "numpy",
+      "sys"
     ],
     "trackeval\\datasets\\tao.py": [
-      "scipy",
-      "utils",
-      "numpy",
       "json",
       "_base_dataset",
+      "collections",
       "os",
       "itertools",
-      "collections"
+      "numpy",
+      "scipy",
+      "utils"
     ],
     "trackeval\\datasets\\tao_ow.py": [
-      "scipy",
-      "utils",
-      "numpy",
       "json",
       "_base_dataset",
+      "collections",
       "os",
       "itertools",
-      "collections"
+      "numpy",
+      "scipy",
+      "utils"
     ],
     "trackeval\\datasets\\youtube_vis.py": [
-      "utils",
-      "numpy",
-      "pycocotools",
       "json",
       "_base_dataset",
-      "os"
+      "pycocotools",
+      "os",
+      "numpy",
+      "utils"
     ],
     "trackeval\\datasets\\_base_dataset.py": [
-      "csv",
-      "io",
-      "traceback",
-      "utils",
-      "numpy",
-      "zipfile",
       "pycocotools",
+      "traceback",
+      "zipfile",
+      "os",
+      "io",
+      "csv",
+      "numpy",
       "copy",
       "abc",
-      "os"
+      "utils"
     ],
     "trackeval\\datasets\\__init__.py": [
-      "kitti_mots",
-      "mot_challenge_2d_box",
       "davis",
-      "tao_ow",
-      "head_tracking_challenge",
-      "person_path_22",
+      "rob_mots",
       "burst",
-      "mots_challenge",
-      "youtube_vis",
       "kitti_2d_box",
       "burst_ow",
-      "rob_mots",
+      "person_path_22",
+      "head_tracking_challenge",
+      "kitti_mots",
+      "bdd100k",
+      "mots_challenge",
       "tao",
-      "bdd100k"
+      "tao_ow",
+      "mot_challenge_2d_box",
+      "youtube_vis"
     ],
     "trackeval\\metrics\\clear.py": [
-      "_base_metric",
       "numpy",
+      "_base_metric",
       "scipy"
     ],
     "trackeval\\metrics\\count.py": [
       "_base_metric"
     ],
     "trackeval\\metrics\\hota.py": [
-      "matplotlib",
-      "scipy",
-      "numpy",
       "_base_metric",
-      "os"
+      "os",
+      "numpy",
+      "scipy",
+      "matplotlib"
     ],
     "trackeval\\metrics\\identity.py": [
-      "_base_metric",
       "numpy",
+      "_base_metric",
       "scipy"
     ],
     "trackeval\\metrics\\ideucl.py": [
-      "_base_metric",
       "numpy",
+      "_base_metric",
       "scipy",
       "collections"
     ],
     "trackeval\\metrics\\j_and_f.py": [
-      "scipy",
-      "math",
-      "utils",
-      "numpy",
-      "pycocotools",
-      "_base_metric",
       "skimage",
-      "cv2"
+      "_base_metric",
+      "pycocotools",
+      "math",
+      "numpy",
+      "cv2",
+      "scipy",
+      "utils"
     ],
     "trackeval\\metrics\\track_map.py": [
-      "utils",
-      "numpy",
-      "pycocotools",
       "_base_metric",
-      "functools"
+      "functools",
+      "pycocotools",
+      "numpy",
+      "utils"
     ],
     "trackeval\\metrics\\vace.py": [
-      "_base_metric",
       "numpy",
+      "_base_metric",
       "scipy"
     ],
     "trackeval\\metrics\\_base_metric.py": [
@@ -430,44 +430,44 @@
       "abc"
     ],
     "trackeval\\metrics\\__init__.py": [
-      "clear",
-      "hota",
-      "ideucl",
-      "vace",
-      "identity",
       "j_and_f",
+      "count",
       "track_map",
-      "count"
+      "ideucl",
+      "hota",
+      "clear",
+      "identity",
+      "vace"
     ],
     "trackeval\\datasets\\burst_helpers\\burst_base.py": [
-      "scipy",
-      "numpy",
       "json",
-      "trackeval",
+      "collections",
       "os",
       "itertools",
-      "collections"
+      "numpy",
+      "trackeval",
+      "scipy"
     ],
     "trackeval\\datasets\\burst_helpers\\burst_ow_base.py": [
-      "scipy",
-      "numpy",
       "json",
-      "trackeval",
+      "collections",
       "os",
       "itertools",
-      "collections"
+      "numpy",
+      "trackeval",
+      "scipy"
     ],
     "trackeval\\datasets\\burst_helpers\\convert_burst_format_to_tao_format.py": [
       "json",
-      "format_converter",
-      "argparse"
+      "argparse",
+      "format_converter"
     ],
     "trackeval\\datasets\\burst_helpers\\format_converter.py": [
-      "tabulate",
-      "pycocotools",
-      "typing",
       "json",
-      "os"
+      "pycocotools",
+      "os",
+      "tabulate",
+      "typing"
     ],
     "trackeval\\datasets\\burst_helpers\\__init__.py": []
   }

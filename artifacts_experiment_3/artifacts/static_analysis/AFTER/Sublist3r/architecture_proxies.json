@@ -1,49 +1,89 @@
 {
-  "python_files": 4,
-  "packages": 1,
+  "python_files": 11,
+  "packages": 2,
   "max_directory_depth": 2,
-  "avg_files_per_package": 4.0,
+  "avg_files_per_package": 5.5,
   "imports_graph": {
     "setup.py": [
       "setuptools"
     ],
     "sublist3r.py": [
-      "requests",
       "socket",
-      "dns",
+      "random",
       "collections",
-      "urllib",
-      "urlparse",
       "os",
+      "time",
+      "multiprocessing",
       "win_unicode_console",
       "sys",
-      "multiprocessing",
-      "json",
-      "subbrute",
+      "urlparse",
       "threading",
+      "dns",
       "colorama",
+      "subbrute",
+      "requests",
+      "hashlib",
+      "json",
+      "urllib",
+      "argparse",
+      "re"
+    ],
+    "enumators\\ask.py": [
+      "re",
+      "base",
+      "sys",
+      "time"
+    ],
+    "enumators\\base.py": [
+      "urllib",
+      "urlparse",
+      "collections",
+      "sys",
+      "requests"
+    ],
+    "enumators\\bing.py": [
+      "collections",
       "time",
       "re",
-      "hashlib",
-      "argparse",
-      "random"
-    ],
-    "subbrute\\subbrute.py": [
       "sys",
-      "uuid",
-      "ctypes",
-      "queue",
-      "multiprocessing",
-      "optparse",
-      "re",
-      "json",
-      "os",
-      "dns",
-      "random",
-      "Queue",
-      "threading",
-      "signal"
+      "base"
     ],
-    "subbrute\\__init__.py": []
+    "enumators\\google.py": [
+      "urllib",
+      "time",
+      "re",
+      "requests",
+      "base"
+    ],
+    "enumators\\yahoo.py": [
+      "re",
+      "base",
+      "sys",
+      "time"
+    ],
+    "enumators\\__init__.py": [],
+    "subbrute\\subbrute.py": [
+      "optparse",
+      "json",
+      "random",
+      "queue",
+      "signal",
+      "os",
+      "multiprocessing",
+      "re",
+      "threading",
+      "sys",
+      "Queue",
+      "dns",
+      "uuid",
+      "ctypes"
+    ],
+    "subbrute\\__init__.py": [],
+    "tests\\test_enumators_decomposability.py": [
+      "sys",
+      "os",
+      "enumators",
+      "unittest"
+    ]
   }
 }

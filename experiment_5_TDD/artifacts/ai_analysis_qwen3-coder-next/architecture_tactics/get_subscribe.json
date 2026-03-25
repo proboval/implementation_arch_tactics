@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT23",
+    "name": "Exception",
+    "primary_qa_impact": "Reliability, Maintainability",
+    "positive_impact": "Reliability, Fault handling",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository contains two top-level Python scripts (main.py and get_projaec_info.py) with stub functions (e.g., 'def mainNone: ...') indicating incomplete or placeholder implementations. Static analysis shows zero code maintainability metrics (mi_avg: 0, mi_min: 0, files_analyzed: 0), and the flat script-based structure lacks error handling infrastructure. Without exception handling, runtime failures (e.g., network errors in requests, parsing failures in feedparser, email sending failures) will cause ungraceful crashes with no diagnostic context. Introducing structured exception handling improves maintainability by localizing error responses, enabling debugging, and preventing cascading failures—especially critical in scripts that interact with external services (RSS feeds, email servers, log files). This tactic directly addresses the 'T4' (lack of error handling) and 'A1' (absence of robustness) maintainability factors identified in the static analysis.",
+  "target_components": [
+    "main.py",
+    "get_projaec_info.py"
+  ],
+  "expected_architectural_change": "The flat script structure will retain its top-level organization, but each function will gain explicit exception handling blocks (try/except) with typed exceptions and meaningful error propagation. Functions will return structured results (e.g., Result[T, E]) or raise domain-specific exceptions instead of silently failing or crashing. This introduces fault isolation at the function level without requiring module decomposition.",
+  "implementation_strategy": "Refactor stub functions in main.py and get_projaec_info.py to wrap I/O operations (file reads, HTTP requests, email sending, RSS parsing) in try/except blocks. Define custom exception classes (e.g., SubscriptionFetchError, MailSendError, LogWriteError) to categorize failures. Replace stub implementations with concrete logic that handles expected failure modes (e.g., network timeouts, malformed feeds, permission errors). This can be done incrementally—start with main.py’s get_subscribe_url and write_log functions, then extend to get_projaec_info.py’s get_project_info and create_svg functions.",
+  "risks": "Adding exception handling to stub functions carries minimal risk since the functions are currently non-functional. However, overuse of broad exception clauses (e.g., bare except:) could mask bugs; thus, exceptions must be caught at appropriate granularity (e.g., requests.exceptions.RequestException, smtplib.SMTPException)."
+}

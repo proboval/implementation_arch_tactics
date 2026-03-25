@@ -13,16 +13,16 @@
       "setuptools"
     ],
     "eulerian_magnification\\base.py": [
-      "matplotlib",
-      "scipy",
       "eulerian_magnification",
       "numpy",
-      "cv2"
+      "cv2",
+      "scipy",
+      "matplotlib"
     ],
     "eulerian_magnification\\io.py": [
+      "numpy",
       "os",
       "cv2",
-      "numpy",
       "eulerian_magnification"
     ],
     "eulerian_magnification\\pyramid.py": [
@@ -34,27 +34,27 @@
       "scipy"
     ],
     "eulerian_magnification\\__init__.py": [
-      "io",
-      "base"
+      "base",
+      "io"
     ],
     "tests\\base.py": [
-      "hashlib",
+      "os",
       "pathlib",
+      "cv2",
       "requests",
       "tempfile",
-      "os",
-      "cv2"
+      "hashlib"
     ],
     "tests\\test_pyramid.py": [
+      "tests",
       "numpy",
       "base",
-      "tests",
       "eulerian_magnification"
     ],
     "tests\\test_transforms.py": [
-      "base",
       "tests",
-      "eulerian_magnification"
+      "eulerian_magnification",
+      "base"
     ],
     "tests\\__init__.py": []
   }

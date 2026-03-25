@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe tight coupling: all functionality resides in a single file (dorker.py) with high average fan-out (8.0) to external libraries (github3, requests, pymongo, etc.), and low maintainability index (46.9). Functions like main(), create_issues(), and parse_line() directly instantiate and use external dependencies (e.g., GitHub(), MongoClient()) without abstraction, making the code fragile to dependency changes and impossible to test in isolation. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces/protocols) to decouple business logic from infrastructure concerns (GitHub API, MongoDB, file I/O), enabling modular testing and localized changes.",
+  "target_components": [
+    "dorker.py"
+  ],
+  "expected_architectural_change": "The monolithic dorker.py will be refactored into loosely coupled modules: a core domain layer (e.g., domain/issue.py), infrastructure adapters (e.g., infra/github_client.py, infra/db_client.py), and a thin orchestration layer (e.g., app/orchestrator.py). Top-level functions will be replaced by classes with injected dependencies, reducing direct imports of github3, pymongo, etc., into adapter modules.",
+  "implementation_strategy": "1. Extract GitHub client usage into a GitHubClient interface + concrete implementation (infra/github_client.py). 2. Extract MongoDB operations into a Repository interface + implementation (infra/db_client.py). 3. Replace direct imports (e.g., from github3 import GitHub) with dependency injection via constructor or factory. 4. Refactor main() to orchestrate via injected dependencies. 5. Introduce small, focused modules (e.g., domain/parsing.py) to increase cohesion. This can be done incrementally—starting with one dependency (e.g., GitHub) while preserving existing behavior.",
+  "risks": "Risk of over-engineering if abstractions are too generic; must balance simplicity with decoupling. Initial refactoring may increase file count but reduce per-file complexity. Requires disciplined adherence to dependency inversion to avoid hidden coupling."
+}

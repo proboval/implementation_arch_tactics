@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between services, as evidenced by EnhancedRESTClient directly importing and instantiating multiple services (OrderService, FearAndGreedStrategy, PriceService, AccountService, FundsService) and AlphaSquaredTrader importing EnhancedRESTClient directly. Static analysis confirms high fan-out (avg 3.19) and the imports graph shows services importing each other directly (e.g., order_service.py imports price_service.py, trading_strategy_service.py imports order_service.py and price_service.py). This coupling reduces testability (tests must mock many internal services), increases ripple effects during changes, and violates separation of concerns. The modular monolith structure currently lacks clear boundaries between orchestration and business logic layers, making it hard to evolve components independently.",
+  "target_components": [
+    "coinbase_advanced_trader/enhanced_rest_client.py",
+    "coinbase_advanced_trader/services/order_service.py",
+    "coinbase_advanced_trader/services/price_service.py",
+    "coinbase_advanced_trader/services/trading_strategy_service.py",
+    "coinbase_advanced_trader/services/fear_and_greed_strategy.py",
+    "coinbase_advanced_trader/alphasquared_trader.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces/abstractions for service dependencies (e.g., TradingStrategyExecutor, OrderPlacementService) and apply dependency injection. EnhancedRESTClient and AlphaSquaredTrader will depend on abstractions rather than concrete service implementations. Services will be decoupled: trading_strategy_service.py will define abstract interfaces for order/price dependencies, and concrete services will implement them. This creates a clear boundary where orchestration components (enhanced_rest_client.py, alphasquared_trader.py) coordinate via interfaces rather than calling concrete implementations directly.",
+  "implementation_strategy": "1. Define interfaces in trading_strategy_service.py for order placement and price retrieval (e.g., OrderExecutor, PriceProvider). 2. Refactor OrderService and PriceService to implement these interfaces. 3. Modify EnhancedRESTClient and AlphaSquaredTrader to accept these interfaces via constructor injection instead of importing concrete services. 4. Update service imports to use interfaces. 5. Refactor fear_and_greed_strategy.py to depend on the OrderExecutor interface. 6. Update tests to inject mock implementations of interfaces. This is incremental: start with one interface (e.g., OrderExecutor), refactor one orchestrator, then expand.",
+  "risks": "Initial refactoring may increase complexity temporarily during transition. Requires careful test coverage to ensure no behavioral regressions. Interface design must be conservative to avoid premature abstraction—start with concrete use cases before generalizing."
+}

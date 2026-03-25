@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Two top-level packages ('sshuttle' and 'docs') with clear separation of concerns",
+    "Domain-specific modules (client.py, server.py, firewall.py, methods/) with cohesive responsibilities",
+    "Methods subpackage implements a strategy pattern (BaseMethod + NAT/PF/TPROXY implementations)",
+    "Shared helpers.py and ssnet.py modules indicate common infrastructure reused across modules",
+    "No inter-process communication or network boundaries between major components",
+    "Single entry point (__main__.py → cmdline.main) orchestrating the application flow",
+    "All modules belong to one deployable unit (single Python package)",
+    "Low directory depth (3) and only 2 top-level packages suggest tight coupling within one codebase"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "High fan-out (avg 4.88) suggests modules depend on many others, potentially reducing modularity",
+    "Circular dependencies possible given tight integration (not directly observable but common in such monoliths)",
+    "Testing is present but embedded within same package, may not enforce strict boundaries"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "example.py": [
+      "kittentts",
+      "soundfile"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "kittentts\\get_model.py": [
+      "onnx_model",
+      "huggingface_hub",
+      "json",
+      "os"
+    ],
+    "kittentts\\interfaces.py": [
+      "abc",
+      "numpy",
+      "typing"
+    ],
+    "kittentts\\preprocess.py": [
+      "re",
+      "typing",
+      "unicodedata"
+    ],
+    "kittentts\\__index__.py": [
+      "kittentts"
+    ],
+    "kittentts\\__init__.py": [
+      "kittentts"
+    ],
+    "tests\\test_tactic.py": [
+      "numpy",
+      "kittentts",
+      "unittest",
+      "inspect",
+      "pytest"
+    ]
+  }
+}

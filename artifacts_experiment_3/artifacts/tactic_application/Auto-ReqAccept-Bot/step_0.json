@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "app/config.py",
-  "content": "from os import environ as env\n\nAPI_ID = int(env.get('API_ID'))\nAPI_HASH = env.get('API_HASH')\nBOT_TOKEN = env.get('BOT_TOKEN')\nDB_URL = env.get('DB_URL')\nADMINS = int(env.get('ADMINS'))\n\nACCEPTED_TEXT = \"Hey {user}\\n\\nYour Request For {chat} Is Accepted \u2705\"\nSTART_TEXT = \"Hai {}\\n\\nI am Auto Request Accept Bot With Working For All Channel. Add Me In Your Channel To Use\"\n"
-}

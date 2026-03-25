@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Two top-level packages ('budou' and 'tests') with clear separation of concerns",
+    "Core domain logic encapsulated in 'budou' package with cohesive modules (segmenter, parser, chunk, cache)",
+    "Segmenter and Parser classes use inheritance and polymorphism (ABC-based interface)",
+    "Dependency injection via factory functions (e.g., get_parser, load_cache)",
+    "No external communication endpoints (no HTTP, RPC, or messaging patterns)",
+    "All components run in same process with direct imports between modules",
+    "Test suite organized in parallel structure to source modules (tests/test_*.py)",
+    "Low directory depth (max 2) indicates flat, cohesive module hierarchy"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling between Parser and concrete Segmenter implementations (violates dependency inversion)",
+    "Direct import of external libraries (html5lib, tinysegmenter) in core modules may hinder testability",
+    "Mixed responsibilities in Parser class hierarchy (parsing + authentication + preprocessing)"
+  ]
+}

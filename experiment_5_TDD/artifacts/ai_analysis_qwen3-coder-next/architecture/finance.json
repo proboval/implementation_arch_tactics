@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0), indicating flat module structure",
+    "Single directory depth (max_directory_depth: 1) with all source files at root level",
+    "Low fan-out (avg_fan_out: 4.0) suggests minimal inter-module dependencies",
+    "Files are small and focused on specific tasks (plots.py, portfolio.py, streamlit_app.py) with no clear separation into layers or layers with strict interfaces",
+    "streamlit_app.py directly imports and uses classes/functions from other modules without adapters or ports",
+    "No evidence of dependency inversion, interfaces, or decoupling mechanisms typical of hexagonal or layered architectures",
+    "Code maintainability metrics (mi_avg ~50) indicate moderate complexity, consistent with small scripts rather than structured monoliths"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between components makes testing and reuse difficult",
+    "Lack of modularity hinders scalability and long-term maintainability",
+    "No separation of concerns beyond file grouping, risking functional entanglement"
+  ]
+}

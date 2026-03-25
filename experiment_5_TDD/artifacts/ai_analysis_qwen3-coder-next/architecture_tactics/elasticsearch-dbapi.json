@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules, especially in how es.elastic and es.opendistro both directly import and depend on shared base classes (baseapi.py, basesqlalchemy.py) and the shared exception hierarchy (exceptions.py) and constants (const.py). Static analysis confirms 'C1' (coupling) and 'A3' (abstraction issues) as factors. For example, es/elastic/api.py imports from es.baseapi and es.exceptions, while es/opendistro/api.py imports from the same shared modules — creating ripple-effect risk when base classes change. The architecture description explicitly identifies 'tight coupling between modules' and 'shared exception hierarchy and constants across modules increase risk of cascading changes' as key risks. This tactic directly addresses the root cause: reducing direct inter-module dependencies to allow independent evolution of elastic and opendistro implementations.",
+  "target_components": [
+    "es/elastic/api.py",
+    "es/opendistro/api.py",
+    "es/elastic/sqlalchemy.py",
+    "es/opendistro/sqlalchemy.py",
+    "es/baseapi.py",
+    "es/basesqlalchemy.py",
+    "es/exceptions.py"
+  ],
+  "expected_architectural_change": "Introduce explicit abstraction layers (e.g., interface contracts or adapter interfaces) that decouple the implementation modules (elastic, opendistro) from the shared base classes. Instead of inheriting from BaseConnection/BaseCursor, implementations would depend on well-defined interfaces (e.g., via ABCs or protocols) defined in a new 'interfaces' or 'contracts' module. Similarly, exception usage would be abstracted via a thin adapter layer or factory, reducing direct dependency on es.exceptions across modules.",
+  "implementation_strategy": "1. Create new interface modules (e.g., es/interfaces/api.py, es/interfaces/sqlalchemy.py) defining abstract base classes or protocols for Connection, Cursor, and Dialect. 2. Refactor baseapi.py and basesqlalchemy.py to implement these interfaces, not the other way around. 3. Update es/elastic/api.py and es/opendistro/api.py to depend on the interface abstractions (via dependency injection or factory), not concrete base classes. 4. Replace direct imports of es.exceptions with a thin exception adapter or factory in each module. 5. Gradually migrate existing code to use the new abstractions, preserving backward compatibility via deprecation warnings.",
+  "risks": "Initial refactoring may increase complexity temporarily; requires careful versioning to avoid breaking existing users. However, the incremental strategy mitigates this by allowing parallel implementation and gradual adoption. Risk of over-engineering is low given the clear coupling issues identified in static analysis and architecture description."
+}

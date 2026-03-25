@@ -5,98 +5,98 @@
   "avg_files_per_package": 19.0,
   "imports_graph": {
     "setup.py": [
-      "sys",
-      "gease",
-      "setuptools",
-      "os",
       "platform",
       "locale",
+      "shutil",
+      "sys",
       "codecs",
-      "shutil"
+      "os",
+      "setuptools",
+      "gease"
     ],
     "pyexcel_xlsx\\book.py": [
       "openpyxl"
     ],
     "pyexcel_xlsx\\xlsxr.py": [
-      "pyexcel_io",
       "openpyxl",
+      "pyexcel_io",
       "io"
     ],
     "pyexcel_xlsx\\xlsxw.py": [
-      "pyexcel_io",
-      "openpyxl"
+      "openpyxl",
+      "pyexcel_io"
     ],
     "pyexcel_xlsx\\__init__.py": [
       "pyexcel_io"
     ],
     "tests\\base.py": [
-      "os",
-      "datetime",
       "pyexcel",
-      "nose"
+      "nose",
+      "os",
+      "datetime"
     ],
     "tests\\test_book.py": [
-      "nose",
       "pyexcel_xlsx",
       "os",
-      "datetime",
-      "pyexcel_io"
+      "pyexcel_io",
+      "nose",
+      "datetime"
     ],
     "tests\\test_bug_fixes.py": [
       "sys",
-      "nose",
-      "textwrap",
       "os",
       "datetime",
-      "pyexcel"
+      "nose",
+      "pyexcel",
+      "textwrap"
     ],
     "tests\\test_filter.py": [
+      "nose",
       "os",
-      "pyexcel_io",
-      "nose"
+      "pyexcel_io"
     ],
     "tests\\test_formatters.py": [
-      "nose",
-      "textwrap",
-      "datetime",
+      "pyexcel",
       "os",
-      "pyexcel"
+      "nose",
+      "datetime",
+      "textwrap"
     ],
     "tests\\test_hidden.py": [
       "pyexcel_xlsx",
-      "os",
-      "nose"
+      "nose",
+      "os"
     ],
     "tests\\test_merged_cells.py": [
-      "pyexcel_xlsx",
-      "os",
       "openpyxl",
-      "nose"
+      "pyexcel_xlsx",
+      "nose",
+      "os"
     ],
     "tests\\test_multiple_sheets.py": [
       "collections",
+      "nose",
+      "os",
+      "base",
+      "pyexcel"
+    ],
+    "tests\\test_reader.py": [
+      "pyexcel_xlsx",
+      "os",
+      "pyexcel_io",
+      "nose",
+      "datetime"
+    ],
+    "tests\\test_stringio.py": [
       "nose",
       "base",
       "os",
       "pyexcel"
     ],
-    "tests\\test_reader.py": [
-      "nose",
-      "pyexcel_xlsx",
-      "os",
-      "datetime",
-      "pyexcel_io"
-    ],
-    "tests\\test_stringio.py": [
-      "os",
-      "pyexcel",
-      "nose",
-      "base"
-    ],
     "tests\\test_writer.py": [
       "pyexcel_xlsx",
-      "os",
-      "base"
+      "base",
+      "os"
     ],
     "docs\\source\\conf.py": []
   }

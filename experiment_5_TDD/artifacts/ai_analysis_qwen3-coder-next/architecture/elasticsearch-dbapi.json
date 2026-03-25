@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into logical modules (es.elastic, es.opendistro, es.tests, utils) with dedicated responsibilities",
+    "Shared core abstractions (baseapi.py, basesqlalchemy.py) reused across modules, indicating high cohesion within the monolith",
+    "No inter-process communication or network boundaries visible; all components are imported as local Python modules",
+    "Single entry point (es/__init__.py) exposing a unified API, typical of modular monoliths",
+    "Test suite co-located with source code in es/tests/, supporting tight integration and shared test infrastructure",
+    "Low average fan-out (3.26) and shallow directory depth (4) suggest bounded, well-organized modules rather than distributed services"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., es.elastic and es.opendistro both depend on shared base classes) may hinder independent evolution",
+    "Lack of explicit ports/adapters separation (e.g., no clear boundary between domain and infrastructure) could blur responsibility boundaries over time",
+    "Shared exception hierarchy and constants across modules increase risk of cascading changes"
+  ]
+}

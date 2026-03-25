@@ -1,0 +1,116 @@
+{
+  "python_files": 21,
+  "packages": 5,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 4.2,
+  "imports_graph": {
+    "setup.py": [
+      "io",
+      "setuptools",
+      "os"
+    ],
+    "es\\baseapi.py": [
+      "const",
+      "urllib",
+      "es",
+      "typing",
+      "opensearchpy",
+      "collections",
+      "elasticsearch"
+    ],
+    "es\\basesqlalchemy.py": [
+      "sqlalchemy",
+      "__future__",
+      "es",
+      "typing",
+      "logging"
+    ],
+    "es\\const.py": [],
+    "es\\exceptions.py": [],
+    "es\\__init__.py": [
+      "es"
+    ],
+    "tests\\test_tactic.py": [
+      "es",
+      "inspect",
+      "typing",
+      "pytest",
+      "abc"
+    ],
+    "utils\\export.py": [
+      "requests",
+      "json"
+    ],
+    "es\\elastic\\api.py": [
+      "packaging",
+      "re",
+      "es",
+      "typing",
+      "elasticsearch"
+    ],
+    "es\\elastic\\sqlalchemy.py": [
+      "sqlalchemy",
+      "__future__",
+      "types",
+      "es",
+      "typing",
+      "logging"
+    ],
+    "es\\elastic\\__init__.py": [
+      "es"
+    ],
+    "es\\interfaces\\api.py": [
+      "es",
+      "typing",
+      "__future__"
+    ],
+    "es\\opendistro\\api.py": [
+      "__future__",
+      "re",
+      "requests_aws4auth",
+      "es",
+      "typing",
+      "opensearchpy",
+      "boto3"
+    ],
+    "es\\opendistro\\sqlalchemy.py": [
+      "sqlalchemy",
+      "__future__",
+      "types",
+      "es",
+      "typing",
+      "logging"
+    ],
+    "es\\opendistro\\__init__.py": [
+      "es"
+    ],
+    "es\\tests\\test_0_fixtures.py": [
+      "fixtures",
+      "os",
+      "unittest"
+    ],
+    "es\\tests\\test_dbapi.py": [
+      "es",
+      "os",
+      "unittest"
+    ],
+    "es\\tests\\test_sqlalchemy.py": [
+      "sqlalchemy",
+      "os",
+      "opensearchpy",
+      "unittest",
+      "es",
+      "typing",
+      "boto3"
+    ],
+    "es\\tests\\__init__.py": [],
+    "es\\tests\\fixtures\\fixtures.py": [
+      "os",
+      "json",
+      "typing",
+      "opensearchpy",
+      "elasticsearch"
+    ],
+    "es\\tests\\fixtures\\__init__.py": []
+  }
+}

@@ -5,8 +5,8 @@
   "avg_files_per_package": 4.214285714285714,
   "imports_graph": {
     "setup.py": [
-      "re",
-      "setuptools"
+      "setuptools",
+      "re"
     ],
     "gixy\\__init__.py": [
       "gixy"
@@ -24,11 +24,11 @@
       "six"
     ],
     "gixy\\cli\\main.py": [
-      "sys",
+      "os",
       "gixy",
       "copy",
-      "logging",
-      "os"
+      "sys",
+      "logging"
     ],
     "gixy\\cli\\__init__.py": [],
     "gixy\\core\\builtin_variables.py": [
@@ -45,22 +45,22 @@
     "gixy\\core\\exceptions.py": [],
     "gixy\\core\\issue.py": [],
     "gixy\\core\\manager.py": [
-      "logging",
       "os",
+      "logging",
       "gixy"
     ],
     "gixy\\core\\plugins_manager.py": [
-      "gixy",
-      "os"
+      "os",
+      "gixy"
     ],
     "gixy\\core\\regexp.py": [
-      "re",
-      "random",
-      "gixy",
-      "logging",
-      "six",
       "cached_property",
-      "itertools"
+      "random",
+      "six",
+      "gixy",
+      "itertools",
+      "re",
+      "logging"
     ],
     "gixy\\core\\severity.py": [],
     "gixy\\core\\utils.py": [],
@@ -71,23 +71,23 @@
     ],
     "gixy\\core\\__init__.py": [],
     "gixy\\directives\\block.py": [
-      "gixy",
-      "cached_property"
+      "cached_property",
+      "gixy"
     ],
     "gixy\\directives\\directive.py": [
       "gixy"
     ],
     "gixy\\directives\\__init__.py": [
-      "gixy",
-      "os"
+      "os",
+      "gixy"
     ],
     "gixy\\formatters\\base.py": [
-      "gixy",
-      "__future__"
+      "__future__",
+      "gixy"
     ],
     "gixy\\formatters\\console.py": [
-      "gixy",
-      "__future__"
+      "__future__",
+      "gixy"
     ],
     "gixy\\formatters\\json.py": [
       "json",
@@ -95,8 +95,8 @@
       "gixy"
     ],
     "gixy\\formatters\\text.py": [
-      "gixy",
-      "__future__"
+      "__future__",
+      "gixy"
     ],
     "gixy\\formatters\\_jinja.py": [
       "jinja2",
@@ -104,23 +104,23 @@
       "gixy"
     ],
     "gixy\\formatters\\__init__.py": [
-      "gixy",
-      "os"
+      "os",
+      "gixy"
     ],
     "gixy\\parser\\nginx_parser.py": [
-      "fnmatch",
-      "pyparsing",
-      "gixy",
-      "logging",
       "os",
+      "logging",
+      "gixy",
+      "pyparsing",
+      "fnmatch",
       "glob"
     ],
     "gixy\\parser\\raw_parser.py": [
-      "pyparsing",
-      "codecs",
-      "logging",
+      "cached_property",
       "six",
-      "cached_property"
+      "codecs",
+      "pyparsing",
+      "logging"
     ],
     "gixy\\parser\\__init__.py": [],
     "gixy\\plugins\\add_header_multiline.py": [
@@ -163,52 +163,52 @@
       "_sre"
     ],
     "gixy\\core\\sre_parse\\sre_parse.py": [
+      "warnings",
       "sre_constants",
-      "__future__",
-      "warnings"
+      "__future__"
     ],
     "gixy\\core\\sre_parse\\__init__.py": [],
     "tests\\core\\test_context.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\test_regexp.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\test_variable.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\core\\__init__.py": [],
     "tests\\directives\\test_block.py": [
-      "gixy",
+      "tests",
       "nose",
-      "tests"
+      "gixy"
     ],
     "tests\\directives\\test_directive.py": [
-      "gixy",
+      "tests",
       "nose",
-      "tests"
+      "gixy"
     ],
     "tests\\directives\\__init__.py": [],
     "tests\\parser\\test_nginx_parser.py": [
-      "gixy",
+      "tests",
       "nose",
-      "tests"
+      "gixy"
     ],
     "tests\\parser\\test_raw_parser.py": [
-      "gixy",
-      "nose"
+      "nose",
+      "gixy"
     ],
     "tests\\parser\\__init__.py": [],
     "tests\\plugins\\test_simply.py": [
-      "utils",
-      "tests",
-      "gixy",
       "json",
       "nose",
-      "os"
+      "os",
+      "gixy",
+      "tests",
+      "utils"
     ],
     "tests\\plugins\\__init__.py": []
   }

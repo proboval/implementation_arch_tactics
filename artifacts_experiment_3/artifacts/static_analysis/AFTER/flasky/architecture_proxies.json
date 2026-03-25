@@ -1,75 +1,66 @@
 {
   "python_files": 41,
-  "packages": 5,
+  "packages": 6,
   "max_directory_depth": 3,
-  "avg_files_per_package": 8.2,
+  "avg_files_per_package": 6.833333333333333,
   "imports_graph": {
     "config.py": [
+      "werkzeug",
       "os",
-      "logging",
-      "werkzeug"
+      "logging"
     ],
     "flasky.py": [
-      "sys",
-      "click",
-      "flask_migrate",
-      "werkzeug",
-      "dotenv",
-      "os",
       "app",
       "coverage",
+      "flask_migrate",
+      "os",
+      "dotenv",
+      "werkzeug",
+      "sys",
       "subprocess",
-      "unittest"
+      "unittest",
+      "click"
     ],
     "app\\decorators.py": [
-      "functools",
-      "models",
+      "flask",
       "flask_login",
-      "flask"
+      "functools",
+      "models"
     ],
     "app\\email.py": [
-      "flask_mail",
       "threading",
+      "flask_mail",
       "flask"
     ],
     "app\\exceptions.py": [],
     "app\\fake.py": [
+      "faker",
       "random",
       "sqlalchemy",
-      "faker",
       "models"
     ],
     "app\\models.py": [
-      "markdown",
-      "flask_login",
-      "flask",
-      "werkzeug",
-      "hashlib",
       "datetime",
       "app",
       "itsdangerous",
-      "bleach"
-    ],
-    "app\\token_services.py": [
-      "itsdangerous",
-      "app",
-      "flask"
-    ],
-    "app\\validators.py": [
-      "functools",
-      "re"
+      "markdown",
+      "werkzeug",
+      "bleach",
+      "flask",
+      "flask_login",
+      "hashlib"
     ],
     "app\\__init__.py": [
+      "flask_moment",
+      "flask_bootstrap",
+      "api",
+      "config",
+      "flask_mail",
+      "flask_pagedown",
+      "flask_sslify",
+      "flask",
       "flask_sqlalchemy",
       "flask_login",
-      "flask",
-      "config",
-      "flask_sslify",
-      "flask_bootstrap",
-      "flask_pagedown",
-      "flask_moment",
-      "api",
-      "flask_mail",
       "main",
       "auth"
     ],
@@ -77,86 +68,91 @@
       "__future__",
       "alembic",
       "flask",
-      "logging",
-      "sqlalchemy"
+      "sqlalchemy",
+      "logging"
     ],
     "tests\\test_api.py": [
-      "base64",
-      "re",
       "json",
       "app",
+      "base64",
+      "re",
       "unittest"
     ],
     "tests\\test_basics.py": [
+      "flask",
       "app",
-      "unittest",
-      "flask"
+      "unittest"
     ],
     "tests\\test_client.py": [
+      "re",
       "app",
-      "unittest",
-      "re"
+      "unittest"
     ],
     "tests\\test_selenium.py": [
+      "app",
+      "selenium",
       "time",
       "re",
-      "selenium",
-      "app",
+      "threading",
       "logging",
-      "unittest",
-      "threading"
+      "unittest"
     ],
     "tests\\test_user_model.py": [
       "datetime",
+      "time",
       "app",
-      "unittest",
-      "time"
+      "unittest"
+    ],
+    "tests\\test_validators_and_token_services.py": [
+      "app",
+      "time",
+      "unittest"
     ],
     "tests\\__init__.py": [],
     "app\\api\\authentication.py": [
+      "flask",
       "errors",
-      "models",
       "flask_httpauth",
-      "flask"
+      "models"
     ],
     "app\\api\\comments.py": [
+      "flask",
       "decorators",
-      "models",
-      "flask"
+      "models"
     ],
     "app\\api\\decorators.py": [
-      "functools",
+      "flask",
       "errors",
-      "flask"
+      "functools"
     ],
     "app\\api\\errors.py": [
-      "app",
-      "flask"
+      "flask",
+      "app"
     ],
     "app\\api\\posts.py": [
+      "flask",
       "decorators",
       "errors",
-      "models",
-      "flask"
+      "models"
     ],
     "app\\api\\users.py": [
-      "models",
-      "flask"
+      "flask",
+      "models"
     ],
     "app\\api\\__init__.py": [
       "flask"
     ],
     "app\\auth\\forms.py": [
+      "flask_wtf",
       "wtforms",
-      "models",
-      "flask_wtf"
+      "models"
     ],
     "app\\auth\\views.py": [
+      "models",
       "email",
-      "flask_login",
       "flask",
-      "forms",
-      "models"
+      "flask_login",
+      "forms"
     ],
     "app\\auth\\__init__.py": [
       "flask"
@@ -165,62 +161,67 @@
       "flask"
     ],
     "app\\main\\forms.py": [
-      "models",
-      "wtforms",
       "flask_pagedown",
-      "flask_wtf"
-    ],
-    "app\\main\\views.py": [
-      "flask_sqlalchemy",
-      "flask_login",
-      "flask",
-      "decorators",
-      "forms",
+      "flask_wtf",
+      "wtforms",
       "models"
     ],
-    "app\\main\\__init__.py": [
+    "app\\main\\views.py": [
       "models",
-      "flask"
+      "flask",
+      "flask_sqlalchemy",
+      "flask_login",
+      "decorators",
+      "forms"
+    ],
+    "app\\main\\__init__.py": [
+      "flask",
+      "models"
+    ],
+    "app\\validators\\__init__.py": [
+      "email",
+      "common",
+      "password"
     ],
     "migrations\\versions\\190163627111_account_confirmation.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\198b0eebcf9_caching_of_avatar_hashes.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\1b966e7f4b9e_post_model.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\2356a38169ea_followers.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\288cd3dc5a8_rich_text_posts.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\38c4e85512a9_initial_migration.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\456a945560f6_login_support.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\51f5ccfba190_comments.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\56ed7d33de8d_user_roles.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ],
     "migrations\\versions\\d66f086b258_user_information.py": [
-      "alembic",
-      "sqlalchemy"
+      "sqlalchemy",
+      "alembic"
     ]
   }
 }

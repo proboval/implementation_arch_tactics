@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between layers: app/main.py directly imports and uses app.models, app.schemas, and app.database (e.g., SessionLocal, engine), and app/models.py imports from app.database to access Base. This creates bidirectional dependencies (models depend on database, main depends on both models and database) and violates unidirectional layering. Static analysis confirms low modularity (1 package, avg_fan_out=2.5, max_directory_depth=2), and the architecture description explicitly warns about 'tight coupling between layers' and 'lack of explicit ports/adapters boundaries'. This coupling increases ripple effects: changing the ORM or database configuration impacts models and main directly, and testing requires real database setup. Reduced Coupling directly addresses this by introducing abstractions (e.g., repository interface, database interface) to decouple domain/schema layers from infrastructure.",
+  "target_components": [
+    "app/models.py",
+    "app/database.py",
+    "app/main.py",
+    "app/schemas.py"
+  ],
+  "expected_architectural_change": "Introduce a repository interface (e.g., in a new app/repository.py) that abstracts data access operations (e.g., get_records, create_record). Models will no longer import Base directly from database; instead, Base will be passed via dependency injection or defined in a neutral location. Database layer (database.py) will implement the repository interface. main.py will depend on the interface, not the concrete SessionLocal/engine. This creates a clean layered structure: main → repository interface → database implementation, with models/schemas remaining pure domain/DTOs.",
+  "implementation_strategy": "1. Create app/repository.py with an abstract base class (e.g., RepositoryBase) defining methods like get_records(), add_record(). 2. Refactor app/models.py to remove import of Base from database; instead, define Base in a neutral app/base.py or pass it at model definition time. 3. Refactor app/database.py to implement RepositoryBase and expose SessionLocal/engine internally. 4. Refactor app/main.py to inject the repository interface via Depends() instead of importing SessionLocal directly. 5. Update app/schemas.py to remain independent (no changes needed, but ensure no hidden coupling). This is incremental: start with repository interface, then refactor main.py, then models/database.",
+  "risks": "Risk of over-engineering for a small monolith; however, given the explicit architectural warning and the fact that the codebase is already layered, introducing a minimal repository abstraction is low-effort and high-impact. Temporary performance overhead is negligible (no runtime overhead per tactic description)."
+}

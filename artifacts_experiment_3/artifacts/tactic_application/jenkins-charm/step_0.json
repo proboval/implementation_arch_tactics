@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "reactive/orchestrator.py",
-  "content": "import charms.reactive as reactive\nfrom charmhelpers.core import hookenv\nfrom charms.layer.jenkins import (\n    api,\n    configuration,\n    credentials,\n    packages,\n    plugins,\n    service,\n    users,\n)\n\n\nclass Orchestrator:\n    \"\"\"Encapsulates orchestration of charm lifecycle stages.\"\"\"\n\n    def __init__(self):\n        self.api = api.Api()\n        self.configuration = configuration.Configuration()\n        self.credentials = credentials.Credentials()\n        self.packages = packages.Packages()\n        self.plugins = plugins.Plugins()\n        self.service = service.Service()\n        self.users = users.Users()\n\n    def wait_for_jenkins(self):\n        \"\"\"Wait for the Jenkins service to be ready.\"\"\"\n        self.service.check_ready()\n        self.api.wait()\n\n    def restart_jenkins_and_wait(self):\n        \"\"\"Restart the Jenkins service and wait for it to be ready.\"\"\"\n        hookenv.log(\"Restarting Jenkins\")\n        self.api.restart()\n        self.wait_for_jenkins()\n"
-}

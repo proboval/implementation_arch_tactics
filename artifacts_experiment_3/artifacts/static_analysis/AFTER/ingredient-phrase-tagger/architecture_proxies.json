@@ -5,22 +5,22 @@
   "avg_files_per_package": 4.0,
   "imports_graph": {
     "setup.py": [
-      "ingredient_phrase_tagger",
       "setuptools",
-      "sys"
+      "sys",
+      "ingredient_phrase_tagger"
     ],
     "bin\\convert-to-json.py": [
       "json",
-      "__future__",
-      "ingredient_phrase_tagger",
-      "sys"
-    ],
-    "bin\\parse-ingredients.py": [
-      "ingredient_phrase_tagger",
       "sys",
       "__future__",
-      "tempfile",
-      "os"
+      "ingredient_phrase_tagger"
+    ],
+    "bin\\parse-ingredients.py": [
+      "os",
+      "__future__",
+      "sys",
+      "ingredient_phrase_tagger",
+      "tempfile"
     ],
     "ingredient_phrase_tagger\\__init__.py": [],
     "ingredient_phrase_tagger\\training\\utils.py": [

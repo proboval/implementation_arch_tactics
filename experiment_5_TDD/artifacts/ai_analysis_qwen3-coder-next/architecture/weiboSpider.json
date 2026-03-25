@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns into distinct modules: downloader/, parser/, writer/, each with dedicated responsibilities",
+    "Shared core domain models (User, Weibo classes) used across modules, indicating tight cohesion within the monolith",
+    "No inter-process communication or network boundaries — all components import and call each other directly",
+    "Use of abstract base classes (Downloader, Parser, Writer) with concrete implementations suggests dependency inversion within a single process",
+    "Centralized control flow via spider.py and __main__.py, orchestrating the entire pipeline",
+    "Shared utilities (config_util, datetime_util) used across modules without isolation",
+    "Test suite mirrors module structure (test_downloader_async, test_parser/*), confirming internal modularity rather than service boundaries"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., parser imports downloader, writer imports parser) may reduce testability and maintainability over time",
+    "No clear boundary enforcement — modules could gradually become interdependent, eroding modularity",
+    "Single deployment unit limits scalability and independent evolution of components"
+  ]
+}

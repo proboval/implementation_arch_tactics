@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "dorker/github_client.py",
-  "content": "from github3 import GitHub\nimport requests\nimport base64\n\n\nclass GitHubClient:\n    def __init__(self, token):\n        self.gh = GitHub(token=token)\n        self.headers = {'Authorization': f'token {token}'}\n\n    def search_code(self, query, sort='indexed', order='desc'):\n        return self.gh.search_code(query, sort=sort, order=order)\n\n    def get_repository(self, owner, repo_name):\n        return self.gh.repository(owner, repo_name)\n\n    def get_git_contents(self, git_url):\n        \"\"\"Fetch and decode git contents from raw git URL.\"\"\"\n        res = requests.get(git_url, headers=self.headers)\n        res.raise_for_status()\n        content_b64 = res.json().get('content', '')\n        return base64.b64decode(content_b64).decode('utf-8')\n"
-}

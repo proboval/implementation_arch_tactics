@@ -1,0 +1,53 @@
+{
+  "python_files": 5,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "launcher.py": [
+      "os",
+      "urllib",
+      "argparse",
+      "sys",
+      "subprocess"
+    ],
+    "subgen.py": [
+      "xml",
+      "uvicorn",
+      "av",
+      "sys",
+      "torch",
+      "datetime",
+      "ast",
+      "ctypes",
+      "fastapi",
+      "gc",
+      "ffmpeg",
+      "requests",
+      "stable_whisper",
+      "io",
+      "queue",
+      "asyncio",
+      "json",
+      "typing",
+      "logging",
+      "language_code",
+      "faster_whisper",
+      "os",
+      "threading",
+      "numpy",
+      "hashlib",
+      "watchdog",
+      "time"
+    ],
+    "tests\\test_tactic.py": [
+      "abc",
+      "typing",
+      "pytest"
+    ],
+    "subgen\\webhooks\\__init__.py": [
+      "abc",
+      "typing"
+    ]
+  }
+}

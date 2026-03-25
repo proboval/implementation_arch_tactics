@@ -5,43 +5,43 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "bilibili.py": [
-      "rsa",
-      "imp",
-      "sys",
-      "hashlib",
-      "printer",
       "datetime",
-      "requests",
-      "base64",
+      "urllib",
       "aiohttp",
       "asyncio",
-      "time",
       "os",
+      "time",
+      "rsa",
+      "base64",
+      "printer",
+      "imp",
       "configloader",
-      "urllib",
-      "uuid"
+      "sys",
+      "requests",
+      "uuid",
+      "hashlib"
     ],
     "biliconsole.py": [
-      "utils",
       "traceback",
-      "statistics",
-      "printer",
       "threading",
-      "asyncio"
+      "printer",
+      "utils",
+      "asyncio",
+      "statistics"
     ],
     "configloader.py": [
-      "codecs",
-      "configparser"
+      "configparser",
+      "codecs"
     ],
     "login.py": [
-      "io",
-      "bilibili",
-      "printer",
-      "requests",
-      "base64",
       "time",
+      "base64",
+      "printer",
+      "PIL",
       "configloader",
-      "PIL"
+      "io",
+      "requests",
+      "bilibili"
     ],
     "LotteryResult.py": [
       "asyncio",
@@ -49,75 +49,75 @@
     ],
     "main.py": [
       "subprocess",
-      "sys",
-      "time"
+      "time",
+      "sys"
     ],
     "MultiRoom.py": [
-      "random",
-      "printer",
       "asyncio",
+      "printer",
+      "random",
       "bilibili"
     ],
     "printer.py": [
-      "inspect",
+      "colorama",
       "termcolor",
       "time",
-      "colorama"
+      "inspect"
     ],
     "rafflehandler.py": [
-      "bilibiliCilent",
-      "asyncio"
+      "asyncio",
+      "bilibiliCilent"
     ],
     "run.py": [
-      "utils",
-      "statistics",
-      "os",
-      "bilibili",
-      "connect",
-      "printer",
-      "Tasks",
+      "LotteryResult",
+      "login",
+      "OnlineHeart",
+      "rafflehandler",
       "TCP_monitor",
       "biliconsole",
-      "LotteryResult",
-      "asyncio",
-      "OnlineHeart",
-      "login",
+      "os",
       "schedule",
       "threading",
       "configloader",
-      "rafflehandler"
+      "bilibili",
+      "connect",
+      "printer",
+      "utils",
+      "asyncio",
+      "Tasks",
+      "statistics"
     ],
     "schedule.py": [
-      "printer",
+      "time",
       "asyncio",
-      "time"
+      "printer"
     ],
     "statistics.py": [
-      "utils",
-      "traceback",
-      "printer",
       "datetime",
+      "traceback",
       "time",
+      "printer",
+      "utils",
       "asyncio"
     ],
     "Tasks.py": [
-      "utils",
-      "traceback",
-      "bilibili",
-      "printer",
       "datetime",
-      "ast",
-      "time",
+      "traceback",
       "os",
+      "time",
       "configloader",
-      "asyncio"
+      "printer",
+      "utils",
+      "asyncio",
+      "bilibili",
+      "ast"
     ],
     "TCP_monitor.py": [
-      "traceback",
+      "json",
       "rafflehandler",
+      "traceback",
       "struct",
       "printer",
-      "json",
       "asyncio"
     ]
   }

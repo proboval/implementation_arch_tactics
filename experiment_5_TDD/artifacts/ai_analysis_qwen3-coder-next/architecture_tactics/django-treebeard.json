@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT23",
+    "name": "Exception",
+    "primary_qa_impact": "Reliability, Maintainability",
+    "positive_impact": "Reliability, Fault handling",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository shows inconsistent and incomplete exception handling across tree implementations. Static analysis reveals high complexity in core modules (e.g., mp_tree.py MI=21.6, ns_tree.py MI=28.6, ltree/__init__.py MI=33.2) and test_treebeard.py has the lowest maintainability index (0.0, rank 'C'), indicating fragile error handling. The exceptions.py module contains only 5 basic exception classes with no hierarchy or domain-specific variants, while tree implementations (mp_tree.py, ns_tree.py, al_tree.py, ltree/__init__.py) contain duplicated validation logic inline (e.g., path overflow checks, move validation) instead of using structured exception handling. This leads to scattered error conditions, poor testability, and high cognitive load when modifying tree operations. The exception tactic directly addresses this by introducing a well-structured exception hierarchy with domain-specific exceptions (e.g., PathOverflow, InvalidMoveToDescendant already exist but are underutilized) and consistent exception boundaries across tree operations, improving fault isolation and testability.",
+  "target_components": [
+    "treebeard/exceptions.py",
+    "treebeard/models.py",
+    "treebeard/mp_tree.py",
+    "treebeard/ns_tree.py",
+    "treebeard/al_tree.py",
+    "treebeard/ltree/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce a layered exception hierarchy with base TreeException, domain-specific exceptions (e.g., PathOverflow, InvalidMoveToDescendant, MissingNodeOrderBy already exist but need better organization), and operation-specific exceptions (e.g., AddChildException, MoveException). Replace inline validation logic in tree operation methods with explicit exception raising at well-defined boundaries. This creates clear fault boundaries and improves separation of concerns between business logic and error handling.",
+  "implementation_strategy": "1. Refactor exceptions.py to establish a clear exception hierarchy with base TreeException and categorized subclasses. 2. Identify all inline validation checks in tree operation methods (e.g., add_root, add_child, move) and replace with explicit exception raises. 3. Add exception context (e.g., node IDs, path info) to exceptions for better debugging. 4. Update test_treebeard.py to validate exception behavior explicitly. 5. Document exception contracts per tree algorithm (MP, NS, AL, LT) to clarify expected failure modes.",
+  "risks": "Risk of breaking existing exception handling in downstream code if exception types change. Mitigation: Maintain backward compatibility by keeping existing exception names and adding deprecation warnings for new specialized exceptions. Another risk is over-engineering exception hierarchy; mitigation: start with minimal hierarchy expansion based on actual usage patterns in the codebase."
+}

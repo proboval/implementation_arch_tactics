@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "syncserver/config.py",
-  "content": "import os\nimport binascii\n\n\ndef import_settings_from_environment_variables(config):\n    \"\"\"Import settings from environment variables into the config dict.\"\"\"\n    for key, value in os.environ.items():\n        if key.startswith('SYNCSERVER_'):\n            config_key = key[len('SYNCSERVER_'):].lower()\n            config[config_key] = str_to_bool(value) if value.lower() in ('true', 'false') else value\n    return config\n\n\ndef str_to_bool(value):\n    \"\"\"Convert string to boolean.\"\"\"\n    return value.lower() in ('true', '1', 'yes')\n\n\ndef generate_random_hex_key(length=32):\n    \"\"\"Generate a random hex key of specified length.\"\"\"\n    return binascii.hexlify(os.urandom(length // 2)).decode('ascii')\n"
-}

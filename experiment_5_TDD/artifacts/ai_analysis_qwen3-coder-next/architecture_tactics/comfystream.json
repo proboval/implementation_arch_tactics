@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between core components: server/app.py imports and directly instantiates Pipeline, ComfyStreamFrameProcessor, and various media track classes; server/frame_processor.py imports and directly uses Pipeline, PipelineState, and utils_byoc; nodes/api/__init__.py imports and uses LocalComfyStreamServer and PromptServer; nodes/audio_utils/load_audio_tensor.py and nodes/tensor_utils/load_tensor.py directly import comfystream.tensor_cache and exceptions without abstraction. Static analysis confirms high average fan-out (4.55) and factors C1/C2 (coupling) are flagged. This tight coupling increases ripple effects during changes, hinders independent testing, and complicifies modularity — especially evident in server/byoc.py importing frame_processor as a module rather than an interface. Reduced coupling directly addresses these maintainability issues by introducing abstractions (interfaces/protocols) to decouple components, enabling easier substitution, testing, and evolution.",
+  "target_components": [
+    "server/app.py",
+    "server/frame_processor.py",
+    "server/byoc.py",
+    "nodes/api/__init__.py",
+    "nodes/audio_utils/load_audio_tensor.py",
+    "nodes/tensor_utils/load_tensor.py",
+    "src/comfystream/pipeline.py",
+    "src/comfystream/pipeline_state.py",
+    "src/comfystream/tensor_cache.py"
+  ],
+  "expected_architectural_change": "Introduction of well-defined interfaces (e.g., PipelineInterface, TensorCacheInterface, FrameProcessorInterface) and dependency injection patterns. Components will depend on abstractions (protocols or ABCs) rather than concrete implementations. For example, ComfyStreamFrameProcessor will depend on an abstract Pipeline interface instead of the concrete Pipeline class, and tensor cache consumers will depend on a minimal cache interface instead of the concrete tensor_cache module. This reduces the scope of change and enables mocking for unit tests.",
+  "implementation_strategy": "1. Define minimal ABCs or Python Protocols for key dependencies (e.g., PipelineInterface with required methods, TensorCacheInterface with get/put/exists). 2. Refactor concrete classes (Pipeline, TensorCache) to implement these interfaces. 3. Refactor dependent classes (ComfyStreamFrameProcessor, LoadTensor, etc.) to accept interfaces via constructor injection or factory patterns. 4. Replace direct module imports (e.g., 'from comfystream import tensor_cache') with interface-based instantiation. 5. Update server/app.py to inject dependencies instead of direct instantiation. This can be done incrementally, starting with the most coupled modules (e.g., frame_processor.py → pipeline.py).",
+  "risks": "Initial refactoring may increase code verbosity due to interface definitions and constructor changes. Temporary performance overhead is negligible. Risk of over-engineering if interfaces are too broad — must be kept minimal and usage-driven. Requires disciplined adherence to interface contracts during migration."
+}

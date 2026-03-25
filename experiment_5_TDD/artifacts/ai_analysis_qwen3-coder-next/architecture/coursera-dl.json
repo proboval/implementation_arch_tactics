@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 top-level packages (coursera, coursera.test), indicating a single deployable unit",
+    "Clear module separation by concern (api, cookies, credentials, downloaders, workflow, etc.) with well-defined responsibilities",
+    "High average fan-out (5.93) suggests tight internal coupling within the monolith but low external coupling",
+    "Test directory nested under main package, typical of modular monoliths with integrated testing",
+    "No evidence of inter-service communication patterns (no REST clients to external services beyond Coursera API, no message queues, no service discovery)",
+    "Single entry point (coursera_dl.py) orchestrating components, consistent with monolithic architecture",
+    "Shared domain models (e.g., Asset namedtuple, various V1/V2 classes) used across modules",
+    "Directory depth of 3 indicates reasonable modularity without excessive nesting"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "High fan-out may indicate modules with too many dependencies, potentially violating separation of concerns",
+    "Lack of clear architectural boundaries could lead to technical debt if modules become too entangled over time",
+    "Testing is integrated but not isolated, making it harder to verify module boundaries"
+  ]
+}

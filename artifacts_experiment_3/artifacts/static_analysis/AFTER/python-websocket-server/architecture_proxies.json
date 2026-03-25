@@ -1,67 +1,58 @@
 {
-  "python_files": 12,
+  "python_files": 10,
   "packages": 1,
   "max_directory_depth": 2,
-  "avg_files_per_package": 12.0,
+  "avg_files_per_package": 10.0,
   "imports_graph": {
     "server.py": [
       "websocket_server"
     ],
     "setup.py": [
-      "re",
-      "subprocess",
       "shlex",
-      "distutils",
-      "sys",
+      "setuptools",
       "os",
-      "setuptools"
+      "distutils",
+      "re",
+      "sys",
+      "subprocess"
     ],
     "tests\\conftest.py": [
-      "websocket_server",
       "os",
-      "sys",
-      "logging",
       "time",
-      "pytest",
       "threading",
-      "websocket"
+      "sys",
+      "pytest",
+      "websocket",
+      "logging",
+      "websocket_server"
     ],
     "tests\\test_handshake.py": [
       "websocket_server"
     ],
     "tests\\test_message_lengths.py": [],
     "tests\\test_server.py": [
-      "pytest",
-      "threading",
       "websocket",
-      "time"
+      "threading",
+      "time",
+      "pytest"
     ],
     "tests\\test_text_messages.py": [
-      "threading"
-    ],
-    "websocket_server\\abstractions.py": [],
-    "websocket_server\\adapters.py": [
-      "sys",
-      "hashlib",
-      "base64",
-      "thread",
-      "abc",
       "threading"
     ],
     "websocket_server\\thread.py": [
       "threading"
     ],
     "websocket_server\\websocket_server.py": [
-      "websocket_server",
+      "socket",
+      "base64",
+      "threading",
       "sys",
-      "hashlib",
       "struct",
       "socketserver",
-      "logging",
-      "base64",
-      "socket",
-      "threading",
       "ssl",
+      "logging",
+      "websocket_server",
+      "hashlib",
       "errno"
     ],
     "websocket_server\\__init__.py": [

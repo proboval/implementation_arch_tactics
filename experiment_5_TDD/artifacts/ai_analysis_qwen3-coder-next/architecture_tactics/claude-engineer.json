@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (6.19) and tight coupling between modules, as evidenced by static analysis: tools modules import directly from each other (e.g., tools/e2bcodetool.py imports dotenv, json, base64, time — not just tools.base), and main.py in Claude-Eng-v2 imports 24+ unrelated modules including speech_recognition, pydub, venv, signal, mimetypes, etc., mixing infrastructure, business, and UI concerns. The Assistant class in ce3.py directly imports and instantiates tools via importlib/pkgutil without abstraction, and multiple entry points (app.py, ce3.py, main.py) duplicate tool-loading logic. This tight coupling increases ripple effects during change, reduces testability (tools cannot be unit-tested in isolation), and violates separation of concerns. Reduced Coupling directly addresses this by introducing interfaces (e.g., BaseTool is already present but underutilized) and dependency injection to decouple orchestrators from concrete tool implementations.",
+  "target_components": [
+    "tools/base.py",
+    "tools/*.py",
+    "ce3.py",
+    "Claude-Eng-v2/main.py",
+    "app.py"
+  ],
+  "expected_architectural_change": "Current flat module structure with direct imports will evolve toward a layered pattern: (1) tools remain as concrete implementations of BaseTool, (2) a new ToolRegistry or ToolFactory module will be introduced to manage tool discovery and instantiation via dependency injection, (3) Assistant and main.py will depend only on the registry/factory interface (not concrete tools), (4) entry points will be unified or clearly separated by concern (e.g., CLI vs web), reducing cross-module dependencies and enabling isolated testing.",
+  "implementation_strategy": "1. Enforce BaseTool as the sole interface for tool execution (add abstract method validation in __init__ of BaseTool). 2. Create a ToolRegistry class that uses pkgutil/importlib to discover and register tools at runtime, injecting dependencies (e.g., config, logging) via constructor. 3. Refactor Assistant and main.py to receive ToolRegistry via constructor (dependency injection), removing direct imports of tools/*.py modules. 4. Replace direct imports in tools/*.py (e.g., dotenv, json) with injection of required services (e.g., pass Config instance to tools needing env vars). 5. Add unit tests for ToolRegistry and isolated tool execution. This is incremental: start with ToolRegistry, refactor Assistant first, then main.py.",
+  "risks": "Initial refactoring may increase complexity temporarily; risk of breaking tool discovery if registry logic is flawed. Mitigation: preserve existing tool discovery logic, add tests before refactoring, and use feature flags to gradually migrate. Also, over-engineering risk — avoid introducing unnecessary interfaces beyond BaseTool and ToolRegistry."
+}

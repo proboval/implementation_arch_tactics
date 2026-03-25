@@ -5,9 +5,9 @@
   "avg_files_per_package": 6.0,
   "imports_graph": {
     "load.py": [
+      "app",
       "datetime",
-      "csv",
-      "app"
+      "csv"
     ],
     "app\\database.py": [
       "os",
@@ -15,10 +15,10 @@
     ],
     "app\\main.py": [
       "database",
-      "typing",
+      "fastapi",
       "starlette",
       "sqlalchemy",
-      "fastapi"
+      "typing"
     ],
     "app\\models.py": [
       "database",

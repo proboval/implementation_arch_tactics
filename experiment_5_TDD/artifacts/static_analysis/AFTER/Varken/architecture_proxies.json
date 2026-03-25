@@ -1,0 +1,124 @@
+{
+  "python_files": 18,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 18.0,
+  "imports_graph": {
+    "Varken.py": [
+      "varken",
+      "os",
+      "threading",
+      "queue",
+      "platform",
+      "argparse",
+      "distro",
+      "logging",
+      "schedule",
+      "sys",
+      "time"
+    ],
+    "tests\\test_tactic.py": [
+      "inspect",
+      "varken",
+      "typing",
+      "pytest"
+    ],
+    "utilities\\grafana_build.py": [
+      "sys",
+      "requests",
+      "json"
+    ],
+    "utilities\\historical_tautulli_import.py": [
+      "logging",
+      "os",
+      "varken",
+      "argparse"
+    ],
+    "varken\\dbmanager.py": [
+      "logging",
+      "sys",
+      "requests",
+      "influxdb"
+    ],
+    "varken\\helpers.py": [
+      "datetime",
+      "requests",
+      "os",
+      "hashlib",
+      "urllib",
+      "ipaddress",
+      "geoip2",
+      "urllib3",
+      "json",
+      "logging",
+      "tarfile",
+      "time"
+    ],
+    "varken\\iniparser.py": [
+      "varken",
+      "os",
+      "shutil",
+      "re",
+      "configparser",
+      "logging"
+    ],
+    "varken\\interfaces.py": [
+      "abc",
+      "typing"
+    ],
+    "varken\\lidarr.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\ombi.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\radarr.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\sickchill.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\sonarr.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\structures.py": [
+      "logging",
+      "sys",
+      "typing"
+    ],
+    "varken\\tautulli.py": [
+      "influxdb",
+      "datetime",
+      "requests",
+      "varken",
+      "geoip2",
+      "logging"
+    ],
+    "varken\\unifi.py": [
+      "logging",
+      "datetime",
+      "requests",
+      "varken"
+    ],
+    "varken\\varkenlogger.py": [
+      "logging",
+      "varken"
+    ],
+    "varken\\__init__.py": []
+  }
+}

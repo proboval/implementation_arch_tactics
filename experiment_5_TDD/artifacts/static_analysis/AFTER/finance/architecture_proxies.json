@@ -1,0 +1,38 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "interfaces.py": [
+      "typing",
+      "pandas"
+    ],
+    "plots.py": [
+      "plotly",
+      "numpy",
+      "pandas"
+    ],
+    "portfolio.py": [
+      "warnings",
+      "scipy",
+      "numpy",
+      "pandas"
+    ],
+    "streamlit_app.py": [
+      "portfolio",
+      "datetime",
+      "plots",
+      "yfinance",
+      "streamlit"
+    ],
+    "tests\\test_tactic.py": [
+      "portfolio",
+      "plots",
+      "ast",
+      "interfaces",
+      "typing",
+      "pytest"
+    ]
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "python_files": 40,
+  "packages": 0,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "Ch01\\01_04\\metric.py": [
+      "datetime"
+    ],
+    "Ch01\\01_04\\metric_json.py": [
+      "datetime",
+      "json",
+      "metric"
+    ],
+    "Ch01\\01_04\\metric_xs.py": [
+      "xml",
+      "sys",
+      "metric",
+      "csv"
+    ],
+    "Ch01\\01_04\\metric_yt.py": [
+      "yaml",
+      "metric",
+      "toml"
+    ],
+    "Ch02\\02_01\\basic.py": [
+      "pickle",
+      "moves"
+    ],
+    "Ch02\\02_01\\kv.py": [
+      "shelve",
+      "moves"
+    ],
+    "Ch02\\02_01\\moves.py": [
+      "datetime"
+    ],
+    "Ch02\\02_01\\stream.py": [
+      "socket",
+      "pickle",
+      "moves"
+    ],
+    "Ch02\\02_02\\player.py": [
+      "logging"
+    ],
+    "Ch02\\02_02\\player_dc.py": [
+      "dataclasses"
+    ],
+    "Ch02\\02_02\\player_nt.py": [
+      "collections"
+    ],
+    "Ch02\\02_03\\config.py": [
+      "logging",
+      "sys",
+      "os"
+    ],
+    "Ch02\\02_03\\load_config.py": [
+      "types"
+    ],
+    "Ch02\\02_03\\load_config_imp.py": [
+      "importlib"
+    ],
+    "Ch02\\challenge\\rides.py": [
+      "datetime"
+    ],
+    "Ch02\\solution\\rides.py": [
+      "datetime",
+      "pickle"
+    ],
+    "Ch03\\03_01\\basic.py": [
+      "json",
+      "event"
+    ],
+    "Ch03\\03_01\\event.py": [],
+    "Ch03\\03_02\\custom.py": [
+      "datetime"
+    ],
+    "Ch03\\03_02\\event.py": [
+      "datetime"
+    ],
+    "Ch03\\03_03\\streaming.py": [
+      "io",
+      "json"
+    ],
+    "Ch03\\challenge\\log.py": [
+      "ipaddress",
+      "datetime",
+      "dataclasses",
+      "http"
+    ],
+    "Ch03\\solution\\log.py": [
+      "datetime",
+      "http",
+      "ipaddress",
+      "json",
+      "dataclasses"
+    ],
+    "Ch04\\04_04\\weather.py": [
+      "weather_pb2"
+    ],
+    "Ch04\\04_04\\weather_pb2.py": [
+      "google"
+    ],
+    "Ch04\\04_05\\client.py": [
+      "weather_pb2",
+      "grpc",
+      "weather_pb2_grpc"
+    ],
+    "Ch04\\04_05\\server.py": [
+      "grpc",
+      "weather_pb2_grpc",
+      "threading",
+      "weather_pb2",
+      "concurrent",
+      "logging"
+    ],
+    "Ch04\\challenge\\trades.py": [
+      "datetime"
+    ],
+    "Ch04\\solution\\trades.py": [
+      "datetime",
+      "trade_pb2"
+    ],
+    "Ch04\\solution\\trade_pb2.py": [
+      "google"
+    ],
+    "Ch05\\05_01\\metric.py": [
+      "datetime",
+      "msgpack"
+    ],
+    "Ch05\\05_02\\config.py": [
+      "yaml",
+      "sys"
+    ],
+    "Ch05\\05_03\\metric.py": [
+      "xml",
+      "datetime"
+    ],
+    "Ch05\\05_04\\logs.py": [
+      "random",
+      "datetime",
+      "sqlite3"
+    ],
+    "Ch05\\05_05\\server.py": [
+      "tomllib",
+      "pprint"
+    ],
+    "Ch05\\challenge\\etl.py": [
+      "xml",
+      "sqlite3"
+    ],
+    "Ch05\\solution\\etl.py": [
+      "xml",
+      "datetime",
+      "sqlite3"
+    ],
+    "Ch06\\06_03\\city.py": [],
+    "Ch06\\challenge\\wc.py": [
+      "collections"
+    ],
+    "Ch06\\solution\\wc.py": [
+      "collections",
+      "unicodedata"
+    ]
+  }
+}

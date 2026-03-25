@@ -6,11 +6,11 @@
   "imports_graph": {
     "create_data.py": [
       "random",
-      "projeto",
-      "django",
       "string",
+      "os",
+      "django",
       "timeit",
-      "os"
+      "projeto"
     ],
     "escrevendo_csv.py": [
       "csv"
@@ -20,9 +20,9 @@
       "projeto"
     ],
     "manage.py": [
-      "django",
       "os",
-      "sys"
+      "sys",
+      "django"
     ],
     "contrib\\env_gen.py": [
       "django"
@@ -35,8 +35,8 @@
       "django"
     ],
     "projeto\\wsgi.py": [
-      "django",
-      "os"
+      "os",
+      "django"
     ],
     "projeto\\__init__.py": [],
     "projeto\\core\\admin.py": [
@@ -52,8 +52,8 @@
       "django"
     ],
     "projeto\\core\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\core\\views.py": [
       "django"
@@ -67,38 +67,38 @@
       "django"
     ],
     "projeto\\estoque\\forms.py": [
+      "projeto",
       "django",
-      "models",
-      "projeto"
+      "models"
     ],
     "projeto\\estoque\\managers.py": [
       "django"
     ],
     "projeto\\estoque\\models.py": [
-      "django",
       "managers",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\estoque\\tests.py": [
       "django"
     ],
     "projeto\\estoque\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\estoque\\views.py": [
-      "django",
-      "models",
+      "forms",
       "projeto",
-      "forms"
+      "django",
+      "models"
     ],
     "projeto\\estoque\\__init__.py": [],
     "projeto\\produto\\admin.py": [
-      "csv",
-      "xlwt",
-      "models",
       "datetime",
-      "django"
+      "models",
+      "django",
+      "csv",
+      "xlwt"
     ],
     "projeto\\produto\\apps.py": [
       "django"
@@ -114,17 +114,17 @@
       "django"
     ],
     "projeto\\produto\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\produto\\views.py": [
-      "csv",
-      "io",
-      "projeto",
-      "pandas",
-      "models",
       "datetime",
+      "models",
       "django",
+      "io",
+      "pandas",
+      "csv",
+      "projeto",
       "forms"
     ],
     "projeto\\produto\\__init__.py": [],

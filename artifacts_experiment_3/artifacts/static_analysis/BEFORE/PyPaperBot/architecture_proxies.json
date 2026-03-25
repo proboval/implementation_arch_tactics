@@ -8,31 +8,31 @@
       "setuptools"
     ],
     "PyPaperBot\\Crossref.py": [
-      "Paper",
-      "requests",
-      "time",
-      "PapersFilters",
+      "random",
       "crossref_commons",
-      "random"
+      "Paper",
+      "PapersFilters",
+      "time",
+      "requests"
     ],
     "PyPaperBot\\Downloader.py": [
+      "NetInfo",
+      "random",
+      "os",
+      "time",
       "Utils",
       "requests",
-      "time",
-      "HTMLparsers",
-      "os",
-      "random",
-      "NetInfo"
+      "HTMLparsers"
     ],
     "PyPaperBot\\HTMLparsers.py": [
-      "re",
-      "bs4"
+      "bs4",
+      "re"
     ],
     "PyPaperBot\\NetInfo.py": [],
     "PyPaperBot\\Paper.py": [
-      "urllib",
       "pandas",
       "re",
+      "urllib",
       "bibtexparser"
     ],
     "PyPaperBot\\PapersFilters.py": [
@@ -40,35 +40,35 @@
       "difflib"
     ],
     "PyPaperBot\\proxy.py": [
-      "pyChainedProxy",
-      "socket"
+      "socket",
+      "pyChainedProxy"
     ],
     "PyPaperBot\\Scholar.py": [
-      "requests",
-      "time",
-      "HTMLparsers",
-      "selenium",
+      "NetInfo",
       "Crossref",
-      "undetected_chromedriver",
       "functools",
-      "NetInfo"
+      "selenium",
+      "time",
+      "undetected_chromedriver",
+      "requests",
+      "HTMLparsers"
     ],
     "PyPaperBot\\Utils.py": [],
     "PyPaperBot\\__init__.py": [],
     "PyPaperBot\\__main__.py": [
-      "sys",
-      "Paper",
-      "Downloader",
+      "Crossref",
       "__init__",
+      "argparse",
       "urllib",
-      "proxy",
-      "requests",
+      "Paper",
+      "os",
       "time",
       "PapersFilters",
-      "os",
-      "argparse",
-      "Crossref",
-      "Scholar"
+      "Scholar",
+      "proxy",
+      "sys",
+      "requests",
+      "Downloader"
     ]
   }
 }

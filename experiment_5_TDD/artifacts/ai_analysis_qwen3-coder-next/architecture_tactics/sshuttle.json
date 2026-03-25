@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high average fan-out (4.88), indicating tight coupling: modules like client.py, server.py, and cmdline.py each import 10+ other modules, creating ripple-effect risk. For example, cmdline.py imports 7 modules directly (sshuttle.client, firewall, hostwatch, ssyslog, helpers, options, client), and client.py imports 10 modules including ssh, ssnet, helpers, methods, etc. This tight coupling makes changes risky and testing difficult. The methods/ subpackage already shows good separation via BaseMethod, but the rest of the codebase lacks clear abstraction layers—firewall.py, server.py, and client.py all depend directly on platform-specific modules (linux.py, methods/pf.py, methods/tproxy.py) without indirection. Reduced Coupling directly addresses this by introducing interfaces/abstractions to decouple high-fan-out modules, reducing ripple effects and improving testability.",
+  "target_components": [
+    "sshuttle/client.py",
+    "sshuttle/server.py",
+    "sshuttle/cmdline.py",
+    "sshuttle/firewall.py",
+    "sshuttle/hostwatch.py",
+    "sshuttle/methods/__init__.py",
+    "sshuttle/methods/nat.py",
+    "sshuttle/methods/pf.py",
+    "sshuttle/methods/tproxy.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., FirewallInterface, HostwatchInterface) and dependency injection points. For example, client.py and server.py would depend on an abstract Firewall interface instead of directly importing firewall.py and methods/*.py. The methods module already uses BaseMethod—this pattern should be extended to other cross-cutting concerns. New abstraction layers (e.g., sshuttle/interfaces.py) would be created to define contracts, and concrete implementations (e.g., LinuxFirewall, PFFirewall) would be registered via a factory or DI container.",
+  "implementation_strategy": "1. Extract interface definitions from existing BaseMethod pattern into a new sshuttle/interfaces.py module. 2. Refactor cmdline.py to depend on an abstract ClientOrchestrator interface instead of importing client/firewall/hostwatch directly. 3. Refactor client.py and server.py to accept firewall and hostwatch dependencies via constructor injection rather than direct imports. 4. Replace direct imports of platform-specific modules (e.g., linux.py, methods/pf.py) with factory-based resolution via methods.get_method(). 5. Introduce a minimal DI registry (e.g., sshuttle/di.py) to wire concrete implementations at startup. This can be done incrementally—start with firewall interface, then hostwatch, then other modules.",
+  "risks": "Initial refactoring may increase complexity if interfaces are poorly defined. Over-abstraction could reduce readability if not balanced with concrete examples. However, risks are mitigated by the existing modular structure and test coverage, allowing incremental validation."
+}

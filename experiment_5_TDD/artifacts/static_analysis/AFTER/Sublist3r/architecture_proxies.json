@@ -1,0 +1,56 @@
+{
+  "python_files": 6,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 3.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "sublist3r.py": [
+      "socket",
+      "re",
+      "urllib",
+      "argparse",
+      "colorama",
+      "urlparse",
+      "collections",
+      "sys",
+      "random",
+      "multiprocessing",
+      "requests",
+      "subbrute",
+      "json",
+      "dns",
+      "os",
+      "threading",
+      "hashlib",
+      "win_unicode_console",
+      "time"
+    ],
+    "subbrute\\subbrute.py": [
+      "uuid",
+      "random",
+      "dns",
+      "multiprocessing",
+      "os",
+      "ctypes",
+      "re",
+      "json",
+      "signal",
+      "sys",
+      "abc",
+      "optparse"
+    ],
+    "subbrute\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "tests",
+      "subbrute",
+      "inspect",
+      "typing",
+      "pytest",
+      "abc"
+    ],
+    "tests\\__init__.py": []
+  }
+}

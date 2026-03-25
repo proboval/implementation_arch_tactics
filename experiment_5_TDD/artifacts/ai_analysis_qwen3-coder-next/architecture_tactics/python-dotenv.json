@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals tight coupling between core modules: src/dotenv/main.py imports 12 modules (os, io, stat, parser, collections, contextlib, typing, variables, logging, sys, pathlib, tempfile), and src/dotenv/cli.py imports 10 modules including main, while src/dotenv/__init__.py re-exports from main, creating a central hub. The imports graph shows tests directly importing internal modules like 'tests\\test_cli.py': ['dotenv'] and 'tests\\test_lib.py': ['subprocess'] without clear abstraction boundaries. This tight coupling increases ripple effects during changes (e.g., modifying main.py likely breaks multiple test files and CLI), reduces testability (tests cannot easily mock dependencies), and violates separation of concerns. The modular monolith structure has moderate fan-out (4.25) but internal coupling is concentrated in main.py and cli.py, making them high-risk change amplifiers.",
+  "target_components": [
+    "src/dotenv/main.py",
+    "src/dotenv/cli.py",
+    "src/dotenv/__init__.py",
+    "src/dotenv/variables.py",
+    "src/dotenv/parser.py"
+  ],
+  "expected_architectural_change": "Introduce clear abstraction layers: (1) Extract a 'DotEnvReader' interface for parsing and loading operations, (2) Extract a 'DotEnvWriter' interface for set/unset operations, (3) Create a 'DotEnvResolver' for variable resolution logic, and (4) Decouple CLI from concrete implementations via dependency injection. This replaces the current 'main.py' monolith with focused, testable components that depend on abstractions rather than concrete implementations.",
+  "implementation_strategy": "Step 1: Define interfaces (e.g., DotEnvReader, DotEnvWriter) in a new src/dotenv/interfaces.py module. Step 2: Refactor DotEnv class to implement DotEnvReader and create new writer implementations. Step 3: Update cli.py to depend on interfaces, not concrete classes. Step 4: Refactor __init__.py to expose only high-level APIs. Step 5: Update tests to mock interfaces. This is incremental: start with parser/variables separation (already partially done), then extract reader/writer, and finally inject dependencies in CLI.",
+  "risks": "Risk of over-engineering in a small codebase; however, given the test suite size (20 test files) and complexity of file operations (symlinks, permissions, FIFOs), the coupling is already causing maintainability debt. The risk is mitigated by incremental implementation and existing test coverage."
+}

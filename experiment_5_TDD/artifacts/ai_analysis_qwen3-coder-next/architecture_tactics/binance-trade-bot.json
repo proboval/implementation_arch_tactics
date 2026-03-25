@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core modules: strategies inherit directly from AutoTrader (e.g., strategies/default_strategy.py, strategies/multiple_coins_strategy.py), and modules like backtest.py, database.py, and api_server.py directly instantiate or depend on concrete implementations (e.g., Database, BinanceAPIManager) rather than abstractions. Static analysis confirms high average fan-out (4.96) and factors C1/C2 (coupling and cohesion issues). This coupling increases ripple effects during changes—modifying core behavior requires touching multiple modules, and testing strategies requires mocking entire AutoTrader state. Reduced Coupling directly addresses this by introducing abstractions (e.g., Strategy interface, TradeExecutor interface) to decouple strategies from AutoTrader and business logic from infrastructure (database, API). This is implementable incrementally and fits the modular monolith structure without requiring service decomposition.",
+  "target_components": [
+    "binance_trade_bot/strategies/default_strategy.py",
+    "binance_trade_bot/strategies/multiple_coins_strategy.py",
+    "binance_trade_bot/strategies/__init__.py",
+    "binance_trade_bot/auto_trader.py",
+    "binance_trade_bot/backtest.py",
+    "binance_trade_bot/database.py",
+    "binance_trade_bot/binance_api_manager.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., Strategy, TradeExecutor, ScoutBehavior) to replace inheritance-based coupling. AutoTrader will depend on Strategy interface instead of concrete strategy subclasses. Strategies will implement a fixed contract (e.g., scout(), bridge_scout()) without inheriting AutoTrader’s full state. Database and BinanceAPIManager will be injected via interfaces (e.g., TradeLog, PriceProvider) rather than concrete classes, enabling easier mocking and reducing cross-module dependencies.",
+  "implementation_strategy": "1. Define Strategy interface (e.g., abstract base class) with required methods (scout, bridge_scout, etc.) and remove inheritance from AutoTrader in strategy subclasses. 2. Refactor AutoTrader to accept Strategy instance via constructor and delegate strategy-specific behavior to it. 3. Introduce interfaces for infrastructure dependencies (e.g., TradeLog, PriceProvider) and inject them into components that use them (e.g., Database, BinanceAPIManager). 4. Update backtest.py to use mock implementations of these interfaces. 5. Gradually refactor strategies to depend only on injected interfaces, not on AutoTrader internals.",
+  "risks": "Initial refactoring may increase complexity temporarily due to new abstractions. Requires careful backward compatibility handling (e.g., keeping AutoTrader as a default Strategy implementation during transition). Risk of over-engineering if interfaces are too broad; must be kept minimal and behavior-driven."
+}

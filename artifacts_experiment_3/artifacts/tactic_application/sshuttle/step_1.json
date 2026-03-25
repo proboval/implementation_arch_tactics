@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "sshuttle/netutils.py",
-  "content": "import socket\nfrom sshuttle.helpers import Fatal\n\n\ndef family_to_string(family):\n    if family == socket.AF_INET6:\n        return \"AF_INET6\"\n    elif family == socket.AF_INET:\n        return \"AF_INET\"\n    else:\n        return str(family)\n\n\ndef get_socket_ip(sock):\n    \"\"\"Return the IP address bound to a socket.\"\"\"\n    return sock.getsockname()[0]\n\n\ndef is_ipv6(ip):\n    \"\"\"Check if the given IP string is IPv6.\"\"\"\n    return ':' in ip\n\n\ndef validate_ip(ip, family):\n    \"\"\"Validate that an IP address matches the expected address family.\"\"\"\n    if family == socket.AF_INET6:\n        if not is_ipv6(ip):\n            raise Fatal(\"Expected IPv6 address, got '%s'\" % ip)\n    else:\n        if is_ipv6(ip):\n            raise Fatal(\"Expected IPv4 address, got '%s'\" % ip)\n"
-}

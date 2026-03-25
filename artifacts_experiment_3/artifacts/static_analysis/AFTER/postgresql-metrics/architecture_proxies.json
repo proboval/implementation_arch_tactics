@@ -8,35 +8,35 @@
       "setuptools"
     ],
     "postgresql_metrics\\common.py": [
-      "os",
       "logbook",
+      "os",
       "yaml"
     ],
     "postgresql_metrics\\default_metrics.py": [],
     "postgresql_metrics\\localhost_postgres_stats.py": [
+      "postgresql_metrics",
       "re",
-      "os",
-      "postgresql_metrics"
+      "os"
     ],
     "postgresql_metrics\\metrics_gatherer.py": [
       "postgresql_metrics"
     ],
     "postgresql_metrics\\metrics_logic.py": [
-      "argparse",
-      "json",
-      "postgresql_metrics",
       "socket",
-      "time",
-      "os"
+      "postgresql_metrics",
+      "json",
+      "argparse",
+      "os",
+      "time"
     ],
     "postgresql_metrics\\postgres_queries.py": [
-      "re",
+      "postgresql_metrics",
       "psycopg2",
-      "postgresql_metrics"
+      "re"
     ],
     "postgresql_metrics\\prepare_db.py": [
-      "psycopg2",
       "postgresql_metrics",
+      "psycopg2",
       "getpass"
     ],
     "postgresql_metrics\\__init__.py": []

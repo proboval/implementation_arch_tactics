@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Three top-level packages (function, utils, docs) suggest logical grouping of concerns rather than strict layers",
+    "No explicit layer boundaries (e.g., no 'presentation/', 'service/', 'domain/' directories); instead, 'function/' contains domain-specific scraping modules (search, detail, review)",
+    "Shared utilities in 'utils/' are used across domain modules without strict dependency directionality",
+    "Main entry point (main.py) orchestrates components directly without a clear separation of concerns into layers",
+    "Low average fan-out (1.25) indicates modules depend on few others, consistent with cohesive modules in a monolith",
+    "No inter-service communication patterns (e.g., no HTTP clients to external services beyond internal scraping targets), ruling out microservices-like",
+    "No ports/adapters separation (e.g., no clear boundary between core logic and I/O adapters)",
+    "No MVC structure (no templates/views, no controllers handling HTTP requests/responses in a standard way)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between utility modules and domain functions may reduce testability",
+    "Lack of explicit layering may lead to ambiguous separation of concerns over time",
+    "Centralized controller (spider_controller.py) may become a bottleneck and single point of failure"
+  ]
+}

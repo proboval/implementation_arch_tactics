@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package (packages: 1) with clear module separation (e.g., transcribe.py, diarization.py, writers.py, live.py)",
+    "Low directory depth (max 3) indicating flat, cohesive structure without complex distribution across services",
+    "Central entry point (whisper_ctranslate2.py) orchestrating core modules (CommandLine, Transcribe, Diarization, Live, Writers)",
+    "Strong cohesion within modules (e.g., writers.py contains all output format classes) and low coupling (modules import only specific dependencies)",
+    "Test files mirror module structure (testdiarization.py ↔ diarization.py), indicating modular design",
+    "No evidence of service boundaries, network calls, or inter-process communication (rules out microservices_like)",
+    "No strict separation of presentation/domain/application layers (rules out layered)",
+    "No explicit ports/adapters pattern (e.g., no adapter interfaces decoupling core logic from frameworks)",
+    "No MVC separation (no controllers/views/models pattern)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Single package may become monolithic over time if new features are added without further modularization",
+    "Tight coupling to external libraries (faster_whisper) could reduce testability and flexibility",
+    "Lack of explicit dependency inversion may hinder future refactoring or testing"
+  ]
+}

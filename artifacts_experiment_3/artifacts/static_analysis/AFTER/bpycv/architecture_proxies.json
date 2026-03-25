@@ -5,93 +5,93 @@
   "avg_files_per_package": 12.5,
   "imports_graph": {
     "setup.py": [
-      "os",
-      "setuptools"
+      "setuptools",
+      "os"
     ],
     "bpycv\\camera_utils.py": [
+      "bpy",
       "random",
       "mathutils",
-      "bpy",
       "boxx",
       "pose_utils"
     ],
     "bpycv\\domain_randomzition.py": [
-      "bpy",
       "object_utils",
-      "boxx",
-      "random"
+      "bpy",
+      "random",
+      "boxx"
     ],
     "bpycv\\exr_image_parser.py": [
-      "minexr",
-      "scipy",
       "utils",
-      "pseudo_color",
       "bpy",
-      "struct",
-      "camera_utils",
-      "boxx",
       "os",
-      "cv2"
+      "boxx",
+      "camera_utils",
+      "cv2",
+      "scipy",
+      "struct",
+      "minexr",
+      "pseudo_color"
     ],
     "bpycv\\hdri_manager.py": [
+      "urllib",
       "random",
+      "boxx",
       "bs4",
       "requests",
-      "boxx",
-      "glob",
-      "urllib"
+      "glob"
     ],
     "bpycv\\material_utils.py": [
-      "random",
-      "utils",
-      "statu_recover",
       "bpy",
+      "random",
       "node_graph",
-      "boxx"
+      "boxx",
+      "statu_recover",
+      "utils"
     ],
     "bpycv\\node_graph.py": [
       "boxx"
     ],
     "bpycv\\object_utils.py": [
-      "bpy",
       "numpy",
-      "boxx",
-      "material_utils"
+      "bpy",
+      "material_utils",
+      "boxx"
     ],
     "bpycv\\physic_utils.py": [
-      "bpy",
       "object_utils",
-      "mathutils"
+      "mathutils",
+      "bpy"
     ],
     "bpycv\\pose_utils.py": [
-      "mathutils",
       "bpy",
-      "numpy",
-      "physic_utils",
-      "camera_utils",
+      "mathutils",
       "boxx",
+      "physic_utils",
+      "numpy",
+      "camera_utils",
       "object_utils"
     ],
     "bpycv\\pseudo_color.py": [
-      "boxx",
-      "exr_image_parser"
+      "exr_image_parser",
+      "boxx"
     ],
     "bpycv\\render_utils.py": [
-      "material_utils",
-      "statu_recover",
       "bpy",
-      "camera_utils",
-      "boxx",
-      "tempfile",
-      "exr_image_parser",
       "collections",
-      "pose_utils"
+      "boxx",
+      "exr_image_parser",
+      "camera_utils",
+      "pose_utils",
+      "statu_recover",
+      "tempfile",
+      "material_utils"
     ],
     "bpycv\\scene_setting.py": [
       "bpy",
-      "boxx",
       "random",
-      "bpycv"
+      "bpycv",
+      "boxx"
     ],
     "bpycv\\select_utils.py": [
       "bpy",
@@ -99,79 +99,79 @@
     ],
     "bpycv\\statu_recover.py": [
       "bpy",
-      "inspect",
-      "boxx",
+      "functools",
       "time",
-      "functools"
+      "boxx",
+      "inspect"
     ],
     "bpycv\\stereo_utils.py": [
       "mathutils",
-      "camera_utils",
       "render_utils",
       "boxx",
-      "cv2",
+      "camera_utils",
       "pose_utils",
+      "cv2",
       "calibrating"
     ],
     "bpycv\\utils.py": [
       "bpy",
+      "sys",
       "IPython",
-      "boxx",
-      "sys"
+      "boxx"
     ],
     "bpycv\\__info__.py": [],
     "bpycv\\__init__.py": [
+      "node_graph",
       "select_utils",
-      "domain_randomzition",
+      "scene_setting",
+      "stereo_utils",
+      "__info__",
+      "exr_image_parser",
+      "render_utils",
+      "camera_utils",
+      "hdri_manager",
+      "pose_utils",
+      "physic_utils",
+      "boxx",
+      "object_utils",
+      "statu_recover",
       "utils",
       "material_utils",
-      "hdri_manager",
-      "statu_recover",
-      "physic_utils",
-      "camera_utils",
-      "stereo_utils",
-      "node_graph",
-      "render_utils",
-      "scene_setting",
-      "__info__",
-      "boxx",
-      "exr_image_parser",
-      "object_utils",
-      "pose_utils"
+      "domain_randomzition"
     ],
     "example\\6d_pose_demo.py": [
-      "random",
-      "scipy",
-      "bpycv",
       "bpy",
-      "numpy",
+      "random",
       "boxx",
-      "cv2"
+      "numpy",
+      "cv2",
+      "scipy",
+      "bpycv"
     ],
     "example\\demo.py": [
-      "random",
-      "bpycv",
       "bpy",
+      "random",
       "numpy",
-      "cv2"
+      "cv2",
+      "bpycv"
     ],
     "example\\ycb_demo.py": [
-      "random",
-      "bpycv",
       "bpy",
+      "random",
       "os",
-      "glob"
+      "glob",
+      "bpycv"
     ],
     "bpycv\\dataset_utils\\cfg_utils.py": [
-      "sys",
       "argparse",
-      "boxx",
       "os",
+      "boxx",
+      "sys",
       "zcs"
     ],
     "bpycv\\dataset_utils\\dataset_generator.py": [
-      "random",
       "bpy",
+      "random",
       "time",
       "boxx",
       "abc"

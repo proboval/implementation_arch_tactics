@@ -1,0 +1,181 @@
+{
+  "python_files": 33,
+  "packages": 4,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 8.25,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "coinbase_advanced_trader\\alphasquared_trader.py": [
+      "decimal",
+      "alphasquared",
+      "enhanced_rest_client",
+      "logging",
+      "coinbase_advanced_trader"
+    ],
+    "coinbase_advanced_trader\\config.py": [
+      "yaml",
+      "logging",
+      "coinbase_advanced_trader",
+      "pathlib"
+    ],
+    "coinbase_advanced_trader\\constants.py": [],
+    "coinbase_advanced_trader\\enhanced_rest_client.py": [
+      "trading_config",
+      "decimal",
+      "services",
+      "coinbase",
+      "typing",
+      "coinbase_advanced_trader"
+    ],
+    "coinbase_advanced_trader\\logger.py": [
+      "logging",
+      "sys"
+    ],
+    "coinbase_advanced_trader\\trading_config.py": [
+      "coinbase_advanced_trader",
+      "typing"
+    ],
+    "coinbase_advanced_trader\\__init__.py": [
+      "alphasquared_trader",
+      "enhanced_rest_client"
+    ],
+    "tests\\test_tactic.py": [
+      "decimal",
+      "unittest",
+      "pytest",
+      "abc",
+      "coinbase_advanced_trader"
+    ],
+    "coinbase_advanced_trader\\models\\order.py": [
+      "decimal",
+      "dataclasses",
+      "typing",
+      "enum"
+    ],
+    "coinbase_advanced_trader\\models\\product.py": [
+      "decimal",
+      "dataclasses"
+    ],
+    "coinbase_advanced_trader\\models\\__init__.py": [
+      "product",
+      "order"
+    ],
+    "coinbase_advanced_trader\\services\\account_service.py": [
+      "datetime",
+      "decimal",
+      "coinbase_advanced_trader",
+      "coinbase",
+      "typing",
+      "dataclasses"
+    ],
+    "coinbase_advanced_trader\\services\\fear_and_greed_strategy.py": [
+      "decimal",
+      "trading_strategy_service",
+      "fear_and_greed",
+      "typing",
+      "coinbase_advanced_trader",
+      "time"
+    ],
+    "coinbase_advanced_trader\\services\\funds_service.py": [
+      "logging",
+      "json",
+      "typing"
+    ],
+    "coinbase_advanced_trader\\services\\interfaces.py": [
+      "abc",
+      "decimal",
+      "coinbase_advanced_trader",
+      "typing"
+    ],
+    "coinbase_advanced_trader\\services\\order_service.py": [
+      "uuid",
+      "decimal",
+      "coinbase",
+      "typing",
+      "coinbase_advanced_trader",
+      "price_service"
+    ],
+    "coinbase_advanced_trader\\services\\price_service.py": [
+      "coinbase",
+      "decimal",
+      "coinbase_advanced_trader",
+      "typing"
+    ],
+    "coinbase_advanced_trader\\services\\trading_strategy_service.py": [
+      "order_service",
+      "typing",
+      "abc",
+      "coinbase_advanced_trader",
+      "price_service"
+    ],
+    "coinbase_advanced_trader\\services\\__init__.py": [
+      "trading_strategy_service",
+      "order_service",
+      "price_service"
+    ],
+    "coinbase_advanced_trader\\tests\\test_account_service.py": [
+      "datetime",
+      "decimal",
+      "coinbase",
+      "unittest",
+      "coinbase_advanced_trader"
+    ],
+    "coinbase_advanced_trader\\tests\\test_alphasquared_trader.py": [
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_config_manager.py": [
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_enhanced_rest_client.py": [
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_error_handling.py": [
+      "coinbase",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_fear_and_greed_strategy.py": [
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_funds_service.py": [
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_order_model.py": [
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_order_service.py": [
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_price_service.py": [
+      "coinbase",
+      "decimal",
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\tests\\test_trading_config.py": [
+      "coinbase_advanced_trader",
+      "unittest"
+    ],
+    "coinbase_advanced_trader\\utils\\helpers.py": [
+      "uuid",
+      "decimal"
+    ],
+    "coinbase_advanced_trader\\utils\\__init__.py": [
+      "helpers"
+    ]
+  }
+}

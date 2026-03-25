@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals high average fan-out (4.36) and deep import chains across modules, indicating tight coupling. For example, app/routes.py imports 20+ modules including app, flask, httpx, bs4, cryptography, and multiple utils/services/models — violating separation of concerns. Similarly, app/filter.py imports 15+ modules and directly depends on app/request.py, app/utils/results.py, and app/models/*.py. This tight coupling increases ripple effects: changing a utility (e.g., app/utils/misc.py) risks breaking routes, filters, and services. The modular monolith structure lacks explicit boundaries, allowing arbitrary cross-module dependencies (e.g., utils importing services, services importing models, routes importing everything). Reducing coupling via interface-based abstractions will isolate changes, reduce test complexity, and improve modularity without requiring architectural overhaul.",
+  "target_components": [
+    "app/routes.py",
+    "app/filter.py",
+    "app/request.py",
+    "app/utils/misc.py",
+    "app/utils/search.py",
+    "app/services/provider.py",
+    "app/services/cse_client.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces/abstractions between layers: (1) Define service interfaces (e.g., SearchProvider, HttpClient) to decouple routes from implementation; (2) Replace direct imports (e.g., from app.request import Request) with dependency injection via interfaces; (3) Move shared dependencies (e.g., httpx, cryptography) behind adapter layers; (4) Reduce circular dependencies by extracting common contracts (e.g., QueryBuilder, ResultProcessor). This will transform the flat module hierarchy into a layered structure with clear dependency directions (routes → services → utils/models), reducing fan-out and improving cohesion.",
+  "implementation_strategy": "Step 1: Identify high-coupling modules (routes.py, filter.py) and extract interfaces (e.g., SearchClient, RequestSender). Step 2: Refactor routes.py to depend on interfaces instead of concrete classes (e.g., inject SearchClient instead of importing Search directly). Step 3: Use provider patterns (e.g., app/services/provider.py) to centralize dependency resolution. Step 4: Replace direct imports in utils (e.g., misc.py importing flask/cryptography) with parameterized functions or adapter interfaces. Step 5: Add static checks (e.g., mypy with strict mode) to enforce interface contracts. This incremental approach preserves the monolith while reducing coupling in targeted areas.",
+  "risks": "Risk of temporary performance overhead from interface indirection (mitigated by caching and minimal abstraction layers). Risk of over-engineering if interfaces are too granular (mitigated by focusing on high-coupling modules identified in static analysis). Risk of breaking existing tests during refactoring (mitigated by comprehensive test coverage in test/ directory and incremental changes)."
+}

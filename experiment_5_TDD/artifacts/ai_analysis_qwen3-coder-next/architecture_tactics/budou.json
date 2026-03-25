@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between Parser classes and concrete Segmenter implementations (e.g., Parser imports and instantiates MecabSegmenter, NLAPISegmenter, TinysegmenterSegmenter directly in parser.py), violating dependency inversion and making it difficult to add new segmenters without modifying core Parser code. Static analysis confirms 'C1' (coupling) and 'A3' (abstraction) as key factors, and the architecture description explicitly lists 'Tight coupling between Parser and concrete Segmenter implementations (violates dependency inversion)' as a risk. This coupling increases ripple effects: changing segmenter behavior requires touching Parser, and testing Parser requires mocking multiple concrete segmenters. The flat module structure (max depth 2) and clear separation of concerns in budou/ modules make this a high-leverage target for incremental decoupling.",
+  "target_components": [
+    "budou/parser.py",
+    "budou/segmenter.py",
+    "budou/nlapisegmenter.py",
+    "budou/mecabsegmenter.py",
+    "budou/tinysegmentersegmenter.py",
+    "budou/__init__.py"
+  ],
+  "expected_architectural_change": "Parser will depend on an abstract Segmenter interface (already partially defined in segmenter.py) rather than concrete implementations. The get_parser factory will be enhanced to accept segmenter configuration (e.g., via dependency injection or registry), and Parser will no longer import concrete segmenter classes directly. This will decouple Parser from specific segmenter implementations, enabling new segmenters to be added without modifying Parser code.",
+  "implementation_strategy": "1. Refactor Parser.__init__ to accept a Segmenter instance instead of instantiating concrete segmenters internally. 2. Update get_parser factory to construct Parser with injected segmenter (e.g., via get_parser(segmenter=segmenter_instance)). 3. Move concrete segmenter imports out of parser.py into factory functions or a segmenter registry in __init__.py. 4. Enhance segmenter.py to define a clear abstract interface (already partially present) and ensure all segmenters implement it. 5. Update tests to inject mock segmenters into Parser instead of relying on internal instantiation.",
+  "risks": "Initial refactoring may require updating multiple call sites (e.g., budou.py, test files, poc.py) to pass segmenter instances. However, the existing factory pattern (get_parser) and ABC-based Segmenter interface provide a solid foundation for incremental adoption. Risk is mitigated by the test suite coverage and the fact that changes can be made behind the existing public API surface."
+}

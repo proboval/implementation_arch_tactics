@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "bunq/sdk/model/core/internal_model_interface.py",
-  "content": "class InternalModelInterface:\n    \"\"\"\n    Interface for internal models that wrap generated API response models.\n    \n    Internal models SHOULD NOT inherit directly from generated models.\n    Instead, they SHOULD compose generated model instances and delegate only\n    required fields/methods to preserve separation of concerns and reduce\n    ripple effects when API contracts evolve.\n    \"\"\"\n    \n    def get_generated_model(self):\n        \"\"\"\n        Return the wrapped generated model instance.\n        \n        :rtype: bunq.sdk.model.generated.endpoint.BunqModel\n        \"\"\"\n        raise NotImplementedError\n"
-}

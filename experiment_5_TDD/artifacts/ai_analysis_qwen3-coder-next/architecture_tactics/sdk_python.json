@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core model classes and generated endpoint/object modules, especially in the converter and adapter layers. Static analysis shows high fan-in in converter.py (mi=28.11, rank 'A' but lowest in the project), which imports and directly references dozens of generated classes (e.g., GeolocationObject, ShareDetailObject, MonetaryAccountReference) via string-based type resolution and dynamic imports. The converter's _deserialize_dict_attributes and _fetch_type_sub methods rely on runtime introspection and string-to-type mapping, making changes to generated models brittle and hard to test in isolation. Files like endpoint.py and object_.py contain hundreds of generated classes with duplicated boilerplate, and adapters (e.g., geolocation_adapter.py, share_detail_adapter.py) are tightly coupled to specific generated types rather than interfaces. This coupling increases ripple effects during model evolution and makes unit testing dependent on full model generation.",
+  "target_components": [
+    "bunq/sdk/json/converter.py",
+    "bunq/sdk/json/anchor_object_adapter.py",
+    "bunq/sdk/model/generated/endpoint.py",
+    "bunq/sdk/model/generated/object_.py",
+    "bunq/sdk/model/core/bunq_model.py",
+    "bunq/sdk/json/date_time_adapter.py",
+    "bunq/sdk/json/float_adapter.py",
+    "bunq/sdk/json/geolocation_adapter.py",
+    "bunq/sdk/json/share_detail_adapter.py",
+    "bunq/sdk/json/pagination_adapter.py"
+  ],
+  "expected_architectural_change": "Introduce explicit adapter interfaces (e.g., ObjectAdapter<T>) and decouple the converter from concrete generated types by registering adapters via a central registry rather than runtime type discovery. Replace string-based type resolution in converter.py with explicit adapter registration. Move generated model adapters into a separate 'adapter' package with clear contracts, and reduce direct dependencies from core modules (e.g., bunq_model.py) to generated types by introducing lightweight serialization contracts.",
+  "implementation_strategy": "1. Define a generic ObjectAdapter<T> interface in a new 'bunq.sdk.json.adapter' package. 2. Refactor existing adapters (geolocation_adapter.py, share_detail_adapter.py, etc.) to implement ObjectAdapter<T> and register them in a central AdapterRegistry. 3. Replace dynamic type resolution in converter.py with registry-based adapter lookup. 4. Remove direct imports of generated objects from converter.py and bunq_model.py; instead, use adapter contracts. 5. Generate adapters (not models) for new API endpoints, keeping model generation minimal. 6. Add unit tests for adapter registration and lookup to verify decoupling.",
+  "risks": "Initial refactoring may increase code volume due to adapter boilerplate, but long-term maintainability improves. Risk of breaking existing adapter registrations if registry is not versioned carefully. Requires coordination during migration to ensure all adapters are registered before converter changes are deployed."
+}

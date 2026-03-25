@@ -1,0 +1,240 @@
+{
+  "python_files": 40,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 8.0,
+  "imports_graph": {
+    "app\\filter.py": [
+      "cryptography",
+      "os",
+      "flask",
+      "cssutils",
+      "re",
+      "bs4",
+      "urllib",
+      "html",
+      "app"
+    ],
+    "app\\request.py": [
+      "defusedxml",
+      "os",
+      "flask",
+      "urllib",
+      "app",
+      "stem",
+      "httpx"
+    ],
+    "app\\routes.py": [
+      "validators",
+      "werkzeug",
+      "re",
+      "urllib",
+      "argparse",
+      "sys",
+      "datetime",
+      "flask",
+      "httpx",
+      "uuid",
+      "io",
+      "traceback",
+      "app",
+      "json",
+      "functools",
+      "cryptography",
+      "os",
+      "bs4",
+      "waitress",
+      "base64"
+    ],
+    "app\\version.py": [
+      "os"
+    ],
+    "app\\__init__.py": [
+      "datetime",
+      "werkzeug",
+      "os",
+      "flask",
+      "threading",
+      "dotenv",
+      "warnings",
+      "bs4",
+      "app",
+      "stem",
+      "json",
+      "base64",
+      "logging",
+      "sys"
+    ],
+    "app\\__main__.py": [
+      "routes"
+    ],
+    "misc\\generate_uas.py": [
+      "random",
+      "app",
+      "sys",
+      "os"
+    ],
+    "misc\\replit.py": [
+      "subprocess"
+    ],
+    "misc\\update-translations.py": [
+      "httpx",
+      "json",
+      "pathlib"
+    ],
+    "test\\conftest.py": [
+      "random",
+      "test",
+      "app",
+      "pytest",
+      "httpx"
+    ],
+    "test\\test_alts.py": [
+      "copy",
+      "app",
+      "bs4",
+      "os"
+    ],
+    "test\\test_autocomplete.py": [
+      "app"
+    ],
+    "test\\test_autocomplete_xml.py": [
+      "app"
+    ],
+    "test\\test_http_client.py": [
+      "types",
+      "app",
+      "httpx",
+      "pytest"
+    ],
+    "test\\test_json.py": [
+      "types",
+      "app",
+      "json",
+      "pytest"
+    ],
+    "test\\test_misc.py": [
+      "cryptography",
+      "app"
+    ],
+    "test\\test_results.py": [
+      "datetime",
+      "dateutil",
+      "bs4",
+      "urllib",
+      "test",
+      "app"
+    ],
+    "test\\test_routes.py": [
+      "test",
+      "app",
+      "json"
+    ],
+    "test\\test_routes_json.py": [
+      "app",
+      "json",
+      "pytest"
+    ],
+    "test\\test_tor.py": [
+      "app",
+      "pytest"
+    ],
+    "test\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "tests",
+      "app",
+      "pytest",
+      "typing",
+      "abc"
+    ],
+    "app\\models\\config.py": [
+      "cryptography",
+      "os",
+      "flask",
+      "cssutils",
+      "hashlib",
+      "brotli",
+      "app",
+      "inspect",
+      "typing",
+      "json",
+      "base64",
+      "logging"
+    ],
+    "app\\models\\endpoint.py": [
+      "enum"
+    ],
+    "app\\models\\g_classes.py": [
+      "bs4"
+    ],
+    "app\\models\\__init__.py": [],
+    "app\\services\\cse_client.py": [
+      "flask",
+      "dataclasses",
+      "urllib",
+      "typing",
+      "httpx"
+    ],
+    "app\\services\\http_client.py": [
+      "os",
+      "threading",
+      "ssl",
+      "h2",
+      "typing",
+      "cachetools",
+      "httpx",
+      "time"
+    ],
+    "app\\services\\provider.py": [
+      "app",
+      "typing",
+      "os"
+    ],
+    "app\\services\\__init__.py": [],
+    "app\\utils\\bangs.py": [
+      "os",
+      "urllib",
+      "json",
+      "httpx",
+      "glob"
+    ],
+    "app\\utils\\misc.py": [
+      "cryptography",
+      "os",
+      "flask",
+      "io",
+      "hashlib",
+      "re",
+      "urllib",
+      "bs4",
+      "contextlib",
+      "base64",
+      "httpx"
+    ],
+    "app\\utils\\search.py": [
+      "cryptography",
+      "os",
+      "flask",
+      "re",
+      "bs4",
+      "app",
+      "typing"
+    ],
+    "app\\utils\\session.py": [
+      "cryptography",
+      "flask"
+    ],
+    "app\\utils\\ua_generator.py": [
+      "random",
+      "datetime",
+      "os",
+      "json",
+      "typing"
+    ],
+    "app\\utils\\widgets.py": [
+      "pathlib",
+      "bs4"
+    ],
+    "app\\utils\\__init__.py": []
+  }
+}

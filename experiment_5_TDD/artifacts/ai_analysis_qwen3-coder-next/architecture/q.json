@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 packages (bin, test) with flat directory structure (max depth 2)",
+    "Single main entry point (bin/q.py) with ~1000+ lines of procedural code",
+    "High average fan-out (7.67) indicates tight coupling across modules",
+    "No clear separation of concerns; core logic (SQL parsing, file I/O, type inference) embedded in monolithic classes",
+    "Test suite directly imports and exercises core functionality from bin/q without adapter layers",
+    "No explicit ports/adapters boundaries, dependency inversion, or domain layer separation",
+    "All functionality centralized in QTextAsData and related classes with direct SQLite/sqlite3 usage",
+    "Minimal abstraction between CLI, business logic, and persistence layers"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Low modularity makes future scaling or component replacement difficult",
+    "High coupling increases risk of regression when modifying core logic",
+    "Lack of architectural boundaries hinders testability and maintainability at scale"
+  ]
+}

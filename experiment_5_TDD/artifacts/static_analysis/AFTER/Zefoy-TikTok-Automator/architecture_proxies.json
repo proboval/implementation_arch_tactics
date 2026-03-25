@@ -1,0 +1,26 @@
+{
+  "python_files": 2,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "tiktok.py": [
+      "requests",
+      "os",
+      "ctypes",
+      "platform",
+      "webbrowser",
+      "selenium",
+      "undetected_chromedriver",
+      "colorama",
+      "time"
+    ],
+    "tests\\test_tactic.py": [
+      "os",
+      "inspect",
+      "pytest",
+      "infrastructure",
+      "tiktok"
+    ]
+  }
+}

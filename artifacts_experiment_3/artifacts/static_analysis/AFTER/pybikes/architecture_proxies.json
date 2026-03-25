@@ -7,23 +7,23 @@
     "keys.example.py": [],
     "pybikes\\aksu.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\ambici.py": [
       "pybikes"
     ],
     "pybikes\\baksi.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\base.py": [
-      "dataclasses",
-      "pybikes",
-      "hashlib",
       "json",
-      "datetime"
+      "datetime",
+      "pybikes",
+      "dataclasses",
+      "hashlib"
     ],
     "pybikes\\batumvelo.py": [
       "json",
@@ -56,10 +56,10 @@
       "pybikes"
     ],
     "pybikes\\bicincitta.py": [
+      "urllib",
       "re",
-      "pybikes",
       "json",
-      "urllib"
+      "pybikes"
     ],
     "pybikes\\bicing.py": [
       "json",
@@ -67,15 +67,15 @@
     ],
     "pybikes\\bikeshare_ie.py": [
       "json",
-      "pybikes",
-      "base"
+      "base",
+      "pybikes"
     ],
     "pybikes\\bikeu.py": [
-      "re",
-      "pybikes",
+      "urllib",
       "json",
-      "lxml",
-      "urllib"
+      "pybikes",
+      "re",
+      "lxml"
     ],
     "pybikes\\bixi.py": [
       "pybikes",
@@ -93,13 +93,13 @@
     ],
     "pybikes\\clujbike.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\compat.py": [
+      "importlib_resources",
       "datetime",
-      "importlib",
-      "importlib_resources"
+      "importlib"
     ],
     "pybikes\\contrib.py": [
       "time"
@@ -109,19 +109,19 @@
     ],
     "pybikes\\cyclopolis.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\cykleo.py": [
       "json",
       "pybikes"
     ],
     "pybikes\\data.py": [
-      "re",
+      "json",
       "pybikes",
+      "re",
       "sys",
-      "importlib",
-      "json"
+      "importlib"
     ],
     "pybikes\\decobike.py": [
       "pybikes",
@@ -170,11 +170,11 @@
       "pybikes"
     ],
     "pybikes\\gbfs.py": [
-      "pybikes",
-      "warnings",
+      "urllib",
       "json",
       "datetime",
-      "urllib"
+      "pybikes",
+      "warnings"
     ],
     "pybikes\\gira.py": [
       "json",
@@ -190,19 +190,19 @@
     ],
     "pybikes\\keolis.py": [
       "re",
-      "pybikes",
       "json",
+      "pybikes",
       "lxml"
     ],
     "pybikes\\kolumbus.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\lastenvelo.py": [
       "csv",
-      "io",
-      "pybikes"
+      "pybikes",
+      "io"
     ],
     "pybikes\\linkbike.py": [
       "json",
@@ -219,13 +219,13 @@
     ],
     "pybikes\\movus.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\nextbike.py": [
       "re",
-      "pybikes",
       "json",
+      "pybikes",
       "lxml"
     ],
     "pybikes\\nextbike_gbfs.py": [
@@ -248,14 +248,14 @@
       "pybikes"
     ],
     "pybikes\\otp.py": [
+      "warnings",
       "json",
-      "pybikes",
-      "warnings"
+      "pybikes"
     ],
     "pybikes\\ov_fiets.py": [
       "re",
-      "pybikes",
-      "json"
+      "json",
+      "pybikes"
     ],
     "pybikes\\pedalada.py": [
       "json",
@@ -270,14 +270,14 @@
       "pybikes"
     ],
     "pybikes\\roovee.py": [
+      "urllib",
       "json",
-      "pybikes",
-      "urllib"
+      "pybikes"
     ],
     "pybikes\\samba.py": [
       "re",
-      "pybikes",
-      "ast"
+      "ast",
+      "pybikes"
     ],
     "pybikes\\sejong.py": [
       "json",
@@ -307,8 +307,8 @@
       "pybikes"
     ],
     "pybikes\\tashu.py": [
-      "json",
       "re",
+      "json",
       "pybikes"
     ],
     "pybikes\\urbansharing.py": [
@@ -316,12 +316,12 @@
       "pybikes"
     ],
     "pybikes\\utils.py": [
-      "re",
       "pybikes",
-      "inspect",
-      "requests",
       "os",
-      "shapely"
+      "shapely",
+      "re",
+      "inspect",
+      "requests"
     ],
     "pybikes\\velib.py": [
       "pybikes"
@@ -336,11 +336,11 @@
       "pybikes"
     ],
     "pybikes\\veloway.py": [
-      "re",
-      "pybikes",
+      "urllib",
       "json",
-      "lxml",
-      "urllib"
+      "pybikes",
+      "re",
+      "lxml"
     ],
     "pybikes\\weelo.py": [
       "json",
@@ -369,36 +369,36 @@
     ],
     "tests\\conftest.py": [],
     "tests\\test_base.py": [
-      "pytest",
-      "pybikes"
+      "pybikes",
+      "pytest"
     ],
     "tests\\test_changes.py": [
-      "re",
       "pybikes",
+      "os",
+      "inspect",
+      "re",
+      "git",
+      "pytest",
       "tests",
       "warnings",
-      "importlib",
-      "git",
-      "inspect",
-      "pytest",
-      "os"
+      "importlib"
     ],
     "tests\\test_compat.py": [
       "pybikes"
     ],
     "tests\\test_data.py": [
-      "pytest",
+      "pybikes",
       "unittest",
-      "pybikes"
+      "pytest"
     ],
     "tests\\test_instances.py": [
-      "re",
-      "pybikes",
       "json",
       "datetime",
-      "unittest",
+      "pybikes",
+      "os",
+      "re",
       "pytest",
-      "os"
+      "unittest"
     ],
     "tests\\test_utils.py": [
       "json",
@@ -407,21 +407,21 @@
     ],
     "tests\\__init__.py": [],
     "utils\\report.py": [
-      "re",
+      "json",
+      "argparse",
       "pybikes",
+      "os",
+      "html",
+      "re",
       "sys",
       "jinja2",
-      "html",
-      "argparse",
-      "json",
-      "os",
       "pprint"
     ],
     "utils\\sync_nextbike.py": [
+      "requests",
       "json",
       "slugify",
-      "pybikes",
-      "requests"
+      "pybikes"
     ],
     "tests\\fixtures\\__init__.py": [],
     "utils\\scaffold\\system.py": [
@@ -429,10 +429,10 @@
       "pybikes"
     ],
     "utils\\scaffold\\__main__.py": [
-      "re",
-      "sys",
       "argparse",
       "pathlib",
+      "re",
+      "sys",
       "logging"
     ]
   }

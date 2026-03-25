@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "scratch/math_abstractions.py",
-  "content": "# math_abstractions.py\n# Interface definitions for math abstractions to reduce coupling\n\nfrom typing import Protocol, List, runtime_checkable\n\n@runtime_checkable\nclass Vector(Protocol):\n    \"\"\"Protocol for vector-like objects supporting element-wise operations\"\"\"\n    \n    def __len__(self) -> int: ...\n    \n    def __getitem__(self, index: int) -> float: ...\n    \n    def __setitem__(self, index: int, value: float) -> None: ...\n\n@runtime_checkable\nclass Matrix(Protocol):\n    \"\"\"Protocol for matrix-like objects\"\"\"\n    \n    def __len__(self) -> int: ...\n    \n    def shape(self) -> List[int]: ...\n    \n    def get_row(self, i: int) -> Vector: ...\n    \n    def get_column(self, j: int) -> Vector: ...\n"
-}

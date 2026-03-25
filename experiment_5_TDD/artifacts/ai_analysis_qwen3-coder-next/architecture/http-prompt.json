@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Three top-level packages (http_prompt, tests, docs) with clear separation of concerns",
+    "Core functionality organized into cohesive modules (cli, execution, context, completer, lexer, etc.) with well-defined responsibilities",
+    "No external service boundaries or network communication patterns; all components run in a single process",
+    "Context and execution logic tightly integrated within the main package, with clear internal dependencies",
+    "Test suite mirrors the source structure, indicating a single deployable unit",
+    "Use of internal relative imports (e.g., from .context import Context) confirms monolithic deployment",
+    "Repository depth of 3 levels suggests reasonable modularity without excessive nesting"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Potential for tight coupling between modules as project scales",
+    "Limited scalability for distributed deployments without refactoring",
+    "Testing may become slower as monolith grows due to shared state in context"
+  ]
+}

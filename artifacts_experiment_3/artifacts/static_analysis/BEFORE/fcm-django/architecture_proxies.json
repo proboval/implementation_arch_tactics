@@ -5,39 +5,39 @@
   "avg_files_per_package": 5.0,
   "imports_graph": {
     "setup.py": [
+      "setuptools",
       "distutils",
-      "fcm_django",
-      "setuptools"
+      "fcm_django"
     ],
     "__init__.py": [],
     "bin\\new_max.py": [
-      "fcm_django",
-      "firebase_admin"
+      "firebase_admin",
+      "fcm_django"
     ],
     "fcm_django\\admin.py": [
       "fcm_django",
-      "swapper",
-      "typing",
+      "firebase_admin",
       "django",
-      "firebase_admin"
+      "swapper",
+      "typing"
     ],
     "fcm_django\\apps.py": [
-      "django",
-      "fcm_django"
+      "fcm_django",
+      "django"
     ],
     "fcm_django\\fields.py": [
+      "re",
       "django",
-      "struct",
-      "re"
+      "struct"
     ],
     "fcm_django\\models.py": [
-      "collections",
-      "copy",
       "fcm_django",
-      "swapper",
-      "typing",
+      "collections",
+      "firebase_admin",
       "django",
-      "firebase_admin"
+      "swapper",
+      "copy",
+      "typing"
     ],
     "fcm_django\\settings.py": [
       "django"
@@ -47,49 +47,49 @@
     ],
     "tests\\conftest.py": [
       "fcm_django",
-      "pytest_mock",
+      "firebase_admin",
       "swapper",
       "pytest",
-      "unittest",
-      "firebase_admin"
+      "pytest_mock",
+      "unittest"
     ],
     "tests\\test_admin.py": [
       "pytest"
     ],
     "tests\\test_api_rest_framework.py": [
-      "pytest",
       "swapper",
+      "fcm_django",
       "base64",
-      "fcm_django"
+      "pytest"
     ],
     "tests\\test_api_tastypie.py": [
-      "pytest",
       "swapper",
+      "fcm_django",
       "base64",
-      "fcm_django"
+      "pytest"
     ],
     "tests\\test_models.py": [
-      "uuid",
       "fcm_django",
-      "swapper",
-      "typing",
-      "pytest",
+      "firebase_admin",
       "django",
-      "unittest",
-      "firebase_admin"
+      "swapper",
+      "pytest",
+      "typing",
+      "uuid",
+      "unittest"
     ],
     "tests\\urls.py": [
       "tastypie",
-      "rest_framework",
+      "fcm_django",
       "django",
-      "fcm_django"
+      "rest_framework"
     ],
     "tests\\__init__.py": [],
     "fcm_django\\api\\rest_framework.py": [
-      "django",
       "rest_framework",
-      "swapper",
-      "fcm_django"
+      "fcm_django",
+      "django",
+      "swapper"
     ],
     "fcm_django\\api\\tastypie.py": [
       "tastypie",
@@ -127,12 +127,12 @@
       "django"
     ],
     "fcm_django\\migrations\\0010_unique_registration_id.py": [
-      "django",
-      "fcm_django"
+      "fcm_django",
+      "django"
     ],
     "fcm_django\\migrations\\0011_fcmdevice_fcm_django_registration_id_user_id_idx.py": [
-      "django",
-      "fcm_django"
+      "fcm_django",
+      "django"
     ],
     "fcm_django\\migrations\\__init__.py": [],
     "tests\\settings\\base.py": [
@@ -146,19 +146,19 @@
     ],
     "tests\\settings\\__init__.py": [],
     "tests\\swapped_models\\admin.py": [
-      "django",
       "fcm_django",
+      "django",
       "models"
     ],
     "tests\\swapped_models\\models.py": [
-      "django",
       "uuid",
-      "fcm_django"
+      "fcm_django",
+      "django"
     ],
     "tests\\swapped_models\\__init__.py": [],
     "tests\\swapped_models\\migrations\\0001_initial.py": [
-      "django",
-      "uuid"
+      "uuid",
+      "django"
     ],
     "tests\\swapped_models\\migrations\\__init__.py": []
   }

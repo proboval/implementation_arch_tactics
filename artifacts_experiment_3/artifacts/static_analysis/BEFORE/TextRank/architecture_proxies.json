@@ -5,19 +5,19 @@
   "avg_files_per_package": 3.0,
   "imports_graph": {
     "main.py": [
-      "click",
-      "textrank"
+      "textrank",
+      "click"
     ],
     "setup.py": [
       "setuptools"
     ],
     "textrank\\__init__.py": [
-      "nltk",
-      "itertools",
       "editdistance",
       "os",
       "io",
-      "networkx"
+      "itertools",
+      "networkx",
+      "nltk"
     ]
   }
 }

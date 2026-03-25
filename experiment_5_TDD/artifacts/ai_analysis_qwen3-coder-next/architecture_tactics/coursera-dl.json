@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high internal coupling, evidenced by the average fan-out of 5.93 and the imports graph showing modules like coursera_dl.py importing 20+ other modules directly, and api.py importing 30+ modules including many internal ones. This tight coupling violates separation of concerns and makes modules fragile to change. For example, coursera_dl.py (the main entry point) imports and orchestrates nearly every module, creating a central dependency bottleneck. Similarly, api.py imports from utils, network, define, and cookies, while also being heavily imported by extractors.py and workflow.py. This creates ripple effects: any change in a low-level module (e.g., define.py constants) can propagate through multiple layers. The modular monolith structure already has clear module boundaries (api, workflow, downloaders, etc.), but internal dependencies are not properly abstracted—modules depend on concrete implementations rather than interfaces, increasing the risk of circular dependencies and making testing harder (e.g., workflow.py imports formatting, playlist, utils, filtering, define directly). Reduced coupling directly addresses this by introducing abstractions (e.g., interfaces, dependency injection) to decouple modules, improving testability and reducing change range.",
+  "target_components": [
+    "coursera/coursera_dl.py",
+    "coursera/api.py",
+    "coursera/workflow.py",
+    "coursera/extractors.py",
+    "coursera/downloaders.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., via abstract base classes or protocols) for core responsibilities (e.g., 'CourseMaterialProvider', 'ResourceDownloader', 'UrlExtractor'), and refactor high-coupling modules to depend on these interfaces rather than concrete implementations. For instance, workflow.py should depend on an abstract 'ResourceProvider' interface instead of importing and using api.CourseraOnDemand directly. coursera_dl.py should be reduced to an orchestration layer that wires components via dependency injection rather than importing and calling every module directly. This will reduce fan-out, eliminate direct cross-module dependencies, and enforce boundaries via contracts.",
+  "implementation_strategy": "1. Identify key abstractions: extract interfaces from CourseraExtractor, CourseraDownloader, and downloader classes (e.g., Downloader interface already exists but could be formalized). 2. Refactor coursera_dl.py to accept dependencies (e.g., extractor, downloader factory, workflow) via constructor or factory instead of importing and calling modules directly. 3. Refactor workflow.py to depend on abstract interfaces (e.g., CourseMaterialProvider) instead of concrete api.CourseraOnDemand. 4. Introduce a dependency injection container or simple factory functions to wire components. 5. Replace direct imports of concrete modules (e.g., from .api import CourseraOnDemand) with interface-based imports (e.g., from .interfaces import CourseMaterialProvider). 6. Add type hints or protocols to enforce interface contracts.",
+  "risks": "Risk of over-engineering: introducing interfaces for every module may add complexity without proportional benefit. Mitigation: focus only on high-coupling modules (e.g., coursera_dl.py, workflow.py, api.py) and start with 1–2 key abstractions. Another risk is temporary test breakage during refactoring; mitigate by ensuring tests remain compatible with interface contracts and using mockable interfaces. Performance overhead is negligible since this tactic avoids runtime binding (e.g., no registry or late binding)."
+}

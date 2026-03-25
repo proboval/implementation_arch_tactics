@@ -41,7 +41,7 @@ implementation_filter = ArchitecturalTacticImplementationAgent(
             call_llm=call_llm,
             model_name=MODEL_NAME,
             artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}/artifacts"),
-            max_iterations=10,
+            max_iterations=20,
             repo_root=Path(f"./{ARTIFACTS_DIR_NAME}/repos")
         )
 
@@ -76,7 +76,7 @@ pipeline = Pipeline(
 
         # DatasetMaintainabilityEnricher(
         #     dataset_csv=Path(f"./{ARTIFACTS_DIR_NAME}/stars_dataset.csv"),
-        #     output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/maintainability_dataset.csv"),
+        #     output_csv=Path(f"./{ARTIFACTS_DIR_NAME}/dataset.csv"),
         #     artifacts_dir=Path(f"./{ARTIFACTS_DIR_NAME}/artifacts"),
         #     static_analysis_filter=static_filter,
         #     workdir=Path(f"./{ARTIFACTS_DIR_NAME}/repos"),

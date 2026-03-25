@@ -5,85 +5,85 @@
   "avg_files_per_package": 15.0,
   "imports_graph": {
     "setup.py": [
-      "setuptools",
-      "pathlib"
+      "pathlib",
+      "setuptools"
     ],
     "e2e-tests\\testcmd.py": [
-      "tempfile",
+      "shutil",
       "json",
       "os",
-      "unittest",
-      "shutil"
+      "tempfile",
+      "unittest"
     ],
     "tests\\testdiarization.py": [
-      "unittest",
-      "whisper_ctranslate2"
+      "whisper_ctranslate2",
+      "unittest"
     ],
     "tests\\testlive.py": [
-      "unittest",
-      "whisper_ctranslate2"
+      "whisper_ctranslate2",
+      "unittest"
     ],
     "tests\\testwriters.py": [
+      "json",
+      "faster_whisper",
+      "os",
       "whisper_ctranslate2",
       "tempfile",
-      "json",
-      "os",
-      "faster_whisper",
       "unittest"
     ],
     "src\\whisper_ctranslate2\\commandline.py": [
-      "argparse",
       "version",
+      "argparse",
       "languages"
     ],
     "src\\whisper_ctranslate2\\diarization.py": [
-      "collections",
       "torch",
       "faster_whisper",
-      "pyannote",
-      "numpy"
+      "collections",
+      "numpy",
+      "pyannote"
     ],
     "src\\whisper_ctranslate2\\exit_code.py": [
       "enum"
     ],
     "src\\whisper_ctranslate2\\languages.py": [],
     "src\\whisper_ctranslate2\\live.py": [
-      "transcribe",
-      "sounddevice",
       "numpy",
-      "typing"
+      "typing",
+      "transcribe",
+      "sounddevice"
     ],
     "src\\whisper_ctranslate2\\transcribe.py": [
-      "sys",
-      "tqdm",
-      "languages",
-      "writers",
-      "typing",
       "faster_whisper",
-      "numpy"
+      "languages",
+      "tqdm",
+      "numpy",
+      "sys",
+      "typing",
+      "writers"
     ],
     "src\\whisper_ctranslate2\\version.py": [],
     "src\\whisper_ctranslate2\\whisper_ctranslate2.py": [
-      "sys",
-      "live",
-      "languages",
-      "commandline",
-      "exit_code",
-      "writers",
-      "typing",
-      "datetime",
-      "os",
-      "traceback",
-      "warnings",
-      "diarization",
       "transcribe",
-      "numpy"
+      "datetime",
+      "traceback",
+      "os",
+      "commandline",
+      "languages",
+      "diarization",
+      "numpy",
+      "sys",
+      "exit_code",
+      "live",
+      "warnings",
+      "typing",
+      "writers"
     ],
     "src\\whisper_ctranslate2\\writers.py": [
       "re",
+      "json",
       "os",
-      "typing",
-      "json"
+      "typing"
     ],
     "src\\whisper_ctranslate2\\__init__.py": []
   }

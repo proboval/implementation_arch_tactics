@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "kittentts/audio_io.py",
-  "content": "\"\"\"\naudio_io.py\nHandling audio I/O operations (saving/loading audio files).\n\"\"\"\n\nimport soundfile as sf\n\n\ndef write_audio_to_file(audio_data, output_path: str, sample_rate: int = 24000) -> None:\n    \"\"\"\n    Write audio data to a WAV file.\n\n    Args:\n        audio_data: NumPy array containing audio samples\n        output_path: Path where the audio file will be saved\n        sample_rate: Sample rate in Hz (default: 24000)\n    \"\"\"\n    sf.write(output_path, audio_data, sample_rate)\n\n\ndef read_audio_from_file(input_path: str) -> tuple:\n    \"\"\"\n    Read audio data from a WAV file.\n\n    Args:\n        input_path: Path to the audio file\n\n    Returns:\n        Tuple of (audio_data: np.ndarray, sample_rate: int)\n    \"\"\"\n    return sf.read(input_path)\n"
-}

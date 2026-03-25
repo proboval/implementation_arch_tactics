@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "scratch/math_abstractions.py",
-  "content": "from typing import Protocol, runtime_checkable\n\n@runtime_checkable\nclass VectorProtocol(Protocol):\n    \"\"\"Minimal interface contract for a vector.\"\"\"\n    def __len__(self) -> int: ...\n    def __getitem__(self, index: int) -> float: ...\n    def __iter__(self): ...\n\n@runtime_checkable\nclass MatrixProtocol(Protocol):\n    \"\"\"Minimal interface contract for a matrix.\"\"\"\n    def __len__(self) -> int: ...\n    def __getitem__(self, index: int) -> VectorProtocol: ...\n"
-}

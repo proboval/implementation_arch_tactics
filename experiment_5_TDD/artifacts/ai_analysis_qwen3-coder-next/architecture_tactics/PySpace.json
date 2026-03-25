@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling to external dependencies—specifically, shader.py imports OpenGL and ctypes directly, and ray_marcher_demo.py imports OpenGL, PyGame, and numpy at module level, then directly instantiates and manipulates low-level rendering components. This coupling is confirmed by the architectural risks: 'Tight coupling to OpenGL/PyGame in core modules (e.g., shader.py imports OpenGL directly) may hinder testability and future substitution of rendering backends' and 'No dependency inversion or interface-based abstractions observed, increasing risk of ripple changes across modules'. Static analysis shows shader.py has fan-in from ray_marcher_demo.py and internal modules via imports, and its direct dependency on OpenGL.GL (not abstracted) violates separation of concerns. This coupling makes unit testing difficult (no mocking of rendering backend), prevents swapping rendering systems (e.g., Vulkan, software fallback), and causes ripple changes when OpenGL APIs evolve. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for shader compilation, rendering context, geometry rendering) to decouple core logic (fold, geo, coloring) from concrete OpenGL/PyGame dependencies.",
+  "target_components": [
+    "pyspace/shader.py",
+    "pyspace/camera.py",
+    "pyspace/geo.py",
+    "pyspace/coloring.py",
+    "pyspace/object.py",
+    "ray_marcher_demo.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers: (1) a Renderer interface (e.g., IRenderer) defining high-level operations like compile_shader(), set_uniform(), draw_geometry(); (2) a concrete OpenGLRenderer implementation that wraps OpenGL calls; (3) dependency injection of the renderer into components that need rendering (e.g., Shader, Object, ray_marcher_demo.py). This replaces direct OpenGL imports in shader.py and ray_marcher_demo.py with interface-based usage, reducing coupling between core fractal logic (fold, geo, coloring) and rendering backend. The flat module structure remains, but modules will depend on abstractions (interfaces) rather than concrete implementations.",
+  "implementation_strategy": "Step 1: Create a new module pyspace/rendering.py defining interfaces (e.g., IShader, IRenderer, IGeometryRenderer). Step 2: Refactor shader.py to depend on IRenderer (via constructor injection) instead of importing OpenGL directly; move OpenGL-specific code into a new pyspace/opengl_renderer.py implementing IRenderer. Step 3: Update ray_marcher_demo.py to instantiate and inject the concrete renderer instead of importing OpenGL/GL constants. Step 4: Refactor geo.py, coloring.py, and object.py to accept rendering abstractions only where needed (e.g., via optional renderer parameter or deferred GLSL generation), removing implicit tight coupling. Step 5: Add unit tests for core logic using a mock renderer. This is incremental: start with shader.py, then propagate outward, preserving existing functionality while improving modularity.",
+  "risks": "Risk of over-engineering if interfaces are too broad; must keep abstractions minimal and driven by actual usage (e.g., only extract what shader.py and ray_marcher_demo.py need). Initial refactoring may increase LOC slightly, but long-term maintainability gains outweigh this. If interfaces are poorly designed (e.g., leaking OpenGL concepts), coupling may persist—must ensure interfaces reflect domain concepts (e.g., 'compile_shader' not 'glCompileShader')."
+}

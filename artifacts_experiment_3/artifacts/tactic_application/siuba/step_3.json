@@ -1,5 +1,0 @@
-{
-  "action": "modify_file",
-  "path": "siuba/ops/translate.py",
-  "content": "# TODO: this is to make sure everything can be wired up. Should refactor\n#       CallTreeLocal to be less finicky.\n# NOTE: put at bottom to avoid issue with circular import\n#       could be moved into separate module\nfrom .generics import ALL_OPS, ALL_ACCESSORS, ALL_PROPERTIES\nfrom siu._visitors import CallTreeLocal\n\n# TODO: I hate this\ndef create_pandas_translator(local, dispatch_cls, result_cls):\n    return CallTreeLocal(\n            local,\n            call_sub_attr = tuple(ALL_ACCESSORS),\n            chain_sub_attr = True,\n            dispatch_cls = dispatch_cls,\n            result_cls = result_cls,\n            call_props = tuple(ALL_PROPERTIES)\n            )\n\n\ndef get_translator_interfaces():\n    \"\"\"Return interface definitions for translators to reduce coupling.\"\"\"\n    return {\n        'local': tuple(ALL_OPS),\n        'accessors': tuple(ALL_ACCESSORS),\n        'properties': tuple(ALL_PROPERTIES)\n    }\n"
-}

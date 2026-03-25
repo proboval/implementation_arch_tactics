@@ -5,12 +5,12 @@
   "avg_files_per_package": 6.0,
   "imports_graph": {
     "Main.py": [
-      "core",
-      "time"
+      "time",
+      "core"
     ],
     "core\\Checks.py": [
-      "core",
-      "mysql"
+      "mysql",
+      "core"
     ],
     "core\\InsertData.py": [
       "csv",
@@ -22,10 +22,10 @@
     ],
     "core\\User_Functions.py": [
       "time",
-      "os",
-      "datetime",
       "random",
-      "mysql"
+      "datetime",
+      "mysql",
+      "os"
     ],
     "core\\__init__.py": []
   }

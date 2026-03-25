@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals moderate coupling within core modules: djadmin2/views.py imports 8 modules (datetime, django, filters, operator, forms, extra_views, viewmixins, models), djadmin2/types.py imports 7 modules (django, os, extra_views, collections, logging, sys), and djadmin2/viewmixins.py imports 5 modules (utils, django, os, braces). These files act as central hubs with fan-in > 3, increasing ripple effect risk. The imports graph shows views.py and types.py are top importers, and test files like example/blog/tests/test_views.py (mi=40.02) correlate with high coupling. The modular monolith structure already has low avg_fan_out (2.01), but these specific modules violate separation of concerns by mixing domain logic (models), framework concerns (django), and view logic (extra_views, forms) without clear abstraction layers. Reducing coupling via dependency inversion will isolate domain logic, improve testability, and reduce the blast radius of future changes.",
+  "target_components": [
+    "djadmin2/views.py",
+    "djadmin2/types.py",
+    "djadmin2/viewmixins.py",
+    "djadmin2/filters.py",
+    "djadmin2/permissions.py"
+  ],
+  "expected_architectural_change": "Introduce domain interfaces (e.g., QueryBuilder, PermissionChecker) and inject dependencies instead of direct imports. Views and type factories will depend on abstractions (e.g., IFilterBuilder, IPermissionEvaluator) rather than concrete modules. This creates a layered structure within the monolith: domain layer (models, permissions), service layer (builders, filters), and presentation layer (views, mixins).",
+  "implementation_strategy": "1. Extract filter-building logic from filters.py into a dedicated IFilterBuilder interface and concrete implementations (e.g., DateFilterBuilder, ChoiceFilterBuilder). 2. Move permission evaluation logic from permissions.py into IPermissionEvaluator interface with concrete implementations (IsStaffEvaluator, ModelPermissionEvaluator). 3. Refactor viewmixins.py to accept these interfaces via constructor injection instead of importing concrete modules. 4. Update types.py ModelAdmin2 to use injected builders/evaluators instead of direct imports. 5. Refactor views.py to depend on injected services rather than importing models/filters directly. 6. Add unit tests for new abstractions before refactoring consumers.",
+  "risks": "Risk of over-engineering if interfaces are introduced prematurely; must ensure abstractions reflect stable domain concepts. Initial refactoring may increase LOC temporarily, but long-term maintainability gains are high given current test coverage gaps (e.g., test_views.py mi=40.02 indicates fragile tests)."
+}

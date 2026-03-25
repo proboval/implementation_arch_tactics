@@ -1,75 +1,75 @@
 {
-  "python_files": 27,
+  "python_files": 26,
   "packages": 3,
   "max_directory_depth": 3,
-  "avg_files_per_package": 9.0,
+  "avg_files_per_package": 8.666666666666666,
   "imports_graph": {
     "genrst.py": [
       "pypandoc"
     ],
     "bypy\\cached.py": [
-      "io",
-      "hashlib",
+      "os",
+      "time",
       "__future__",
+      "io",
       "util",
       "binascii",
-      "time",
-      "os"
+      "hashlib"
     ],
     "bypy\\chkreq.py": [
       "util",
-      "__future__",
-      "sys"
+      "sys",
+      "__future__"
     ],
     "bypy\\gui.py": [
-      "tkFileDialog",
-      "sys",
-      "__future__",
-      "tkMessageBox",
       "ttk",
-      "util",
+      "__future__",
       "tkutil",
-      "tkinter",
       "bypy",
+      "tkFileDialog",
+      "util",
       "threading",
-      "Tkinter"
+      "sys",
+      "Tkinter",
+      "tkMessageBox",
+      "tkinter"
     ],
     "bypy\\gvar.py": [
-      "locale",
+      "time",
       "__future__",
-      "time"
+      "locale"
     ],
     "bypy\\monkey.py": [
       "tkinter",
-      "functools",
+      "sys",
       "Tkinter",
-      "sys"
+      "functools"
     ],
     "bypy\\panapi.py": [
-      "io",
-      "__future__",
-      "util",
+      "os",
       "bypy",
-      "os"
+      "__future__",
+      "io",
+      "util"
     ],
     "bypy\\printer.py": [
+      "time",
       "termcolor",
-      "__future__",
-      "time"
+      "__future__"
     ],
     "bypy\\printer_console.py": [
-      "printer_util",
-      "__future__",
       "time",
-      "sys"
-    ],
-    "bypy\\printer_gui.py": [
       "sys",
       "__future__",
-      "termcolor",
-      "tkutil",
+      "printer_util"
+    ],
+    "bypy\\printer_gui.py": [
       "tkinter",
-      "Tkinter"
+      "__future__",
+      "tkutil",
+      "Tkinter",
+      "sys",
+      "termcolor"
     ],
     "bypy\\printer_util.py": [
       "re",
@@ -78,21 +78,21 @@
       "math"
     ],
     "bypy\\requester.py": [
-      "urllib2",
+      "json",
+      "urllib",
+      "functools",
+      "pickle",
+      "__future__",
+      "httplib",
+      "printer",
+      "util",
       "cPickle",
       "sys",
-      "printer",
-      "httplib",
-      "__future__",
       "http",
-      "logging",
-      "json",
-      "requests",
-      "util",
-      "pickle",
-      "urllib",
       "urllib3",
-      "functools"
+      "requests",
+      "logging",
+      "urllib2"
     ],
     "bypy\\struct.py": [
       "util",
@@ -102,67 +102,52 @@
       "__future__"
     ],
     "bypy\\tkutil.py": [
-      "sys",
-      "__future__",
-      "termcolor",
       "tkinter",
-      "idlelib",
-      "ScrolledText",
-      "Tkinter"
-    ],
-    "bypy\\upload.py": [
-      "re",
-      "requester",
-      "io",
-      "hashlib",
-      "cached",
       "__future__",
-      "json",
-      "util",
-      "tempfile",
-      "shutil",
-      "time",
-      "os",
-      "functools"
+      "Tkinter",
+      "sys",
+      "ScrolledText",
+      "idlelib",
+      "termcolor"
     ],
     "bypy\\util.py": [
-      "io",
+      "shutil",
+      "json",
+      "queue",
       "traceback",
+      "os",
+      "time",
+      "__future__",
+      "io",
+      "printer_util",
+      "codecs",
       "threading",
       "sys",
-      "codecs",
-      "printer",
-      "__future__",
-      "queue",
       "Queue",
-      "printer_util",
-      "json",
-      "shutil",
-      "time",
-      "os",
+      "printer",
       "pprint"
     ],
     "bypy\\__init__.py": [
-      "__future__",
-      "bypy"
+      "bypy",
+      "__future__"
     ],
     "bypy\\__main__.py": [
-      "__future__",
-      "bypy"
+      "bypy",
+      "__future__"
     ],
     ".vscode\\.ropeproject\\config.py": [],
     "bypy\\res\\__init__.py": [],
     "bypy\\test\\test.py": [
+      "shutil",
+      "os",
+      "__future__",
+      "time",
+      "cached",
       "re",
       "sys",
-      "__future__",
       "copy",
       "tempfile",
-      "shutil",
-      "time",
-      "os",
-      "pprint",
-      "cached"
+      "pprint"
     ],
     "bypy\\test\\__init__.py": [],
     "bypy\\test\\__main__.py": [

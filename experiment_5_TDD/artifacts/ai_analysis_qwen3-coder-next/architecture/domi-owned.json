@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package ('domi_owned') with no external service boundaries or network communication patterns",
+    "Clear module separation by responsibility (bruteforce, enumerate, fingerprint, hashdump, main, utilities, quickconsole)",
+    "Shared base class (DomiOwned) used across multiple modules, indicating cohesive domain logic",
+    "No evidence of decoupled adapters, ports, or external infrastructure layers",
+    "Main entry point (domi-owned.py) orchestrates modules directly via imports",
+    "Low directory depth (2 levels) and only 9 files suggest a compact, integrated structure"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling through shared base class may hinder testability and modularity evolution",
+    "Lack of explicit dependency inversion may reduce flexibility for future scaling",
+    "Mixed concerns (e.g., CLI, async I/O, auth, enumeration) in same module hierarchy could complicate maintenance"
+  ]
+}

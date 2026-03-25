@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "pyexcel_xlsx/interfaces.py",
-  "content": "\"\"\"\npyexcel_xlsx.interfaces\n~~~~~~~~~~~~~~~~~~~~~~~\n\nInternal interfaces to decouple openpyxl usage\n\n:copyright: (c) 2015-2025 by Onni Software Ltd & its contributors\n:license: New BSD License\n\"\"\"\n\n\nclass ISheet:\n    \"\"\"\n    Interface for a worksheet abstraction\n    \"\"\"\n    def row_iterator(self):\n        \"\"\"Iterate through rows\"\"\"\n        raise NotImplementedError\n\n    def column_iterator(self, row_struct):\n        \"\"\"Iterate through values in a row\"\"\"\n        raise NotImplementedError\n"
-}

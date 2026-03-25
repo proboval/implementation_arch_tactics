@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear directory-based modularity with well-defined packages (fsdet/, datasets/, tools/, demo/, configs/) and bounded contexts (e.g., fsdet/modeling, fsdet/evaluation, fsdet/data)",
+    "High cohesion within modules: fsdet/modeling contains core model components (RCNN, ROI heads), fsdet/evaluation contains dataset-specific evaluators, fsdet/data handles dataset registration and metadata",
+    "Low inter-module fan-out (avg 4.48) and shallow directory depth (max 4) indicate cohesive, loosely coupled modules",
+    "Centralized configuration via fsdet.config and shared engine/training/evaluation patterns in fsdet/engine and tools/",
+    "No evidence of network boundaries, separate processes, or service communication — all components run in a single Python process",
+    "Heavy internal reuse of detectron2 components via imports, but fsdet encapsulates domain-specific few-shot logic in its own modules"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Tight coupling to detectron2 internals may reduce portability",
+    "Monolithic deployment may limit scalability for distributed inference/training without external orchestration",
+    "Large fsdet module may grow into a god module if not carefully maintained"
+  ]
+}

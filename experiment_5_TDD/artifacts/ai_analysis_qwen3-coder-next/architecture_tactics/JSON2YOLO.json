@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high fan-out (7.67) and heavy interdependence across modules due to wildcard imports (from utils import *) and shared procedural functions without clear boundaries. This tight coupling makes modules hard to test, modify, or reuse independently. The static analysis confirms 'C1' (coupling) and 'A3' (abstraction) as key maintainability factors. Reducing coupling directly addresses the root cause: modules depend on the entire utils namespace rather than explicit, well-defined interfaces. This is implementable incrementally by replacing wildcard imports with explicit imports and introducing small, focused abstractions (e.g., separating I/O, conversion logic, and data handling).",
+  "target_components": [
+    "general_json2yolo.py",
+    "labelbox_json2yolo.py",
+    "utils.py"
+  ],
+  "expected_architectural_change": "Current flat structure with 3 top-level modules and wildcard imports will evolve toward a layered, loosely-coupled design: (1) conversion modules will import only specific functions they need (e.g., from utils import make_dirs, exif_size), (2) shared utilities will be grouped into cohesive submodules (e.g., io_utils.py, image_utils.py, conversion_utils.py), and (3) conversion functions will depend on abstractions (e.g., a Converter interface) rather than concrete utility functions, reducing ripple effects when changes occur.",
+  "implementation_strategy": "Step 1: Replace wildcard imports (from utils import *) with explicit imports in general_json2yolo.py and labelbox_json2yolo.py. Step 2: Refactor utils.py by extracting related functions into separate modules (e.g., image_utils.py for PIL/Exif/Numpy image ops, file_utils.py for path/glob/shutil operations, conversion_utils.py for COCO/YOLO-specific helpers). Step 3: Introduce small interfaces (e.g., a base Converter class) to abstract conversion workflows, allowing future converters to be added without modifying existing code. This can be done file-by-file without disrupting existing functionality.",
+  "risks": "Risk of temporary test coverage regression if refactoring introduces subtle import errors; mitigated by incremental changes and unit tests. Slight increase in initial boilerplate (import statements, module structure), but long-term maintainability gains outweigh this. No runtime or security impact."
+}

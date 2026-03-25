@@ -1,0 +1,39 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "example\\example.py": [
+      "sys",
+      "samsungtv"
+    ],
+    "samsungtv\\adapter.py": [
+      "json",
+      "websocket",
+      "base64",
+      "logging",
+      "abc",
+      "time"
+    ],
+    "samsungtv\\remote.py": [
+      "json",
+      "websocket",
+      "base64",
+      "logging",
+      "time"
+    ],
+    "samsungtv\\__init__.py": [
+      "remote"
+    ],
+    "tests\\test_tactic.py": [
+      "abc",
+      "samsungtv",
+      "pytest",
+      "unittest"
+    ]
+  }
+}

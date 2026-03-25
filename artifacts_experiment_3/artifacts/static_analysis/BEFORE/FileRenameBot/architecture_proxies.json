@@ -5,86 +5,86 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "bot.py": [
-      "sample_config",
       "config",
-      "pyrogram",
       "os",
-      "logging"
+      "pyrogram",
+      "logging",
+      "sample_config"
     ],
     "sample_config.py": [
       "os"
     ],
     "database\\database.py": [
       "asyncio",
-      "sample_config",
       "os",
+      "threading",
       "sqlalchemy",
-      "threading"
+      "sample_config"
     ],
     "database\\db.py": [
       "asyncio",
-      "sample_config",
       "os",
+      "threading",
       "sqlalchemy",
-      "threading"
+      "sample_config"
     ],
     "helper_funcs\\display_progress.py": [
-      "translation",
-      "sample_config",
       "math",
-      "time",
+      "translation",
       "config",
-      "pyrogram",
       "os",
-      "logging"
+      "time",
+      "pyrogram",
+      "logging",
+      "sample_config"
     ],
     "helper_funcs\\help_Nekmo_ffmpeg.py": [
-      "asyncio",
-      "time",
       "os",
+      "time",
       "hachoir",
-      "logging"
+      "logging",
+      "asyncio"
     ],
     "helper_funcs\\help_uploadbot.py": [
-      "os",
       "requests",
-      "logging"
+      "logging",
+      "os"
     ],
     "plugins\\custom_thumbnail.py": [
-      "PIL",
-      "database",
-      "translation",
-      "sample_config",
       "config",
-      "pyrogram",
+      "translation",
       "os",
-      "logging"
+      "pyrogram",
+      "PIL",
+      "logging",
+      "sample_config",
+      "database"
     ],
     "plugins\\help_text.py": [
-      "PIL",
-      "database",
-      "translation",
-      "sample_config",
       "config",
-      "time",
-      "pyrogram",
+      "translation",
       "os",
+      "time",
       "helper_funcs",
+      "pyrogram",
+      "PIL",
+      "hachoir",
       "logging",
-      "hachoir"
+      "sample_config",
+      "database"
     ],
     "plugins\\video_converter.py": [
-      "PIL",
-      "translation",
-      "sample_config",
+      "random",
       "config",
-      "time",
-      "pyrogram",
+      "translation",
       "os",
+      "time",
       "helper_funcs",
-      "logging",
+      "pyrogram",
+      "PIL",
       "hachoir",
-      "random"
+      "logging",
+      "sample_config"
     ]
   }
 }

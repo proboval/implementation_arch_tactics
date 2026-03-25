@@ -1,0 +1,43 @@
+{
+  "python_files": 4,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "general_json2yolo.py": [
+      "cv2",
+      "pandas",
+      "contextlib",
+      "json",
+      "utils",
+      "collections",
+      "PIL",
+      "pathlib"
+    ],
+    "labelbox_json2yolo.py": [
+      "requests",
+      "os",
+      "yaml",
+      "json",
+      "utils",
+      "tqdm",
+      "PIL",
+      "pathlib"
+    ],
+    "utils.py": [
+      "numpy",
+      "os",
+      "shutil",
+      "tqdm",
+      "PIL",
+      "pathlib",
+      "glob"
+    ],
+    "tests\\test_tactic.py": [
+      "os",
+      "sys",
+      "pathlib",
+      "pytest"
+    ]
+  }
+}

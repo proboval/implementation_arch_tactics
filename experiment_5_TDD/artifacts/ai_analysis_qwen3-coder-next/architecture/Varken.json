@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single package (packages: 1) with no inter-package dependencies beyond internal modules",
+    "All modules reside in a single 'varken' directory under a flat hierarchy (max_directory_depth: 2)",
+    "Core modules (e.g., varken/sonarr.py, varken/radarr.py, varken/tautulli.py) follow consistent API client pattern using shared helpers and structures",
+    "Shared infrastructure modules (dbmanager, iniparser, helpers, structures) are reused across modules, indicating cohesive internal design",
+    "Main entry point (Varken.py) orchestrates multiple API clients and background threads, typical of a monolithic scheduler/orchestrator",
+    "No evidence of service boundaries, inter-process communication, or deployment isolation — all components run in same process",
+    "High average fan-out (4.6875) indicates modules depend on many others, consistent with tightly integrated monolith"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules may hinder independent testing and maintenance",
+    "Monolithic scaling limitations if future requirements demand horizontal scaling",
+    "Risk of increasing technical debt due to shared state (e.g., DBManager, structures) across modules",
+    "Low maintainability (mi_avg ~52) suggests code may become brittle under change"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core modules, especially in node.py (MI=0.0, rank C), which imports 7 internal modules (xml, os, re, mkdoxy, logging, property, xml_parser) and directly depends on low-level XML parsing and markdown rendering. Similarly, generatorBase.py imports 10+ internal modules including jinja2, mkdocs, and multiple mkdoxy submodules, making it a central coupling hub. Static analysis confirms 'C1' (coupling) and 'A3' (abstraction) as key maintainability factors. This tight coupling increases ripple effects: changes to Node or XmlParser require recompilation of many dependent modules, and circular import risks (e.g., mkdoxy → node → xml_parser → markdown → mkdoxy) are evident from the imports graph. Reducing coupling via interface-based decoupling will isolate changes and improve testability.",
+  "target_components": [
+    "mkdoxy/node.py",
+    "mkdoxy/xml_parser.py",
+    "mkdoxy/generatorBase.py",
+    "mkdoxy/generatorAuto.py",
+    "mkdoxy/generatorSnippets.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., XmlRenderer, MarkdownRenderer, NodeVisitor) to decouple node.py from xml_parser.py and markdown.py. Replace direct mkdoxy imports with dependency injection via constructor parameters or context objects. This will transform the current tightly coupled chain (node → xml_parser → markdown → node) into a set of loosely coupled, interface-based collaborations where modules depend on abstractions rather than concrete implementations.",
+  "implementation_strategy": "1. Extract interfaces from node.py (e.g., HasName, HasLocation, HasChildren) and xml_parser.py (e.g., XmlSource, XmlRenderer). 2. Refactor node.py to accept XmlRenderer and MarkdownRenderer via constructor instead of importing them directly. 3. Refactor generatorBase.py to depend on XmlRenderer interface instead of XmlParser concrete class. 4. Introduce a Context or Registry object to manage shared dependencies (Cache, ProjectContext) instead of passing raw mkdoxy module references. 5. Update imports_graph to replace mkdoxy → module imports with interface-based dependencies.",
+  "risks": "Initial refactoring may increase code verbosity due to interface definitions and DI setup. However, this is offset by improved testability (mockable interfaces) and reduced ripple effects. Risk of over-engineering is mitigated by incremental adoption: start with node.py → xml_parser.py decoupling, then extend to other modules."
+}

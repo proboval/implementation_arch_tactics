@@ -1,0 +1,49 @@
+{
+  "python_files": 9,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "load.py": [
+      "app",
+      "datetime",
+      "csv"
+    ],
+    "app\\base.py": [
+      "sqlalchemy"
+    ],
+    "app\\database.py": [
+      "sqlalchemy",
+      "os"
+    ],
+    "app\\main.py": [
+      "sqlalchemy",
+      "starlette",
+      "database",
+      "fastapi",
+      "typing"
+    ],
+    "app\\models.py": [
+      "sqlalchemy",
+      "database"
+    ],
+    "app\\repository.py": [
+      "abc",
+      "typing"
+    ],
+    "app\\schemas.py": [
+      "pydantic",
+      "datetime"
+    ],
+    "app\\__init__.py": [
+      "app"
+    ],
+    "tests\\test_tactic.py": [
+      "app",
+      "inspect",
+      "typing",
+      "pytest",
+      "abc"
+    ]
+  }
+}

@@ -1,0 +1,1405 @@
+{
+  "python_files": 592,
+  "packages": 20,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 29.6,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools",
+      "sys",
+      "os",
+      "re"
+    ],
+    ".dev\\gather_models.py": [
+      "mmcv",
+      "torch",
+      "os",
+      "shutil",
+      "argparse",
+      "json",
+      "glob",
+      "subprocess"
+    ],
+    ".dev\\upload_modelzoo.py": [
+      "oss2",
+      "os",
+      "argparse"
+    ],
+    "demo\\image_demo.py": [
+      "mmseg",
+      "argparse"
+    ],
+    "docs\\conf.py": [
+      "sys",
+      "os",
+      "subprocess"
+    ],
+    "docs\\stat.py": [
+      "numpy",
+      "os",
+      "re",
+      "glob",
+      "functools"
+    ],
+    "mmseg\\version.py": [],
+    "mmseg\\__init__.py": [
+      "mmcv",
+      "version"
+    ],
+    "tests\\test_config.py": [
+      "mmcv",
+      "mmseg",
+      "torch",
+      "os",
+      "numpy",
+      "glob"
+    ],
+    "tests\\test_eval_hook.py": [
+      "mmcv",
+      "torch",
+      "mmseg",
+      "unittest",
+      "pytest",
+      "logging",
+      "tempfile"
+    ],
+    "tests\\test_inference.py": [
+      "mmcv",
+      "mmseg",
+      "os"
+    ],
+    "tests\\test_metrics.py": [
+      "mmseg",
+      "numpy"
+    ],
+    "tests\\test_model.py": [
+      "torch"
+    ],
+    "tests\\test_sampler.py": [
+      "torch",
+      "mmseg",
+      "pytest"
+    ],
+    "tools\\benchmark.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "argparse",
+      "time"
+    ],
+    "tools\\get_flops.py": [
+      "mmcv",
+      "mmseg",
+      "argparse"
+    ],
+    "tools\\print_config.py": [
+      "mmcv",
+      "argparse"
+    ],
+    "tools\\publish_model.py": [
+      "torch",
+      "argparse",
+      "subprocess"
+    ],
+    "tools\\pytorch2onnx.py": [
+      "mmcv",
+      "torch",
+      "mmseg",
+      "onnx",
+      "numpy",
+      "argparse",
+      "onnxruntime",
+      "functools"
+    ],
+    "tools\\test.py": [
+      "mmcv",
+      "mmseg",
+      "torch",
+      "os",
+      "argparse"
+    ],
+    "tools\\train.py": [
+      "mmcv",
+      "torch",
+      "mmseg",
+      "os",
+      "argparse",
+      "copy",
+      "time"
+    ],
+    "configs\\ann\\ann_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\ann\\ann_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\ann\\ann_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\ann\\ann_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\ann\\ann_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\ann\\ann_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\ann\\ann_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\ann\\ann_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\ann\\ann_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\ann\\ann_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\ann\\ann_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\ann\\ann_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\ann\\ann_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\ann\\ann_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\ann\\ann_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\ann\\ann_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\apcnet\\apcnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x1024_40k_Recipe1M.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\ccnet\\ccnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\cgnet\\cgnet_512x1024_60k_cityscapes.py": [],
+    "configs\\cgnet\\cgnet_680x680_60k_cityscapes.py": [],
+    "configs\\danet\\danet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\danet\\danet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\danet\\danet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\danet\\danet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\danet\\danet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\danet\\danet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\danet\\danet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\danet\\danet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\danet\\danet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\danet\\danet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\danet\\danet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\danet\\danet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\danet\\danet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\danet\\danet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\danet\\danet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\danet\\danet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d16-mg124_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d16-mg124_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_480x480_40k_pascal_context.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_480x480_80k_pascal_context.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r101b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r18-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r18-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r18b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r18b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_480x480_40k_pascal_context.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_480x480_80k_pascal_context.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3\\deeplabv3_r50b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d16-mg124_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d16-mg124_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_480x480_40k_pascal_context.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_480x480_80k_pascal_context.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r101b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r18-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r18-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r18b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r18b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_480x480_40k_pascal_context.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_480x480_80k_pascal_context.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\deeplabv3plus\\deeplabv3plus_r50b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\dmnet\\dmnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\dnlnet\\dnl_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\emanet\\emanet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\emanet\\emanet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\emanet\\emanet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\emanet\\emanet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\encnet\\encnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\encnet\\encnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\encnet\\encnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\encnet\\encnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\encnet\\encnet_r50s-d8_512x512_80k_ade20k.py": [],
+    "configs\\fastscnn\\fast_scnn_4x8_80k_lr0.12_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101-d8_480x480_40k_pascal_context.py": [],
+    "configs\\fcn\\fcn_r101-d8_480x480_80k_pascal_context.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\fcn\\fcn_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\fcn\\fcn_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r101b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r18-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r18-d8_769x769_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r18b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r18b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50-d8_480x480_40k_pascal_context.py": [],
+    "configs\\fcn\\fcn_r50-d8_480x480_80k_pascal_context.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\fcn\\fcn_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\fcn\\fcn_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\fcn\\fcn_r50b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\foodnet\\ccnet_r50-d8_512x1024_80k.py": [],
+    "configs\\foodnet\\ccnet_r50-d8_512x1024_80k_RM.py": [],
+    "configs\\foodnet\\fpn_r50_512x1024_80k.py": [],
+    "configs\\foodnet\\fpn_r50_512x1024_80k_RM.py": [],
+    "configs\\foodnet\\SETR_MLA_768x768_80k_base.py": [],
+    "configs\\foodnet\\SETR_MLA_768x768_80k_base_RM.py": [],
+    "configs\\foodnet\\SETR_MLA_768x768_80k_large.py": [],
+    "configs\\foodnet\\SETR_Naive_768x768_80k_base.py": [],
+    "configs\\foodnet\\SETR_Naive_768x768_80k_base_RM.py": [],
+    "configs\\fp16\\deeplabv3plus_r101-d8_512x1024_80k_fp16_cityscapes.py": [],
+    "configs\\fp16\\deeplabv3_r101-d8_512x1024_80k_fp16_cityscapes.py": [],
+    "configs\\fp16\\fcn_r101-d8_512x1024_80k_fp16_cityscapes.py": [],
+    "configs\\fp16\\pspnet_r101-d8_512x1024_80k_fp16_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\gcnet\\gcnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18s_480x480_40k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr18s_480x480_80k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x1024_160k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x1024_40k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x1024_80k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x512_160k_ade20k.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x512_20k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x512_40k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr18s_512x512_80k_ade20k.py": [],
+    "configs\\hrnet\\fcn_hr18_480x480_40k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr18_480x480_80k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr18_512x1024_160k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18_512x1024_40k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18_512x1024_80k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr18_512x512_160k_ade20k.py": [],
+    "configs\\hrnet\\fcn_hr18_512x512_20k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr18_512x512_40k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr18_512x512_80k_ade20k.py": [],
+    "configs\\hrnet\\fcn_hr48_480x480_40k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr48_480x480_80k_pascal_context.py": [],
+    "configs\\hrnet\\fcn_hr48_512x1024_160k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr48_512x1024_40k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr48_512x1024_80k_cityscapes.py": [],
+    "configs\\hrnet\\fcn_hr48_512x512_160k_ade20k.py": [],
+    "configs\\hrnet\\fcn_hr48_512x512_20k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr48_512x512_40k_voc12aug.py": [],
+    "configs\\hrnet\\fcn_hr48_512x512_80k_ade20k.py": [],
+    "configs\\mobilenet_v2\\deeplabv3plus_m-v2-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\mobilenet_v2\\deeplabv3plus_m-v2-d8_512x512_160k_ade20k.py": [],
+    "configs\\mobilenet_v2\\deeplabv3_m-v2-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\mobilenet_v2\\deeplabv3_m-v2-d8_512x512_160k_ade20k.py": [],
+    "configs\\mobilenet_v2\\fcn_m-v2-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\mobilenet_v2\\fcn_m-v2-d8_512x512_160k_ade20k.py": [],
+    "configs\\mobilenet_v2\\pspnet_m-v2-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\mobilenet_v2\\pspnet_m-v2-d8_512x512_160k_ade20k.py": [],
+    "configs\\mobilenet_v3\\lraspp_m-v3-d8_512x1024_320k_cityscapes.py": [],
+    "configs\\mobilenet_v3\\lraspp_m-v3-d8_scratch_512x1024_320k_cityscapes.py": [],
+    "configs\\mobilenet_v3\\lraspp_m-v3s-d8_512x1024_320k_cityscapes.py": [],
+    "configs\\mobilenet_v3\\lraspp_m-v3s-d8_scratch_512x1024_320k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\nonlocal_net\\nonlocal_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x1024_160k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x1024_40k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x1024_80k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x512_160k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x512_20k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x512_40k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr18s_512x512_80k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x1024_160k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x1024_40k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x1024_80k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x512_160k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x512_20k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x512_40k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr18_512x512_80k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x1024_160k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x1024_40k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x1024_80k_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x512_160k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x512_20k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x512_40k_voc12aug.py": [],
+    "configs\\ocrnet\\ocrnet_hr48_512x512_80k_ade20k.py": [],
+    "configs\\ocrnet\\ocrnet_r101-d8_512x1024_40k_b16_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_r101-d8_512x1024_40k_b8_cityscapes.py": [],
+    "configs\\ocrnet\\ocrnet_r101-d8_512x1024_80k_b16_cityscapes.py": [],
+    "configs\\point_rend\\pointrend_r101_512x1024_80k_cityscapes.py": [],
+    "configs\\point_rend\\pointrend_r101_512x512_160k_ade20k.py": [],
+    "configs\\point_rend\\pointrend_r50_512x1024_80k_cityscapes.py": [],
+    "configs\\point_rend\\pointrend_r50_512x512_160k_ade20k.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\psanet\\psanet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\psanet\\psanet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\psanet\\psanet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\psanet\\psanet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\psanet\\psanet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_480x480_40k_pascal_context.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_480x480_80k_pascal_context.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x512_160k_ade20k.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x512_20k_voc12aug.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x512_40k_voc12aug.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_512x512_80k_ade20k.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_769x769_40k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r101b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r18-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r18-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r18b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r18b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_480x480_40k_pascal_context.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_480x480_80k_pascal_context.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x1024_40k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x512_160k_ade20k.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x512_20k_voc12aug.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x512_40k_voc12aug.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_512x512_80k_ade20k.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_769x769_40k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50-d8_769x769_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50b-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\pspnet\\pspnet_r50b-d8_769x769_80k_cityscapes.py": [],
+    "configs\\resnest\\deeplabv3plus_s101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\resnest\\deeplabv3plus_s101-d8_512x512_160k_ade20k.py": [],
+    "configs\\resnest\\deeplabv3_s101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\resnest\\deeplabv3_s101-d8_512x512_160k_ade20k.py": [],
+    "configs\\resnest\\fcn_s101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\resnest\\fcn_s101-d8_512x512_160k_ade20k.py": [],
+    "configs\\resnest\\pspnet_s101-d8_512x1024_80k_cityscapes.py": [],
+    "configs\\resnest\\pspnet_s101-d8_512x512_160k_ade20k.py": [],
+    "configs\\sem_fpn\\fpn_r101_512x1024_80k_cityscapes.py": [],
+    "configs\\sem_fpn\\fpn_r101_512x512_160k_ade20k.py": [],
+    "configs\\sem_fpn\\fpn_r50_512x1024_80k_cityscapes.py": [],
+    "configs\\sem_fpn\\fpn_r50_512x512_160k_ade20k.py": [],
+    "configs\\unet\\deeplabv3_unet_s5-d16_128x128_40k_chase_db1.py": [],
+    "configs\\unet\\deeplabv3_unet_s5-d16_128x128_40k_stare.py": [],
+    "configs\\unet\\deeplabv3_unet_s5-d16_256x256_40k_hrf.py": [],
+    "configs\\unet\\deeplabv3_unet_s5-d16_64x64_40k_drive.py": [],
+    "configs\\unet\\fcn_unet_s5-d16_128x128_40k_chase_db1.py": [],
+    "configs\\unet\\fcn_unet_s5-d16_128x128_40k_stare.py": [],
+    "configs\\unet\\fcn_unet_s5-d16_256x256_40k_hrf.py": [],
+    "configs\\unet\\fcn_unet_s5-d16_64x64_40k_drive.py": [],
+    "configs\\unet\\pspnet_unet_s5-d16_128x128_40k_chase_db1.py": [],
+    "configs\\unet\\pspnet_unet_s5-d16_128x128_40k_stare.py": [],
+    "configs\\unet\\pspnet_unet_s5-d16_256x256_40k_hrf.py": [],
+    "configs\\unet\\pspnet_unet_s5-d16_64x64_40k_drive.py": [],
+    "configs\\upernet\\upernet_r101_512x1024_40k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r101_512x1024_80k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r101_512x512_160k_ade20k.py": [],
+    "configs\\upernet\\upernet_r101_512x512_20k_voc12aug.py": [],
+    "configs\\upernet\\upernet_r101_512x512_40k_voc12aug.py": [],
+    "configs\\upernet\\upernet_r101_512x512_80k_ade20k.py": [],
+    "configs\\upernet\\upernet_r101_769x769_40k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r101_769x769_80k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r50_512x1024_40k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r50_512x1024_80k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r50_512x512_160k_ade20k.py": [],
+    "configs\\upernet\\upernet_r50_512x512_20k_voc12aug.py": [],
+    "configs\\upernet\\upernet_r50_512x512_40k_voc12aug.py": [],
+    "configs\\upernet\\upernet_r50_512x512_80k_ade20k.py": [],
+    "configs\\upernet\\upernet_r50_769x769_40k_cityscapes.py": [],
+    "configs\\upernet\\upernet_r50_769x769_80k_cityscapes.py": [],
+    "configs\\_base_\\default_runtime.py": [],
+    "configs\\_base_\\datasets\\ade20k.py": [],
+    "configs\\_base_\\datasets\\chase_db1.py": [],
+    "configs\\_base_\\datasets\\cityscapes.py": [],
+    "configs\\_base_\\datasets\\cityscapes_769x769.py": [],
+    "configs\\_base_\\datasets\\drive.py": [],
+    "configs\\_base_\\datasets\\FoodSeg103.py": [],
+    "configs\\_base_\\datasets\\FoodSeg103_768x768.py": [],
+    "configs\\_base_\\datasets\\hrf.py": [],
+    "configs\\_base_\\datasets\\pascal_context.py": [],
+    "configs\\_base_\\datasets\\pascal_voc12.py": [],
+    "configs\\_base_\\datasets\\pascal_voc12_aug.py": [],
+    "configs\\_base_\\datasets\\stare.py": [],
+    "configs\\_base_\\models\\ann_r50-d8.py": [],
+    "configs\\_base_\\models\\apcnet_r50-d8.py": [],
+    "configs\\_base_\\models\\ccnet_r50-d8.py": [],
+    "configs\\_base_\\models\\cgnet.py": [],
+    "configs\\_base_\\models\\danet_r50-d8.py": [],
+    "configs\\_base_\\models\\deeplabv3plus_r50-d8.py": [],
+    "configs\\_base_\\models\\deeplabv3_r50-d8.py": [],
+    "configs\\_base_\\models\\deeplabv3_unet_s5-d16.py": [],
+    "configs\\_base_\\models\\dmnet_r50-d8.py": [],
+    "configs\\_base_\\models\\dnl_r50-d8.py": [],
+    "configs\\_base_\\models\\emanet_r50-d8.py": [],
+    "configs\\_base_\\models\\encnet_r50-d8.py": [],
+    "configs\\_base_\\models\\fast_scnn.py": [],
+    "configs\\_base_\\models\\fcn_hr18.py": [],
+    "configs\\_base_\\models\\fcn_r50-d8.py": [],
+    "configs\\_base_\\models\\fcn_unet_s5-d16.py": [],
+    "configs\\_base_\\models\\fpn_r50.py": [],
+    "configs\\_base_\\models\\gcnet_r50-d8.py": [],
+    "configs\\_base_\\models\\lraspp_m-v3-d8.py": [],
+    "configs\\_base_\\models\\nonlocal_r50-d8.py": [],
+    "configs\\_base_\\models\\ocrnet_hr18.py": [],
+    "configs\\_base_\\models\\ocrnet_r50-d8.py": [],
+    "configs\\_base_\\models\\pointrend_r50.py": [],
+    "configs\\_base_\\models\\psanet_r50-d8.py": [],
+    "configs\\_base_\\models\\pspnet_r50-d8.py": [],
+    "configs\\_base_\\models\\pspnet_unet_s5-d16.py": [],
+    "configs\\_base_\\models\\setr_mla.py": [],
+    "configs\\_base_\\models\\setr_naive_pup.py": [],
+    "configs\\_base_\\models\\upernet_r50.py": [],
+    "configs\\_base_\\schedules\\schedule_160k.py": [],
+    "configs\\_base_\\schedules\\schedule_20k.py": [],
+    "configs\\_base_\\schedules\\schedule_40k.py": [],
+    "configs\\_base_\\schedules\\schedule_80k.py": [],
+    "mmseg\\apis\\inference.py": [
+      "mmcv",
+      "mmseg",
+      "matplotlib",
+      "torch"
+    ],
+    "mmseg\\apis\\test.py": [
+      "mmcv",
+      "torch",
+      "pickle",
+      "os",
+      "numpy",
+      "shutil",
+      "tempfile"
+    ],
+    "mmseg\\apis\\train.py": [
+      "mmcv",
+      "random",
+      "torch",
+      "mmseg",
+      "numpy",
+      "warnings"
+    ],
+    "mmseg\\apis\\__init__.py": [
+      "test",
+      "inference",
+      "train"
+    ],
+    "mmseg\\core\\__init__.py": [
+      "evaluation",
+      "seg",
+      "utils"
+    ],
+    "mmseg\\datasets\\ade.py": [
+      "custom",
+      "builder"
+    ],
+    "mmseg\\datasets\\builder.py": [
+      "random",
+      "mmcv",
+      "torch",
+      "numpy",
+      "platform",
+      "dataset_wrappers",
+      "copy",
+      "resource",
+      "functools"
+    ],
+    "mmseg\\datasets\\chase_db1.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\cityscapes.py": [
+      "mmcv",
+      "custom",
+      "numpy",
+      "os",
+      "cityscapesscripts",
+      "builder",
+      "PIL",
+      "tempfile"
+    ],
+    "mmseg\\datasets\\custom.py": [
+      "mmcv",
+      "terminaltables",
+      "torch",
+      "mmseg",
+      "pipelines",
+      "numpy",
+      "os",
+      "builder",
+      "functools"
+    ],
+    "mmseg\\datasets\\dataset_wrappers.py": [
+      "torch",
+      "builder"
+    ],
+    "mmseg\\datasets\\drive.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\hrf.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\pascal_context.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\stare.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\voc.py": [
+      "custom",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\__init__.py": [
+      "chase_db1",
+      "voc",
+      "custom",
+      "pascal_context",
+      "stare",
+      "dataset_wrappers",
+      "builder",
+      "cityscapes",
+      "hrf",
+      "ade",
+      "drive"
+    ],
+    "mmseg\\models\\builder.py": [
+      "mmcv",
+      "warnings",
+      "torch"
+    ],
+    "mmseg\\models\\__init__.py": [
+      "necks",
+      "backbones",
+      "segmentors",
+      "builder",
+      "decode_heads",
+      "losses"
+    ],
+    "mmseg\\ops\\encoding.py": [
+      "torch"
+    ],
+    "mmseg\\ops\\wrappers.py": [
+      "torch",
+      "warnings"
+    ],
+    "mmseg\\ops\\__init__.py": [
+      "wrappers",
+      "encoding"
+    ],
+    "mmseg\\utils\\collect_env.py": [
+      "mmcv",
+      "mmseg"
+    ],
+    "mmseg\\utils\\logger.py": [
+      "mmcv",
+      "logging"
+    ],
+    "mmseg\\utils\\__init__.py": [
+      "logger",
+      "collect_env"
+    ],
+    "mmseg\\core\\evaluation\\class_names.py": [
+      "mmcv"
+    ],
+    "mmseg\\core\\evaluation\\eval_hooks.py": [
+      "mmcv",
+      "mmseg",
+      "torch",
+      "os"
+    ],
+    "mmseg\\core\\evaluation\\metrics.py": [
+      "mmcv",
+      "numpy"
+    ],
+    "mmseg\\core\\evaluation\\__init__.py": [
+      "class_names",
+      "metrics",
+      "eval_hooks"
+    ],
+    "mmseg\\core\\seg\\builder.py": [
+      "mmcv"
+    ],
+    "mmseg\\core\\seg\\__init__.py": [
+      "sampler",
+      "builder"
+    ],
+    "mmseg\\core\\utils\\misc.py": [],
+    "mmseg\\core\\utils\\__init__.py": [
+      "misc"
+    ],
+    "mmseg\\core\\seg\\sampler\\base_pixel_sampler.py": [
+      "abc"
+    ],
+    "mmseg\\core\\seg\\sampler\\ohem_pixel_sampler.py": [
+      "base_pixel_sampler",
+      "torch",
+      "builder"
+    ],
+    "mmseg\\core\\seg\\sampler\\__init__.py": [
+      "base_pixel_sampler",
+      "ohem_pixel_sampler"
+    ],
+    "mmseg\\datasets\\pipelines\\compose.py": [
+      "mmcv",
+      "collections",
+      "builder"
+    ],
+    "mmseg\\datasets\\pipelines\\formating.py": [
+      "mmcv",
+      "torch",
+      "numpy",
+      "builder",
+      "collections"
+    ],
+    "mmseg\\datasets\\pipelines\\loading.py": [
+      "mmcv",
+      "numpy",
+      "os",
+      "builder"
+    ],
+    "mmseg\\datasets\\pipelines\\test_time_aug.py": [
+      "mmcv",
+      "warnings",
+      "compose",
+      "builder"
+    ],
+    "mmseg\\datasets\\pipelines\\transforms.py": [
+      "mmcv",
+      "numpy",
+      "builder"
+    ],
+    "mmseg\\datasets\\pipelines\\__init__.py": [
+      "formating",
+      "loading",
+      "test_time_aug",
+      "compose",
+      "transforms"
+    ],
+    "mmseg\\models\\backbones\\cgnet.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder"
+    ],
+    "mmseg\\models\\backbones\\fast_scnn.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "utils"
+    ],
+    "mmseg\\models\\backbones\\helpers.py": [
+      "math",
+      "torch",
+      "os",
+      "re",
+      "warnings",
+      "errno",
+      "urllib",
+      "zipfile",
+      "logging",
+      "sys"
+    ],
+    "mmseg\\models\\backbones\\hrnet.py": [
+      "torch",
+      "mmcv",
+      "resnet",
+      "mmseg",
+      "builder"
+    ],
+    "mmseg\\models\\backbones\\mobilenet_v2.py": [
+      "mmcv",
+      "torch",
+      "builder",
+      "utils",
+      "logging"
+    ],
+    "mmseg\\models\\backbones\\mobilenet_v3.py": [
+      "mmcv",
+      "torch",
+      "builder",
+      "utils",
+      "logging"
+    ],
+    "mmseg\\models\\backbones\\pvt.py": [
+      "torch",
+      "mmseg",
+      "mmcv",
+      "timm",
+      "builder",
+      "functools"
+    ],
+    "mmseg\\models\\backbones\\resnest.py": [
+      "math",
+      "torch",
+      "mmcv",
+      "resnet",
+      "builder",
+      "utils"
+    ],
+    "mmseg\\models\\backbones\\resnet.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "utils"
+    ],
+    "mmseg\\models\\backbones\\resnext.py": [
+      "math",
+      "mmcv",
+      "resnet",
+      "builder",
+      "utils"
+    ],
+    "mmseg\\models\\backbones\\unet.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "utils"
+    ],
+    "mmseg\\models\\backbones\\vit.py": [
+      "math",
+      "torch",
+      "functools",
+      "mmcv",
+      "builder",
+      "helpers",
+      "layers"
+    ],
+    "mmseg\\models\\backbones\\vit_mla.py": [
+      "math",
+      "torch",
+      "functools",
+      "mmcv",
+      "builder",
+      "helpers",
+      "layers"
+    ],
+    "mmseg\\models\\backbones\\__init__.py": [
+      "resnest",
+      "cgnet",
+      "resnet",
+      "vit",
+      "unet",
+      "resnext",
+      "mobilenet_v3",
+      "fast_scnn",
+      "pvt",
+      "vit_mla",
+      "hrnet",
+      "mobilenet_v2"
+    ],
+    "mmseg\\models\\decode_heads\\ann_head.py": [
+      "torch",
+      "mmcv",
+      "builder",
+      "decode_head",
+      "utils"
+    ],
+    "mmseg\\models\\decode_heads\\apc_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\aspp_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\cascade_decode_head.py": [
+      "abc",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\cc_head.py": [
+      "torch",
+      "mmcv",
+      "fcn_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\da_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "utils",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\decode_head.py": [
+      "mmcv",
+      "torch",
+      "mmseg",
+      "builder",
+      "abc",
+      "losses"
+    ],
+    "mmseg\\models\\decode_heads\\dm_head.py": [
+      "torch",
+      "mmcv",
+      "decode_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\dnl_head.py": [
+      "torch",
+      "mmcv",
+      "fcn_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\ema_head.py": [
+      "math",
+      "torch",
+      "mmcv",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\enc_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\fcn_head.py": [
+      "torch",
+      "mmcv",
+      "decode_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\fpn_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "numpy",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\gc_head.py": [
+      "torch",
+      "mmcv",
+      "fcn_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\helpers.py": [
+      "math",
+      "torch",
+      "logging"
+    ],
+    "mmseg\\models\\decode_heads\\lraspp_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\nl_head.py": [
+      "torch",
+      "mmcv",
+      "fcn_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\ocr_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "utils",
+      "cascade_decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\point_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "cascade_decode_head",
+      "losses"
+    ],
+    "mmseg\\models\\decode_heads\\psa_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\psp_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\sep_aspp_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "aspp_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\sep_fcn_head.py": [
+      "mmcv",
+      "fcn_head",
+      "builder"
+    ],
+    "mmseg\\models\\decode_heads\\uper_head.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "psp_head",
+      "builder",
+      "decode_head"
+    ],
+    "mmseg\\models\\decode_heads\\vit_mla_auxi_head.py": [
+      "math",
+      "torch",
+      "functools",
+      "mmcv",
+      "backbones",
+      "builder",
+      "helpers",
+      "decode_head",
+      "layers"
+    ],
+    "mmseg\\models\\decode_heads\\vit_mla_head.py": [
+      "math",
+      "torch",
+      "functools",
+      "mmcv",
+      "backbones",
+      "builder",
+      "helpers",
+      "decode_head",
+      "layers"
+    ],
+    "mmseg\\models\\decode_heads\\vit_up_head.py": [
+      "math",
+      "torch",
+      "functools",
+      "mmcv",
+      "backbones",
+      "builder",
+      "helpers",
+      "decode_head",
+      "layers"
+    ],
+    "mmseg\\models\\decode_heads\\__init__.py": [
+      "psp_head",
+      "gc_head",
+      "da_head",
+      "aspp_head",
+      "sep_aspp_head",
+      "vit_mla_head",
+      "dnl_head",
+      "lraspp_head",
+      "uper_head",
+      "point_head",
+      "vit_up_head",
+      "ocr_head",
+      "sep_fcn_head",
+      "nl_head",
+      "dm_head",
+      "psa_head",
+      "fpn_head",
+      "ema_head",
+      "apc_head",
+      "vit_mla_auxi_head",
+      "fcn_head",
+      "cc_head",
+      "enc_head",
+      "ann_head"
+    ],
+    "mmseg\\models\\losses\\accuracy.py": [
+      "torch"
+    ],
+    "mmseg\\models\\losses\\cross_entropy_loss.py": [
+      "torch",
+      "utils",
+      "builder"
+    ],
+    "mmseg\\models\\losses\\lovasz_loss.py": [
+      "mmcv",
+      "torch",
+      "utils",
+      "builder"
+    ],
+    "mmseg\\models\\losses\\utils.py": [
+      "torch",
+      "functools"
+    ],
+    "mmseg\\models\\losses\\__init__.py": [
+      "accuracy",
+      "cross_entropy_loss",
+      "lovasz_loss",
+      "utils"
+    ],
+    "mmseg\\models\\necks\\fpn.py": [
+      "torch",
+      "mmcv",
+      "builder"
+    ],
+    "mmseg\\models\\necks\\__init__.py": [
+      "fpn"
+    ],
+    "mmseg\\models\\segmentors\\base.py": [
+      "mmcv",
+      "torch",
+      "numpy",
+      "warnings",
+      "collections",
+      "logging",
+      "abc"
+    ],
+    "mmseg\\models\\segmentors\\cascade_encoder_decoder.py": [
+      "torch",
+      "mmseg",
+      "encoder_decoder",
+      "builder"
+    ],
+    "mmseg\\models\\segmentors\\encoder_decoder.py": [
+      "torch",
+      "mmseg",
+      "base",
+      "builder"
+    ],
+    "mmseg\\models\\segmentors\\__init__.py": [
+      "cascade_encoder_decoder",
+      "encoder_decoder"
+    ],
+    "mmseg\\models\\utils\\inverted_residual.py": [
+      "se_layer",
+      "mmcv",
+      "torch"
+    ],
+    "mmseg\\models\\utils\\make_divisible.py": [],
+    "mmseg\\models\\utils\\res_layer.py": [
+      "mmcv",
+      "torch"
+    ],
+    "mmseg\\models\\utils\\self_attention_block.py": [
+      "torch",
+      "mmcv"
+    ],
+    "mmseg\\models\\utils\\se_layer.py": [
+      "mmcv",
+      "torch",
+      "make_divisible"
+    ],
+    "mmseg\\models\\utils\\up_conv_block.py": [
+      "torch",
+      "mmcv"
+    ],
+    "mmseg\\models\\utils\\__init__.py": [
+      "res_layer",
+      "inverted_residual",
+      "make_divisible",
+      "self_attention_block",
+      "up_conv_block"
+    ],
+    "mmseg\\models\\backbones\\layers\\drop.py": [
+      "torch"
+    ],
+    "mmseg\\models\\backbones\\layers\\helpers.py": [
+      "itertools",
+      "torch"
+    ],
+    "mmseg\\models\\backbones\\layers\\weight_init.py": [
+      "math",
+      "torch",
+      "warnings"
+    ],
+    "mmseg\\models\\backbones\\layers\\__init__.py": [
+      "weight_init",
+      "helpers",
+      "drop"
+    ],
+    "mmseg\\models\\decode_heads\\layers\\drop.py": [
+      "torch"
+    ],
+    "mmseg\\models\\decode_heads\\layers\\helpers.py": [
+      "itertools",
+      "torch"
+    ],
+    "mmseg\\models\\decode_heads\\layers\\weight_init.py": [
+      "math",
+      "torch",
+      "warnings"
+    ],
+    "mmseg\\models\\decode_heads\\layers\\__init__.py": [
+      "weight_init",
+      "helpers",
+      "drop"
+    ],
+    "tests\\test_data\\test_dataset.py": [
+      "mmseg",
+      "numpy",
+      "os",
+      "unittest",
+      "pytest"
+    ],
+    "tests\\test_data\\test_dataset_builder.py": [
+      "math",
+      "torch",
+      "mmseg",
+      "os",
+      "pytest"
+    ],
+    "tests\\test_data\\test_loading.py": [
+      "mmcv",
+      "mmseg",
+      "numpy",
+      "os",
+      "copy",
+      "tempfile"
+    ],
+    "tests\\test_data\\test_transform.py": [
+      "mmcv",
+      "mmseg",
+      "numpy",
+      "os",
+      "pytest",
+      "copy",
+      "PIL"
+    ],
+    "tests\\test_data\\test_tta.py": [
+      "mmcv",
+      "mmseg",
+      "pytest",
+      "os"
+    ],
+    "tests\\test_models\\test_backbone.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "pytest"
+    ],
+    "tests\\test_models\\test_forward.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "numpy",
+      "os",
+      "unittest",
+      "pytest",
+      "copy"
+    ],
+    "tests\\test_models\\test_heads.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "unittest",
+      "pytest"
+    ],
+    "tests\\test_models\\test_losses.py": [
+      "torch",
+      "mmseg",
+      "pytest",
+      "numpy"
+    ],
+    "tests\\test_models\\test_necks.py": [
+      "torch",
+      "mmseg"
+    ],
+    "tests\\test_models\\test_segmentor.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "numpy"
+    ],
+    "tests\\test_models\\test_unet.py": [
+      "torch",
+      "mmcv",
+      "mmseg",
+      "pytest"
+    ],
+    "tests\\test_utils\\test_inverted_residual_module.py": [
+      "mmcv",
+      "mmseg",
+      "torch",
+      "pytest"
+    ],
+    "tests\\test_utils\\test_make_divisible.py": [
+      "mmseg"
+    ],
+    "tests\\test_utils\\test_se_layer.py": [
+      "mmcv",
+      "mmseg",
+      "torch",
+      "pytest"
+    ],
+    "tools\\convert_datasets\\chase_db1.py": [
+      "mmcv",
+      "os",
+      "argparse",
+      "zipfile",
+      "tempfile"
+    ],
+    "tools\\convert_datasets\\cityscapes.py": [
+      "mmcv",
+      "os",
+      "cityscapesscripts",
+      "argparse"
+    ],
+    "tools\\convert_datasets\\drive.py": [
+      "cv2",
+      "mmcv",
+      "os",
+      "argparse",
+      "zipfile",
+      "tempfile"
+    ],
+    "tools\\convert_datasets\\hrf.py": [
+      "mmcv",
+      "os",
+      "argparse",
+      "zipfile",
+      "tempfile"
+    ],
+    "tools\\convert_datasets\\pascal_context.py": [
+      "mmcv",
+      "numpy",
+      "os",
+      "argparse",
+      "detail",
+      "PIL",
+      "functools"
+    ],
+    "tools\\convert_datasets\\stare.py": [
+      "mmcv",
+      "os",
+      "argparse",
+      "gzip",
+      "tarfile",
+      "tempfile"
+    ],
+    "tools\\convert_datasets\\voc_aug.py": [
+      "mmcv",
+      "numpy",
+      "os",
+      "scipy",
+      "argparse",
+      "PIL",
+      "functools"
+    ]
+  }
+}

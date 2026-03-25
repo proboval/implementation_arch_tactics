@@ -5,23 +5,25 @@
   "avg_files_per_package": 3.8,
   "imports_graph": {
     "setup.py": [
+      "setuptools",
       "os",
-      "io",
-      "setuptools"
+      "io"
     ],
     "es\\baseapi.py": [
-      "es",
-      "typing",
-      "collections",
       "urllib",
-      "const"
+      "collections",
+      "es",
+      "opensearchpy",
+      "elasticsearch",
+      "const",
+      "typing"
     ],
     "es\\basesqlalchemy.py": [
       "es",
-      "sqlalchemy",
       "__future__",
-      "typing",
-      "logging"
+      "logging",
+      "sqlalchemy",
+      "typing"
     ],
     "es\\const.py": [],
     "es\\exceptions.py": [],
@@ -29,73 +31,73 @@
       "es"
     ],
     "utils\\export.py": [
-      "json",
-      "requests"
+      "requests",
+      "json"
     ],
     "es\\elastic\\api.py": [
-      "re",
       "es",
-      "typing",
+      "re",
       "elasticsearch",
+      "typing",
       "packaging"
     ],
     "es\\elastic\\sqlalchemy.py": [
       "es",
-      "sqlalchemy",
       "__future__",
-      "typing",
       "logging",
-      "types"
+      "types",
+      "sqlalchemy",
+      "typing"
     ],
     "es\\elastic\\__init__.py": [
       "es"
     ],
     "es\\opendistro\\api.py": [
-      "re",
-      "es",
-      "opensearchpy",
       "boto3",
+      "es",
       "__future__",
-      "typing",
-      "requests_aws4auth"
+      "requests_aws4auth",
+      "re",
+      "opensearchpy",
+      "typing"
     ],
     "es\\opendistro\\sqlalchemy.py": [
       "es",
-      "sqlalchemy",
       "__future__",
-      "typing",
       "logging",
-      "types"
+      "types",
+      "sqlalchemy",
+      "typing"
     ],
     "es\\opendistro\\__init__.py": [
       "es"
     ],
     "es\\tests\\test_0_fixtures.py": [
+      "fixtures",
       "os",
-      "unittest",
-      "fixtures"
+      "unittest"
     ],
     "es\\tests\\test_dbapi.py": [
+      "es",
       "os",
-      "unittest",
-      "es"
+      "unittest"
     ],
     "es\\tests\\test_sqlalchemy.py": [
-      "es",
-      "sqlalchemy",
       "boto3",
+      "es",
+      "os",
       "opensearchpy",
+      "sqlalchemy",
       "typing",
-      "unittest",
-      "os"
+      "unittest"
     ],
     "es\\tests\\__init__.py": [],
     "es\\tests\\fixtures\\fixtures.py": [
-      "opensearchpy",
-      "typing",
       "json",
+      "os",
+      "opensearchpy",
       "elasticsearch",
-      "os"
+      "typing"
     ],
     "es\\tests\\fixtures\\__init__.py": []
   }

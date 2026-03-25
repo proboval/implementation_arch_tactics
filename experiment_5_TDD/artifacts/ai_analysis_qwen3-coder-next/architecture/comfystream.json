@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single codebase with clear module separation (nodes/, src/, server/, scripts/, ui/) but no inter-service communication patterns",
+    "Core logic centralized in Python modules (Pipeline, ComfyStreamClient, FrameProcessor) with shared state and in-process execution",
+    "UI is tightly integrated with backend via aiohttp/web (server/app.py) and shared Python modules (nodes/web/)",
+    "Nodes follow ComfyUI's node-based execution model with execute(), INPUT_TYPES(), IS_CHANGED() — indicating a monolithic workflow engine",
+    "Shared tensor_cache, exceptions, modalities, utils modules used across components without service boundaries",
+    "No external service dependencies in architecture (e.g., no message queues, gRPC, REST between logical components)",
+    "Single entry points (server/app.py, example.py, benchmark.py) orchestrating the entire flow",
+    "Repository structure shows logical separation but not physical deployment separation (no Docker services, no separate repos)"
+  ],
+  "alternatives": [
+    "microservices_like",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between UI, backend, and node execution may hinder independent scaling or technology evolution",
+    "Monolithic deployment increases risk of cascading failures across components",
+    "Shared state (e.g., tensor_cache, PipelineState) may cause concurrency issues under high load",
+    "Limited testability of individual components due to implicit dependencies across modules"
+  ]
+}

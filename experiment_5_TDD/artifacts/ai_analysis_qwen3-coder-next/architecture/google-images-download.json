@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Only 2 packages, with all core logic in a single module (google_images_download/google_images_download.py)",
+    "Flat directory structure with max depth 2, no clear separation of layers or bounded contexts",
+    "Single class (googleimagesdownload) with many methods handling I/O, HTTP, parsing, and orchestration",
+    "Main entry points (__main__.py, __init__.py) directly invoke procedural logic without abstraction",
+    "Tests directly instantiate and call the main class without adapters or ports",
+    "High average fan-out (3.25) indicates tight coupling to standard library modules",
+    "No evidence of separation of concerns (e.g., no domain, application, or infrastructure layers)"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Low modularity makes testing and maintenance difficult",
+    "Tight coupling to external dependencies (e.g., urllib, ssl) hinders testability",
+    "Monolithic class violates single responsibility principle",
+    "Lack of clear boundaries impedes future evolution or scaling"
+  ]
+}

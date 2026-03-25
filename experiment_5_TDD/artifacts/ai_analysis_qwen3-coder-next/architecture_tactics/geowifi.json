@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling (avg_fan_out: 6.0) and zero packages, with all logic in a single monolithic file (geowifi.py) that directly imports 10+ external libraries and internal helpers without abstraction layers. Static analysis flags 'C1' (coupling) and 'A3' (lack of modularity) as maintainability factors. The flat structure forces changes in one service (e.g., WiGLE API) to ripple through the entire file, and the absence of interfaces or adapters makes testing impossible (no test infrastructure visible). Reduced Coupling directly addresses this by introducing abstractions (e.g., service interfaces) and dependency injection, decoupling geowifi.py from concrete implementations like 'requests' or 'google.protobuf'. This is implementable incrementally by extracting service-specific modules (e.g., 'services/wigle.py') and defining interfaces (e.g., 'services/__init__.py' with base classes), without rewriting the system.",
+  "target_components": [
+    "geowifi.py",
+    "helpers/BSSIDApple_pb2.py"
+  ],
+  "expected_architectural_change": "The single-file monolith (geowifi.py) will be split into domain modules (e.g., 'services/', 'core/') with clear interfaces. Concrete implementations (e.g., WigleService, AppleBssidService) will depend on abstractions (e.g., BaseLocationService), reducing direct coupling to external libraries and enabling substitution/mocking. The helpers directory will remain but be isolated behind service adapters.",
+  "implementation_strategy": "1. Create 'services/' directory with abstract base classes (e.g., BaseLocationService) defining interfaces for network lookup. 2. Extract each API client (wigle_ssid, apple_bssid, etc.) into concrete service classes implementing the interface. 3. Inject services into geowifi.py via constructor or factory instead of direct imports. 4. Replace direct 'requests' and 'google.protobuf' usage in geowifi.py with service method calls. 5. Add a simple dependency injection container or factory to wire services. This preserves current functionality while improving modularity, testability, and maintainability.",
+  "risks": "Initial refactoring may increase file count and require careful dependency management; however, since the codebase is small and flat, the risk is low and incremental (e.g., refactor one service at a time). No negative impacts are documented for this tactic."
+}

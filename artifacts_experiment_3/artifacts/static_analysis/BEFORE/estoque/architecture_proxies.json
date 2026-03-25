@@ -5,10 +5,10 @@
   "avg_files_per_package": 6.714285714285714,
   "imports_graph": {
     "create_data.py": [
+      "random",
       "string",
       "os",
       "django",
-      "random",
       "timeit",
       "projeto"
     ],
@@ -20,16 +20,16 @@
       "projeto"
     ],
     "manage.py": [
-      "sys",
       "os",
+      "sys",
       "django"
     ],
     "contrib\\env_gen.py": [
       "django"
     ],
     "projeto\\settings.py": [
-      "os",
-      "decouple"
+      "decouple",
+      "os"
     ],
     "projeto\\urls.py": [
       "django"
@@ -52,8 +52,8 @@
       "django"
     ],
     "projeto\\core\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\core\\views.py": [
       "django"
@@ -67,38 +67,38 @@
       "django"
     ],
     "projeto\\estoque\\forms.py": [
+      "projeto",
       "django",
-      "models",
-      "projeto"
+      "models"
     ],
     "projeto\\estoque\\managers.py": [
       "django"
     ],
     "projeto\\estoque\\models.py": [
       "managers",
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\estoque\\tests.py": [
       "django"
     ],
     "projeto\\estoque\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\estoque\\views.py": [
       "forms",
+      "projeto",
       "django",
-      "models",
-      "projeto"
+      "models"
     ],
     "projeto\\estoque\\__init__.py": [],
     "projeto\\produto\\admin.py": [
       "datetime",
-      "csv",
+      "models",
       "django",
-      "xlwt",
-      "models"
+      "csv",
+      "xlwt"
     ],
     "projeto\\produto\\apps.py": [
       "django"
@@ -114,18 +114,18 @@
       "django"
     ],
     "projeto\\produto\\urls.py": [
-      "django",
-      "projeto"
+      "projeto",
+      "django"
     ],
     "projeto\\produto\\views.py": [
       "datetime",
-      "csv",
+      "models",
       "django",
       "io",
-      "forms",
       "pandas",
-      "models",
-      "projeto"
+      "csv",
+      "projeto",
+      "forms"
     ],
     "projeto\\produto\\__init__.py": [],
     "projeto\\core\\migrations\\__init__.py": [],
@@ -150,9 +150,9 @@
     ],
     "projeto\\estoque\\migrations\\__init__.py": [],
     "projeto\\produto\\actions\\export_xlsx.py": [
-      "django",
       "datetime",
-      "xlwt"
+      "xlwt",
+      "django"
     ],
     "projeto\\produto\\actions\\import_xlsx.py": [
       "xlrd",

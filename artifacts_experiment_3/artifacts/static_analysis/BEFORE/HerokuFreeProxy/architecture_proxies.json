@@ -5,8 +5,8 @@
   "avg_files_per_package": 5.0,
   "imports_graph": {
     "manage.py": [
-      "sys",
       "os",
+      "sys",
       "django"
     ],
     "herokufreeproxy\\settings.py": [
@@ -14,13 +14,13 @@
       "dj_database_url"
     ],
     "herokufreeproxy\\urls.py": [
-      "django",
-      "proxy"
+      "proxy",
+      "django"
     ],
     "herokufreeproxy\\wsgi.py": [
+      "whitenoise",
       "os",
-      "django",
-      "whitenoise"
+      "django"
     ],
     "herokufreeproxy\\__init__.py": []
   }

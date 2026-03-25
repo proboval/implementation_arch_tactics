@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package ('core') with internal module dependencies (e.g., core.InsertData imported by core.Checks)",
+    "No external service communication or network calls — all logic is local and in-process",
+    "Clear separation of concerns: Checks, InsertData, User_Functions, Other modules each with distinct responsibilities",
+    "Main.py acts as an entry point orchestrating modules, typical of monolithic designs",
+    "Low directory depth (2) and small number of packages (1) indicate tight cohesion within a single deployment unit",
+    "No ports/adapters or clear separation between core domain and infrastructure (e.g., DB access embedded in core modules)"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling to database (mysql.connector) in core modules reduces testability and flexibility",
+    "Lack of explicit layering (e.g., no domain/service/persistence separation) may hinder maintainability as project scales",
+    "No dependency inversion — modules import concrete implementations directly"
+  ]
+}

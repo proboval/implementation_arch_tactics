@@ -1,0 +1,24 @@
+{
+  "python_files": 6,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "lib\\processbar.py": [
+      "tqdm",
+      "platform",
+      "lib",
+      "abc"
+    ],
+    "lib\\progress.py": [
+      "abc"
+    ],
+    "lib\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "ast",
+      "abc",
+      "lib",
+      "pytest"
+    ]
+  }
+}

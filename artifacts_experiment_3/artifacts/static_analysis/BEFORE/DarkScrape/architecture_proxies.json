@@ -6,22 +6,22 @@
   "imports_graph": {
     "darkscrape.py": [
       "requests",
-      "modules",
-      "subprocess"
+      "subprocess",
+      "modules"
     ],
     "modules\\file.py": [
-      "xlrd",
-      "requests",
       "os",
-      "csv",
-      "subprocess",
       "face_recognition",
-      "bs4"
+      "csv",
+      "bs4",
+      "subprocess",
+      "requests",
+      "xlrd"
     ],
     "modules\\url.py": [
-      "os",
       "requests",
       "subprocess",
+      "os",
       "bs4"
     ],
     "modules\\__init__.py": []

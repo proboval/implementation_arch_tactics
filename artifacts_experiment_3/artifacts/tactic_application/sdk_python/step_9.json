@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "bunq/sdk/model/core/internal_model_interface.py",
-  "content": "from __future__ import annotations\n\n\nclass InternalModelInterface:\n    \"\"\"\n    Interface for internal models to decouple them from generated API models.\n    Internal models should implement this interface to guarantee a domain contract\n    while using composition instead of inheritance for generated models.\n    \"\"\"\n\n    def is_all_field_none(self) -> bool:\n        raise NotImplementedError\n"
-}

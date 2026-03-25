@@ -8,56 +8,56 @@
       "setuptools"
     ],
     "docs\\conf.py": [
-      "os",
-      "sys"
+      "sys",
+      "os"
     ],
     "mendeley\\auth.py": [
-      "requests_oauthlib",
-      "future",
       "json",
-      "requests",
       "mendeley",
-      "oauthlib"
+      "requests_oauthlib",
+      "oauthlib",
+      "future",
+      "requests"
     ],
     "mendeley\\exception.py": [],
     "mendeley\\models.py": [
-      "mendeley",
-      "arrow"
+      "arrow",
+      "mendeley"
     ],
     "mendeley\\pagination.py": [
       "memoized_property"
     ],
     "mendeley\\response.py": [],
     "mendeley\\session.py": [
-      "requests_oauthlib",
       "future",
       "mendeley",
-      "oauthlib",
-      "platform"
+      "requests_oauthlib",
+      "platform",
+      "oauthlib"
     ],
     "mendeley\\version.py": [],
     "mendeley\\__init__.py": [
       "random",
-      "future",
       "string",
+      "os",
       "mendeley",
-      "os"
+      "future"
     ],
     "test\\yamlfileserializer.py": [
       "vcr"
     ],
     "test\\__init__.py": [
       "vcr",
-      "test",
-      "mendeley",
-      "time",
       "os",
-      "yaml"
+      "time",
+      "mendeley",
+      "yaml",
+      "test"
     ],
     "mendeley\\models\\annotations.py": [
       "json",
-      "mendeley",
-      "arrow"
+      "arrow",
+      "mendeley"
     ],
     "mendeley\\models\\base_documents.py": [
       "mendeley"
@@ -66,29 +66,29 @@
       "mendeley"
     ],
     "mendeley\\models\\common.py": [
-      "mendeley",
-      "arrow"
+      "arrow",
+      "mendeley"
     ],
     "mendeley\\models\\documents.py": [
-      "mimetypes",
-      "json",
-      "arrow",
-      "mendeley",
-      "os"
-    ],
-    "mendeley\\models\\files.py": [
       "json",
       "os",
+      "arrow",
+      "mendeley",
+      "mimetypes"
+    ],
+    "mendeley\\models\\files.py": [
       "re",
+      "json",
+      "os",
       "mendeley"
     ],
     "mendeley\\models\\groups.py": [
-      "mendeley",
-      "arrow"
+      "arrow",
+      "mendeley"
     ],
     "mendeley\\models\\profiles.py": [
-      "mendeley",
-      "arrow"
+      "arrow",
+      "mendeley"
     ],
     "mendeley\\models\\__init__.py": [
       "common"
@@ -97,8 +97,8 @@
       "mendeley"
     ],
     "mendeley\\resources\\base.py": [
-      "mendeley",
-      "future"
+      "future",
+      "mendeley"
     ],
     "mendeley\\resources\\base_documents.py": [
       "mendeley"
@@ -122,18 +122,18 @@
       "mendeley"
     ],
     "mendeley\\resources\\__init__.py": [
+      "files",
+      "annotations",
       "catalog",
       "trash",
       "profiles",
-      "files",
-      "annotations",
       "documents",
       "groups"
     ],
     "test\\auth\\test_client_credentials.py": [
-      "pytest",
+      "oauthlib",
       "test",
-      "oauthlib"
+      "pytest"
     ],
     "test\\auth\\test_implicit_grant.py": [
       "test",
@@ -146,8 +146,8 @@
       "test"
     ],
     "test\\response\\test_response_object.py": [
-      "pytest",
-      "test"
+      "test",
+      "pytest"
     ],
     "test\\response\\__init__.py": [
       "mendeley"
@@ -196,20 +196,20 @@
       "test"
     ],
     "test\\manual\\documents\\test_iter_documents.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\manual\\documents\\test_iter_group_documents.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\manual\\documents\\test_iter_search.py": [
       "test"
     ],
     "test\\manual\\documents\\test_list_advanced_search.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\documents\\test_list_documents.py": [
       "test"
@@ -218,17 +218,17 @@
       "test"
     ],
     "test\\manual\\documents\\test_list_search.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\documents\\test_update_document.py": [
       "test"
     ],
     "test\\manual\\documents\\__init__.py": [
-      "mendeley",
+      "test",
       "arrow",
-      "test"
+      "mendeley"
     ],
     "test\\manual\\files\\test_delete_file.py": [
       "test"
@@ -237,8 +237,8 @@
       "test"
     ],
     "test\\manual\\files\\test_iter_files.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\manual\\files\\test_list_files.py": [
       "test"
@@ -248,19 +248,19 @@
     ],
     "test\\manual\\files\\__init__.py": [],
     "test\\manual\\groups\\test_get_group.py": [
-      "pytest",
-      "mendeley",
+      "test",
       "arrow",
-      "test"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\groups\\test_iter_groups.py": [
-      "pytest",
-      "test"
+      "test",
+      "pytest"
     ],
     "test\\manual\\groups\\test_iter_group_members.py": [
-      "pytest",
       "test",
-      "arrow"
+      "arrow",
+      "pytest"
     ],
     "test\\manual\\groups\\test_list_groups.py": [
       "test",
@@ -272,16 +272,16 @@
     ],
     "test\\manual\\groups\\__init__.py": [],
     "test\\manual\\profiles\\test_get_my_profile.py": [
-      "pytest",
-      "mendeley",
+      "test",
       "arrow",
-      "test"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\profiles\\test_get_profile.py": [
-      "pytest",
-      "mendeley",
+      "test",
       "arrow",
-      "test"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\profiles\\__init__.py": [],
     "test\\manual\\trash\\test_delete_trash_document.py": [
@@ -291,12 +291,12 @@
       "test"
     ],
     "test\\manual\\trash\\test_iter_group_trash.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\manual\\trash\\test_iter_trash.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\manual\\trash\\test_list_group_trash.py": [
       "test"
@@ -305,27 +305,27 @@
       "test"
     ],
     "test\\manual\\trash\\test_move_to_trash.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\manual\\trash\\test_restore_from_trash.py": [
       "test"
     ],
     "test\\manual\\trash\\__init__.py": [],
     "test\\resources\\catalog\\test_get_catalog_by_id.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\resources\\catalog\\test_get_catalog_by_identifier.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\resources\\catalog\\test_iter_search.py": [
-      "test",
-      "itertools"
+      "itertools",
+      "test"
     ],
     "test\\resources\\catalog\\test_list_advanced_search.py": [
       "test"
@@ -334,9 +334,9 @@
       "test"
     ],
     "test\\resources\\catalog\\test_lookup.py": [
-      "pytest",
       "test",
-      "mendeley"
+      "mendeley",
+      "pytest"
     ],
     "test\\resources\\catalog\\__init__.py": []
   }

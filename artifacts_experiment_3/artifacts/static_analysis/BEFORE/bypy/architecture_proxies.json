@@ -8,151 +8,151 @@
       "pypandoc"
     ],
     "bypy\\cached.py": [
-      "__future__",
-      "util",
-      "time",
-      "binascii",
-      "hashlib",
       "os",
-      "io"
+      "time",
+      "__future__",
+      "io",
+      "util",
+      "binascii",
+      "hashlib"
     ],
     "bypy\\chkreq.py": [
+      "util",
       "sys",
-      "__future__",
-      "util"
+      "__future__"
     ],
     "bypy\\gui.py": [
-      "sys",
-      "__future__",
       "ttk",
-      "util",
-      "tkMessageBox",
+      "__future__",
       "tkutil",
       "bypy",
-      "tkinter",
       "tkFileDialog",
+      "util",
       "threading",
-      "Tkinter"
+      "sys",
+      "Tkinter",
+      "tkMessageBox",
+      "tkinter"
     ],
     "bypy\\gvar.py": [
-      "__future__",
       "time",
+      "__future__",
       "locale"
     ],
     "bypy\\monkey.py": [
-      "sys",
-      "functools",
       "tkinter",
-      "Tkinter"
+      "sys",
+      "Tkinter",
+      "functools"
     ],
     "bypy\\panapi.py": [
-      "__future__",
-      "util",
       "os",
+      "bypy",
+      "__future__",
       "io",
-      "bypy"
+      "util"
     ],
     "bypy\\printer.py": [
-      "__future__",
       "time",
-      "termcolor"
+      "termcolor",
+      "__future__"
     ],
     "bypy\\printer_console.py": [
+      "time",
       "sys",
       "__future__",
-      "time",
       "printer_util"
     ],
     "bypy\\printer_gui.py": [
-      "sys",
-      "__future__",
-      "termcolor",
-      "tkutil",
       "tkinter",
-      "Tkinter"
+      "__future__",
+      "tkutil",
+      "Tkinter",
+      "sys",
+      "termcolor"
     ],
     "bypy\\printer_util.py": [
-      "__future__",
-      "math",
       "re",
-      "os"
+      "os",
+      "__future__",
+      "math"
     ],
     "bypy\\requester.py": [
-      "sys",
-      "__future__",
-      "urllib",
-      "printer",
-      "util",
-      "requests",
       "json",
-      "urllib2",
-      "cPickle",
-      "urllib3",
-      "logging",
-      "httplib",
+      "urllib",
       "functools",
       "pickle",
-      "http"
+      "__future__",
+      "httplib",
+      "printer",
+      "util",
+      "cPickle",
+      "sys",
+      "http",
+      "urllib3",
+      "requests",
+      "logging",
+      "urllib2"
     ],
     "bypy\\struct.py": [
-      "__future__",
-      "util"
+      "util",
+      "__future__"
     ],
     "bypy\\termcolor.py": [
       "__future__"
     ],
     "bypy\\tkutil.py": [
-      "sys",
-      "__future__",
-      "termcolor",
       "tkinter",
+      "__future__",
+      "Tkinter",
+      "sys",
       "ScrolledText",
       "idlelib",
-      "Tkinter"
+      "termcolor"
     ],
     "bypy\\util.py": [
-      "sys",
-      "__future__",
-      "printer",
-      "pprint",
-      "time",
+      "shutil",
       "json",
-      "os",
+      "queue",
       "traceback",
+      "os",
+      "time",
+      "__future__",
       "io",
       "printer_util",
       "codecs",
-      "queue",
-      "Queue",
       "threading",
-      "shutil"
+      "sys",
+      "Queue",
+      "printer",
+      "pprint"
     ],
     "bypy\\__init__.py": [
-      "__future__",
-      "bypy"
+      "bypy",
+      "__future__"
     ],
     "bypy\\__main__.py": [
-      "__future__",
-      "bypy"
+      "bypy",
+      "__future__"
     ],
     ".vscode\\.ropeproject\\config.py": [],
     "bypy\\res\\__init__.py": [],
     "bypy\\test\\test.py": [
-      "sys",
+      "shutil",
+      "os",
       "__future__",
+      "time",
+      "cached",
+      "re",
+      "sys",
       "copy",
       "tempfile",
-      "pprint",
-      "time",
-      "re",
-      "os",
-      "cached",
-      "shutil"
+      "pprint"
     ],
     "bypy\\test\\__init__.py": [],
     "bypy\\test\\__main__.py": [
-      "__future__",
-      "test"
+      "test",
+      "__future__"
     ]
   }
 }

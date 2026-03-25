@@ -1,0 +1,40 @@
+{
+  "python_files": 23,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.666666666666667,
+  "imports_graph": {
+    "main.py": [
+      "utils",
+      "argparse",
+      "function"
+    ],
+    "function\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "function",
+      "utils",
+      "pytest",
+      "unittest"
+    ],
+    "utils\\config.py": [
+      "configparser",
+      "os"
+    ],
+    "utils\\database_utils.py": [
+      "pymongo",
+      "sys",
+      "utils"
+    ],
+    "utils\\get_file_map.py": [
+      "json"
+    ],
+    "utils\\interfaces.py": [
+      "abc"
+    ],
+    "utils\\logger.py": [
+      "logging"
+    ],
+    "utils\\__init__.py": [],
+    "utils\\saver\\__init__.py": []
+  }
+}

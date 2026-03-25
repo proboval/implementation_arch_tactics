@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "interfaces/downloader.py",
-  "content": "from typing import Protocol, Optional\nfrom pathlib import Path\n\n\nclass DownloaderInterface(Protocol):\n    \"\"\"Protocol for video/audio downloaders used in streaming.\"\"\"\n    \n    def download(self, url: str) -> Path:\n        \"\"\"Download and return path to local file.\"\"\"\n        ...\n\n\nclass DownloadResult:\n    \"\"\"Result of a download operation.\"\"\"\n    def __init__(self, file_path: Path, duration_seconds: Optional[float] = None):\n        self.file_path = file_path\n        self.duration_seconds = duration_seconds\n"
-}

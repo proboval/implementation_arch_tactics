@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe coupling between business logic and data access layers: CYNITE modules (e.g., commands.py, pm_filter.py, filters.py) directly import from database/ modules (e.g., database.ia_filterdb, database.users_chats_db) and instantiate database clients or ORM classes inline. This tight coupling is confirmed by fan-out of 5.875, low maintainability index (min 0.0 in pm_filter.py), and shared global state via utils.temp. As a result, modules cannot be tested in isolation, changes to database schema ripple across all CYNITE modules, and refactoring database access requires coordinated changes across 10+ files. Reduced Coupling directly addresses this by introducing abstractions (e.g., repository interfaces) to decouple CYNITE modules from concrete database implementations, enabling independent testing, easier mocking, and localized change scope.",
+  "target_components": [
+    "CYNITE/commands.py",
+    "CYNITE/pm_filter.py",
+    "CYNITE/filters.py",
+    "CYNITE/gfilters.py",
+    "CYNITE/index.py",
+    "CYNITE/broadcast.py",
+    "CYNITE/inline.py",
+    "CYNITE/misc.py",
+    "database/ia_filterdb.py",
+    "database/users_chats_db.py",
+    "database/filters_mdb.py",
+    "database/connections_mdb.py"
+  ],
+  "expected_architectural_change": "Introduce repository interfaces (e.g., IMediaRepository, IUserRepository) in a new 'repository' layer, with concrete implementations in database/ modules. CYNITE modules will depend only on interfaces (via dependency injection), not concrete database classes. The database layer will become a provider of implementations, not a direct dependency of business logic. This creates a layered structure: CYNITE (business) → repository (abstraction) → database (implementation).",
+  "implementation_strategy": "1. Create new 'repository' package with abstract base classes (e.g., IMediaRepository, IUserRepository). 2. Refactor database/ia_filterdb.py and database/users_chats_db.py to implement these interfaces, hiding motor/pymongo details. 3. Refactor CYNITE modules to accept repository instances via constructor or factory (e.g., via utils.temp or explicit DI), removing direct imports from database/. 4. Add factory methods or dependency injection container to wire implementations. 5. Incrementally migrate modules, starting with least complex (e.g., filters.py) to minimize risk. 6. Add unit tests for CYNITE modules using mock repositories.",
+  "risks": "Initial refactoring may increase complexity temporarily; requires disciplined adherence to interface contracts. Risk of incomplete migration leaving mixed coupling patterns. However, incremental approach and clear separation of concerns mitigate long-term risk significantly."
+}

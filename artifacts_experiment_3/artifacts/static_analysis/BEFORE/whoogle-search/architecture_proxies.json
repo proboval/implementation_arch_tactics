@@ -6,94 +6,94 @@
   "imports_graph": {
     "app\\filter.py": [
       "urllib",
-      "html",
-      "flask",
-      "re",
-      "cryptography",
-      "cssutils",
-      "os",
       "app",
-      "bs4"
+      "cryptography",
+      "os",
+      "html",
+      "bs4",
+      "cssutils",
+      "flask",
+      "re"
     ],
     "app\\request.py": [
-      "httpx",
+      "app",
       "urllib",
+      "os",
       "flask",
       "stem",
-      "os",
-      "app",
-      "defusedxml"
+      "defusedxml",
+      "httpx"
     ],
     "app\\routes.py": [
+      "datetime",
+      "os",
+      "base64",
+      "werkzeug",
+      "sys",
       "httpx",
+      "uuid",
+      "functools",
+      "io",
+      "flask",
+      "app",
       "validators",
       "cryptography",
-      "datetime",
-      "traceback",
-      "functools",
       "bs4",
-      "urllib",
-      "flask",
-      "base64",
-      "os",
-      "io",
-      "sys",
-      "werkzeug",
+      "waitress",
       "json",
-      "app",
-      "uuid",
-      "re",
+      "urllib",
       "argparse",
-      "waitress"
+      "traceback",
+      "re"
     ],
     "app\\version.py": [
       "os"
     ],
     "app\\__init__.py": [
-      "sys",
-      "flask",
-      "stem",
-      "base64",
-      "dotenv",
-      "json",
-      "werkzeug",
-      "datetime",
       "app",
-      "logging",
+      "datetime",
+      "json",
       "os",
-      "warnings",
+      "dotenv",
+      "base64",
+      "werkzeug",
+      "bs4",
+      "flask",
+      "sys",
+      "stem",
       "threading",
-      "bs4"
+      "warnings",
+      "logging"
     ],
     "app\\__main__.py": [
       "routes"
     ],
     "misc\\generate_uas.py": [
+      "app",
       "sys",
       "os",
-      "app",
       "random"
     ],
     "misc\\replit.py": [
       "subprocess"
     ],
     "misc\\update-translations.py": [
-      "httpx",
+      "pathlib",
       "json",
-      "pathlib"
+      "httpx"
     ],
     "test\\conftest.py": [
-      "httpx",
-      "test",
       "app",
+      "random",
+      "httpx",
       "pytest",
-      "random"
+      "test"
     ],
     "test\\test_alts.py": [
-      "os",
-      "copy",
+      "bs4",
       "app",
-      "bs4"
+      "copy",
+      "os"
     ],
     "test\\test_autocomplete.py": [
       "app"
@@ -102,16 +102,16 @@
       "app"
     ],
     "test\\test_http_client.py": [
+      "types",
       "httpx",
-      "pytest",
       "app",
-      "types"
+      "pytest"
     ],
     "test\\test_json.py": [
-      "pytest",
-      "app",
+      "types",
       "json",
-      "types"
+      "app",
+      "pytest"
     ],
     "test\\test_misc.py": [
       "app",
@@ -119,40 +119,40 @@
     ],
     "test\\test_results.py": [
       "urllib",
-      "dateutil",
-      "test",
-      "datetime",
       "app",
-      "bs4"
+      "datetime",
+      "bs4",
+      "test",
+      "dateutil"
     ],
     "test\\test_routes.py": [
       "app",
-      "test",
-      "json"
+      "json",
+      "test"
     ],
     "test\\test_routes_json.py": [
-      "pytest",
+      "json",
       "app",
-      "json"
+      "pytest"
     ],
     "test\\test_tor.py": [
-      "pytest",
-      "app"
+      "app",
+      "pytest"
     ],
     "test\\__init__.py": [],
     "app\\models\\config.py": [
-      "inspect",
-      "flask",
-      "base64",
-      "typing",
-      "cryptography",
-      "hashlib",
+      "app",
+      "json",
       "brotli",
       "os",
-      "app",
+      "cryptography",
       "logging",
-      "json",
-      "cssutils"
+      "base64",
+      "flask",
+      "cssutils",
+      "inspect",
+      "typing",
+      "hashlib"
     ],
     "app\\models\\endpoint.py": [
       "enum"
@@ -162,71 +162,71 @@
     ],
     "app\\models\\__init__.py": [],
     "app\\services\\cse_client.py": [
-      "httpx",
       "urllib",
+      "dataclasses",
       "flask",
       "typing",
-      "dataclasses"
+      "httpx"
     ],
     "app\\services\\http_client.py": [
-      "httpx",
-      "ssl",
-      "time",
-      "h2",
-      "typing",
-      "os",
       "cachetools",
-      "threading"
+      "h2",
+      "os",
+      "time",
+      "threading",
+      "ssl",
+      "typing",
+      "httpx"
     ],
     "app\\services\\provider.py": [
+      "typing",
       "os",
-      "app",
-      "typing"
+      "app"
     ],
     "app\\services\\__init__.py": [],
     "app\\utils\\bangs.py": [
-      "httpx",
       "urllib",
       "json",
       "os",
-      "glob"
+      "glob",
+      "httpx"
     ],
     "app\\utils\\misc.py": [
-      "httpx",
       "urllib",
-      "flask",
-      "base64",
-      "re",
-      "cryptography",
-      "hashlib",
-      "os",
-      "io",
       "contextlib",
-      "bs4"
+      "os",
+      "cryptography",
+      "base64",
+      "io",
+      "re",
+      "bs4",
+      "flask",
+      "httpx",
+      "hashlib"
     ],
     "app\\utils\\search.py": [
-      "flask",
-      "typing",
-      "re",
-      "cryptography",
-      "os",
       "app",
-      "bs4"
+      "os",
+      "cryptography",
+      "re",
+      "bs4",
+      "flask",
+      "typing"
     ],
     "app\\utils\\session.py": [
-      "cryptography",
-      "flask"
+      "flask",
+      "cryptography"
     ],
     "app\\utils\\ua_generator.py": [
-      "typing",
-      "json",
-      "os",
       "datetime",
-      "random"
+      "json",
+      "random",
+      "os",
+      "typing"
     ],
     "app\\utils\\widgets.py": [
-      "bs4",
-      "pathlib"
+      "pathlib",
+      "bs4"
     ],
     "app\\utils\\__init__.py": []
   }

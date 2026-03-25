@@ -5,55 +5,55 @@
   "avg_files_per_package": 5.5,
   "imports_graph": {
     "replicate_study.py": [
-      "os",
       "requests",
+      "os",
       "eulerian_magnification"
     ],
     "setup.py": [
       "setuptools"
     ],
     "eulerian_magnification\\base.py": [
+      "eulerian_magnification",
+      "numpy",
       "cv2",
       "scipy",
-      "matplotlib",
-      "eulerian_magnification",
-      "numpy"
+      "matplotlib"
     ],
     "eulerian_magnification\\io.py": [
-      "cv2",
+      "numpy",
       "os",
-      "eulerian_magnification",
-      "numpy"
+      "cv2",
+      "eulerian_magnification"
     ],
     "eulerian_magnification\\pyramid.py": [
-      "cv2",
-      "numpy"
+      "numpy",
+      "cv2"
     ],
     "eulerian_magnification\\transforms.py": [
       "numpy",
       "scipy"
     ],
     "eulerian_magnification\\__init__.py": [
-      "io",
-      "base"
+      "base",
+      "io"
     ],
     "tests\\base.py": [
-      "cv2",
-      "tempfile",
-      "requests",
+      "os",
       "pathlib",
-      "hashlib",
-      "os"
+      "cv2",
+      "requests",
+      "tempfile",
+      "hashlib"
     ],
     "tests\\test_pyramid.py": [
-      "eulerian_magnification",
-      "numpy",
       "tests",
-      "base"
+      "numpy",
+      "base",
+      "eulerian_magnification"
     ],
     "tests\\test_transforms.py": [
-      "eulerian_magnification",
       "tests",
+      "eulerian_magnification",
       "base"
     ],
     "tests\\__init__.py": []

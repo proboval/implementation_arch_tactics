@@ -1,0 +1,55 @@
+{
+  "python_files": 38,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.6,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "easytrader\\exceptions.py": [],
+    "easytrader\\log.py": [
+      "logging"
+    ],
+    "easytrader\\server.py": [
+      "log",
+      "flask",
+      "functools"
+    ],
+    "easytrader\\__init__.py": [
+      "urllib3",
+      "easytrader"
+    ],
+    "tests\\test_easytrader.py": [
+      "os",
+      "unittest",
+      "easytrader",
+      "sys",
+      "time"
+    ],
+    "tests\\test_xqtrader.py": [
+      "easytrader",
+      "unittest"
+    ],
+    "tests\\__init__.py": [],
+    "easytrader\\config\\__init__.py": [],
+    "easytrader\\miniqmt\\__init__.py": [
+      "easytrader"
+    ],
+    "easytrader\\utils\\misc.py": [
+      "json"
+    ],
+    "easytrader\\utils\\perf.py": [
+      "time",
+      "inspect",
+      "easytrader",
+      "logging",
+      "timeit",
+      "functools"
+    ],
+    "easytrader\\utils\\win_gui.py": [
+      "pywinauto"
+    ],
+    "easytrader\\utils\\__init__.py": []
+  }
+}

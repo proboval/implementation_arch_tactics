@@ -1,0 +1,232 @@
+{
+  "python_files": 35,
+  "packages": 3,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 11.666666666666666,
+  "imports_graph": {
+    "reactive\\jenkins.py": [
+      "jenkins_plugin_manager",
+      "urllib",
+      "subprocess",
+      "charms",
+      "charmhelpers",
+      "time"
+    ],
+    "tests\\conftest.py": [
+      "pytest"
+    ],
+    "unit_tests\\fakes.py": [
+      "collections",
+      "fixtures",
+      "urllib"
+    ],
+    "unit_tests\\states.py": [
+      "charmhelpers",
+      "fixtures",
+      "charms",
+      "os"
+    ],
+    "unit_tests\\testing.py": [
+      "fakes",
+      "charmtest"
+    ],
+    "unit_tests\\test_api.py": [
+      "requests",
+      "testing",
+      "urllib",
+      "unittest",
+      "states",
+      "jenkins",
+      "stubs",
+      "charms",
+      "charmhelpers"
+    ],
+    "unit_tests\\test_configuration.py": [
+      "systemfixtures",
+      "testtools",
+      "testing",
+      "os",
+      "charmtest",
+      "unittest",
+      "states",
+      "lib",
+      "charms",
+      "charmhelpers"
+    ],
+    "unit_tests\\test_credentials.py": [
+      "systemfixtures",
+      "testtools",
+      "charmtest",
+      "states",
+      "charms",
+      "charmhelpers"
+    ],
+    "unit_tests\\test_packages.py": [
+      "charmhelpers",
+      "testtools",
+      "os",
+      "charmtest",
+      "unittest",
+      "stubs",
+      "charms",
+      "glob"
+    ],
+    "unit_tests\\test_plugins.py": [
+      "testtools",
+      "os",
+      "io",
+      "urllib",
+      "charmtest",
+      "unittest",
+      "charms",
+      "charmhelpers"
+    ],
+    "unit_tests\\test_service.py": [
+      "charms",
+      "charmtest",
+      "time"
+    ],
+    "unit_tests\\test_storage.py": [
+      "systemfixtures",
+      "os",
+      "charmtest",
+      "states",
+      "charms"
+    ],
+    "unit_tests\\test_users.py": [
+      "systemfixtures",
+      "testtools",
+      "testing",
+      "fixtures",
+      "states",
+      "stubs",
+      "charms",
+      "charmhelpers"
+    ],
+    "lib\\charms\\layer\\jenkins\\api.py": [
+      "requests",
+      "urllib",
+      "jenkins",
+      "distutils",
+      "charms",
+      "charmhelpers",
+      "time"
+    ],
+    "lib\\charms\\layer\\jenkins\\configuration.py": [
+      "charmhelpers",
+      "charms",
+      "urllib",
+      "os"
+    ],
+    "lib\\charms\\layer\\jenkins\\credentials.py": [
+      "charmhelpers",
+      "charms",
+      "os"
+    ],
+    "lib\\charms\\layer\\jenkins\\packages.py": [
+      "charmhelpers",
+      "testtools",
+      "jenkins_plugin_manager",
+      "os",
+      "shutil",
+      "re",
+      "pkg_resources",
+      "subprocess",
+      "charms",
+      "glob",
+      "tempfile"
+    ],
+    "lib\\charms\\layer\\jenkins\\paths.py": [
+      "os"
+    ],
+    "lib\\charms\\layer\\jenkins\\plugins.py": [
+      "charmhelpers",
+      "os",
+      "shutil",
+      "urllib",
+      "itertools",
+      "distutils",
+      "charms",
+      "glob",
+      "jenkins_plugin_manager"
+    ],
+    "lib\\charms\\layer\\jenkins\\service.py": [
+      "requests",
+      "charms",
+      "charmhelpers"
+    ],
+    "lib\\charms\\layer\\jenkins\\storage.py": [
+      "charmhelpers",
+      "charms",
+      "os",
+      "subprocess"
+    ],
+    "lib\\charms\\layer\\jenkins\\users.py": [
+      "collections",
+      "charms",
+      "os",
+      "charmhelpers"
+    ],
+    "lib\\charms\\layer\\jenkins\\__init__.py": [],
+    "tests\\integration\\config.py": [
+      "dataclasses",
+      "pathlib"
+    ],
+    "tests\\integration\\conftest.py": [
+      "pytest_operator",
+      "types",
+      "config",
+      "yaml",
+      "secrets",
+      "typing",
+      "pytest",
+      "jenkins",
+      "ops",
+      "pathlib",
+      "pytest_asyncio"
+    ],
+    "tests\\integration\\test_charm_agent.py": [
+      "pytest_operator",
+      "packaging",
+      "asyncio",
+      "pytest",
+      "jenkins",
+      "ops",
+      "pytest_asyncio"
+    ],
+    "tests\\integration\\test_charm_basic.py": [
+      "pytest_operator",
+      "types",
+      "config",
+      "secrets",
+      "pytest",
+      "jenkins",
+      "ops"
+    ],
+    "tests\\integration\\test_charm_nrpe.py": [
+      "pytest_operator",
+      "ops",
+      "pytest",
+      "pytest_asyncio"
+    ],
+    "tests\\integration\\test_charm_website.py": [
+      "pytest_operator",
+      "requests",
+      "config",
+      "pytest",
+      "jenkins",
+      "ops",
+      "pytest_asyncio"
+    ],
+    "tests\\integration\\types.py": [
+      "typing"
+    ],
+    "tests\\integration\\__init__.py": [],
+    "unit_tests\\stubs\\apt.py": [
+      "subprocess"
+    ],
+    "unit_tests\\stubs\\execd.py": [],
+    "unit_tests\\stubs\\host.py": [],
+    "unit_tests\\stubs\\__init__.py": []
+  }
+}

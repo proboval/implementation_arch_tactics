@@ -5,25 +5,25 @@
   "avg_files_per_package": 3.8,
   "imports_graph": {
     "setup.py": [
+      "setuptools",
       "os",
-      "io",
-      "setuptools"
+      "io"
     ],
     "es\\baseapi.py": [
-      "collections",
       "urllib",
-      "const",
+      "collections",
       "es",
-      "typing",
+      "opensearchpy",
       "elasticsearch",
-      "opensearchpy"
+      "const",
+      "typing"
     ],
     "es\\basesqlalchemy.py": [
-      "__future__",
       "es",
-      "typing",
+      "__future__",
       "logging",
-      "sqlalchemy"
+      "sqlalchemy",
+      "typing"
     ],
     "es\\const.py": [],
     "es\\exceptions.py": [],
@@ -36,68 +36,68 @@
     ],
     "es\\elastic\\api.py": [
       "es",
-      "typing",
       "re",
-      "packaging",
-      "elasticsearch"
+      "elasticsearch",
+      "typing",
+      "packaging"
     ],
     "es\\elastic\\sqlalchemy.py": [
-      "__future__",
       "es",
-      "typing",
+      "__future__",
       "logging",
+      "types",
       "sqlalchemy",
-      "types"
+      "typing"
     ],
     "es\\elastic\\__init__.py": [
       "es"
     ],
     "es\\opendistro\\api.py": [
-      "__future__",
-      "es",
       "boto3",
-      "typing",
-      "re",
+      "es",
+      "__future__",
       "requests_aws4auth",
-      "opensearchpy"
+      "re",
+      "opensearchpy",
+      "typing"
     ],
     "es\\opendistro\\sqlalchemy.py": [
-      "__future__",
       "es",
-      "typing",
+      "__future__",
       "logging",
+      "types",
       "sqlalchemy",
-      "types"
+      "typing"
     ],
     "es\\opendistro\\__init__.py": [
       "es"
     ],
     "es\\tests\\test_0_fixtures.py": [
-      "os",
       "fixtures",
+      "os",
       "unittest"
     ],
     "es\\tests\\test_dbapi.py": [
+      "es",
       "os",
-      "unittest",
-      "es"
+      "unittest"
     ],
     "es\\tests\\test_sqlalchemy.py": [
-      "es",
       "boto3",
-      "typing",
+      "es",
       "os",
+      "opensearchpy",
       "sqlalchemy",
-      "unittest",
-      "opensearchpy"
+      "typing",
+      "unittest"
     ],
     "es\\tests\\__init__.py": [],
     "es\\tests\\fixtures\\fixtures.py": [
-      "typing",
       "json",
       "os",
+      "opensearchpy",
       "elasticsearch",
-      "opensearchpy"
+      "typing"
     ],
     "es\\tests\\fixtures\\__init__.py": []
   }

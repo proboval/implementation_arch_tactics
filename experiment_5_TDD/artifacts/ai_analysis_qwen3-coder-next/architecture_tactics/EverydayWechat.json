@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe cross-module coupling: data_collection.py directly imports 6+ control modules (weather.sojson, horoscope.xzw_horescope, calendar.rt_calendar, etc.), group_helper.py imports 8+ control modules (calendar, rubbish, moviebox, express, airquality) and 12+ db_helper functions, and main.py imports 10+ functions from utils and control modules. This tight coupling violates separation of concerns, increases ripple-effect risk during changes, and hinders testability (e.g., group_helper.py cannot be tested without mocking all external APIs and DB calls). Static analysis confirms 'C1' (coupling) as a factor. The modular monolith structure has no clear boundary enforcement—modules leak implementation details via direct imports instead of abstractions.",
+  "target_components": [
+    "everyday_wechat/utils/data_collection.py",
+    "everyday_wechat/utils/group_helper.py",
+    "everyday_wechat/utils/itchat_helper.py",
+    "everyday_wechat/control/bot/__init__.py",
+    "everyday_wechat/control/airquality/__init__.py",
+    "everyday_wechat/control/weather/__init__.py",
+    "everyday_wechat/control/onewords/__init__.py",
+    "everyday_wechat/control/rubbish/__init__.py",
+    "everyday_wechat/control/calendar/__init__.py",
+    "everyday_wechat/control/moviebox/__init__.py",
+    "everyday_wechat/control/express/__init__.py",
+    "everyday_wechat/control/horoscope/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce domain-specific service interfaces (e.g., WeatherService, BotService, CalendarService) in utils/ that abstract data_collection and control module responsibilities. Replace direct imports with dependency injection via factory or registry patterns. For example, data_collection.py would depend on a BotProvider interface instead of importing specific bot modules; group_helper.py would depend on a DataAggregator interface instead of importing individual control modules. This creates a layered structure: control modules implement interfaces, utils provides service abstractions, and main.py orchestrates via injected dependencies.",
+  "implementation_strategy": "1. Create service interface modules (e.g., utils/services/bot.py, utils/services/weather.py) defining abstract methods (get_bot_response, get_weather_data). 2. Refactor control modules to implement these interfaces (e.g., qingyunke.py implements BotService). 3. Replace direct imports in data_collection.py and group_helper.py with interface-based calls (e.g., config.get_bot_service().get_response(...)). 4. Add a service registry in config.py to resolve implementations at runtime. 5. Update tests to mock interfaces instead of concrete modules. This is incremental: start with one domain (e.g., bot services), refactor, test, then repeat for others.",
+  "risks": "Initial refactoring may increase complexity temporarily due to new abstraction layers. Requires discipline to avoid reintroducing coupling (e.g., via circular imports). Service registry must be carefully designed to prevent tight coupling to configuration. However, risks are low and manageable—each domain can be decoupled independently without blocking others."
+}

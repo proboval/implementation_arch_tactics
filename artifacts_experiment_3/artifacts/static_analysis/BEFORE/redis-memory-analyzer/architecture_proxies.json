@@ -6,16 +6,16 @@
   "imports_graph": {
     "main.py": [],
     "setup.py": [
+      "setuptools",
       "os",
-      "distutils",
-      "setuptools"
+      "distutils"
     ],
     "rma\\application.py": [
-      "sys",
-      "collections",
-      "fnmatch",
       "rma",
+      "collections",
+      "sys",
       "redis",
+      "fnmatch",
       "logging"
     ],
     "rma\\jemalloc.py": [
@@ -27,8 +27,8 @@
     ],
     "rma\\redis_types.py": [],
     "rma\\scanner.py": [
-      "tqdm",
       "rma",
+      "tqdm",
       "redis",
       "logging",
       "msgpack"
@@ -47,28 +47,28 @@
       "unittest"
     ],
     "tests\\__init__.py": [
-      "unittest",
-      "tests"
+      "tests",
+      "unittest"
     ],
     "rma\\cli\\rma_cli.py": [
-      "sys",
       "rma",
+      "argparse",
       "time",
-      "logging",
-      "argparse"
+      "sys",
+      "logging"
     ],
     "rma\\cli\\__init__.py": [],
     "rma\\helpers\\formating.py": [
-      "collections",
-      "math"
+      "math",
+      "collections"
     ],
     "rma\\helpers\\numbers.py": [],
     "rma\\helpers\\__init__.py": [
       "rma"
     ],
     "rma\\reporters\\JsonReporter.py": [
-      "sys",
-      "json"
+      "json",
+      "sys"
     ],
     "rma\\reporters\\TextReporter.py": [
       "tabulate"
@@ -78,45 +78,45 @@
     ],
     "rma\\rule\\GlobalKeySpace.py": [
       "rma",
-      "logging",
-      "redis"
-    ],
-    "rma\\rule\\Hash.py": [
-      "tqdm",
-      "rma",
-      "statistics",
-      "itertools",
-      "math"
-    ],
-    "rma\\rule\\KeyString.py": [
-      "tqdm",
-      "rma",
-      "statistics",
-      "itertools",
-      "math"
-    ],
-    "rma\\rule\\List.py": [
-      "tqdm",
-      "rma",
-      "statistics",
-      "itertools",
-      "math",
-      "time"
-    ],
-    "rma\\rule\\Set.py": [
-      "tqdm",
-      "rma",
-      "itertools",
-      "statistics",
-      "math"
-    ],
-    "rma\\rule\\ValueString.py": [
-      "tqdm",
-      "rma",
-      "statistics",
-      "math",
       "redis",
       "logging"
+    ],
+    "rma\\rule\\Hash.py": [
+      "rma",
+      "math",
+      "tqdm",
+      "itertools",
+      "statistics"
+    ],
+    "rma\\rule\\KeyString.py": [
+      "rma",
+      "math",
+      "tqdm",
+      "itertools",
+      "statistics"
+    ],
+    "rma\\rule\\List.py": [
+      "rma",
+      "math",
+      "time",
+      "tqdm",
+      "itertools",
+      "statistics"
+    ],
+    "rma\\rule\\Set.py": [
+      "rma",
+      "math",
+      "tqdm",
+      "itertools",
+      "statistics"
+    ],
+    "rma\\rule\\ValueString.py": [
+      "rma",
+      "math",
+      "tqdm",
+      "redis",
+      "logging",
+      "statistics"
     ],
     "rma\\rule\\__init__.py": [
       "rma"

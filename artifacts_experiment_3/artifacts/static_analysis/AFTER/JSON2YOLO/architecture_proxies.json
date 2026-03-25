@@ -5,32 +5,32 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "general_json2yolo.py": [
-      "utils",
-      "pandas",
-      "cv2",
       "json",
+      "collections",
       "contextlib",
-      "pathlib",
+      "pandas",
       "PIL",
-      "collections"
+      "pathlib",
+      "cv2",
+      "utils"
     ],
     "labelbox_json2yolo.py": [
-      "utils",
-      "tqdm",
       "json",
-      "pathlib",
-      "requests",
       "os",
+      "tqdm",
+      "pathlib",
       "PIL",
-      "yaml"
+      "yaml",
+      "requests",
+      "utils"
     ],
     "utils.py": [
-      "numpy",
-      "tqdm",
-      "PIL",
-      "pathlib",
       "shutil",
       "os",
+      "tqdm",
+      "pathlib",
+      "numpy",
+      "PIL",
       "glob"
     ]
   }

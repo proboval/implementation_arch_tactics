@@ -5,131 +5,131 @@
   "avg_files_per_package": 14.5,
   "imports_graph": {
     "fabfile.py": [
-      "errno",
+      "os",
       "__future__",
       "fabric",
-      "os"
+      "errno"
     ],
     "setup.py": [
-      "sys",
-      "__future__",
       "setuptools",
-      "coursera",
       "os",
+      "__future__",
       "io",
-      "subprocess"
+      "subprocess",
+      "sys",
+      "coursera"
     ],
     "coursera\\api.py": [
+      "utils",
+      "json",
       "urllib",
-      "collections",
+      "attr",
       "six",
+      "collections",
+      "os",
+      "time",
       "network",
+      "base64",
+      "re",
       "define",
       "requests",
-      "time",
-      "base64",
-      "json",
-      "re",
-      "utils",
-      "cookies",
-      "os",
-      "attr",
-      "logging"
+      "logging",
+      "cookies"
     ],
     "coursera\\commandline.py": [
-      "sys",
-      "configargparse",
       "utils",
       "credentials",
-      "coursera",
       "os",
-      "logging"
+      "sys",
+      "configargparse",
+      "logging",
+      "coursera"
     ],
     "coursera\\cookies.py": [
-      "six",
-      "define",
-      "ssl",
-      "requests",
       "utils",
-      "urllib3",
+      "six",
       "os",
+      "ssl",
+      "urllib3",
+      "define",
+      "requests",
       "logging"
     ],
     "coursera\\coursera_dl.py": [
-      "requests",
-      "coursera",
-      "extractors",
-      "logging",
-      "api",
-      "bs4",
-      "parallel",
-      "utils",
-      "cookies",
       "os",
-      "shutil",
-      "define",
-      "downloaders",
-      "commandline",
-      "json",
+      "time",
       "distutils",
-      "workflow",
+      "extractors",
+      "coursera",
       "six",
       "network",
-      "time",
-      "re"
+      "downloaders",
+      "workflow",
+      "utils",
+      "logging",
+      "commandline",
+      "bs4",
+      "requests",
+      "shutil",
+      "json",
+      "api",
+      "re",
+      "parallel",
+      "define",
+      "cookies"
     ],
     "coursera\\credentials.py": [
-      "keyring",
-      "os",
-      "logging",
-      "platform",
-      "netrc",
-      "getpass"
-    ],
-    "coursera\\define.py": [
-      "pwd",
       "os",
       "getpass",
-      "tempfile"
+      "platform",
+      "logging",
+      "keyring",
+      "netrc"
+    ],
+    "coursera\\define.py": [
+      "tempfile",
+      "os",
+      "pwd",
+      "getpass"
     ],
     "coursera\\downloaders.py": [
-      "sys",
-      "__future__",
-      "six",
       "math",
-      "time",
-      "requests",
+      "six",
       "os",
-      "logging",
-      "subprocess"
+      "__future__",
+      "time",
+      "subprocess",
+      "sys",
+      "requests",
+      "logging"
     ],
     "coursera\\extractors.py": [
-      "network",
-      "define",
-      "abc",
       "utils",
       "json",
-      "logging",
-      "api"
+      "api",
+      "network",
+      "abc",
+      "define",
+      "logging"
     ],
     "coursera\\filtering.py": [
-      "six",
+      "re",
       "logging",
-      "re"
+      "six"
     ],
     "coursera\\formatting.py": [
-      "os",
-      "define"
+      "define",
+      "os"
     ],
     "coursera\\network.py": [
       "requests",
-      "logging",
-      "json"
+      "json",
+      "logging"
     ],
     "coursera\\parallel.py": [
       "multiprocessing",
-      "abc",
       "logging",
+      "abc",
       "traceback"
     ],
     "coursera\\playlist.py": [
@@ -137,91 +137,91 @@
       "glob"
     ],
     "coursera\\utils.py": [
-      "sys",
-      "string",
-      "six",
-      "urllib",
-      "define",
-      "errno",
-      "urlparse",
-      "time",
       "json",
-      "re",
-      "os",
       "datetime",
-      "logging",
       "random",
+      "urllib",
+      "six",
+      "urlparse",
+      "string",
+      "os",
+      "time",
       "xml",
-      "bs4"
+      "re",
+      "bs4",
+      "sys",
+      "define",
+      "logging",
+      "errno"
     ],
     "coursera\\workflow.py": [
-      "playlist",
-      "define",
-      "filtering",
-      "abc",
-      "time",
-      "requests",
-      "re",
       "utils",
+      "playlist",
       "os",
-      "logging",
+      "time",
       "formatting",
+      "re",
+      "codecs",
       "subprocess",
-      "codecs"
+      "abc",
+      "define",
+      "requests",
+      "logging",
+      "filtering"
     ],
     "coursera\\__init__.py": [],
     "coursera\\test\\test_api.py": [
-      "requests",
       "json",
-      "coursera",
       "os",
+      "mock",
       "pytest",
-      "mock"
+      "requests",
+      "coursera"
     ],
     "coursera\\test\\test_commandline.py": [
       "coursera"
     ],
     "coursera\\test\\test_cookies.py": [
-      "coursera",
-      "os",
       "requests",
+      "os",
+      "coursera",
       "six"
     ],
     "coursera\\test\\test_credentials.py": [
-      "coursera",
       "os",
-      "pytest",
-      "getpass"
+      "getpass",
+      "coursera",
+      "pytest"
     ],
     "coursera\\test\\test_downloaders.py": [
-      "coursera",
-      "pytest",
+      "requests",
       "time",
-      "requests"
+      "coursera",
+      "pytest"
     ],
     "coursera\\test\\test_filter.py": [
       "coursera"
     ],
     "coursera\\test\\test_parsing.py": [
-      "six",
       "json",
-      "coursera",
+      "six",
       "os",
+      "mock",
       "pytest",
-      "mock"
+      "coursera"
     ],
     "coursera\\test\\test_workflow.py": [
-      "coursera",
+      "requests",
       "os",
-      "pytest",
-      "requests"
+      "coursera",
+      "pytest"
     ],
     "coursera\\test\\utils.py": [
       "six",
-      "re",
-      "coursera",
       "os",
-      "io"
+      "io",
+      "re",
+      "coursera"
     ],
     "coursera\\test\\__init__.py": []
   }

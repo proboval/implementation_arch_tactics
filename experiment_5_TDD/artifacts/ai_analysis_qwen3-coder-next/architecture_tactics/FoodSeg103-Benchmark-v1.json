@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT40",
+    "name": "Deferred Binding Time",
+    "primary_qa_impact": "Maintainability, Changeability, Portability",
+    "positive_impact": "Changeability, Flexibility",
+    "negative_impact": "Runtime overhead"
+  },
+  "justification": "The repository exhibits tight coupling between configuration files and concrete implementations via hardcoded module names in builder.py and __init__.py files. The Registry pattern is used but bindings are resolved at import time rather than runtime, making it difficult to extend or swap components (e.g., new backbones, decode heads, or datasets) without touching core module registration code. This is evident in mmseg/models/builder.py and mmseg/datasets/builder.py where build_from_cfg is called with static registry lookups, and in __init__.py files that explicitly import and expose concrete classes. The static nature of these bindings increases the risk of ripple effects when adding new components and reduces flexibility for configuration-driven experimentation. Deferred Binding Time directly addresses this by enabling late resolution of implementations via configuration, reducing coupling and improving changeability.",
+  "target_components": [
+    "mmseg/models/builder.py",
+    "mmseg/datasets/builder.py",
+    "mmseg/models/__init__.py",
+    "mmseg/datasets/__init__.py",
+    "mmseg/core/seg/builder.py"
+  ],
+  "expected_architectural_change": "Introduce a late-binding layer (e.g., a dynamic registry resolver or factory) that defers component instantiation until runtime based on configuration. This involves modifying builder.py to accept optional late-binding flags or strategies, updating __init__.py files to avoid eager imports of all concrete classes, and potentially introducing a configuration-driven plugin loader. The structure will shift from static module-level imports to dynamic resolution via configuration keys, preserving the Registry pattern but enhancing its flexibility.",
+  "implementation_strategy": "1. Refactor mmseg/models/builder.py and mmseg/datasets/builder.py to support deferred resolution—e.g., by adding a 'lazy' mode that defers registry lookup until instantiation time. 2. Introduce a configuration schema validation step that maps string identifiers (e.g., 'ResNet', 'FCNHead') to fully qualified class paths, enabling runtime resolution. 3. Update __init__.py files to avoid importing all concrete classes; instead, expose only abstract base classes and builder functions. 4. Optionally, add a plugin discovery mechanism (e.g., entry points or config-based paths) to load external components without modifying core code. 5. Ensure backward compatibility by keeping current behavior as default and enabling late binding via config flag.",
+  "risks": "Runtime overhead from dynamic resolution and potential loss of static analysis tooling support (e.g., IDE autocomplete, static import validation). However, this overhead is typically negligible compared to model inference time, and the gain in extensibility and maintainability outweighs this cost for a research-oriented ML framework."
+}

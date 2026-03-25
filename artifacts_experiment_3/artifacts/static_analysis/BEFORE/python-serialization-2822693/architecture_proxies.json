@@ -8,36 +8,36 @@
       "datetime"
     ],
     "Ch01\\01_04\\metric_json.py": [
+      "json",
       "datetime",
-      "metric",
-      "json"
+      "metric"
     ],
     "Ch01\\01_04\\metric_xs.py": [
-      "sys",
-      "csv",
       "xml",
+      "csv",
+      "sys",
       "metric"
     ],
     "Ch01\\01_04\\metric_yt.py": [
-      "yaml",
       "metric",
-      "toml"
+      "toml",
+      "yaml"
     ],
     "Ch02\\02_01\\basic.py": [
       "moves",
       "pickle"
     ],
     "Ch02\\02_01\\kv.py": [
-      "shelve",
-      "moves"
+      "moves",
+      "shelve"
     ],
     "Ch02\\02_01\\moves.py": [
       "datetime"
     ],
     "Ch02\\02_01\\stream.py": [
-      "moves",
+      "socket",
       "pickle",
-      "socket"
+      "moves"
     ],
     "Ch02\\02_02\\player.py": [
       "logging"
@@ -49,9 +49,9 @@
       "collections"
     ],
     "Ch02\\02_03\\config.py": [
-      "sys",
       "os",
-      "logging"
+      "logging",
+      "sys"
     ],
     "Ch02\\02_03\\load_config.py": [
       "types"
@@ -63,8 +63,8 @@
       "datetime"
     ],
     "Ch02\\solution\\rides.py": [
-      "datetime",
-      "pickle"
+      "pickle",
+      "datetime"
     ],
     "Ch03\\03_01\\basic.py": [
       "event",
@@ -78,20 +78,20 @@
       "datetime"
     ],
     "Ch03\\03_03\\streaming.py": [
-      "io",
-      "json"
+      "json",
+      "io"
     ],
     "Ch03\\challenge\\log.py": [
       "ipaddress",
       "datetime",
-      "http",
-      "dataclasses"
+      "dataclasses",
+      "http"
     ],
     "Ch03\\solution\\log.py": [
-      "ipaddress",
       "json",
-      "dataclasses",
       "datetime",
+      "dataclasses",
+      "ipaddress",
       "http"
     ],
     "Ch04\\04_04\\weather.py": [
@@ -101,17 +101,17 @@
       "google"
     ],
     "Ch04\\04_05\\client.py": [
-      "grpc",
       "weather_pb2",
+      "grpc",
       "weather_pb2_grpc"
     ],
     "Ch04\\04_05\\server.py": [
-      "concurrent",
-      "weather_pb2",
-      "logging",
       "grpc",
       "weather_pb2_grpc",
-      "threading"
+      "concurrent",
+      "threading",
+      "logging",
+      "weather_pb2"
     ],
     "Ch04\\challenge\\trades.py": [
       "datetime"
@@ -132,34 +132,34 @@
       "yaml"
     ],
     "Ch05\\05_03\\metric.py": [
-      "datetime",
-      "xml"
+      "xml",
+      "datetime"
     ],
     "Ch05\\05_04\\logs.py": [
-      "random",
+      "sqlite3",
       "datetime",
-      "sqlite3"
+      "random"
     ],
     "Ch05\\05_05\\server.py": [
       "pprint",
       "tomllib"
     ],
     "Ch05\\challenge\\etl.py": [
-      "xml",
-      "sqlite3"
+      "sqlite3",
+      "xml"
     ],
     "Ch05\\solution\\etl.py": [
+      "sqlite3",
       "datetime",
-      "xml",
-      "sqlite3"
+      "xml"
     ],
     "Ch06\\06_03\\city.py": [],
     "Ch06\\challenge\\wc.py": [
       "collections"
     ],
     "Ch06\\solution\\wc.py": [
-      "collections",
-      "unicodedata"
+      "unicodedata",
+      "collections"
     ]
   }
 }

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0), indicating flat module structure without formal packaging",
+    "Single directory depth (max_directory_depth: 1), all files at root level",
+    "High average fan-out (16.0) suggests many cross-module dependencies without clear layering",
+    "All logic resides in top-level modules (subgen.py, launcher.py, language_code.py) with no clear separation into layers or bounded contexts",
+    "Main entry points (subgen.py, launcher.py) contain monolithic procedural logic with mixed responsibilities (webhooks, transcription, file handling, model management)",
+    "Use of global functions and shared state (e.g., TaskResult, DeduplicatedQueue) without clear architectural boundaries",
+    "No evidence of ports/adapters, MVC controllers, or service boundaries"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling between concerns (web, transcription, file I/O, scheduling)",
+    "Difficulty in testing due to lack of separation of concerns",
+    "Scalability limitations from monolithic execution model",
+    "High maintenance cost due to high fan-out and lack of modularity"
+  ]
+}

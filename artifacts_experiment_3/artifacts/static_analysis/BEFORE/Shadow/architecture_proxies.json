@@ -5,84 +5,84 @@
   "avg_files_per_package": 23.142857142857142,
   "imports_graph": {
     "fortune.py": [
-      "sys",
       "optparse",
-      "re",
+      "random",
       "codecs",
-      "random"
+      "re",
+      "sys"
     ],
     "Shadow\\config.py": [
-      "sys",
-      "envparse",
+      "Shadow",
       "os",
+      "sys",
       "yaml",
-      "Shadow"
+      "envparse"
     ],
     "Shadow\\decorator.py": [
-      "aiogram",
-      "time",
-      "sentry_sdk",
       "Shadow",
-      "importlib"
+      "time",
+      "aiogram",
+      "importlib",
+      "sentry_sdk"
     ],
     "Shadow\\versions.py": [],
     "Shadow\\__init__.py": [
-      "aiogram",
-      "asyncio",
+      "Shadow",
       "spamwatch",
+      "aiogram",
       "logging",
-      "Shadow"
+      "asyncio"
     ],
     "Shadow\\__main__.py": [
-      "aiogram",
-      "asyncio",
-      "os",
       "Shadow",
-      "importlib"
+      "os",
+      "aiogram",
+      "importlib",
+      "asyncio"
     ],
     "Shadow\\Addons\\__init__.py": [],
     "Shadow\\modules\\admin.py": [
-      "os",
+      "pyrogram",
       "Shadow",
-      "pyrogram"
+      "os"
     ],
     "Shadow\\modules\\afk.py": [
+      "re",
       "utils",
       "Shadow",
-      "html",
-      "re"
+      "html"
     ],
     "Shadow\\modules\\AI_Chat.py": [
-      "google_trans_new",
-      "re",
-      "pyrogram",
-      "emoji",
       "aiohttp",
-      "Shadow"
+      "Shadow",
+      "emoji",
+      "pyrogram",
+      "re",
+      "google_trans_new"
     ],
     "Shadow\\modules\\android.py": [
-      "httpx",
-      "aiogram",
-      "time",
-      "utils",
       "rapidjson",
       "Shadow",
-      "bs4"
+      "time",
+      "aiogram",
+      "bs4",
+      "utils",
+      "httpx"
     ],
     "Shadow\\modules\\Autofilters.py": [],
     "Shadow\\modules\\blacklist.py": [
       "Shadow",
       "telethon",
-      "html",
-      "tldextract"
+      "tldextract",
+      "html"
     ],
     "Shadow\\modules\\books.py": [
-      "requests",
-      "re",
       "os",
       "Shadow",
+      "re",
+      "bs4",
       "telethon",
-      "bs4"
+      "requests"
     ],
     "Shadow\\modules\\cash.py": [
       "requests",
@@ -90,125 +90,125 @@
       "telethon"
     ],
     "Shadow\\modules\\connection.py": [
-      "aiogram",
-      "Shadow",
       "re",
-      "utils"
+      "utils",
+      "Shadow",
+      "aiogram"
     ],
     "Shadow\\modules\\country.py": [
-      "countryinfo",
-      "Shadow"
+      "Shadow",
+      "countryinfo"
     ],
     "Shadow\\modules\\covid.py": [
-      "Shadow",
-      "pyrogram"
-    ],
-    "Shadow\\modules\\Cricket_Score.py": [
-      "urllib",
-      "Shadow",
-      "telethon",
-      "bs4"
-    ],
-    "Shadow\\modules\\direct_link.py": [
-      "requests",
-      "utils",
-      "re",
-      "random",
-      "Shadow",
-      "bs4"
-    ],
-    "Shadow\\modules\\disabling.py": [
-      "aiogram",
-      "Shadow",
-      "utils"
-    ],
-    "Shadow\\modules\\error.py": [
-      "sys",
-      "aiogram",
-      "html",
-      "redis",
+      "pyrogram",
       "Shadow"
     ],
-    "Shadow\\modules\\fakeit.py": [
-      "faker",
-      "requests",
-      "os",
+    "Shadow\\modules\\Cricket_Score.py": [
+      "bs4",
+      "urllib",
       "Shadow",
       "telethon"
     ],
-    "Shadow\\modules\\feds.py": [
-      "aiogram",
-      "asyncio",
-      "uuid",
-      "html",
-      "pymongo",
-      "time",
-      "babel",
-      "re",
-      "typing",
-      "os",
-      "csv",
-      "datetime",
-      "io",
-      "contextlib",
-      "rapidjson",
-      "Shadow"
-    ],
-    "Shadow\\modules\\gps.py": [
-      "Shadow",
-      "telethon",
-      "geopy"
-    ],
-    "Shadow\\modules\\greetings.py": [
-      "aiogram",
-      "html",
-      "apscheduler",
-      "babel",
-      "re",
-      "typing",
-      "utils",
-      "datetime",
-      "io",
-      "contextlib",
+    "Shadow\\modules\\direct_link.py": [
       "random",
       "Shadow",
-      "telethon",
-      "captcha"
-    ],
-    "Shadow\\modules\\group_guardian.py": [
-      "asyncio",
-      "google_trans_new",
       "re",
-      "emoji",
-      "Shadow",
-      "telethon",
-      "better_profanity"
-    ],
-    "Shadow\\modules\\imdb.py": [
+      "bs4",
       "requests",
-      "re",
-      "Shadow",
-      "telethon",
-      "bs4"
+      "utils"
     ],
-    "Shadow\\modules\\imports_exports.py": [
+    "Shadow\\modules\\disabling.py": [
       "aiogram",
-      "asyncio",
-      "babel",
       "utils",
-      "datetime",
-      "io",
-      "rapidjson",
       "Shadow"
     ],
-    "Shadow\\modules\\install.py": [
-      "os",
+    "Shadow\\modules\\error.py": [
       "Shadow",
-      "pyrogram"
+      "html",
+      "aiogram",
+      "redis",
+      "sys"
+    ],
+    "Shadow\\modules\\fakeit.py": [
+      "faker",
+      "Shadow",
+      "os",
+      "telethon",
+      "requests"
+    ],
+    "Shadow\\modules\\feds.py": [
+      "datetime",
+      "contextlib",
+      "rapidjson",
+      "babel",
+      "os",
+      "time",
+      "Shadow",
+      "io",
+      "html",
+      "csv",
+      "re",
+      "aiogram",
+      "pymongo",
+      "typing",
+      "asyncio",
+      "uuid"
+    ],
+    "Shadow\\modules\\gps.py": [
+      "geopy",
+      "Shadow",
+      "telethon"
+    ],
+    "Shadow\\modules\\greetings.py": [
+      "utils",
+      "datetime",
+      "random",
+      "captcha",
+      "contextlib",
+      "babel",
+      "Shadow",
+      "apscheduler",
+      "io",
+      "html",
+      "re",
+      "aiogram",
+      "telethon",
+      "typing"
+    ],
+    "Shadow\\modules\\group_guardian.py": [
+      "better_profanity",
+      "Shadow",
+      "emoji",
+      "re",
+      "telethon",
+      "google_trans_new",
+      "asyncio"
+    ],
+    "Shadow\\modules\\imdb.py": [
+      "Shadow",
+      "re",
+      "bs4",
+      "telethon",
+      "requests"
+    ],
+    "Shadow\\modules\\imports_exports.py": [
+      "datetime",
+      "asyncio",
+      "babel",
+      "Shadow",
+      "io",
+      "aiogram",
+      "utils",
+      "rapidjson"
+    ],
+    "Shadow\\modules\\install.py": [
+      "pyrogram",
+      "Shadow",
+      "os"
     ],
     "Shadow\\modules\\invitelink.py": [
-      "Shadow",
-      "pyrogram"
+      "pyrogram",
+      "Shadow"
     ],
     "Shadow\\modules\\json.py": [
       "Shadow",
@@ -216,90 +216,90 @@
       "io"
     ],
     "Shadow\\modules\\langtools.py": [
-      "google_trans_new",
-      "PyDictionary",
-      "requests",
       "json",
+      "PyDictionary",
       "Shadow",
-      "telethon"
+      "telethon",
+      "requests",
+      "google_trans_new"
     ],
     "Shadow\\modules\\language.py": [
       "aiogram",
-      "Shadow",
       "utils",
+      "Shadow",
       "contextlib"
     ],
     "Shadow\\modules\\lock.py": [
-      "Shadow",
-      "pyrogram"
+      "pyrogram",
+      "Shadow"
     ],
     "Shadow\\modules\\math.py": [
-      "math",
-      "utils",
-      "requests",
       "json",
-      "Shadow"
+      "math",
+      "Shadow",
+      "requests",
+      "utils"
     ],
     "Shadow\\modules\\music.py": [
       "lyricsgenius",
-      "tswift",
-      "pyrogram",
       "os",
+      "Shadow",
       "io",
-      "Shadow"
+      "pyrogram",
+      "tswift"
     ],
     "Shadow\\modules\\nightmode.py": [
       "Shadow",
-      "apscheduler",
-      "telethon"
+      "telethon",
+      "apscheduler"
     ],
     "Shadow\\modules\\notes.py": [
-      "aiogram",
-      "pymongo",
-      "babel",
-      "utils",
-      "re",
       "datetime",
       "contextlib",
-      "difflib",
+      "babel",
       "Shadow",
-      "telethon"
+      "pymongo",
+      "re",
+      "difflib",
+      "aiogram",
+      "telethon",
+      "utils"
     ],
     "Shadow\\modules\\owner_stuff.py": [
-      "sys",
+      "Skem",
       "asyncio",
+      "os",
+      "Shadow",
       "html",
+      "sys",
       "requests",
       "utils",
-      "os",
-      "rapidjson",
-      "Skem",
-      "Shadow"
+      "rapidjson"
     ],
     "Shadow\\modules\\paste.py": [
-      "os",
+      "pyrogram",
       "requests",
-      "Shadow",
-      "pyrogram"
+      "os",
+      "Shadow"
     ],
     "Shadow\\modules\\pinmisc.py": [
-      "Shadow",
-      "threading",
+      "pyrogram",
       "re",
-      "pyrogram"
+      "Shadow",
+      "threading"
     ],
     "Shadow\\modules\\pins.py": [
       "aiogram",
-      "Shadow",
-      "utils"
+      "utils",
+      "Shadow"
     ],
     "Shadow\\modules\\pm_menu.py": [
-      "aiogram",
-      "language",
       "utils",
-      "contextlib",
       "random",
-      "Shadow"
+      "contextlib",
+      "Shadow",
+      "aiogram",
+      "language"
     ],
     "Shadow\\modules\\polling.py": [
       "pymongo",
@@ -307,244 +307,244 @@
       "telethon"
     ],
     "Shadow\\modules\\promotes.py": [
-      "aiogram",
-      "html",
-      "utils",
       "Shadow",
-      "telethon"
+      "html",
+      "aiogram",
+      "telethon",
+      "utils"
     ],
     "Shadow\\modules\\purges.py": [
       "utils",
-      "asyncio",
       "Shadow",
+      "asyncio",
       "telethon"
     ],
     "Shadow\\modules\\qr_code.py": [
-      "asyncio",
-      "requests",
-      "os",
       "datetime",
+      "os",
       "Shadow",
-      "telethon"
+      "telethon",
+      "requests",
+      "asyncio"
     ],
     "Shadow\\modules\\restrictions.py": [
-      "aiogram",
-      "asyncio",
       "misc",
-      "babel",
-      "utils",
       "datetime",
       "contextlib",
-      "Shadow"
+      "babel",
+      "Shadow",
+      "aiogram",
+      "utils",
+      "asyncio"
     ],
     "Shadow\\modules\\rmbg.py": [
-      "requests",
-      "os",
       "datetime",
-      "io",
+      "os",
       "Shadow",
-      "telethon"
+      "io",
+      "telethon",
+      "requests"
     ],
     "Shadow\\modules\\rss.py": [
-      "asyncio",
-      "feedparser",
+      "Shadow",
       "apscheduler",
+      "pyrogram",
+      "feedparser",
+      "asyncio"
+    ],
+    "Shadow\\modules\\rules.py": [
+      "re",
+      "utils",
+      "Shadow",
+      "aiogram"
+    ],
+    "Shadow\\modules\\send.py": [
       "pyrogram",
       "Shadow"
     ],
-    "Shadow\\modules\\rules.py": [
-      "aiogram",
-      "Shadow",
-      "re",
-      "utils"
-    ],
-    "Shadow\\modules\\send.py": [
-      "Shadow",
-      "pyrogram"
-    ],
     "Shadow\\modules\\shortify.py": [
-      "Shadow",
-      "aiohttp",
+      "pyrogram",
       "json",
-      "pyrogram"
+      "Shadow",
+      "aiohttp"
     ],
     "Shadow\\modules\\tagall.py": [
-      "Shadow",
-      "pyrogram"
+      "pyrogram",
+      "Shadow"
     ],
     "Shadow\\modules\\telegraph.py": [
-      "PIL",
+      "datetime",
       "telegraph",
       "os",
-      "datetime",
       "Shadow",
+      "PIL",
       "telethon"
     ],
     "Shadow\\modules\\text_filters.py": [
-      "Shadow",
-      "pyrogram"
+      "pyrogram",
+      "Shadow"
     ],
     "Shadow\\modules\\tts-stt.py": [
-      "gtts",
-      "requests",
-      "os",
       "datetime",
+      "os",
       "Shadow",
-      "telethon"
+      "telethon",
+      "requests",
+      "gtts"
     ],
     "Shadow\\modules\\userinfo.py": [
+      "pyrogram",
       "datetime",
-      "Shadow",
-      "pyrogram"
+      "Shadow"
     ],
     "Shadow\\modules\\username.py": [
       "Shadow",
       "telethon"
     ],
     "Shadow\\modules\\users.py": [
-      "aiogram",
-      "html",
-      "utils",
       "datetime",
-      "Shadow"
+      "Shadow",
+      "html",
+      "aiogram",
+      "utils"
     ],
     "Shadow\\modules\\Voice_Ai.py": [
-      "gtts",
-      "requests",
       "os",
-      "subprocess",
       "Shadow",
-      "telethon"
+      "subprocess",
+      "telethon",
+      "requests",
+      "gtts"
     ],
     "Shadow\\modules\\zombies.py": [
-      "asyncio",
       "Shadow",
+      "asyncio",
       "telethon"
     ],
     "Shadow\\modules\\zz_extras.py": [],
     "Shadow\\modules\\_webss.py": [
-      "Shadow",
-      "pyrogram"
+      "pyrogram",
+      "Shadow"
     ],
     "Shadow\\modules\\__init__.py": [
-      "sys",
+      "Shadow",
       "os",
-      "Shadow"
+      "sys"
     ],
     "Shadow\\services\\apscheduller.py": [
+      "pytz",
       "Shadow",
-      "apscheduler",
-      "pytz"
+      "apscheduler"
     ],
     "Shadow\\services\\errors.py": [
+      "Shadow",
       "sys",
       "functools",
-      "traceback",
-      "Shadow"
+      "traceback"
     ],
     "Shadow\\services\\events.py": [
-      "inspect",
-      "re",
-      "pathlib",
       "Shadow",
-      "telethon"
+      "pathlib",
+      "re",
+      "telethon",
+      "inspect"
     ],
     "Shadow\\services\\mongo.py": [
-      "motor",
       "pymongo",
-      "Shadow",
-      "odmantic"
+      "odmantic",
+      "motor",
+      "Shadow"
     ],
     "Shadow\\services\\mongo2.py": [
       "motor",
       "Shadow"
     ],
     "Shadow\\services\\pyrogram.py": [
+      "pyrogram",
       "Shadow",
-      "logging",
-      "pyrogram"
+      "logging"
     ],
     "Shadow\\services\\redis.py": [
-      "sys",
+      "redis",
       "Shadow",
-      "redis"
+      "sys"
     ],
     "Shadow\\services\\telethon.py": [
       "Shadow",
       "telethon"
     ],
     "Shadow\\services\\telethonuserbot.py": [
-      "sys",
       "Shadow",
+      "sys",
       "telethon"
     ],
     "Shadow\\services\\__init__.py": [],
     "Shadow\\utils\\cached.py": [
-      "asyncio",
-      "pickle",
-      "typing",
       "functools",
-      "Shadow"
+      "pickle",
+      "Shadow",
+      "typing",
+      "asyncio"
     ],
     "Shadow\\utils\\channel_logs.py": [
       "Shadow",
       "html"
     ],
     "Shadow\\utils\\db_structure_migrator.py": [
-      "asyncio",
       "time",
       "Shadow",
-      "importlib"
+      "importlib",
+      "asyncio"
     ],
     "Shadow\\utils\\exit_gracefully.py": [
+      "signal",
       "os",
-      "Shadow",
-      "signal"
+      "Shadow"
     ],
     "Shadow\\utils\\logger.py": [
       "logging",
       "loguru"
     ],
     "Shadow\\utils\\sentry.py": [
-      "sentry_sdk",
-      "Shadow"
+      "Shadow",
+      "sentry_sdk"
     ],
     "Shadow\\utils\\term.py": [
       "Shadow",
       "subprocess"
     ],
     "Shadow\\Addons\\ImageEditor\\edit_1.py": [
-      "cv2",
-      "os",
+      "shutil",
       "PIL",
-      "shutil"
+      "os",
+      "cv2"
     ],
     "Shadow\\Addons\\ImageEditor\\edit_2.py": [
-      "PIL",
-      "cv2",
+      "shutil",
       "os",
+      "PIL",
       "numpy",
-      "shutil"
+      "cv2"
     ],
     "Shadow\\Addons\\ImageEditor\\edit_3.py": [
+      "shutil",
       "PIL",
-      "os",
-      "shutil"
+      "os"
     ],
     "Shadow\\Addons\\ImageEditor\\edit_4.py": [
-      "PIL",
-      "cv2",
-      "requests",
+      "shutil",
       "os",
-      "io",
       "Shadow",
+      "io",
+      "PIL",
       "numpy",
-      "shutil"
+      "cv2",
+      "requests"
     ],
     "Shadow\\Addons\\ImageEditor\\edit_5.py": [
+      "shutil",
       "os",
-      "asyncio",
-      "shutil"
+      "asyncio"
     ],
     "Shadow\\db\\mongo_helpers\\aichat.py": [
       "Shadow"
@@ -600,93 +600,93 @@
       "httpx"
     ],
     "Shadow\\modules\\utils\\language.py": [
-      "os",
       "Shadow",
       "babel",
+      "os",
       "yaml"
     ],
     "Shadow\\modules\\utils\\message.py": [
       "datetime"
     ],
     "Shadow\\modules\\utils\\notes.py": [
-      "sys",
-      "aiogram",
-      "language",
-      "html",
-      "user_details",
-      "babel",
-      "utils",
-      "re",
       "datetime",
-      "message",
+      "tmarkdown",
+      "babel",
       "Shadow",
+      "message",
+      "html",
+      "language",
+      "re",
+      "aiogram",
+      "sys",
       "telethon",
-      "tmarkdown"
+      "user_details",
+      "utils"
     ],
     "Shadow\\modules\\utils\\restrictions.py": [
       "aiogram",
       "Shadow"
     ],
     "Shadow\\modules\\utils\\term.py": [
-      "asyncio",
       "Shadow",
-      "subprocess"
+      "subprocess",
+      "asyncio"
     ],
     "Shadow\\modules\\utils\\text.py": [
       "typing"
     ],
     "Shadow\\modules\\utils\\tmarkdown.py": [
+      "re",
       "telethon",
-      "warnings",
-      "re"
+      "warnings"
     ],
     "Shadow\\services\\sql\\afk_sql.py": [
-      "sqlalchemy",
-      "time",
+      "threading",
       "Shadow",
-      "threading"
+      "time",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\chatbot_sql.py": [
-      "sqlalchemy",
+      "threading",
       "Shadow",
-      "threading"
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\filters_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\forceSubscribe_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\night_mode_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\nsfw_watch_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\talk_mode_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\urlblacklist_sql.py": [
-      "sqlalchemy",
+      "threading",
       "Shadow",
-      "threading"
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\welcome_sql.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\services\\sql\\__init__.py": [
-      "sqlalchemy",
-      "Shadow"
+      "Shadow",
+      "sqlalchemy"
     ],
     "Shadow\\stuff\\fonts\\__init__.py": [
-      "os",
-      "glob"
+      "glob",
+      "os"
     ],
     "Shadow\\utils\\filters\\admin_rights.py": [
       "aiogram",
@@ -706,8 +706,8 @@
       "Shadow"
     ],
     "Shadow\\utils\\filters\\__init__.py": [
-      "os",
-      "glob"
+      "glob",
+      "os"
     ]
   }
 }

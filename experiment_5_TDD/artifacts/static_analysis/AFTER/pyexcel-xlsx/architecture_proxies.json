@@ -1,0 +1,122 @@
+{
+  "python_files": 22,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 22.0,
+  "imports_graph": {
+    "setup.py": [
+      "gease",
+      "os",
+      "shutil",
+      "platform",
+      "codecs",
+      "setuptools",
+      "sys",
+      "locale"
+    ],
+    "pyexcel_xlsx\\adapters.py": [
+      "io",
+      "pyexcel_io",
+      "interfaces"
+    ],
+    "pyexcel_xlsx\\book.py": [
+      "openpyxl"
+    ],
+    "pyexcel_xlsx\\interfaces.py": [
+      "io",
+      "abc",
+      "typing"
+    ],
+    "pyexcel_xlsx\\xlsxr.py": [
+      "io",
+      "openpyxl",
+      "pyexcel_io"
+    ],
+    "pyexcel_xlsx\\xlsxw.py": [
+      "openpyxl",
+      "pyexcel_io"
+    ],
+    "pyexcel_xlsx\\__init__.py": [
+      "io",
+      "adapters",
+      "interfaces",
+      "typing"
+    ],
+    "tests\\base.py": [
+      "pyexcel",
+      "datetime",
+      "os",
+      "nose"
+    ],
+    "tests\\test_book.py": [
+      "datetime",
+      "os",
+      "pyexcel_xlsx",
+      "pyexcel_io",
+      "nose"
+    ],
+    "tests\\test_bug_fixes.py": [
+      "pyexcel",
+      "datetime",
+      "os",
+      "nose",
+      "textwrap",
+      "sys"
+    ],
+    "tests\\test_filter.py": [
+      "pyexcel_io",
+      "nose",
+      "os"
+    ],
+    "tests\\test_formatters.py": [
+      "pyexcel",
+      "datetime",
+      "os",
+      "nose",
+      "textwrap"
+    ],
+    "tests\\test_hidden.py": [
+      "pyexcel_xlsx",
+      "nose",
+      "os"
+    ],
+    "tests\\test_merged_cells.py": [
+      "pyexcel_xlsx",
+      "nose",
+      "openpyxl",
+      "os"
+    ],
+    "tests\\test_multiple_sheets.py": [
+      "pyexcel",
+      "os",
+      "base",
+      "nose",
+      "collections"
+    ],
+    "tests\\test_reader.py": [
+      "datetime",
+      "os",
+      "pyexcel_xlsx",
+      "pyexcel_io",
+      "nose"
+    ],
+    "tests\\test_stringio.py": [
+      "pyexcel",
+      "base",
+      "os",
+      "nose"
+    ],
+    "tests\\test_tactic.py": [
+      "io",
+      "pyexcel_xlsx",
+      "pytest",
+      "unittest"
+    ],
+    "tests\\test_writer.py": [
+      "pyexcel_xlsx",
+      "base",
+      "os"
+    ],
+    "docs\\source\\conf.py": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear module-based organization with 4 top-level packages (mps_youtube, doc, docs, .github) and deep nesting (max_directory_depth=3) indicating logical grouping by responsibility",
+    "High average fan-out (5.0) suggests modules heavily depend on internal components rather than external services, typical of monoliths",
+    "Domain-driven module structure: commands/, players/, listview/, content/, playlist/, config, util, screen, mpris, etc., each with cohesive responsibilities",
+    "Central shared state via global module g.py and shared data structures (Content, Playlist, Video classes)",
+    "No evidence of service boundaries, inter-service communication, or deployment isolation—everything runs in one process",
+    "Test suite is co-located with source (mps_youtube/test/), common in monolithic architectures",
+    "Single entry point (main.py) orchestrating the application flow"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., many modules import g, c, config directly) may hinder maintainability and testing",
+    "Global state in g.py and c.py increases risk of side effects and makes concurrent execution unsafe",
+    "High fan-out indicates potential for circular dependencies and reduced modularity over time"
+  ]
+}

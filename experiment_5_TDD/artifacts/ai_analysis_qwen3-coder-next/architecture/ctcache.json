@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single package (packages: 1) with no inter-package dependencies visible in metrics, indicating a tightly integrated codebase",
+    "Clear separation of concerns via directory structure (src/, tools/, doc/, config/, etc.) with domain-specific modules (e.g., cache backends: local, S3, GCS, Redis)",
+    "Core logic centralized in src/ctcache/clang_tidy_cache.py with multiple cohesive classes (ClangTidyCache, ClangTidyLocalCache, ClangTidyRedisCache, etc.) implementing shared interface patterns",
+    "Server component (clang_tidy_cache_server.py) built with Flask, serving both API and static assets, but co-located in same repository and package",
+    "No evidence of separate deployment units, inter-service communication, or distributed processes beyond local caching layers",
+    "High average fan-out (8.11) suggests dense internal coupling typical of monoliths rather than loosely-coupled microservices"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Risk of tight coupling between caching backends and server logic due to shared module and high fan-out",
+    "Limited scalability beyond vertical scaling due to single-process Flask server",
+    "Potential difficulty isolating concerns for testing without careful mocking due to shared state (e.g., global ctc_cache instance)"
+  ]
+}

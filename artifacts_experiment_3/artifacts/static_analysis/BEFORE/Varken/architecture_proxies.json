@@ -5,103 +5,103 @@
   "avg_files_per_package": 16.0,
   "imports_graph": {
     "Varken.py": [
-      "sys",
-      "time",
+      "queue",
+      "argparse",
       "varken",
       "os",
-      "distro",
-      "platform",
-      "argparse",
-      "logging",
-      "queue",
+      "time",
       "schedule",
-      "threading"
+      "distro",
+      "threading",
+      "sys",
+      "platform",
+      "logging"
     ],
     "utilities\\grafana_build.py": [
-      "sys",
       "requests",
-      "json"
+      "json",
+      "sys"
     ],
     "utilities\\historical_tautulli_import.py": [
-      "logging",
       "os",
       "argparse",
+      "logging",
       "varken"
     ],
     "varken\\dbmanager.py": [
+      "requests",
       "sys",
-      "influxdb",
       "logging",
-      "requests"
+      "influxdb"
     ],
     "varken\\helpers.py": [
-      "ipaddress",
-      "urllib",
-      "requests",
-      "time",
-      "json",
-      "hashlib",
-      "geoip2",
       "datetime",
-      "urllib3",
-      "logging",
+      "urllib",
+      "json",
+      "tarfile",
+      "geoip2",
       "os",
-      "tarfile"
+      "time",
+      "ipaddress",
+      "urllib3",
+      "requests",
+      "logging",
+      "hashlib"
     ],
     "varken\\iniparser.py": [
-      "configparser",
-      "re",
-      "os",
-      "logging",
+      "shutil",
       "varken",
-      "shutil"
+      "os",
+      "re",
+      "configparser",
+      "logging"
     ],
     "varken\\lidarr.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],
     "varken\\ombi.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],
     "varken\\radarr.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],
     "varken\\sickchill.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],
     "varken\\sonarr.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],
     "varken\\structures.py": [
+      "typing",
       "sys",
-      "logging",
-      "typing"
+      "logging"
     ],
     "varken\\tautulli.py": [
-      "requests",
-      "geoip2",
       "datetime",
-      "influxdb",
+      "varken",
+      "geoip2",
+      "requests",
       "logging",
-      "varken"
+      "influxdb"
     ],
     "varken\\unifi.py": [
-      "datetime",
       "requests",
+      "datetime",
       "logging",
       "varken"
     ],

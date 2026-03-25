@@ -5,44 +5,44 @@
   "avg_files_per_package": 5.75,
   "imports_graph": {
     "animal_demo.py": [
-      "cv2",
-      "rtmlib"
+      "rtmlib",
+      "cv2"
     ],
     "body_with_feet_demo.py": [
-      "cv2",
       "rtmlib",
-      "time"
+      "time",
+      "cv2"
     ],
     "hand_demo.py": [
-      "cv2",
       "rtmlib",
-      "time"
+      "time",
+      "cv2"
     ],
     "rtmo_demo.py": [
-      "cv2",
       "rtmlib",
-      "time"
+      "time",
+      "cv2"
     ],
     "setup.py": [
-      "re",
-      "os",
       "setuptools",
-      "sys"
+      "re",
+      "sys",
+      "os"
     ],
     "webui.py": [
+      "rtmlib",
       "numpy",
-      "gradio",
-      "rtmlib"
+      "gradio"
     ],
     "wholebody3d_demo.py": [
-      "cv2",
       "rtmlib",
-      "time"
+      "time",
+      "cv2"
     ],
     "wholebody_demo.py": [
-      "cv2",
       "rtmlib",
-      "time"
+      "time",
+      "cv2"
     ],
     "rtmlib\\version.py": [],
     "rtmlib\\__init__.py": [
@@ -50,39 +50,39 @@
       "tools"
     ],
     "rtmlib\\tools\\base.py": [
-      "numpy",
       "file",
-      "typing",
       "openvino",
-      "abc",
+      "onnxruntime",
       "os",
+      "numpy",
       "cv2",
-      "onnxruntime"
+      "abc",
+      "typing"
     ],
     "rtmlib\\tools\\file.py": [
-      "re",
-      "sys",
-      "hashlib",
+      "shutil",
+      "urllib",
+      "typing",
+      "os",
       "zipfile",
       "tqdm",
-      "typing",
       "pathlib",
+      "re",
+      "sys",
       "tempfile",
-      "shutil",
-      "os",
       "glob",
-      "urllib"
+      "hashlib"
     ],
     "rtmlib\\tools\\__init__.py": [
+      "object_detection",
       "pose_estimation",
-      "solution",
-      "object_detection"
+      "solution"
     ],
     "rtmlib\\visualization\\draw.py": [
-      "cv2",
       "numpy",
-      "math",
-      "skeleton"
+      "skeleton",
+      "cv2",
+      "math"
     ],
     "rtmlib\\visualization\\__init__.py": [
       "skeleton",
@@ -92,67 +92,67 @@
       "numpy"
     ],
     "rtmlib\\tools\\object_detection\\rtmdet.py": [
-      "post_processings",
       "numpy",
-      "typing",
+      "cv2",
+      "post_processings",
       "base",
-      "cv2"
+      "typing"
     ],
     "rtmlib\\tools\\object_detection\\yolox.py": [
-      "post_processings",
       "numpy",
-      "typing",
+      "cv2",
+      "post_processings",
       "base",
-      "cv2"
+      "typing"
     ],
     "rtmlib\\tools\\object_detection\\__init__.py": [
-      "yolox",
-      "rtmdet"
+      "rtmdet",
+      "yolox"
     ],
     "rtmlib\\tools\\pose_estimation\\post_processings.py": [
       "numpy",
-      "cv2",
-      "typing"
+      "typing",
+      "cv2"
     ],
     "rtmlib\\tools\\pose_estimation\\pre_processings.py": [
       "numpy",
-      "cv2",
-      "typing"
+      "typing",
+      "cv2"
     ],
     "rtmlib\\tools\\pose_estimation\\rtmo.py": [
       "object_detection",
-      "post_processings",
       "numpy",
-      "typing",
+      "cv2",
+      "post_processings",
       "base",
-      "cv2"
+      "typing"
     ],
     "rtmlib\\tools\\pose_estimation\\rtmpose.py": [
-      "post_processings",
-      "numpy",
-      "typing",
       "pre_processings",
-      "base"
+      "numpy",
+      "post_processings",
+      "base",
+      "typing"
     ],
     "rtmlib\\tools\\pose_estimation\\rtmpose3d.py": [
-      "post_processings",
-      "numpy",
-      "typing",
       "pre_processings",
-      "base"
+      "numpy",
+      "post_processings",
+      "base",
+      "typing"
     ],
     "rtmlib\\tools\\pose_estimation\\vitpose.py": [
-      "post_processings",
-      "numpy",
-      "typing",
       "pre_processings",
-      "base"
+      "numpy",
+      "post_processings",
+      "base",
+      "typing"
     ],
     "rtmlib\\tools\\pose_estimation\\__init__.py": [
       "rtmpose3d",
-      "vitpose",
+      "rtmpose",
       "rtmo",
-      "rtmpose"
+      "vitpose"
     ],
     "rtmlib\\tools\\solution\\animal.py": [
       "numpy"
@@ -164,15 +164,15 @@
       "numpy"
     ],
     "rtmlib\\tools\\solution\\custom.py": [
-      "importlib",
-      "numpy"
+      "numpy",
+      "importlib"
     ],
     "rtmlib\\tools\\solution\\hand.py": [
       "numpy"
     ],
     "rtmlib\\tools\\solution\\pose_tracker.py": [
-      "numpy",
-      "warnings"
+      "warnings",
+      "numpy"
     ],
     "rtmlib\\tools\\solution\\wholebody.py": [
       "numpy",
@@ -183,14 +183,14 @@
       "numpy"
     ],
     "rtmlib\\tools\\solution\\__init__.py": [
-      "wholebody",
-      "body",
-      "custom",
-      "wholebody3d",
-      "body_with_feet",
-      "pose_tracker",
+      "animal",
       "hand",
-      "animal"
+      "custom",
+      "body",
+      "pose_tracker",
+      "body_with_feet",
+      "wholebody3d",
+      "wholebody"
     ],
     "rtmlib\\tools\\solution\\utils\\types.py": [
       "typing"
@@ -206,13 +206,13 @@
     "rtmlib\\visualization\\skeleton\\openpose18.py": [],
     "rtmlib\\visualization\\skeleton\\__init__.py": [
       "coco133",
-      "openpose18",
-      "animal17",
       "coco17",
-      "openpose134",
-      "coco25",
       "halpe26",
-      "hand21"
+      "coco25",
+      "openpose134",
+      "openpose18",
+      "hand21",
+      "animal17"
     ]
   }
 }

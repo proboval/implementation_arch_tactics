@@ -1,0 +1,28 @@
+{
+  "python_files": 2,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "starter.py": [
+      "rich",
+      "os",
+      "numpy",
+      "dotenv",
+      "elevenlabs",
+      "websockets",
+      "asyncio",
+      "json",
+      "websockets_proxy",
+      "base64",
+      "sys",
+      "pyaudio"
+    ],
+    "tests\\test_tactic.py": [
+      "asyncio",
+      "starter",
+      "pytest",
+      "unittest"
+    ]
+  }
+}

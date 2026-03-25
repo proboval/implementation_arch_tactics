@@ -5,108 +5,108 @@
   "avg_files_per_package": 13.0,
   "imports_graph": {
     "setup.py": [
-      "setuptools_scm",
-      "setuptools"
+      "setuptools",
+      "setuptools_scm"
     ],
     "docs\\conf.py": [
       "setuptools_scm"
     ],
     "sshuttle\\assembler.py": [
-      "sys",
+      "imp",
       "sshuttle",
-      "zlib",
-      "imp"
+      "sys",
+      "zlib"
     ],
     "sshuttle\\client.py": [
-      "sys",
-      "errno",
+      "socket",
+      "signal",
+      "os",
       "time",
       "re",
-      "socket",
-      "os",
       "sshuttle",
-      "platform",
       "subprocess",
-      "signal"
+      "sys",
+      "platform",
+      "errno"
     ],
     "sshuttle\\cmdline.py": [
-      "sys",
-      "sshuttle",
+      "socket",
       "re",
-      "socket"
+      "sys",
+      "sshuttle"
     ],
     "sshuttle\\firewall.py": [
-      "sys",
-      "errno",
       "socket",
+      "traceback",
+      "signal",
       "os",
       "sshuttle",
+      "sys",
       "platform",
-      "traceback",
-      "signal"
+      "errno"
     ],
     "sshuttle\\helpers.py": [
+      "socket",
       "sys",
-      "errno",
       "random",
-      "socket"
+      "errno"
     ],
     "sshuttle\\hostwatch.py": [
-      "sys",
+      "socket",
       "select",
-      "errno",
+      "os",
       "time",
       "re",
-      "socket",
-      "os",
       "sshuttle",
+      "sys",
+      "subprocess",
       "platform",
-      "subprocess"
+      "errno"
     ],
     "sshuttle\\linux.py": [
+      "socket",
       "sshuttle",
-      "subprocess",
-      "socket"
+      "subprocess"
     ],
     "sshuttle\\options.py": [
-      "sys",
       "getopt",
-      "textwrap",
-      "re",
       "termios",
       "os",
+      "re",
+      "sys",
       "struct",
+      "textwrap",
       "fcntl"
     ],
     "sshuttle\\server.py": [
-      "sys",
+      "socket",
+      "traceback",
+      "os",
       "time",
       "re",
-      "socket",
-      "os",
       "sshuttle",
-      "traceback",
-      "platform",
+      "sys",
       "subprocess",
-      "struct"
+      "struct",
+      "platform"
     ],
     "sshuttle\\ssh.py": [
-      "sys",
-      "zlib",
-      "re",
       "socket",
-      "imp",
       "os",
+      "imp",
+      "re",
       "sshuttle",
-      "subprocess"
+      "sys",
+      "subprocess",
+      "zlib"
     ],
     "sshuttle\\ssnet.py": [
-      "select",
-      "errno",
       "socket",
+      "select",
       "os",
       "sshuttle",
-      "struct"
+      "struct",
+      "errno"
     ],
     "sshuttle\\ssyslog.py": [
       "sys",
@@ -114,73 +114,73 @@
       "subprocess"
     ],
     "sshuttle\\stresstest.py": [
-      "select",
+      "socket",
       "time",
       "struct",
-      "socket"
+      "select"
     ],
     "sshuttle\\__init__.py": [],
     "sshuttle\\__main__.py": [
-      "sys",
-      "sshuttle"
+      "sshuttle",
+      "sys"
     ],
     "sshuttle\\methods\\nat.py": [
-      "sshuttle",
-      "socket"
+      "socket",
+      "sshuttle"
     ],
     "sshuttle\\methods\\pf.py": [
-      "sys",
-      "ctypes",
-      "re",
       "socket",
       "os",
+      "re",
       "sshuttle",
+      "sys",
       "subprocess",
       "struct",
-      "fcntl"
+      "fcntl",
+      "ctypes"
     ],
     "sshuttle\\methods\\tproxy.py": [
-      "socket_ext",
+      "socket",
       "sshuttle",
-      "struct",
-      "socket"
+      "socket_ext",
+      "struct"
     ],
     "sshuttle\\methods\\__init__.py": [
-      "errno",
       "socket",
       "os",
       "sshuttle",
       "struct",
-      "importlib"
+      "importlib",
+      "errno"
     ],
     "sshuttle\\tests\\test_firewall.py": [
-      "sshuttle",
       "mock",
+      "sshuttle",
       "io"
     ],
     "sshuttle\\tests\\test_helpers.py": [
-      "sys",
       "socket",
-      "sshuttle",
       "io",
-      "mock"
+      "mock",
+      "sshuttle",
+      "sys"
     ],
     "sshuttle\\tests\\test_methods_nat.py": [
       "socket",
-      "sshuttle",
-      "pytest",
       "mock",
-      "struct"
+      "sshuttle",
+      "struct",
+      "pytest"
     ],
     "sshuttle\\tests\\test_methods_pf.py": [
-      "sshuttle",
-      "pytest",
       "mock",
-      "socket"
+      "sshuttle",
+      "socket",
+      "pytest"
     ],
     "sshuttle\\tests\\test_methods_tproxy.py": [
-      "sshuttle",
-      "mock"
+      "mock",
+      "sshuttle"
     ]
   }
 }

@@ -1,0 +1,276 @@
+{
+  "python_files": 29,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 29.0,
+  "imports_graph": {
+    "build.py": [
+      "os",
+      "__future__",
+      "PIL",
+      "shutil",
+      "platform",
+      "argparse",
+      "sys",
+      "plistlib",
+      "pathlib",
+      "subprocess"
+    ],
+    "chatmock.py": [
+      "chatmock",
+      "__future__"
+    ],
+    "gui.py": [
+      "multiprocessing",
+      "os",
+      "__future__",
+      "chatmock",
+      "PySide6",
+      "argparse",
+      "sys",
+      "webbrowser"
+    ],
+    "chatmock\\app.py": [
+      "websocket_routes",
+      "http",
+      "flask",
+      "__future__",
+      "routes_openai",
+      "config",
+      "flask_sock",
+      "routes_ollama"
+    ],
+    "chatmock\\cli.py": [
+      "limits",
+      "datetime",
+      "os",
+      "__future__",
+      "threading",
+      "errno",
+      "config",
+      "argparse",
+      "urllib",
+      "app",
+      "json",
+      "utils",
+      "sys",
+      "oauth",
+      "webbrowser"
+    ],
+    "chatmock\\config.py": [
+      "sys",
+      "pathlib",
+      "os",
+      "__future__"
+    ],
+    "chatmock\\fast_mode.py": [
+      "model_registry",
+      "dataclasses",
+      "typing",
+      "__future__"
+    ],
+    "chatmock\\http.py": [
+      "flask",
+      "__future__"
+    ],
+    "chatmock\\limits.py": [
+      "datetime",
+      "os",
+      "__future__",
+      "json",
+      "typing",
+      "utils",
+      "dataclasses"
+    ],
+    "chatmock\\models.py": [
+      "dataclasses",
+      "typing",
+      "__future__"
+    ],
+    "chatmock\\model_registry.py": [
+      "dataclasses",
+      "typing",
+      "__future__"
+    ],
+    "chatmock\\oauth.py": [
+      "datetime",
+      "http",
+      "__future__",
+      "threading",
+      "ssl",
+      "config",
+      "urllib",
+      "secrets",
+      "json",
+      "typing",
+      "certifi",
+      "utils",
+      "models",
+      "time"
+    ],
+    "chatmock\\reasoning.py": [
+      "model_registry",
+      "typing",
+      "__future__"
+    ],
+    "chatmock\\responses_api.py": [
+      "fast_mode",
+      "reasoning",
+      "__future__",
+      "session",
+      "config",
+      "json",
+      "typing",
+      "dataclasses",
+      "model_registry"
+    ],
+    "chatmock\\routes_ollama.py": [
+      "responses_api",
+      "fast_mode",
+      "limits",
+      "datetime",
+      "http",
+      "reasoning",
+      "transform",
+      "__future__",
+      "flask",
+      "model_registry",
+      "config",
+      "json",
+      "typing",
+      "utils",
+      "upstream",
+      "time"
+    ],
+    "chatmock\\routes_openai.py": [
+      "responses_api",
+      "fast_mode",
+      "limits",
+      "reasoning",
+      "http",
+      "flask",
+      "__future__",
+      "session",
+      "model_registry",
+      "config",
+      "json",
+      "typing",
+      "utils",
+      "upstream",
+      "time"
+    ],
+    "chatmock\\session.py": [
+      "uuid",
+      "threading",
+      "__future__",
+      "hashlib",
+      "json",
+      "typing",
+      "copy",
+      "dataclasses"
+    ],
+    "chatmock\\transform.py": [
+      "json",
+      "typing",
+      "__future__"
+    ],
+    "chatmock\\upstream.py": [
+      "requests",
+      "http",
+      "__future__",
+      "flask",
+      "session",
+      "model_registry",
+      "config",
+      "urllib",
+      "json",
+      "typing",
+      "utils",
+      "time"
+    ],
+    "chatmock\\utils.py": [
+      "models",
+      "datetime",
+      "requests",
+      "os",
+      "__future__",
+      "hashlib",
+      "config",
+      "urllib",
+      "secrets",
+      "json",
+      "typing",
+      "base64",
+      "sys"
+    ],
+    "chatmock\\version.py": [
+      "__future__"
+    ],
+    "chatmock\\websocket_routes.py": [
+      "responses_api",
+      "os",
+      "__future__",
+      "flask",
+      "ssl",
+      "session",
+      "flask_sock",
+      "websockets",
+      "json",
+      "typing",
+      "certifi",
+      "utils",
+      "upstream"
+    ],
+    "chatmock\\__init__.py": [
+      "cli",
+      "app",
+      "version",
+      "__future__"
+    ],
+    "scripts\\test_responses_cached_tokens.py": [
+      "uuid",
+      "requests",
+      "__future__",
+      "argparse",
+      "json",
+      "typing",
+      "sys"
+    ],
+    "scripts\\test_responses_reuse.py": [
+      "uuid",
+      "__future__",
+      "argparse",
+      "websockets",
+      "json",
+      "typing",
+      "sys"
+    ],
+    "tests\\test_fast_mode.py": [
+      "chatmock",
+      "unittest",
+      "__future__"
+    ],
+    "tests\\test_models.py": [
+      "chatmock",
+      "unittest",
+      "__future__"
+    ],
+    "tests\\test_routes.py": [
+      "threading",
+      "__future__",
+      "socket",
+      "chatmock",
+      "unittest",
+      "websockets",
+      "json",
+      "time"
+    ],
+    "tests\\test_tactic_reduced_coupling.py": [
+      "__future__",
+      "chatmock",
+      "inspect",
+      "typing",
+      "pytest"
+    ]
+  }
+}

@@ -5,11 +5,11 @@
   "avg_files_per_package": 7.333333333333333,
   "imports_graph": {
     "setup.py": [
-      "sys",
-      "version",
       "setuptools",
+      "distutils",
       "os",
-      "distutils"
+      "version",
+      "sys"
     ],
     "nasdaqdatalink\\api_config.py": [
       "os"
@@ -21,14 +21,14 @@
       "model"
     ],
     "nasdaqdatalink\\connection.py": [
-      "nasdaqdatalink",
       "urllib",
-      "version",
+      "nasdaqdatalink",
       "util",
-      "requests",
       "re",
-      "api_config",
-      "urllib3"
+      "version",
+      "urllib3",
+      "requests",
+      "api_config"
     ],
     "nasdaqdatalink\\export_table.py": [
       "nasdaqdatalink",
@@ -37,45 +37,45 @@
       "model"
     ],
     "nasdaqdatalink\\get.py": [
-      "nasdaqdatalink",
       "six",
-      "utils",
-      "warnings",
+      "nasdaqdatalink",
+      "message",
       "model",
-      "message"
+      "warnings",
+      "utils"
     ],
     "nasdaqdatalink\\get_point_in_time.py": [
       "nasdaqdatalink",
+      "message",
       "copy",
-      "api_config",
       "warnings",
-      "message"
+      "api_config"
     ],
     "nasdaqdatalink\\get_table.py": [
       "nasdaqdatalink",
+      "message",
       "copy",
-      "api_config",
       "warnings",
-      "message"
+      "api_config"
     ],
     "nasdaqdatalink\\message.py": [],
     "nasdaqdatalink\\util.py": [
       "six",
-      "dateutil",
+      "pandas",
       "re",
       "inflection",
-      "pandas"
+      "dateutil"
     ],
     "nasdaqdatalink\\version.py": [],
     "nasdaqdatalink\\__init__.py": [
       "get",
-      "export_table",
-      "bulkdownload",
-      "api_config",
-      "get_table",
       "get_point_in_time",
+      "bulkdownload",
       "errors",
-      "model"
+      "model",
+      "export_table",
+      "get_table",
+      "api_config"
     ],
     "test\\test_api_config.py": [
       "nasdaqdatalink",
@@ -83,133 +83,133 @@
       "unittest"
     ],
     "test\\test_connection.py": [
-      "nasdaqdatalink",
-      "parameterized",
-      "test",
       "json",
-      "mock"
+      "nasdaqdatalink",
+      "mock",
+      "parameterized",
+      "test"
     ],
     "test\\test_data.py": [
-      "nasdaqdatalink",
-      "six",
-      "test",
       "json",
-      "re",
-      "mock",
       "datetime",
+      "six",
+      "nasdaqdatalink",
       "pandas",
-      "unittest",
-      "numpy"
+      "re",
+      "numpy",
+      "mock",
+      "test",
+      "unittest"
     ],
     "test\\test_database.py": [
-      "nasdaqdatalink",
-      "six",
-      "test",
-      "re",
       "json",
+      "six",
+      "nasdaqdatalink",
       "mock",
+      "re",
+      "test",
       "unittest"
     ],
     "test\\test_dataset.py": [
-      "nasdaqdatalink",
-      "six",
-      "test",
       "json",
-      "re",
-      "mock",
       "datetime",
+      "six",
+      "nasdaqdatalink",
+      "mock",
+      "re",
+      "test",
       "unittest"
     ],
     "test\\test_datatable.py": [
-      "nasdaqdatalink",
-      "six",
-      "parameterized",
-      "httpretty",
-      "test",
-      "re",
       "json",
+      "httpretty",
+      "six",
+      "nasdaqdatalink",
       "mock",
+      "re",
+      "parameterized",
+      "test",
       "unittest"
     ],
     "test\\test_datatable_data.py": [
-      "nasdaqdatalink",
-      "six",
-      "parameterized",
-      "httpretty",
-      "test",
       "json",
-      "re",
-      "mock",
+      "httpretty",
       "datetime",
+      "six",
+      "nasdaqdatalink",
       "pandas",
-      "unittest",
-      "numpy"
+      "re",
+      "numpy",
+      "mock",
+      "parameterized",
+      "test",
+      "unittest"
     ],
     "test\\test_get.py": [
       "nasdaqdatalink",
-      "test",
-      "mock",
       "pandas",
-      "unittest",
-      "numpy"
+      "numpy",
+      "mock",
+      "test",
+      "unittest"
     ],
     "test\\test_get_point_in_time_data.py": [
-      "nasdaqdatalink",
-      "httpretty",
       "json",
+      "httpretty",
+      "datetime",
+      "nasdaqdatalink",
+      "pandas",
       "re",
       "mock",
-      "datetime",
-      "pandas",
       "unittest"
     ],
     "test\\test_get_table.py": [
-      "nasdaqdatalink",
-      "httpretty",
-      "test",
       "json",
+      "httpretty",
+      "nasdaqdatalink",
+      "pandas",
       "re",
       "mock",
-      "pandas",
+      "test",
       "unittest"
     ],
     "test\\test_merged_dataset.py": [
-      "nasdaqdatalink",
-      "six",
-      "test",
-      "mock",
       "datetime",
+      "six",
+      "nasdaqdatalink",
       "pandas",
+      "mock",
+      "test",
       "unittest"
     ],
     "test\\test_model.py": [
       "nasdaqdatalink",
-      "six",
-      "unittest"
+      "unittest",
+      "six"
     ],
     "test\\test_point_in_time.py": [
-      "nasdaqdatalink",
-      "httpretty",
-      "test",
-      "re",
       "json",
-      "mock"
+      "httpretty",
+      "nasdaqdatalink",
+      "mock",
+      "re",
+      "test"
     ],
     "test\\test_request_type_util.py": [
       "nasdaqdatalink",
-      "unittest",
-      "test"
+      "test",
+      "unittest"
     ],
     "test\\test_retries.py": [
       "nasdaqdatalink",
-      "unittest",
+      "json",
       "test",
-      "json"
+      "unittest"
     ],
     "test\\test_util.py": [
-      "nasdaqdatalink",
-      "six",
       "datetime",
+      "six",
+      "nasdaqdatalink",
       "pandas",
       "unittest"
     ],
@@ -226,42 +226,42 @@
     "nasdaqdatalink\\model\\database.py": [
       "nasdaqdatalink",
       "os",
-      "six",
-      "model_base"
+      "model_base",
+      "six"
     ],
     "nasdaqdatalink\\model\\dataset.py": [
-      "nasdaqdatalink",
       "six",
+      "nasdaqdatalink",
       "data_list",
-      "data",
-      "model_base"
+      "model_base",
+      "data"
     ],
     "nasdaqdatalink\\model\\datatable.py": [
-      "nasdaqdatalink",
       "six",
-      "time",
+      "nasdaqdatalink",
       "os",
+      "time",
       "logging",
-      "data",
-      "model_base"
+      "model_base",
+      "data"
     ],
     "nasdaqdatalink\\model\\data_list.py": [
       "data_mixin",
       "model_list"
     ],
     "nasdaqdatalink\\model\\data_mixin.py": [
-      "nasdaqdatalink",
-      "pandas"
+      "pandas",
+      "nasdaqdatalink"
     ],
     "nasdaqdatalink\\model\\merged_dataset.py": [
-      "nasdaqdatalink",
-      "six",
+      "more_itertools",
       "dataset",
+      "six",
+      "nasdaqdatalink",
       "pandas",
       "merged_data_list",
-      "data",
       "model_base",
-      "more_itertools"
+      "data"
     ],
     "nasdaqdatalink\\model\\merged_data_list.py": [
       "numpy",
@@ -275,11 +275,11 @@
       "model_list"
     ],
     "nasdaqdatalink\\model\\point_in_time.py": [
-      "nasdaqdatalink",
       "datetime",
+      "nasdaqdatalink",
       "logging",
-      "data",
-      "model_base"
+      "model_base",
+      "data"
     ],
     "nasdaqdatalink\\model\\__init__.py": [],
     "nasdaqdatalink\\operations\\data_list.py": [
@@ -288,8 +288,8 @@
     ],
     "nasdaqdatalink\\operations\\get.py": [
       "nasdaqdatalink",
-      "inflection",
-      "operation"
+      "operation",
+      "inflection"
     ],
     "nasdaqdatalink\\operations\\list.py": [
       "nasdaqdatalink",
@@ -311,19 +311,19 @@
       "factory"
     ],
     "test\\factories\\dataset.py": [
-      "factory",
-      "six"
+      "six",
+      "factory"
     ],
     "test\\factories\\dataset_data.py": [
-      "factory",
-      "six"
+      "six",
+      "factory"
     ],
     "test\\factories\\datatable.py": [
       "factory"
     ],
     "test\\factories\\datatable_data.py": [
-      "factory",
-      "six"
+      "six",
+      "factory"
     ],
     "test\\factories\\datatable_meta.py": [
       "factory"
@@ -337,19 +337,19 @@
       "test"
     ],
     "test\\helpers\\merged_datasets_helper.py": [
-      "nasdaqdatalink",
       "six",
-      "test",
+      "nasdaqdatalink",
       "re",
-      "jsondate"
+      "jsondate",
+      "test"
     ],
     "test\\helpers\\my_httpretty.py": [
-      "httpretty",
-      "requests"
+      "requests",
+      "httpretty"
     ],
     "test\\helpers\\random_data_helper.py": [
-      "random",
-      "string"
+      "string",
+      "random"
     ],
     "test\\helpers\\__init__.py": [],
     "test\\test_operations\\__init__.py": []

@@ -1,5 +1,0 @@
-{
-  "action": "modify_file",
-  "path": "data/interfaces.py",
-  "content": "from abc import ABC, abstractmethod\n\n\nclass IDataLoader(ABC):\n    \"\"\"Interface for data loaders.\"\"\"\n    \n    @abstractmethod\n    def load_data(self):\n        \"\"\"Return the dataset object.\"\"\"\n        pass\n    \n    @abstractmethod\n    def __len__(self):\n        \"\"\"Return the number of batches.\"\"\"\n        pass\n"
-}

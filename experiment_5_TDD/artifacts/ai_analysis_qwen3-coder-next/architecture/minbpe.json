@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Two top-level packages ('minbpe' and 'tests') with clear separation of concerns",
+    "Hierarchical module structure with inheritance (Tokenizer → RegexTokenizer → GPT4Tokenizer) indicating cohesive, layered internal design within a single deployable unit",
+    "No inter-process communication, network calls, or service discovery mechanisms observed",
+    "Single entry point (train.py) importing from the core library, typical of monolithic applications",
+    "Shared code via relative imports within the minbpe package, indicating tight internal coupling but clean module boundaries",
+    "Repository depth of 2 and low fan-out (avg 2.0) suggest small, focused, self-contained codebase"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Potential for tight coupling if modules are not strictly encapsulated over time",
+    "Limited scalability beyond single-process deployment",
+    "Testing may become difficult if dependencies between tokenizer subclasses are not well isolated"
+  ]
+}

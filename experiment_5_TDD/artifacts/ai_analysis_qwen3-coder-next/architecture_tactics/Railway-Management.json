@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling to concrete database implementations (mysql.connector) across multiple core modules (Checks.py, InsertData.py, User_Functions.py), as evidenced by direct imports of mysql.connector and usage of concrete connection objects. Static analysis flags 'C1' (coupling) and 'A3' (abstraction) as maintainability factors. This coupling reduces testability (mocking requires real DB setup), increases ripple effects (DB changes propagate widely), and violates separation of concerns (persistence logic is embedded in business modules). The modular monolith structure has no abstraction layer between domain logic and infrastructure, making it hard to swap databases, add caching, or unit test modules in isolation.",
+  "target_components": [
+    "core/Checks.py",
+    "core/InsertData.py",
+    "core/User_Functions.py"
+  ],
+  "expected_architectural_change": "Introduction of a persistence abstraction layer (e.g., interfaces or abstract base classes for database operations) that decouples core modules from mysql.connector. Modules will depend on abstractions (e.g., DatabaseInterface) instead of concrete implementations, enabling dependency injection and reducing the scope of change when persistence mechanisms evolve.",
+  "implementation_strategy": "1. Create a new module 'core/database.py' defining abstract interfaces (e.g., DatabaseClient, QueryExecutor) with methods like execute_query, fetch_all, etc. 2. Implement concrete MySQL-specific classes (e.g., MySQLDatabaseClient) that implement the interface. 3. Refactor Checks.py, InsertData.py, and User_Functions.py to accept database clients via constructor or function parameters instead of importing mysql.connector directly. 4. Use dependency injection in Main.py to wire concrete implementations to modules. This preserves the monolithic structure while adding a clear persistence boundary.",
+  "risks": "Initial refactoring may increase code volume slightly, but this is offset by improved testability and reduced risk of breaking changes. Risk of over-engineering is low since the tactic is applied incrementally to only the most coupled modules, and the modular monolith structure supports gradual layering without requiring microservices-style decomposition."
+}

@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe coupling issues: bin/q.py contains ~1000+ lines of procedural code with 20+ classes and functions tightly interwoven (e.g., QTextAsData directly orchestrates SQLite operations, file I/O, type inference, and query execution), and test/test_suite.py imports core classes directly without adapter layers. Static analysis confirms high average fan-out (7.67) and flat module structure with no clear boundaries between CLI, business logic, and persistence. This coupling causes ripple effects during changes (e.g., modifying SQL parsing affects file I/O and type inference), making testing difficult and refactoring risky. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for data sources, query executors, and result processors) to decouple components, enabling isolated testing and localized changes.",
+  "target_components": [
+    "bin/q.py",
+    "test/test_suite.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces (e.g., DataSource, QueryExecutor, TypeInferer) and dependency injection to replace direct sqlite3/sqlite3 usage and procedural orchestration in QTextAsData. The monolithic QTextAsData class will be decomposed into collaborating components with well-defined responsibilities, and tests will depend on abstractions rather than concrete implementations.",
+  "implementation_strategy": "1. Extract interfaces for core responsibilities: DataSource (for reading CSV/SQLite/gzipped data), TypeInferer (for column type detection), QueryExecutor (for SQL execution), and ResultFormatter (for output). 2. Refactor QTextAsData to depend on these interfaces via constructor injection. 3. Replace direct sqlite3 calls in QTextAsData with QueryExecutor implementations. 4. Update test/test_suite.py to mock interfaces instead of importing concrete classes. 5. Introduce adapter classes (e.g., SqliteDataSource, CsvDataSource) implementing DataSource. 6. Incrementally replace direct dependencies with injected ones, starting with the most stable components (e.g., TypeInferer).",
+  "risks": "Risk of over-engineering if interfaces are too abstract; must balance granularity with practicality. Initial refactoring may increase code volume, but long-term maintainability gains outweigh this. Requires disciplined adherence to interface contracts during migration."
+}

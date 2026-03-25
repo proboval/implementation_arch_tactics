@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Zero packages (packages: 0) and zero average fan-out indicate no modular structure or inter-module dependencies",
+    "Maximum directory depth of 1 implies flat directory structure with no layered or modular organization",
+    "Both main.py and get_projaec_info.py define only stub functions (e.g., 'def mainNone: ...') suggesting minimal or placeholder implementation",
+    "Repository contains only top-level Python scripts and static assets (logs, mail templates, config files) with no clear separation of concerns or architectural layers",
+    "No evidence of ports/adapters, MVC controllers/views/models, or service boundaries",
+    "Files are grouped by function (e.g., 'log/', 'mail/', 'subscribe/') but not by architectural layers or modules"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Lack of modularity makes maintenance and testing difficult as project scales",
+    "No separation of concerns increases risk of tight coupling and low cohesion",
+    "Flat structure limits reusability and composability of components",
+    "Script-based style may not support long-term maintainability or team collaboration at scale"
+  ]
+}

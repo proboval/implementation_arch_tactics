@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight circular coupling between services: services/cloudflare.py imports services/common.py, and services/common.py imports services/cloudflare.py (via register). Similarly, services/account.py imports services/cloudflare.py, while services/tasks.py imports both services/cloudflare.py and services/common.py, creating a tangled dependency graph. Static analysis confirms high fan-out (avg 3.95) and cross-module dependencies (e.g., services/account.py depends on services, services/cloudflare.py depends on models and faker). This coupling increases ripple effects during changes, hinders testability (e.g., unit tests for cloudflare.py require mocking common.py's register), and violates separation of concerns. Reducing coupling directly addresses these maintainability issues by isolating responsibilities and enabling independent evolution of modules.",
+  "target_components": [
+    "services/cloudflare.py",
+    "services/common.py",
+    "services/account.py",
+    "services/tasks.py",
+    "services/subscription.py"
+  ],
+  "expected_architectural_change": "Introduce abstractions (e.g., interfaces or protocols) for cross-service dependencies (e.g., AccountService interface for account management, CloudflareService interface for registration/update operations). Services will depend on these abstractions rather than concrete implementations, breaking circular dependencies. Concrete implementations will be injected (e.g., via dependency injection container or factory functions), enabling loose coupling and easier substitution/mocking.",
+  "implementation_strategy": "1. Identify shared responsibilities: extract AccountService (for account lifecycle), CloudflareService (for CF registration/update), and EntrypointService (for entrypoint operations). 2. Define minimal interfaces (e.g., using Python protocols or abstract base classes) in a new services/interfaces.py module. 3. Refactor services/cloudflare.py and services/common.py to depend on AccountService interface instead of each other. 4. Refactor services/account.py to depend on CloudflareService interface instead of importing cloudflare directly. 5. Update services/tasks.py and services/subscription.py to depend on abstractions via factory functions or DI. 6. Introduce a simple dependency injection setup (e.g., a services/container.py module) to wire concrete implementations at startup.",
+  "risks": "Initial refactoring may require careful handling of circular imports during transition; however, incremental adoption (e.g., extract interfaces first, then update implementations) mitigates this. Risk of over-engineering is low given the monolithic context—abstractions remain internal to the monolith and do not require distributed changes."
+}

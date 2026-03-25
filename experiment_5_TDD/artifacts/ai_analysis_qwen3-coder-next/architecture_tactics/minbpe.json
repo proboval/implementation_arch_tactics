@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between tokenizer subclasses: GPT4Tokenizer inherits from RegexTokenizer and directly imports tiktoken, while RegexTokenizer inherits from Tokenizer and imports regex. The __init__.py re-exports all tokenizers without abstraction, forcing clients to depend on concrete implementations. Static analysis shows imports like 'minbpe\\gpt4.py': ['base', 'tiktoken', 'regex'] and 'minbpe\\regex.py': ['base', 'regex'] — indicating direct dependencies on external libraries and sibling modules. This coupling increases ripple effects: changing regex behavior affects all subclasses, and adding new tokenizers requires modifying core modules. The 'A3' factor in architecture_maintainability and 'T4'/'A1' in code_maintainability point to poor modularity and testability. Reduced Coupling directly addresses this by introducing interfaces/abstractions to decouple tokenizer implementations from concrete subclasses and external libraries.",
+  "target_components": [
+    "minbpe/__init__.py",
+    "minbpe/base.py",
+    "minbpe/regex.py",
+    "minbpe/gpt4.py",
+    "train.py"
+  ],
+  "expected_architectural_change": "Introduce a Tokenizer interface (already exists as base.Tokenizer but is not strictly enforced as an interface) and refactor concrete tokenizers to depend only on the interface, not each other. RegexTokenizer should not inherit from Tokenizer directly but through a well-defined contract; GPT4Tokenizer should not import tiktoken directly but receive it via dependency injection. The __init__.py should expose only the interface and factory functions, not concrete classes. This creates a layered architecture where tokenizers are pluggable implementations.",
+  "implementation_strategy": "1. Refactor base.py to define a strict interface (e.g., using abstract methods only, no implementation). 2. Remove direct imports of tiktoken and regex from GPT4Tokenizer and RegexTokenizer respectively; instead, inject dependencies via __init__. 3. Update train.py to use a factory (e.g., create_tokenizer('gpt4')) instead of importing concrete classes. 4. Move shared logic (e.g., regex-based tokenization) into a separate, injectable strategy module (e.g., minbpe.strategies.regex). 5. Update __init__.py to re-export only Tokenizer and factory functions.",
+  "risks": "Risk of over-engineering in a small codebase (8 files); however, given the inheritance hierarchy and external dependencies (tiktoken/regex), the coupling is already causing maintainability debt. Incremental introduction of dependency injection (e.g., first refactor GPT4Tokenizer to accept tiktoken as optional) minimizes disruption. Test suite can validate correctness during refactoring."
+}

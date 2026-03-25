@@ -1,0 +1,28 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between the 'models' and 'resources' layers, as evidenced by the static analysis showing that resources directly instantiate model classes (e.g., Documents resource instantiates UserDocument) and by the imports graph where resources modules import concrete model classes (e.g., mendeley/resources/documents.py imports mendeley.models.documents.*). This coupling is reinforced by the architecture description noting 'Resources layer directly depends on models layer' and the risk that 'Tight coupling between models and resources may hinder independent evolution of domain vs. API concerns'. This violates separation of concerns and increases ripple effects when either layer changes. The tactic 'Reduced Coupling' directly addresses this by introducing abstractions (e.g., interfaces or abstract base classes) to decouple resources from concrete model implementations, improving testability and allowing independent evolution of domain models and API resources.",
+  "target_components": [
+    "mendeley/resources/documents.py",
+    "mendeley/resources/annotations.py",
+    "mendeley/resources/files.py",
+    "mendeley/resources/groups.py",
+    "mendeley/resources/profiles.py",
+    "mendeley/resources/trash.py",
+    "mendeley/resources/catalog.py",
+    "mendeley/models/documents.py",
+    "mendeley/models/annotations.py",
+    "mendeley/models/files.py",
+    "mendeley/models/groups.py",
+    "mendeley/models/profiles.py",
+    "mendeley/models/catalog.py"
+  ],
+  "expected_architectural_change": "Introduce abstract base classes or protocols for each resource's target model type (e.g., AbstractUserDocument, AbstractAnnotation) in a new 'interfaces' or 'contracts' module. Resources will depend on these abstractions instead of concrete model classes. Model classes will implement these interfaces. This will invert the dependency direction: resources will depend on abstractions (models will implement them), reducing direct coupling and enabling easier mocking in tests.",
+  "implementation_strategy": "1. Create new module 'mendeley/interfaces.py' defining abstract base classes (using abc.ABC) for each domain entity (e.g., AbstractDocument, AbstractAnnotation, AbstractFile). 2. Update concrete model classes to inherit from these abstract base classes. 3. Refactor resource classes to accept and return the abstract base classes instead of concrete types (e.g., Documents class will work with AbstractDocument). 4. Update factory methods and type dispatch logic to use the abstract interfaces. 5. Update tests to mock against the abstract interfaces. This can be done incrementally per resource module.",
+  "risks": "Initial design of abstract interfaces requires careful consideration to avoid over-engineering or premature abstraction. However, given the clear parallel structure of resources and models (e.g., Documents ↔ UserDocument, Annotations ↔ Annotation), the abstraction surface is well-defined and low-risk. The main risk is misdefining interface contracts, but this can be mitigated by starting with minimal interfaces that mirror current usage patterns."
+}

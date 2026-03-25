@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling through direct imports of concrete classes (e.g., all modules import from .main and depend on the DomiOwned base class) and shared mutable state via inheritance. Static analysis confirms high fan-out (4.56 avg) and mixed concerns: modules like enumerate.py and hashdump.py import both async libraries and main, while quickconsole.py imports utilities and main directly. This coupling increases ripple-effect risk: changes to DomiOwned.__init__ or get_auth affect all subclasses. The single-package structure with no dependency inversion (e.g., no interfaces or DI containers) makes testing difficult and hinders modular evolution—e.g., replacing HTTP clients requires modifying multiple modules. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces for auth, enumeration, and hashing) to decouple modules from concrete implementations.",
+  "target_components": [
+    "domi_owned/main.py",
+    "domi_owned/bruteforce.py",
+    "domi_owned/enumerate.py",
+    "domi_owned/fingerprint.py",
+    "domi_owned/hashdump.py",
+    "domi_owned/quickconsole.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces (e.g., AuthStrategy, EnumStrategy, HashStrategy) as abstract base classes (ABCs) in a new domi_owned/interfaces.py module. Concrete classes (DomiOwned, BruteForce, etc.) will depend on interfaces instead of concrete implementations. The main.py DomiOwned class will be refactored to delegate auth logic to an injected AuthStrategy, and modules like enumerate.py will accept an EnumStrategy dependency instead of inheriting from DomiOwned. This replaces inheritance-based coupling with composition-based dependency injection.",
+  "implementation_strategy": "1. Create domi_owned/interfaces.py with ABCs for core behaviors (AuthStrategy, EnumStrategy, etc.). 2. Refactor DomiOwned to implement AuthStrategy and inject it via constructor instead of being inherited by all modules. 3. Update bruteforce.py, enumerate.py, hashdump.py, and quickconsole.py to accept strategy dependencies via __init__ instead of inheriting from DomiOwned. 4. Update domi-owned.py main entry point to wire dependencies explicitly. 5. Add unit tests for each strategy to validate decoupling. This is incremental: start with auth strategy, then enumeration, then hashing.",
+  "risks": "Initial refactoring may increase boilerplate (e.g., more imports, constructor parameters), but this is offset by improved testability and reduced ripple effects. Temporary test coverage gaps during refactoring could be mitigated by adding minimal integration tests before and after each step."
+}

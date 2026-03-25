@@ -5,8 +5,8 @@
   "avg_files_per_package": 5.0,
   "imports_graph": {
     "setup.py": [
-      "os",
       "setuptools",
+      "os",
       "sys"
     ],
     "docs\\conf.py": [
@@ -17,28 +17,28 @@
       "utils"
     ],
     "slumber\\serialize.py": [
-      "json",
       "slumber",
+      "json",
       "yaml"
     ],
     "slumber\\utils.py": [
-      "posixpath",
       "urllib",
-      "urlparse"
+      "urlparse",
+      "posixpath"
     ],
     "slumber\\__init__.py": [
-      "utils",
-      "urlparse",
-      "requests",
       "urllib",
-      "serialize"
+      "urlparse",
+      "serialize",
+      "requests",
+      "utils"
     ],
     "tests\\resource.py": [
       "unittest2",
-      "sys",
-      "requests",
+      "slumber",
       "mock",
-      "slumber"
+      "sys",
+      "requests"
     ],
     "tests\\serializer.py": [
       "slumber",
@@ -46,15 +46,15 @@
     ],
     "tests\\utils.py": [
       "slumber",
-      "unittest2",
-      "sys"
+      "sys",
+      "unittest2"
     ],
     "tests\\__init__.py": [
-      "utils",
-      "unittest",
-      "serializer",
       "resource",
-      "os"
+      "os",
+      "serializer",
+      "utils",
+      "unittest"
     ]
   }
 }

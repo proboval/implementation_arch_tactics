@@ -1,0 +1,27 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high average fan-out (4.5) and dense cross-module dependencies, especially in scratch/ and first-edition/code-python3/. Static analysis shows modules like logistic_regression.py importing from 8+ other modules (gradient_descent, multiple_regression, working_with_data, etc.), and neural_networks.py importing from linear_algebra, stats, and deep_learning. This tight coupling makes modules hard to test in isolation, increases ripple-effect risk during changes, and hinders reuse. The shared linear_algebra module is imported by 15+ modules across both editions, creating a central dependency bottleneck. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces or protocol-based contracts) to decouple high-fanout modules from their concrete dependencies, improving testability and modularity.",
+  "target_components": [
+    "scratch/gradient_descent.py",
+    "scratch/logistic_regression.py",
+    "scratch/multiple_regression.py",
+    "scratch/neural_networks.py",
+    "scratch/recommender_systems.py",
+    "scratch/working_with_data.py",
+    "first-edition/code-python3/logistic_regression.py",
+    "first-edition/code-python3/multiple_regression.py",
+    "first-edition/code-python3/neural_networks.py",
+    "first-edition/code-python3/working_with_data.py",
+    "scratch/linear_algebra.py",
+    "first-edition/code-python3/linear_algebra.py"
+  ],
+  "expected_architectural_change": "Introduce abstract interfaces (e.g., via Python Protocols or ABCs) for core services like VectorOperations, GradientStep, and DataScaler. Replace direct imports of concrete modules (e.g., from scratch.linear_algebra import Vector, dot) with dependency injection of abstractions (e.g., from .interfaces import VectorOperations). This will transform the flat dependency graph into a layered structure where domain modules depend on abstractions rather than concrete implementations, reducing fan-out and enabling easier substitution and testing.",
+  "implementation_strategy": "1. Identify high-coupling modules (e.g., logistic_regression, neural_networks) and their concrete dependencies (linear_algebra, gradient_descent, statistics). 2. Define minimal abstractions (e.g., VectorOperations protocol with dot, add, magnitude methods). 3. Refactor target modules to accept abstractions via constructor or function parameters instead of importing concrete modules. 4. Create adapter modules that implement abstractions using existing concrete logic (e.g., LinearAlgebraAdapter implements VectorOperations using scratch.linear_algebra functions). 5. Incrementally replace direct imports with injected dependencies, starting with testable units like gradient_descent.py. 6. Add unit tests to verify abstractions work with multiple implementations.",
+  "risks": "Initial refactoring may increase code verbosity due to adapter layers and interface definitions. Over-abstraction could lead to unnecessary indirection if interfaces are too broad. However, risks are mitigated by incremental adoption and Python's structural typing (Protocols), which avoids runtime overhead while enabling loose coupling."
+}

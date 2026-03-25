@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe maintainability issues due to tight coupling: the single-file 'tiktok.py' class has high average fan-out (9.0), low maintainability index (42.1), and methods like 'get_discordNone', 'send_botNone', and 'wait_for_xpathNone' indicate procedural logic tightly bound to external dependencies (e.g., Selenium, Discord, OS utilities). Static analysis confirms direct imports of 'selenium', 'undetected_chromedriver', 'requests', 'ctypes', and 'webbrowser' within one monolithic class, violating separation of concerns. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces/protocols) to decouple domain automation logic from infrastructure concerns (browser automation, Discord messaging, system utilities), enabling modular testing and future changes without ripple effects.",
+  "target_components": [
+    "tiktok.py"
+  ],
+  "expected_architectural_change": "The monolithic 'zefoy' class will be decomposed into cohesive modules: a domain layer (e.g., 'automation/core.py' with strategy interfaces), infrastructure adapters (e.g., 'infrastructure/browser.py', 'infrastructure/discord.py'), and a thin composition root (e.g., 'main.py'). This replaces direct imports and hard dependencies with dependency injection via abstractions, reducing fan-out and increasing cohesion.",
+  "implementation_strategy": "1. Identify cohesive responsibilities within 'tiktok.py' (e.g., browser interaction, Discord communication, state checking). 2. Extract each into separate modules with well-defined interfaces (e.g., 'BrowserDriver', 'DiscordBot'). 3. Refactor 'zefoy' to depend on interfaces, not concrete implementations (e.g., use dependency injection in __init__). 4. Move Selenium/undetected_chromedriver usage into a 'BrowserAdapter' class; move Discord logic into 'DiscordClient'. 5. Introduce a composition root (e.g., 'main.py') to wire dependencies. 6. Incrementally replace direct calls (e.g., 'self.driver.find_element') with adapter method calls.",
+  "risks": "Risk of over-engineering for a small script; however, given the high technical debt (MI=42.1), even minimal abstraction (e.g., extracting browser logic into one adapter) yields immediate maintainability gains. Initial refactoring may introduce temporary coupling during transition, but the strategy is incremental and low-risk due to the single-file scope."
+}

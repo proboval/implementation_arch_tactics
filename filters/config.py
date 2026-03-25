@@ -6,5 +6,5 @@ load_dotenv()
 
 GITHUB_TOKEN = os.getenv("GIT_KEY")
 MODEL_NAME = "qwen3-coder-next:cloud"
-ARTIFACTS_DIR_NAME = "experiment_4_new_repos"
+ARTIFACTS_DIR_NAME = "experiment_5_TDD"
 STARS = (1000, 2000)

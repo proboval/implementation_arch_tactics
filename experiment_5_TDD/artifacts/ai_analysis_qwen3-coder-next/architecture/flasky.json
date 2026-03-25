@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into logical modules (app/api, app/auth, app/main) with dedicated __init__.py files and cohesive responsibilities",
+    "Shared database via SQLAlchemy (models.py), indicating single data store",
+    "Flask app factory pattern (create_app in app/__init__.py) with config.py supporting multiple environments",
+    "Blueprints used for modular routing (api, auth, main), but all within one application process",
+    "No inter-service communication patterns (no REST clients, message queues, or gRPC clients between modules)",
+    "Tests co-located with source (tests/), using same app instance and models, indicating tight integration",
+    "Migrations managed centrally via Alembic, pointing to one database schema",
+    "Low package count (5) and shallow directory depth (3) consistent with a single deployable unit"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Potential for tight coupling between modules if dependencies are not carefully managed",
+    "Scaling requires horizontal duplication of entire monolith rather than individual services",
+    "Single point of failure for all functionality",
+    "Deployment changes may require full rebuild and restart despite modularity"
+  ]
+}

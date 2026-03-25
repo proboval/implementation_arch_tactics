@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules, especially between helpers/admins.py and cache/admins.py (helpers/admins.py directly imports cache.admins), and Misery/song.py and Misery/VideoStreaming.py directly depend on infrastructure libraries (youtube_dl, ffmpeg, pyrogram) without abstraction layers. This coupling increases ripple effects during change and hinders testability — e.g., helpers/admins.py cannot be unit tested without importing cache.admins, and Misery/song.py mixes domain logic (song handling) with external tool orchestration (ffmpeg, wget). Static analysis confirms high fan-in/fan-out (avg_fan_out=2.1) and low separation (e.g., helpers/admins.py imports both cache and pyrogram). The modular monolith structure (flat, 2-level depth) is already present, making it feasible to introduce interfaces and dependency inversion incrementally without restructuring the entire system.",
+  "target_components": [
+    "helpers/admins.py",
+    "cache/admins.py",
+    "Misery/song.py",
+    "Misery/VideoStreaming.py",
+    "Downloaders/youtube.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers (e.g., AdminCacheInterface, MediaDownloaderInterface) to decouple domain modules from infrastructure. helpers/admins.py will depend on an interface instead of concrete cache.admins. Misery/song.py and Downloaders/youtube.py will delegate to a downloader interface instead of importing youtube_dl/ffmpeg directly. This creates ports/adapter-like boundaries, reducing coupling and enabling easier testing and future replacement of external services.",
+  "implementation_strategy": "1. Define interfaces (e.g., AdminCacheInterface in helpers/interfaces.py) for admin caching. 2. Refactor cache/admins.py to implement the interface. 3. Refactor helpers/admins.py to accept AdminCacheInterface via dependency injection (e.g., constructor or function parameter) instead of direct import. 4. Similarly, define MediaDownloaderInterface in Downloaders/interfaces.py and refactor Misery/song.py and Downloaders/youtube.py to use it. 5. Introduce factory or config-based binding to wire concrete implementations. This can be done incrementally per module without breaking existing functionality.",
+  "risks": "Initial refactoring may introduce temporary coupling if interfaces are poorly designed or if injection is not consistently applied. However, risks are low due to the flat module structure and existing clear boundaries (e.g., Downloaders, helpers), allowing focused, localized changes. No runtime overhead or system rewrite required."
+}

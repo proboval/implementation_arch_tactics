@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Python package 'trackeval' with clear module boundaries (datasets, metrics, baselines, utils, plotting, eval)",
+    "High cohesion within modules (e.g., all dataset implementations inherit from _BaseDataset, all metrics inherit from _BaseMetric)",
+    "Low coupling between modules (modules import only specific components, no tight interdependencies)",
+    "Centralized entry points (scripts/run_*.py) that import and orchestrate trackeval components",
+    "No external service communication or network dependencies in core modules",
+    "Shared core abstractions (_BaseDataset, _BaseMetric) used consistently across domain areas",
+    "Directory structure reflects domain decomposition (datasets/, metrics/, baselines/) rather than technical layers"
+  ],
+  "alternatives": [
+    "layered",
+    "script_based"
+  ],
+  "risks": [
+    "Some scripts import trackeval directly without clear separation between CLI and core logic",
+    "Baseline modules contain multiprocessing logic mixed with domain logic, reducing modularity",
+    "Shared utilities (utils.py) may become a god module over time"
+  ]
+}

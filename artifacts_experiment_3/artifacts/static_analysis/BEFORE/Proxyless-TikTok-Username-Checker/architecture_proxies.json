@@ -6,16 +6,16 @@
   "imports_graph": {
     "main.py": [
       "colorama",
-      "ctypes",
-      "requests",
-      "time",
       "os",
+      "time",
+      "threading",
       "platform",
-      "threading"
+      "requests",
+      "ctypes"
     ],
     "username_generator.py": [
-      "random",
-      "string"
+      "string",
+      "random"
     ]
   }
 }

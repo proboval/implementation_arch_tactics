@@ -5,22 +5,22 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "proxyChecker.py": [
-      "random",
-      "re",
-      "argparse",
       "socket",
-      "time",
-      "threading",
+      "urllib",
+      "argparse",
+      "random",
       "socks",
-      "urllib"
+      "time",
+      "re",
+      "threading"
     ],
     "proxyScraper.py": [
-      "re",
-      "sys",
-      "bs4",
       "argparse",
-      "httpx",
       "time",
+      "httpx",
+      "re",
+      "bs4",
+      "sys",
       "platform",
       "asyncio"
     ],

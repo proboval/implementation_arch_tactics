@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package ('chatmock') with 28 files indicates one deployable unit",
+    "Clear module separation by concern (routes_*, responses_api, session, model_registry, etc.) with low coupling and high cohesion",
+    "Flask-based web framework usage with blueprints (routes_openai, routes_ollama) for HTTP routing",
+    "Shared domain models (models.py, model_registry.py, session.py) used across modules",
+    "CLI (cli.py), GUI (gui.py), and web app (app.py) all depend on the same core module",
+    "No inter-service communication patterns (e.g., no gRPC, message queues, or service discovery)",
+    "Directory depth of 2 and minimal package count (1) rule out microservices",
+    "All business logic resides in one codebase with explicit internal dependencies between modules"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between modules (e.g., routes_ollama imports from responses_api, session, upstream) could hinder future modularity",
+    "Monolithic deployment may limit scalability and team autonomy at scale",
+    "Shared session state in session.py could become a bottleneck or source of concurrency bugs"
+  ]
+}

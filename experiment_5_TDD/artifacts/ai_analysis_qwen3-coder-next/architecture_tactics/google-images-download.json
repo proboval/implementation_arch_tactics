@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling to low-level standard library modules (urllib, ssl, socket, httplib, urllib2, http) and external dependencies (selenium) directly within the monolithic googleimagesdownload class. Static analysis confirms high fan-out (3.25) and flat structure with no abstraction layers. This coupling makes testing difficult (tests directly instantiate the class without mocks), hinders substitution of HTTP clients or parsers, and increases ripple effects during changes. Reduced Coupling directly addresses this by introducing interfaces (e.g., for HTTP fetching, URL building, image downloading) and dependency injection, decoupling core logic from infrastructure concerns.",
+  "target_components": [
+    "google_images_download/google_images_download.py",
+    "google_images_download/__init__.py",
+    "tests/test_google_images_download.py"
+  ],
+  "expected_architectural_change": "The single googleimagesdownload class will be decomposed into focused, loosely-coupled components: an HTTP client interface (e.g., HttpClient) with concrete implementations (e.g., UrllibClient, RequestsClient), a URL builder, a parser, and a downloader. The main class will become an orchestrator that depends on abstractions via constructor injection. This introduces bounded contexts and improves modularity without requiring a full architectural rewrite.",
+  "implementation_strategy": "1. Extract HTTP request logic into a new module (e.g., http_client.py) with an abstract base class (HttpClient). 2. Replace direct urllib/urllib2/httplib usage in googleimagesdownload.py with calls to HttpClient. 3. Introduce interfaces for parsing (e.g., HtmlParser) and directory/file operations (e.g., FileSystem). 4. Refactor googleimagesdownload.__init__ to accept dependencies as parameters. 5. Update tests to inject mock dependencies instead of relying on real network calls. 6. Gradually replace legacy imports (e.g., urllib2) with modern alternatives via adapter implementations.",
+  "risks": "Risk of over-engineering if abstractions are too generic; must be kept minimal and driven by actual usage patterns. Initial refactoring may temporarily increase complexity until decomposition stabilizes. Requires careful test coverage to avoid regressions during incremental changes."
+}

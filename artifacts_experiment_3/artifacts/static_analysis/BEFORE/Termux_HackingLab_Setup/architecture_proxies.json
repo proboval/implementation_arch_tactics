@@ -5,41 +5,41 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "install.py": [
-      "sys",
+      "subprocess",
       "os",
-      "subprocess"
+      "sys"
     ],
     "pkg_installer.py": [
       "colorama",
-      "sys",
-      "time",
       "os",
-      "subprocess"
+      "time",
+      "subprocess",
+      "sys"
     ],
     "python_modules.py": [
-      "sys",
-      "tqdm",
       "colorama",
-      "pkg_resources",
       "os",
-      "subprocess"
+      "pkg_resources",
+      "tqdm",
+      "subprocess",
+      "sys"
     ],
     "start.py": [
-      "sys",
-      "colorama",
-      "requests",
-      "time",
       "socket",
+      "colorama",
       "os",
-      "subprocess"
+      "time",
+      "subprocess",
+      "sys",
+      "requests"
     ],
     "tools_setup.py": [
-      "colorama",
-      "sys",
-      "time",
       "socket",
+      "colorama",
       "os",
-      "subprocess"
+      "time",
+      "subprocess",
+      "sys"
     ],
     "external\\check.py": []
   }

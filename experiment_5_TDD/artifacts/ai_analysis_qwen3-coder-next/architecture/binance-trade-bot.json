@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation of concerns into logical modules: models/, strategies/, api_server.py, auto_trader.py, database.py, etc.",
+    "Single executable entry point (crypto_trading.py / __main__.py) with no inter-process communication patterns",
+    "Shared in-memory data structures (SQLAlchemy ORM models) across modules, indicating tight coupling within process",
+    "No evidence of network-based service boundaries or distributed deployment (e.g., no gRPC, REST clients between core modules)",
+    "Database and API clients (BinanceAPIManager, Database) are tightly integrated with business logic (AutoTrader, strategies)",
+    "Strategies inherit from AutoTrader, indicating shared core behavior and tight coupling between layers",
+    "Single codebase with internal imports (relative imports within binance_trade_bot package) and no service discovery or external service contracts"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between strategies and core trading logic may reduce testability and flexibility",
+    "Monolithic deployment may limit scalability and independent evolution of components",
+    "Shared database session across modules increases risk of transactional anomalies and concurrency issues"
+  ]
+}

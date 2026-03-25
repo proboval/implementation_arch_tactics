@@ -1,0 +1,234 @@
+{
+  "python_files": 30,
+  "packages": 2,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 15.0,
+  "imports_graph": {
+    "fabfile.py": [
+      "fabric",
+      "errno",
+      "os",
+      "__future__"
+    ],
+    "setup.py": [
+      "os",
+      "__future__",
+      "io",
+      "coursera",
+      "setuptools",
+      "sys",
+      "subprocess"
+    ],
+    "coursera\\api.py": [
+      "requests",
+      "six",
+      "os",
+      "network",
+      "define",
+      "attr",
+      "re",
+      "urllib",
+      "cookies",
+      "collections",
+      "json",
+      "utils",
+      "base64",
+      "logging",
+      "time"
+    ],
+    "coursera\\commandline.py": [
+      "os",
+      "credentials",
+      "configargparse",
+      "utils",
+      "coursera",
+      "logging",
+      "sys"
+    ],
+    "coursera\\cookies.py": [
+      "requests",
+      "six",
+      "os",
+      "define",
+      "ssl",
+      "urllib3",
+      "utils",
+      "logging"
+    ],
+    "coursera\\coursera_dl.py": [
+      "extractors",
+      "define",
+      "re",
+      "coursera",
+      "workflow",
+      "requests",
+      "json",
+      "utils",
+      "distutils",
+      "logging",
+      "six",
+      "os",
+      "network",
+      "shutil",
+      "bs4",
+      "cookies",
+      "parallel",
+      "api",
+      "commandline",
+      "downloaders",
+      "time"
+    ],
+    "coursera\\credentials.py": [
+      "keyring",
+      "netrc",
+      "os",
+      "platform",
+      "getpass",
+      "logging"
+    ],
+    "coursera\\define.py": [
+      "getpass",
+      "pwd",
+      "os",
+      "tempfile"
+    ],
+    "coursera\\downloaders.py": [
+      "math",
+      "requests",
+      "six",
+      "os",
+      "__future__",
+      "time",
+      "logging",
+      "sys",
+      "subprocess"
+    ],
+    "coursera\\extractors.py": [
+      "network",
+      "define",
+      "api",
+      "json",
+      "utils",
+      "logging",
+      "abc"
+    ],
+    "coursera\\filtering.py": [
+      "logging",
+      "re",
+      "six"
+    ],
+    "coursera\\formatting.py": [
+      "define",
+      "os"
+    ],
+    "coursera\\network.py": [
+      "logging",
+      "requests",
+      "json"
+    ],
+    "coursera\\parallel.py": [
+      "logging",
+      "abc",
+      "multiprocessing",
+      "traceback"
+    ],
+    "coursera\\playlist.py": [
+      "os",
+      "glob"
+    ],
+    "coursera\\utils.py": [
+      "random",
+      "xml",
+      "datetime",
+      "six",
+      "os",
+      "define",
+      "urlparse",
+      "re",
+      "errno",
+      "bs4",
+      "urllib",
+      "json",
+      "logging",
+      "sys",
+      "string",
+      "time"
+    ],
+    "coursera\\workflow.py": [
+      "requests",
+      "os",
+      "define",
+      "logging",
+      "re",
+      "formatting",
+      "playlist",
+      "utils",
+      "filtering",
+      "codecs",
+      "abc",
+      "subprocess",
+      "time"
+    ],
+    "coursera\\__init__.py": [],
+    "tests\\test_tactic.py": [
+      "abc",
+      "inspect",
+      "pytest",
+      "coursera"
+    ],
+    "coursera\\test\\test_api.py": [
+      "requests",
+      "mock",
+      "os",
+      "json",
+      "pytest",
+      "coursera"
+    ],
+    "coursera\\test\\test_commandline.py": [
+      "coursera"
+    ],
+    "coursera\\test\\test_cookies.py": [
+      "requests",
+      "six",
+      "os",
+      "coursera"
+    ],
+    "coursera\\test\\test_credentials.py": [
+      "getpass",
+      "pytest",
+      "os",
+      "coursera"
+    ],
+    "coursera\\test\\test_downloaders.py": [
+      "time",
+      "requests",
+      "pytest",
+      "coursera"
+    ],
+    "coursera\\test\\test_filter.py": [
+      "coursera"
+    ],
+    "coursera\\test\\test_parsing.py": [
+      "six",
+      "mock",
+      "os",
+      "json",
+      "pytest",
+      "coursera"
+    ],
+    "coursera\\test\\test_workflow.py": [
+      "pytest",
+      "requests",
+      "os",
+      "coursera"
+    ],
+    "coursera\\test\\utils.py": [
+      "six",
+      "os",
+      "io",
+      "re",
+      "coursera"
+    ],
+    "coursera\\test\\__init__.py": []
+  }
+}

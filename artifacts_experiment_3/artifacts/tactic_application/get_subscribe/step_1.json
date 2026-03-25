@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "src/logger.py",
-  "content": "import os\nimport time\n\n\ndef write_log(content, level=\"INFO\", log_dir=\"./log\"):\n    \"\"\"Write a log entry to a monthly log file.\n    \n    Args:\n        content (str): Log message content.\n        level (str): Log level (e.g., 'INFO', 'WARN', 'ERROR').\n        log_dir (str): Directory to store log files.\n    \"\"\"\n    os.makedirs(log_dir, exist_ok=True)\n    \n    date_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))\n    update_log = f\"[{date_str}] [{level}] {content}\\n\"\n    print(update_log)\n    \n    log_filename = f\"{log_dir}/{time.strftime('%Y-%m', time.localtime(time.time()))}-update.log\"\n    with open(log_filename, 'a', encoding=\"utf-8\") as f:\n        f.write(update_log)\n"
-}

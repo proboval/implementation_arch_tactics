@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core modules — specifically, context.py, variable.py, and regexp.py — as evidenced by circular imports (e.g., variable.py imports from context.py and regexp.py; regexp.py imports gixy.core.sre_parse.sre_parse; context.py imports from utils.py which is minimal but context is heavily used across modules). The static analysis confirms 'C1' and 'C2' factors (likely cohesion and coupling issues), and the architecture risks explicitly state: 'Tight coupling between core modules (e.g., variable ↔ context ↔ regexp) may hinder independent evolution'. This coupling manifests in real code: variable.py imports get_context from context.py and Regexp; context.py imports from utils; regexp.py imports sre_parse; and plugins directly import from multiple core modules (e.g., ssrf.py imports get_context and compile_script). This makes changes risky and increases ripple effects. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces, dependency injection) to decouple these core components, improving testability and modularity.",
+  "target_components": [
+    "gixy/core/context.py",
+    "gixy/core/variable.py",
+    "gixy/core/regexp.py",
+    "gixy/core/utils.py",
+    "gixy/plugins/plugin.py",
+    "gixy/core/plugins_manager.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces (e.g., IVariableContext, IRegexpProvider) and dependency injection to break direct imports between core modules. For example, Variable could accept a context provider interface instead of importing get_context directly; Context could expose a minimal interface for variable registration without tight coupling to Regexp. Plugins would depend on abstractions (e.g., IVariable, IContext) rather than concrete implementations, reducing ripple effects when core logic changes.",
+  "implementation_strategy": "1. Define minimal interfaces for core services (e.g., IContext, IVariable, IRegexp) in gixy/core/interfaces.py. 2. Refactor variable.py to accept a context provider via constructor or setter instead of importing get_context. 3. Refactor context.py to expose only required methods via interface, removing direct dependencies on regexp unless strictly necessary. 4. Update plugins_manager.py to inject dependencies via factory or DI container. 5. Update plugins (e.g., ssrf.py, origins.py) to depend on interfaces, not concrete classes. 6. Add static checks (e.g., import cycle detection) to enforce decoupling.",
+  "risks": "Risk of over-engineering if interfaces are introduced prematurely; however, given the explicit coupling risk in the architecture description and the modular monolith structure (where interfaces are lightweight), this is low-risk and incremental. Initial refactoring may require updating many files, but changes are localized and testable."
+}

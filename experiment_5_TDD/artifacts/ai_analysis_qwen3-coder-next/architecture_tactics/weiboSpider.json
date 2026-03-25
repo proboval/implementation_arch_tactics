@@ -1,0 +1,26 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between modules, as evidenced by the imports graph: parser modules (e.g., comment_parser.py, page_parser.py) directly import downloader and writer modules (e.g., comment_parser imports parser, but page_parser imports comment_parser and mblog_picAll_parser, and parser/util.py imports requests/aiohttp directly), and writer modules (e.g., kafka_writer, mongo_writer) import each other's dependencies (e.g., kafka_writer imports sys, logging, json — but more critically, all writers import the base writer.py and each other via __init__.py). The spider.py orchestrator directly imports and instantiates concrete downloader/parser/writer classes (e.g., from .downloader import AvatarPictureDownloader), creating ripple effects when adding new implementations. This violates separation of concerns and increases the risk of cascading changes. Reduced Coupling directly addresses this by introducing interfaces (abstractions) and dependency injection, enabling modules to depend on abstractions (e.g., Downloader, Parser, Writer) rather than concrete implementations, thus improving testability and reducing ripple effects.",
+  "target_components": [
+    "weibo_spider/spider.py",
+    "weibo_spider/parser/comment_parser.py",
+    "weibo_spider/parser/page_parser.py",
+    "weibo_spider/parser/util.py",
+    "weibo_spider/writer/kafka_writer.py",
+    "weibo_spider/writer/mongo_writer.py",
+    "weibo_spider/downloader/video_downloader.py",
+    "weibo_spider/downloader/img_downloader.py",
+    "weibo_spider/parser/parser.py",
+    "weibo_spider/writer/writer.py",
+    "weibo_spider/downloader/downloader.py"
+  ],
+  "expected_architectural_change": "Introduce dependency injection via constructor or factory methods in spider.py and parser/util.py to accept Downloader, Parser, and Writer instances as dependencies rather than instantiating concrete classes directly. Refactor parser/util.py to avoid direct HTTP client imports (requests/aiohttp) by injecting HTTP clients or using adapter interfaces. Ensure modules depend only on abstract base classes (Downloader, Parser, Writer) and shared domain models (User, Weibo), not concrete implementations. This will transform direct module-to-module imports into dependency inversion: concrete modules implement abstractions, and the orchestrator (spider.py) composes them at runtime.",
+  "implementation_strategy": "1. Refactor spider.py to accept Downloader, Parser, and Writer instances via constructor or factory instead of importing and instantiating concrete classes directly. 2. Update parser/util.py to remove direct requests/aiohttp imports; instead, inject HTTP client interfaces (e.g., via a new HttpClient interface) or defer HTTP logic to downloader modules. 3. Ensure parser modules (e.g., comment_parser.py, page_parser.py) no longer import downloader/writer modules — they should only depend on parser.Parser and shared models. 4. Add factory methods or DI container to compose concrete implementations (e.g., MongoWriter, PageParser) from configuration. 5. Update tests to mock abstractions, not concrete classes. This can be implemented incrementally: start with spider.py, then parser/util.py, then inter-parser dependencies.",
+  "risks": "Risk of over-engineering if DI is applied too broadly; however, given the clear module boundaries (downloader/, parser/, writer/) and existing abstract base classes, this is a low-risk, high-impact refactor. Minimal runtime overhead is expected, and the tactic aligns with the existing hexagonal alternative mentioned in the architecture description. No breaking changes to public APIs if abstractions remain stable."
+}

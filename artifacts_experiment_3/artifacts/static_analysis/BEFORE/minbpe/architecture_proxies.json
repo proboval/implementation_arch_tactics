@@ -5,9 +5,9 @@
   "avg_files_per_package": 4.0,
   "imports_graph": {
     "train.py": [
+      "minbpe",
       "os",
-      "time",
-      "minbpe"
+      "time"
     ],
     "minbpe\\base.py": [
       "unicodedata"
@@ -16,19 +16,19 @@
       "base"
     ],
     "minbpe\\gpt4.py": [
-      "regex",
       "tiktoken",
+      "regex",
       "base"
     ],
     "minbpe\\regex.py": [
-      "regex",
-      "base"
+      "base",
+      "regex"
     ],
     "minbpe\\__init__.py": [
+      "base",
       "regex",
       "basic",
-      "gpt4",
-      "base"
+      "gpt4"
     ],
     "tests\\__init__.py": []
   }

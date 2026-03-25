@@ -1,0 +1,846 @@
+{
+  "python_files": 200,
+  "packages": 21,
+  "max_directory_depth": 8,
+  "avg_files_per_package": 9.523809523809524,
+  "imports_graph": {
+    "main.py": [
+      "webapp2"
+    ],
+    "setup.py": [
+      "setuptools"
+    ],
+    "situation\\encoding.py": [
+      "datetime",
+      "google",
+      "json",
+      "__future__"
+    ],
+    "situation\\mailer.py": [
+      "base64",
+      "settings",
+      "urlparse",
+      "google"
+    ],
+    "situation\\models.py": [
+      "google",
+      "__future__"
+    ],
+    "situation\\settings.py": [],
+    "situation\\sms.py": [
+      "settings",
+      "twilio"
+    ],
+    "situation\\tweeter.py": [
+      "tweepy",
+      "logging",
+      "models",
+      "__future__"
+    ],
+    "situation\\__init__.py": [],
+    "tests\\test_librato_uptime.py": [
+      "mock",
+      "os",
+      "google",
+      "situation",
+      "unittest",
+      "json",
+      "sys"
+    ],
+    "tests\\test_sms.py": [
+      "twilio",
+      "os",
+      "google",
+      "situation",
+      "unittest",
+      "sys"
+    ],
+    "tests\\test_subscription.py": [
+      "webapp2",
+      "mock",
+      "os",
+      "google",
+      "situation",
+      "unittest",
+      "sys"
+    ],
+    "tests\\test_tactic.py": [
+      "situation",
+      "inspect",
+      "pytest"
+    ],
+    "tests\\test_twitter.py": [
+      "os",
+      "google",
+      "situation",
+      "unittest",
+      "sys"
+    ],
+    "tests\\__init__.py": [
+      "sys",
+      "__future__"
+    ],
+    "situation\\tweepy\\cursor.py": [
+      "error"
+    ],
+    "situation\\tweepy\\error.py": [],
+    "situation\\tweepy\\models.py": [
+      "error",
+      "utils"
+    ],
+    "situation\\tweepy\\oauth.py": [
+      "random",
+      "sha",
+      "hashlib",
+      "urllib",
+      "hmac",
+      "cgi",
+      "urlparse",
+      "binascii",
+      "time"
+    ],
+    "situation\\tweepy\\__init__.py": [
+      "streaming",
+      "auth",
+      "httplib",
+      "api",
+      "error",
+      "cursor",
+      "cache",
+      "models"
+    ],
+    "situation\\uptime\\graphite.py": [
+      "logging",
+      "urllib2",
+      "json",
+      "__future__"
+    ],
+    "situation\\uptime\\librato.py": [
+      "__future__",
+      "urllib",
+      "json",
+      "urllib2",
+      "logging",
+      "time"
+    ],
+    "situation\\uptime\\__init__.py": [
+      "__future__"
+    ],
+    "venv\\bin\\activate_this.py": [
+      "site",
+      "sys",
+      "os"
+    ],
+    "venv\\bin\\unit2.py": [
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site.py": [
+      "usercustomize",
+      "sets",
+      "builtins",
+      "os",
+      "sitecustomize",
+      "pydoc",
+      "textwrap",
+      "codecs",
+      "__builtin__",
+      "distutils",
+      "sys",
+      "locale",
+      "encodings"
+    ],
+    "venv\\lib\\python2.7\\distutils\\__init__.py": [
+      "os",
+      "opcode",
+      "imp",
+      "distutils",
+      "warnings",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\six.py": [
+      "builtins",
+      "operator",
+      "types",
+      "io",
+      "sys",
+      "StringIO"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\easy_install.py": [
+      "setuptools"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\site.py": [
+      "sys",
+      "imp",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\httplib2\\iri2uri.py": [
+      "urlparse",
+      "unittest"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\httplib2\\socks.py": [
+      "base64",
+      "socket",
+      "sys",
+      "struct"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\twiml.py": [
+      "xml",
+      "six"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\util.py": [
+      "twilio",
+      "six",
+      "hashlib",
+      "hmac",
+      "base64",
+      "time"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\__init__.py": [],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\collector.py": [
+      "sys",
+      "unittest2",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\compatibility.py": [
+      "sys",
+      "os",
+      "functools"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\result.py": [
+      "unittest2",
+      "unittest",
+      "traceback",
+      "sys",
+      "StringIO"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\runner.py": [
+      "unittest",
+      "sys",
+      "unittest2",
+      "time"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\signals.py": [
+      "weakref",
+      "signal",
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\util.py": [],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\__init__.py": [
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\__main__.py": [
+      "sys",
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\archive_util.py": [
+      "os",
+      "shutil",
+      "distutils",
+      "zipfile",
+      "pkg_resources",
+      "tarfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\extension.py": [
+      "distutils",
+      "setuptools",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\script template (dev).py": [
+      "pkg_resources"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\script template.py": [
+      "pkg_resources"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\__init__.py": [
+      "os",
+      "distutils",
+      "setuptools",
+      "sys",
+      "fnmatch"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\_markerlib\\markers.py": [
+      "ast",
+      "os",
+      "weakref",
+      "platform",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\_markerlib\\__init__.py": [
+      "ast",
+      "_markerlib"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\bdist_rpm.py": [
+      "distutils",
+      "sys",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\bdist_wininst.py": [
+      "distutils",
+      "sys",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\build_ext.py": [
+      "dl",
+      "os",
+      "distutils",
+      "Pyrex",
+      "setuptools",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\build_py.py": [
+      "os",
+      "glob",
+      "lib2to3",
+      "distutils",
+      "setuptools",
+      "sys",
+      "fnmatch"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\develop.py": [
+      "os",
+      "distutils",
+      "setuptools",
+      "sys",
+      "pkg_resources",
+      "glob"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\egg_info.py": [
+      "bdist_egg",
+      "setopt",
+      "os",
+      "re",
+      "sdist",
+      "distutils",
+      "setuptools",
+      "sys",
+      "pkg_resources",
+      "time"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\install.py": [
+      "distutils",
+      "setuptools",
+      "sys",
+      "glob"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\install_egg_info.py": [
+      "os",
+      "shutil",
+      "distutils",
+      "setuptools",
+      "pkg_resources"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\install_lib.py": [
+      "distutils",
+      "setuptools",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\register.py": [
+      "distutils"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\rotate.py": [
+      "distutils",
+      "setuptools",
+      "os",
+      "glob"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\saveopts.py": [
+      "distutils",
+      "setuptools",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\sdist.py": [
+      "os",
+      "re",
+      "distutils",
+      "sys",
+      "pkg_resources",
+      "glob"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\setopt.py": [
+      "distutils",
+      "setuptools",
+      "ConfigParser",
+      "os"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\test.py": [
+      "unittest",
+      "distutils",
+      "setuptools",
+      "sys",
+      "pkg_resources"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\command\\__init__.py": [
+      "distutils",
+      "setuptools",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\py26compat.py": [
+      "unittest"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\server.py": [
+      "SimpleHTTPServer",
+      "threading",
+      "urllib2",
+      "BaseHTTPServer",
+      "sys",
+      "time"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_bdist_egg.py": [
+      "os",
+      "site",
+      "shutil",
+      "re",
+      "unittest",
+      "distutils",
+      "setuptools",
+      "sys",
+      "StringIO",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_build_ext.py": [
+      "os",
+      "shutil",
+      "unittest",
+      "distutils",
+      "setuptools",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_dist_info.py": [
+      "ast",
+      "os",
+      "shutil",
+      "unittest",
+      "textwrap",
+      "setuptools",
+      "pkg_resources",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_easy_install.py": [
+      "os",
+      "site",
+      "shutil",
+      "logging",
+      "unittest",
+      "StringIO",
+      "textwrap",
+      "setuptools",
+      "distutils",
+      "urlparse",
+      "sys",
+      "pkg_resources",
+      "tarfile",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_markerlib.py": [
+      "ast",
+      "os",
+      "unittest",
+      "_markerlib",
+      "setuptools"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_sandbox.py": [
+      "os",
+      "shutil",
+      "unittest",
+      "win32com",
+      "setuptools",
+      "sys",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_test.py": [
+      "os",
+      "site",
+      "shutil",
+      "unittest",
+      "distutils",
+      "setuptools",
+      "sys",
+      "StringIO",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\test_upload_docs.py": [
+      "os",
+      "site",
+      "shutil",
+      "unittest",
+      "zipfile",
+      "setuptools",
+      "sys",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\distribute-0.6.34-py2.7.egg\\setuptools\\tests\\__init__.py": [
+      "os",
+      "unittest",
+      "email",
+      "doctest",
+      "distutils",
+      "setuptools",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\basecommand.py": [
+      "os",
+      "time",
+      "socket",
+      "traceback",
+      "optparse",
+      "sys",
+      "pip",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\baseparser.py": [
+      "os",
+      "textwrap",
+      "distutils",
+      "sys",
+      "pip",
+      "pkg_resources",
+      "optparse"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\cmdoptions.py": [
+      "optparse"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\download.py": [
+      "mimetypes",
+      "os",
+      "tempfile",
+      "hashlib",
+      "re",
+      "shutil",
+      "socket",
+      "getpass",
+      "sys",
+      "pip",
+      "cgi"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\exceptions.py": [
+      "textwrap"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\index.py": [
+      "mimetypes",
+      "random",
+      "os",
+      "threading",
+      "dummy_threading",
+      "socket",
+      "re",
+      "string",
+      "zlib",
+      "posixpath",
+      "gzip",
+      "sys",
+      "pkg_resources",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\locations.py": [
+      "os",
+      "site",
+      "getpass",
+      "sys",
+      "pip",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\log.py": [
+      "logging",
+      "sys",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\req.py": [
+      "os",
+      "shutil",
+      "re",
+      "email",
+      "imp",
+      "distutils",
+      "zipfile",
+      "sys",
+      "pip",
+      "pkg_resources",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\runner.py": [
+      "sys",
+      "os",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\status_codes.py": [],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\util.py": [
+      "os",
+      "termios",
+      "shutil",
+      "re",
+      "stat",
+      "fcntl",
+      "posixpath",
+      "textwrap",
+      "struct",
+      "zipfile",
+      "sys",
+      "pip",
+      "pkg_resources",
+      "tarfile",
+      "subprocess"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\__init__.py": [
+      "os",
+      "re",
+      "optparse",
+      "sys",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\__main__.py": [
+      "runner",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\backwardcompat\\socket_create_connection.py": [
+      "socket",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\backwardcompat\\ssl_match_hostname.py": [
+      "re"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\backwardcompat\\__init__.py": [
+      "xmlrpc",
+      "http",
+      "socket",
+      "ssl",
+      "urllib",
+      "ConfigParser",
+      "email",
+      "urlparse",
+      "sys",
+      "Queue",
+      "pip",
+      "xmlrpclib",
+      "imp",
+      "io",
+      "queue",
+      "httplib",
+      "cStringIO",
+      "distutils",
+      "functools",
+      "site",
+      "os",
+      "configparser",
+      "urllib2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\bundle.py": [
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\completion.py": [
+      "sys",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\freeze.py": [
+      "re",
+      "sys",
+      "pkg_resources",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\help.py": [
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\install.py": [
+      "os",
+      "tempfile",
+      "shutil",
+      "setuptools",
+      "sys",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\list.py": [
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\search.py": [
+      "textwrap",
+      "distutils",
+      "sys",
+      "pkg_resources",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\show.py": [
+      "pkg_resources",
+      "os",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\uninstall.py": [
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\unzip.py": [
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\zip.py": [
+      "os",
+      "shutil",
+      "re",
+      "zipfile",
+      "sys",
+      "fnmatch",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\commands\\__init__.py": [
+      "difflib",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\vcs\\bazaar.py": [
+      "re",
+      "pip",
+      "os",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\vcs\\git.py": [
+      "re",
+      "pip",
+      "os",
+      "tempfile"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\vcs\\mercurial.py": [
+      "os",
+      "tempfile",
+      "re",
+      "sys",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\vcs\\subversion.py": [
+      "re",
+      "os",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\pip-1.3.1-py2.7.egg\\pip\\vcs\\__init__.py": [
+      "shutil",
+      "os",
+      "pip"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\compat\\__init__.py": [
+      "itertools",
+      "urlparse",
+      "six",
+      "urllib"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\jwt\\__init__.py": [
+      "six",
+      "hashlib",
+      "hmac",
+      "json",
+      "simplejson",
+      "base64"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\__init__.py": [
+      "logging",
+      "os",
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\accounts.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\applications.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\base.py": [
+      "logging",
+      "six",
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\caller_ids.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\calls.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\conferences.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\connect_apps.py": [
+      "twilio",
+      "six"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\imports.py": [
+      "django",
+      "json",
+      "simplejson",
+      "httplib2",
+      "urlparse",
+      "cgi"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\notifications.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\phone_numbers.py": [
+      "re",
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\queues.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\recordings.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\sandboxes.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\sms_messages.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\usage.py": [
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\util.py": [
+      "datetime",
+      "six",
+      "email"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\twilio\\rest\\resources\\__init__.py": [
+      "logging",
+      "re",
+      "datetime",
+      "twilio"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\dummy.py": [],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_break.py": [
+      "os",
+      "weakref",
+      "unittest2",
+      "cStringIO",
+      "signal",
+      "gc"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_discovery.py": [
+      "os",
+      "re",
+      "unittest2",
+      "signal",
+      "sys"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_functiontestcase.py": [
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_new_tests.py": [
+      "cStringIO",
+      "unittest2",
+      "unittest"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_program.py": [
+      "cStringIO",
+      "sys",
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_runner.py": [
+      "cStringIO",
+      "pickle",
+      "unittest2",
+      "StringIO"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_setups.py": [
+      "cStringIO",
+      "sys",
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_skipping.py": [
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\test_suite.py": [
+      "sys",
+      "unittest2"
+    ],
+    "venv\\lib\\python2.7\\site-packages\\unittest2\\test\\__init__.py": []
+  }
+}

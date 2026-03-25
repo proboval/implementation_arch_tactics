@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a monolithic Python script (LinkedInt.py) with high average fan-out (15.0), zero packages, and a maintainability index of 22.05 — all indicating severe tight coupling between I/O (requests, urllib), business logic (scraping, authentication), and orchestration (main script flow). Static analysis confirms factors C1 (high complexity), C2 (low cohesion), and A3 (lack of modularity). The flat structure (max_directory_depth: 1, 0 packages) means all functionality is interwoven in one file, making changes risky and testing nearly impossible. Reduced Coupling directly addresses this by decoupling responsibilities (e.g., separating HTTP client, parser, and orchestrator), enabling isolated modification and testing.",
+  "target_components": [
+    "LinkedInt.py"
+  ],
+  "expected_architectural_change": "The single-file script will be refactored into a minimal modular monolith: distinct modules for authentication, HTTP client, data parsing, and orchestration (e.g., auth.py, client.py, parser.py, main.py), each with clear interfaces and minimal dependencies. This reduces ripple effects and enables independent evolution of components.",
+  "implementation_strategy": "1. Extract HTTP interaction logic (e.g., session management, requests) into a client module (client.py). 2. Isolate HTML parsing logic (BeautifulSoup usage) into a parser module (parser.py). 3. Encapsulate authentication state and flow into auth.py. 4. Refactor top-level functions to depend on abstractions (e.g., interfaces or duck-typed protocols) rather than concrete imports. 5. Introduce a minimal main.py to orchestrate modules. This can be done incrementally—e.g., start with client.py and parser.py—without rewriting the entire system.",
+  "risks": "Risk of over-engineering if abstraction layers are added prematurely; however, given the current low maintainability and high coupling, even minimal decoupling (e.g., separating client and parser) yields measurable maintainability gains. No major negative impacts expected beyond modest initial refactoring effort."
+}

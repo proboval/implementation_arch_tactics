@@ -5,68 +5,68 @@
   "avg_files_per_package": 29.6,
   "imports_graph": {
     "setup.py": [
-      "sys",
-      "os",
       "re",
-      "setuptools"
+      "setuptools",
+      "os",
+      "sys"
     ],
     ".dev\\gather_models.py": [
-      "mmcv",
       "json",
-      "os",
-      "argparse",
-      "torch",
+      "shutil",
       "subprocess",
+      "torch",
+      "os",
       "glob",
-      "shutil"
+      "argparse",
+      "mmcv"
     ],
     ".dev\\upload_modelzoo.py": [
-      "os",
+      "oss2",
       "argparse",
-      "oss2"
+      "os"
     ],
     "demo\\image_demo.py": [
       "mmseg",
       "argparse"
     ],
     "docs\\conf.py": [
-      "sys",
+      "subprocess",
       "os",
-      "subprocess"
+      "sys"
     ],
     "docs\\stat.py": [
-      "re",
-      "os",
       "numpy",
+      "re",
       "functools",
+      "os",
       "glob"
     ],
     "mmseg\\version.py": [],
     "mmseg\\__init__.py": [
-      "mmcv",
-      "version"
+      "version",
+      "mmcv"
     ],
     "tests\\test_config.py": [
-      "mmcv",
-      "os",
+      "numpy",
       "mmseg",
       "torch",
+      "os",
       "glob",
-      "numpy"
+      "mmcv"
     ],
     "tests\\test_eval_hook.py": [
-      "mmcv",
-      "tempfile",
       "pytest",
-      "logging",
-      "torch",
+      "tempfile",
       "mmseg",
-      "unittest"
+      "unittest",
+      "torch",
+      "logging",
+      "mmcv"
     ],
     "tests\\test_inference.py": [
-      "mmcv",
+      "mmseg",
       "os",
-      "mmseg"
+      "mmcv"
     ],
     "tests\\test_metrics.py": [
       "mmseg",
@@ -76,56 +76,56 @@
       "torch"
     ],
     "tests\\test_sampler.py": [
+      "mmseg",
       "pytest",
-      "torch",
-      "mmseg"
+      "torch"
     ],
     "tools\\benchmark.py": [
-      "mmcv",
-      "time",
       "mmseg",
+      "torch",
+      "time",
       "argparse",
-      "torch"
+      "mmcv"
     ],
     "tools\\get_flops.py": [
-      "mmcv",
       "mmseg",
-      "argparse"
+      "argparse",
+      "mmcv"
     ],
     "tools\\print_config.py": [
-      "mmcv",
-      "argparse"
+      "argparse",
+      "mmcv"
     ],
     "tools\\publish_model.py": [
-      "argparse",
+      "subprocess",
       "torch",
-      "subprocess"
+      "argparse"
     ],
     "tools\\pytorch2onnx.py": [
-      "mmcv",
-      "mmseg",
-      "argparse",
       "onnxruntime",
+      "numpy",
+      "onnx",
+      "mmseg",
       "torch",
       "functools",
-      "numpy",
-      "onnx"
+      "argparse",
+      "mmcv"
     ],
     "tools\\test.py": [
-      "mmcv",
-      "os",
       "mmseg",
+      "torch",
+      "os",
       "argparse",
-      "torch"
+      "mmcv"
     ],
     "tools\\train.py": [
       "copy",
-      "mmcv",
-      "time",
-      "os",
       "mmseg",
+      "torch",
+      "os",
+      "time",
       "argparse",
-      "torch"
+      "mmcv"
     ],
     "configs\\ann\\ann_r101-d8_512x1024_40k_cityscapes.py": [],
     "configs\\ann\\ann_r101-d8_512x1024_80k_cityscapes.py": [],
@@ -567,133 +567,133 @@
     "configs\\_base_\\schedules\\schedule_40k.py": [],
     "configs\\_base_\\schedules\\schedule_80k.py": [],
     "mmseg\\apis\\inference.py": [
+      "mmseg",
+      "torch",
       "matplotlib",
+      "mmcv"
+    ],
+    "mmseg\\apis\\test.py": [
+      "numpy",
+      "shutil",
+      "tempfile",
+      "torch",
+      "os",
+      "pickle",
+      "mmcv"
+    ],
+    "mmseg\\apis\\train.py": [
+      "warnings",
+      "numpy",
+      "random",
       "mmseg",
       "torch",
       "mmcv"
     ],
-    "mmseg\\apis\\test.py": [
-      "mmcv",
-      "tempfile",
-      "os",
-      "torch",
-      "pickle",
-      "numpy",
-      "shutil"
-    ],
-    "mmseg\\apis\\train.py": [
-      "mmcv",
-      "mmseg",
-      "torch",
-      "warnings",
-      "random",
-      "numpy"
-    ],
     "mmseg\\apis\\__init__.py": [
+      "test",
       "inference",
-      "train",
-      "test"
+      "train"
     ],
     "mmseg\\core\\__init__.py": [
-      "utils",
       "evaluation",
-      "seg"
+      "seg",
+      "utils"
     ],
     "mmseg\\datasets\\ade.py": [
       "custom",
       "builder"
     ],
     "mmseg\\datasets\\builder.py": [
-      "copy",
-      "resource",
-      "dataset_wrappers",
-      "mmcv",
       "platform",
-      "torch",
+      "numpy",
+      "copy",
       "random",
+      "torch",
       "functools",
-      "numpy"
+      "dataset_wrappers",
+      "resource",
+      "mmcv"
     ],
     "mmseg\\datasets\\chase_db1.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\cityscapes.py": [
-      "PIL",
-      "builder",
-      "mmcv",
-      "tempfile",
       "custom",
+      "PIL",
+      "numpy",
+      "tempfile",
+      "builder",
       "cityscapesscripts",
       "os",
-      "numpy"
+      "mmcv"
     ],
     "mmseg\\datasets\\custom.py": [
+      "numpy",
       "terminaltables",
       "pipelines",
       "builder",
-      "mmcv",
-      "os",
       "mmseg",
       "torch",
       "functools",
-      "numpy"
+      "os",
+      "mmcv"
     ],
     "mmseg\\datasets\\dataset_wrappers.py": [
       "torch",
       "builder"
     ],
     "mmseg\\datasets\\drive.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\hrf.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\pascal_context.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\stare.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\voc.py": [
+      "builder",
       "os",
-      "custom",
-      "builder"
+      "custom"
     ],
     "mmseg\\datasets\\__init__.py": [
-      "chase_db1",
-      "dataset_wrappers",
-      "builder",
-      "ade",
-      "drive",
-      "hrf",
       "custom",
+      "drive",
       "voc",
-      "stare",
       "cityscapes",
-      "pascal_context"
+      "pascal_context",
+      "stare",
+      "builder",
+      "dataset_wrappers",
+      "hrf",
+      "ade",
+      "chase_db1"
     ],
     "mmseg\\models\\builder.py": [
-      "mmcv",
       "torch",
-      "warnings"
+      "warnings",
+      "mmcv"
     ],
     "mmseg\\models\\__init__.py": [
-      "builder",
-      "decode_heads",
-      "segmentors",
+      "backbones",
       "losses",
-      "necks",
-      "backbones"
+      "decode_heads",
+      "builder",
+      "segmentors",
+      "necks"
     ],
     "mmseg\\ops\\encoding.py": [
       "torch"
@@ -703,38 +703,38 @@
       "warnings"
     ],
     "mmseg\\ops\\__init__.py": [
-      "wrappers",
-      "encoding"
+      "encoding",
+      "wrappers"
     ],
     "mmseg\\utils\\collect_env.py": [
-      "mmcv",
-      "mmseg"
+      "mmseg",
+      "mmcv"
     ],
     "mmseg\\utils\\logger.py": [
-      "mmcv",
-      "logging"
+      "logging",
+      "mmcv"
     ],
     "mmseg\\utils\\__init__.py": [
-      "logger",
-      "collect_env"
+      "collect_env",
+      "logger"
     ],
     "mmseg\\core\\evaluation\\class_names.py": [
       "mmcv"
     ],
     "mmseg\\core\\evaluation\\eval_hooks.py": [
-      "mmcv",
-      "os",
       "mmseg",
-      "torch"
+      "torch",
+      "os",
+      "mmcv"
     ],
     "mmseg\\core\\evaluation\\metrics.py": [
-      "mmcv",
-      "numpy"
+      "numpy",
+      "mmcv"
     ],
     "mmseg\\core\\evaluation\\__init__.py": [
       "metrics",
-      "class_names",
-      "eval_hooks"
+      "eval_hooks",
+      "class_names"
     ],
     "mmseg\\core\\seg\\builder.py": [
       "mmcv"
@@ -751,430 +751,430 @@
       "abc"
     ],
     "mmseg\\core\\seg\\sampler\\ohem_pixel_sampler.py": [
-      "base_pixel_sampler",
       "torch",
-      "builder"
+      "builder",
+      "base_pixel_sampler"
     ],
     "mmseg\\core\\seg\\sampler\\__init__.py": [
-      "base_pixel_sampler",
-      "ohem_pixel_sampler"
+      "ohem_pixel_sampler",
+      "base_pixel_sampler"
     ],
     "mmseg\\datasets\\pipelines\\compose.py": [
-      "mmcv",
       "collections",
-      "builder"
+      "builder",
+      "mmcv"
     ],
     "mmseg\\datasets\\pipelines\\formating.py": [
+      "numpy",
       "collections",
       "builder",
-      "mmcv",
       "torch",
-      "numpy"
+      "mmcv"
     ],
     "mmseg\\datasets\\pipelines\\loading.py": [
-      "mmcv",
-      "os",
+      "builder",
       "numpy",
-      "builder"
+      "os",
+      "mmcv"
     ],
     "mmseg\\datasets\\pipelines\\test_time_aug.py": [
-      "mmcv",
-      "compose",
       "warnings",
-      "builder"
+      "builder",
+      "compose",
+      "mmcv"
     ],
     "mmseg\\datasets\\pipelines\\transforms.py": [
-      "mmcv",
       "numpy",
-      "builder"
+      "builder",
+      "mmcv"
     ],
     "mmseg\\datasets\\pipelines\\__init__.py": [
+      "loading",
+      "test_time_aug",
       "compose",
       "formating",
-      "transforms",
-      "loading",
-      "test_time_aug"
+      "transforms"
     ],
     "mmseg\\models\\backbones\\cgnet.py": [
-      "mmcv",
       "mmseg",
       "torch",
-      "builder"
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\fast_scnn.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
       "mmseg",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\helpers.py": [
-      "sys",
-      "urllib",
-      "zipfile",
-      "errno",
-      "math",
-      "re",
-      "os",
-      "logging",
       "warnings",
-      "torch"
+      "sys",
+      "re",
+      "errno",
+      "torch",
+      "os",
+      "zipfile",
+      "math",
+      "logging",
+      "urllib"
     ],
     "mmseg\\models\\backbones\\hrnet.py": [
       "builder",
-      "mmcv",
+      "resnet",
       "mmseg",
       "torch",
-      "resnet"
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\mobilenet_v2.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
+      "torch",
       "logging",
-      "torch"
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\mobilenet_v3.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
+      "torch",
       "logging",
-      "torch"
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\pvt.py": [
-      "timm",
       "builder",
-      "mmcv",
+      "timm",
       "mmseg",
       "torch",
-      "functools"
+      "functools",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\resnest.py": [
-      "builder",
-      "mmcv",
-      "math",
       "utils",
+      "builder",
+      "resnet",
       "torch",
-      "resnet"
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\resnet.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
       "mmseg",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\resnext.py": [
-      "builder",
-      "mmcv",
-      "math",
       "utils",
-      "resnet"
+      "builder",
+      "resnet",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\unet.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
       "mmseg",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\vit.py": [
-      "helpers",
       "builder",
-      "mmcv",
-      "math",
+      "layers",
       "torch",
       "functools",
-      "layers"
+      "helpers",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\vit_mla.py": [
-      "helpers",
       "builder",
-      "mmcv",
-      "math",
+      "layers",
       "torch",
       "functools",
-      "layers"
+      "helpers",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\backbones\\__init__.py": [
-      "resnext",
-      "hrnet",
-      "resnest",
-      "mobilenet_v2",
-      "vit",
-      "vit_mla",
-      "unet",
-      "fast_scnn",
-      "mobilenet_v3",
       "pvt",
+      "mobilenet_v2",
+      "resnest",
+      "resnet",
+      "vit",
+      "unet",
       "cgnet",
-      "resnet"
+      "fast_scnn",
+      "resnext",
+      "mobilenet_v3",
+      "hrnet",
+      "vit_mla"
     ],
     "mmseg\\models\\decode_heads\\ann_head.py": [
-      "decode_head",
-      "builder",
-      "mmcv",
       "utils",
-      "torch"
+      "builder",
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\apc_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\aspp_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\cascade_decode_head.py": [
       "abc",
       "decode_head"
     ],
     "mmseg\\models\\decode_heads\\cc_head.py": [
-      "mmcv",
-      "fcn_head",
       "torch",
-      "builder"
+      "fcn_head",
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\da_head.py": [
-      "decode_head",
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\decode_head.py": [
+      "losses",
       "builder",
-      "mmcv",
-      "abc",
       "mmseg",
       "torch",
-      "losses"
+      "abc",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\dm_head.py": [
-      "mmcv",
-      "decode_head",
       "torch",
-      "builder"
+      "builder",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\dnl_head.py": [
-      "mmcv",
-      "fcn_head",
       "torch",
-      "builder"
+      "fcn_head",
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\ema_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
+      "torch",
+      "decode_head",
       "math",
-      "torch"
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\enc_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\fcn_head.py": [
-      "mmcv",
-      "decode_head",
       "torch",
-      "builder"
+      "builder",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\fpn_head.py": [
-      "decode_head",
+      "numpy",
       "builder",
-      "mmcv",
       "mmseg",
       "torch",
-      "numpy"
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\gc_head.py": [
-      "mmcv",
-      "fcn_head",
       "torch",
-      "builder"
+      "fcn_head",
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\helpers.py": [
+      "torch",
       "math",
-      "logging",
-      "torch"
+      "logging"
     ],
     "mmseg\\models\\decode_heads\\lraspp_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\nl_head.py": [
-      "mmcv",
-      "fcn_head",
       "torch",
-      "builder"
+      "fcn_head",
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\ocr_head.py": [
-      "builder",
-      "mmcv",
       "utils",
+      "builder",
       "mmseg",
+      "torch",
       "cascade_decode_head",
-      "torch"
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\point_head.py": [
-      "mmcv",
+      "losses",
       "mmseg",
-      "cascade_decode_head",
       "torch",
-      "losses"
+      "cascade_decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\psa_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\psp_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
-      "torch"
+      "torch",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\sep_aspp_head.py": [
-      "builder",
       "mmcv",
+      "builder",
       "mmseg",
       "torch",
       "aspp_head"
     ],
     "mmseg\\models\\decode_heads\\sep_fcn_head.py": [
-      "mmcv",
       "fcn_head",
-      "builder"
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\uper_head.py": [
-      "decode_head",
       "builder",
-      "mmcv",
       "mmseg",
       "torch",
-      "psp_head"
+      "psp_head",
+      "decode_head",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\vit_mla_auxi_head.py": [
-      "decode_head",
-      "helpers",
+      "backbones",
       "builder",
-      "mmcv",
-      "math",
+      "layers",
       "torch",
       "functools",
-      "layers",
-      "backbones"
+      "helpers",
+      "decode_head",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\vit_mla_head.py": [
-      "decode_head",
-      "helpers",
+      "backbones",
       "builder",
-      "mmcv",
-      "math",
+      "layers",
       "torch",
       "functools",
-      "layers",
-      "backbones"
+      "helpers",
+      "decode_head",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\vit_up_head.py": [
-      "decode_head",
-      "helpers",
+      "backbones",
       "builder",
-      "mmcv",
-      "math",
+      "layers",
       "torch",
       "functools",
-      "layers",
-      "backbones"
+      "helpers",
+      "decode_head",
+      "math",
+      "mmcv"
     ],
     "mmseg\\models\\decode_heads\\__init__.py": [
-      "apc_head",
-      "vit_up_head",
-      "ann_head",
-      "lraspp_head",
-      "sep_fcn_head",
-      "fcn_head",
-      "point_head",
-      "sep_aspp_head",
-      "dnl_head",
-      "psa_head",
-      "vit_mla_head",
+      "dm_head",
       "cc_head",
-      "aspp_head",
-      "vit_mla_auxi_head",
+      "sep_aspp_head",
+      "vit_up_head",
       "gc_head",
+      "apc_head",
+      "fcn_head",
+      "dnl_head",
+      "ann_head",
+      "point_head",
+      "aspp_head",
+      "sep_fcn_head",
+      "lraspp_head",
       "ocr_head",
+      "enc_head",
+      "psa_head",
+      "psp_head",
+      "vit_mla_auxi_head",
+      "ema_head",
       "nl_head",
       "fpn_head",
-      "dm_head",
       "da_head",
-      "enc_head",
-      "ema_head",
       "uper_head",
-      "psp_head"
+      "vit_mla_head"
     ],
     "mmseg\\models\\losses\\accuracy.py": [
       "torch"
     ],
     "mmseg\\models\\losses\\cross_entropy_loss.py": [
-      "utils",
       "torch",
-      "builder"
+      "builder",
+      "utils"
     ],
     "mmseg\\models\\losses\\lovasz_loss.py": [
-      "mmcv",
-      "utils",
       "torch",
-      "builder"
+      "builder",
+      "utils",
+      "mmcv"
     ],
     "mmseg\\models\\losses\\utils.py": [
-      "functools",
-      "torch"
+      "torch",
+      "functools"
     ],
     "mmseg\\models\\losses\\__init__.py": [
-      "accuracy",
       "utils",
+      "accuracy",
       "lovasz_loss",
       "cross_entropy_loss"
     ],
     "mmseg\\models\\necks\\fpn.py": [
-      "mmcv",
       "torch",
-      "builder"
+      "builder",
+      "mmcv"
     ],
     "mmseg\\models\\necks\\__init__.py": [
       "fpn"
     ],
     "mmseg\\models\\segmentors\\base.py": [
+      "warnings",
       "collections",
-      "mmcv",
+      "numpy",
+      "torch",
       "abc",
       "logging",
-      "warnings",
-      "torch",
-      "numpy"
+      "mmcv"
     ],
     "mmseg\\models\\segmentors\\cascade_encoder_decoder.py": [
-      "encoder_decoder",
       "mmseg",
       "torch",
-      "builder"
+      "builder",
+      "encoder_decoder"
     ],
     "mmseg\\models\\segmentors\\encoder_decoder.py": [
       "mmseg",
@@ -1183,50 +1183,50 @@
       "builder"
     ],
     "mmseg\\models\\segmentors\\__init__.py": [
-      "encoder_decoder",
-      "cascade_encoder_decoder"
+      "cascade_encoder_decoder",
+      "encoder_decoder"
     ],
     "mmseg\\models\\utils\\inverted_residual.py": [
-      "mmcv",
       "torch",
-      "se_layer"
+      "se_layer",
+      "mmcv"
     ],
     "mmseg\\models\\utils\\make_divisible.py": [],
     "mmseg\\models\\utils\\res_layer.py": [
-      "mmcv",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\utils\\self_attention_block.py": [
-      "mmcv",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\utils\\se_layer.py": [
-      "mmcv",
       "torch",
-      "make_divisible"
+      "make_divisible",
+      "mmcv"
     ],
     "mmseg\\models\\utils\\up_conv_block.py": [
-      "mmcv",
-      "torch"
+      "torch",
+      "mmcv"
     ],
     "mmseg\\models\\utils\\__init__.py": [
       "res_layer",
-      "up_conv_block",
       "inverted_residual",
-      "self_attention_block",
-      "make_divisible"
+      "up_conv_block",
+      "make_divisible",
+      "self_attention_block"
     ],
     "mmseg\\models\\backbones\\layers\\drop.py": [
       "torch"
     ],
     "mmseg\\models\\backbones\\layers\\helpers.py": [
-      "itertools",
-      "torch"
+      "torch",
+      "itertools"
     ],
     "mmseg\\models\\backbones\\layers\\weight_init.py": [
-      "warnings",
+      "torch",
       "math",
-      "torch"
+      "warnings"
     ],
     "mmseg\\models\\backbones\\layers\\__init__.py": [
       "weight_init",
@@ -1237,13 +1237,13 @@
       "torch"
     ],
     "mmseg\\models\\decode_heads\\layers\\helpers.py": [
-      "itertools",
-      "torch"
+      "torch",
+      "itertools"
     ],
     "mmseg\\models\\decode_heads\\layers\\weight_init.py": [
-      "warnings",
+      "torch",
       "math",
-      "torch"
+      "warnings"
     ],
     "mmseg\\models\\decode_heads\\layers\\__init__.py": [
       "weight_init",
@@ -1251,155 +1251,155 @@
       "drop"
     ],
     "tests\\test_data\\test_dataset.py": [
-      "os",
-      "pytest",
-      "mmseg",
-      "unittest",
-      "numpy"
-    ],
-    "tests\\test_data\\test_dataset_builder.py": [
-      "math",
-      "os",
-      "pytest",
-      "mmseg",
-      "torch"
-    ],
-    "tests\\test_data\\test_loading.py": [
-      "copy",
-      "mmcv",
-      "tempfile",
-      "os",
-      "mmseg",
-      "numpy"
-    ],
-    "tests\\test_data\\test_transform.py": [
-      "PIL",
-      "copy",
-      "mmcv",
-      "os",
-      "pytest",
-      "mmseg",
-      "numpy"
-    ],
-    "tests\\test_data\\test_tta.py": [
-      "mmcv",
-      "os",
-      "pytest",
-      "mmseg"
-    ],
-    "tests\\test_models\\test_backbone.py": [
-      "mmcv",
-      "pytest",
-      "torch",
-      "mmseg"
-    ],
-    "tests\\test_models\\test_forward.py": [
-      "copy",
-      "mmcv",
-      "os",
-      "pytest",
-      "mmseg",
-      "torch",
-      "unittest",
-      "numpy"
-    ],
-    "tests\\test_models\\test_heads.py": [
-      "mmcv",
-      "pytest",
-      "mmseg",
-      "torch",
-      "unittest"
-    ],
-    "tests\\test_models\\test_losses.py": [
-      "torch",
       "pytest",
       "numpy",
-      "mmseg"
+      "mmseg",
+      "unittest",
+      "os"
+    ],
+    "tests\\test_data\\test_dataset_builder.py": [
+      "pytest",
+      "mmseg",
+      "torch",
+      "os",
+      "math"
+    ],
+    "tests\\test_data\\test_loading.py": [
+      "numpy",
+      "tempfile",
+      "copy",
+      "mmseg",
+      "os",
+      "mmcv"
+    ],
+    "tests\\test_data\\test_transform.py": [
+      "pytest",
+      "numpy",
+      "PIL",
+      "copy",
+      "mmseg",
+      "os",
+      "mmcv"
+    ],
+    "tests\\test_data\\test_tta.py": [
+      "mmseg",
+      "pytest",
+      "os",
+      "mmcv"
+    ],
+    "tests\\test_models\\test_backbone.py": [
+      "mmseg",
+      "pytest",
+      "torch",
+      "mmcv"
+    ],
+    "tests\\test_models\\test_forward.py": [
+      "pytest",
+      "numpy",
+      "copy",
+      "mmseg",
+      "unittest",
+      "torch",
+      "os",
+      "mmcv"
+    ],
+    "tests\\test_models\\test_heads.py": [
+      "pytest",
+      "mmseg",
+      "unittest",
+      "torch",
+      "mmcv"
+    ],
+    "tests\\test_models\\test_losses.py": [
+      "mmseg",
+      "pytest",
+      "torch",
+      "numpy"
     ],
     "tests\\test_models\\test_necks.py": [
       "mmseg",
       "torch"
     ],
     "tests\\test_models\\test_segmentor.py": [
-      "torch",
       "mmseg",
+      "torch",
       "numpy",
       "mmcv"
     ],
     "tests\\test_models\\test_unet.py": [
-      "mmcv",
+      "mmseg",
       "pytest",
       "torch",
-      "mmseg"
+      "mmcv"
     ],
     "tests\\test_utils\\test_inverted_residual_module.py": [
-      "mmcv",
+      "mmseg",
       "pytest",
       "torch",
-      "mmseg"
+      "mmcv"
     ],
     "tests\\test_utils\\test_make_divisible.py": [
       "mmseg"
     ],
     "tests\\test_utils\\test_se_layer.py": [
-      "mmcv",
+      "mmseg",
       "pytest",
       "torch",
-      "mmseg"
+      "mmcv"
     ],
     "tools\\convert_datasets\\chase_db1.py": [
-      "zipfile",
-      "mmcv",
       "tempfile",
       "os",
-      "argparse"
+      "zipfile",
+      "argparse",
+      "mmcv"
     ],
     "tools\\convert_datasets\\cityscapes.py": [
-      "mmcv",
-      "os",
+      "cityscapesscripts",
       "argparse",
-      "cityscapesscripts"
+      "os",
+      "mmcv"
     ],
     "tools\\convert_datasets\\drive.py": [
       "cv2",
-      "zipfile",
-      "mmcv",
       "tempfile",
       "os",
-      "argparse"
+      "zipfile",
+      "argparse",
+      "mmcv"
     ],
     "tools\\convert_datasets\\hrf.py": [
-      "zipfile",
-      "mmcv",
       "tempfile",
       "os",
-      "argparse"
+      "zipfile",
+      "argparse",
+      "mmcv"
     ],
     "tools\\convert_datasets\\pascal_context.py": [
+      "numpy",
       "PIL",
-      "mmcv",
       "detail",
+      "functools",
       "os",
       "argparse",
-      "functools",
-      "numpy"
+      "mmcv"
     ],
     "tools\\convert_datasets\\stare.py": [
-      "gzip",
-      "mmcv",
       "tempfile",
+      "gzip",
       "os",
+      "tarfile",
       "argparse",
-      "tarfile"
+      "mmcv"
     ],
     "tools\\convert_datasets\\voc_aug.py": [
+      "numpy",
       "PIL",
       "scipy",
-      "mmcv",
+      "functools",
       "os",
       "argparse",
-      "functools",
-      "numpy"
+      "mmcv"
     ]
   }
 }

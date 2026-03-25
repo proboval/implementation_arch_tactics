@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single Django application with clear separation of concerns: core logic in 'treebeard/' package, tests in 'tests/', docs in 'docs/', and configuration in top-level files",
+    "Packages are organized by functional domain (e.g., tree implementations: mp_tree, ns_tree, al_tree, ltree) rather than technical layers",
+    "Low average fan-out (2.52) indicates limited cross-package dependencies, supporting modularity",
+    "No external service communication patterns (e.g., no REST/gRPC clients, message queues, or service discovery)",
+    "All components run in a single process with shared database and memory space",
+    "Django's built-in app structure (models, admin, forms, templatetags) used consistently within the treebeard package",
+    "Test suite is co-located with source code in a dedicated tests/ directory, typical of modular monoliths",
+    "Code maintainability metrics show moderate complexity (mi_avg ~70), consistent with a well-structured but non-trivial monolith"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between Django framework and core logic may reduce testability in isolation",
+    "Monolithic deployment could impact scalability and team autonomy as project grows",
+    "Shared database and process space increases risk of cascading failures"
+  ]
+}

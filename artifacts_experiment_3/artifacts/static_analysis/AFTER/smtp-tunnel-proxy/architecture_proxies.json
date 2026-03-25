@@ -5,35 +5,35 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "client.py": [
+      "socket",
+      "typing",
+      "argparse",
       "common",
+      "os",
+      "time",
       "dataclasses",
       "struct",
-      "argparse",
-      "typing",
+      "ssl",
       "logging",
-      "socket",
-      "time",
-      "os",
-      "asyncio",
-      "ssl"
+      "asyncio"
     ],
     "generate_certs.py": [
-      "sys",
-      "argparse",
       "datetime",
+      "argparse",
       "os",
-      "cryptography"
+      "cryptography",
+      "sys"
     ],
     "server.py": [
+      "typing",
+      "argparse",
       "common",
+      "os",
       "dataclasses",
       "struct",
-      "argparse",
-      "typing",
+      "ssl",
       "logging",
-      "os",
-      "asyncio",
-      "ssl"
+      "asyncio"
     ]
   }
 }

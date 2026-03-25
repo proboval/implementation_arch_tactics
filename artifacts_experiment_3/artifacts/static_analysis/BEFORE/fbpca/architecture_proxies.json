@@ -5,20 +5,20 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "fbpca.py": [
-      "__future__",
-      "scipy",
       "math",
+      "__future__",
+      "numpy",
+      "scipy",
       "logging",
-      "unittest",
-      "numpy"
+      "unittest"
     ],
     "setup.py": [
       "setuptools"
     ],
     "docs\\conf.py": [
+      "mock",
       "sys",
-      "os",
-      "mock"
+      "os"
     ]
   }
 }

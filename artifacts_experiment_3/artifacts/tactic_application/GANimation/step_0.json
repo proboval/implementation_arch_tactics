@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "data/interfaces.py",
-  "content": "\"\"\"Interfaces for data loading components to reduce coupling.\"\"\"\n\nimport abc\nimport torch.utils.data\n\n\nclass IDataLoader(abc.ABC):\n    \"\"\"Interface for data loaders.\"\"\"\n    \n    @abc.abstractmethod\n    def load_data(self):\n        \"\"\"Return a DataLoader instance.\"\"\"\n        pass\n    \n    @abc.abstractmethod\n    def __len__(self):\n        \"\"\"Return number of batches.\"\"\"\n        pass\n\n\nclass IDatasetFactory(abc.ABC):\n    \"\"\"Interface for dataset factories.\"\"\"\n    \n    @abc.abstractmethod\n    def get_by_name(self, dataset_name, *args, **kwargs):\n        \"\"\"Return a dataset instance by name.\"\"\"\n        pass\n"
-}

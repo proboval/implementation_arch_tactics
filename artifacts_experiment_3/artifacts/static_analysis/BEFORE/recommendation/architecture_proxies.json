@@ -5,9 +5,9 @@
   "avg_files_per_package": 5.0,
   "imports_graph": {
     "manage.py": [
+      "preprocess",
       "sys",
-      "workflow",
-      "preprocess"
+      "workflow"
     ],
     "preprocess.py": [
       "pandas"
@@ -17,10 +17,10 @@
       "math"
     ],
     "model\\lfm.py": [
-      "math",
       "random",
-      "pandas",
+      "math",
       "pickle",
+      "pandas",
       "numpy"
     ],
     "model\\prank.py": [

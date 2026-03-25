@@ -1,0 +1,21 @@
+{
+  "architecture_type": "layered",
+  "confidence": 0.85,
+  "evidence": [
+    "Single package 'app' with clear separation of concerns: models (domain), schemas (DTOs), database (infrastructure), main (application entry point/controller)",
+    "Database layer abstracted via SessionLocal and engine in database.py",
+    "Models define ORM entities, schemas define Pydantic models for I/O, indicating data transformation layers",
+    "main.py orchestrates HTTP endpoints and depends on database and domain layers",
+    "Low directory depth (2) and minimal packages (1) align with simple layered monoliths",
+    "High maintainability index (100.0) suggests clean separation and low coupling"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between layers may emerge if dependencies are not strictly unidirectional",
+    "Lack of explicit ports/adapters boundaries may blur infrastructure vs application concerns over time",
+    "Single package may become hard to manage as features scale"
+  ]
+}

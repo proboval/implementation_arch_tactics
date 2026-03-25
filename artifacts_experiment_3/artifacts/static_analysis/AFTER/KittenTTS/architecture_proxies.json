@@ -1,8 +1,8 @@
 {
-  "python_files": 8,
+  "python_files": 10,
   "packages": 1,
   "max_directory_depth": 2,
-  "avg_files_per_package": 8.0,
+  "avg_files_per_package": 10.0,
   "imports_graph": {
     "example.py": [
       "kittentts",
@@ -12,24 +12,43 @@
       "setuptools"
     ],
     "kittentts\\audio_io.py": [
-      "soundfile"
+      "numpy",
+      "typing",
+      "soundfile",
+      "io"
     ],
     "kittentts\\get_model.py": [
+      "json",
       "os",
       "onnx_model",
-      "huggingface_hub",
-      "json"
+      "huggingface_hub"
+    ],
+    "kittentts\\onnx_model.py": [
+      "audio_io",
+      "preprocess",
+      "core_inference"
     ],
     "kittentts\\preprocess.py": [
-      "unicodedata",
       "re",
-      "typing"
+      "typing",
+      "unicodedata"
     ],
     "kittentts\\__index__.py": [
       "kittentts"
     ],
     "kittentts\\__init__.py": [
       "kittentts"
+    ],
+    "tests\\test_decomposability.py": [
+      "ast",
+      "soundfile",
+      "inspect",
+      "pathlib",
+      "numpy",
+      "kittentts",
+      "pytest",
+      "importlib",
+      "unittest"
     ]
   }
 }

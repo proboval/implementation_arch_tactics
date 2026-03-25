@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into logical modules (models, services, utils, routes, templates, static) within a single 'app' package",
+    "Each module has cohesive responsibilities (e.g., services for external communication, utils for shared logic, models for data structures)",
+    "No explicit inter-process communication or service boundaries (e.g., no gRPC, REST between services, or message queues)",
+    "Single Flask application entry point (app/__init__.py, app/__main__.py) with routes.py as central routing layer",
+    "Shared dependencies across modules (e.g., utils used by services, models, routes)",
+    "No evidence of separate deployable units or containers per service (only one app directory)",
+    "Test suite is co-located with source code, testing internal modules directly"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between modules could hinder future scalability or independent deployment",
+    "Monolithic structure may become a bottleneck for large teams or high-traffic scenarios",
+    "Lack of explicit boundaries may lead to increasing technical debt over time"
+  ]
+}

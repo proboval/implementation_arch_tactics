@@ -5,15 +5,15 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "ray_marcher_demo.py": [
+      "pyspace",
       "random",
-      "ctypes",
-      "pygame",
       "math",
-      "sys",
-      "OpenGL",
-      "numpy",
       "os",
-      "pyspace"
+      "OpenGL",
+      "pygame",
+      "numpy",
+      "sys",
+      "ctypes"
     ],
     "pyspace\\camera.py": [],
     "pyspace\\coloring.py": [
@@ -35,10 +35,10 @@
       "numpy"
     ],
     "pyspace\\shader.py": [
+      "util",
       "OpenGL",
-      "ctypes",
       "os",
-      "util"
+      "ctypes"
     ],
     "pyspace\\util.py": [
       "numpy"

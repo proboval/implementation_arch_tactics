@@ -1,0 +1,31 @@
+{
+  "python_files": 3,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "favUp.py": [
+      "requests",
+      "os",
+      "fake_useragent",
+      "mmh3",
+      "ipwhois",
+      "bs4",
+      "argparse",
+      "shodan",
+      "json",
+      "base64",
+      "tqdm",
+      "time"
+    ],
+    "favup\\interfaces.py": [
+      "abc",
+      "typing"
+    ],
+    "tests\\test_tactic.py": [
+      "favup",
+      "pytest",
+      "unittest"
+    ]
+  }
+}

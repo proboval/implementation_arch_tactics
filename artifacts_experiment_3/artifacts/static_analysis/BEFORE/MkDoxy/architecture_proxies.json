@@ -12,93 +12,93 @@
       "enum"
     ],
     "mkdoxy\\doxygen.py": [
-      "os",
+      "xml",
       "mkdoxy",
       "logging",
-      "xml"
+      "os"
     ],
     "mkdoxy\\doxyrun.py": [
-      "re",
+      "shutil",
       "typing",
-      "hashlib",
-      "pathlib",
       "os",
-      "logging",
+      "pathlib",
+      "re",
       "subprocess",
-      "shutil"
+      "logging",
+      "hashlib"
     ],
     "mkdoxy\\DoxyTagParser.py": [
       "re"
     ],
     "mkdoxy\\filters.py": [
-      "typing",
-      "re"
+      "re",
+      "typing"
     ],
     "mkdoxy\\finder.py": [
       "mkdoxy",
       "typing"
     ],
     "mkdoxy\\generatorAuto.py": [
-      "mkdocs",
-      "os",
       "mkdoxy",
-      "logging"
+      "mkdocs",
+      "logging",
+      "os"
     ],
     "mkdoxy\\generatorBase.py": [
       "string",
-      "jinja2",
-      "mkdocs",
-      "typing",
       "os",
+      "logging",
       "mkdoxy",
-      "logging"
+      "mkdocs",
+      "jinja2",
+      "typing"
     ],
     "mkdoxy\\generatorSnippets.py": [
-      "mkdocs",
-      "re",
       "pathlib",
-      "yaml",
+      "re",
       "mkdoxy",
+      "yaml",
+      "mkdocs",
       "logging"
     ],
     "mkdoxy\\markdown.py": [
       "typing"
     ],
     "mkdoxy\\node.py": [
-      "re",
       "os",
+      "xml",
+      "re",
       "mkdoxy",
-      "logging",
-      "xml"
+      "logging"
     ],
     "mkdoxy\\plugin.py": [
+      "pathlib",
       "mkdocs",
       "mkdoxy",
-      "logging",
-      "pathlib"
+      "logging"
     ],
     "mkdoxy\\project.py": [
       "mkdoxy"
     ],
     "mkdoxy\\property.py": [
-      "mkdoxy",
       "xml",
-      "re"
+      "re",
+      "mkdoxy"
     ],
     "mkdoxy\\utils.py": [
-      "mkdocs",
-      "yaml",
+      "re",
       "logging",
-      "re"
+      "mkdocs",
+      "yaml"
     ],
     "mkdoxy\\xml_parser.py": [
-      "mkdoxy",
-      "xml"
+      "xml",
+      "mkdoxy"
     ],
     "mkdoxy\\__init__.py": [],
     "tests\\test_doxyrun.py": [
-      "pytest",
-      "mkdoxy"
+      "mkdoxy",
+      "pytest"
     ],
     "tests-old\\basic.py": [
       "pprint"
@@ -112,9 +112,9 @@
     ],
     "tests-old\\gpt-example-parser.py": [],
     "tests-old\\metaDataParse.py": [
+      "re",
       "sys",
-      "yaml",
-      "re"
+      "yaml"
     ],
     "tests-old\\mkdocsValidateCfg.py": [
       "mkdocs"
@@ -123,21 +123,21 @@
       "doxybook"
     ],
     "tests-old\\parseMdTags.py": [
+      "re",
       "sys",
-      "yaml",
-      "re"
+      "yaml"
     ],
     "tests-old\\snippetsTest-examples.py": [
-      "pprint",
-      "mkdoxy"
+      "mkdoxy",
+      "pprint"
     ],
     "tests-old\\snippetsTest.py": [
       "pprint",
       "doxygen_snippets"
     ],
     "tests-old\\testTemplate.py": [
-      "os",
       "pprint",
+      "os",
       "doxygen_snippets"
     ]
   }

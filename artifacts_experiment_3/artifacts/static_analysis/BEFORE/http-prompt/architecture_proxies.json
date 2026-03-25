@@ -5,72 +5,72 @@
   "avg_files_per_package": 11.333333333333334,
   "imports_graph": {
     "setup.py": [
-      "os",
+      "setuptools",
       "re",
-      "setuptools"
+      "os"
     ],
     "docs\\conf.py": [
       "http_prompt",
       "collections"
     ],
     "http_prompt\\cli.py": [
-      "sys",
       "urllib",
-      "click",
-      "context",
-      "xdg",
-      "utils",
       "json",
-      "re",
-      "httpie",
-      "pygments",
-      "yaml",
-      "os",
       "execution",
       "lexer",
-      "prompt_toolkit",
+      "os",
+      "xdg",
+      "re",
+      "pygments",
+      "sys",
+      "completer",
       "contextio",
       "http",
-      "completer"
+      "yaml",
+      "context",
+      "prompt_toolkit",
+      "httpie",
+      "utils",
+      "click"
     ],
     "http_prompt\\completer.py": [
-      "collections",
       "urllib",
+      "collections",
+      "completion",
       "itertools",
       "re",
-      "prompt_toolkit",
-      "completion"
+      "prompt_toolkit"
     ],
     "http_prompt\\completion.py": [
       "collections"
     ],
     "http_prompt\\config.py": [
-      "os",
-      "shutil"
+      "shutil",
+      "os"
     ],
     "http_prompt\\contextio.py": [
-      "os",
-      "io",
       "context",
-      "execution"
+      "execution",
+      "os",
+      "io"
     ],
     "http_prompt\\defaultconfig.py": [],
     "http_prompt\\execution.py": [
-      "sys",
-      "urllib",
-      "click",
       "output",
-      "context",
-      "utils",
-      "re",
       "json",
-      "httpie",
-      "parsimonious",
+      "urllib",
       "os",
-      "pygments",
+      "parsimonious",
+      "completion",
       "io",
+      "re",
+      "pygments",
+      "sys",
       "subprocess",
-      "completion"
+      "context",
+      "httpie",
+      "utils",
+      "click"
     ],
     "http_prompt\\lexer.py": [
       "pygments"
@@ -82,63 +82,63 @@
     ],
     "http_prompt\\tree.py": [],
     "http_prompt\\utils.py": [
-      "shlex",
-      "math",
+      "prompt_toolkit",
       "re",
-      "prompt_toolkit"
+      "shlex",
+      "math"
     ],
     "http_prompt\\xdg.py": [
-      "sys",
       "os",
+      "sys",
       "functools"
     ],
     "http_prompt\\__init__.py": [],
     "tests\\base.py": [
+      "shutil",
+      "os",
       "sys",
       "tempfile",
-      "os",
-      "unittest",
-      "shutil"
+      "unittest"
     ],
     "tests\\test_cli.py": [
-      "sys",
-      "click",
-      "requests",
       "json",
       "base",
       "os",
+      "sys",
       "http_prompt",
-      "unittest"
+      "requests",
+      "unittest",
+      "click"
     ],
     "tests\\test_completer.py": [
-      "http_prompt",
       "prompt_toolkit",
+      "http_prompt",
       "unittest"
     ],
     "tests\\test_config.py": [
-      "http_prompt",
-      "os",
       "base",
-      "hashlib"
+      "os",
+      "hashlib",
+      "http_prompt"
     ],
     "tests\\test_contextio.py": [
-      "http_prompt",
-      "base"
+      "base",
+      "http_prompt"
     ],
     "tests\\test_installation.py": [
-      "http_prompt",
-      "pytest",
       "utils",
-      "subprocess"
+      "http_prompt",
+      "subprocess",
+      "pytest"
     ],
     "tests\\test_interaction.py": [
+      "os",
       "sys",
-      "utils",
+      "http_prompt",
+      "pytest",
       "pexpect",
       "base",
-      "os",
-      "pytest",
-      "http_prompt"
+      "utils"
     ],
     "tests\\test_lexer.py": [
       "pygments",
@@ -153,20 +153,20 @@
       "http_prompt"
     ],
     "tests\\test_xdg.py": [
-      "sys",
-      "base",
       "os",
+      "sys",
       "http_prompt",
+      "base",
       "stat"
     ],
     "tests\\utils.py": [
-      "sys",
-      "os"
+      "os",
+      "sys"
     ],
     "tests\\__init__.py": [],
     "http_prompt\\context\\transform.py": [
-      "http_prompt",
-      "json"
+      "json",
+      "http_prompt"
     ],
     "http_prompt\\context\\__init__.py": [
       "http_prompt"

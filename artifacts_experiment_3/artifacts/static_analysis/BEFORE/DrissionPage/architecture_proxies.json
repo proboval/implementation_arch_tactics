@@ -5,88 +5,88 @@
   "avg_files_per_package": 46.0,
   "imports_graph": {
     "setup.py": [
-      "DrissionPage",
-      "setuptools"
+      "setuptools",
+      "DrissionPage"
     ],
     "DrissionPage\\common.py": [
-      "_configs",
-      "_units",
-      "_elements",
       "_functions",
-      "psutil",
-      "_base"
+      "_base",
+      "_configs",
+      "_elements",
+      "_units",
+      "psutil"
     ],
     "DrissionPage\\errors.py": [
       "_functions"
     ],
     "DrissionPage\\items.py": [
-      "_elements",
-      "_pages"
+      "_pages",
+      "_elements"
     ],
     "DrissionPage\\version.py": [],
     "DrissionPage\\_base\\base.py": [
-      "urllib",
-      "copy",
       "DrissionGet",
-      "_configs",
-      "abc",
-      "requests",
-      "re",
+      "urllib",
+      "_functions",
       "pathlib",
-      "_elements",
+      "re",
+      "_configs",
+      "copy",
       "errors",
-      "_functions"
+      "abc",
+      "_elements",
+      "requests"
     ],
     "DrissionPage\\_base\\chromium.py": [
-      "_pages",
-      "websocket",
-      "_configs",
-      "requests",
-      "time",
-      "_units",
-      "re",
-      "pathlib",
+      "shutil",
+      "_functions",
       "driver",
       "os",
+      "time",
       "platform",
-      "errors",
-      "_functions",
-      "psutil",
+      "pathlib",
+      "re",
       "threading",
-      "shutil"
-    ],
-    "DrissionPage\\_base\\driver.py": [
+      "_configs",
+      "_pages",
+      "errors",
       "websocket",
       "requests",
-      "time",
+      "_units",
+      "psutil"
+    ],
+    "DrissionPage\\_base\\driver.py": [
       "json",
-      "errors",
       "_functions",
       "queue",
-      "threading"
+      "time",
+      "threading",
+      "errors",
+      "websocket",
+      "requests"
     ],
     "DrissionPage\\_configs\\options_manage.py": [
-      "pprint",
+      "pathlib",
       "configparser",
       "_functions",
-      "pathlib"
+      "pprint"
     ],
     "DrissionPage\\_configs\\session_options.py": [
+      "_functions",
+      "pathlib",
       "copy",
       "requests",
-      "pathlib",
-      "_functions",
       "options_manage"
     ],
     "DrissionPage\\_elements\\none_element.py": [
-      "errors",
-      "_functions"
+      "_functions",
+      "errors"
     ],
     "DrissionPage\\_functions\\by.py": [],
     "DrissionPage\\_functions\\cookies.py": [
+      "datetime",
       "json",
       "settings",
-      "datetime",
       "http",
       "tldextract"
     ],
@@ -95,123 +95,123 @@
       "errors"
     ],
     "DrissionPage\\_functions\\settings.py": [
-      "texts",
-      "pathlib"
+      "pathlib",
+      "texts"
     ],
     "DrissionPage\\_functions\\tools.py": [
-      "win32con",
-      "win32process",
-      "_configs",
-      "tempfile",
-      "win32gui",
-      "time",
-      "pathlib",
+      "shutil",
       "socket",
-      "os",
-      "platform",
-      "errors",
+      "win32process",
       "_functions",
       "random",
-      "threading",
-      "shutil"
-    ],
-    "DrissionPage\\_pages\\chromium_page.py": [
-      "_pages",
-      "_units",
-      "time",
-      "_functions",
-      "_base"
-    ],
-    "DrissionPage\\_pages\\chromium_tab.py": [
-      "copy",
-      "_pages",
-      "_units",
-      "time",
-      "_functions"
-    ],
-    "DrissionPage\\_pages\\mix_tab.py": [
-      "_pages",
-      "_configs",
-      "_units",
-      "_functions",
-      "chromium_tab",
-      "_base"
-    ],
-    "DrissionPage\\_pages\\web_page.py": [
-      "session_page",
-      "_configs",
-      "_units",
-      "_functions",
-      "chromium_page",
-      "_base"
-    ],
-    "DrissionPage\\_units\\clicker.py": [
-      "waiter",
-      "_units",
+      "win32gui",
+      "os",
       "time",
       "pathlib",
+      "threading",
+      "_configs",
       "errors",
-      "_functions"
+      "platform",
+      "tempfile",
+      "win32con"
+    ],
+    "DrissionPage\\_pages\\chromium_page.py": [
+      "_functions",
+      "time",
+      "_base",
+      "_pages",
+      "_units"
+    ],
+    "DrissionPage\\_pages\\chromium_tab.py": [
+      "_functions",
+      "time",
+      "_pages",
+      "copy",
+      "_units"
+    ],
+    "DrissionPage\\_pages\\mix_tab.py": [
+      "_functions",
+      "_base",
+      "_configs",
+      "_pages",
+      "chromium_tab",
+      "_units"
+    ],
+    "DrissionPage\\_pages\\web_page.py": [
+      "_functions",
+      "session_page",
+      "_base",
+      "_configs",
+      "chromium_page",
+      "_units"
+    ],
+    "DrissionPage\\_units\\clicker.py": [
+      "_functions",
+      "time",
+      "waiter",
+      "pathlib",
+      "errors",
+      "_units"
     ],
     "DrissionPage\\_units\\console.py": [
-      "queue",
       "time",
       "json",
-      "_functions"
+      "_functions",
+      "queue"
     ],
     "DrissionPage\\_units\\cookies_setter.py": [
       "_functions"
     ],
     "DrissionPage\\_units\\listener.py": [
-      "urllib",
-      "requests",
-      "time",
-      "base64",
-      "re",
       "json",
-      "errors",
       "_functions",
       "queue",
-      "_base"
+      "urllib",
+      "time",
+      "base64",
+      "_base",
+      "re",
+      "errors",
+      "requests"
     ],
     "DrissionPage\\_units\\rect.py": [],
     "DrissionPage\\_units\\screencast.py": [
-      "cv2",
-      "tempfile",
+      "shutil",
+      "_functions",
+      "random",
+      "os",
       "time",
       "base64",
       "pathlib",
-      "os",
-      "_functions",
-      "random",
-      "numpy",
       "threading",
-      "shutil"
+      "numpy",
+      "cv2",
+      "tempfile"
     ],
     "DrissionPage\\_units\\scroller.py": [
       "time"
     ],
     "DrissionPage\\_units\\selector.py": [
-      "time",
-      "_functions"
+      "_functions",
+      "time"
     ],
     "DrissionPage\\_units\\setter.py": [
-      "requests",
+      "_functions",
+      "cookies_setter",
       "time",
       "pathlib",
       "errors",
-      "_functions",
-      "cookies_setter"
+      "requests"
     ],
     "DrissionPage\\_units\\states.py": [
-      "errors",
-      "_functions"
+      "_functions",
+      "errors"
     ],
     "DrissionPage\\_units\\waiter.py": [
-      "random",
+      "_functions",
       "time",
-      "errors",
-      "_functions"
+      "random",
+      "errors"
     ]
   }
 }

@@ -5,40 +5,40 @@
   "avg_files_per_package": 8.0,
   "imports_graph": {
     "sgd\\cache.py": [
-      "json",
-      "pickle"
+      "pickle",
+      "json"
     ],
     "sgd\\gdrive.py": [
-      "requests",
       "datetime",
+      "google",
       "googleapiclient",
       "sgd",
-      "google"
+      "requests"
     ],
     "sgd\\meta.py": [
       "bs4",
+      "sgd",
       "cchardet",
-      "lxml",
-      "sgd"
+      "lxml"
     ],
     "sgd\\ptn.py": [
       "PTN"
     ],
     "sgd\\routes.py": [
-      "json",
       "flask",
+      "json",
       "datetime",
       "sgd"
     ],
     "sgd\\utils.py": [
-      "json",
       "requests",
+      "json",
       "sgd"
     ],
     "sgd\\__init__.py": [
+      "flask",
       "json",
       "os",
-      "flask",
       "sgd"
     ]
   }

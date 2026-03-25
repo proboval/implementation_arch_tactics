@@ -14,30 +14,30 @@
     ],
     "postgresql_metrics\\default_metrics.py": [],
     "postgresql_metrics\\localhost_postgres_stats.py": [
-      "os",
       "postgresql_metrics",
-      "re"
+      "re",
+      "os"
     ],
     "postgresql_metrics\\metrics_gatherer.py": [
       "postgresql_metrics"
     ],
     "postgresql_metrics\\metrics_logic.py": [
-      "time",
+      "socket",
       "postgresql_metrics",
       "json",
-      "socket",
+      "argparse",
       "os",
-      "argparse"
+      "time"
     ],
     "postgresql_metrics\\postgres_queries.py": [
-      "psycopg2",
       "postgresql_metrics",
+      "psycopg2",
       "re"
     ],
     "postgresql_metrics\\prepare_db.py": [
-      "getpass",
+      "postgresql_metrics",
       "psycopg2",
-      "postgresql_metrics"
+      "getpass"
     ],
     "postgresql_metrics\\__init__.py": []
   }

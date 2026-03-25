@@ -9,5 +9,5 @@ add_maintainability_to_csv(
 
 # del_extra_dir(
 #     artifacts_dir=Path("./artifacts_experiment_3/artifacts/static_analysis/AFTER"),
-#     csv_file=Path("./artifacts_experiment_3/maintainability_dataset.csv"),
+#     csv_file=Path("./artifacts_experiment_3/dataset.csv"),
 # )

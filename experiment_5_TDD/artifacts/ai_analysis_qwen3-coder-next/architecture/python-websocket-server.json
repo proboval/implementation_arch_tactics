@@ -1,0 +1,22 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.92,
+  "evidence": [
+    "Single package ('websocket_server') with clear module separation (thread.py, websocket_server.py, __init__.py)",
+    "Repository tree shows flat directory structure with max depth 2, typical of a monolith",
+    "Server logic centralized in WebsocketServer class inheriting from ThreadingMixIn and TCPServer, with internal handler (WebSocketHandler) for protocol logic",
+    "Test suite organized in tests/ directory but tightly coupled to internal implementation (imports internal classes like WebSocketHandler, WebsocketServerThread)",
+    "API surface exposed via WebsocketServer class methods (run_forever, send_message, etc.) used directly by server.py and tests",
+    "No external service boundaries, inter-process communication, or deployment isolation — all components run in same process",
+    "Low fan-out (avg 3.5) and few packages (1) indicate cohesive, internally modular design rather than distributed or service-oriented"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Tight coupling between core server logic and threading/handling components may hinder testability and modifiability",
+    "Monolithic structure may scale poorly under high concurrency without architectural refactoring",
+    "Lack of clear separation between infrastructure (networking) and domain logic could reduce long-term maintainability"
+  ]
+}

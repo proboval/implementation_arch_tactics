@@ -1,0 +1,32 @@
+{
+  "python_files": 4,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "geowifi.py": [
+      "requests",
+      "rich",
+      "os",
+      "google",
+      "concurrent",
+      "re",
+      "argparse",
+      "yaml",
+      "helpers",
+      "json",
+      "folium"
+    ],
+    "helpers\\BSSIDApple_pb2.py": [
+      "google"
+    ],
+    "services\\__init__.py": [
+      "abc",
+      "typing"
+    ],
+    "tests\\test_tactic.py": [
+      "geowifi",
+      "pytest"
+    ]
+  }
+}

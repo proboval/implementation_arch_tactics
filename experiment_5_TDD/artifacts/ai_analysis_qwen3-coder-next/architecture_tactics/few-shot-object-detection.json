@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between fsdet modules and detectron2 internals, as evidenced by direct imports of detectron2 components (e.g., fsdet/evaluation/coco_evaluation.py imports detectron2.data.datasets.coco.convert_to_coco_json, fsdet/modeling/roi_heads/roi_heads.py imports detectron2.modeling.box_regression.Box2BoxTransform, and fsdet/engine/defaults.py imports detectron2.engine.SimpleTrainer). This coupling increases ripple effects: changes in detectron2 APIs (e.g., internal module reorganization) require cascading updates across fsdet modules. Static analysis confirms high fan-out (avg 4.48) and deep interdependencies (e.g., fsdet/evaluation/coco_evaluation.py imports 14 external modules including detectron2 internals). The risk assessment explicitly identifies 'Tight coupling to detectron2 internals may reduce portability'. This tactic directly addresses the maintainability problem by decoupling fsdet domain logic from detectron2 implementation details, reducing modification range and preventing ripple effects.",
+  "target_components": [
+    "fsdet/evaluation/coco_evaluation.py",
+    "fsdet/evaluation/lvis_evaluation.py",
+    "fsdet/evaluation/pascal_voc_evaluation.py",
+    "fsdet/modeling/roi_heads/roi_heads.py",
+    "fsdet/modeling/roi_heads/fast_rcnn.py",
+    "fsdet/engine/defaults.py",
+    "fsdet/data/meta_coco.py",
+    "fsdet/data/meta_lvis.py",
+    "fsdet/data/meta_pascal_voc.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers (e.g., interfaces/protocols) that wrap detectron2 dependencies, creating a clear separation between fsdet domain logic and detectron2 implementation. For example, instead of fsdet/evaluation/coco_evaluation.py directly importing detectron2.data.datasets.coco.convert_to_coco_json, introduce a fsdet.data.adapters.CocoAdapter interface with a convert_to_coco_json() method implemented by a Detectron2CocoAdapter. Similarly, replace direct imports of detectron2.modeling components (e.g., Box2BoxTransform, Matcher) with fsdet-specific abstractions (e.g., fsdet.modeling.adapters.BoxTransformAdapter). This will reduce direct coupling between fsdet and detectron2 modules, increase fsdet module cohesion, and enable easier testing via mock adapters.",
+  "implementation_strategy": "Step 1: Identify all detectron2 dependencies per module (e.g., via imports_graph). Step 2: For each dependency, create a thin adapter interface in fsdet (e.g., fsdet/data/adapters.py, fsdet/modeling/adapters.py, fsdet/evaluation/adapters.py). Step 3: Implement adapters that delegate to detectron2 (e.g., Detectron2CocoAdapter, Detectron2BoxTransformAdapter). Step 4: Refactor fsdet modules to depend on adapter interfaces instead of detectron2 modules directly. Step 5: Inject adapters via dependency injection (e.g., constructor injection in DefaultTrainer). This incremental approach preserves existing functionality while reducing coupling—no system rewrite required.",
+  "risks": "Risk of over-engineering if adapters become too generic; mitigate by starting with concrete, fsdet-specific adapters (e.g., COCO-specific adapter, not generic dataset adapter). Risk of performance overhead from indirection; negligible for this use case. Risk of temporary duplication during transition; mitigate by using codemods and automated refactoring tools."
+}

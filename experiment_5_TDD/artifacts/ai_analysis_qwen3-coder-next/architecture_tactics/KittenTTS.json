@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis shows low fan-out (2.0) but the imports graph reveals tight coupling: 'kittentts/get_model.py' imports 'onnx_model' directly, and 'kittentts/onnx_model.py' imports 'preprocess' directly. This creates implicit dependencies where modules depend on concrete implementations (e.g., KittenTTS_1_Onnx class) rather than abstractions. The __init__.py imports both get_model and KittenTTS, but KittenTTS is defined in get_model.py, while its actual implementation depends on KittenTTS_1_Onnx from onnx_model.py — indicating blurred separation of concerns. This coupling increases ripple effects: changing preprocessing logic requires touching onnx_model.py, and model instantiation logic is scattered across modules. Reducing coupling via interface-based design will isolate changes to preprocessing, model inference, and orchestration layers.",
+  "target_components": [
+    "kittentts/get_model.py",
+    "kittentts/onnx_model.py",
+    "kittentts/preprocess.py"
+  ],
+  "expected_architectural_change": "Introduction of explicit interfaces (e.g., TextProcessor, SpeechSynthesizer) that decouple module responsibilities. get_model.py will depend on an interface for text preprocessing and speech synthesis, not concrete classes. onnx_model.py will implement SpeechSynthesizer interface, and preprocess.py will implement TextProcessor interface. This creates stable abstraction boundaries where implementation changes (e.g., replacing misaki with a different TTS engine) require minimal ripple effects.",
+  "implementation_strategy": "1. Define minimal interfaces in a new 'interfaces.py' module (e.g., TextProcessor with process(text) -> str, SpeechSynthesizer with generate(inputs) -> np.ndarray). 2. Refactor preprocess.py to implement TextProcessor. 3. Refactor onnx_model.py to implement SpeechSynthesizer. 4. Refactor get_model.py to depend on interfaces (via constructor injection or factory), removing direct imports of concrete classes. 5. Update __init__.py to wire components via interfaces. 6. Add type hints and dependency injection to reduce implicit coupling.",
+  "risks": "Initial refactoring may introduce temporary complexity during interface definition. However, risks are mitigated by incremental implementation: interfaces can be added without breaking existing code (using backward-compatible stubs), and tests can validate behavior remains unchanged. The flat modular monolith structure supports this — no network/service boundaries need to be preserved."
+}

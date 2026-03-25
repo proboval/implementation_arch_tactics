@@ -1,0 +1,21 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package (kittentts) with clear module separation (get_model, onnx_model, preprocess)",
+    "Low average fan-out (2.0) indicating loose coupling between modules",
+    "Shallow directory depth (2) consistent with a flat modular structure",
+    "Well-defined responsibilities: preprocessing, model inference, orchestration (KittenTTS class)",
+    "No external service communication or network dependencies visible",
+    "Single entry point (__init__.py) exposing core API, typical of modular monoliths"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Potential for tight coupling if modules begin to depend on internal implementation details",
+    "Limited scalability due to single-process deployment",
+    "Testing may become difficult if modules lack clear interfaces"
+  ]
+}

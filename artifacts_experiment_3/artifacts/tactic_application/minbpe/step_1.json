@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "minbpe/factory.py",
-  "content": "\"\"\"\nFactory and registry for tokenizer selection.\nEnables deferred binding: tokenizer strategy is chosen at runtime.\n\"\"\"\n\nfrom .base import Tokenizer\nfrom .basic import BasicTokenizer\nfrom .regex import RegexTokenizer\n\ntry:\n    from .tiktoken_compat import TiktokenTokenizer\nexcept ImportError:\n    TiktokenTokenizer = None\n\n# registry of available tokenizer factories\n_REGISTRY = {\n    \"basic\": lambda: BasicTokenizer(),\n    \"regex\": lambda: RegexTokenizer(),\n}\n\nif TiktokenTokenizer is not None:\n    _REGISTRY[\"gpt4\"] = lambda: TiktokenTokenizer()\n\n\ndef get_tokenizer(name: str) -> Tokenizer:\n    \"\"\"\n    Factory function to get a tokenizer by name.\n    Raises KeyError if tokenizer not found.\n    \n    Example:\n        tokenizer = get_tokenizer(\"gpt4\")\n    \"\"\"\n    if name not in _REGISTRY:\n        raise KeyError(f\"Unknown tokenizer '{name}'. Available: {list(_REGISTRY.keys())}\")\n    return _REGISTRY[name]()\n"
-}

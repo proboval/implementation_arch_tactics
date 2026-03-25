@@ -1,0 +1,25 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe tight coupling: modules directly import global state (g.py, c.py), shared data structures (playlist, content), and internal utilities (util) across modules without abstraction layers. Static analysis confirms high average fan-out (5.0) and evidence notes 'tight coupling between modules (e.g., many modules import g, c, config directly) may hinder maintainability and testing'. For example, mps_youtube/config.py imports g, c, paths, util; mps_youtube/player.py imports g, c, config, content, history, screen, streams, util, pafy, and commands.lastfm. This coupling makes changes ripple across many files, increases test complexity (e.g., mocking g/c is non-trivial), and violates separation of concerns. Reduced Coupling directly addresses this by introducing interfaces, dependency injection, and decoupling modules from concrete implementations—especially the problematic global state in g.py and c.py.",
+  "target_components": [
+    "mps_youtube/g.py",
+    "mps_youtube/c.py",
+    "mps_youtube/config.py",
+    "mps_youtube/player.py",
+    "mps_youtube/commands/__init__.py",
+    "mps_youtube/commands/search.py",
+    "mps_youtube/commands/download.py",
+    "mps_youtube/commands/misc.py",
+    "mps_youtube/playlist.py",
+    "mps_youtube/content.py"
+  ],
+  "expected_architectural_change": "Global state modules (g.py, c.py) will be replaced with dependency-injected services or context objects. Modules will depend on abstractions (e.g., interfaces for configuration, player state, playlist management) rather than concrete globals. New modules like mps_youtube/context.py or mps_youtube/interfaces.py may emerge to define contracts. Command modules will receive dependencies via constructor or factory instead of importing g/c directly.",
+  "implementation_strategy": "1. Identify cohesive responsibilities currently scattered across g.py/c.py (e.g., configuration, player state, playlist management, UI state). 2. Extract interfaces (e.g., IConfigStore, IPlayerState, IPlaylistManager). 3. Refactor g.py/c.py into concrete implementations of those interfaces. 4. Inject dependencies via constructor or factory into modules (e.g., player.py, commands/*.py). 5. Gradually replace direct imports of g/c with injected dependencies. 6. Update tests to mock interfaces instead of patching globals. This can be done incrementally—start with one responsibility (e.g., configuration) and expand.",
+  "risks": "Initial refactoring may increase complexity temporarily due to new abstractions. Risk of incomplete migration leaving partial coupling. However, risks are mitigated by incremental approach and existing test suite (mps_youtube/test/) that can validate behavior preservation."
+}

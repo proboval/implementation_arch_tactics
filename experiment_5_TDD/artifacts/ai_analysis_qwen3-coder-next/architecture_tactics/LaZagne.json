@@ -1,0 +1,30 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between OS-specific modules and shared infrastructure, directly harming maintainability. Evidence includes: (1) OS-specific modules (e.g., Windows/lazagne/config/constant.py, Linux/lazagne/config/constant.py) duplicate identical logic across directories instead of sharing via a common abstraction; (2) Windows-specific DPAPI logic (e.g., Windows/lazagne/config/dpapi_structure.py) is embedded directly in core flows, with no inversion of control or interface-based abstraction; (3) Cross-platform modules like browsers/mozilla.py and memory/memorydump.py import OS-specific modules (e.g., 'from lazagne.config.constant import constant') without abstraction, forcing changes to ripple across all OS directories. This duplication increases maintenance overhead and risks inconsistency, as noted in the architecture risks: 'Shared crypto and memory libraries are duplicated across OS directories, risking inconsistency and maintenance overhead'. Reduced Coupling directly addresses this by introducing interfaces and dependency inversion to decouple OS-specific implementations from shared logic.",
+  "target_components": [
+    "Linux/lazagne/config/constant.py",
+    "Mac/lazagne/config/constant.py",
+    "Windows/lazagne/config/constant.py",
+    "Linux/lazagne/config/crypto/pyDes.py",
+    "Mac/lazagne/config/crypto/pyDes.py",
+    "Windows/lazagne/config/crypto/pyDes.py",
+    "Linux/lazagne/config/crypto/pyaes",
+    "Mac/lazagne/config/crypto/pyaes",
+    "Windows/lazagne/config/crypto/pyaes",
+    "Windows/lazagne/config/dpapi_structure.py",
+    "Windows/lazagne/config/run.py",
+    "Linux/lazagne/config/run.py",
+    "Mac/lazagne/config/run.py",
+    "Linux/lazagne/softwares/memory/memorydump.py",
+    "Windows/lazagne/softwares/memory/memorydump.py"
+  ],
+  "expected_architectural_change": "Introduce platform-agnostic interfaces (e.g., IConstantService, ICryptoService) in a new 'core/' or 'platform/' module. OS-specific implementations (e.g., WindowsConstantService, LinuxConstantService) will implement these interfaces. Shared modules (e.g., run.py, manage_modules.py) will depend on interfaces, not concrete OS implementations. DPAPI-specific logic will be abstracted behind an IDPAPIService interface, with Windows-specific implementation injected at runtime. This eliminates direct cross-directory imports of OS-specific modules and centralizes platform selection via dependency injection.",
+  "implementation_strategy": "1. Extract common interfaces from duplicated modules (e.g., constant.py, crypto modules) into a new 'lazagne/core/platform/' directory. 2. Refactor OS-specific modules to implement these interfaces (e.g., WindowsConstantService, MacConstantService). 3. Introduce a PlatformSelector module that returns the correct implementation based on runtime OS detection. 4. Refactor run.py and manage_modules.py to accept dependencies via constructor injection instead of direct imports. 5. Replace direct DPAPI imports in Windows modules with IDPAPIService interface. 6. Update hook-sys.py to bootstrap the platform-aware dependency graph. This is incremental: start with constant.py and crypto modules, then expand to DPAPI and run modules.",
+  "risks": "Initial refactoring may increase complexity temporarily due to new abstraction layers. Runtime dependency injection requires careful testing to avoid breaking OS-specific functionality. However, risks are mitigated by the incremental approach and the existing modular structure, which allows OS-specific modules to be replaced one at a time without disrupting the entire codebase."
+}

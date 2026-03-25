@@ -5,29 +5,29 @@
   "avg_files_per_package": 7.0,
   "imports_graph": {
     "src\\cli.py": [
-      "sys",
       "colorama",
-      "fnmatch",
       "os",
-      "subprocess"
+      "sys",
+      "subprocess",
+      "fnmatch"
     ],
     "src\\diff.py": [
-      "sys",
       "colorama",
-      "oletools",
       "os",
-      "difflib"
+      "oletools",
+      "difflib",
+      "sys"
     ],
     "scripts\\windows\\git-xl-version-info.py": [],
     "scripts\\windows\\update-version-info.py": [
       "re",
-      "os",
-      "json"
+      "json",
+      "os"
     ],
     "src\\tests\\test_cli.py": [
+      "cli",
       "unittest",
-      "io",
-      "cli"
+      "io"
     ],
     "src\\tests\\test_diff.py": [],
     "src\\tests\\__init__.py": []

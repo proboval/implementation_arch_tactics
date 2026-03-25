@@ -1,0 +1,23 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages defined (packages: 0)",
+    "Flat directory structure (max_directory_depth: 1)",
+    "All logic resides in top-level Python modules (3 main files + utils.py)",
+    "High average fan-out (7.67) indicates tight coupling and heavy interdependence across modules",
+    "Shared utility functions in utils.py imported via wildcard imports (from utils import *)",
+    "Files contain standalone conversion functions with no clear separation of concerns or layered abstraction",
+    "Code maintainability metrics show moderate complexity (mi_avg ~57), typical of procedural scripts"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling and high fan-out reduce testability and reusability",
+    "Wildcard imports (from utils import *) hinder static analysis and increase namespace pollution",
+    "Lack of modularity makes scaling or extending functionality difficult",
+    "No clear separation between domain logic, I/O, and infrastructure concerns"
+  ]
+}

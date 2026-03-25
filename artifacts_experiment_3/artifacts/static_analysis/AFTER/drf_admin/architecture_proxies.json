@@ -5,9 +5,9 @@
   "avg_files_per_package": 3.6857142857142855,
   "imports_graph": {
     "manage.py": [
-      "django",
       "os",
-      "sys"
+      "sys",
+      "django"
     ],
     "celery_tasks\\main.py": [
       "os",
@@ -15,20 +15,20 @@
     ],
     "celery_tasks\\__init__.py": [],
     "drf_admin\\routing.py": [
-      "channels",
+      "os",
       "drf_admin",
       "django",
       "monitor",
-      "os"
+      "channels"
     ],
     "drf_admin\\urls.py": [
+      "drf_yasg",
       "django",
-      "rest_framework",
-      "drf_yasg"
+      "rest_framework"
     ],
     "drf_admin\\wsgi.py": [
-      "django",
-      "os"
+      "os",
+      "django"
     ],
     "drf_admin\\__init__.py": [],
     "celery_tasks\\sms\\tasks.py": [
@@ -48,11 +48,11 @@
     "drf_admin\\utils\\exceptions.py": [
       "oauth",
       "traceback",
-      "redis",
-      "logging",
-      "rest_framework",
       "django",
-      "monitor"
+      "monitor",
+      "redis",
+      "rest_framework",
+      "logging"
     ],
     "drf_admin\\utils\\routers.py": [
       "rest_framework"
@@ -62,20 +62,20 @@
     ],
     "drf_admin\\utils\\__init__.py": [],
     "drf_admin\\apps\\cmdb\\admin.py": [
-      "django",
-      "cmdb"
+      "cmdb",
+      "django"
     ],
     "drf_admin\\apps\\cmdb\\apps.py": [
-      "django",
-      "cmdb"
+      "cmdb",
+      "django"
     ],
     "drf_admin\\apps\\cmdb\\tests.py": [
       "django"
     ],
     "drf_admin\\apps\\cmdb\\urls.py": [
-      "django",
+      "cmdb",
       "drf_admin",
-      "cmdb"
+      "django"
     ],
     "drf_admin\\apps\\cmdb\\__init__.py": [],
     "drf_admin\\apps\\information\\admin.py": [
@@ -91,31 +91,31 @@
       "django"
     ],
     "drf_admin\\apps\\information\\urls.py": [
-      "django",
-      "information"
+      "information",
+      "django"
     ],
     "drf_admin\\apps\\information\\__init__.py": [],
     "drf_admin\\apps\\monitor\\admin.py": [
       "django"
     ],
     "drf_admin\\apps\\monitor\\apps.py": [
-      "django",
-      "monitor"
+      "monitor",
+      "django"
     ],
     "drf_admin\\apps\\monitor\\models.py": [
-      "django",
-      "drf_admin"
+      "drf_admin",
+      "django"
     ],
     "drf_admin\\apps\\monitor\\notification.py": [
-      "redis",
+      "time",
       "django",
       "monitor",
-      "time",
-      "threading"
+      "threading",
+      "redis"
     ],
     "drf_admin\\apps\\monitor\\signals.py": [
-      "django",
       "django_redis",
+      "django",
       "models"
     ],
     "drf_admin\\apps\\monitor\\tests.py": [
@@ -135,26 +135,26 @@
       "django"
     ],
     "drf_admin\\apps\\oauth\\urls.py": [
-      "django",
       "oauth",
-      "rest_framework_jwt"
+      "rest_framework_jwt",
+      "django"
     ],
     "drf_admin\\apps\\oauth\\__init__.py": [],
     "drf_admin\\apps\\system\\admin.py": [
-      "django",
-      "system"
+      "system",
+      "django"
     ],
     "drf_admin\\apps\\system\\apps.py": [
-      "django",
-      "system"
+      "system",
+      "django"
     ],
     "drf_admin\\apps\\system\\tests.py": [
       "django"
     ],
     "drf_admin\\apps\\system\\urls.py": [
-      "django",
       "system",
-      "drf_admin"
+      "drf_admin",
+      "django"
     ],
     "drf_admin\\apps\\system\\__init__.py": [],
     "drf_admin\\apps\\work\\admin.py": [
@@ -164,8 +164,8 @@
       "django"
     ],
     "drf_admin\\apps\\work\\models.py": [
-      "django",
-      "drf_admin"
+      "drf_admin",
+      "django"
     ],
     "drf_admin\\apps\\work\\tests.py": [
       "django"
@@ -175,9 +175,9 @@
     "drf_admin\\apps\\cmdb\\serializers\\__init__.py": [],
     "drf_admin\\apps\\cmdb\\views\\servers.py": [
       "cmdb",
-      "rest_framework",
       "drf_admin",
-      "django_filters"
+      "django_filters",
+      "rest_framework"
     ],
     "drf_admin\\apps\\cmdb\\views\\__init__.py": [],
     "drf_admin\\apps\\information\\migrations\\__init__.py": [],
@@ -187,8 +187,8 @@
     ],
     "drf_admin\\apps\\information\\serializers\\__init__.py": [],
     "drf_admin\\apps\\information\\views\\centre.py": [
-      "rest_framework",
-      "information"
+      "information",
+      "rest_framework"
     ],
     "drf_admin\\apps\\information\\views\\__init__.py": [],
     "drf_admin\\apps\\monitor\\consumers\\__init__.py": [],
@@ -200,36 +200,36 @@
     ],
     "drf_admin\\apps\\monitor\\migrations\\__init__.py": [],
     "drf_admin\\apps\\monitor\\serializers\\crud.py": [
+      "easyaudit",
       "django",
-      "rest_framework",
-      "easyaudit"
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\serializers\\error.py": [
-      "rest_framework",
-      "monitor"
+      "monitor",
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\serializers\\ip.py": [
-      "rest_framework",
-      "monitor"
+      "monitor",
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\serializers\\__init__.py": [],
     "drf_admin\\apps\\monitor\\views\\error.py": [
-      "rest_framework",
-      "monitor"
+      "monitor",
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\views\\ip.py": [
-      "rest_framework",
+      "monitor",
       "drf_admin",
-      "monitor"
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\views\\service.py": [
-      "rest_framework",
       "platform",
-      "socket"
+      "socket",
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\views\\users.py": [
-      "rest_framework",
-      "monitor"
+      "monitor",
+      "rest_framework"
     ],
     "drf_admin\\apps\\monitor\\views\\__init__.py": [],
     "drf_admin\\apps\\oauth\\migrations\\0001_initial.py": [
@@ -239,18 +239,18 @@
     "drf_admin\\apps\\oauth\\serializers\\__init__.py": [],
     "drf_admin\\apps\\oauth\\views\\__init__.py": [],
     "drf_admin\\apps\\system\\filters\\users.py": [
-      "django",
       "system",
       "drf_admin",
-      "django_filters"
+      "django_filters",
+      "django"
     ],
     "drf_admin\\apps\\system\\filters\\__init__.py": [],
     "drf_admin\\apps\\system\\jobs\\decorators.py": [
+      "functools",
       "traceback",
       "drf_admin",
-      "logging",
       "time",
-      "functools"
+      "logging"
     ],
     "drf_admin\\apps\\system\\jobs\\tasks.py": [
       "system"
@@ -259,8 +259,8 @@
     "drf_admin\\apps\\system\\migrations\\__init__.py": [],
     "drf_admin\\apps\\system\\serializers\\departments.py": [
       "system",
-      "rest_framework",
-      "drf_admin"
+      "drf_admin",
+      "rest_framework"
     ],
     "drf_admin\\apps\\system\\serializers\\roles.py": [
       "system",
@@ -269,26 +269,26 @@
     "drf_admin\\apps\\system\\serializers\\__init__.py": [],
     "drf_admin\\apps\\system\\views\\departments.py": [
       "system",
-      "rest_framework",
-      "drf_admin"
+      "drf_admin",
+      "rest_framework"
     ],
     "drf_admin\\apps\\system\\views\\permissions.py": [
       "system",
-      "rest_framework",
-      "drf_admin"
+      "drf_admin",
+      "rest_framework"
     ],
     "drf_admin\\apps\\system\\views\\users.py": [
       "drf_admin",
       "django",
-      "rest_framework",
       "system",
+      "rest_framework",
       "django_filters"
     ],
     "drf_admin\\apps\\system\\views\\__init__.py": [],
     "drf_admin\\apps\\system\\jobs\\warehouse\\backup.py": [
-      "django",
       "os",
-      "time"
+      "time",
+      "django"
     ],
     "drf_admin\\apps\\system\\jobs\\warehouse\\__init__.py": [],
     "drf_admin\\apps\\work\\migrations\\__init__.py": [],

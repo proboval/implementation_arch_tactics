@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between the entry-point scripts (IP_hosts_scan.py, IP_hosts_scan_multithreading.py) and the shared utility module (lib/processbar.py), as evidenced by direct imports of internal implementation details (e.g., 'from lib.processbar import ProcessBar') without abstraction. Static analysis confirms low maintainability (MI avg 75.47) and flat structure with only one package and no separation of concerns. The multithreading script directly depends on a concrete class (ProcessBar) rather than an interface, making it hard to swap implementations, mock for testing, or extend without modifying callers. This violates separation of concerns and increases ripple-effect risk during changes.",
+  "target_components": [
+    "IP_hosts_scan_multithreading.py",
+    "lib/processbar.py"
+  ],
+  "expected_architectural_change": "Introduction of a clear abstraction (e.g., an interface or abstract base class) for progress-bar functionality, decoupling the entry-point scripts from the concrete tqdm-based implementation. This will allow the scripts to depend on an abstraction (e.g., 'ProgressBar') rather than 'ProcessBar', reducing coupling and enabling easier testing, substitution, and extension.",
+  "implementation_strategy": "1. Define a minimal abstract interface (e.g., 'ProgressBar') in a new module (e.g., lib/progress.py or as part of lib/__init__.py). 2. Refactor ProcessBar to implement this interface. 3. Update IP_hosts_scan_multithreading.py to import and depend on the interface (e.g., 'from lib.progress import ProgressBar') and inject or instantiate via the interface. 4. Optionally refactor IP_hosts_scan.py similarly if progress tracking is added later. 5. Add dependency injection or factory pattern if needed for testability. This is incremental: start with interface definition, then update imports and usage, preserving existing behavior.",
+  "risks": "Minor risk of over-engineering if the progress bar is simple and unlikely to change; however, given the multithreading script already uses it and maintainability metrics indicate issues, this is a low-risk, high-value improvement aligned with the flat structure and small codebase size."
+}

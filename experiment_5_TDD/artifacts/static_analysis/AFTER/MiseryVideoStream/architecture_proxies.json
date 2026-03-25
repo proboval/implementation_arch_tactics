@@ -1,0 +1,60 @@
+{
+  "python_files": 18,
+  "packages": 2,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 9.0,
+  "imports_graph": {
+    "config.py": [
+      "dotenv",
+      "os"
+    ],
+    "cache\\admins.py": [
+      "config",
+      "typing"
+    ],
+    "cache\\__init__.py": [
+      "cache"
+    ],
+    "Downloaders\\interfaces.py": [
+      "abc",
+      "typing"
+    ],
+    "Downloaders\\__init__.py": [
+      "downloaders"
+    ],
+    "helpers\\admins.py": [
+      "cache",
+      "pyrogram",
+      "typing"
+    ],
+    "helpers\\decorators.py": [
+      "config",
+      "pyrogram",
+      "helpers",
+      "typing"
+    ],
+    "helpers\\errors.py": [],
+    "helpers\\filters.py": [
+      "pyrogram",
+      "config",
+      "typing"
+    ],
+    "Misery\\MiseryInlineSearch.py": [
+      "pyrogram",
+      "youtubesearchpython"
+    ],
+    "Misery\\__main__.py": [
+      "pyrogram",
+      "config",
+      "Misery"
+    ],
+    "tests\\test_tactic.py": [
+      "Misery",
+      "unittest",
+      "Downloaders",
+      "helpers",
+      "pytest",
+      "cache"
+    ]
+  }
+}

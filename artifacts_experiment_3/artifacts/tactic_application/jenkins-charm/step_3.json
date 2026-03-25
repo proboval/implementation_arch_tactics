@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "reactive/orchestrator.py",
-  "content": "import hookenv\nfrom charms.layer.execd import execd_preinstall\n\n\ndef exec_install_hooks():\n    \"\"\"Invoke pre-install hooks under hooks/install.d\"\"\"\n    hookenv.log(\"Invoking pre-install hooks under hooks/install.d\")\n    execd_preinstall(\"hooks/install.d\")\n"
-}

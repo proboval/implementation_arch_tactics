@@ -5,10 +5,10 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "bot.py": [
-      "os",
       "pyrogram",
-      "config",
-      "sample_config"
+      "os",
+      "sample_config",
+      "config"
     ],
     "sample_config.py": [
       "os",
@@ -16,68 +16,68 @@
     ],
     "script.py": [],
     "database\\connections_mdb.py": [
-      "os",
       "pymongo",
-      "config",
-      "sample_config"
+      "os",
+      "sample_config",
+      "config"
     ],
     "database\\filters_mdb.py": [
-      "re",
-      "pymongo",
-      "sample_config",
       "config",
-      "os"
-    ],
-    "database\\users_mdb.py": [
       "os",
       "pymongo",
-      "config",
+      "re",
       "sample_config"
     ],
-    "plugins\\callbacks.py": [
-      "database",
-      "script",
+    "database\\users_mdb.py": [
+      "pymongo",
+      "os",
       "sample_config",
-      "ast",
+      "config"
+    ],
+    "plugins\\callbacks.py": [
       "config",
       "os",
-      "pyrogram"
+      "pyrogram",
+      "script",
+      "sample_config",
+      "database",
+      "ast"
     ],
     "plugins\\commands.py": [
+      "shutil",
+      "json",
       "math",
-      "database",
+      "config",
+      "os",
+      "time",
+      "heroku3",
+      "pyrogram",
       "plugins",
       "script",
-      "pyrogram",
-      "sample_config",
-      "json",
       "requests",
-      "shutil",
-      "time",
-      "config",
-      "os",
-      "heroku3"
+      "sample_config",
+      "database"
     ],
     "plugins\\connections.py": [
-      "database",
-      "sample_config",
       "config",
       "os",
-      "pyrogram"
+      "pyrogram",
+      "sample_config",
+      "database"
     ],
     "plugins\\filters.py": [
-      "re",
-      "io",
-      "database",
-      "plugins",
-      "sample_config",
       "config",
       "os",
-      "pyrogram"
+      "io",
+      "pyrogram",
+      "re",
+      "plugins",
+      "sample_config",
+      "database"
     ],
     "plugins\\helpers.py": [
-      "re",
       "pyrogram",
+      "re",
       "typing"
     ]
   }

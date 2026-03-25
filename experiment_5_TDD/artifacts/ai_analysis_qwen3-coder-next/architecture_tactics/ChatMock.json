@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between modules, as evidenced by the imports graph: routes_ollama.py and routes_openai.py each import from 14+ internal modules (responses_api, fast_mode, limits, reasoning, upstream, utils, session, model_registry, config, http, transform), and upstream.py imports from session, model_registry, config, utils, and http — creating a dense interdependency web. This is confirmed by the low maintainability index scores (MI=0.0 for utils.py and routes_openai.py; MI=5.16 for routes_ollama.py), which correlate with high fan-out (avg 7.32) and circular dependencies (e.g., routes_openai → session → upstream → session). This coupling increases ripple effects: changing upstream.py requires touching routes_ollama.py, routes_openai.py, websocket_routes.py, and session.py. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces, adapters) to decouple these modules, reducing modification range and preventing cascading changes.",
+  "target_components": [
+    "chatmock/routes_ollama.py",
+    "chatmock/routes_openai.py",
+    "chatmock/upstream.py",
+    "chatmock/session.py",
+    "chatmock/utils.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., UpstreamAdapter, SessionRepository, AuthProvider) to abstract concrete dependencies. For example, instead of routes_openai.py importing upstream.start_upstream_request directly, it would depend on an UpstreamClient interface injected via dependency injection. Similarly, session.py would depend on an AuthStorage interface rather than importing utils.write_auth_file/read_auth_file directly. This transforms the current star-topology coupling (all modules depend on utils, config, session) into a layered architecture with inversion of control.",
+  "implementation_strategy": "1. Define interfaces for high-coupling boundaries: UpstreamClient (for upstream.py), SessionStateStore (for session.py), AuthManager (for oauth/utils), and RateLimitEnforcer (for limits.py). 2. Refactor routes_openai.py and routes_ollama.py to depend on interfaces, not concrete implementations. 3. Create adapter classes (e.g., RequestsUpstreamClient, ThreadSafeSessionStore) that implement interfaces and delegate to existing logic. 4. Use dependency injection (e.g., via constructor injection in create_app) to wire implementations. 5. Incrementally replace direct imports with interface-based calls, starting with least stable modules (routes_ollama.py, routes_openai.py).",
+  "risks": "Initial refactoring may increase code volume and require careful interface design to avoid over-engineering. Temporary performance overhead from indirection is negligible. Risk of incorrect interface boundaries could delay progress, but this is mitigated by incremental implementation and existing test coverage (28 files with 3 test files)."
+}

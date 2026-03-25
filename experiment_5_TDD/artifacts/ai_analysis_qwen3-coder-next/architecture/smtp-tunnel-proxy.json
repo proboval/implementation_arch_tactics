@@ -1,0 +1,24 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "No packages (packages: 0) — flat module structure with all code in root directory",
+    "Single directory depth (max_directory_depth: 1) — no subdirectories for modules or layers",
+    "High average fan-out (8.33) — indicates tight coupling and heavy interdependence across modules",
+    "All functionality (client, server, crypto, config, CLI tools) resides in few top-level files (client.py, server.py, common.py)",
+    "CLI tools are shell scripts or Python scripts (smtp-tunnel-adduser, etc.) without clear module boundaries",
+    "No clear separation of concerns into layers or ports/adapters — business logic, I/O, and CLI handling mixed in common.py and main functions",
+    "MI (Maintainability Index) is 0 — indicates poor maintainability typical of unstructured scripts",
+    "Files are small, self-contained, and directly import from each other without abstraction layers"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Tight coupling makes testing, reuse, and maintenance difficult",
+    "Lack of modularity hinders scalability and team parallel development",
+    "No clear boundaries increase risk of circular dependencies and unintended side effects",
+    "Hard to evolve or replace components without affecting the entire codebase"
+  ]
+}

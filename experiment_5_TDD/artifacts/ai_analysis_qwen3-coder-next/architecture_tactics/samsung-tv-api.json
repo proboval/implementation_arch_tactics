@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between the core TV control logic and external dependencies (websocket, json, base64, logging, time) within samsungtv/remote.py. Static analysis shows remote.py imports 5 modules directly and has low maintainability index (59.14), indicating high complexity and coupling. The module handles both business logic (TV command semantics) and infrastructure concerns (WebSocket communication, serialization). This violates separation of concerns and increases ripple effects: any change to protocol or serialization requires touching the core class. Reduced Coupling directly addresses this by decoupling core TV behavior from infrastructure via interfaces/abstractions, reducing modification range and improving testability.",
+  "target_components": [
+    "samsungtv/remote.py",
+    "samsungtv/__init__.py"
+  ],
+  "expected_architectural_change": "Introduction of an explicit interface (e.g., SamsungTVProtocol or RemoteController) that abstracts WebSocket communication and serialization. SamsungTV class would depend on this interface rather than concrete websocket library calls. A new adapter module (e.g., samsungtv/adapter.py) would implement the interface, moving websocket-specific logic out of the core class. This creates a clear boundary between domain logic and infrastructure.",
+  "implementation_strategy": "1. Extract WebSocket communication and serialization logic from SamsungTV.__init__ and send_key into a new class (e.g., WebSocketAdapter) in a new file samsungtv/adapter.py. 2. Define a minimal interface (e.g., via abc.ABC) for remote control operations. 3. Refactor SamsungTV to accept an adapter instance via constructor (dependency injection), removing direct imports of websocket/json/base64 from the core class. 4. Update samsungtv/__init__.py to wire default adapter. 5. Add unit tests for SamsungTV using a mock adapter. This is incremental: adapter can be added without breaking existing usage, and core class can be simplified in stages.",
+  "risks": "Minor risk of over-engineering if the adapter abstraction is too broad; must keep interface minimal and driven by actual usage patterns. However, given the flat structure and clear single responsibility of remote.py, this is a low-risk, high-value refactoring that aligns with the modular monolith's existing boundaries."
+}

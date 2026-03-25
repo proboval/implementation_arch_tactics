@@ -5,10 +5,10 @@
   "avg_files_per_package": 0,
   "imports_graph": {
     "bot.py": [
+      "pyrogram",
       "os",
-      "config",
       "sample_config",
-      "pyrogram"
+      "config"
     ],
     "sample_config.py": [
       "os",
@@ -16,69 +16,69 @@
     ],
     "script.py": [],
     "database\\connections_mdb.py": [
+      "pymongo",
       "os",
-      "config",
       "sample_config",
-      "pymongo"
+      "config"
     ],
     "database\\filters_mdb.py": [
-      "pymongo",
-      "sample_config",
       "config",
+      "os",
+      "pymongo",
       "re",
-      "os"
+      "sample_config"
     ],
     "database\\users_mdb.py": [
+      "pymongo",
       "os",
-      "config",
       "sample_config",
-      "pymongo"
+      "config"
     ],
     "plugins\\callbacks.py": [
-      "database",
-      "sample_config",
       "config",
-      "script",
-      "pyrogram",
       "os",
+      "pyrogram",
+      "script",
+      "sample_config",
+      "database",
       "ast"
     ],
     "plugins\\commands.py": [
-      "database",
-      "heroku3",
-      "sample_config",
-      "math",
-      "time",
-      "requests",
+      "shutil",
       "json",
-      "pyrogram",
-      "script",
+      "math",
       "config",
       "os",
+      "time",
+      "heroku3",
+      "pyrogram",
       "plugins",
-      "shutil"
+      "script",
+      "requests",
+      "sample_config",
+      "database"
     ],
     "plugins\\connections.py": [
-      "database",
-      "sample_config",
       "config",
+      "os",
       "pyrogram",
-      "os"
+      "sample_config",
+      "database"
     ],
     "plugins\\filters.py": [
-      "database",
-      "sample_config",
       "config",
-      "re",
-      "pyrogram",
       "os",
       "io",
-      "plugins"
+      "pyrogram",
+      "re",
+      "plugins",
+      "sample_config",
+      "database"
     ],
     "plugins\\helpers.py": [
-      "typing",
+      "pyrogram",
       "re",
-      "pyrogram"
+      "typing"
     ]
   }
 }

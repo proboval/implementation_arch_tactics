@@ -12,24 +12,24 @@
       "logging"
     ],
     "easytrader\\server.py": [
+      "flask",
       "functools",
-      "log",
-      "flask"
+      "log"
     ],
     "easytrader\\__init__.py": [
-      "urllib3",
-      "easytrader"
+      "easytrader",
+      "urllib3"
     ],
     "tests\\test_easytrader.py": [
-      "sys",
-      "time",
       "os",
+      "time",
+      "sys",
       "easytrader",
       "unittest"
     ],
     "tests\\test_xqtrader.py": [
-      "unittest",
-      "easytrader"
+      "easytrader",
+      "unittest"
     ],
     "tests\\__init__.py": [],
     "easytrader\\config\\__init__.py": [],
@@ -40,12 +40,12 @@
       "json"
     ],
     "easytrader\\utils\\perf.py": [
-      "inspect",
+      "functools",
       "time",
-      "logging",
-      "easytrader",
       "timeit",
-      "functools"
+      "inspect",
+      "easytrader",
+      "logging"
     ],
     "easytrader\\utils\\win_gui.py": [
       "pywinauto"

@@ -1,0 +1,22 @@
+{
+  "architecture_type": "script_based",
+  "confidence": 0.95,
+  "evidence": [
+    "Single top-level Python file (geowifi.py) containing all core logic and function definitions",
+    "No packages (packages: 0) and shallow directory structure (max_directory_depth: 2)",
+    "All functions are defined at module level with no clear separation into layers or components",
+    "Heavy use of imports from external libraries without clear domain/core boundaries",
+    "No explicit ports/adapters, controllers, or domain models",
+    "Repository tree shows flat structure with helpers/ and gw_utils/ as loose directories, not architectural layers"
+  ],
+  "alternatives": [
+    "modular_monolith",
+    "unclear"
+  ],
+  "risks": [
+    "Low modularity makes maintenance and testing difficult",
+    "High fan-out (avg_fan_out: 6.0) indicates tight coupling to external dependencies",
+    "Lack of separation of concerns increases risk of side effects and reduces reusability",
+    "No test infrastructure visible in structure"
+  ]
+}

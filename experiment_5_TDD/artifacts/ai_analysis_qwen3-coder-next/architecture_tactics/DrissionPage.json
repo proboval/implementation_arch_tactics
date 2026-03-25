@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core modules, especially between _pages and _units (e.g., ChromiumPage imports _units.setter, _units.clicker, _units.waiter, etc., and _units modules import _functions and _units recursively). Static analysis confirms high fan-out (~4.8) and deep cross-module dependencies: _pages/chromium_page.py imports _units.setter and _units.waiter; _units/clicker.py imports _units.waiter; _units/setter.py imports _units.cookies_setter. This coupling increases ripple effect risk: changes in _units behavior (e.g., renaming Clicker) require updates across multiple _pages and _units files. The modular monolith structure is already present, but coupling undermines modularity and testability—classes in _units cannot be tested in isolation without pulling in _functions and _pages dependencies. Reducing coupling via interface-based decoupling directly addresses the identified risks: 'Tight coupling between _pages and _units modules could hinder future scalability' and 'Shared state in _configs and _functions may create hidden dependencies'.",
+  "target_components": [
+    "DrissionPage/_pages/chromium_page.py",
+    "DrissionPage/_pages/chromium_tab.py",
+    "DrissionPage/_pages/mix_tab.py",
+    "DrissionPage/_pages/web_page.py",
+    "DrissionPage/_units/clicker.py",
+    "DrissionPage/_units/waiter.py",
+    "DrissionPage/_units/setter.py",
+    "DrissionPage/_units/actions.py"
+  ],
+  "expected_architectural_change": "Introduce explicit interfaces (e.g., ClickerProtocol, WaiterProtocol, SetterProtocol) in a new _protocols module (or _base/protocols.py) that define minimal contracts for behavior. _units classes implement these protocols. _pages modules depend only on protocols, not concrete implementations. This decouples _pages from _units internals, enabling independent evolution and easier mocking in tests.",
+  "implementation_strategy": "1. Create DrissionPage/_protocols/ directory with files like clicker.pyi, waiter.pyi, setter.pyi defining minimal abstract interfaces (using abc.ABC or typing.Protocol). 2. Refactor _units classes to explicitly implement these protocols (e.g., class Clicker(ClickerProtocol)). 3. Update _pages imports to depend on protocol types instead of concrete classes (e.g., from .._protocols.clicker import ClickerProtocol). 4. Inject protocol dependencies via constructor or properties instead of direct instantiation where feasible. 5. Gradually replace direct imports in _units modules (e.g., clicker.py importing waiter) with protocol-based callbacks or event interfaces.",
+  "risks": "Incremental refactoring may temporarily increase complexity during transition; requires disciplined adherence to protocol contracts. Over-abstraction could lead to interface bloat if not carefully scoped. However, since the codebase already uses relative imports and has clear module boundaries, the risk is low and reversible."
+}

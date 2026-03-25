@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high internal coupling within the kubedifflib package: _diff.py imports 15 modules including _kube, _images is imported by __init__.py, and _kube.py is imported by both _diff.py and _images.py, creating bidirectional dependencies. Static analysis shows avg_fan_out=6.33 and imports_graph reveals _kube.py is a central hub (imported by two modules, importing subprocess/os/yaml). This tight coupling increases ripple effect risk: changes to KubeObject or iter_files in _kube.py propagate to both _diff.py and _images.py, making testing and modification harder. The shallow monolith structure (1 package, depth=3) means coupling is internal, not between services. AT39 directly addresses this by introducing abstractions (e.g., interfaces for Kubernetes object access) to decouple modules, reducing modification range and improving testability.",
+  "target_components": [
+    "kubedifflib/_kube.py",
+    "kubedifflib/_diff.py",
+    "kubedifflib/_images.py",
+    "kubedifflib/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce an abstract interface (e.g., IKubeClient) to decouple _diff.py and _images.py from concrete _kube.KubeObject and iter_files implementation. _kube.py would implement the interface, while _diff.py and _images.py depend only on the interface. This transforms direct module imports into dependency injection, reducing fan-out and breaking circular dependencies.",
+  "implementation_strategy": "1. Define IKubeClient interface in a new kubedifflib/interfaces.py (or as internal ABC in _kube.py). 2. Refactor KubeObject and iter_files to implement IKubeClient. 3. Modify _diff.py and _images.py to accept IKubeClient via constructor or parameter instead of importing _kube directly. 4. Update __init__.py to wire concrete implementations. 5. Add tests for interface contracts. This is incremental: start with _kube.py as the sole implementer, then refactor callers one at a time.",
+  "risks": "Initial refactoring may increase complexity temporarily due to new interface layer. Requires careful backward compatibility handling if public API is consumed externally. Risk of over-engineering if interface is too broad; must be scoped to actual usage patterns (e.g., only extract methods used by _diff.py and _images.py)."
+}

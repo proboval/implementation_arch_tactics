@@ -1,0 +1,24 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.9,
+  "evidence": [
+    "Single package (packages: 1) with no inter-service communication patterns",
+    "Clear logical separation into modules: models/, services/, utils/, config/, tests/, etc.",
+    "Central entry point (app.py) orchestrating components, no distributed endpoints",
+    "Services depend on models and utils directly (fan-out ~4, moderate coupling)",
+    "All components run in same process (Flask app, scheduled tasks, CLI scripts)",
+    "No external service boundaries or RPC patterns visible",
+    "Shared data models (Account, Entrypoint) used across services",
+    "Configuration and templates co-located, typical of monoliths"
+  ],
+  "alternatives": [
+    "layered",
+    "mvc"
+  ],
+  "risks": [
+    "Tight coupling between services (e.g., services/cloudflare.py imports services/common.py and vice versa)",
+    "Potential scalability limitations due to single-process deployment",
+    "Difficulty isolating failure domains without process boundaries",
+    "Testing may require heavy mocking due to cross-module dependencies"
+  ]
+}

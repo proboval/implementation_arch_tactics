@@ -11,48 +11,48 @@
     "docs\\__init__.py": [],
     "nsepy\\cli.py": [
       "datetime",
-      "click",
-      "history"
+      "history",
+      "click"
     ],
     "nsepy\\commons.py": [
-      "sys",
-      "six",
-      "zipfile",
-      "requests",
-      "nsepy",
-      "re",
       "datetime",
-      "pandas",
       "functools",
+      "six",
+      "nsepy",
+      "zipfile",
+      "pandas",
+      "threading",
       "numpy",
-      "threading"
+      "sys",
+      "re",
+      "requests"
     ],
     "nsepy\\constants.py": [
       "six"
     ],
     "nsepy\\history.py": [
-      "six",
-      "inspect",
-      "pdb",
-      "nsepy",
       "datetime",
+      "six",
+      "nsepy",
       "io",
       "pandas",
-      "bs4"
+      "bs4",
+      "inspect",
+      "pdb"
     ],
     "nsepy\\live.py": [
-      "bs4",
-      "dateutil",
       "pdb",
-      "nsepy",
       "json",
+      "nsepy",
       "io",
-      "ast"
+      "bs4",
+      "ast",
+      "dateutil"
     ],
     "nsepy\\liveurls.py": [
-      "nsepy",
       "requests",
-      "functools"
+      "functools",
+      "nsepy"
     ],
     "nsepy\\nselist.py": [],
     "nsepy\\symbols.py": [
@@ -61,69 +61,69 @@
       "io"
     ],
     "nsepy\\urls.py": [
-      "nsepy",
       "requests",
-      "functools"
+      "functools",
+      "nsepy"
     ],
     "nsepy\\__init__.py": [
-      "derivatives",
       "live",
-      "history"
+      "history",
+      "derivatives"
     ],
     "tests\\test_archives.py": [],
     "tests\\test_commons.py": [
-      "six",
-      "nsepy",
-      "requests",
+      "datetime",
       "json",
-      "datetime",
-      "unittest",
-      "tests",
-      "bs4"
-    ],
-    "tests\\test_history.py": [
       "six",
-      "pdb",
       "nsepy",
-      "datetime",
+      "bs4",
+      "tests",
+      "requests",
       "unittest"
     ],
-    "tests\\test_live.py": [
-      "six",
-      "pdb",
-      "requests",
-      "nsepy",
-      "json",
+    "tests\\test_history.py": [
       "datetime",
+      "six",
+      "nsepy",
       "unittest",
+      "pdb"
+    ],
+    "tests\\test_live.py": [
+      "datetime",
+      "json",
+      "six",
+      "nsepy",
+      "bs4",
       "tests",
-      "bs4"
+      "requests",
+      "unittest",
+      "pdb"
     ],
     "tests\\test_liveurls.py": [
-      "six",
-      "requests",
-      "nsepy",
-      "json",
       "datetime",
-      "unittest",
+      "json",
+      "six",
+      "nsepy",
+      "bs4",
       "tests",
-      "bs4"
+      "requests",
+      "unittest"
     ],
     "tests\\test_symbols.py": [
       "pdb",
-      "nsepy",
-      "unittest"
+      "unittest",
+      "nsepy"
     ],
     "tests\\test_urls.py": [
-      "six",
       "pdb",
-      "nsepy",
-      "requests",
-      "json",
       "datetime",
-      "unittest",
+      "json",
+      "six",
+      "nsepy",
+      "bs4",
       "tests",
-      "bs4"
+      "requests",
+      "unittest"
     ],
     "tests\\__init__.py": [],
     "docs\\source\\conf.py": [
@@ -133,18 +133,18 @@
     ],
     "nsepy\\debt\\__init__.py": [],
     "nsepy\\derivatives\\archives.py": [
-      "requests",
-      "nsepy",
       "datetime",
+      "nsepy",
       "io",
       "pandas",
+      "bs4",
       "numpy",
-      "bs4"
+      "requests"
     ],
     "nsepy\\derivatives\\__init__.py": [
+      "re",
       "datetime",
-      "nsepy",
-      "re"
+      "nsepy"
     ],
     "tests\\htmls\\__init__.py": [
       "six"

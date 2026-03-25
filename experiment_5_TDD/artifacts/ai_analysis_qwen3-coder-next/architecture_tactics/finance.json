@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling: streamlit_app.py directly imports and instantiates Portfolio and plots functions without abstractions, and plots.py and portfolio.py share no interfaces or adapters. Static analysis shows imports_graph with streamlit_app.py importing both modules directly (no intermediate layer), and architecture_maintainability flags C1 (coupling) and A3 (abstraction) as issues. This coupling makes testing difficult (e.g., mocking Portfolio in streamlit_app tests), increases ripple effects when changing plotting logic or portfolio calculations, and violates separation of concerns. Reduced Coupling directly addresses this by introducing interfaces or ports/adapters to decouple streamlit_app.py from concrete implementations.",
+  "target_components": [
+    "streamlit_app.py",
+    "portfolio.py",
+    "plots.py"
+  ],
+  "expected_architectural_change": "Introduction of lightweight abstractions (e.g., interfaces or protocols) for portfolio calculations and plotting operations. streamlit_app.py will depend on abstract interfaces (e.g., PortfolioCalculator, PlottingService) instead of concrete classes/functions. This creates a layered structure where the UI layer (streamlit_app.py) depends on abstractions, while concrete implementations (Portfolio, plot functions) reside in their respective modules.",
+  "implementation_strategy": "1. Define minimal protocols/interfaces in a new module (e.g., interfaces.py or within portfolio.py/plots.py) for required behaviors (e.g., PortfolioCalculator with calculate_metrics(), PlottingService with plot_efficient_frontier(), etc.). 2. Refactor streamlit_app.py to accept or instantiate these interfaces (e.g., via dependency injection or factory). 3. Update portfolio.py and plots.py to implement the interfaces. 4. Replace direct imports (from portfolio import Portfolio) with interface-based usage. This can be done incrementally—start with one service (e.g., PortfolioCalculator), then extend to plotting.",
+  "risks": "Over-engineering if interfaces are too broad; risk of adding indirection without clear benefit if not aligned with actual change patterns. However, given the tight coupling evidence and maintainability risks (e.g., difficulty testing, refactoring), the risk of *not* decoupling is higher. Minimal interfaces can be introduced with low effort and reversed if unnecessary."
+}

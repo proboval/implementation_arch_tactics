@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between modules, especially in the SQL dialect layer and verb implementations. Static analysis shows that dialect modules (e.g., siuba/sql/dialects/*.py) directly import and inherit from base classes in siuba/sql/dialects/base.py and siuba/sql/translate.py, while verb modules (e.g., siuba/sql/verbs/*.py) import from both backend and dialect modules, creating bidirectional dependencies. The imports_graph reveals that siuba/sql/verbs/mutate.py imports from siuba.sql.translate, siuba.sql.utils, and siuba.sql.backend, while siuba.sql.translate imports from siuba.ops.translate and siuba.siu, and siuba.sql.dialects.* files import from both base.py and translate.py. This tight coupling increases ripple effects during dialect changes and hinders testability. The risk assessment explicitly warns: 'Backend-specific logic is embedded in dialect modules rather than cleanly abstracted via ports/adapters'. Reduced Coupling directly addresses this by introducing an abstraction layer (e.g., a translator interface) to decouple dialect implementations from core verb logic.",
+  "target_components": [
+    "siuba/sql/dialects/base.py",
+    "siuba/sql/dialects/*.py",
+    "siuba/sql/translate.py",
+    "siuba/sql/verbs/*.py",
+    "siuba/sql/backend.py"
+  ],
+  "expected_architectural_change": "Introduce a Translator interface (e.g., SqlTranslatorProtocol) that dialects implement, and refactor verb modules to depend only on this interface rather than concrete dialect classes or backend internals. This will replace current direct imports (e.g., siuba.sql.dialects.sqlite.SqliteColumn) with dependency injection via the interface, flattening the dependency graph and reducing fan-in/fan-out between dialect and verb modules.",
+  "implementation_strategy": "1. Define a clean SqlTranslator interface in siuba/sql/translate.py that abstracts dialect-specific behavior (e.g., method dispatch, function translation). 2. Refactor dialect modules to implement this interface without importing backend internals. 3. Update verb modules (siuba/sql/verbs/*.py) to accept a translator instance via constructor or function parameter instead of importing concrete dialect classes. 4. Use dependency injection in LazyTbl to accept and use the translator interface. 5. Gradually migrate dialect-specific logic out of verb modules and into translator implementations.",
+  "risks": "Risk of temporary performance overhead during transition due to indirection; risk of breaking existing dialect implementations if interface is not carefully designed; risk of increased complexity if interface becomes too generic. Mitigation: Start with a minimal interface covering only critical translation paths (e.g., column operations), validate with existing tests, and incrementally expand coverage."
+}

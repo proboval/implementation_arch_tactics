@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between core server logic and internal implementation details, as evidenced by tests directly importing internal classes like WebSocketHandler and WebsocketServerThread, and the WebsocketServer class inheriting from both ThreadingMixIn and TCPServer while also implementing the API interface directly. This coupling increases ripple effects during changes and hinders testability and modifiability. The static analysis confirms 'C1' (likely coupling) and 'A3' (likely cohesion) as factors, and the low fan-out (3.5) with single-package structure indicates internal modules are not well decoupled. The high cyclomatic complexity in websocket_server.py (MI=34.6) further suggests entangled responsibilities. Reducing coupling via abstraction will isolate protocol handling, threading, and server orchestration.",
+  "target_components": [
+    "websocket_server/websocket_server.py",
+    "websocket_server/thread.py",
+    "tests/conftest.py",
+    "tests/test_handshake.py"
+  ],
+  "expected_architectural_change": "The WebsocketServer class will stop inheriting directly from ThreadingMixIn and TCPServer; instead, it will depend on abstractions (e.g., IServer, IHandler) implemented by concrete classes. WebSocketHandler will be decoupled via an interface (e.g., IWebSocketHandler) to allow swapping implementations. Threading concerns will be extracted into a separate IThreadingStrategy interface, enabling pluggable threading models without modifying core server logic.",
+  "implementation_strategy": "1. Define interfaces: IWebSocketHandler (for protocol handling), IServer (for server lifecycle), IThreadingStrategy (for threading model). 2. Refactor WebSocketHandler to implement IWebSocketHandler. 3. Refactor WebsocketServer to compose IServer and IThreadingStrategy instead of inheriting from ThreadingMixIn/TCPServer. 4. Update tests to depend only on public API and injected abstractions (e.g., via dependency injection in conftest.py). 5. Introduce a new module (e.g., strategies.py) for default implementations. This preserves the monolithic structure while improving modularity and testability.",
+  "risks": "Initial refactoring may increase code verbosity and require updating test fixtures. However, the flat directory structure and existing test suite make incremental adoption feasible. Risk of temporary performance overhead is negligible due to minimal indirection. No deployment or infrastructure changes required."
+}

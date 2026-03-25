@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "reactive/orchestrator.py",
-  "content": "\"\"\"Orchestration entry point for Jenkins charm.\n\nThis module coordinates charm lifecycle events by delegating to specialized\nmodules in the reactive layer, while keeping domain logic modules free of\ncharm-specific dependencies.\n\"\"\"\n\nfrom charms.reactive import hook\nfrom charms.layer.execd import execd_preinstall\n\nfrom . import install, configure, lifecycle, plugins\n\n\n# XXX This is for backward compatibility, since the pre-layered\n#     version of this charm used a custom exec.d dir, and we want\n#     custom forks of that version to keep working unmodified in\n#     case they merge the code from the new layered charm.\n@hook(\"install\")\ndef exec_install_hooks():\n    \"\"\"Invoke pre-install hooks under hooks/install.d.\"\"\"\n    execd_preinstall(\"hooks/install.d\")\n"
-}

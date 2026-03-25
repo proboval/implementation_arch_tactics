@@ -8,19 +8,19 @@
       "setuptools"
     ],
     "tests\\test_telepathy.py": [
-      "pytest",
       "src",
-      "asyncio"
+      "asyncio",
+      "pytest"
     ],
     "build\\lib\\telepathy\\const.py": [],
     "build\\lib\\telepathy\\utils.py": [
-      "random",
-      "bs4",
-      "textwrap",
       "colorama",
-      "requests",
+      "random",
       "telepathy",
-      "googletrans"
+      "googletrans",
+      "bs4",
+      "requests",
+      "textwrap"
     ],
     "src\\telepathy\\const.py": []
   }

@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals high average fan-out (3.39) and heavy cross-module dependencies, especially in core modules like execution.py (imports 15+ modules) and cli.py (imports 16+ modules). The imports graph shows execution.py directly depends on context, context/transform, completion, output, utils, and external libraries (parsimonious, pygments, httpie), creating tight coupling. This makes changes risky (ripple effects) and testing difficult due to shared state and circular import risks (e.g., contextio.py imports execution, while execution imports context/transform). The modular monolith structure has internal modules acting as de facto services but without clear boundaries, violating separation of concerns. Reduced Coupling directly addresses this by introducing interfaces/abstractions to decouple these modules, reducing ripple effects and improving testability.",
+  "target_components": [
+    "http_prompt/execution.py",
+    "http_prompt/contextio.py",
+    "http_prompt/cli.py",
+    "http_prompt/context/transform.py",
+    "http_prompt/completion.py"
+  ],
+  "expected_architectural_change": "Introduce abstraction layers (e.g., interfaces or abstract base classes) for core interactions: (1) ExecutionListener interface for context change/response events, (2) ContextSerializer interface for context persistence (replacing direct file I/O in contextio.py), (3) CommandFormatter interface for output formatting (replacing hard-coded format_to_* functions in transform.py). This will decouple execution from context persistence and formatting logic, allowing independent evolution and easier mocking in tests.",
+  "implementation_strategy": "1. Extract ExecutionListener into a formal interface (already partially exists in cli.py but not enforced). 2. Create ContextIO interface in contextio.py with concrete implementations (e.g., FileContextIO). 3. Replace direct imports of execution in contextio.py with dependency injection via the listener interface. 4. Refactor transform.py to depend on an abstract CommandFormatter interface instead of hard-coded formatting functions. 5. Update execution.py to depend on abstractions (e.g., ContextSerializer, CommandFormatter) instead of concrete modules. 6. Add tests for each abstraction layer incrementally.",
+  "risks": "Risk of over-engineering if abstractions are too generic; must be applied conservatively to only the most coupled modules (execution, contextio, transform). Initial refactoring may increase complexity temporarily but will reduce long-term maintenance cost. Requires careful backward compatibility management during incremental rollout."
+}

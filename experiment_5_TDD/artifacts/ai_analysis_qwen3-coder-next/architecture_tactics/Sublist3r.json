@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between the main script (sublist3r.py) and the subbrute module, as evidenced by sublist3r.py directly importing and instantiating subbrute without abstraction (e.g., 'from subbrute import subbrute'). Static analysis confirms low modularity (1 package, avg_fan_out=8.5) and poor testability due to lack of dependency injection. This coupling makes it difficult to swap or test components independently, especially since sublist3r.py directly depends on concrete implementation details of subbrute rather than an interface. Reduced Coupling directly addresses this by introducing abstractions (e.g., interfaces or abstract base classes) to decouple the main orchestrator from concrete modules like subbrute, improving modularity and testability.",
+  "target_components": [
+    "sublist3r.py",
+    "subbrute/subbrute.py"
+  ],
+  "expected_architectural_change": "Introduction of an abstract interface (e.g., SubdomainSource or EnumeratorStrategy) that both sublist3r.py and subbrute.py depend on, replacing direct import/instantiation with dependency injection. This will transform the monolithic script into a loosely-coupled composition of pluggable components, where sublist3r.py orchestrates via abstractions rather than concrete implementations.",
+  "implementation_strategy": "1. Extract an abstract base class (e.g., SubdomainSource) from enumratorBaseThreaded to represent external subdomain sources. 2. Refactor sublist3r.py to accept SubdomainSource instances via constructor or factory instead of importing subbrute directly. 3. Refactor subbrute.py to implement the SubdomainSource interface (or a dedicated adapter), decoupling it from the main script. 4. Introduce a factory or registry pattern to instantiate sources dynamically, reducing hard-coded dependencies. This can be done incrementally—start with subbrute, then extend to other search engines.",
+  "risks": "Initial refactoring may increase code verbosity; however, this is offset by improved long-term maintainability. Risk of over-engineering is low since the tactic is applied incrementally and targets only the most critical coupling point (sublist3r.py ↔ subbrute)."
+}

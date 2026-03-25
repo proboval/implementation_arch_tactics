@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe coupling issues: all functionality resides in flat files (client.py, server.py, common.py, generate_certs.py) with no packages or directory structure, and avg_fan_out=8.33 indicates excessive interdependencies. Static analysis confirms tight coupling via imports_graph showing client.py and server.py both importing directly from common.py (which contains 15+ classes mixing crypto, config, SMTP, tunnel logic), and mutual imports between modules. This coupling makes changes risky (ripple effects), testing difficult (no isolation), and maintenance slow (no clear boundaries). Reduced Coupling directly addresses this by introducing abstractions (interfaces/protocols) and dependency inversion to decouple components — e.g., separating TunnelCrypto, ConfigLoader, and SMTPMessageGenerator into distinct modules with well-defined interfaces.",
+  "target_components": [
+    "common.py",
+    "client.py",
+    "server.py"
+  ],
+  "expected_architectural_change": "common.py will be split into multiple modules (e.g., crypto/, config/, smtp/, tunnel/), each with clear interfaces. client.py and server.py will depend on abstractions (e.g., TunnelCryptoInterface, ConfigLoaderInterface) instead of concrete implementations in common.py. This reduces fan-out, eliminates circular dependencies, and enforces separation of concerns.",
+  "implementation_strategy": "1. Extract TunnelCrypto, UserConfig, ServerConfig, ClientConfig into a new config/ module with a ConfigLoader interface. 2. Extract TunnelCrypto into a crypto/ module with an EncryptionInterface. 3. Extract SMTPMessageGenerator into a smtp/ module with a MessageGeneratorInterface. 4. Refactor client.py and server.py to import only interfaces (e.g., from crypto import EncryptionInterface) and inject concrete implementations via factory or DI. 5. Replace direct imports from common.py with module-specific imports. 6. Add type hints using protocols (typing.Protocol) for interfaces to avoid runtime dependencies.",
+  "risks": "Risk of temporary instability during refactoring; requires careful incremental migration to avoid breaking existing CLI tools (smtp-tunnel-adduser, etc.) that depend on common.py. Mitigation: write tests for current behavior first, refactor in small steps, and use backward-compatible imports (e.g., re-export from common.py during transition)."
+}

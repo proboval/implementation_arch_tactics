@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Single package (packages: 1) with clear module separation (e.g., mkdoxy/, tests/, demo-projects/)",
+    "Low average fan-out (2.375) indicating loose coupling between modules",
+    "Directory depth of 2 suggests flat, organized module hierarchy without deep nesting",
+    "Well-defined responsibilities: doxygen.py (Doxygen integration), generator*.py (generation concerns), xml_parser.py (parsing), node.py (data model), markdown.py (rendering), filters.py (utility), finder.py (lookup)",
+    "No external service communication patterns (e.g., no HTTP clients, message queues, or RPC stubs)",
+    "All core logic resides in a single Python package (mkdoxy/) with clear internal dependencies",
+    "Template-based rendering (Jinja2) and plugin architecture (MkDoxy(BasePlugin)) support modularity without distribution",
+    "Tests are co-located with source (tests/), typical of monolithic architectures"
+  ],
+  "alternatives": [
+    "script_based",
+    "layered"
+  ],
+  "risks": [
+    "Potential for tight coupling if modules are not strictly separated (e.g., circular imports not visible but possible)",
+    "Limited scalability for concurrent development across large teams without further decomposition",
+    "Testing may become slower as test suite grows without service boundaries"
+  ]
+}

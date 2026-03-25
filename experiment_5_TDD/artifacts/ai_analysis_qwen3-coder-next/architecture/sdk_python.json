@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear package/module structure with 18 packages organized by concern (context, exception, http, json, model, security, util)",
+    "High cohesion within modules: each package has focused responsibilities (e.g., context for session management, http for API communication, json for serialization)",
+    "Low coupling: average fan-out of ~2 indicates minimal interdependencies between modules",
+    "No evidence of service boundaries, network calls between internal components, or distributed deployment",
+    "Model layer is well-organized with core interfaces (BunqModel, AnchorObjectInterface) and generated endpoint/object submodules",
+    "Consistent use of dependency inversion (e.g., JsonAdapter pattern, interface-based model design)",
+    "Directory depth of 5 suggests hierarchical organization without excessive nesting typical of microservices",
+    "Tests follow the same modular structure as source code, indicating integrated but well-separated concerns"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Potential for tight coupling between modules if dependencies are not carefully managed",
+    "Risk of monolith becoming too large as features grow",
+    "Limited scalability options compared to microservices"
+  ]
+}

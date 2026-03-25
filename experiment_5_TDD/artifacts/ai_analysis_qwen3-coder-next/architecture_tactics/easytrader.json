@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability, Changeability",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between UI automation (pywinauto) and core trading logic, especially in clienttrader.py and grid_strategies.py, where GUI interaction code is embedded directly in business methods (e.g., _click_grid_by_row, _get_grid_data). This is evident in the architecture risks: 'Tight coupling between UI automation (pywinauto) and business logic may hinder testability and maintainability'. Static analysis confirms high fan-in on pywinauto (used in 12+ files) and low modularity (avg_fan_out=1.64, but many modules import pywinauto directly). The modular monolith structure (e.g., clienttrader.py, grid_strategies.py, pop_dialog_handler.py) shows cohesion but suffers from cross-cutting GUI dependencies that prevent isolated unit testing and make changes ripple across modules. Reduced Coupling directly addresses this by introducing abstractions (e.g., IGridStrategy, IRefreshStrategy already partially exist but are underutilized) to decouple GUI interaction from core logic.",
+  "target_components": [
+    "easytrader/clienttrader.py",
+    "easytrader/grid_strategies.py",
+    "easytrader/refresh_strategies.py",
+    "easytrader/pop_dialog_handler.py",
+    "easytrader/utils/win_gui.py",
+    "easytrader/utils/captcha.py"
+  ],
+  "expected_architectural_change": "Introduce stricter interfaces and dependency inversion for GUI-related operations: (1) Extend IClientTrader to abstract GUI interaction points (e.g., IGridReader, IInputController); (2) Replace direct pywinauto imports in business logic with injected strategy interfaces; (3) Decouple captcha recognition from trading logic via a dedicated IVerificationService interface; (4) Refactor ClientTrader to depend on abstractions (e.g., IGridStrategy, IVerificationService) instead of concrete implementations or pywinauto directly. This will reduce coupling between trading logic and UI automation, enabling easier mocking, testing, and broker-specific UI changes without affecting core logic.",
+  "implementation_strategy": "Step 1: Define new interfaces (e.g., IGridReader, IVerificationService) in clienttrader.py and utils/captcha.py. Step 2: Refactor ClientTrader.__init__ to accept IGridStrategy and IVerificationService as dependencies (dependency injection). Step 3: Replace direct pywinauto calls in ClientTrader (e.g., findwindows, timings) with calls through injected interfaces. Step 4: Update concrete traders (GFClientTrader, HTClientTrader, etc.) to implement new interfaces only where needed. Step 5: Refactor grid_strategies.py to implement IGridReader instead of inheriting BaseStrategy with pywinauto dependencies. This is incremental: start with IGridReader, then expand to IVerificationService.",
+  "risks": "Risk of over-engineering if interfaces are too broad; must keep abstractions minimal and driven by actual coupling points. Risk of temporary performance overhead from extra indirection (negligible). Risk of breaking existing tests during refactoring—mitigated by maintaining backward compatibility via default parameters and gradual rollout."
+}

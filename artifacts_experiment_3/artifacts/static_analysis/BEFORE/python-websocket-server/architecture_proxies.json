@@ -8,22 +8,22 @@
       "websocket_server"
     ],
     "setup.py": [
-      "sys",
+      "shlex",
       "setuptools",
-      "re",
       "os",
       "distutils",
-      "subprocess",
-      "shlex"
+      "re",
+      "sys",
+      "subprocess"
     ],
     "tests\\conftest.py": [
-      "sys",
-      "websocket",
-      "time",
       "os",
-      "pytest",
-      "logging",
+      "time",
       "threading",
+      "sys",
+      "pytest",
+      "websocket",
+      "logging",
       "websocket_server"
     ],
     "tests\\test_handshake.py": [
@@ -32,9 +32,9 @@
     "tests\\test_message_lengths.py": [],
     "tests\\test_server.py": [
       "websocket",
-      "pytest",
+      "threading",
       "time",
-      "threading"
+      "pytest"
     ],
     "tests\\test_text_messages.py": [
       "threading"
@@ -43,17 +43,17 @@
       "threading"
     ],
     "websocket_server\\websocket_server.py": [
-      "sys",
-      "errno",
-      "ssl",
-      "base64",
-      "socketserver",
-      "hashlib",
       "socket",
-      "logging",
-      "struct",
+      "base64",
       "threading",
-      "websocket_server"
+      "sys",
+      "struct",
+      "socketserver",
+      "ssl",
+      "logging",
+      "websocket_server",
+      "hashlib",
+      "errno"
     ],
     "websocket_server\\__init__.py": [
       "websocket_server"

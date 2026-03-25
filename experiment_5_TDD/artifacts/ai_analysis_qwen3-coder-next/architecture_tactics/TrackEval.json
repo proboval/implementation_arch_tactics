@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT23",
+    "name": "Exception",
+    "primary_qa_impact": "Reliability, Maintainability",
+    "positive_impact": "Reliability, Fault handling",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits inconsistent and inadequate error handling, especially in dataset and metric modules. Static analysis shows files like trackeval/datasets/mot_challenge_2d_box.py, trackeval/datasets/kitti_mots.py, and trackeval/metrics/track_map.py raise custom TrackEvalException but lack structured exception handling patterns. In trackeval/eval.py, traceback is imported but not used for structured error reporting. Baseline modules (e.g., trackeval/baselines/non_overlap.py) use multiprocessing.Pool without exception propagation, risking silent failures. The _base_dataset.py and _base_metric.py define abstract methods but do not enforce consistent exception contracts, leading to unpredictable failure modes across dataset/metric implementations. This tactic directly addresses the 'maintainability' risk flagged in the architecture description: 'Baseline modules contain multiprocessing logic mixed with domain logic, reducing modularity' — unhandled exceptions in multiprocessing workers obscure failure sources and complicate debugging. By standardizing exception handling (e.g., defining exception boundaries, propagating context, using specific exception types), we improve fault isolation, testability, and readability without altering core domain logic.",
+  "target_components": [
+    "trackeval/eval.py",
+    "trackeval/datasets/_base_dataset.py",
+    "trackeval/datasets/mot_challenge_2d_box.py",
+    "trackeval/datasets/kitti_mots.py",
+    "trackeval/metrics/track_map.py",
+    "trackeval/baselines/non_overlap.py",
+    "trackeval/baselines/stp.py",
+    "trackeval/baselines/thresholder.py",
+    "trackeval/baselines/vizualize.py"
+  ],
+  "expected_architectural_change": "Introduce a consistent exception hierarchy rooted in TrackEvalException, define exception boundaries at module entry points (e.g., eval_sequence, _load_raw_file), and wrap multiprocessing worker functions with exception capture/re-raise wrappers. This creates explicit fault boundaries, separating error detection from error handling, and improves separation of concerns by moving error-reporting logic out of domain code.",
+  "implementation_strategy": "1. Define a hierarchy of domain-specific exceptions (e.g., DatasetLoadError, MetricComputationError, ConfigValidationError) extending TrackEvalException. 2. Update _base_dataset.py and _base_metric.py to declare expected exceptions in docstrings and abstract method contracts. 3. Wrap multiprocessing workers in baselines/ with try/except blocks that capture exceptions and re-raise with context (e.g., 'Failed in sequence X'). 4. Update eval.py to catch and log exceptions with full stack traces, preventing silent worker failures. 5. Add sanity checks (e.g., input validation) that raise specific exceptions early, reducing ripple effects.",
+  "risks": "Minimal risk: Exception handling is additive and non-breaking. Existing code continues to work; new exception types can be introduced incrementally. Potential temporary increase in code verbosity during refactoring, but long-term gain in debuggability and maintainability outweighs this."
+}

@@ -1,0 +1,23 @@
+{
+  "architecture_type": "modular_monolith",
+  "confidence": 0.95,
+  "evidence": [
+    "Clear separation into logical modules: 'models', 'resources', 'auth', 'response', 'pagination', 'exception' under a single top-level package 'mendeley'",
+    "Low average fan-out (1.74) indicates modules depend on few others, typical of well-modularized monoliths",
+    "Directory depth of 4 suggests moderate nesting for organization without excessive decoupling (inconsistent with microservices)",
+    "No external service communication patterns observed; all functionality resides in one codebase with internal module dependencies",
+    "Shared domain models (e.g., Document, Profile, Group) used across resources and models layers",
+    "Resources layer directly depends on models layer (e.g., Documents resource instantiates UserDocument), indicating tight coupling within one process",
+    "Test suite organized in parallel module structure (test/manual, test/resources), mirroring production modules — common in monoliths",
+    "Single entry point (mendeley/__init__.py) exposing Mendeley class that orchestrates auth flows and session creation"
+  ],
+  "alternatives": [
+    "layered",
+    "hexagonal (ports and adapters)"
+  ],
+  "risks": [
+    "Tight coupling between models and resources may hinder independent evolution of domain vs. API concerns",
+    "Lack of explicit boundary enforcement (e.g., via interfaces or strict dependency inversion) could lead to circular dependencies over time",
+    "Monolithic deployment may scale less flexibly than microservices for high-throughput or heterogeneous workloads"
+  ]
+}

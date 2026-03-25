@@ -1,5 +1,0 @@
-{
-  "action": "create_file",
-  "path": "bunq/sdk/model/core/internal_model_interface.py",
-  "content": "class InternalModelInterface:\n    \"\"\"\n    Interface to define the contract for internal models.\n\n    Internal models should delegate to their wrapped generated model\n    instance instead of inheriting from it, promoting loose coupling.\n    \"\"\"\n\n    def get_generated_model(self):\n        \"\"\"\n        Return the wrapped generated model instance.\n        \"\"\"\n        raise NotImplementedError\n\n    def is_all_field_none(self):\n        \"\"\"\n        Delegate to the underlying generated model's implementation.\n        \"\"\"\n        raise NotImplementedError\n"
-}
