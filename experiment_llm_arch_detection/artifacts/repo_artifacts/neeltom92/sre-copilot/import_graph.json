@@ -1,0 +1,103 @@
+{
+  "nodes": [
+    "agent",
+    "app",
+    "config",
+    "server",
+    "test_apm",
+    "test_config",
+    "test_datadog",
+    "tools",
+    "tools.datadog_tools",
+    "tools.kubernetes_tools",
+    "tools.langchain_tools",
+    "tools.pagerduty_tools",
+    "verify_setup"
+  ],
+  "edges": [
+    {
+      "source": "agent",
+      "target": "config"
+    },
+    {
+      "source": "agent",
+      "target": "tools.datadog_tools"
+    },
+    {
+      "source": "agent",
+      "target": "tools.kubernetes_tools"
+    },
+    {
+      "source": "agent",
+      "target": "tools.langchain_tools"
+    },
+    {
+      "source": "agent",
+      "target": "tools.pagerduty_tools"
+    },
+    {
+      "source": "app",
+      "target": "agent"
+    },
+    {
+      "source": "app",
+      "target": "config"
+    },
+    {
+      "source": "server",
+      "target": "agent"
+    },
+    {
+      "source": "server",
+      "target": "config"
+    },
+    {
+      "source": "test_apm",
+      "target": "config"
+    },
+    {
+      "source": "test_apm",
+      "target": "tools.datadog_tools"
+    },
+    {
+      "source": "test_config",
+      "target": "config"
+    },
+    {
+      "source": "test_datadog",
+      "target": "config"
+    },
+    {
+      "source": "test_datadog",
+      "target": "tools.datadog_tools"
+    },
+    {
+      "source": "tools",
+      "target": "tools.datadog_tools"
+    },
+    {
+      "source": "tools",
+      "target": "tools.pagerduty_tools"
+    },
+    {
+      "source": "tools.langchain_tools",
+      "target": "tools.datadog_tools"
+    },
+    {
+      "source": "tools.langchain_tools",
+      "target": "tools.kubernetes_tools"
+    },
+    {
+      "source": "tools.langchain_tools",
+      "target": "tools.pagerduty_tools"
+    },
+    {
+      "source": "verify_setup",
+      "target": "agent"
+    },
+    {
+      "source": "verify_setup",
+      "target": "config"
+    }
+  ]
+}

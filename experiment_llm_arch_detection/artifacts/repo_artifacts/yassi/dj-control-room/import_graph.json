@@ -1,0 +1,123 @@
+{
+  "nodes": [
+    "dj_control_room",
+    "dj_control_room.admin",
+    "dj_control_room.admin_integration",
+    "dj_control_room.apps",
+    "dj_control_room.conf",
+    "dj_control_room.featured_panels",
+    "dj_control_room.models",
+    "dj_control_room.panels",
+    "dj_control_room.registry",
+    "dj_control_room.urls",
+    "dj_control_room.utils",
+    "dj_control_room.views",
+    "example_project.example_project",
+    "example_project.example_project.apps",
+    "example_project.example_project.asgi",
+    "example_project.example_project.example_panels",
+    "example_project.example_project.management",
+    "example_project.example_project.management.commands",
+    "example_project.example_project.settings",
+    "example_project.example_project.urls",
+    "example_project.example_project.wsgi",
+    "example_project.manage",
+    "setup",
+    "tests",
+    "tests.base",
+    "tests.conftest",
+    "tests.test_admin",
+    "tests.test_registry",
+    "tests.test_utils"
+  ],
+  "edges": [
+    {
+      "source": "dj_control_room.admin",
+      "target": "dj_control_room.admin_integration"
+    },
+    {
+      "source": "dj_control_room.admin",
+      "target": "dj_control_room.models"
+    },
+    {
+      "source": "dj_control_room.admin_integration",
+      "target": "dj_control_room.featured_panels"
+    },
+    {
+      "source": "dj_control_room.admin_integration",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "dj_control_room.admin_integration",
+      "target": "dj_control_room.utils"
+    },
+    {
+      "source": "dj_control_room.apps",
+      "target": "dj_control_room.admin_integration"
+    },
+    {
+      "source": "dj_control_room.apps",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "dj_control_room.registry",
+      "target": "dj_control_room.featured_panels"
+    },
+    {
+      "source": "dj_control_room.urls",
+      "target": "dj_control_room.views"
+    },
+    {
+      "source": "dj_control_room.utils",
+      "target": "dj_control_room.conf"
+    },
+    {
+      "source": "dj_control_room.utils",
+      "target": "dj_control_room.featured_panels"
+    },
+    {
+      "source": "dj_control_room.utils",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "dj_control_room.views",
+      "target": "dj_control_room.conf"
+    },
+    {
+      "source": "dj_control_room.views",
+      "target": "dj_control_room.featured_panels"
+    },
+    {
+      "source": "dj_control_room.views",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "dj_control_room.views",
+      "target": "dj_control_room.utils"
+    },
+    {
+      "source": "example_project.example_project.apps",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "example_project.example_project.apps",
+      "target": "example_project.example_project.example_panels"
+    },
+    {
+      "source": "tests.test_admin",
+      "target": "tests.base"
+    },
+    {
+      "source": "tests.test_registry",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "dj_control_room.registry"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "dj_control_room.utils"
+    }
+  ]
+}

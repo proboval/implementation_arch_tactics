@@ -1,0 +1,238 @@
+{
+  "nodes": [
+    "app",
+    "app.main",
+    "dash",
+    "dash.__main__",
+    "dash.agents",
+    "dash.agents.analyst",
+    "dash.agents.engineer",
+    "dash.context",
+    "dash.context.business_rules",
+    "dash.context.semantic_model",
+    "dash.instructions",
+    "dash.paths",
+    "dash.settings",
+    "dash.team",
+    "dash.tools",
+    "dash.tools.build",
+    "dash.tools.introspect",
+    "dash.tools.save_query",
+    "dash.tools.update_knowledge",
+    "db",
+    "db.session",
+    "db.url",
+    "evals",
+    "evals.__main__",
+    "evals.cases",
+    "evals.cases.accuracy",
+    "evals.cases.boundaries",
+    "evals.cases.governance",
+    "evals.cases.routing",
+    "evals.cases.security",
+    "evals.improve",
+    "evals.run",
+    "evals.smoke",
+    "scripts",
+    "scripts.generate_data",
+    "scripts.load_knowledge"
+  ],
+  "edges": [
+    {
+      "source": "app.main",
+      "target": "dash.agents.analyst"
+    },
+    {
+      "source": "app.main",
+      "target": "dash.agents.engineer"
+    },
+    {
+      "source": "app.main",
+      "target": "dash.settings"
+    },
+    {
+      "source": "app.main",
+      "target": "dash.team"
+    },
+    {
+      "source": "app.main",
+      "target": "db"
+    },
+    {
+      "source": "app.main",
+      "target": "scripts.load_knowledge"
+    },
+    {
+      "source": "dash.__main__",
+      "target": "dash.team"
+    },
+    {
+      "source": "dash.agents.analyst",
+      "target": "dash.instructions"
+    },
+    {
+      "source": "dash.agents.analyst",
+      "target": "dash.settings"
+    },
+    {
+      "source": "dash.agents.analyst",
+      "target": "dash.tools.build"
+    },
+    {
+      "source": "dash.agents.engineer",
+      "target": "dash.instructions"
+    },
+    {
+      "source": "dash.agents.engineer",
+      "target": "dash.settings"
+    },
+    {
+      "source": "dash.agents.engineer",
+      "target": "dash.tools.build"
+    },
+    {
+      "source": "dash.context.business_rules",
+      "target": "dash.paths"
+    },
+    {
+      "source": "dash.context.semantic_model",
+      "target": "dash.paths"
+    },
+    {
+      "source": "dash.instructions",
+      "target": "dash.context.business_rules"
+    },
+    {
+      "source": "dash.instructions",
+      "target": "dash.context.semantic_model"
+    },
+    {
+      "source": "dash.instructions",
+      "target": "dash.settings"
+    },
+    {
+      "source": "dash.settings",
+      "target": "db"
+    },
+    {
+      "source": "dash.team",
+      "target": "dash.agents.analyst"
+    },
+    {
+      "source": "dash.team",
+      "target": "dash.agents.engineer"
+    },
+    {
+      "source": "dash.team",
+      "target": "dash.instructions"
+    },
+    {
+      "source": "dash.team",
+      "target": "dash.settings"
+    },
+    {
+      "source": "dash.tools.build",
+      "target": "dash.tools.introspect"
+    },
+    {
+      "source": "dash.tools.build",
+      "target": "dash.tools.save_query"
+    },
+    {
+      "source": "dash.tools.build",
+      "target": "dash.tools.update_knowledge"
+    },
+    {
+      "source": "dash.tools.build",
+      "target": "db"
+    },
+    {
+      "source": "dash.tools.introspect",
+      "target": "db.session"
+    },
+    {
+      "source": "db",
+      "target": "db.session"
+    },
+    {
+      "source": "db",
+      "target": "db.url"
+    },
+    {
+      "source": "db.session",
+      "target": "db.url"
+    },
+    {
+      "source": "evals.__main__",
+      "target": "evals"
+    },
+    {
+      "source": "evals.__main__",
+      "target": "evals.improve"
+    },
+    {
+      "source": "evals.__main__",
+      "target": "evals.run"
+    },
+    {
+      "source": "evals.__main__",
+      "target": "evals.smoke"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.agents.analyst"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.agents.engineer"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.context.business_rules"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.context.semantic_model"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.instructions"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.paths"
+    },
+    {
+      "source": "evals.improve",
+      "target": "dash.team"
+    },
+    {
+      "source": "evals.improve",
+      "target": "evals.smoke"
+    },
+    {
+      "source": "evals.run",
+      "target": "dash.team"
+    },
+    {
+      "source": "evals.run",
+      "target": "evals"
+    },
+    {
+      "source": "evals.smoke",
+      "target": "dash.team"
+    },
+    {
+      "source": "scripts.generate_data",
+      "target": "db"
+    },
+    {
+      "source": "scripts.load_knowledge",
+      "target": "dash.paths"
+    },
+    {
+      "source": "scripts.load_knowledge",
+      "target": "dash.settings"
+    }
+  ]
+}

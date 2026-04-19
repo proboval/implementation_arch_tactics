@@ -1,0 +1,50 @@
+gemini-superpowers-antigravity
+├── .agent
+│   ├── rules
+│   │   └── superpowers.md
+│   ├── skills
+│   │   ├── superpowers-brainstorm
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-debug
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-finish
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-plan
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-python-automation
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-rest-automation
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-review
+│   │   │   └── SKILL.md
+│   │   ├── superpowers-tdd
+│   │   │   └── SKILL.md
+│   │   └── superpowers-workflow
+│   │       ├── scripts
+│   │       │   ├── record_activation.py
+│   │       │   ├── spawn_subagent.py
+│   │       │   └── write_artifact.py
+│   │       └── SKILL.md
+│   └── workflows
+│       ├── superpowers-brainstorm.md
+│       ├── superpowers-debug.md
+│       ├── superpowers-execute-plan-parallel.md
+│       ├── superpowers-execute-plan.md
+│       ├── superpowers-finish.md
+│       ├── superpowers-reload.md
+│       ├── superpowers-review.md
+│       └── superpowers-write-plan.md
+├── e2e_demo
+│   ├── api
+│   │   ├── __init__.py
+│   │   └── app.py
+│   ├── sync_tool
+│   │   ├── __init__.py
+│   │   └── sync.py
+│   ├── tests
+│   │   └── test_e2e.py
+│   └── __init__.py
+├── .gitignore
+├── LICENSE.txt
+├── README.md
+└── requirements.txt

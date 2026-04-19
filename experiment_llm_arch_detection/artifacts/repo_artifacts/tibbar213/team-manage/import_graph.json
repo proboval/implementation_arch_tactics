@@ -1,0 +1,345 @@
+{
+  "nodes": [
+    "app",
+    "app.config",
+    "app.database",
+    "app.db_migrations",
+    "app.dependencies",
+    "app.dependencies.auth",
+    "app.main",
+    "app.models",
+    "app.routes",
+    "app.routes.admin",
+    "app.routes.api",
+    "app.routes.auth",
+    "app.routes.redeem",
+    "app.routes.user",
+    "app.routes.warranty",
+    "app.services",
+    "app.services.auth",
+    "app.services.chatgpt",
+    "app.services.encryption",
+    "app.services.notification",
+    "app.services.redeem_flow",
+    "app.services.redemption",
+    "app.services.settings",
+    "app.services.team",
+    "app.services.warranty",
+    "app.utils",
+    "app.utils.jwt_parser",
+    "app.utils.time_utils",
+    "app.utils.token_parser",
+    "init_db",
+    "test_webhook"
+  ],
+  "edges": [
+    {
+      "source": "app.database",
+      "target": "app.config"
+    },
+    {
+      "source": "app.db_migrations",
+      "target": "app.config"
+    },
+    {
+      "source": "app.dependencies.auth",
+      "target": "app.database"
+    },
+    {
+      "source": "app.dependencies.auth",
+      "target": "app.services.settings"
+    },
+    {
+      "source": "app.main",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.db_migrations"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.admin"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.api"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.auth"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.redeem"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.user"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routes.warranty"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services.auth"
+    },
+    {
+      "source": "app.models",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.dependencies.auth"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.main"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.services.chatgpt"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.services.redemption"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.services.settings"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.routes.admin",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.routes.api",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.api",
+      "target": "app.dependencies.auth"
+    },
+    {
+      "source": "app.routes.api",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.routes.auth",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.auth",
+      "target": "app.dependencies.auth"
+    },
+    {
+      "source": "app.routes.auth",
+      "target": "app.services.auth"
+    },
+    {
+      "source": "app.routes.redeem",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.redeem",
+      "target": "app.services.redeem_flow"
+    },
+    {
+      "source": "app.routes.user",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.user",
+      "target": "app.main"
+    },
+    {
+      "source": "app.routes.user",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.routes.warranty",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routes.warranty",
+      "target": "app.models"
+    },
+    {
+      "source": "app.routes.warranty",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.routes.warranty",
+      "target": "app.services.warranty"
+    },
+    {
+      "source": "app.services.auth",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.auth",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.chatgpt",
+      "target": "app.services.settings"
+    },
+    {
+      "source": "app.services.chatgpt",
+      "target": "app.utils.jwt_parser"
+    },
+    {
+      "source": "app.services.encryption",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.notification",
+      "target": "app.database"
+    },
+    {
+      "source": "app.services.notification",
+      "target": "app.services.redemption"
+    },
+    {
+      "source": "app.services.notification",
+      "target": "app.services.settings"
+    },
+    {
+      "source": "app.services.notification",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.database"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.services.chatgpt"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.services.notification"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.services.redemption"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.services.warranty"
+    },
+    {
+      "source": "app.services.redeem_flow",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.services.redemption",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.redemption",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.services.redemption",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.services.settings",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.services.chatgpt"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.services.encryption"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.utils.jwt_parser"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.services.team",
+      "target": "app.utils.token_parser"
+    },
+    {
+      "source": "app.services.warranty",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.warranty",
+      "target": "app.services.team"
+    },
+    {
+      "source": "app.services.warranty",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.utils.jwt_parser",
+      "target": "app.utils.time_utils"
+    },
+    {
+      "source": "app.utils.time_utils",
+      "target": "app.config"
+    },
+    {
+      "source": "init_db",
+      "target": "app.config"
+    },
+    {
+      "source": "init_db",
+      "target": "app.database"
+    },
+    {
+      "source": "init_db",
+      "target": "app.models"
+    },
+    {
+      "source": "test_webhook",
+      "target": "app.models"
+    },
+    {
+      "source": "test_webhook",
+      "target": "app.services.notification"
+    },
+    {
+      "source": "test_webhook",
+      "target": "app.services.settings"
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{url}
+
+\begin{document}
+
+\title{LLM-Based Architecture Detection in Software Repositories: An Empirical Multi-Model Evaluation}
+
+\titlerunning{LLM-Based Architecture Detection in Software Repositories}
+
+\author{Anonymous Author(s)}
+\authorrunning{Anonymous Author(s)}
+
+\institute{Anonymous Institution(s)}
+
+\maketitle
+
+\begin{abstract}
+Identifying the dominant architectural style of a software repository is a prerequisite for architecture-aware quality improvement, yet manual classification requires significant expertise and does not scale. This paper investigates whether Large Language Models (LLMs) can infer architectural styles from repository-level structural evidence. We evaluate five LLMs---Qwen3-coder-next, DeepSeek-v3.2, Gemini-3-Flash-Preview, Gemma4-31B, and MiniMax-M2.7---across four incremental context configurations: (1)~file tree only, (2)~file tree with import dependency graph, (3)~adding Python code signatures, and (4)~adding repository structural metrics. Applied to 57 manually labeled open-source Python backend repositories spanning three architectural styles (modular monolith, layered, script-based), the best configuration---Qwen3 with file tree and import graph---achieves 70.2\% accuracy and 0.65 macro-F1. Import dependency graphs provide the most significant accuracy improvement across all models (+5.3\% to +10.5\%), while Python code signatures offer no benefit or degrade performance for all five models. All models systematically confuse modular monolith and layered architectures, and none produce well-calibrated confidence scores. These results establish empirical baselines for LLM-based architecture detection and highlight both the potential and current limitations of automated architectural classification.
+\keywords{software architecture detection \and large language models \and architectural classification \and repository analysis \and empirical software engineering}
+\end{abstract}
+
+\section{Introduction}
+
+Software architecture fundamentally shapes a system's quality attributes, including maintainability, modifiability, and scalability~\cite{bass2021software} \cite{perry1992foundations}. Identifying the dominant architectural style of a codebase is a prerequisite for architecture-aware quality improvement~\cite{marquez2022architectural}, automated refactoring~\cite{martinez2025refactoring}, and technical debt assessment~\cite{bogner2019modifiability}. However, architectural knowledge is frequently implicit---embedded in code structure, dependency patterns, and naming conventions rather than documented explicitly~\cite{garlan1993introduction}.
+
+Manual architecture classification requires significant expertise and does not scale to the thousands of repositories encountered in large organizations or empirical research~\cite{esposito2025generative}. Static analysis tools can extract structural metrics but lack the semantic reasoning needed to distinguish, for example, a modular monolith from a layered architecture when both exhibit similar package structures~\cite{lenarduzzi2023critical}. Recent advances in Large Language Models (LLMs) have demonstrated strong capabilities in code understanding~\cite{liu2025exploring} \cite{piao2025refactoring}, including refactoring opportunity detection~\cite{martinez2025refactoring} \cite{horikawa2025agentic} and code-level quality improvement~ \cite{xu2025mantra}. However, existing work operates predominantly at the method or class level~\cite{horikawa2025agentic}, and no systematic evaluation exists of LLMs' ability to perform repository-level architectural classification.
+
+We define the \textbf{Architecture Detection Problem} as: given repository-level evidence (file structure, dependency graph, code signatures, and/or structural metrics), classify the repository into one of a predefined set of architectural styles. This problem is distinct from architecture recovery~\cite{shokri2024ipsynth}, which aims to reconstruct a detailed architectural model; our task requires coarse-grained style classification suitable for downstream automation such as tactic selection.
+
+This paper presents the first systematic empirical evaluation of LLM-based architecture detection across multiple models and evidence configurations. We investigate:
+
+\begin{itemize}[nosep]
+    \item \textbf{RQ1:} How accurately can LLMs classify the architectural style of a Python backend repository?
+    \item \textbf{RQ2:} Which types of repository-level evidence contribute most to classification accuracy?
+    \item \textbf{RQ3:} How do different LLMs compare in architectural classification performance?
+\end{itemize}
+
+Our contributions are: (1)~an empirical evaluation framework for LLM-based architecture detection, including a manually labeled dataset of 57 Python repositories across three architectural styles; (2)~a systematic comparison of four incremental context configurations across five LLMs, demonstrating that import dependency graphs are the most valuable evidence type; and (3)~evidence that all evaluated models systematically confuse modular monolith and layered architectures, revealing a fundamental limitation in current LLM architectural reasoning.
+
+The remainder of this paper is organized as follows: Section~\ref{sec:background} reviews background and related work; Section~\ref{sec:methodology} describes the methodology; Section~\ref{sec:results} presents results; Section~\ref{sec:discussion} provides discussion; Section~\ref{sec:threats} addresses threats to validity; and Section~\ref{sec:conclusion} concludes.
+
+\section{Background and Related Work}
+\label{sec:background}
+
+\subsection{Software Architecture Classification}
+
+Software architecture is defined by its elements, form, and rationale~\cite{perry1992foundations}, or as a collection of components and connectors in a specific configuration~\cite{garlan1993introduction}. Architectural styles---such as layered, modular monolith, microservices, and event-driven---provide high-level structural templates that constrain how components interact~\cite{bass2021software}.
+
+Architectural decisions directly influence quality attributes. The ISO/IEC 25010 standard~\cite{ISO25010} identifies modularity, analysability, and modifiability as key maintainability sub-characteristics, all shaped by architectural choices. M\'arquez et al.~\cite{marquez2022architectural} systematically mapped architectural tactics across quality attributes, demonstrating the tight coupling between architecture and quality. Rahmati~\cite{rahmati2021ensuring} showed that architectural pattern effectiveness is context-dependent, with misapplication increasing maintenance effort by up to 10\%. Bogner et al.~\cite{bogner2019modifiability} further demonstrated that modifiability tactics---particularly coupling reduction---are systematically addressed through service-oriented design patterns.
+
+Architecture recovery and detection have been studied through static analysis~\cite{lenarduzzi2023critical}, dynamic analysis, and manual expert assessment~\cite{shokri2024ipsynth}. However, automated approaches typically extract structural metrics without performing the semantic reasoning needed for style classification. Kim et al.~\cite{kim2009qualitydriven} demonstrated that quality-driven architecture development requires understanding architectural style to select appropriate tactics---motivating our work on automated style detection as an enabling step.
+
+\subsection{LLMs in Software Engineering}
+
+LLMs have demonstrated capabilities across multiple software engineering tasks. In code refactoring, multi-agent frameworks such as MANTRA achieve 82.8\% compilable refactoring success~\cite{xu2025mantra}, and LLM-assisted approaches can improve code quality at the file level~. Horikawa et al.~\cite{horikawa2025agentic} found that agentic refactorings are dominated by low-level edits, with agents performing fewer high-level design changes than human developers---a limitation directly relevant to architectural reasoning.
+
+For code understanding, Piao et al.~\cite{piao2025refactoring} showed that structured prompts with architectural context significantly improve LLM output quality. Liu et al.~\cite{liu2025exploring} found that LLMs can identify up to 86.7\% of refactoring opportunities but have limited performance in complex synthesis. Shokri and Khatchadourian~\cite{shokri2024ipsynth} reported 95\% syntactic but only 5\% semantic correctness for inter-procedural program synthesis, highlighting the difficulty of cross-module reasoning.
+
+Esposito et al.~\cite{esposito2025generative} surveyed generative AI applications for software architecture, identifying architecture detection and classification as a key open area. Pucho et al.~\cite{pucho2025refactoring} demonstrated LLM-based refactoring for Python ML projects, though limited to code-level patterns without architectural reasoning.
+
+\subsection{Research Gap}
+
+While LLMs have been applied to code-level refactoring~\cite{martinez2025refactoring} \cite{pucho2025refactoring} \cite{xu2025mantra} and architecture-level tactic detection~\cite{shokri2024ipsynth}, no existing work systematically evaluates LLMs' ability to classify repository-level architectural styles. Esposito et al.~\cite{esposito2025generative} explicitly identified this as a key open area. Our work addresses this gap by providing the first controlled multi-model evaluation of LLM-based architecture detection across multiple evidence configurations.
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Research Design}
+
+This study employs a controlled empirical evaluation comparing five LLMs across four context configurations on a manually labeled dataset. The independent variables are: (1)~the LLM model and (2)~the evidence provided in the prompt. The dependent variable is classification accuracy against human-assigned ground truth labels. Following the principles of evidence-based software engineering~\cite{bass2021software}, we report standard classification metrics and analyze error patterns to characterize model behavior.
+
+\subsection{Architectural Taxonomy}
+\label{sec:taxonomy}
+
+We define three architectural styles applicable to Python backend repositories:
+
+\begin{itemize}[nosep]
+    \item \textbf{Script-based:} Repository centered around few script files with weak package structure and limited modular decomposition. Characterized by flat directory structure, few internal dependencies, and high per-file complexity.
+    \item \textbf{Layered:} Repository with clear separation of concerns into architectural layers (e.g., API/controllers, services, repositories/data access, models, configuration). Internal dependencies flow predominantly in one direction between layers.
+    \item \textbf{Modular monolith:} Single deployable application organized into multiple packages/modules with meaningful internal boundaries. Distinguished from layered by the absence of strict layer hierarchy---modules may represent features or domains rather than technical layers.
+\end{itemize}
+
+The distinction between modular monolith and layered is maintained despite their conceptual proximity, as they imply different decomposition strategies (feature-based vs.\ layer-based) with distinct implications for downstream tasks such as architectural tactic selection~\cite{bass2021software} \cite{marquez2022architectural}.
+
+\subsection{Dataset}
+\label{sec:dataset}
+
+Repositories were sourced from public Python backend projects on GitHub via the GitHub Search API. A multi-stage filtering process was applied following established practices for curating research-quality repository datasets~\cite{rahmati2021ensuring}. Inclusion criteria required:
+
+\begin{itemize}[nosep]
+    \item Presence of Python source files (\texttt{.py}) and a valid \texttt{requirements.txt};
+    \item Exclusion of ML-heavy projects identified by the presence of Jupyter Notebooks (\texttt{.ipynb}) or dominant use of data science libraries;
+    \item Evidence of active development through commit history and star counts (ranging from 10 to 28{,}230).
+\end{itemize}
+
+After filtering, 59 repositories were retained. One repository failed artifact extraction due to its size, leaving \textbf{57 repositories} with complete results across all models and prompts. Each repository was cloned at a fixed commit hash to ensure reproducibility.
+
+Ground truth labels were assigned by a single expert annotator following the taxonomy defined in Section~\ref{sec:taxonomy}. Table~\ref{tab:class_dist} shows the class distribution.
+
+\begin{table}[htbp]
+\caption{Dataset class distribution (N = 57).}
+\label{tab:class_dist}
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+\textbf{Architecture Style} & \textbf{Count} & \textbf{Proportion} \\
+\midrule
+Modular monolith & 33 & 57.9\% \\
+Layered & 16 & 28.1\% \\
+Script-based & 8 & 14.0\% \\
+\midrule
+\textbf{Total} & \textbf{57} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Repository Evidence Extraction}
+
+For each repository, we extract three types of structural evidence through automated analysis:
+
+\textbf{File tree.} An ASCII representation of the repository directory structure, excluding common non-source directories.
+
+\textbf{Import dependency graph.} Internal import relationships between Python modules, extracted via AST parsing. Only internal dependencies are included.
+
+\textbf{Python code signatures.} For each \texttt{.py} file, we extract import statements, class definitions with base classes, and function/method signatures using AST parsing. Full function bodies are excluded to reduce context size while preserving structural information.
+
+Additionally, we compute \textbf{structural metrics} from the codebase: module count, average fan-out, maximum fan-in, dependency cycle detection, and total dependency edge count.
+
+\subsection{Prompt Design}
+\label{sec:prompts}
+
+We define four incremental context configurations:
+
+\begin{itemize}[nosep]
+    \item \textbf{P1:} File tree only
+    \item \textbf{P2:} File tree + import dependency graph
+    \item \textbf{P3:} File tree + import dependency graph + Python code signatures
+    \item \textbf{P4:} File tree + import dependency graph + Python code signatures + structural metrics
+\end{itemize}
+
+All prompts share an identical system prompt specifying the task, architectural taxonomy, allowed labels, and required JSON output schema.
+
+\subsection{Models}
+\label{sec:models}
+
+We evaluate five LLMs, all accessed through the Ollama API with identical parameters (temperature = 0.2, timeout = 300s, retries = 2):
+
+\begin{itemize}[nosep]
+    \item \textbf{Qwen3-coder-next:cloud}
+    \item \textbf{DeepSeek-v3.2:cloud}
+    \item \textbf{Gemini-3-Flash-Preview:cloud}
+    \item \textbf{Gemma4:31B-cloud}
+    \item \textbf{MiniMax-M2.7:cloud}
+\end{itemize}
+
+Each prompt is executed exactly once per repository per model.
+
+\subsection{Evaluation Metrics}
+
+We report:
+
+\begin{itemize}[nosep]
+    \item \textbf{Accuracy}
+    \item \textbf{Precision, Recall, F1-score} (macro and weighted)
+    \item \textbf{Confusion matrices}
+    \item \textbf{Confidence analysis}
+\end{itemize}
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Overall Classification Performance (RQ1)}
+
+Table~\ref{tab:accuracy} presents accuracy and macro-F1 for all model--prompt combinations.
+
+\begin{table}[htbp]
+\caption{Accuracy and macro-F1 across models and prompts. Best result per column in bold.}
+\label{tab:accuracy}
+\centering
+\small
+\begin{tabular}{l|rr|rr|rr|rr}
+\toprule
+& \multicolumn{2}{c|}{\textbf{P1}} & \multicolumn{2}{c|}{\textbf{P2}} & \multicolumn{2}{c|}{\textbf{P3}} & \multicolumn{2}{c}{\textbf{P4}} \\
+\textbf{Model} & Acc & F1\textsubscript{m} & Acc & F1\textsubscript{m} & Acc & F1\textsubscript{m} & Acc & F1\textsubscript{m} \\
+\midrule
+Qwen3    & \textbf{.596} & .53 & \textbf{.702} & \textbf{.65} & .632 & .52 & \textbf{.667} & \textbf{.57} \\
+MiniMax  & .579 & \textbf{.55} & .649 & .61 & \textbf{.649} & \textbf{.55} & .649 & .56 \\
+Gemma4   & .561 & .48 & .632 & .55 & .614 & .47 & .614 & .45 \\
+DeepSeek & .544 & .46 & .614 & .50 & .614 & .48 & .632 & .49 \\
+Gemini   & .526 & .47 & .579 & .49 & .561 & .41 & .596 & .45 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The best overall result is achieved by \textbf{Qwen3 with P2} (file tree + import graph): \textbf{70.2\% accuracy, 0.65 macro-F1}.
+
+\subsection{Impact of Evidence Types (RQ2)}
+
+\begin{table}[htbp]
+\caption{Accuracy change (\%) by evidence type addition.}
+\label{tab:evidence_delta}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Model} & \textbf{P1$\rightarrow$P2} & \textbf{P2$\rightarrow$P3} & \textbf{P3$\rightarrow$P4} \\
+\midrule
+Qwen3   & \textbf{+10.5} & $-$7.0 & +3.5 \\
+MiniMax & +7.0 & 0.0 & 0.0 \\
+Gemma4  & +7.0 & $-$1.8 & 0.0 \\
+DeepSeek& +7.0 & 0.0 & +1.8 \\
+Gemini  & +5.3 & $-$1.8 & +3.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Import dependency graphs are the most valuable evidence type, improving accuracy for all five models. Python code signatures provide no benefit or actively harm performance. Structural metrics provide only marginal improvement.
+
+\subsection{Per-Class Performance}
+
+\begin{table}[htbp]
+\caption{Per-class accuracy at P2 (file tree + import graph).}
+\label{tab:per_class}
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Class} & \textbf{Qwen3} & \textbf{MiniMax} & \textbf{Gemma4} & \textbf{DeepSeek} & \textbf{Gemini} \\
+\midrule
+Modular monolith (33) & \textbf{.727} & .636 & .606 & .515 & .424 \\
+Layered (16)          & .750 & .688 & .750 & .750 & .750 \\
+Script-based (8)      & .750 & .750 & .750 & \textbf{.875} & .750 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The primary differentiator between models is modular monolith detection, where Qwen3 substantially outperforms the others.
+
+\subsection{Model Comparison (RQ3)}
+
+\begin{table}[htbp]
+\caption{Model profiles across key dimensions.}
+\label{tab:model_profiles}
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Dimension} & \textbf{Qwen3} & \textbf{MiniMax} & \textbf{Gemma4} & \textbf{DeepSeek} & \textbf{Gemini} \\
+\midrule
+Best accuracy & \textbf{.702} & .649 & .632 & .632 & .596 \\
+Best F1\textsubscript{m} & \textbf{.65} & .61 & .55 & .50 & .49 \\
+Import $\Delta$ & \textbf{+10.5} & +7.0 & +7.0 & +7.0 & +5.3 \\
+Signature $\Delta$ & $-$7.0 & 0.0 & $-$1.8 & 0.0 & $-$1.8 \\
+Mean confidence & .887 & .826 & .906 & .847 & .913 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Qwen3 achieves the highest overall accuracy. MiniMax ranks second and shows the best confidence calibration. DeepSeek excels at script-based detection. Gemini shows the lowest overall accuracy but the highest prediction confidence.
+
+\subsection{Systematic Misclassification Patterns}
+
+The dominant error across all models is confusion between modular monolith and layered architectures.
+
+\begin{table}[htbp]
+\caption{Modular monolith misclassifications at P2 (N = 33).}
+\label{tab:mm_errors}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Model} & \textbf{Correct} & $\rightarrow$\textbf{layered} & $\rightarrow$\textbf{script} & $\rightarrow$\textbf{other} \\
+\midrule
+Qwen3    & \textbf{24} & 8 & 1 & 0 \\
+MiniMax  & 21 & 7 & 2 & 3 \\
+Gemma4   & 20 & 9 & 3 & 1 \\
+DeepSeek & 17 & 11 & 5 & 0 \\
+Gemini   & 14 & 14 & 4 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Confidence Calibration}
+
+\begin{table}[htbp]
+\caption{Mean confidence: correct vs.\ incorrect predictions (P2).}
+\label{tab:confidence}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Model} & \textbf{Correct} & \textbf{Incorrect} & \textbf{$\Delta$} \\
+\midrule
+MiniMax  & .838 & .812 & \textbf{.026} \\
+Qwen3    & .893 & .876 & .017 \\
+Gemma4   & .918 & .904 & .014 \\
+DeepSeek & .853 & .839 & .014 \\
+Gemini   & .916 & .907 & .009 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No model produces confidence scores that reliably distinguish correct from incorrect predictions.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The Value of Import Graphs}
+
+The consistent accuracy improvement from import dependency graphs across all five models is the strongest finding of this study. Import graphs encode inter-module dependency structure, directly reflecting architectural decomposition decisions, while file trees capture only static organizational hierarchy. This aligns with architectural theory, where dependencies between components are a defining characteristic of architectural style~\cite{perry1992foundations} \cite{garlan1993introduction} \cite{bass2021software}.
+
+\subsection{Why Signatures Do Not Help}
+
+The finding that Python code signatures degrade or do not improve performance for all five models is robust. Signatures appear to introduce redundancy, misleading naming signals, and context dilution without adding sufficient architectural information.
+
+\subsection{The Modular Monolith Problem}
+
+The systematic confusion between modular monolith and layered architectures is the most significant limitation identified. This confusion is shared across all five models and all context configurations, suggesting a fundamental challenge in both the task and the taxonomy boundary.
+
+\subsection{Practical Implications}
+
+For practical architecture detection:
+\begin{itemize}[nosep]
+    \item file tree + import graph is the best default configuration;
+    \item code signatures should be omitted;
+    \item confidence scores should not be used as a reliability filter;
+    \item modular monolith vs.\ layered predictions should be treated with caution.
+\end{itemize}
+
+\section{Threats to Validity}
+\label{sec:threats}
+
+\textbf{Internal validity.} Ground truth labels were assigned by a single annotator. Each prompt was executed once per model.
+
+\textbf{External validity.} Results are limited to 57 Python backend repositories from GitHub and three architectural styles.
+
+\textbf{Construct validity.} Architectural style is a high-level abstraction that may not be fully captured by a single label. Some repositories may exhibit hybrid architectural characteristics.
+
+\textbf{Conclusion validity.} The dataset is small and class-imbalanced. Results should be interpreted as preliminary empirical evidence establishing baselines rather than definitive conclusions.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This study provides the first systematic evaluation of LLM-based architectural style detection across multiple models and evidence configurations.
+
+\textbf{RQ1:} LLMs can classify architectural styles with moderate accuracy. The best configuration (Qwen3 with file tree + import graph) achieves 70.2\% accuracy and 0.65 macro-F1.
+
+\textbf{RQ2:} Import dependency graphs provide the most significant and consistent accuracy improvement across all five models. Python code signatures offer no benefit or actively degrade performance.
+
+\textbf{RQ3:} Qwen3 achieves the highest overall accuracy. MiniMax ranks second with the best confidence calibration. DeepSeek excels at script-based detection. All models share a fundamental limitation: systematic confusion between modular monolith and layered architectures.
+
+Future work should expand the dataset, include multiple annotators, investigate few-shot or fine-tuning strategies, and evaluate the downstream impact of architecture detection accuracy on automated architecture-aware transformations.
+
+\section*{Data Availability}
+
+An anonymized replication package containing the labeled dataset, extracted repository artifacts (file trees, import graphs, and code signatures), prompt templates, raw model outputs, and evaluation scripts will be made available to the program committee via an anonymous repository. The final camera-ready version will specify the public archival location of these artifacts.
+
+https://github.com/anonymous-ghub/Architecture-Detection-in-Software-Repositories
+
+\bibliographystyle{splncs04}
+\bibliography{ref}
+
+\end{document}

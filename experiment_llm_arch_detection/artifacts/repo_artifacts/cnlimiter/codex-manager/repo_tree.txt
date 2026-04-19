@@ -1,0 +1,155 @@
+codex-manager
+├── .github
+│   └── workflows
+│       ├── build.yml
+│       └── docker-publish.yml
+├── docs
+│   └── reviews
+│       ├── ARCH-AUDIT-REGISTRATIONENGINE-2026-03-23.md
+│       ├── FUNCTIONAL-AVAILABILITY-REPORT-2026-03-24.md
+│       └── TASK-5-VALIDATION-2026-03-23.md
+├── src
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── constants.py
+│   │   └── settings.py
+│   ├── core
+│   │   ├── openai
+│   │   │   ├── __init__.py
+│   │   │   ├── codex_auth.py
+│   │   │   ├── oauth.py
+│   │   │   ├── payment.py
+│   │   │   └── token_refresh.py
+│   │   ├── upload
+│   │   │   ├── __init__.py
+│   │   │   ├── cpa_upload.py
+│   │   │   ├── newapi_upload.py
+│   │   │   ├── sub2api_upload.py
+│   │   │   └── team_manager_upload.py
+│   │   ├── __init__.py
+│   │   ├── dynamic_proxy.py
+│   │   ├── http_client.py
+│   │   ├── login.py
+│   │   ├── register.py
+│   │   └── utils.py
+│   ├── database
+│   │   ├── __init__.py
+│   │   ├── crud.py
+│   │   ├── init_db.py
+│   │   ├── models.py
+│   │   └── session.py
+│   ├── services
+│   │   ├── outlook
+│   │   │   ├── providers
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── graph_api.py
+│   │   │   │   ├── imap_new.py
+│   │   │   │   └── imap_old.py
+│   │   │   ├── __init__.py
+│   │   │   ├── account.py
+│   │   │   ├── base.py
+│   │   │   ├── email_parser.py
+│   │   │   ├── health_checker.py
+│   │   │   ├── service.py
+│   │   │   └── token_manager.py
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── cloud_mail.py
+│   │   ├── duck_mail.py
+│   │   ├── freemail.py
+│   │   ├── imap_mail.py
+│   │   ├── moe_mail.py
+│   │   ├── temp_mail.py
+│   │   └── tempmail.py
+│   ├── web
+│   │   ├── routes
+│   │   │   ├── upload
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── cpa_services.py
+│   │   │   │   ├── newapi_services.py
+│   │   │   │   ├── sub2api_services.py
+│   │   │   │   └── tm_services.py
+│   │   │   ├── __init__.py
+│   │   │   ├── accounts.py
+│   │   │   ├── email.py
+│   │   │   ├── payment.py
+│   │   │   ├── registration.py
+│   │   │   ├── settings.py
+│   │   │   └── websocket.py
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   └── task_manager.py
+│   └── __init__.py
+├── static
+│   ├── css
+│   │   └── style.css
+│   ├── js
+│   │   ├── accounts.js
+│   │   ├── app.js
+│   │   ├── email_services.js
+│   │   ├── payment.js
+│   │   ├── settings.js
+│   │   └── utils.js
+│   └── favicon.svg
+├── templates
+│   ├── accounts.html
+│   ├── email_services.html
+│   ├── index.html
+│   ├── login.html
+│   ├── payment.html
+│   └── settings.html
+├── tests
+│   ├── e2e
+│   │   └── runtime_functionality_check.py
+│   ├── check_otp_timing.py
+│   ├── probe_tempmail.py
+│   ├── test_account_inbox_code_state.py
+│   ├── test_account_token_sync_status.py
+│   ├── test_batch_task_manager.py
+│   ├── test_batch_websocket_fallback.cjs
+│   ├── test_cloud_mail_service.py
+│   ├── test_cloudflare_worker_mail_services.py
+│   ├── test_codex_auth_export_route.py
+│   ├── test_codex_auth_flow.py
+│   ├── test_cpa_upload.py
+│   ├── test_default_webui_port_config.py
+│   ├── test_duck_mail_service.py
+│   ├── test_email_service_backoff.py
+│   ├── test_email_service_cloudmail_routes.py
+│   ├── test_email_service_duckmail_routes.py
+│   ├── test_login_engine_otp_retry.py
+│   ├── test_mail_code_reuse_guard.py
+│   ├── test_mail_latest_code_preference.py
+│   ├── test_mail_openai_detection.py
+│   ├── test_newapi_service_routes.py
+│   ├── test_newapi_upload.py
+│   ├── test_outlook_service_config_and_health.py
+│   ├── test_proxy_batch_delete.py
+│   ├── test_register_otp_integration.py
+│   ├── test_register_protocol_baseline.py
+│   ├── test_registration_email_service_failover.py
+│   ├── test_registration_otp_phase.py
+│   ├── test_registration_proxy_failover.py
+│   ├── test_registration_task_cancellation.py
+│   ├── test_settings_email_code.py
+│   ├── test_settings_newapi_validation.cjs
+│   ├── test_settings_proxy_batch_delete.cjs
+│   ├── test_single_task_websocket_status.cjs
+│   ├── test_static_asset_versioning.py
+│   ├── test_task_manager_status_broadcast.py
+│   ├── test_task_recovery.py
+│   ├── test_tempmail_service.py
+│   └── test_tempmail_timestamp_filter.py
+├── .env.example
+├── .gitignore
+├── build.bat
+├── build.sh
+├── codex_register.spec
+├── docker-compose.yml
+├── Dockerfile
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+└── webui.py

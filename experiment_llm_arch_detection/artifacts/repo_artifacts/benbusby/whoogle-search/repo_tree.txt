@@ -1,0 +1,176 @@
+whoogle-search
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   ├── feature_request.md
+│   │   ├── new-theme.md
+│   │   └── question.md
+│   ├── workflows
+│   │   ├── buildx.yml
+│   │   ├── docker_main.yml
+│   │   ├── docker_tests.yml
+│   │   ├── pypi.yml
+│   │   ├── scan.yml
+│   │   ├── stale.yml
+│   │   └── tests.yml
+│   └── FUNDING.yml
+├── app
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── endpoint.py
+│   │   └── g_classes.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── cse_client.py
+│   │   ├── http_client.py
+│   │   └── provider.py
+│   ├── static
+│   │   ├── bangs
+│   │   │   └── 00-whoogle.json
+│   │   ├── css
+│   │   │   ├── dark-theme.css
+│   │   │   ├── error.css
+│   │   │   ├── header.css
+│   │   │   ├── input.css
+│   │   │   ├── light-theme.css
+│   │   │   ├── logo.css
+│   │   │   ├── main.css
+│   │   │   ├── search.css
+│   │   │   └── variables.css
+│   │   ├── img
+│   │   │   ├── favicon
+│   │   │   │   ├── android-icon-144x144.png
+│   │   │   │   ├── android-icon-192x192.png
+│   │   │   │   ├── android-icon-36x36.png
+│   │   │   │   ├── android-icon-48x48.png
+│   │   │   │   ├── android-icon-72x72.png
+│   │   │   │   ├── android-icon-96x96.png
+│   │   │   │   ├── apple-icon-114x114.png
+│   │   │   │   ├── apple-icon-120x120.png
+│   │   │   │   ├── apple-icon-144x144.png
+│   │   │   │   ├── apple-icon-152x152.png
+│   │   │   │   ├── apple-icon-180x180.png
+│   │   │   │   ├── apple-icon-57x57.png
+│   │   │   │   ├── apple-icon-60x60.png
+│   │   │   │   ├── apple-icon-72x72.png
+│   │   │   │   ├── apple-icon-76x76.png
+│   │   │   │   ├── apple-icon-precomposed.png
+│   │   │   │   ├── apple-icon.png
+│   │   │   │   ├── browserconfig.xml
+│   │   │   │   ├── favicon-16x16.png
+│   │   │   │   ├── favicon-32x32.png
+│   │   │   │   ├── favicon-96x96.png
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── manifest.json
+│   │   │   │   ├── ms-icon-144x144.png
+│   │   │   │   ├── ms-icon-150x150.png
+│   │   │   │   ├── ms-icon-310x310.png
+│   │   │   │   └── ms-icon-70x70.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo.png
+│   │   │   └── whoogle.svg
+│   │   ├── js
+│   │   │   ├── autocomplete.js
+│   │   │   ├── controller.js
+│   │   │   ├── currency.js
+│   │   │   ├── header.js
+│   │   │   ├── keyboard.js
+│   │   │   └── utils.js
+│   │   ├── settings
+│   │   │   ├── countries.json
+│   │   │   ├── header_tabs.json
+│   │   │   ├── languages.json
+│   │   │   ├── themes.json
+│   │   │   ├── time_periods.json
+│   │   │   └── translations.json
+│   │   └── widgets
+│   │       └── calculator.html
+│   ├── templates
+│   │   ├── display.html
+│   │   ├── error.html
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   ├── imageresults.html
+│   │   ├── index.html
+│   │   ├── logo.html
+│   │   ├── opensearch.xml
+│   │   └── search.html
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── bangs.py
+│   │   ├── misc.py
+│   │   ├── results.py
+│   │   ├── search.py
+│   │   ├── session.py
+│   │   ├── ua_generator.py
+│   │   └── widgets.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── filter.py
+│   ├── request.py
+│   ├── routes.py
+│   └── version.py
+├── charts
+│   └── whoogle
+│       ├── templates
+│       │   ├── tests
+│       │   │   └── test-connection.yaml
+│       │   ├── _helpers.tpl
+│       │   ├── deployment.yaml
+│       │   ├── hpa.yaml
+│       │   ├── ingress.yaml
+│       │   ├── NOTES.txt
+│       │   ├── service.yaml
+│       │   └── serviceaccount.yaml
+│       ├── .helmignore
+│       ├── Chart.yaml
+│       └── values.yaml
+├── docs
+│   ├── banner.png
+│   ├── screenshot_desktop.png
+│   └── screenshot_mobile.png
+├── letsencrypt
+│   └── acme.json
+├── misc
+│   ├── tor
+│   │   ├── control.conf
+│   │   ├── start-tor.sh
+│   │   └── torrc
+│   ├── check_google_user_agents.py
+│   ├── generate_uas.py
+│   ├── heroku-regen.sh
+│   ├── instances.txt
+│   ├── replit.py
+│   └── update-translations.py
+├── test
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── mock_google.py
+│   ├── test_alts.py
+│   ├── test_autocomplete.py
+│   ├── test_autocomplete_xml.py
+│   ├── test_http_client.py
+│   ├── test_json.py
+│   ├── test_misc.py
+│   ├── test_results.py
+│   ├── test_routes.py
+│   ├── test_routes_json.py
+│   └── test_tor.py
+├── .dockerignore
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .replit
+├── app.json
+├── docker-compose-traefik.yaml
+├── docker-compose.yml
+├── Dockerfile
+├── heroku.yml
+├── LICENSE
+├── MANIFEST.in
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── run
+├── setup.cfg
+└── whoogle.template.env

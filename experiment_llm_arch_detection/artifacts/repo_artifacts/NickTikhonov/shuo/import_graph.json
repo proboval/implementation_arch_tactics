@@ -1,0 +1,183 @@
+{
+  "nodes": [
+    "main",
+    "scripts.bench_chart",
+    "scripts.service_map",
+    "scripts.visualize",
+    "shuo",
+    "shuo.agent",
+    "shuo.conversation",
+    "shuo.log",
+    "shuo.server",
+    "shuo.services",
+    "shuo.services.flux",
+    "shuo.services.llm",
+    "shuo.services.player",
+    "shuo.services.tts",
+    "shuo.services.tts_pool",
+    "shuo.services.twilio_client",
+    "shuo.state",
+    "shuo.tracer",
+    "shuo.types",
+    "tests",
+    "tests.test_update"
+  ],
+  "edges": [
+    {
+      "source": "main",
+      "target": "shuo.log"
+    },
+    {
+      "source": "main",
+      "target": "shuo.server"
+    },
+    {
+      "source": "main",
+      "target": "shuo.services.twilio_client"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.services.llm"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.services.player"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.services.tts"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.services.tts_pool"
+    },
+    {
+      "source": "shuo.agent",
+      "target": "shuo.tracer"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.agent"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.services.flux"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.services.tts_pool"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.services.twilio_client"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.state"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.tracer"
+    },
+    {
+      "source": "shuo.conversation",
+      "target": "shuo.types"
+    },
+    {
+      "source": "shuo.log",
+      "target": "shuo.types"
+    },
+    {
+      "source": "shuo.server",
+      "target": "shuo.conversation"
+    },
+    {
+      "source": "shuo.server",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.server",
+      "target": "shuo.services.twilio_client"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.flux"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.llm"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.player"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.tts"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.tts_pool"
+    },
+    {
+      "source": "shuo.services",
+      "target": "shuo.services.twilio_client"
+    },
+    {
+      "source": "shuo.services.flux",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.llm",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.player",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.tts",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.tts_pool",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.tts_pool",
+      "target": "shuo.services.tts"
+    },
+    {
+      "source": "shuo.services.twilio_client",
+      "target": "shuo.log"
+    },
+    {
+      "source": "shuo.services.twilio_client",
+      "target": "shuo.types"
+    },
+    {
+      "source": "shuo.state",
+      "target": "shuo.types"
+    },
+    {
+      "source": "shuo.tracer",
+      "target": "shuo.log"
+    },
+    {
+      "source": "tests.test_update",
+      "target": "shuo.state"
+    },
+    {
+      "source": "tests.test_update",
+      "target": "shuo.types"
+    }
+  ]
+}

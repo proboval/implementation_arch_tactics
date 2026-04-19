@@ -1,0 +1,57 @@
+binance-trade-bot
+├── .do
+│   └── deploy.template.yaml
+├── .github
+│   └── workflows
+│       └── cicd.yaml
+├── .pre-commit-hooks
+│   └── sort-coins-file.py
+├── binance_trade_bot
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── coin.py
+│   │   ├── coin_value.py
+│   │   ├── current_coin.py
+│   │   ├── pair.py
+│   │   ├── scout_history.py
+│   │   └── trade.py
+│   ├── strategies
+│   │   ├── __init__.py
+│   │   ├── default_strategy.py
+│   │   ├── multiple_coins_strategy.py
+│   │   └── README.md
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── api_server.py
+│   ├── auto_trader.py
+│   ├── backtest.py
+│   ├── binance_api_manager.py
+│   ├── binance_stream_manager.py
+│   ├── config.py
+│   ├── crypto_trading.py
+│   ├── database.py
+│   ├── logger.py
+│   ├── notifications.py
+│   └── scheduler.py
+├── config
+│   └── apprise_example.yml
+├── data
+│   └── .gitignore
+├── logs
+│   └── .gitkeep
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .pylintrc
+├── .user.cfg.example
+├── app.json
+├── backtest.py
+├── dev-requirements.txt
+├── docker-compose.yml
+├── Dockerfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── requirements.txt
+├── runtime.txt
+└── supported_coin_list

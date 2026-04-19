@@ -1,0 +1,553 @@
+{
+  "nodes": [
+    "examples.basic_usage",
+    "examples.flask_integration",
+    "examples.langchain_integration",
+    "examples.recouvr_integration",
+    "sovereignguard",
+    "sovereignguard.audit",
+    "sovereignguard.audit.immutable_logger",
+    "sovereignguard.audit.logger",
+    "sovereignguard.audit.metrics",
+    "sovereignguard.audit.report",
+    "sovereignguard.config",
+    "sovereignguard.engine",
+    "sovereignguard.engine.circuit_breaker",
+    "sovereignguard.engine.mapping",
+    "sovereignguard.engine.masker",
+    "sovereignguard.engine.pipeline",
+    "sovereignguard.engine.policy",
+    "sovereignguard.engine.restorer",
+    "sovereignguard.engine.semantic_restorer",
+    "sovereignguard.engine.session",
+    "sovereignguard.engine.smart_router",
+    "sovereignguard.main",
+    "sovereignguard.middleware",
+    "sovereignguard.middleware.auth",
+    "sovereignguard.middleware.rate_limit",
+    "sovereignguard.middleware.request_id",
+    "sovereignguard.middleware.request_size",
+    "sovereignguard.proxy",
+    "sovereignguard.proxy.handler",
+    "sovereignguard.proxy.passthrough",
+    "sovereignguard.proxy.providers",
+    "sovereignguard.proxy.router",
+    "sovereignguard.recognizers",
+    "sovereignguard.recognizers.base",
+    "sovereignguard.recognizers.fr",
+    "sovereignguard.recognizers.fr.address",
+    "sovereignguard.recognizers.fr.nir",
+    "sovereignguard.recognizers.fr.phone",
+    "sovereignguard.recognizers.fr.siret",
+    "sovereignguard.recognizers.ma",
+    "sovereignguard.recognizers.ma.cin",
+    "sovereignguard.recognizers.ma.ice",
+    "sovereignguard.recognizers.ma.phone",
+    "sovereignguard.recognizers.registry",
+    "sovereignguard.recognizers.tn",
+    "sovereignguard.recognizers.tn.address",
+    "sovereignguard.recognizers.tn.company_id",
+    "sovereignguard.recognizers.tn.national_id",
+    "sovereignguard.recognizers.tn.person_name",
+    "sovereignguard.recognizers.tn.phone",
+    "sovereignguard.recognizers.universal",
+    "sovereignguard.recognizers.universal.credit_card",
+    "sovereignguard.recognizers.universal.date_of_birth",
+    "sovereignguard.recognizers.universal.email",
+    "sovereignguard.recognizers.universal.iban",
+    "sovereignguard.recognizers.universal.ip_address",
+    "sovereignguard.recognizers.universal.person_name",
+    "sovereignguard.recognizers.universal.phone_generic",
+    "sovereignguard.utils",
+    "sovereignguard.utils.crypto",
+    "sovereignguard.utils.exceptions",
+    "sovereignguard.utils.tokenizer",
+    "tests",
+    "tests.conftest",
+    "tests.test_edge_cases",
+    "tests.test_immutable_audit",
+    "tests.test_integration",
+    "tests.test_masker",
+    "tests.test_middleware",
+    "tests.test_new_recognizers",
+    "tests.test_providers",
+    "tests.test_proxy",
+    "tests.test_recognizers",
+    "tests.test_restorer",
+    "tests.test_semantic_restorer"
+  ],
+  "edges": [
+    {
+      "source": "sovereignguard.audit.immutable_logger",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.audit.logger",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.audit.report",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.circuit_breaker",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.circuit_breaker",
+      "target": "sovereignguard.utils.exceptions"
+    },
+    {
+      "source": "sovereignguard.engine.mapping",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.mapping",
+      "target": "sovereignguard.utils.crypto"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.audit.logger"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.engine.mapping"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.engine.pipeline"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.engine.restorer"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.engine.semantic_restorer"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.recognizers.registry"
+    },
+    {
+      "source": "sovereignguard.engine.masker",
+      "target": "sovereignguard.utils.tokenizer"
+    },
+    {
+      "source": "sovereignguard.engine.pipeline",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.pipeline",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.engine.pipeline",
+      "target": "sovereignguard.recognizers.registry"
+    },
+    {
+      "source": "sovereignguard.engine.policy",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.engine.restorer",
+      "target": "sovereignguard.engine.mapping"
+    },
+    {
+      "source": "sovereignguard.engine.semantic_restorer",
+      "target": "sovereignguard.engine.mapping"
+    },
+    {
+      "source": "sovereignguard.engine.smart_router",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.engine.smart_router",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.audit.logger"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.audit.metrics"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.engine.mapping"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.middleware.auth"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.middleware.rate_limit"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.middleware.request_id"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.middleware.request_size"
+    },
+    {
+      "source": "sovereignguard.main",
+      "target": "sovereignguard.proxy.router"
+    },
+    {
+      "source": "sovereignguard.middleware.auth",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.middleware.rate_limit",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.middleware.request_size",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.audit.immutable_logger"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.engine.circuit_breaker"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.engine.masker"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.engine.policy"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.engine.smart_router"
+    },
+    {
+      "source": "sovereignguard.proxy.handler",
+      "target": "sovereignguard.proxy.providers"
+    },
+    {
+      "source": "sovereignguard.proxy.passthrough",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.proxy.providers",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.proxy.router",
+      "target": "sovereignguard.audit.metrics"
+    },
+    {
+      "source": "sovereignguard.proxy.router",
+      "target": "sovereignguard.audit.report"
+    },
+    {
+      "source": "sovereignguard.proxy.router",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.proxy.router",
+      "target": "sovereignguard.proxy.handler"
+    },
+    {
+      "source": "sovereignguard.recognizers.fr.address",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.fr.nir",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.fr.phone",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.fr.siret",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.ma.cin",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.ma.ice",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.ma.phone",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.fr.address"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.fr.nir"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.fr.phone"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.fr.siret"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.ma.cin"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.ma.ice"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.ma.phone"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.tn.address"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.tn.company_id"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.tn.national_id"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.tn.phone"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.credit_card"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.date_of_birth"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.email"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.iban"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.ip_address"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.person_name"
+    },
+    {
+      "source": "sovereignguard.recognizers.registry",
+      "target": "sovereignguard.recognizers.universal.phone_generic"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn",
+      "target": "sovereignguard.recognizers.tn.address"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn",
+      "target": "sovereignguard.recognizers.tn.company_id"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn",
+      "target": "sovereignguard.recognizers.tn.national_id"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn",
+      "target": "sovereignguard.recognizers.tn.person_name"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn",
+      "target": "sovereignguard.recognizers.tn.phone"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn.address",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn.company_id",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn.national_id",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn.person_name",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.tn.phone",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.credit_card",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.date_of_birth",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.email",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.iban",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.ip_address",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.person_name",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.recognizers.universal.phone_generic",
+      "target": "sovereignguard.recognizers.base"
+    },
+    {
+      "source": "sovereignguard.utils.crypto",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "sovereignguard.utils.tokenizer",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "tests.conftest",
+      "target": "sovereignguard.engine.masker"
+    },
+    {
+      "source": "tests.conftest",
+      "target": "sovereignguard.main"
+    },
+    {
+      "source": "tests.test_edge_cases",
+      "target": "sovereignguard.engine.masker"
+    },
+    {
+      "source": "tests.test_edge_cases",
+      "target": "sovereignguard.recognizers.universal.credit_card"
+    },
+    {
+      "source": "tests.test_edge_cases",
+      "target": "sovereignguard.recognizers.universal.email"
+    },
+    {
+      "source": "tests.test_edge_cases",
+      "target": "sovereignguard.recognizers.universal.iban"
+    },
+    {
+      "source": "tests.test_edge_cases",
+      "target": "sovereignguard.recognizers.universal.ip_address"
+    },
+    {
+      "source": "tests.test_immutable_audit",
+      "target": "sovereignguard.audit.immutable_logger"
+    },
+    {
+      "source": "tests.test_integration",
+      "target": "sovereignguard.main"
+    },
+    {
+      "source": "tests.test_integration",
+      "target": "sovereignguard.proxy.router"
+    },
+    {
+      "source": "tests.test_middleware",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "tests.test_middleware",
+      "target": "sovereignguard.main"
+    },
+    {
+      "source": "tests.test_new_recognizers",
+      "target": "sovereignguard.recognizers.universal.date_of_birth"
+    },
+    {
+      "source": "tests.test_new_recognizers",
+      "target": "sovereignguard.recognizers.universal.person_name"
+    },
+    {
+      "source": "tests.test_providers",
+      "target": "sovereignguard.config"
+    },
+    {
+      "source": "tests.test_providers",
+      "target": "sovereignguard.proxy.providers"
+    },
+    {
+      "source": "tests.test_proxy",
+      "target": "sovereignguard.proxy.router"
+    },
+    {
+      "source": "tests.test_recognizers",
+      "target": "sovereignguard.recognizers.fr.nir"
+    },
+    {
+      "source": "tests.test_recognizers",
+      "target": "sovereignguard.recognizers.ma.cin"
+    },
+    {
+      "source": "tests.test_recognizers",
+      "target": "sovereignguard.recognizers.tn.national_id"
+    },
+    {
+      "source": "tests.test_recognizers",
+      "target": "sovereignguard.recognizers.tn.phone"
+    },
+    {
+      "source": "tests.test_recognizers",
+      "target": "sovereignguard.recognizers.universal.email"
+    },
+    {
+      "source": "tests.test_semantic_restorer",
+      "target": "sovereignguard.engine.mapping"
+    },
+    {
+      "source": "tests.test_semantic_restorer",
+      "target": "sovereignguard.engine.semantic_restorer"
+    }
+  ]
+}

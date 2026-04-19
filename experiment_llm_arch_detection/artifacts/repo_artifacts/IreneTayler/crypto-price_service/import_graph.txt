@@ -1,0 +1,25 @@
+# Nodes: 13
+# Edges: 22
+
+app.celery_app -> app.config
+app.celery_app -> app.database
+app.celery_app -> app.deribit_client
+app.celery_app -> app.repositories
+app.database -> app.config
+app.database -> app.models
+app.deribit_client -> app.config
+app.main -> app.config
+app.main -> app.database
+app.main -> app.repositories
+app.main -> app.schemas
+app.main -> app.services
+app.models -> app.database
+app.repositories -> app.repositories.price_repository
+app.repositories.price_repository -> app.models
+app.services -> app.services.price_service
+app.services.price_service -> app.models
+app.services.price_service -> app.repositories
+tests.test_api -> app.config
+tests.test_api -> app.database
+tests.test_api -> app.main
+tests.test_api -> app.models

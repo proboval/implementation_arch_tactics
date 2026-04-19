@@ -1,0 +1,121 @@
+LLM-Based-Intelligent-Public-Opinion-Analytics-Assistant
+├── hotsearch_analysis_agent
+│   ├── config
+│   │   ├── cookies
+│   │   │   ├── weibo.json
+│   │   │   ├── xiaohongshu.json
+│   │   │   └── zhihu.json
+│   │   ├── __init__.py
+│   │   ├── prompts.py
+│   │   ├── settings.py
+│   │   └── validator.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── agent.py
+│   │   ├── memory.py
+│   │   └── tools.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── advanced_sentiment.py
+│   │   ├── clustering.py
+│   │   ├── content_extractor.py
+│   │   ├── platform_mapper.py
+│   │   └── sentiment_analyzer.py
+│   ├── vector_db
+│   │   ├── chroma_db
+│   │   │   └── chroma.sqlite3
+│   │   ├── __init__.py
+│   │   ├── manager.py
+│   │   ├── sentiment_vector_manager.py
+│   │   └── title_vector_manager.py
+│   └── main.py
+├── hotsearchcrawler
+│   ├── logs
+│   │   ├── scrapy_20251211_1443.log
+│   │   ├── scrapy_20251211_1452.log
+│   │   ├── scrapy_20251211_1518.log
+│   │   ├── scrapy_20251211_1524.log
+│   │   └── scrapy_20251215_1956.log
+│   ├── spiders
+│   │   ├── __init__.py
+│   │   ├── baidu_spider.py
+│   │   ├── base1_spider.py
+│   │   ├── base2_spider.py
+│   │   ├── base3_spider.py
+│   │   ├── base4_spider.py
+│   │   ├── base5_spder.py
+│   │   ├── base_ip_spider.py
+│   │   ├── base_spider.py
+│   │   ├── bilibili_spider.py
+│   │   ├── douyin_fun_spider.py
+│   │   ├── douyin_hot_spider.py
+│   │   ├── douyin_society_spider.py
+│   │   ├── ifeng_spider.py
+│   │   ├── kuaishou_spider.py
+│   │   ├── pengpai.py
+│   │   ├── sll_spider.py
+│   │   ├── sougou.py
+│   │   ├── tencent_spider.py
+│   │   ├── toutiao_car_spider.py
+│   │   ├── toutiao_education_spider.py
+│   │   ├── toutiao_fun_spider.py
+│   │   ├── toutiao_spider.py
+│   │   ├── uc_hotnew_spider.py
+│   │   ├── uc_interact_spider.py
+│   │   ├── uc_spider.py
+│   │   ├── uc_video_spider.py
+│   │   ├── wangyi_hotnew_spider.py
+│   │   ├── wangyi_hotsearch_spider.py
+│   │   ├── wangyi_hottalk_spider.py
+│   │   ├── wangyi_hottopic_spider.py
+│   │   ├── weibo.py
+│   │   ├── xiaohongshu.py
+│   │   ├── zhihu_hot_spider.py
+│   │   └── zhihu_search_spider.py
+│   ├── __init__.py
+│   ├── douyinmiddlewares.py
+│   ├── fakemiddlewares.py
+│   ├── ipmiddlewares.py
+│   ├── items.py
+│   ├── middlewares.py
+│   ├── pipelines.py
+│   ├── runspider-test.py
+│   ├── settings.py
+│   ├── uc1middlewares.py
+│   ├── ucmiddlewares.py
+│   └── wangyimiddlewares.py
+├── licenses
+│   ├── CHROMADB_LICENSE
+│   ├── CRYPTOGRAPHY_LICENSE
+│   ├── JIEBA_LICENSE
+│   ├── LANGCHAIN_LICENSE
+│   ├── LXML_LICENSE
+│   ├── NUMPY_LICENSE
+│   ├── PYMYSQL_LICENSE
+│   ├── PYOPENSSL_LICENSE
+│   ├── REQUESTS_LICENSE
+│   ├── SCIKIT-LEARN_LICENSE
+│   ├── SCRAPY_LICENSE
+│   ├── SENTENCE-TRANSFORMERS_LICENSE
+│   ├── TEXTBLOB_LICENSE
+│   ├── TQDM_LICENSE
+│   └── TWISTED_LICENSE
+├── templates
+│   └── index.html
+├── .env
+├── app.py
+├── docker-compose.yml
+├── docker-entrypoint.sh
+├── Dockerfile
+├── img.png
+├── img_1.png
+├── init.sql
+├── LICENSE
+├── NOTICE
+├── README.md
+├── requirements.txt
+├── run_spiders.py
+├── scrapy.cfg
+├── spider_state.pkl
+├── system.log
+└── test_push_task.py

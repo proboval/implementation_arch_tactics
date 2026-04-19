@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    "main",
+    "src",
+    "src.api",
+    "src.api.routes",
+    "src.core",
+    "src.core.config",
+    "src.main",
+    "src.models",
+    "src.models.task",
+    "src.services",
+    "src.services.classification",
+    "src.services.hcaptcha",
+    "src.services.recaptcha_v2",
+    "src.services.recaptcha_v3",
+    "src.services.recognition",
+    "src.services.task_manager",
+    "src.services.turnstile",
+    "tests.test_api"
+  ],
+  "edges": [
+    {
+      "source": "main",
+      "target": "src.core.config"
+    },
+    {
+      "source": "main",
+      "target": "src.main"
+    },
+    {
+      "source": "src.api.routes",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.api.routes",
+      "target": "src.models.task"
+    },
+    {
+      "source": "src.api.routes",
+      "target": "src.services.task_manager"
+    },
+    {
+      "source": "src.main",
+      "target": "src.api.routes"
+    },
+    {
+      "source": "src.main",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.classification"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.hcaptcha"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.recaptcha_v2"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.recaptcha_v3"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.recognition"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.task_manager"
+    },
+    {
+      "source": "src.main",
+      "target": "src.services.turnstile"
+    },
+    {
+      "source": "src.services.classification",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.services.hcaptcha",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.services.recaptcha_v2",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.services.recaptcha_v3",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.services.recognition",
+      "target": "src.core.config"
+    },
+    {
+      "source": "src.services.turnstile",
+      "target": "src.core.config"
+    }
+  ]
+}

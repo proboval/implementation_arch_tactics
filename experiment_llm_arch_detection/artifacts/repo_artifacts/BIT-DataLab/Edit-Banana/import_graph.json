@@ -1,0 +1,290 @@
+{
+  "nodes": [
+    "flowchart_text.main",
+    "flowchart_text.src",
+    "main",
+    "modules",
+    "modules.base",
+    "modules.basic_shape_processor",
+    "modules.data_types",
+    "modules.icon_picture_processor",
+    "modules.metric_evaluator",
+    "modules.refinement_processor",
+    "modules.sam3_info_extractor",
+    "modules.text",
+    "modules.text.coord_processor",
+    "modules.text.ocr",
+    "modules.text.ocr.base",
+    "modules.text.ocr.local_ocr",
+    "modules.text.ocr.paddle_ocr",
+    "modules.text.ocr.pix2text",
+    "modules.text.processors",
+    "modules.text.processors.font_family",
+    "modules.text.processors.font_size",
+    "modules.text.processors.formula",
+    "modules.text.processors.style",
+    "modules.text.restorer",
+    "modules.text.xml_generator",
+    "modules.utils",
+    "modules.utils.color_utils",
+    "modules.utils.drawio_library",
+    "modules.utils.image_utils",
+    "modules.utils.xml_utils",
+    "modules.xml_merger",
+    "prompts.arrow",
+    "prompts.background",
+    "prompts.image",
+    "prompts.shape",
+    "sam3_service",
+    "sam3_service.client",
+    "sam3_service.rmbg_client",
+    "sam3_service.rmbg_server",
+    "sam3_service.run_all_service",
+    "sam3_service.server",
+    "scripts.merge_xml",
+    "scripts.setup_rmbg",
+    "server_pa"
+  ],
+  "edges": [
+    {
+      "source": "flowchart_text.main",
+      "target": "modules.text.restorer"
+    },
+    {
+      "source": "main",
+      "target": "modules"
+    },
+    {
+      "source": "main",
+      "target": "modules.sam3_info_extractor"
+    },
+    {
+      "source": "modules",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules",
+      "target": "modules.basic_shape_processor"
+    },
+    {
+      "source": "modules",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules",
+      "target": "modules.icon_picture_processor"
+    },
+    {
+      "source": "modules",
+      "target": "modules.metric_evaluator"
+    },
+    {
+      "source": "modules",
+      "target": "modules.refinement_processor"
+    },
+    {
+      "source": "modules",
+      "target": "modules.sam3_info_extractor"
+    },
+    {
+      "source": "modules",
+      "target": "modules.text.restorer"
+    },
+    {
+      "source": "modules",
+      "target": "modules.xml_merger"
+    },
+    {
+      "source": "modules.base",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.basic_shape_processor",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.basic_shape_processor",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.icon_picture_processor",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.icon_picture_processor",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.icon_picture_processor",
+      "target": "prompts.image"
+    },
+    {
+      "source": "modules.metric_evaluator",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.metric_evaluator",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.refinement_processor",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.refinement_processor",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.refinement_processor",
+      "target": "modules.metric_evaluator"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "prompts.arrow"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "prompts.background"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "prompts.image"
+    },
+    {
+      "source": "modules.sam3_info_extractor",
+      "target": "prompts.shape"
+    },
+    {
+      "source": "modules.text",
+      "target": "modules.text.coord_processor"
+    },
+    {
+      "source": "modules.text",
+      "target": "modules.text.restorer"
+    },
+    {
+      "source": "modules.text",
+      "target": "modules.text.xml_generator"
+    },
+    {
+      "source": "modules.text.ocr",
+      "target": "modules.text.ocr.base"
+    },
+    {
+      "source": "modules.text.ocr",
+      "target": "modules.text.ocr.local_ocr"
+    },
+    {
+      "source": "modules.text.ocr",
+      "target": "modules.text.ocr.paddle_ocr"
+    },
+    {
+      "source": "modules.text.ocr",
+      "target": "modules.text.ocr.pix2text"
+    },
+    {
+      "source": "modules.text.ocr.local_ocr",
+      "target": "modules.text.ocr.base"
+    },
+    {
+      "source": "modules.text.ocr.paddle_ocr",
+      "target": "modules.text.ocr.base"
+    },
+    {
+      "source": "modules.text.processors",
+      "target": "modules.text.processors.font_family"
+    },
+    {
+      "source": "modules.text.processors",
+      "target": "modules.text.processors.font_size"
+    },
+    {
+      "source": "modules.text.processors",
+      "target": "modules.text.processors.formula"
+    },
+    {
+      "source": "modules.text.processors",
+      "target": "modules.text.processors.style"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.coord_processor"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.ocr"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.ocr.local_ocr"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.ocr.paddle_ocr"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.processors.font_family"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.processors.font_size"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.processors.formula"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.processors.style"
+    },
+    {
+      "source": "modules.text.restorer",
+      "target": "modules.text.xml_generator"
+    },
+    {
+      "source": "modules.utils",
+      "target": "modules.utils.color_utils"
+    },
+    {
+      "source": "modules.utils",
+      "target": "modules.utils.drawio_library"
+    },
+    {
+      "source": "modules.utils",
+      "target": "modules.utils.image_utils"
+    },
+    {
+      "source": "modules.utils",
+      "target": "modules.utils.xml_utils"
+    },
+    {
+      "source": "modules.xml_merger",
+      "target": "modules.base"
+    },
+    {
+      "source": "modules.xml_merger",
+      "target": "modules.data_types"
+    },
+    {
+      "source": "sam3_service",
+      "target": "sam3_service.client"
+    },
+    {
+      "source": "scripts.merge_xml",
+      "target": "main"
+    },
+    {
+      "source": "server_pa",
+      "target": "main"
+    }
+  ]
+}

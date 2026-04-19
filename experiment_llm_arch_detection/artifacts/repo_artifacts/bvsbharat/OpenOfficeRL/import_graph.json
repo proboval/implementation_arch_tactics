@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    "demo.api.claude_bridge",
+    "demo.api.rl_bridge",
+    "demo.api.rl_environment",
+    "demo.api.routes",
+    "demo.api.server",
+    "examples.run_agent",
+    "examples.simple_agent",
+    "main",
+    "office_os",
+    "office_os.agents",
+    "office_os.agents.base_agent",
+    "office_os.agents.llm_agent",
+    "office_os.agents.memory",
+    "office_os.agents.prompts",
+    "office_os.client",
+    "office_os.demo_inference",
+    "office_os.frontend",
+    "office_os.generate_training_data",
+    "office_os.integrations",
+    "office_os.integrations.sheets",
+    "office_os.market",
+    "office_os.market.config",
+    "office_os.market.events",
+    "office_os.market.metrics",
+    "office_os.market.scenarios",
+    "office_os.market.simulator",
+    "office_os.market.state",
+    "office_os.models",
+    "office_os.run_agents",
+    "office_os.send_training",
+    "office_os.server",
+    "office_os.server.app",
+    "office_os.server.office_os_environment",
+    "office_os.tests",
+    "office_os.tests.test_env",
+    "office_os.train_loop",
+    "office_os.training",
+    "office_os.training.collector",
+    "office_os.training.train_worker",
+    "office_os.training.trainer"
+  ],
+  "edges": [
+    {
+      "source": "office_os",
+      "target": "office_os.client"
+    },
+    {
+      "source": "office_os",
+      "target": "office_os.models"
+    },
+    {
+      "source": "office_os.agents",
+      "target": "office_os.agents.base_agent"
+    },
+    {
+      "source": "office_os.agents",
+      "target": "office_os.agents.llm_agent"
+    },
+    {
+      "source": "office_os.agents",
+      "target": "office_os.agents.memory"
+    },
+    {
+      "source": "office_os.agents.base_agent",
+      "target": "office_os.agents.memory"
+    },
+    {
+      "source": "office_os.agents.llm_agent",
+      "target": "office_os.agents.base_agent"
+    },
+    {
+      "source": "office_os.agents.llm_agent",
+      "target": "office_os.agents.prompts"
+    },
+    {
+      "source": "office_os.client",
+      "target": "office_os.models"
+    },
+    {
+      "source": "office_os.integrations",
+      "target": "office_os.integrations.sheets"
+    },
+    {
+      "source": "office_os.market",
+      "target": "office_os.market.config"
+    },
+    {
+      "source": "office_os.market",
+      "target": "office_os.market.events"
+    },
+    {
+      "source": "office_os.market",
+      "target": "office_os.market.metrics"
+    },
+    {
+      "source": "office_os.market",
+      "target": "office_os.market.simulator"
+    },
+    {
+      "source": "office_os.market",
+      "target": "office_os.market.state"
+    },
+    {
+      "source": "office_os.market.events",
+      "target": "office_os.market.config"
+    },
+    {
+      "source": "office_os.market.events",
+      "target": "office_os.market.scenarios"
+    },
+    {
+      "source": "office_os.market.events",
+      "target": "office_os.market.state"
+    },
+    {
+      "source": "office_os.market.metrics",
+      "target": "office_os.market.config"
+    },
+    {
+      "source": "office_os.market.metrics",
+      "target": "office_os.market.state"
+    },
+    {
+      "source": "office_os.market.simulator",
+      "target": "office_os.market.config"
+    },
+    {
+      "source": "office_os.market.simulator",
+      "target": "office_os.market.state"
+    },
+    {
+      "source": "office_os.market.state",
+      "target": "office_os.market.config"
+    },
+    {
+      "source": "office_os.market.state",
+      "target": "office_os.market.scenarios"
+    },
+    {
+      "source": "office_os.server",
+      "target": "office_os.server.office_os_environment"
+    },
+    {
+      "source": "office_os.server.app",
+      "target": "office_os.server.office_os_environment"
+    },
+    {
+      "source": "office_os.training",
+      "target": "office_os.training.collector"
+    },
+    {
+      "source": "office_os.training",
+      "target": "office_os.training.trainer"
+    },
+    {
+      "source": "office_os.training.trainer",
+      "target": "office_os.training.collector"
+    }
+  ]
+}

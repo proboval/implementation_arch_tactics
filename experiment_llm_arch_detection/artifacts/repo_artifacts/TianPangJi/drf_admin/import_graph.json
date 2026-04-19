@@ -1,0 +1,243 @@
+{
+  "nodes": [
+    "celery_tasks",
+    "celery_tasks.config",
+    "celery_tasks.main",
+    "celery_tasks.sms",
+    "celery_tasks.sms.tasks",
+    "drf_admin",
+    "drf_admin.apps",
+    "drf_admin.apps.cmdb",
+    "drf_admin.apps.cmdb.admin",
+    "drf_admin.apps.cmdb.apps",
+    "drf_admin.apps.cmdb.migrations",
+    "drf_admin.apps.cmdb.migrations.0001_initial",
+    "drf_admin.apps.cmdb.migrations.0002_auto_20210306_1416",
+    "drf_admin.apps.cmdb.models",
+    "drf_admin.apps.cmdb.serializers",
+    "drf_admin.apps.cmdb.serializers.assets",
+    "drf_admin.apps.cmdb.serializers.servers",
+    "drf_admin.apps.cmdb.signals",
+    "drf_admin.apps.cmdb.tests",
+    "drf_admin.apps.cmdb.urls",
+    "drf_admin.apps.cmdb.views",
+    "drf_admin.apps.cmdb.views.assets",
+    "drf_admin.apps.cmdb.views.servers",
+    "drf_admin.apps.information",
+    "drf_admin.apps.information.admin",
+    "drf_admin.apps.information.apps",
+    "drf_admin.apps.information.migrations",
+    "drf_admin.apps.information.models",
+    "drf_admin.apps.information.serializers",
+    "drf_admin.apps.information.serializers.centre",
+    "drf_admin.apps.information.tests",
+    "drf_admin.apps.information.urls",
+    "drf_admin.apps.information.views",
+    "drf_admin.apps.information.views.centre",
+    "drf_admin.apps.monitor",
+    "drf_admin.apps.monitor.admin",
+    "drf_admin.apps.monitor.apps",
+    "drf_admin.apps.monitor.consumers",
+    "drf_admin.apps.monitor.consumers.service",
+    "drf_admin.apps.monitor.migrations",
+    "drf_admin.apps.monitor.migrations.0001_initial",
+    "drf_admin.apps.monitor.migrations.0002_onlineusers_user",
+    "drf_admin.apps.monitor.models",
+    "drf_admin.apps.monitor.notification",
+    "drf_admin.apps.monitor.serializers",
+    "drf_admin.apps.monitor.serializers.crud",
+    "drf_admin.apps.monitor.serializers.error",
+    "drf_admin.apps.monitor.serializers.ip",
+    "drf_admin.apps.monitor.serializers.users",
+    "drf_admin.apps.monitor.signals",
+    "drf_admin.apps.monitor.tests",
+    "drf_admin.apps.monitor.urls",
+    "drf_admin.apps.monitor.views",
+    "drf_admin.apps.monitor.views.crud",
+    "drf_admin.apps.monitor.views.error",
+    "drf_admin.apps.monitor.views.ip",
+    "drf_admin.apps.monitor.views.service",
+    "drf_admin.apps.monitor.views.users",
+    "drf_admin.apps.oauth",
+    "drf_admin.apps.oauth.admin",
+    "drf_admin.apps.oauth.apps",
+    "drf_admin.apps.oauth.migrations",
+    "drf_admin.apps.oauth.migrations.0001_initial",
+    "drf_admin.apps.oauth.models",
+    "drf_admin.apps.oauth.serializers",
+    "drf_admin.apps.oauth.tests",
+    "drf_admin.apps.oauth.urls",
+    "drf_admin.apps.oauth.utils",
+    "drf_admin.apps.oauth.views",
+    "drf_admin.apps.oauth.views.home",
+    "drf_admin.apps.oauth.views.oauth",
+    "drf_admin.apps.system",
+    "drf_admin.apps.system.admin",
+    "drf_admin.apps.system.apps",
+    "drf_admin.apps.system.filters",
+    "drf_admin.apps.system.filters.users",
+    "drf_admin.apps.system.jobs",
+    "drf_admin.apps.system.jobs.decorators",
+    "drf_admin.apps.system.jobs.run",
+    "drf_admin.apps.system.jobs.tasks",
+    "drf_admin.apps.system.jobs.warehouse",
+    "drf_admin.apps.system.jobs.warehouse.backup",
+    "drf_admin.apps.system.migrations",
+    "drf_admin.apps.system.migrations.0001_initial",
+    "drf_admin.apps.system.models",
+    "drf_admin.apps.system.serializers",
+    "drf_admin.apps.system.serializers.departments",
+    "drf_admin.apps.system.serializers.jobs",
+    "drf_admin.apps.system.serializers.permissions",
+    "drf_admin.apps.system.serializers.roles",
+    "drf_admin.apps.system.serializers.users",
+    "drf_admin.apps.system.signals",
+    "drf_admin.apps.system.tests",
+    "drf_admin.apps.system.urls",
+    "drf_admin.apps.system.views",
+    "drf_admin.apps.system.views.departments",
+    "drf_admin.apps.system.views.jobs",
+    "drf_admin.apps.system.views.permissions",
+    "drf_admin.apps.system.views.roles",
+    "drf_admin.apps.system.views.users",
+    "drf_admin.apps.work",
+    "drf_admin.apps.work.admin",
+    "drf_admin.apps.work.apps",
+    "drf_admin.apps.work.migrations",
+    "drf_admin.apps.work.models",
+    "drf_admin.apps.work.serializers",
+    "drf_admin.apps.work.tests",
+    "drf_admin.apps.work.views",
+    "drf_admin.common",
+    "drf_admin.common.models",
+    "drf_admin.common.permissions",
+    "drf_admin.common.redis",
+    "drf_admin.routing",
+    "drf_admin.settings",
+    "drf_admin.settings.dev",
+    "drf_admin.settings.pro",
+    "drf_admin.urls",
+    "drf_admin.utils",
+    "drf_admin.utils.exceptions",
+    "drf_admin.utils.middleware",
+    "drf_admin.utils.models",
+    "drf_admin.utils.pagination",
+    "drf_admin.utils.permissions",
+    "drf_admin.utils.routers",
+    "drf_admin.utils.swagger_schema",
+    "drf_admin.utils.views",
+    "drf_admin.utils.websocket",
+    "drf_admin.wsgi",
+    "manage"
+  ],
+  "edges": [
+    {
+      "source": "celery_tasks.sms.tasks",
+      "target": "celery_tasks.main"
+    },
+    {
+      "source": "drf_admin.apps.cmdb.models",
+      "target": "drf_admin.utils.models"
+    },
+    {
+      "source": "drf_admin.apps.cmdb.urls",
+      "target": "drf_admin.utils.routers"
+    },
+    {
+      "source": "drf_admin.apps.cmdb.views.assets",
+      "target": "drf_admin.common.models"
+    },
+    {
+      "source": "drf_admin.apps.cmdb.views.assets",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.cmdb.views.servers",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.monitor.models",
+      "target": "drf_admin.utils.models"
+    },
+    {
+      "source": "drf_admin.apps.monitor.signals",
+      "target": "drf_admin.apps.monitor.models"
+    },
+    {
+      "source": "drf_admin.apps.monitor.urls",
+      "target": "drf_admin.utils.routers"
+    },
+    {
+      "source": "drf_admin.apps.monitor.views.ip",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.filters.users",
+      "target": "drf_admin.common.models"
+    },
+    {
+      "source": "drf_admin.apps.system.jobs.decorators",
+      "target": "drf_admin.common.redis"
+    },
+    {
+      "source": "drf_admin.apps.system.models",
+      "target": "drf_admin.utils.models"
+    },
+    {
+      "source": "drf_admin.apps.system.serializers.departments",
+      "target": "drf_admin.common.models"
+    },
+    {
+      "source": "drf_admin.apps.system.serializers.departments",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.serializers.permissions",
+      "target": "drf_admin.common.models"
+    },
+    {
+      "source": "drf_admin.apps.system.serializers.permissions",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.urls",
+      "target": "drf_admin.utils.routers"
+    },
+    {
+      "source": "drf_admin.apps.system.views.departments",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.views.permissions",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.views.roles",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.system.views.users",
+      "target": "drf_admin.apps.system.serializers.users"
+    },
+    {
+      "source": "drf_admin.apps.system.views.users",
+      "target": "drf_admin.utils.views"
+    },
+    {
+      "source": "drf_admin.apps.work.models",
+      "target": "drf_admin.utils.models"
+    },
+    {
+      "source": "drf_admin.routing",
+      "target": "drf_admin.utils.websocket"
+    },
+    {
+      "source": "drf_admin.utils.permissions",
+      "target": "drf_admin.common.permissions"
+    },
+    {
+      "source": "drf_admin.utils.views",
+      "target": "drf_admin.utils.swagger_schema"
+    }
+  ]
+}

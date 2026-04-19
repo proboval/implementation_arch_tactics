@@ -1,0 +1,93 @@
+chanlun
+├── ai
+│   └── llm.py
+├── api
+│   ├── analyze_service.py
+│   ├── analyze_streaming.py
+│   └── server.py
+├── chanlun_local
+│   ├── engine.py
+│   └── mapper.py
+├── web
+│   ├── src
+│   │   ├── api
+│   │   │   └── client.ts
+│   │   ├── assets
+│   │   │   └── styles
+│   │   │       ├── light-theme.scss
+│   │   │       └── variables.scss
+│   │   ├── components
+│   │   │   ├── AIAnalysisPanel.vue
+│   │   │   ├── AIResultModal.vue
+│   │   │   ├── AISidebar.vue
+│   │   │   ├── ChartContainer.vue
+│   │   │   ├── HandDrawnButton.vue
+│   │   │   ├── HandDrawnLegendBtn.vue
+│   │   │   ├── RoughIcon.vue
+│   │   │   ├── ShowResultButton.vue
+│   │   │   ├── StateMachineCard.vue
+│   │   │   └── ToolBar.vue
+│   │   ├── types
+│   │   │   └── chanlun.ts
+│   │   ├── utils
+│   │   │   └── formatters.ts
+│   │   ├── App.vue
+│   │   ├── main.ts
+│   │   └── vite-env.d.ts
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .cursorrules
+├── .env.example
+├── .gitignore
+├── ai_data_builder.py
+├── ai_output_schema.py
+├── backtest_validator.py
+├── binance.py
+├── chanlun_adapter.py
+├── chanlun_ai.py
+├── chanlun_ai_exporter.py
+├── chanlun_icl.py
+├── chanlun_visualizer.py
+├── COMMANDS.md
+├── confidence_constraint.py
+├── db_manager.py
+├── evaluate_outcome.py
+├── history_context.py
+├── learning_feedback.py
+├── learning_visualizer.py
+├── LICENSE
+├── logic_validator.py
+├── multi_level_analyzer.py
+├── optimized_weights.json
+├── output_formatter.py
+├── package-lock.json
+├── prediction_validator.py
+├── prompt_builder.py
+├── query_stats.py
+├── README.md
+├── requirements.txt
+├── rule_engine.py
+├── scoring_engine.py
+├── setup_scheduler.ps1
+├── setup_scheduler_15m.ps1
+├── setup_scheduler_1h.ps1
+├── setup_scheduler_4h.ps1
+├── signal_quality.py
+├── start_web.bat
+├── start_web.sh
+├── stat_hint.py
+├── state_machine_converter.py
+├── stats_by_interval.py
+├── stats_by_symbol.py
+├── stats_enhanced.py
+├── stats_formatter.py
+├── stats_report.py
+├── stats_visualizer.py
+├── test_advanced_features.py
+├── test_simple_icl.py
+└── weight_optimizer.py

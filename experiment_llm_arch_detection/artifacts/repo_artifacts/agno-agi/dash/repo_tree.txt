@@ -1,0 +1,87 @@
+dash
+├── .github
+│   └── workflows
+│       └── validate.yml
+├── app
+│   ├── __init__.py
+│   ├── config.yaml
+│   └── main.py
+├── dash
+│   ├── agents
+│   │   ├── __init__.py
+│   │   ├── analyst.py
+│   │   └── engineer.py
+│   ├── context
+│   │   ├── __init__.py
+│   │   ├── business_rules.py
+│   │   └── semantic_model.py
+│   ├── tools
+│   │   ├── __init__.py
+│   │   ├── build.py
+│   │   ├── introspect.py
+│   │   ├── save_query.py
+│   │   └── update_knowledge.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── instructions.py
+│   ├── paths.py
+│   ├── settings.py
+│   └── team.py
+├── db
+│   ├── __init__.py
+│   ├── session.py
+│   └── url.py
+├── docs
+│   ├── IMPROVE_DASH.md
+│   ├── SLACK_CONNECT.md
+│   └── TEST_QUESTIONS.md
+├── evals
+│   ├── cases
+│   │   ├── __init__.py
+│   │   ├── accuracy.py
+│   │   ├── boundaries.py
+│   │   ├── governance.py
+│   │   ├── routing.py
+│   │   └── security.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── improve.py
+│   ├── run.py
+│   └── smoke.py
+├── knowledge
+│   ├── business
+│   │   └── metrics.json
+│   ├── queries
+│   │   └── common_queries.sql
+│   └── tables
+│       ├── customers.json
+│       ├── invoices.json
+│       ├── plan_changes.json
+│       ├── subscriptions.json
+│       ├── support_tickets.json
+│       └── usage_metrics.json
+├── scripts
+│   ├── __init__.py
+│   ├── build_image.sh
+│   ├── entrypoint.sh
+│   ├── format.sh
+│   ├── generate_data.py
+│   ├── generate_requirements.sh
+│   ├── load_knowledge.py
+│   ├── railway_env.sh
+│   ├── railway_redeploy.sh
+│   ├── railway_up.sh
+│   ├── validate.sh
+│   └── venv_setup.sh
+├── .dockerignore
+├── .gitignore
+├── CLAUDE.md
+├── compose.yaml
+├── CONTRIBUTING.md
+├── Dockerfile
+├── example.env
+├── LICENSE
+├── pyproject.toml
+├── railway.json
+├── README.md
+└── requirements.txt

@@ -1,0 +1,82 @@
+PokieTicker
+├── backend
+│   ├── api
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── analysis.py
+│   │   │   ├── news.py
+│   │   │   ├── pipeline.py
+│   │   │   ├── predict.py
+│   │   │   └── stocks.py
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── ml
+│   │   ├── __init__.py
+│   │   ├── backtest.py
+│   │   ├── experiment.py
+│   │   ├── features.py
+│   │   ├── features_v2.py
+│   │   ├── inference.py
+│   │   ├── lstm_model.py
+│   │   ├── model.py
+│   │   ├── similar.py
+│   │   └── train.py
+│   ├── pipeline
+│   │   ├── __init__.py
+│   │   ├── alignment.py
+│   │   ├── layer0.py
+│   │   ├── layer1.py
+│   │   ├── layer2.py
+│   │   └── similarity.py
+│   ├── polygon
+│   │   ├── __init__.py
+│   │   └── client.py
+│   ├── __init__.py
+│   ├── batch_collect.py
+│   ├── batch_submit.py
+│   ├── bulk_fetch.py
+│   ├── config.py
+│   ├── database.py
+│   ├── migration.py
+│   └── weekly_update.py
+├── docs
+│   ├── demo.gif
+│   └── screenshot.png
+├── frontend
+│   ├── public
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── assets
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── CandlestickChart.tsx
+│   │   │   ├── NewsCategoryPanel.tsx
+│   │   │   ├── NewsPanel.tsx
+│   │   │   ├── PredictionPanel.tsx
+│   │   │   ├── RangeAnalysisPanel.tsx
+│   │   │   ├── RangeNewsPanel.tsx
+│   │   │   ├── RangeQueryPopup.tsx
+│   │   │   ├── SimilarDaysPanel.tsx
+│   │   │   ├── SimilarNewsPanel.tsx
+│   │   │   ├── StockSelector.tsx
+│   │   │   └── StoryPanel.tsx
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── models.tar.gz
+├── pokieticker.db.gz
+├── README.md
+└── requirements.txt

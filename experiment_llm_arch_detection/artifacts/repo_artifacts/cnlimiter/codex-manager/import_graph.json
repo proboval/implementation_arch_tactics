@@ -1,0 +1,1312 @@
+{
+  "nodes": [
+    "src",
+    "src.config",
+    "src.config.constants",
+    "src.config.settings",
+    "src.core",
+    "src.core.dynamic_proxy",
+    "src.core.http_client",
+    "src.core.login",
+    "src.core.openai",
+    "src.core.openai.codex_auth",
+    "src.core.openai.oauth",
+    "src.core.openai.payment",
+    "src.core.openai.token_refresh",
+    "src.core.register",
+    "src.core.upload",
+    "src.core.upload.cpa_upload",
+    "src.core.upload.newapi_upload",
+    "src.core.upload.sub2api_upload",
+    "src.core.upload.team_manager_upload",
+    "src.core.utils",
+    "src.database",
+    "src.database.crud",
+    "src.database.init_db",
+    "src.database.models",
+    "src.database.session",
+    "src.services",
+    "src.services.base",
+    "src.services.cloud_mail",
+    "src.services.duck_mail",
+    "src.services.freemail",
+    "src.services.imap_mail",
+    "src.services.moe_mail",
+    "src.services.outlook",
+    "src.services.outlook.account",
+    "src.services.outlook.base",
+    "src.services.outlook.email_parser",
+    "src.services.outlook.health_checker",
+    "src.services.outlook.providers",
+    "src.services.outlook.providers.base",
+    "src.services.outlook.providers.graph_api",
+    "src.services.outlook.providers.imap_new",
+    "src.services.outlook.providers.imap_old",
+    "src.services.outlook.service",
+    "src.services.outlook.token_manager",
+    "src.services.temp_mail",
+    "src.services.tempmail",
+    "src.web",
+    "src.web.app",
+    "src.web.routes",
+    "src.web.routes.accounts",
+    "src.web.routes.email",
+    "src.web.routes.payment",
+    "src.web.routes.registration",
+    "src.web.routes.settings",
+    "src.web.routes.upload",
+    "src.web.routes.upload.cpa_services",
+    "src.web.routes.upload.newapi_services",
+    "src.web.routes.upload.sub2api_services",
+    "src.web.routes.upload.tm_services",
+    "src.web.routes.websocket",
+    "src.web.task_manager",
+    "tests.check_otp_timing",
+    "tests.e2e.runtime_functionality_check",
+    "tests.probe_tempmail",
+    "tests.test_account_inbox_code_state",
+    "tests.test_account_token_sync_status",
+    "tests.test_batch_task_manager",
+    "tests.test_cloud_mail_service",
+    "tests.test_cloudflare_worker_mail_services",
+    "tests.test_codex_auth_export_route",
+    "tests.test_codex_auth_flow",
+    "tests.test_cpa_upload",
+    "tests.test_default_webui_port_config",
+    "tests.test_duck_mail_service",
+    "tests.test_email_service_backoff",
+    "tests.test_email_service_cloudmail_routes",
+    "tests.test_email_service_duckmail_routes",
+    "tests.test_login_engine_otp_retry",
+    "tests.test_mail_code_reuse_guard",
+    "tests.test_mail_latest_code_preference",
+    "tests.test_mail_openai_detection",
+    "tests.test_newapi_service_routes",
+    "tests.test_newapi_upload",
+    "tests.test_outlook_service_config_and_health",
+    "tests.test_proxy_batch_delete",
+    "tests.test_register_otp_integration",
+    "tests.test_register_protocol_baseline",
+    "tests.test_registration_email_service_failover",
+    "tests.test_registration_otp_phase",
+    "tests.test_registration_proxy_failover",
+    "tests.test_registration_task_cancellation",
+    "tests.test_settings_email_code",
+    "tests.test_static_asset_versioning",
+    "tests.test_task_manager_status_broadcast",
+    "tests.test_task_recovery",
+    "tests.test_tempmail_service",
+    "tests.test_tempmail_timestamp_filter",
+    "webui"
+  ],
+  "edges": [
+    {
+      "source": "src",
+      "target": "src.config"
+    },
+    {
+      "source": "src",
+      "target": "src.core"
+    },
+    {
+      "source": "src",
+      "target": "src.database"
+    },
+    {
+      "source": "src",
+      "target": "src.services"
+    },
+    {
+      "source": "src.config",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.config",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.config.settings",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.config.settings",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.config.settings",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.core",
+      "target": "src.core.openai.oauth"
+    },
+    {
+      "source": "src.core",
+      "target": "src.core.register"
+    },
+    {
+      "source": "src.core",
+      "target": "src.core.utils"
+    },
+    {
+      "source": "src.core.dynamic_proxy",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.core.http_client",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.core.http_client",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.core.login",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.core.login",
+      "target": "src.core.register"
+    },
+    {
+      "source": "src.core.openai.oauth",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.core.openai.payment",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.openai.token_refresh",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.core.openai.token_refresh",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.core.openai.token_refresh",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.openai.token_refresh",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.core.openai.oauth"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.services"
+    },
+    {
+      "source": "src.core.register",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.core.upload.cpa_upload",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.core.upload.cpa_upload",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.upload.cpa_upload",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.upload.newapi_upload",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.upload.newapi_upload",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.upload.sub2api_upload",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.upload.sub2api_upload",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.upload.team_manager_upload",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.core.upload.team_manager_upload",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.core.utils",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.core.utils",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.database",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.database",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.database",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.database.crud",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.database.init_db",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.database.init_db",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.database.init_db",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.database.session",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.cloud_mail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.duck_mail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.freemail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.imap_mail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.moe_mail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.outlook"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.outlook.providers"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.temp_mail"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "src.services.base",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.base",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.services.cloud_mail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.cloud_mail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.cloud_mail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.duck_mail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.duck_mail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.duck_mail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.freemail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.freemail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.freemail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.imap_mail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.imap_mail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.moe_mail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.moe_mail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.moe_mail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.outlook",
+      "target": "src.services.outlook.service"
+    },
+    {
+      "source": "src.services.outlook.email_parser",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.outlook.email_parser",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.health_checker",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.providers",
+      "target": "src.services.outlook.providers.base"
+    },
+    {
+      "source": "src.services.outlook.providers",
+      "target": "src.services.outlook.providers.graph_api"
+    },
+    {
+      "source": "src.services.outlook.providers",
+      "target": "src.services.outlook.providers.imap_new"
+    },
+    {
+      "source": "src.services.outlook.providers",
+      "target": "src.services.outlook.providers.imap_old"
+    },
+    {
+      "source": "src.services.outlook.providers.base",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.providers.base",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.providers.graph_api",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.providers.graph_api",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.providers.graph_api",
+      "target": "src.services.outlook.providers.base"
+    },
+    {
+      "source": "src.services.outlook.providers.graph_api",
+      "target": "src.services.outlook.token_manager"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_new",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_new",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_new",
+      "target": "src.services.outlook.providers.base"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_new",
+      "target": "src.services.outlook.providers.imap_old"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_new",
+      "target": "src.services.outlook.token_manager"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_old",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_old",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_old",
+      "target": "src.services.outlook.providers.base"
+    },
+    {
+      "source": "src.services.outlook.providers.imap_old",
+      "target": "src.services.outlook.token_manager"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.email_parser"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.health_checker"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.providers.base"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.providers.graph_api"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.providers.imap_new"
+    },
+    {
+      "source": "src.services.outlook.service",
+      "target": "src.services.outlook.providers.imap_old"
+    },
+    {
+      "source": "src.services.outlook.token_manager",
+      "target": "src.services.outlook.account"
+    },
+    {
+      "source": "src.services.outlook.token_manager",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "src.services.temp_mail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.temp_mail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.temp_mail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.services.tempmail",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.services.tempmail",
+      "target": "src.core.http_client"
+    },
+    {
+      "source": "src.services.tempmail",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.services.tempmail",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.services.tempmail",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.web",
+      "target": "src.web.app"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.database.init_db"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.web.routes"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.web.routes.websocket"
+    },
+    {
+      "source": "src.web.app",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "src.web.app",
+      "target": "webui"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.accounts"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.email"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.payment"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.settings"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.upload.cpa_services"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.upload.newapi_services"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.upload.sub2api_services"
+    },
+    {
+      "source": "src.web.routes",
+      "target": "src.web.routes.upload.tm_services"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.dynamic_proxy"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.openai.token_refresh"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.upload.cpa_upload"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.upload.newapi_upload"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.upload.sub2api_upload"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.core.upload.team_manager_upload"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.accounts",
+      "target": "src.services"
+    },
+    {
+      "source": "src.web.routes.email",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.routes.email",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.email",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.web.routes.email",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.email",
+      "target": "src.services"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.core.openai.payment"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.payment",
+      "target": "src.web.routes.accounts"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.dynamic_proxy"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.register"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.upload.cpa_upload"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.upload.newapi_upload"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.upload.sub2api_upload"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.core.upload.team_manager_upload"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.services"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.services.base"
+    },
+    {
+      "source": "src.web.routes.registration",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.core.dynamic_proxy"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.core.upload.team_manager_upload"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.database.models"
+    },
+    {
+      "source": "src.web.routes.settings",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.upload.cpa_services",
+      "target": "src.core.upload.cpa_upload"
+    },
+    {
+      "source": "src.web.routes.upload.cpa_services",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.upload.cpa_services",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.upload.newapi_services",
+      "target": "src.core.upload.newapi_upload"
+    },
+    {
+      "source": "src.web.routes.upload.newapi_services",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.upload.newapi_services",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.upload.sub2api_services",
+      "target": "src.core.upload.sub2api_upload"
+    },
+    {
+      "source": "src.web.routes.upload.sub2api_services",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.upload.sub2api_services",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.upload.tm_services",
+      "target": "src.core.upload.team_manager_upload"
+    },
+    {
+      "source": "src.web.routes.upload.tm_services",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.upload.tm_services",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.websocket",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "src.web.routes.websocket",
+      "target": "src.database.session"
+    },
+    {
+      "source": "src.web.routes.websocket",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "src.web.routes.websocket",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "tests.check_otp_timing",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "tests.e2e.runtime_functionality_check",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_account_inbox_code_state",
+      "target": "src.web.routes.accounts"
+    },
+    {
+      "source": "tests.test_account_token_sync_status",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "tests.test_account_token_sync_status",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_batch_task_manager",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_batch_task_manager",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "tests.test_cloud_mail_service",
+      "target": "src.services.cloud_mail"
+    },
+    {
+      "source": "tests.test_cloudflare_worker_mail_services",
+      "target": "src.services.freemail"
+    },
+    {
+      "source": "tests.test_cloudflare_worker_mail_services",
+      "target": "src.services.temp_mail"
+    },
+    {
+      "source": "tests.test_codex_auth_export_route",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "tests.test_codex_auth_export_route",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_codex_auth_export_route",
+      "target": "src.web.routes.accounts"
+    },
+    {
+      "source": "tests.test_codex_auth_flow",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_codex_auth_flow",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_cpa_upload",
+      "target": "src.core.upload.cpa_upload"
+    },
+    {
+      "source": "tests.test_default_webui_port_config",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_default_webui_port_config",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "tests.test_duck_mail_service",
+      "target": "src.services.duck_mail"
+    },
+    {
+      "source": "tests.test_email_service_backoff",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.web.routes.email"
+    },
+    {
+      "source": "tests.test_email_service_cloudmail_routes",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.web.routes.email"
+    },
+    {
+      "source": "tests.test_email_service_duckmail_routes",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_login_engine_otp_retry",
+      "target": "src.core.login"
+    },
+    {
+      "source": "tests.test_login_engine_otp_retry",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_login_engine_otp_retry",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_mail_code_reuse_guard",
+      "target": "src.services.duck_mail"
+    },
+    {
+      "source": "tests.test_mail_code_reuse_guard",
+      "target": "src.services.freemail"
+    },
+    {
+      "source": "tests.test_mail_code_reuse_guard",
+      "target": "src.services.moe_mail"
+    },
+    {
+      "source": "tests.test_mail_code_reuse_guard",
+      "target": "src.services.temp_mail"
+    },
+    {
+      "source": "tests.test_mail_code_reuse_guard",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "tests.test_mail_latest_code_preference",
+      "target": "src.services.duck_mail"
+    },
+    {
+      "source": "tests.test_mail_latest_code_preference",
+      "target": "src.services.freemail"
+    },
+    {
+      "source": "tests.test_mail_latest_code_preference",
+      "target": "src.services.moe_mail"
+    },
+    {
+      "source": "tests.test_mail_latest_code_preference",
+      "target": "src.services.temp_mail"
+    },
+    {
+      "source": "tests.test_mail_latest_code_preference",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "tests.test_mail_openai_detection",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_mail_openai_detection",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_newapi_service_routes",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_newapi_service_routes",
+      "target": "src.web.routes.upload.newapi_services"
+    },
+    {
+      "source": "tests.test_newapi_upload",
+      "target": "src.core.upload.newapi_upload"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services.outlook.base"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services.outlook.email_parser"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services.outlook.health_checker"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.services.outlook.service"
+    },
+    {
+      "source": "tests.test_outlook_service_config_and_health",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_proxy_batch_delete",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "tests.test_proxy_batch_delete",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_proxy_batch_delete",
+      "target": "src.web.routes.settings"
+    },
+    {
+      "source": "tests.test_register_otp_integration",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_register_protocol_baseline",
+      "target": "src.config.constants"
+    },
+    {
+      "source": "tests.test_register_protocol_baseline",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_register_protocol_baseline",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_registration_email_service_failover",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_registration_otp_phase",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_registration_otp_phase",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_registration_proxy_failover",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_registration_proxy_failover",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "tests.test_registration_proxy_failover",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_registration_proxy_failover",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.core.register"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.services"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.services.base"
+    },
+    {
+      "source": "tests.test_registration_task_cancellation",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_settings_email_code",
+      "target": "src.web.routes.settings"
+    },
+    {
+      "source": "tests.test_task_manager_status_broadcast",
+      "target": "src.web.routes.registration"
+    },
+    {
+      "source": "tests.test_task_manager_status_broadcast",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "tests.test_task_recovery",
+      "target": "src.database.crud"
+    },
+    {
+      "source": "tests.test_task_recovery",
+      "target": "src.database.models"
+    },
+    {
+      "source": "tests.test_task_recovery",
+      "target": "src.database.session"
+    },
+    {
+      "source": "tests.test_task_recovery",
+      "target": "src.web.routes.websocket"
+    },
+    {
+      "source": "tests.test_task_recovery",
+      "target": "src.web.task_manager"
+    },
+    {
+      "source": "tests.test_tempmail_service",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "tests.test_tempmail_timestamp_filter",
+      "target": "src.services.tempmail"
+    },
+    {
+      "source": "webui",
+      "target": "src.config.settings"
+    },
+    {
+      "source": "webui",
+      "target": "src.core.utils"
+    },
+    {
+      "source": "webui",
+      "target": "src.database.init_db"
+    },
+    {
+      "source": "webui",
+      "target": "src.web.app"
+    }
+  ]
+}

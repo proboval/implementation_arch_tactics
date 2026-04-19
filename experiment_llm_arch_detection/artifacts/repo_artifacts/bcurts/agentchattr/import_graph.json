@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    "agents",
+    "app",
+    "archive",
+    "build_release",
+    "config_loader",
+    "jobs",
+    "mcp_bridge",
+    "mcp_proxy",
+    "registry",
+    "router",
+    "rules",
+    "run",
+    "schedules",
+    "session_engine",
+    "session_store",
+    "store",
+    "summaries",
+    "tests.test_archive_feature",
+    "wrapper",
+    "wrapper_api",
+    "wrapper_unix",
+    "wrapper_windows"
+  ],
+  "edges": [
+    {
+      "source": "agents",
+      "target": "mcp_bridge"
+    },
+    {
+      "source": "app",
+      "target": "agents"
+    },
+    {
+      "source": "app",
+      "target": "app"
+    },
+    {
+      "source": "app",
+      "target": "archive"
+    },
+    {
+      "source": "app",
+      "target": "jobs"
+    },
+    {
+      "source": "app",
+      "target": "mcp_bridge"
+    },
+    {
+      "source": "app",
+      "target": "registry"
+    },
+    {
+      "source": "app",
+      "target": "router"
+    },
+    {
+      "source": "app",
+      "target": "rules"
+    },
+    {
+      "source": "app",
+      "target": "schedules"
+    },
+    {
+      "source": "app",
+      "target": "session_engine"
+    },
+    {
+      "source": "app",
+      "target": "session_store"
+    },
+    {
+      "source": "app",
+      "target": "store"
+    },
+    {
+      "source": "app",
+      "target": "summaries"
+    },
+    {
+      "source": "mcp_bridge",
+      "target": "app"
+    },
+    {
+      "source": "run",
+      "target": "app"
+    },
+    {
+      "source": "run",
+      "target": "config_loader"
+    },
+    {
+      "source": "run",
+      "target": "mcp_bridge"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "app"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "archive"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "jobs"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "rules"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "store"
+    },
+    {
+      "source": "tests.test_archive_feature",
+      "target": "summaries"
+    },
+    {
+      "source": "wrapper",
+      "target": "config_loader"
+    },
+    {
+      "source": "wrapper",
+      "target": "mcp_proxy"
+    },
+    {
+      "source": "wrapper",
+      "target": "wrapper_unix"
+    },
+    {
+      "source": "wrapper",
+      "target": "wrapper_windows"
+    },
+    {
+      "source": "wrapper_api",
+      "target": "config_loader"
+    },
+    {
+      "source": "wrapper_api",
+      "target": "wrapper"
+    }
+  ]
+}

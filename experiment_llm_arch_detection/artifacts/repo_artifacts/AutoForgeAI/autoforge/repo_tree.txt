@@ -1,0 +1,256 @@
+autoforge
+├── .claude
+│   ├── agents
+│   │   ├── code-review.md
+│   │   ├── coder.md
+│   │   └── deep-dive.md
+│   ├── commands
+│   │   ├── check-code.md
+│   │   ├── checkpoint.md
+│   │   ├── create-spec.md
+│   │   ├── expand-project.md
+│   │   ├── gsd-to-autoforge-spec.md
+│   │   └── review-pr.md
+│   ├── skills
+│   │   ├── frontend-design
+│   │   │   ├── LICENSE.txt
+│   │   │   └── SKILL.md
+│   │   ├── gsd-to-autoforge-spec
+│   │   │   ├── references
+│   │   │   │   └── app-spec-format.md
+│   │   │   └── SKILL.md
+│   │   └── playwright-cli
+│   │       ├── references
+│   │       │   ├── request-mocking.md
+│   │       │   ├── running-code.md
+│   │       │   ├── session-management.md
+│   │       │   ├── storage-state.md
+│   │       │   ├── test-generation.md
+│   │       │   ├── tracing.md
+│   │       │   └── video-recording.md
+│   │       └── SKILL.md
+│   ├── templates
+│   │   ├── app_spec.template.txt
+│   │   ├── auto_improve_prompt.template.md
+│   │   ├── coding_prompt.template.md
+│   │   ├── initializer_prompt.template.md
+│   │   └── testing_prompt.template.md
+│   └── launch.json
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── api
+│   ├── __init__.py
+│   ├── database.py
+│   ├── dependency_resolver.py
+│   └── migration.py
+├── bin
+│   └── autoforge.js
+├── examples
+│   ├── OPTIMIZE_CONFIG.md
+│   ├── org_config.yaml
+│   ├── project_allowed_commands.yaml
+│   └── README.md
+├── lib
+│   └── cli.js
+├── mcp_server
+│   ├── __init__.py
+│   └── feature_mcp.py
+├── server
+│   ├── routers
+│   │   ├── __init__.py
+│   │   ├── agent.py
+│   │   ├── assistant_chat.py
+│   │   ├── devserver.py
+│   │   ├── expand_project.py
+│   │   ├── features.py
+│   │   ├── filesystem.py
+│   │   ├── projects.py
+│   │   ├── scaffold.py
+│   │   ├── schedules.py
+│   │   ├── settings.py
+│   │   ├── spec_creation.py
+│   │   └── terminal.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── assistant_chat_session.py
+│   │   ├── assistant_database.py
+│   │   ├── browser_view_service.py
+│   │   ├── chat_constants.py
+│   │   ├── dev_server_manager.py
+│   │   ├── expand_chat_session.py
+│   │   ├── process_manager.py
+│   │   ├── project_config.py
+│   │   ├── scheduler_service.py
+│   │   ├── spec_chat_session.py
+│   │   └── terminal_manager.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── document_extraction.py
+│   │   ├── process_utils.py
+│   │   ├── project_helpers.py
+│   │   └── validation.py
+│   ├── __init__.py
+│   ├── main.py
+│   ├── schemas.py
+│   └── websocket.py
+├── ui
+│   ├── e2e
+│   │   ├── conversation-history.spec.ts
+│   │   └── tooltip.spec.ts
+│   ├── public
+│   │   ├── logo.png
+│   │   ├── ollama.png
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── components
+│   │   │   ├── layout
+│   │   │   │   ├── AppShell.tsx
+│   │   │   │   ├── ContentArea.tsx
+│   │   │   │   ├── ControlBar.tsx
+│   │   │   │   ├── Modals.tsx
+│   │   │   │   ├── Sidebar.tsx
+│   │   │   │   └── SidebarItem.tsx
+│   │   │   ├── ui
+│   │   │   │   ├── alert.tsx
+│   │   │   │   ├── badge.tsx
+│   │   │   │   ├── button.tsx
+│   │   │   │   ├── card.tsx
+│   │   │   │   ├── checkbox.tsx
+│   │   │   │   ├── dialog.tsx
+│   │   │   │   ├── dropdown-menu.tsx
+│   │   │   │   ├── input.tsx
+│   │   │   │   ├── label.tsx
+│   │   │   │   ├── separator.tsx
+│   │   │   │   ├── slider.tsx
+│   │   │   │   ├── switch.tsx
+│   │   │   │   ├── textarea.tsx
+│   │   │   │   └── tooltip.tsx
+│   │   │   ├── views
+│   │   │   │   ├── AssistantView.tsx
+│   │   │   │   ├── BrowsersView.tsx
+│   │   │   │   ├── DashboardView.tsx
+│   │   │   │   ├── GraphView.tsx
+│   │   │   │   ├── KanbanView.tsx
+│   │   │   │   ├── LogsView.tsx
+│   │   │   │   ├── SettingsView.tsx
+│   │   │   │   └── TerminalView.tsx
+│   │   │   ├── ActivityFeed.tsx
+│   │   │   ├── AddFeatureForm.tsx
+│   │   │   ├── AgentAvatar.tsx
+│   │   │   ├── AgentCard.tsx
+│   │   │   ├── AgentControl.tsx
+│   │   │   ├── AgentMissionControl.tsx
+│   │   │   ├── AgentThought.tsx
+│   │   │   ├── AssistantChat.tsx
+│   │   │   ├── AssistantFAB.tsx
+│   │   │   ├── AssistantPanel.tsx
+│   │   │   ├── AutoImproveModal.tsx
+│   │   │   ├── BrowserViewPanel.tsx
+│   │   │   ├── CelebrationOverlay.tsx
+│   │   │   ├── ChatMessage.tsx
+│   │   │   ├── ConfirmDialog.tsx
+│   │   │   ├── ConversationHistory.tsx
+│   │   │   ├── DebugLogViewer.tsx
+│   │   │   ├── DependencyBadge.tsx
+│   │   │   ├── DependencyGraph.tsx
+│   │   │   ├── DevServerConfigDialog.tsx
+│   │   │   ├── DevServerControl.tsx
+│   │   │   ├── EditFeatureForm.tsx
+│   │   │   ├── ExpandProjectChat.tsx
+│   │   │   ├── ExpandProjectModal.tsx
+│   │   │   ├── FeatureCard.tsx
+│   │   │   ├── FeatureModal.tsx
+│   │   │   ├── FolderBrowser.tsx
+│   │   │   ├── HumanInputForm.tsx
+│   │   │   ├── KanbanBoard.tsx
+│   │   │   ├── KanbanColumn.tsx
+│   │   │   ├── KeyboardShortcutsHelp.tsx
+│   │   │   ├── mascotData.tsx
+│   │   │   ├── NewProjectModal.tsx
+│   │   │   ├── OrchestratorAvatar.tsx
+│   │   │   ├── OrchestratorStatusCard.tsx
+│   │   │   ├── ProgressDashboard.tsx
+│   │   │   ├── ProjectSelector.tsx
+│   │   │   ├── ProjectSetupRequired.tsx
+│   │   │   ├── QuestionOptions.tsx
+│   │   │   ├── ResetProjectModal.tsx
+│   │   │   ├── ScheduleModal.tsx
+│   │   │   ├── SettingsModal.tsx
+│   │   │   ├── SetupWizard.tsx
+│   │   │   ├── SpecCreationChat.tsx
+│   │   │   ├── Terminal.tsx
+│   │   │   ├── TerminalTabs.tsx
+│   │   │   ├── ThemeSelector.tsx
+│   │   │   ├── TypingIndicator.tsx
+│   │   │   └── ViewToggle.tsx
+│   │   ├── contexts
+│   │   │   └── AppContext.tsx
+│   │   ├── hooks
+│   │   │   ├── useAssistantChat.ts
+│   │   │   ├── useCelebration.ts
+│   │   │   ├── useConversations.ts
+│   │   │   ├── useExpandChat.ts
+│   │   │   ├── useFeatureSound.ts
+│   │   │   ├── useProjects.ts
+│   │   │   ├── useSchedules.ts
+│   │   │   ├── useSpecChat.ts
+│   │   │   ├── useTheme.ts
+│   │   │   └── useWebSocket.ts
+│   │   ├── lib
+│   │   │   ├── api.ts
+│   │   │   ├── keyboard.ts
+│   │   │   ├── timeUtils.ts
+│   │   │   ├── types.ts
+│   │   │   └── utils.ts
+│   │   ├── styles
+│   │   │   └── globals.css
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── vite-env.d.ts
+│   ├── components.json
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .env.example
+├── .gitignore
+├── .npmignore
+├── agent.py
+├── auth.py
+├── autoforge_paths.py
+├── autonomous_agent_demo.py
+├── CLAUDE.md
+├── client.py
+├── env_constants.py
+├── LICENSE.md
+├── package.json
+├── parallel_orchestrator.py
+├── progress.py
+├── prompts.py
+├── pyproject.toml
+├── rate_limit_utils.py
+├── README.md
+├── registry.py
+├── requirements-prod.txt
+├── requirements.txt
+├── security.py
+├── start.bat
+├── start.py
+├── start.sh
+├── start_ui.bat
+├── start_ui.py
+├── start_ui.sh
+├── temp_cleanup.py
+├── test_client.py
+├── test_dependency_resolver.py
+├── test_devserver_security.py
+├── test_rate_limit_utils.py
+├── test_security.py
+├── test_security_integration.py
+└── VISION.md

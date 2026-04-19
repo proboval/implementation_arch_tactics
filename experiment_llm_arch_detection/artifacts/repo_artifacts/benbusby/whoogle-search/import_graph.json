@@ -1,0 +1,361 @@
+{
+  "nodes": [
+    "app",
+    "app.__main__",
+    "app.filter",
+    "app.models",
+    "app.models.config",
+    "app.models.endpoint",
+    "app.models.g_classes",
+    "app.request",
+    "app.routes",
+    "app.services",
+    "app.services.cse_client",
+    "app.services.http_client",
+    "app.services.provider",
+    "app.utils",
+    "app.utils.bangs",
+    "app.utils.misc",
+    "app.utils.results",
+    "app.utils.search",
+    "app.utils.session",
+    "app.utils.ua_generator",
+    "app.utils.widgets",
+    "app.version",
+    "misc.check_google_user_agents",
+    "misc.generate_uas",
+    "misc.replit",
+    "misc.update-translations",
+    "test",
+    "test.conftest",
+    "test.mock_google",
+    "test.test_alts",
+    "test.test_autocomplete",
+    "test.test_autocomplete_xml",
+    "test.test_http_client",
+    "test.test_json",
+    "test.test_misc",
+    "test.test_results",
+    "test.test_routes",
+    "test.test_routes_json",
+    "test.test_tor"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "app.filter"
+    },
+    {
+      "source": "app",
+      "target": "app.request"
+    },
+    {
+      "source": "app",
+      "target": "app.routes"
+    },
+    {
+      "source": "app",
+      "target": "app.services.http_client"
+    },
+    {
+      "source": "app",
+      "target": "app.services.provider"
+    },
+    {
+      "source": "app",
+      "target": "app.utils.bangs"
+    },
+    {
+      "source": "app",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "app",
+      "target": "app.utils.ua_generator"
+    },
+    {
+      "source": "app",
+      "target": "app.version"
+    },
+    {
+      "source": "app.__main__",
+      "target": "app.routes"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.models.config"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.models.g_classes"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.request"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.filter",
+      "target": "app.utils.results"
+    },
+    {
+      "source": "app.models.config",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.request",
+      "target": "app.models.config"
+    },
+    {
+      "source": "app.request",
+      "target": "app.services.provider"
+    },
+    {
+      "source": "app.request",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.request",
+      "target": "app.utils.ua_generator"
+    },
+    {
+      "source": "app.routes",
+      "target": "app"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.filter"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.models.config"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.request"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.services.cse_client"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.bangs"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.results"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.search"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "app.routes",
+      "target": "app.utils.widgets"
+    },
+    {
+      "source": "app.services.provider",
+      "target": "app.services.http_client"
+    },
+    {
+      "source": "app.utils.results",
+      "target": "app.models.config"
+    },
+    {
+      "source": "app.utils.results",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "app.utils.results",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.utils.search",
+      "target": "app.filter"
+    },
+    {
+      "source": "app.utils.search",
+      "target": "app.request"
+    },
+    {
+      "source": "app.utils.search",
+      "target": "app.services.cse_client"
+    },
+    {
+      "source": "app.utils.search",
+      "target": "app.utils.misc"
+    },
+    {
+      "source": "app.utils.search",
+      "target": "app.utils.results"
+    },
+    {
+      "source": "misc.generate_uas",
+      "target": "app.utils.ua_generator"
+    },
+    {
+      "source": "test.conftest",
+      "target": "app"
+    },
+    {
+      "source": "test.conftest",
+      "target": "app.request"
+    },
+    {
+      "source": "test.conftest",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "test.conftest",
+      "target": "test.mock_google"
+    },
+    {
+      "source": "test.mock_google",
+      "target": "app.models.config"
+    },
+    {
+      "source": "test.test_alts",
+      "target": "app"
+    },
+    {
+      "source": "test.test_alts",
+      "target": "app.filter"
+    },
+    {
+      "source": "test.test_alts",
+      "target": "app.models.config"
+    },
+    {
+      "source": "test.test_alts",
+      "target": "app.utils.results"
+    },
+    {
+      "source": "test.test_alts",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "test.test_autocomplete",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_autocomplete_xml",
+      "target": "app"
+    },
+    {
+      "source": "test.test_autocomplete_xml",
+      "target": "app.models.config"
+    },
+    {
+      "source": "test.test_autocomplete_xml",
+      "target": "app.request"
+    },
+    {
+      "source": "test.test_http_client",
+      "target": "app.services.http_client"
+    },
+    {
+      "source": "test.test_json",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_json",
+      "target": "app.utils.search"
+    },
+    {
+      "source": "test.test_misc",
+      "target": "app"
+    },
+    {
+      "source": "test.test_misc",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_misc",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.filter"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.models.config"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.utils.results"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.utils.search"
+    },
+    {
+      "source": "test.test_results",
+      "target": "app.utils.session"
+    },
+    {
+      "source": "test.test_results",
+      "target": "test.conftest"
+    },
+    {
+      "source": "test.test_routes",
+      "target": "app"
+    },
+    {
+      "source": "test.test_routes",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_routes",
+      "target": "test.conftest"
+    },
+    {
+      "source": "test.test_routes_json",
+      "target": "app.models.endpoint"
+    },
+    {
+      "source": "test.test_routes_json",
+      "target": "app.utils.search"
+    },
+    {
+      "source": "test.test_tor",
+      "target": "app"
+    },
+    {
+      "source": "test.test_tor",
+      "target": "app.models.config"
+    },
+    {
+      "source": "test.test_tor",
+      "target": "app.request"
+    }
+  ]
+}

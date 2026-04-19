@@ -1,0 +1,1565 @@
+{
+  "nodes": [
+    "docs.conf",
+    "frontend-v2.backend.app",
+    "launcher",
+    "quantaalpha",
+    "quantaalpha.app",
+    "quantaalpha.app.benchmark",
+    "quantaalpha.app.benchmark.factor",
+    "quantaalpha.app.benchmark.factor.analysis",
+    "quantaalpha.app.benchmark.factor.eval",
+    "quantaalpha.app.benchmark.model",
+    "quantaalpha.app.benchmark.model.eval",
+    "quantaalpha.app.utils",
+    "quantaalpha.app.utils.health_check",
+    "quantaalpha.app.utils.info",
+    "quantaalpha.backtest",
+    "quantaalpha.backtest.custom_factor_calculator",
+    "quantaalpha.backtest.factor_calculator",
+    "quantaalpha.backtest.factor_loader",
+    "quantaalpha.backtest.run_backtest",
+    "quantaalpha.backtest.runner",
+    "quantaalpha.cli",
+    "quantaalpha.coder",
+    "quantaalpha.coder.costeer",
+    "quantaalpha.coder.costeer.config",
+    "quantaalpha.coder.costeer.evaluators",
+    "quantaalpha.coder.costeer.evolvable_subjects",
+    "quantaalpha.coder.costeer.evolving_agent",
+    "quantaalpha.coder.costeer.evolving_strategy",
+    "quantaalpha.coder.costeer.knowledge_management",
+    "quantaalpha.coder.costeer.scheduler",
+    "quantaalpha.coder.costeer.task",
+    "quantaalpha.coder.knowledge",
+    "quantaalpha.coder.knowledge.graph",
+    "quantaalpha.coder.knowledge.vector_base",
+    "quantaalpha.components",
+    "quantaalpha.components.benchmark",
+    "quantaalpha.components.benchmark.conf",
+    "quantaalpha.components.benchmark.eval_method",
+    "quantaalpha.components.proposal",
+    "quantaalpha.components.runner",
+    "quantaalpha.contrib",
+    "quantaalpha.contrib.model",
+    "quantaalpha.contrib.model.coder",
+    "quantaalpha.contrib.model.coder.benchmark.eval",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.A-DGN",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.dirgnn",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.gpsconv",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.linkx",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.pmlp",
+    "quantaalpha.contrib.model.coder.benchmark.gt_code.visnet",
+    "quantaalpha.contrib.model.coder.eva_utils",
+    "quantaalpha.contrib.model.coder.evaluators",
+    "quantaalpha.contrib.model.coder.evolving_strategy",
+    "quantaalpha.contrib.model.coder.gt_code",
+    "quantaalpha.contrib.model.coder.model",
+    "quantaalpha.contrib.model.coder.one_shot",
+    "quantaalpha.contrib.model.coder.task_loader",
+    "quantaalpha.contrib.model.experiment",
+    "quantaalpha.contrib.model.proposal",
+    "quantaalpha.contrib.model.qlib_coder",
+    "quantaalpha.contrib.model.runner",
+    "quantaalpha.core",
+    "quantaalpha.core.conf",
+    "quantaalpha.core.developer",
+    "quantaalpha.core.evaluation",
+    "quantaalpha.core.evolving_agent",
+    "quantaalpha.core.evolving_framework",
+    "quantaalpha.core.exception",
+    "quantaalpha.core.experiment",
+    "quantaalpha.core.knowledge_base",
+    "quantaalpha.core.prompts",
+    "quantaalpha.core.proposal",
+    "quantaalpha.core.scenario",
+    "quantaalpha.core.template",
+    "quantaalpha.core.utils",
+    "quantaalpha.docker",
+    "quantaalpha.factors",
+    "quantaalpha.factors.coder",
+    "quantaalpha.factors.coder.config",
+    "quantaalpha.factors.coder.eva_utils",
+    "quantaalpha.factors.coder.evaluators",
+    "quantaalpha.factors.coder.evolving_strategy",
+    "quantaalpha.factors.coder.expr_parser",
+    "quantaalpha.factors.coder.factor",
+    "quantaalpha.factors.coder.factor_ast",
+    "quantaalpha.factors.coder.function_lib",
+    "quantaalpha.factors.coder.test",
+    "quantaalpha.factors.data_template",
+    "quantaalpha.factors.data_template.generate",
+    "quantaalpha.factors.experiment",
+    "quantaalpha.factors.feedback",
+    "quantaalpha.factors.library",
+    "quantaalpha.factors.loader",
+    "quantaalpha.factors.loader.json_loader",
+    "quantaalpha.factors.loader.pdf_loader",
+    "quantaalpha.factors.prompts",
+    "quantaalpha.factors.proposal",
+    "quantaalpha.factors.qlib_coder",
+    "quantaalpha.factors.qlib_experiment_init",
+    "quantaalpha.factors.qlib_utils",
+    "quantaalpha.factors.regulator",
+    "quantaalpha.factors.regulator.consistency_checker",
+    "quantaalpha.factors.regulator.factor_regulator",
+    "quantaalpha.factors.runner",
+    "quantaalpha.factors.workspace",
+    "quantaalpha.llm",
+    "quantaalpha.llm.client",
+    "quantaalpha.llm.config",
+    "quantaalpha.log",
+    "quantaalpha.log.time",
+    "quantaalpha.pipeline",
+    "quantaalpha.pipeline.base",
+    "quantaalpha.pipeline.evolution",
+    "quantaalpha.pipeline.evolution.controller",
+    "quantaalpha.pipeline.evolution.crossover",
+    "quantaalpha.pipeline.evolution.mutation",
+    "quantaalpha.pipeline.evolution.trajectory",
+    "quantaalpha.pipeline.factor_backtest",
+    "quantaalpha.pipeline.factor_from_report",
+    "quantaalpha.pipeline.factor_mining",
+    "quantaalpha.pipeline.loop",
+    "quantaalpha.pipeline.planning",
+    "quantaalpha.pipeline.prompts",
+    "quantaalpha.pipeline.settings",
+    "quantaalpha.utils",
+    "quantaalpha.utils.agent",
+    "quantaalpha.utils.agent.ret",
+    "quantaalpha.utils.agent.tpl",
+    "quantaalpha.utils.document_reader",
+    "quantaalpha.utils.document_reader.document_reader",
+    "quantaalpha.utils.env",
+    "quantaalpha.utils.loader",
+    "quantaalpha.utils.loader.experiment_loader",
+    "quantaalpha.utils.loader.task_loader",
+    "quantaalpha.utils.workflow"
+  ],
+  "edges": [
+    {
+      "source": "frontend-v2.backend.app",
+      "target": "quantaalpha.factors.library"
+    },
+    {
+      "source": "launcher",
+      "target": "quantaalpha.cli"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.analysis",
+      "target": "quantaalpha.components.benchmark.conf"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.analysis",
+      "target": "quantaalpha.components.benchmark.eval_method"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.components.benchmark.conf"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.components.benchmark.eval_method"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.factors.loader.json_loader"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.factor.eval",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.model.eval",
+      "target": "quantaalpha.contrib.model.coder"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.model.eval",
+      "target": "quantaalpha.contrib.model.coder.benchmark.eval"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.model.eval",
+      "target": "quantaalpha.contrib.model.coder.one_shot"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.model.eval",
+      "target": "quantaalpha.contrib.model.experiment"
+    },
+    {
+      "source": "quantaalpha.app.benchmark.model.eval",
+      "target": "quantaalpha.utils.loader.task_loader"
+    },
+    {
+      "source": "quantaalpha.app.utils.health_check",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.app.utils.info",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.backtest",
+      "target": "quantaalpha.backtest.factor_calculator"
+    },
+    {
+      "source": "quantaalpha.backtest",
+      "target": "quantaalpha.backtest.factor_loader"
+    },
+    {
+      "source": "quantaalpha.backtest",
+      "target": "quantaalpha.backtest.runner"
+    },
+    {
+      "source": "quantaalpha.backtest.custom_factor_calculator",
+      "target": "quantaalpha.factors.coder.expr_parser"
+    },
+    {
+      "source": "quantaalpha.backtest.custom_factor_calculator",
+      "target": "quantaalpha.factors.coder.function_lib"
+    },
+    {
+      "source": "quantaalpha.backtest.factor_calculator",
+      "target": "quantaalpha.factors.coder.expr_parser"
+    },
+    {
+      "source": "quantaalpha.backtest.factor_calculator",
+      "target": "quantaalpha.factors.coder.function_lib"
+    },
+    {
+      "source": "quantaalpha.backtest.factor_calculator",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.backtest.run_backtest",
+      "target": "quantaalpha.backtest.factor_loader"
+    },
+    {
+      "source": "quantaalpha.backtest.run_backtest",
+      "target": "quantaalpha.backtest.runner"
+    },
+    {
+      "source": "quantaalpha.backtest.runner",
+      "target": "quantaalpha.backtest.custom_factor_calculator"
+    },
+    {
+      "source": "quantaalpha.backtest.runner",
+      "target": "quantaalpha.backtest.factor_loader"
+    },
+    {
+      "source": "quantaalpha.cli",
+      "target": "quantaalpha.app.utils.health_check"
+    },
+    {
+      "source": "quantaalpha.cli",
+      "target": "quantaalpha.app.utils.info"
+    },
+    {
+      "source": "quantaalpha.cli",
+      "target": "quantaalpha.pipeline.factor_backtest"
+    },
+    {
+      "source": "quantaalpha.cli",
+      "target": "quantaalpha.pipeline.factor_mining"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.coder.costeer.evolvable_subjects"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.coder.costeer.evolving_agent"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.coder.costeer.knowledge_management"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.core.evolving_agent"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.costeer",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.config",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.coder.costeer.evolvable_subjects"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evaluators",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolvable_subjects",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolvable_subjects",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolvable_subjects",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolvable_subjects",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_agent",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_agent",
+      "target": "quantaalpha.coder.costeer.evolvable_subjects"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_agent",
+      "target": "quantaalpha.core.evolving_agent"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_agent",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.evolvable_subjects"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.knowledge_management"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.scheduler"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.evolving_strategy",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.coder.knowledge.graph"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.core.evolving_agent"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.knowledge_management",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.scheduler",
+      "target": "quantaalpha.coder.costeer.evolvable_subjects"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.scheduler",
+      "target": "quantaalpha.coder.costeer.knowledge_management"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.scheduler",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.scheduler",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.costeer.task",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.graph",
+      "target": "quantaalpha.coder.knowledge.vector_base"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.graph",
+      "target": "quantaalpha.core.knowledge_base"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.graph",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.graph",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.graph",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.vector_base",
+      "target": "quantaalpha.core.knowledge_base"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.vector_base",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.vector_base",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.coder.knowledge.vector_base",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.conf",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.factors.coder.eva_utils"
+    },
+    {
+      "source": "quantaalpha.components.benchmark.eval_method",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.components.proposal",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.components.proposal",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.components.proposal",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.components.proposal",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.components.runner",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.components.runner",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.components.runner",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.coder.costeer"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.contrib.model.coder.evaluators"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.contrib.model.coder.evolving_strategy"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.benchmark.eval",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.eva_utils",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evaluators",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evaluators",
+      "target": "quantaalpha.contrib.model.coder.eva_utils"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evaluators",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evaluators",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evaluators",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.evolving_strategy"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.knowledge_management"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.evolving_strategy",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.model",
+      "target": "quantaalpha.coder.costeer.task"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.model",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.model",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.model",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.model",
+      "target": "quantaalpha.utils.env"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.one_shot",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.one_shot",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.one_shot",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.one_shot",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.contrib.model.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.utils.document_reader.document_reader"
+    },
+    {
+      "source": "quantaalpha.contrib.model.coder.task_loader",
+      "target": "quantaalpha.utils.loader.task_loader"
+    },
+    {
+      "source": "quantaalpha.contrib.model.proposal",
+      "target": "quantaalpha.components.proposal"
+    },
+    {
+      "source": "quantaalpha.contrib.model.proposal",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.contrib.model.proposal",
+      "target": "quantaalpha.contrib.model.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.proposal",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.contrib.model.proposal",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.contrib.model.qlib_coder",
+      "target": "quantaalpha.contrib.model.coder"
+    },
+    {
+      "source": "quantaalpha.contrib.model.runner",
+      "target": "quantaalpha.components.runner"
+    },
+    {
+      "source": "quantaalpha.contrib.model.runner",
+      "target": "quantaalpha.contrib.model.experiment"
+    },
+    {
+      "source": "quantaalpha.contrib.model.runner",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.contrib.model.runner",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.core.developer",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.core.developer",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.core.evaluation",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.core.evaluation",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.core.evolving_agent",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.core.evolving_agent",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.core.evolving_agent",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.core.evolving_framework",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.core.evolving_framework",
+      "target": "quantaalpha.core.knowledge_base"
+    },
+    {
+      "source": "quantaalpha.core.evolving_framework",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.core.experiment",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.core.knowledge_base",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.core.prompts",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.core.proposal",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.core.proposal",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.core.proposal",
+      "target": "quantaalpha.core.knowledge_base"
+    },
+    {
+      "source": "quantaalpha.core.proposal",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.core.proposal",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.core.scenario",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.core.utils",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.core.utils",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.coder.costeer"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.factors.coder.evaluators"
+    },
+    {
+      "source": "quantaalpha.factors.coder",
+      "target": "quantaalpha.factors.coder.evolving_strategy"
+    },
+    {
+      "source": "quantaalpha.factors.coder.config",
+      "target": "quantaalpha.coder.costeer.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.config",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.coder.eva_utils",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.coder.costeer.evaluators"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.core.evolving_framework"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.factors.coder.eva_utils"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.factors.regulator.factor_regulator"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evaluators",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.evolving_strategy"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.coder.costeer.knowledge_management"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.core.template"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.coder.evolving_strategy",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.coder.costeer.task"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.coder.factor",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.experiment",
+      "target": "quantaalpha.factors.qlib_utils"
+    },
+    {
+      "source": "quantaalpha.factors.experiment",
+      "target": "quantaalpha.factors.workspace"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.factors.coder.factor_ast"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.feedback",
+      "target": "quantaalpha.utils"
+    },
+    {
+      "source": "quantaalpha.factors.loader.json_loader",
+      "target": "quantaalpha.components.benchmark.eval_method"
+    },
+    {
+      "source": "quantaalpha.factors.loader.json_loader",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.loader.json_loader",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.factors.loader.json_loader",
+      "target": "quantaalpha.factors.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.loader.json_loader",
+      "target": "quantaalpha.utils.loader.experiment_loader"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.factors.loader.json_loader"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.utils.document_reader.document_reader"
+    },
+    {
+      "source": "quantaalpha.factors.loader.pdf_loader",
+      "target": "quantaalpha.utils.loader.experiment_loader"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.components.proposal"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.factors.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.factors.regulator.consistency_checker"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.factors.regulator.factor_regulator"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.proposal",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.qlib_coder",
+      "target": "quantaalpha.factors.coder"
+    },
+    {
+      "source": "quantaalpha.factors.qlib_utils",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.qlib_utils",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.qlib_utils",
+      "target": "quantaalpha.utils.env"
+    },
+    {
+      "source": "quantaalpha.factors.regulator",
+      "target": "quantaalpha.factors.regulator.consistency_checker"
+    },
+    {
+      "source": "quantaalpha.factors.regulator",
+      "target": "quantaalpha.factors.regulator.factor_regulator"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.consistency_checker",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.consistency_checker",
+      "target": "quantaalpha.factors.coder.factor_ast"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.consistency_checker",
+      "target": "quantaalpha.factors.regulator.factor_regulator"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.consistency_checker",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.consistency_checker",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.factor_regulator",
+      "target": "quantaalpha.core.evaluation"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.factor_regulator",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.factor_regulator",
+      "target": "quantaalpha.factors.coder.expr_parser"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.factor_regulator",
+      "target": "quantaalpha.factors.coder.factor_ast"
+    },
+    {
+      "source": "quantaalpha.factors.regulator.factor_regulator",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.components.runner"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.factors.coder.config"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.factors.experiment"
+    },
+    {
+      "source": "quantaalpha.factors.runner",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.llm",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.llm.client",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.llm.client",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.llm.client",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.llm.config",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.log.time",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.log.time"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.pipeline.base",
+      "target": "quantaalpha.utils.workflow"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution",
+      "target": "quantaalpha.pipeline.evolution.controller"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution",
+      "target": "quantaalpha.pipeline.evolution.crossover"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution",
+      "target": "quantaalpha.pipeline.evolution.mutation"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution",
+      "target": "quantaalpha.pipeline.evolution.trajectory"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.controller",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.controller",
+      "target": "quantaalpha.pipeline.evolution.crossover"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.controller",
+      "target": "quantaalpha.pipeline.evolution.mutation"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.controller",
+      "target": "quantaalpha.pipeline.evolution.trajectory"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.crossover",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.crossover",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.crossover",
+      "target": "quantaalpha.pipeline.evolution.trajectory"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.mutation",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.mutation",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.mutation",
+      "target": "quantaalpha.pipeline.evolution.trajectory"
+    },
+    {
+      "source": "quantaalpha.pipeline.evolution.trajectory",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_backtest",
+      "target": "quantaalpha.pipeline.loop"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_backtest",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.core.prompts"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.factors.experiment"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.factors.loader.pdf_loader"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.log.time"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.utils.document_reader.document_reader"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_from_report",
+      "target": "quantaalpha.utils.workflow"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.llm.config"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.log.time"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.pipeline.evolution"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.pipeline.loop"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.pipeline.planning"
+    },
+    {
+      "source": "quantaalpha.pipeline.factor_mining",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.core.developer"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.core.proposal"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.core.scenario"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.factors.library"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.log.time"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.pipeline.settings"
+    },
+    {
+      "source": "quantaalpha.pipeline.loop",
+      "target": "quantaalpha.utils.workflow"
+    },
+    {
+      "source": "quantaalpha.pipeline.planning",
+      "target": "quantaalpha.llm.client"
+    },
+    {
+      "source": "quantaalpha.pipeline.planning",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.pipeline.settings",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.utils.agent.ret",
+      "target": "quantaalpha.utils.agent.tpl"
+    },
+    {
+      "source": "quantaalpha.utils.agent.tpl",
+      "target": "quantaalpha.core.utils"
+    },
+    {
+      "source": "quantaalpha.utils.document_reader.document_reader",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.utils.env",
+      "target": "quantaalpha.core.conf"
+    },
+    {
+      "source": "quantaalpha.utils.env",
+      "target": "quantaalpha.log"
+    },
+    {
+      "source": "quantaalpha.utils.loader.experiment_loader",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.utils.loader.experiment_loader",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.utils.loader.task_loader",
+      "target": "quantaalpha.contrib.model.coder.model"
+    },
+    {
+      "source": "quantaalpha.utils.loader.task_loader",
+      "target": "quantaalpha.core.experiment"
+    },
+    {
+      "source": "quantaalpha.utils.loader.task_loader",
+      "target": "quantaalpha.factors.coder.factor"
+    },
+    {
+      "source": "quantaalpha.utils.workflow",
+      "target": "quantaalpha.core.exception"
+    },
+    {
+      "source": "quantaalpha.utils.workflow",
+      "target": "quantaalpha.log"
+    }
+  ]
+}

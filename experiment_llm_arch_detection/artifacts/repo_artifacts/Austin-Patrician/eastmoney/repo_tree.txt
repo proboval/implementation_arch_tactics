@@ -1,0 +1,352 @@
+eastmoney
+├── .agent
+│   ├── rules
+│   │   ├── api-guideline.md
+│   │   └── react-components-guildeline.md
+│   └── skills
+│       └── planing-with-files
+│           ├── examples.md
+│           ├── reference.md
+│           └── SKILL.md
+├── app
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── cache.py
+│   │   ├── config.py
+│   │   ├── dependencies.py
+│   │   ├── helpers.py
+│   │   └── utils.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── assistant.py
+│   │   ├── auth.py
+│   │   ├── dashboard.py
+│   │   ├── funds.py
+│   │   ├── news.py
+│   │   ├── portfolios.py
+│   │   ├── recommendations.py
+│   │   ├── reports.py
+│   │   ├── settings.py
+│   │   ├── stocks.py
+│   │   └── stress_test.py
+│   ├── routers
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── alerts.py
+│   │   ├── assistant.py
+│   │   ├── auth.py
+│   │   ├── commodities.py
+│   │   ├── compare.py
+│   │   ├── dashboard.py
+│   │   ├── details.py
+│   │   ├── funds.py
+│   │   ├── generate.py
+│   │   ├── health.py
+│   │   ├── market.py
+│   │   ├── news.py
+│   │   ├── portfolios.py
+│   │   ├── preferences.py
+│   │   ├── recommendations.py
+│   │   ├── reports.py
+│   │   ├── sentiment.py
+│   │   ├── settings.py
+│   │   ├── stocks.py
+│   │   └── widgets.py
+│   ├── __init__.py
+│   ├── main.py
+│   └── static.py
+├── config
+│   ├── funds.json
+│   ├── market_stocks_cache.json
+│   └── settings.py
+├── docker
+│   └── backend.Dockerfile
+├── docs
+│   └── screenshots
+│       ├── dashboard.png
+│       ├── funds.png
+│       ├── reports.png
+│       ├── sentiment_output.png
+│       └── sentiments.png
+├── reports
+│   └── 2
+│       ├── commodities
+│       │   └── 2026-01-11_190722_commodities_gold_Gold.md
+│       ├── sentiment
+│       │   ├── sentiment_20260111_202939.md
+│       │   ├── sentiment_20260112_135425.md
+│       │   ├── sentiment_20260112_154058.md
+│       │   ├── sentiment_20260112_160457.md
+│       │   ├── sentiment_20260112_165616.md
+│       │   └── sentiment_20260113_160545.md
+│       └── 2026-01-11_pre_016708_华夏有色金属ETF联接C.md
+├── src
+│   ├── analysis
+│   │   ├── commodities
+│   │   │   ├── __init__.py
+│   │   │   ├── gold_silver.py
+│   │   │   └── quantitative.py
+│   │   ├── fund
+│   │   │   ├── __init__.py
+│   │   │   ├── comparison.py
+│   │   │   ├── diagnosis.py
+│   │   │   ├── portfolio_analysis.py
+│   │   │   └── risk_metrics.py
+│   │   ├── portfolio
+│   │   │   ├── __init__.py
+│   │   │   ├── correlation.py
+│   │   │   ├── risk_metrics.py
+│   │   │   ├── signals.py
+│   │   │   └── stress_test.py
+│   │   ├── recommendation
+│   │   │   ├── factor_store
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── cache.py
+│   │   │   │   ├── daily_computer.py
+│   │   │   │   └── rate_limiter.py
+│   │   │   ├── fund_engine
+│   │   │   │   ├── factors
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── manager.py
+│   │   │   │   │   ├── performance.py
+│   │   │   │   │   └── risk.py
+│   │   │   │   ├── strategies
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── alpha.py
+│   │   │   │   │   └── momentum.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── engine.py
+│   │   │   ├── llm_synthesis
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── explainer.py
+│   │   │   ├── stock_engine
+│   │   │   │   ├── factors
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── fundamental.py
+│   │   │   │   │   ├── sentiment.py
+│   │   │   │   │   └── technical.py
+│   │   │   │   ├── strategies
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── long_term.py
+│   │   │   │   │   └── short_term.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── engine.py
+│   │   │   ├── __init__.py
+│   │   │   └── engine.py
+│   │   ├── sentiment
+│   │   │   ├── __init__.py
+│   │   │   ├── dashboard.py
+│   │   │   ├── market_cycle.py
+│   │   │   ├── money_flow.py
+│   │   │   ├── news_mining.py
+│   │   │   └── social_media.py
+│   │   ├── strategies
+│   │   │   ├── __init__.py
+│   │   │   ├── base_strategy.py
+│   │   │   ├── commodity.py
+│   │   │   ├── equity.py
+│   │   │   ├── factory.py
+│   │   │   └── stock.py
+│   │   ├── __init__.py
+│   │   ├── base_analyst.py
+│   │   ├── dashboard.py
+│   │   ├── post_market.py
+│   │   ├── pre_market.py
+│   │   └── widget_service.py
+│   ├── cache
+│   │   ├── __init__.py
+│   │   └── cache_manager.py
+│   ├── data_sources
+│   │   ├── __init__.py
+│   │   ├── akshare_api.py
+│   │   ├── circuit_breaker.py
+│   │   ├── data_source_manager.py
+│   │   ├── rate_limiter.py
+│   │   ├── sector_mappings.py
+│   │   ├── technical_analysis.py
+│   │   ├── tushare_client.py
+│   │   ├── utils.py
+│   │   ├── web_search.py
+│   │   ├── yfinance_api.py
+│   │   └── yfinance_client.py
+│   ├── llm
+│   │   ├── tools
+│   │   │   ├── __init__.py
+│   │   │   ├── executor.py
+│   │   │   └── schemas.py
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   ├── prompts.py
+│   │   ├── recommendation_prompts.py
+│   │   └── stock_diagnosis_prompt.py
+│   ├── scheduler
+│   │   ├── __init__.py
+│   │   └── manager.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── ai_scenario_service.py
+│   │   ├── assistant_service.py
+│   │   ├── email_service.py
+│   │   └── news_service.py
+│   ├── storage
+│   │   ├── __init__.py
+│   │   ├── db.py
+│   │   └── user_preferences.py
+│   ├── __init__.py
+│   ├── auth.py
+│   └── report_gen.py
+├── web
+│   ├── public
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── assets
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── assistant
+│   │   │   │   ├── ChatMessage.tsx
+│   │   │   │   ├── ChatWindow.tsx
+│   │   │   │   ├── ContextBadge.tsx
+│   │   │   │   ├── FloatingAssistant.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── fund
+│   │   │   │   ├── DiagnosisCard.tsx
+│   │   │   │   ├── DrawdownChart.tsx
+│   │   │   │   ├── ETFRealtimeTable.tsx
+│   │   │   │   ├── FundDetailDialog.tsx
+│   │   │   │   ├── FundMarketOverview.tsx
+│   │   │   │   ├── FundRankingTable.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── PositionForm.tsx
+│   │   │   │   └── RiskMetricsCard.tsx
+│   │   │   ├── layout
+│   │   │   │   └── Layout.tsx
+│   │   │   ├── news
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── NewsCard.tsx
+│   │   │   │   ├── NewsDetail.tsx
+│   │   │   │   ├── NewsFeed.tsx
+│   │   │   │   ├── NewsFilter.tsx
+│   │   │   │   └── NewsSidebar.tsx
+│   │   │   ├── portfolio
+│   │   │   │   ├── AISignalCell.tsx
+│   │   │   │   ├── AISignalDrawer.tsx
+│   │   │   │   ├── AlertBanner.tsx
+│   │   │   │   ├── AllocationPieChart.tsx
+│   │   │   │   ├── AnimatedNumber.tsx
+│   │   │   │   ├── AssetSearchDialog.tsx
+│   │   │   │   ├── CorrelationHeatmap.tsx
+│   │   │   │   ├── DailyReturnsDetail.tsx
+│   │   │   │   ├── DailyReturnsExplanation.tsx
+│   │   │   │   ├── EditPositionDialog.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── MacroFactorSlider.tsx
+│   │   │   │   ├── PortfolioDiagnosisCard.tsx
+│   │   │   │   ├── PortfolioHeader.tsx
+│   │   │   │   ├── PortfolioSummaryCards.tsx
+│   │   │   │   ├── PortfolioSwitcher.tsx
+│   │   │   │   ├── PositionTable.tsx
+│   │   │   │   ├── RebalanceSuggestions.tsx
+│   │   │   │   ├── ReturnsCalendar.tsx
+│   │   │   │   ├── ReturnsOverview.tsx
+│   │   │   │   ├── ScenarioPresets.tsx
+│   │   │   │   ├── SmartPositionTable.tsx
+│   │   │   │   ├── SparklineChart.tsx
+│   │   │   │   ├── StressTestChat.tsx
+│   │   │   │   ├── StressTestResults.tsx
+│   │   │   │   ├── StressTestSandbox.tsx
+│   │   │   │   ├── TransactionForm.tsx
+│   │   │   │   └── TransactionHistory.tsx
+│   │   │   ├── stock
+│   │   │   │   ├── AIDiagnosisCard.tsx
+│   │   │   │   ├── EventsTab.tsx
+│   │   │   │   ├── FinancialTab.tsx
+│   │   │   │   ├── HotStocksList.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── LimitPoolTabs.tsx
+│   │   │   │   ├── MarginTab.tsx
+│   │   │   │   ├── MarketPulseCard.tsx
+│   │   │   │   ├── QuantTab.tsx
+│   │   │   │   └── ShareholderTab.tsx
+│   │   │   └── PreferencesModal.tsx
+│   │   ├── contexts
+│   │   │   └── AppContext.tsx
+│   │   ├── locales
+│   │   │   ├── en.json
+│   │   │   └── zh.json
+│   │   ├── pages
+│   │   │   ├── Commodities.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Documentation.tsx
+│   │   │   ├── Funds.tsx
+│   │   │   ├── Login.tsx
+│   │   │   ├── News.tsx
+│   │   │   ├── Portfolio.tsx
+│   │   │   ├── Preferences.tsx
+│   │   │   ├── Recommendations.tsx
+│   │   │   ├── Reports.tsx
+│   │   │   ├── Sentiment.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   └── Stocks.tsx
+│   │   ├── theme
+│   │   │   └── theme.ts
+│   │   ├── utils
+│   │   │   ├── layoutOptimizer.ts
+│   │   │   └── smartLayout.ts
+│   │   ├── widgets
+│   │   │   ├── components
+│   │   │   │   ├── AbnormalMovementsWidget.tsx
+│   │   │   │   ├── ForexRatesWidget.tsx
+│   │   │   │   ├── GoldMacroWidget.tsx
+│   │   │   │   ├── IndustryFlowWidget.tsx
+│   │   │   │   ├── MainCapitalFlowWidget.tsx
+│   │   │   │   ├── MarketIndicesWidget.tsx
+│   │   │   │   ├── MarketSentimentWidget.tsx
+│   │   │   │   ├── NewsWidget.tsx
+│   │   │   │   ├── NorthboundFlowWidget.tsx
+│   │   │   │   ├── SectorPerformanceWidget.tsx
+│   │   │   │   ├── SystemStatsWidget.tsx
+│   │   │   │   ├── TopListWidget.tsx
+│   │   │   │   └── WatchlistWidget.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── registry.ts
+│   │   │   ├── types.ts
+│   │   │   └── WidgetContainer.tsx
+│   │   ├── api.ts
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── i18n.ts
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── api_server.py
+├── check_db.py
+├── deploy.ps1
+├── deploy.sh
+├── docker-compose.yml
+├── Dockerfile
+├── fix_funds_schema.py
+├── funds.db
+├── GEMINI.md
+├── LICENSE
+├── main.py
+├── README.md
+├── requirements.txt
+├── reset_circuit_breaker.py
+├── run_docker.sh
+├── settings.json
+├── test_hsgt_min.py
+└── test_scan.py

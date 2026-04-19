@@ -1,0 +1,1760 @@
+# FILE: app/auth/dependencies.py
+from fastapi import Header, Depends, HTTPException
+from sqlalchemy.orm import Session
+from app.database import get_db
+from app.models.agent import Agent
+
+async def get_current_agentNone: ...
+
+def require_roleNone: ...
+
+async def verify_adminNone: ...
+
+# FILE: app/config.py
+import os
+import bcrypt
+import yaml
+import threading
+from pathlib import Path
+from typing import Optional
+
+class AppConfig:
+    def __init__None: ...
+    def loadNone: ...
+    def _auto_encrypt_passwordNone: ...
+    def _saveNone: ...
+    def verify_admin_passwordNone: ...
+    def is_initializedNone: ...
+    def mark_initializedNone: ...
+    def updateNone: ...
+    def update_passwordNone: ...
+    def set_passwordNone: ...
+    def get_safe_configNone: ...
+    def server_portNone: ...
+    def server_hostNone: ...
+    def server_external_urlNone: ...
+    def has_external_urlNone: ...
+    def database_pathNone: ...
+    def database_typeNone: ...
+    def registration_tokenNone: ...
+    def allow_registrationNone: ...
+    def workspace_rootNone: ...
+    def project_nameNone: ...
+    def notification_configNone: ...
+    def public_feed_enabledNone: ...
+    def feed_retention_daysNone: ...
+    def webui_github_repoNone: ...
+    def webui_auto_updateNone: ...
+    def cli_versionNone: ...
+    def rawNone: ...
+    def initializeNone: ...
+
+# FILE: app/database.py
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+from app.config import config
+import os
+
+def get_dbNone: ...
+
+def init_dbNone: ...
+
+def _migrate_agent_statusesNone: ...
+
+def _load_default_rulesNone: ...
+
+# FILE: app/main.py
+import os
+import traceback
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, Depends, Request
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
+from app.database import init_db
+from app.config import config
+from app.auth.dependencies import get_current_agent
+from app.routers import (
+    admin,
+    admin_agents,
+    admin_config,
+    admin_dashboard,
+    admin_logs,
+    admin_reviews,
+    admin_scores,
+    admin_tasks,
+    agents,
+    feed,
+    logs,
+    prompts,
+    review_records,
+    rules,
+    scores,
+    setup,
+    sub_tasks,
+    tasks,
+    tools,
+    webui,
+)
+from app.middleware.request_logger import RequestLoggerMiddleware
+
+def _cleanup_old_request_logsNone: ...
+
+async def lifespanNone: ...
+from fastapi.middleware.cors import CORSMiddleware
+
+async def value_error_handlerNone: ...
+
+async def global_exception_handlerNone: ...
+
+async def health_checkNone: ...
+
+async def get_notification_configNone: ...
+
+async def serve_spaNone: ...
+
+# FILE: app/middleware/request_logger.py
+import uuid
+import json
+from datetime import datetime
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import Response
+from app.database import SessionLocal
+from app.models.agent import Agent
+from app.models.request_log import RequestLog
+
+class RequestLoggerMiddleware(BaseHTTPMiddleware):
+    async def dispatchNone: ...
+
+# FILE: app/models/__init__.py
+from app.models.request_log import RequestLog
+
+# FILE: app/models/activity_log.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey
+from app.database import Base
+
+class ActivityLog(Base):
+
+# FILE: app/models/agent.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, Integer, DateTime, Index
+from app.database import Base
+
+class Agent(Base):
+
+# FILE: app/models/module.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey
+from app.database import Base
+
+class Module(Base):
+
+# FILE: app/models/patrol_record.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey
+from app.database import Base
+
+class PatrolRecord(Base):
+
+# FILE: app/models/request_log.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, Integer, DateTime
+from app.database import Base
+
+class RequestLog(Base):
+
+# FILE: app/models/review_record.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, Integer, DateTime, ForeignKey
+from app.database import Base
+
+class ReviewRecord(Base):
+
+# FILE: app/models/reward_log.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
+from app.database import Base
+
+class RewardLog(Base):
+
+# FILE: app/models/rule.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, DateTime, ForeignKey
+from app.database import Base
+
+class Rule(Base):
+
+# FILE: app/models/sub_task.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, Integer, DateTime, ForeignKey, JSON, Index
+from app.database import Base
+
+class SubTask(Base):
+
+# FILE: app/models/task.py
+import uuid
+from datetime import datetime
+from sqlalchemy import Column, String, Text, DateTime
+from app.database import Base
+
+class Task(Base):
+
+# FILE: app/routers/admin.py
+import secrets
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
+from app.config import config
+
+def create_admin_tokenNone: ...
+
+def is_valid_admin_tokenNone: ...
+
+class AdminLoginRequest(BaseModel):
+
+class AdminLoginResponse(BaseModel):
+
+async def admin_loginNone: ...
+
+# FILE: app/routers/admin_agents.py
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_agent import (
+    AdminAgentCreateRequest,
+    AdminAgentCreateResponse,
+    AdminAgentActivityLogPageResponse,
+    AdminAgentDeleteRequest,
+    AdminAgentDeleteResponse,
+    AdminAgentDetail,
+    AdminAgentPageResponse,
+    AdminAgentRelatedCountsResponse,
+    AdminAgentRequestLogPageResponse,
+    AdminAgentResetKeyResponse,
+    AdminAgentScoreLogPageResponse,
+    AdminAgentStatusUpdateRequest,
+    AdminAgentUpdateRequest,
+    AdminAgentWriteResponse,
+)
+from app.services import admin_agent_query_service, agent_service
+
+def _raise_admin_agent_query_errorNone: ...
+
+def _raise_admin_agent_write_errorNone: ...
+
+async def list_admin_agentsNone: ...
+
+async def create_admin_agentNone: ...
+
+async def list_admin_agent_score_logsNone: ...
+
+async def list_admin_agent_activity_logsNone: ...
+
+async def list_admin_agent_request_logsNone: ...
+
+async def update_admin_agent_profileNone: ...
+
+async def update_admin_agent_statusNone: ...
+
+async def reset_admin_agent_keyNone: ...
+
+async def get_admin_agent_detailNone: ...
+
+async def get_admin_agent_related_countsNone: ...
+
+async def delete_admin_agentNone: ...
+
+# FILE: app/routers/admin_config.py
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel, Field
+from typing import Optional
+from app.config import config
+from app.auth.dependencies import verify_admin
+
+class ConfigUpdateRequest(BaseModel):
+
+class PasswordUpdateRequest(BaseModel):
+
+async def get_configNone: ...
+
+async def update_configNone: ...
+
+async def update_passwordNone: ...
+
+# FILE: app/routers/admin_dashboard.py
+from fastapi import APIRouter, Depends, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_dashboard import (
+    AdminDashboardHighlightsResponse,
+    AdminDashboardOverviewResponse,
+    AdminDashboardTrendsResponse,
+)
+from app.services import admin_dashboard_query_service
+
+async def get_admin_dashboard_overviewNone: ...
+
+async def get_admin_dashboard_highlightsNone: ...
+
+async def get_admin_dashboard_trendsNone: ...
+
+# FILE: app/routers/admin_logs.py
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_log import AdminActivityLogPageResponse
+from app.services import admin_log_query_service
+
+def _raise_query_errorNone: ...
+
+async def list_admin_activity_logsNone: ...
+
+# FILE: app/routers/admin_reviews.py
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_review import AdminReviewDetail, AdminReviewPageResponse
+from app.services import admin_review_query_service
+
+def _raise_admin_review_query_errorNone: ...
+
+async def list_admin_review_recordsNone: ...
+
+async def get_admin_review_detailNone: ...
+
+# FILE: app/routers/admin_scores.py
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_score import (
+    AdminScoreAdjustRequest,
+    AdminScoreAdjustResponse,
+    AdminScoreLeaderboardPageResponse,
+    AdminScoreLogPageResponse,
+    AdminScoreSummaryResponse,
+)
+from app.services import admin_score_query_service, admin_score_service
+
+def _raise_admin_score_query_errorNone: ...
+
+def _raise_admin_score_write_errorNone: ...
+
+async def get_admin_score_summaryNone: ...
+
+async def list_admin_score_leaderboardNone: ...
+
+async def list_admin_score_logsNone: ...
+
+async def adjust_admin_scoreNone: ...
+
+# FILE: app/routers/admin_tasks.py
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from app.auth.dependencies import verify_admin
+from app.database import get_db
+from app.schemas.admin_task import (
+    AdminModuleDetail,
+    AdminModulePageResponse,
+    AdminSubTaskDetail,
+    AdminSubTaskPageResponse,
+    AdminTaskDetail,
+    AdminTaskPageResponse,
+)
+from app.services import admin_task_query_service
+
+def _raise_admin_query_errorNone: ...
+
+async def list_admin_tasksNone: ...
+
+async def get_admin_task_detailNone: ...
+
+async def list_admin_task_modulesNone: ...
+
+async def get_admin_module_detailNone: ...
+
+async def list_admin_task_sub_tasksNone: ...
+
+async def list_admin_module_sub_tasksNone: ...
+
+async def list_admin_sub_tasksNone: ...
+
+async def get_admin_sub_task_detailNone: ...
+
+# FILE: app/routers/agents.py
+from fastapi import APIRouter, Depends, Header, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, verify_admin
+from app.services import agent_service
+from app.models.agent import Agent
+from app.config import config
+
+class AgentRegisterRequest(BaseModel):
+
+class AgentResponse(BaseModel):
+
+class AgentRegisterResponse(BaseModel):
+
+class AgentStatusRequest(BaseModel):
+
+async def register_agentNone: ...
+
+async def create_agentNone: ...
+
+async def list_agentsNone: ...
+
+async def update_statusNone: ...
+
+async def get_my_skillNone: ...
+
+# FILE: app/routers/feed.py
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.orm import Session
+from sqlalchemy import func
+from pydantic import BaseModel
+from typing import Optional, List
+from datetime import datetime as dt, timedelta
+from app.database import get_db
+from app.config import config
+from app.models.request_log import RequestLog
+from app.models.agent import Agent
+from app.models.sub_task import SubTask
+from app.models.module import Module
+
+class FeedStatusResponse(BaseModel):
+
+class FeedLogResponse(BaseModel):
+
+class FeedAgentResponse(BaseModel):
+
+class SubTaskBrief(BaseModel):
+
+class RecentAction(BaseModel):
+
+class AgentSummaryResponse(BaseModel):
+
+def _check_feed_enabledNone: ...
+
+async def feed_statusNone: ...
+
+async def feed_logsNone: ...
+
+async def feed_agentsNone: ...
+
+async def feed_agent_summaryNone: ...
+
+# FILE: app/routers/logs.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt, timedelta
+import uuid
+from app.database import get_db
+from app.auth.dependencies import get_current_agent
+from app.models.activity_log import ActivityLog
+from app.models.agent import Agent
+
+class LogCreateRequest(BaseModel):
+
+class LogResponse(BaseModel):
+
+def _apply_days_filterNone: ...
+
+async def create_logNone: ...
+
+async def list_logsNone: ...
+
+async def get_my_logsNone: ...
+
+# FILE: app/routers/prompts.py
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel, Field
+from typing import Optional
+from app.auth.dependencies import verify_admin
+from app.services import prompt_service
+
+class AgentPromptCreateRequest(BaseModel):
+
+class AgentPromptUpdateRequest(BaseModel):
+
+class TemplateUpdateRequest(BaseModel):
+
+async def list_templatesNone: ...
+
+async def get_templateNone: ...
+
+async def update_templateNone: ...
+
+async def list_agentsNone: ...
+
+async def get_agentNone: ...
+
+async def create_agentNone: ...
+
+async def update_agentNone: ...
+
+async def delete_agentNone: ...
+
+async def compose_promptNone: ...
+
+async def get_onboardingNone: ...
+
+# FILE: app/routers/review_records.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, require_role
+from app.services import review_service
+from app.models.agent import Agent
+
+class ReviewCreateRequest(BaseModel):
+
+class ReviewResponse(BaseModel):
+
+async def create_reviewNone: ...
+
+async def list_reviewsNone: ...
+
+async def get_reviewNone: ...
+
+# FILE: app/routers/rules.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt
+from fastapi import Request
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, verify_admin
+from app.services import rule_service
+from app.models.agent import Agent
+
+class RuleCreateRequest(BaseModel):
+
+class RuleUpdateRequest(BaseModel):
+
+class RuleResponse(BaseModel):
+
+class MergedRulesResponse(BaseModel):
+
+async def get_merged_rulesNone: ...
+
+async def list_rulesNone: ...
+
+async def get_ruleNone: ...
+
+async def create_ruleNone: ...
+
+async def update_ruleNone: ...
+
+async def delete_ruleNone: ...
+
+# FILE: app/routers/scores.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, verify_admin
+from app.services import reward_service
+from app.models.agent import Agent
+
+class ScoreSummaryResponse(BaseModel):
+
+class RewardLogResponse(BaseModel):
+
+class LeaderboardItem(BaseModel):
+
+async def get_leaderboardNone: ...
+
+async def get_my_scoreNone: ...
+
+async def get_agent_scoreNone: ...
+
+async def get_my_reward_logsNone: ...
+
+async def get_agent_reward_logsNone: ...
+
+class ScoreAdjustRequest(BaseModel):
+
+async def adjust_scoreNone: ...
+
+# FILE: app/routers/setup.py
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel, Field
+from typing import Optional
+from app.config import config
+from app.database import SessionLocal
+from app.models.agent import Agent
+
+class SetupStatusResponse(BaseModel):
+
+class SetupInitializeRequest(BaseModel):
+
+class SetupInitializeResponse(BaseModel):
+
+def _has_existing_dataNone: ...
+
+async def get_setup_statusNone: ...
+
+async def initializeNone: ...
+
+# FILE: app/routers/sub_tasks.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, verify_admin, require_role
+from app.services import sub_task_service
+from app.models.agent import Agent
+
+class SubTaskCreateRequest(BaseModel):
+
+class SubTaskResponse(BaseModel):
+
+class ClaimRequest(BaseModel):
+
+class StartRequest(BaseModel):
+
+class ReworkRequest(BaseModel):
+
+class ReassignRequest(BaseModel):
+
+class SubTaskUpdateRequest(BaseModel):
+
+async def create_sub_taskNone: ...
+
+async def list_sub_tasksNone: ...
+
+async def get_my_sub_tasksNone: ...
+
+async def get_available_sub_tasksNone: ...
+
+async def get_latest_sub_taskNone: ...
+
+async def get_sub_taskNone: ...
+
+async def claim_sub_taskNone: ...
+
+async def start_sub_taskNone: ...
+
+async def submit_sub_taskNone: ...
+
+async def complete_sub_taskNone: ...
+
+async def rework_sub_taskNone: ...
+
+async def block_sub_taskNone: ...
+
+async def reassign_sub_taskNone: ...
+
+async def update_sub_taskNone: ...
+
+async def cancel_sub_taskNone: ...
+
+class SessionUpdateRequest(BaseModel):
+
+async def update_sessionNone: ...
+
+# FILE: app/routers/tasks.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+from typing import Optional, List
+from datetime import datetime as dt
+from app.database import get_db
+from app.auth.dependencies import get_current_agent, verify_admin, require_role
+from app.services import task_service
+from app.models.agent import Agent
+
+class TaskCreateRequest(BaseModel):
+
+class TaskResponse(BaseModel):
+
+class TaskStatusRequest(BaseModel):
+
+class TaskUpdateRequest(BaseModel):
+
+class ModuleCreateRequest(BaseModel):
+
+class ModuleResponse(BaseModel):
+
+async def create_taskNone: ...
+
+async def list_tasksNone: ...
+
+async def get_taskNone: ...
+
+async def update_task_statusNone: ...
+
+async def update_taskNone: ...
+
+async def cancel_taskNone: ...
+
+async def create_moduleNone: ...
+
+async def list_modulesNone: ...
+
+# FILE: app/routers/tools.py
+from pathlib import Path
+from fastapi import APIRouter, Depends, Request
+from fastapi.responses import PlainTextResponse
+from app.auth.dependencies import get_current_agent
+from app.config import config
+from app.models.agent import Agent
+
+async def download_cliNone: ...
+
+# FILE: app/routers/webui.py
+from fastapi import APIRouter, HTTPException, Depends
+from app.auth.dependencies import verify_admin
+from app.services.webui_updater import webui_updater
+
+async def get_webui_versionNone: ...
+
+async def check_webui_updateNone: ...
+
+async def trigger_webui_updateNone: ...
+
+# FILE: app/schemas/admin_agent.py
+from datetime import datetime as dt
+from typing import List, Literal, Optional
+from pydantic import BaseModel, Field
+
+class AdminAgentWorkloadMixin(BaseModel):
+
+class AdminAgentListItem(AdminAgentWorkloadMixin):
+
+class AdminAgentDetail(AdminAgentListItem):
+
+class AdminAgentPageResponse(BaseModel):
+
+class AdminAgentScoreLogItem(BaseModel):
+
+class AdminAgentScoreLogPageResponse(BaseModel):
+
+class AdminAgentActivityLogItem(BaseModel):
+
+class AdminAgentActivityLogPageResponse(BaseModel):
+
+class AdminAgentRequestLogItem(BaseModel):
+
+class AdminAgentRequestLogPageResponse(BaseModel):
+
+class AdminAgentCreateRequest(BaseModel):
+
+class AdminAgentCreateResponse(BaseModel):
+
+class AdminAgentStatusUpdateRequest(BaseModel):
+
+class AdminAgentUpdateRequest(BaseModel):
+
+class AdminAgentWriteResponse(BaseModel):
+
+class AdminAgentResetKeyResponse(BaseModel):
+
+class AdminAgentDeleteRequest(BaseModel):
+
+class AdminAgentDeleteResponse(BaseModel):
+
+class AdminAgentRelatedCountsResponse(BaseModel):
+
+# FILE: app/schemas/admin_dashboard.py
+from datetime import datetime as dt
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
+class AdminDashboardCoreCards(BaseModel):
+
+class AdminDashboardSecondaryCards(BaseModel):
+
+class AdminDashboardTaskStatusDistribution(BaseModel):
+
+class AdminDashboardSubTaskStatusDistribution(BaseModel):
+
+class AdminDashboardAgentStatusDistribution(BaseModel):
+
+class AdminDashboardAgentRoleDistribution(BaseModel):
+
+class AdminDashboardReviewResultDistribution(BaseModel):
+
+class AdminDashboardDistributions(BaseModel):
+
+class AdminDashboardOverviewResponse(BaseModel):
+
+class AdminDashboardSubTaskHighlightItem(BaseModel):
+
+class AdminDashboardAgentHighlightItem(BaseModel):
+
+class AdminDashboardRecentReviewItem(BaseModel):
+
+class AdminDashboardHighlightsResponse(BaseModel):
+
+class AdminDashboardCountTrendPoint(BaseModel):
+
+class AdminDashboardReviewTrendPoint(BaseModel):
+
+class AdminDashboardScoreTrendPoint(BaseModel):
+
+class AdminDashboardTrendsResponse(BaseModel):
+
+# FILE: app/schemas/admin_log.py
+from datetime import datetime as dt
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
+class AdminActivityLogItem(BaseModel):
+
+class AdminActivityLogPageResponse(BaseModel):
+
+# FILE: app/schemas/admin_review.py
+from datetime import datetime as dt
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
+class AdminReviewListItem(BaseModel):
+
+class AdminReviewDetail(AdminReviewListItem):
+
+class AdminReviewPageResponse(BaseModel):
+
+# FILE: app/schemas/admin_score.py
+from datetime import datetime as dt
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
+class AdminScoreSummaryResponse(BaseModel):
+
+class AdminScoreLeaderboardItem(BaseModel):
+
+class AdminScoreLeaderboardPageResponse(BaseModel):
+
+class AdminScoreAdjustRequest(BaseModel):
+
+class AdminScoreAdjustResponse(BaseModel):
+
+class AdminScoreLogItem(BaseModel):
+
+class AdminScoreLogPageResponse(BaseModel):
+
+# FILE: app/schemas/admin_task.py
+from datetime import datetime as dt
+from typing import List, Optional
+from pydantic import BaseModel, Field
+
+class AdminTaskStatsMixin(BaseModel):
+
+class AdminTaskListItem(AdminTaskStatsMixin):
+
+class AdminTaskDetail(AdminTaskListItem):
+
+class AdminTaskPageResponse(BaseModel):
+
+class AdminModuleStatsMixin(BaseModel):
+
+class AdminModuleListItem(AdminModuleStatsMixin):
+
+class AdminModuleDetail(AdminModuleListItem):
+
+class AdminModulePageResponse(BaseModel):
+
+class AdminSubTaskListItem(BaseModel):
+
+class AdminSubTaskDetail(AdminSubTaskListItem):
+
+class AdminSubTaskPageResponse(BaseModel):
+
+# FILE: app/services/admin_agent_query_service.py
+from datetime import datetime as dt, timedelta
+from typing import Optional
+from sqlalchemy import asc, case, desc, func, or_
+from sqlalchemy.orm import Query, Session
+from app.models.activity_log import ActivityLog
+from app.models.agent import Agent
+from app.models.request_log import RequestLog
+from app.models.reward_log import RewardLog
+from app.models.sub_task import SubTask
+
+class AdminAgentQueryError(ValueError):
+
+class InvalidQueryError(AdminAgentQueryError):
+
+class ResourceNotFoundError(AdminAgentQueryError):
+
+def list_agentsNone: ...
+
+def get_agent_detailNone: ...
+
+def list_agent_score_logsNone: ...
+
+def list_agent_activity_logsNone: ...
+
+def list_agent_request_logsNone: ...
+
+def _build_agent_workload_stats_subqueryNone: ...
+
+def _build_agent_last_request_subqueryNone: ...
+
+def _build_agent_last_activity_subqueryNone: ...
+
+def _build_agent_reward_stats_subqueryNone: ...
+
+def _build_agent_rank_subqueryNone: ...
+
+def _paginate_queryNone: ...
+
+def _serialize_agent_list_rowNone: ...
+
+def _serialize_agent_detail_rowNone: ...
+
+def _serialize_score_log_rowNone: ...
+
+def _serialize_activity_log_rowNone: ...
+
+def _serialize_request_log_rowNone: ...
+
+def _build_workload_countsNone: ...
+
+def _ensure_agent_existsNone: ...
+
+def _ensure_agent_exists_lightweightNone: ...
+
+def _validate_page_argsNone: ...
+
+def _validate_optional_enumNone: ...
+
+def _validate_optional_positive_intNone: ...
+
+def _build_order_clauseNone: ...
+
+def _int_or_zeroNone: ...
+
+# FILE: app/services/admin_dashboard_query_service.py
+from datetime import date, datetime as dt, timedelta
+from sqlalchemy import asc, case, desc, func, or_
+from sqlalchemy.orm import Session, aliased
+from app.models.activity_log import ActivityLog
+from app.models.agent import Agent
+from app.models.request_log import RequestLog
+from app.models.review_record import ReviewRecord
+from app.models.reward_log import RewardLog
+from app.models.sub_task import SubTask
+from app.models.task import Task
+
+def get_dashboard_overviewNone: ...
+
+def get_dashboard_highlightsNone: ...
+
+def get_dashboard_trendsNone: ...
+
+def _count_by_columnNone: ...
+
+def _int_or_zeroNone: ...
+
+def _build_trend_windowNone: ...
+
+def _query_count_trend_rowsNone: ...
+
+def _query_review_trend_rowsNone: ...
+
+def _query_score_trend_rowsNone: ...
+
+def _build_count_trendNone: ...
+
+def _build_review_trendNone: ...
+
+def _build_score_trendNone: ...
+
+def _build_agent_last_request_subqueryNone: ...
+
+def _build_agent_last_activity_subqueryNone: ...
+
+def _build_agent_open_workload_subqueryNone: ...
+
+def _build_agent_last_seen_exprNone: ...
+
+def _list_sub_task_highlightsNone: ...
+
+def _list_busy_agentsNone: ...
+
+def _list_low_activity_agentsNone: ...
+
+def _list_recent_reviewsNone: ...
+
+def _serialize_sub_task_highlight_rowNone: ...
+
+def _serialize_agent_highlight_rowNone: ...
+
+def _serialize_recent_review_rowNone: ...
+
+# FILE: app/services/admin_log_query_service.py
+from datetime import datetime, timedelta
+from typing import Optional
+from sqlalchemy import asc, desc, func
+from sqlalchemy.orm import Query, Session
+from app.models.activity_log import ActivityLog
+from app.models.agent import Agent
+
+class AdminLogQueryError(Exception):
+
+class InvalidQueryError(AdminLogQueryError):
+
+def list_activity_logsNone: ...
+
+def _apply_filtersNone: ...
+
+def _paginate_queryNone: ...
+
+def _serialize_rowNone: ...
+
+def _validate_page_argsNone: ...
+
+def _validate_optional_enumNone: ...
+
+def _validate_sort_orderNone: ...
+
+# FILE: app/services/admin_review_query_service.py
+from datetime import datetime as dt, timedelta
+from typing import Optional
+from sqlalchemy import asc, desc, or_
+from sqlalchemy.orm import Query, Session, aliased
+from app.models.agent import Agent
+from app.models.module import Module
+from app.models.review_record import ReviewRecord
+from app.models.sub_task import SubTask
+from app.models.task import Task
+
+class AdminReviewQueryError(ValueError):
+
+class InvalidQueryError(AdminReviewQueryError):
+
+class ResourceNotFoundError(AdminReviewQueryError):
+
+def list_review_recordsNone: ...
+
+def get_review_detailNone: ...
+
+def _apply_review_filtersNone: ...
+
+def _serialize_review_list_rowNone: ...
+
+def _serialize_review_detail_rowNone: ...
+
+def _empty_pageNone: ...
+
+def _validate_page_argsNone: ...
+
+def _validate_optional_positive_intNone: ...
+
+def _validate_optional_enumNone: ...
+
+def _validate_sort_orderNone: ...
+
+# FILE: app/services/admin_score_query_service.py
+from typing import Optional
+from sqlalchemy import asc, case, desc, func, or_
+from sqlalchemy.orm import Query, Session
+from app.models.agent import Agent
+from app.models.reward_log import RewardLog
+
+class AdminScoreQueryError(ValueError):
+
+class InvalidQueryError(AdminScoreQueryError):
+
+def get_score_summaryNone: ...
+
+def list_score_leaderboardNone: ...
+
+def list_score_logsNone: ...
+
+def _build_reward_stats_subqueryNone: ...
+
+def _build_rank_subqueryNone: ...
+
+def _apply_leaderboard_filtersNone: ...
+
+def _apply_score_log_filtersNone: ...
+
+def _paginate_queryNone: ...
+
+def _serialize_leaderboard_rowNone: ...
+
+def _serialize_score_log_rowNone: ...
+
+def _validate_page_argsNone: ...
+
+def _validate_optional_enumNone: ...
+
+def _build_order_clauseNone: ...
+
+def _validate_sort_orderNone: ...
+
+def _int_or_zeroNone: ...
+
+# FILE: app/services/admin_score_service.py
+from sqlalchemy.orm import Session
+from app.models.agent import Agent
+from app.services import reward_service
+
+class AdminScoreWriteError(ValueError):
+
+def adjust_scoreNone: ...
+
+# FILE: app/services/admin_task_query_service.py
+from typing import Optional
+from sqlalchemy import asc, case, desc, func, or_
+from sqlalchemy.orm import Query, Session
+from app.models.agent import Agent
+from app.models.module import Module
+from app.models.sub_task import SubTask
+from app.models.task import Task
+
+class AdminTaskQueryError(ValueError):
+
+class InvalidQueryError(AdminTaskQueryError):
+
+class ResourceNotFoundError(AdminTaskQueryError):
+
+def list_tasksNone: ...
+
+def get_task_detailNone: ...
+
+def list_task_modulesNone: ...
+
+def get_module_detailNone: ...
+
+def list_task_sub_tasksNone: ...
+
+def list_module_sub_tasksNone: ...
+
+def list_sub_tasksNone: ...
+
+def get_sub_task_detailNone: ...
+
+def _list_sub_tasksNone: ...
+
+def _build_task_stats_subqueryNone: ...
+
+def _build_task_module_count_subqueryNone: ...
+
+def _build_module_stats_subqueryNone: ...
+
+def _build_sub_task_queryNone: ...
+
+def _paginate_queryNone: ...
+
+def _serialize_task_rowNone: ...
+
+def _serialize_module_rowNone: ...
+
+def _serialize_sub_task_rowNone: ...
+
+def _ensure_task_existsNone: ...
+
+def _ensure_module_existsNone: ...
+
+def _validate_page_argsNone: ...
+
+def _validate_optional_enumNone: ...
+
+def _build_order_clauseNone: ...
+
+def _int_or_zeroNone: ...
+
+# FILE: app/services/agent_service.py
+import uuid
+import secrets
+from sqlalchemy import func
+from sqlalchemy.orm import Session
+from app.models.agent import Agent
+from app.models.activity_log import ActivityLog
+from app.models.patrol_record import PatrolRecord
+from app.models.request_log import RequestLog
+from app.models.review_record import ReviewRecord
+from app.models.reward_log import RewardLog
+from app.models.sub_task import SubTask
+
+def generate_api_keyNone: ...
+
+def register_agentNone: ...
+
+def reset_agent_api_keyNone: ...
+
+def list_agentsNone: ...
+
+def get_agent_by_idNone: ...
+
+def update_agent_profileNone: ...
+
+def update_agent_statusNone: ...
+
+def get_agent_related_countsNone: ...
+
+def delete_agentNone: ...
+
+# FILE: app/services/pagination.py
+from pydantic import BaseModel
+from typing import List, Any
+
+class PaginatedResult(BaseModel):
+
+def paginateNone: ...
+
+# FILE: app/services/prompt_service.py
+import re
+from pathlib import Path
+from datetime import date
+from typing import Optional
+import frontmatter
+from app.config import config
+
+def _is_valid_mdNone: ...
+
+def _parse_prompt_fileNone: ...
+
+def _validate_slugNone: ...
+
+def list_templatesNone: ...
+
+def get_templateNone: ...
+
+def update_templateNone: ...
+
+def list_agentsNone: ...
+
+def get_agentNone: ...
+
+def create_agentNone: ...
+
+def update_agentNone: ...
+
+def delete_agentNone: ...
+
+def compose_promptNone: ...
+
+def generate_onboardingNone: ...
+
+# FILE: app/services/review_service.py
+import uuid
+from sqlalchemy.orm import Session
+from app.models.review_record import ReviewRecord
+from app.models.sub_task import SubTask
+from app.models.agent import Agent
+from app.services import sub_task_service
+from app.services import reward_service
+
+def create_reviewNone: ...
+
+def list_reviewsNone: ...
+
+def get_reviewNone: ...
+
+# FILE: app/services/reward_service.py
+import uuid
+from sqlalchemy.orm import Session
+from sqlalchemy import func, update
+from app.models.reward_log import RewardLog
+from app.models.agent import Agent
+
+def add_rewardNone: ...
+
+def apply_review_scoreNone: ...
+
+def get_agent_scoreNone: ...
+
+def list_reward_logsNone: ...
+
+# FILE: app/services/rule_service.py
+import uuid
+from sqlalchemy.orm import Session
+from app.models.rule import Rule
+from app.config import config
+
+def create_ruleNone: ...
+
+def update_ruleNone: ...
+
+def delete_ruleNone: ...
+
+def list_rulesNone: ...
+
+def get_ruleNone: ...
+
+def _replace_variablesNone: ...
+
+def get_merged_rulesNone: ...
+
+# FILE: app/services/sub_task_service.py
+import uuid
+from datetime import datetime
+from sqlalchemy.orm import Session
+from app.models.sub_task import SubTask
+from app.models.task import Task
+from app.models.module import Module
+from app.models.agent import Agent
+
+def create_sub_taskNone: ...
+
+def list_sub_tasksNone: ...
+
+def get_sub_taskNone: ...
+
+def _change_statusNone: ...
+
+def claim_sub_taskNone: ...
+
+def start_sub_taskNone: ...
+
+def submit_sub_taskNone: ...
+
+def complete_sub_taskNone: ...
+
+def rework_sub_taskNone: ...
+
+def restart_sub_taskNone: ...
+
+def update_sessionNone: ...
+
+def block_sub_taskNone: ...
+
+def reassign_sub_taskNone: ...
+
+def update_sub_taskNone: ...
+
+def cancel_sub_taskNone: ...
+
+# FILE: app/services/task_service.py
+import uuid
+from sqlalchemy.orm import Session
+from app.models.task import Task
+from app.models.module import Module
+
+def create_taskNone: ...
+
+def list_tasksNone: ...
+
+def get_taskNone: ...
+
+def update_task_statusNone: ...
+
+def update_taskNone: ...
+
+def cancel_taskNone: ...
+
+def create_moduleNone: ...
+
+def list_modulesNone: ...
+
+# FILE: app/services/webui_updater.py
+import asyncio
+import json
+import os
+import shutil
+import tarfile
+import tempfile
+import threading
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Optional
+import httpx
+
+class UpdateCheckResult:
+    def to_dictNone: ...
+
+def _parse_versionNone: ...
+
+class WebUIUpdater:
+    def __init__None: ...
+    def _get_static_dirNone: ...
+    def _get_github_repoNone: ...
+    def _is_auto_update_enabledNone: ...
+    async def _get_webui_release_base_urlNone: ...
+    def get_current_versionNone: ...
+    def is_webui_availableNone: ...
+    async def check_for_updateNone: ...
+    async def download_and_applyNone: ...
+    async def _do_download_and_applyNone: ...
+    async def ensure_webui_existsNone: ...
+    def is_updatingNone: ...
+
+def _iso_nowNone: ...
+
+def _write_bytesNone: ...
+
+def _backup_staticNone: ...
+
+def _clear_dir_contentsNone: ...
+
+def _extract_tarNone: ...
+
+def _restore_backupNone: ...
+
+def _remove_dirNone: ...
+
+# FILE: skills/antigravity-gemini-image/scripts/generate_gemini_image.py
+import argparse
+import base64
+import json
+import os
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from typing import Iterable, List, Optional
+
+def load_envNone: ...
+
+def iter_default_env_filesNone: ...
+
+def keychain_getNone: ...
+
+def get_configNone: ...
+
+def parse_env_file_argNone: ...
+
+def load_env_autoNone: ...
+
+def parse_argsNone: ...
+
+def build_partsNone: ...
+
+def mainNone: ...
+
+# FILE: skills/grok-search-runtime/projects/grok-search/internal/__init__.py
+from .context import *
+
+# FILE: skills/grok-search-runtime/projects/grok-search/internal/context.py
+from __future__ import annotations
+from pathlib import Path
+import sys
+from tools.grok_search.context import (  # type: ignore
+    ContextConfig,
+    ContextRouter,
+    ContextSnapshot,
+    ContextStore,
+    RouteDecision,
+    DEFAULT_CONTINUATION_PATTERNS,
+    estimate_tokens,
+)
+
+# FILE: skills/grok-search-runtime/projects/grok-search/scripts/grok_search.py
+from __future__ import annotations
+import argparse
+import json
+import os
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+def load_envNone: ...
+
+def iter_default_env_filesNone: ...
+
+def keychain_getNone: ...
+
+def get_configNone: ...
+
+def parse_env_file_argNone: ...
+
+def load_env_autoNone: ...
+
+def request_chat_completionNone: ...
+
+def extract_contentNone: ...
+
+def strip_code_fencesNone: ...
+
+def extract_jsonNone: ...
+
+def is_valid_resultNone: ...
+
+def call_with_validationNone: ...
+
+def maybe_build_context_messagesNone: ...
+
+def record_turn_if_neededNone: ...
+
+def parse_argsNone: ...
+
+def mainNone: ...
+
+# FILE: skills/grok-search-runtime/tools/context_router/__init__.py
+from .context_router import *
+
+# FILE: skills/grok-search-runtime/tools/context_router/context_router.py
+from __future__ import annotations
+from pathlib import Path
+import sys
+from tools.grok_search.context import (  # type: ignore
+    ContextConfig,
+    ContextRouter,
+    ContextSnapshot,
+    ContextStore,
+    RouteDecision,
+    DEFAULT_CONTINUATION_PATTERNS,
+    estimate_tokens,
+)
+
+# FILE: skills/grok-search-runtime/tools/grok_search/__init__.py
+from .context import *
+
+# FILE: skills/grok-search-runtime/tools/grok_search/context.py
+from __future__ import annotations
+import json
+import re
+import sqlite3
+import time
+import uuid
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
+
+def estimate_tokensNone: ...
+
+class ContextConfig:
+
+class ContextSnapshot:
+
+class RouteDecision:
+
+class ContextStore:
+    def __init__None: ...
+    def _connectNone: ...
+    def _init_dbNone: ...
+    def get_contextNone: ...
+    def upsert_contextNone: ...
+    def update_thread_stateNone: ...
+    def get_last_taskNone: ...
+    def prune_expiredNone: ...
+
+class ContextRouter:
+    def __init__None: ...
+    def _is_continuationNone: ...
+    def routeNone: ...
+    def build_context_messagesNone: ...
+    def record_turnNone: ...
+    def _trim_and_summarizeNone: ...
+
+# FILE: skills/local-web-search/scripts/local_web_search.py
+import argparse
+import json
+import os
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from typing import Iterable, List, Optional
+
+def load_envNone: ...
+
+def iter_default_env_filesNone: ...
+
+def keychain_getNone: ...
+
+def get_configNone: ...
+
+def parse_env_file_argNone: ...
+
+def load_env_autoNone: ...
+
+def parse_argsNone: ...
+
+def request_searchNone: ...
+
+def extract_summaryNone: ...
+
+def mainNone: ...
+
+# FILE: skills/pack-skills.py
+import os
+import zipfile
+import shutil
+
+def pack_skillNone: ...
+
+def mainNone: ...
+
+# FILE: skills/task-cli.py
+import sys
+import json
+import argparse
+import requests
+
+def _headersNone: ...
+
+def _reg_headersNone: ...
+
+def _admin_headersNone: ...
+
+def _print_jsonNone: ...
+
+def _extract_itemsNone: ...
+
+def _requestNone: ...
+
+def cmd_registerNone: ...
+
+def cmd_rulesNone: ...
+
+def cmd_task_createNone: ...
+
+def cmd_task_listNone: ...
+
+def cmd_task_getNone: ...
+
+def cmd_task_editNone: ...
+
+def cmd_task_statusNone: ...
+
+def cmd_task_cancelNone: ...
+
+def cmd_module_createNone: ...
+
+def cmd_module_listNone: ...
+
+def cmd_sub_task_createNone: ...
+
+def cmd_sub_task_listNone: ...
+
+def cmd_sub_task_getNone: ...
+
+def cmd_sub_task_mineNone: ...
+
+def cmd_sub_task_availableNone: ...
+
+def cmd_sub_task_latestNone: ...
+
+def cmd_sub_task_claimNone: ...
+
+def cmd_sub_task_startNone: ...
+
+def cmd_sub_task_submitNone: ...
+
+def cmd_sub_task_editNone: ...
+
+def cmd_sub_task_cancelNone: ...
+
+def cmd_sub_task_blockNone: ...
+
+def cmd_sub_task_sessionNone: ...
+
+def cmd_sub_task_reassignNone: ...
+
+def cmd_review_createNone: ...
+
+def cmd_review_listNone: ...
+
+def cmd_review_getNone: ...
+
+def cmd_score_meNone: ...
+
+def cmd_score_logsNone: ...
+
+def cmd_score_agent_logsNone: ...
+
+def cmd_score_leaderboardNone: ...
+
+def cmd_score_adjustNone: ...
+
+def cmd_log_createNone: ...
+
+def cmd_log_mineNone: ...
+
+def cmd_log_listNone: ...
+
+def cmd_notificationNone: ...
+
+def cmd_agent_listNone: ...
+
+def cmd_updateNone: ...
+
+def mainNone: ...
+
+# FILE: skills/wordpress-skill/wordpress-cli.py
+import sys
+import json
+import argparse
+import base64
+import os
+import requests
+
+def _headersNone: ...
+
+def _requestNone: ...
+
+def _print_jsonNone: ...
+
+def cmd_post_listNone: ...
+
+def cmd_post_getNone: ...
+
+def cmd_post_createNone: ...
+
+def cmd_post_updateNone: ...
+
+def cmd_post_deleteNone: ...
+
+def cmd_page_listNone: ...
+
+def cmd_page_getNone: ...
+
+def cmd_page_createNone: ...
+
+def cmd_page_updateNone: ...
+
+def cmd_page_deleteNone: ...
+
+def cmd_media_listNone: ...
+
+def cmd_media_uploadNone: ...
+
+def cmd_media_getNone: ...
+
+def cmd_media_updateNone: ...
+
+def cmd_media_deleteNone: ...
+
+def cmd_cat_listNone: ...
+
+def cmd_cat_createNone: ...
+
+def cmd_tag_listNone: ...
+
+def cmd_tag_createNone: ...
+
+def cmd_searchNone: ...
+
+def mainNone: ...

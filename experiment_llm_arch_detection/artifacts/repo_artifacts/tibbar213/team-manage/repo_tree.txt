@@ -1,0 +1,70 @@
+team-manage
+├── app
+│   ├── dependencies
+│   │   ├── __init__.py
+│   │   └── auth.py
+│   ├── routes
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── api.py
+│   │   ├── auth.py
+│   │   ├── redeem.py
+│   │   ├── user.py
+│   │   └── warranty.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── chatgpt.py
+│   │   ├── encryption.py
+│   │   ├── notification.py
+│   │   ├── redeem_flow.py
+│   │   ├── redemption.py
+│   │   ├── settings.py
+│   │   ├── team.py
+│   │   └── warranty.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── style.css
+│   │   │   └── user.css
+│   │   ├── js
+│   │   │   ├── main.js
+│   │   │   └── redeem.js
+│   │   ├── .gitkeep
+│   │   └── favicon.png
+│   ├── templates
+│   │   ├── admin
+│   │   │   ├── codes
+│   │   │   │   └── index.html
+│   │   │   ├── records
+│   │   │   │   └── index.html
+│   │   │   ├── settings
+│   │   │   │   └── index.html
+│   │   │   └── index.html
+│   │   ├── auth
+│   │   │   └── login.html
+│   │   ├── user
+│   │   │   └── redeem.html
+│   │   ├── .gitkeep
+│   │   └── base.html
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── jwt_parser.py
+│   │   ├── time_utils.py
+│   │   └── token_parser.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── database.py
+│   ├── db_migrations.py
+│   ├── main.py
+│   └── models.py
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── init_db.py
+├── integration_docs.md
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── test_webhook.py

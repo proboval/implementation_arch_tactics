@@ -1,0 +1,149 @@
+FastCode
+├── assets
+│   ├── FastCode.svg
+│   ├── fastcode_performance-cost.png
+│   ├── framework.png
+│   └── performance.png
+├── config
+│   └── config.yaml
+├── fastcode
+│   ├── __init__.py
+│   ├── agent_tools.py
+│   ├── answer_generator.py
+│   ├── cache.py
+│   ├── call_extractor.py
+│   ├── definition_extractor.py
+│   ├── embedder.py
+│   ├── global_index_builder.py
+│   ├── graph_builder.py
+│   ├── import_extractor.py
+│   ├── indexer.py
+│   ├── iterative_agent.py
+│   ├── llm_utils.py
+│   ├── loader.py
+│   ├── main.py
+│   ├── module_resolver.py
+│   ├── parser.py
+│   ├── path_utils.py
+│   ├── query_processor.py
+│   ├── repo_overview.py
+│   ├── repo_selector.py
+│   ├── retriever.py
+│   ├── symbol_resolver.py
+│   ├── tree_sitter_parser.py
+│   ├── utils.py
+│   └── vector_store.py
+├── nanobot
+│   ├── bridge
+│   │   ├── src
+│   │   │   ├── index.ts
+│   │   │   ├── server.ts
+│   │   │   ├── types.d.ts
+│   │   │   └── whatsapp.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── nanobot
+│   │   ├── agent
+│   │   │   ├── tools
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── cron.py
+│   │   │   │   ├── fastcode.py
+│   │   │   │   ├── filesystem.py
+│   │   │   │   ├── message.py
+│   │   │   │   ├── registry.py
+│   │   │   │   ├── shell.py
+│   │   │   │   ├── spawn.py
+│   │   │   │   └── web.py
+│   │   │   ├── __init__.py
+│   │   │   ├── context.py
+│   │   │   ├── loop.py
+│   │   │   ├── memory.py
+│   │   │   ├── skills.py
+│   │   │   └── subagent.py
+│   │   ├── bus
+│   │   │   ├── __init__.py
+│   │   │   ├── events.py
+│   │   │   └── queue.py
+│   │   ├── channels
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── dingtalk.py
+│   │   │   ├── discord.py
+│   │   │   ├── email.py
+│   │   │   ├── feishu.py
+│   │   │   ├── manager.py
+│   │   │   ├── qq.py
+│   │   │   ├── slack.py
+│   │   │   ├── telegram.py
+│   │   │   └── whatsapp.py
+│   │   ├── cli
+│   │   │   ├── __init__.py
+│   │   │   └── commands.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── loader.py
+│   │   │   └── schema.py
+│   │   ├── cron
+│   │   │   ├── __init__.py
+│   │   │   ├── service.py
+│   │   │   └── types.py
+│   │   ├── heartbeat
+│   │   │   ├── __init__.py
+│   │   │   └── service.py
+│   │   ├── providers
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── litellm_provider.py
+│   │   │   ├── registry.py
+│   │   │   └── transcription.py
+│   │   ├── session
+│   │   │   ├── __init__.py
+│   │   │   └── manager.py
+│   │   ├── skills
+│   │   │   ├── cron
+│   │   │   │   └── SKILL.md
+│   │   │   ├── fastcode
+│   │   │   │   └── SKILL.md
+│   │   │   ├── github
+│   │   │   │   └── SKILL.md
+│   │   │   ├── skill-creator
+│   │   │   │   └── SKILL.md
+│   │   │   ├── summarize
+│   │   │   │   └── SKILL.md
+│   │   │   ├── tmux
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── find-sessions.sh
+│   │   │   │   │   └── wait-for-text.sh
+│   │   │   │   └── SKILL.md
+│   │   │   ├── weather
+│   │   │   │   └── SKILL.md
+│   │   │   └── README.md
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   └── helpers.py
+│   │   ├── __init__.py
+│   │   └── __main__.py
+│   ├── .dockerignore
+│   ├── COMMUNICATION.md
+│   ├── core_agent_lines.sh
+│   ├── Dockerfile
+│   ├── LICENSE
+│   ├── pyproject.toml
+│   └── SECURITY.md
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── api.py
+├── docker-compose.yml
+├── Dockerfile
+├── env.example
+├── main.py
+├── mcp_server.py
+├── nanobot_config.json
+├── README.md
+├── requirements.txt
+├── run_nanobot.sh
+├── web_app.py
+└── web_interface.html

@@ -1,0 +1,92 @@
+agentchattr
+├── .github
+│   └── FUNDING.yml
+├── macos-linux
+│   ├── start.sh
+│   ├── start_api_agent.sh
+│   ├── start_claude.sh
+│   ├── start_claude_skip-permissions.sh
+│   ├── start_codex.sh
+│   ├── start_codex_bypass.sh
+│   ├── start_gemini.sh
+│   ├── start_gemini_yolo.sh
+│   ├── start_kilo.sh
+│   ├── start_kimi.sh
+│   ├── start_minimax.sh
+│   ├── start_qwen.sh
+│   └── start_qwen_yolo.sh
+├── session_templates
+│   ├── code-review.json
+│   ├── debate.json
+│   ├── design-critique.json
+│   └── planning.json
+├── static
+│   ├── sounds
+│   │   ├── alert-tone.mp3
+│   │   ├── bright-ping.mp3
+│   │   ├── click.mp3
+│   │   ├── gentle-pop.mp3
+│   │   ├── pluck.mp3
+│   │   ├── soft-chime.mp3
+│   │   └── warm-bell.mp3
+│   ├── channels.js
+│   ├── chat.js
+│   ├── core.js
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── jobs.css
+│   ├── jobs.js
+│   ├── logo.png
+│   ├── rules-panel.js
+│   ├── sessions.css
+│   ├── sessions.js
+│   ├── store.js
+│   └── style.css
+├── tests
+│   └── test_archive_feature.py
+├── windows
+│   ├── start.bat
+│   ├── start_api_agent.bat
+│   ├── start_claude.bat
+│   ├── start_claude_skip-permissions.bat
+│   ├── start_codex.bat
+│   ├── start_codex_bypass.bat
+│   ├── start_gemini.bat
+│   ├── start_gemini_yolo.bat
+│   ├── start_kilo.bat
+│   ├── start_kimi.bat
+│   ├── start_minimax.bat
+│   ├── start_qwen.bat
+│   └── start_qwen_yolo.bat
+├── .gitattributes
+├── .gitignore
+├── agents.py
+├── app.py
+├── archive.py
+├── build_release.py
+├── config.local.toml.example
+├── config.toml
+├── config_loader.py
+├── gang.gif
+├── jobs.py
+├── LICENSE
+├── mcp_bridge.py
+├── mcp_proxy.py
+├── open_chat.html
+├── README.md
+├── registry.py
+├── requirements.txt
+├── router.py
+├── rules.py
+├── run.py
+├── schedules.py
+├── screenshot.png
+├── session_engine.py
+├── session_store.py
+├── store.py
+├── summaries.py
+├── VERSION
+├── wrapper.py
+├── wrapper_api.py
+├── wrapper_unix.py
+└── wrapper_windows.py

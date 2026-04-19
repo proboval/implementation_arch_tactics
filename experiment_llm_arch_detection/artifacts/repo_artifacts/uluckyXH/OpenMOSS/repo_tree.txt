@@ -1,0 +1,180 @@
+OpenMOSS
+├── .agents
+│   └── workflows
+│       └── release.md
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── workflows
+│   │   └── docker-publish.yml
+│   └── pull_request_template.md
+├── app
+│   ├── auth
+│   │   ├── __init__.py
+│   │   └── dependencies.py
+│   ├── middleware
+│   │   ├── __init__.py
+│   │   └── request_logger.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── activity_log.py
+│   │   ├── agent.py
+│   │   ├── module.py
+│   │   ├── patrol_record.py
+│   │   ├── request_log.py
+│   │   ├── review_record.py
+│   │   ├── reward_log.py
+│   │   ├── rule.py
+│   │   ├── sub_task.py
+│   │   └── task.py
+│   ├── routers
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_agents.py
+│   │   ├── admin_config.py
+│   │   ├── admin_dashboard.py
+│   │   ├── admin_logs.py
+│   │   ├── admin_reviews.py
+│   │   ├── admin_scores.py
+│   │   ├── admin_tasks.py
+│   │   ├── agents.py
+│   │   ├── feed.py
+│   │   ├── logs.py
+│   │   ├── prompts.py
+│   │   ├── review_records.py
+│   │   ├── rules.py
+│   │   ├── scores.py
+│   │   ├── setup.py
+│   │   ├── sub_tasks.py
+│   │   ├── tasks.py
+│   │   ├── tools.py
+│   │   └── webui.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   ├── admin_agent.py
+│   │   ├── admin_dashboard.py
+│   │   ├── admin_log.py
+│   │   ├── admin_review.py
+│   │   ├── admin_score.py
+│   │   └── admin_task.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── admin_agent_query_service.py
+│   │   ├── admin_dashboard_query_service.py
+│   │   ├── admin_log_query_service.py
+│   │   ├── admin_review_query_service.py
+│   │   ├── admin_score_query_service.py
+│   │   ├── admin_score_service.py
+│   │   ├── admin_task_query_service.py
+│   │   ├── agent_service.py
+│   │   ├── pagination.py
+│   │   ├── prompt_service.py
+│   │   ├── review_service.py
+│   │   ├── reward_service.py
+│   │   ├── rule_service.py
+│   │   ├── sub_task_service.py
+│   │   ├── task_service.py
+│   │   └── webui_updater.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── database.py
+│   └── main.py
+├── docs
+│   ├── screenshots
+│   │   ├── agent-collaboration.png
+│   │   ├── agent-management.png
+│   │   ├── dashboard-trends.png
+│   │   └── task-management.png
+│   ├── banner-cn.jpg
+│   ├── banner-en.jpg
+│   ├── deployment-guide-en.md
+│   ├── deployment-guide.md
+│   └── logo.png
+├── prompts
+│   ├── agents
+│   │   ├── executor-backend.md
+│   │   ├── executor-devops.md
+│   │   ├── executor-frontend.md
+│   │   ├── executor-researcher.md
+│   │   └── executor-tester.md
+│   ├── role
+│   │   ├── ai-jianggua-executor.md
+│   │   ├── ai-xiaoke-executor.md
+│   │   ├── ai-xiaowu-executor.md
+│   │   └── task-daily-news.md
+│   ├── templates
+│   │   ├── executor.md
+│   │   ├── task-patrol.md
+│   │   ├── task-planner.md
+│   │   └── task-reviewer.md
+│   └── tool
+│       └── agent-onboarding.md
+├── rules
+│   └── global-rule-example.md
+├── skills
+│   ├── antigravity-gemini-image
+│   │   ├── references
+│   │   │   └── API.md
+│   │   ├── scripts
+│   │   │   └── generate_gemini_image.py
+│   │   ├── REFERENCES.md
+│   │   └── SKILL.md
+│   ├── grok-search-runtime
+│   │   ├── projects
+│   │   │   └── grok-search
+│   │   │       ├── internal
+│   │   │       │   ├── __init__.py
+│   │   │       │   └── context.py
+│   │   │       ├── legacy
+│   │   │       │   └── context-router
+│   │   │       │       ├── DESIGN.md
+│   │   │       │       ├── TESTING.md
+│   │   │       │       └── USAGE.md
+│   │   │       ├── scripts
+│   │   │       │   └── grok_search.py
+│   │   │       ├── DESIGN.md
+│   │   │       ├── TESTING.md
+│   │   │       └── USAGE.md
+│   │   └── tools
+│   │       ├── context_router
+│   │       │   ├── __init__.py
+│   │       │   ├── context_router.py
+│   │       │   └── README.md
+│   │       ├── grok_search
+│   │       │   ├── __init__.py
+│   │       │   └── context.py
+│   │       └── __init__.py
+│   ├── local-web-search
+│   │   ├── references
+│   │   │   └── CONFIG.md
+│   │   ├── scripts
+│   │   │   └── local_web_search.py
+│   │   └── SKILL.md
+│   ├── task-executor-skill
+│   │   └── SKILL.md
+│   ├── task-patrol-skill
+│   │   └── SKILL.md
+│   ├── task-planner-skill
+│   │   └── SKILL.md
+│   ├── task-reviewer-skill
+│   │   └── SKILL.md
+│   ├── wordpress-skill
+│   │   ├── SKILL.md
+│   │   └── wordpress-cli.py
+│   ├── pack-skills.py
+│   └── task-cli.py
+├── .dockerignore
+├── .gitattributes
+├── .gitignore
+├── config.example.yaml
+├── CONTRIBUTING.md
+├── docker-compose.yml
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── README_EN.md
+├── requirements.txt
+├── setup.sh
+├── start.sh
+└── stop.sh

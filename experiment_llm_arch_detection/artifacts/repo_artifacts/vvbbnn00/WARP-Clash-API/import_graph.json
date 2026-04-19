@@ -1,0 +1,186 @@
+{
+  "nodes": [
+    "app",
+    "config",
+    "models",
+    "models.account",
+    "models.entrypoint",
+    "services.account",
+    "services.cloudflare",
+    "services.common",
+    "services.scheduled_service",
+    "services.subscription",
+    "services.tasks",
+    "services.web_service",
+    "tests.test_utils",
+    "utils.entrypoints",
+    "utils.geoip",
+    "utils.logger",
+    "utils.node_name",
+    "utils.proxy",
+    "utils.sub_useragent",
+    "utils.wireguard"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "config"
+    },
+    {
+      "source": "app",
+      "target": "services.scheduled_service"
+    },
+    {
+      "source": "app",
+      "target": "services.web_service"
+    },
+    {
+      "source": "app",
+      "target": "utils.entrypoints"
+    },
+    {
+      "source": "app",
+      "target": "utils.logger"
+    },
+    {
+      "source": "models",
+      "target": "models.account"
+    },
+    {
+      "source": "models",
+      "target": "models.entrypoint"
+    },
+    {
+      "source": "services.account",
+      "target": "services.cloudflare"
+    },
+    {
+      "source": "services.account",
+      "target": "services.common"
+    },
+    {
+      "source": "services.account",
+      "target": "utils.wireguard"
+    },
+    {
+      "source": "services.cloudflare",
+      "target": "models"
+    },
+    {
+      "source": "services.common",
+      "target": "models"
+    },
+    {
+      "source": "services.common",
+      "target": "services.cloudflare"
+    },
+    {
+      "source": "services.common",
+      "target": "utils.wireguard"
+    },
+    {
+      "source": "services.scheduled_service",
+      "target": "config"
+    },
+    {
+      "source": "services.scheduled_service",
+      "target": "services.tasks"
+    },
+    {
+      "source": "services.subscription",
+      "target": "config"
+    },
+    {
+      "source": "services.subscription",
+      "target": "models"
+    },
+    {
+      "source": "services.subscription",
+      "target": "services.common"
+    },
+    {
+      "source": "services.subscription",
+      "target": "utils.entrypoints"
+    },
+    {
+      "source": "services.subscription",
+      "target": "utils.geoip"
+    },
+    {
+      "source": "services.subscription",
+      "target": "utils.node_name"
+    },
+    {
+      "source": "services.tasks",
+      "target": "models"
+    },
+    {
+      "source": "services.tasks",
+      "target": "services.cloudflare"
+    },
+    {
+      "source": "services.tasks",
+      "target": "services.common"
+    },
+    {
+      "source": "services.tasks",
+      "target": "utils.entrypoints"
+    },
+    {
+      "source": "services.tasks",
+      "target": "utils.proxy"
+    },
+    {
+      "source": "services.tasks",
+      "target": "utils.wireguard"
+    },
+    {
+      "source": "services.web_service",
+      "target": "config"
+    },
+    {
+      "source": "services.web_service",
+      "target": "services.account"
+    },
+    {
+      "source": "services.web_service",
+      "target": "services.common"
+    },
+    {
+      "source": "services.web_service",
+      "target": "services.subscription"
+    },
+    {
+      "source": "services.web_service",
+      "target": "utils.sub_useragent"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "utils.entrypoints"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "utils.geoip"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "utils.proxy"
+    },
+    {
+      "source": "tests.test_utils",
+      "target": "utils.wireguard"
+    },
+    {
+      "source": "utils.entrypoints",
+      "target": "config"
+    },
+    {
+      "source": "utils.entrypoints",
+      "target": "models"
+    },
+    {
+      "source": "utils.proxy",
+      "target": "config"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+# FILE: app/ai/ai_ark.py
+import base64
+import json
+import os
+import re
+from typing import Any, Dict
+import cv2
+
+def _resize_for_aiNone: ...
+
+def _frame_to_data_url_jpegNone: ...
+
+def _extract_jsonNone: ...
+
+def resolve_api_keyNone: ...
+
+class ArkVisionClient:
+    def __init__None: ...
+    def build_prompt_contractNone: ...
+    def analyze_frameNone: ...
+
+# FILE: app/ai/ai_monitor_worker.py
+import time
+from datetime import datetime
+from typing import Optional
+from .ai_store import AiRuntime, EventStore
+from .motion_trigger import MotionTrigger
+from .ai_ark import ArkVisionClient, resolve_api_key
+
+def _now_textNone: ...
+
+def _safe_boolNone: ...
+
+def _clamp_intNone: ...
+
+def _clamp_floatNone: ...
+
+def _should_callNone: ...
+
+def ai_monitor_loopNone: ...
+
+def start_ai_monitor_threadNone: ...
+
+# FILE: app/ai/ai_store.py
+import json
+import os
+import threading
+import time
+import uuid
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
+
+class AiRuntime:
+    def snapshotNone: ...
+
+class EventStore:
+    def __init__None: ...
+    def _load_tailNone: ...
+    def _append_memNone: ...
+    def add_eventNone: ...
+    def latestNone: ...
+
+# FILE: app/ai/motion_trigger.py
+import time
+from dataclasses import dataclass
+from typing import Optional, Tuple
+import cv2
+import numpy as np
+
+class MotionTrigger:
+    def resetNone: ...
+    def _preprocessNone: ...
+    def checkNone: ...
+
+# FILE: app/config/config_store.py
+import json
+import os
+import threading
+from typing import Any, Dict, Tuple
+
+def merge_known_keysNone: ...
+
+def validate_and_normalizeNone: ...
+
+class ConfigStore:
+    def __init__None: ...
+    def get_copyNone: ...
+    def set_manyNone: ...
+    def set_keyNone: ...
+    def load_from_diskNone: ...
+    def save_to_diskNone: ...
+
+# FILE: app/core/frame_buffer.py
+import threading
+import time
+from dataclasses import dataclass, field
+from typing import Optional
+import numpy as np
+
+class FrameBuffer:
+    def clearNone: ...
+    def setNone: ...
+    def get_copyNone: ...
+    def age_secNone: ...
+
+# FILE: app/core/logger.py
+import logging
+from logging.handlers import RotatingFileHandler
+
+def setup_loggerNone: ...
+
+# FILE: app/core/runtime.py
+import threading
+from dataclasses import dataclass, field
+from typing import Optional
+
+class RecorderRuntime:
+    def is_openedNone: ...
+
+# FILE: app/core/upload_stats.py
+import threading
+import time
+from collections import deque
+from dataclasses import dataclass, field
+
+class UploadStats:
+    def mark_okNone: ...
+    def mark_missingNone: ...
+    def mark_decode_failedNone: ...
+    def mark_rejectedNone: ...
+    def snapshot_countsNone: ...
+    def upload_fpsNone: ...
+
+# FILE: app/net/net_discovery.py
+import socket
+import threading
+
+def _get_local_ip_for_peerNone: ...
+
+def start_discovery_responderNone: ...
+
+# FILE: app/recorder/recorder.py
+import os
+import time
+from datetime import datetime
+import cv2
+
+class SegmentRecorder:
+    def __init__None: ...
+    def _make_pathNone: ...
+    def _open_writerNone: ...
+    def _close_writerNone: ...
+    def writeNone: ...
+    def stopNone: ...
+
+# FILE: app/recorder/recorder_worker.py
+import os
+import threading
+import time
+from .recorder import SegmentRecorder
+
+def stop_recorderNone: ...
+
+def record_loopNone: ...
+
+def start_record_threadNone: ...
+
+# FILE: app/web/webapp.py
+import os
+import time
+import threading
+from datetime import datetime
+import cv2
+import numpy as np
+from flask import Flask, request, Response, jsonify, render_template
+from app.config.config_store import validate_and_normalize
+from app.recorder.recorder_worker import stop_recorder
+
+def create_appNone: ...
+
+# FILE: server.py
+import os
+import socket
+import threading
+from app.core.logger import setup_logger
+from app.core.frame_buffer import FrameBuffer
+from app.core.upload_stats import UploadStats
+from app.core.runtime import RecorderRuntime
+from app.config.config_store import ConfigStore, DEFAULT_CONFIG
+from app.recorder.recorder_worker import start_record_thread
+from app.ai.ai_store import AiRuntime, EventStore
+from app.ai.ai_monitor_worker import start_ai_monitor_thread
+from app.web.webapp import create_app
+
+def get_local_ipNone: ...
+
+def mainNone: ...

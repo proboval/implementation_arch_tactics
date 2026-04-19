@@ -1,0 +1,17 @@
+# FILE: herokufreeproxy/settings.py
+import os
+import dj_database_url
+
+# FILE: herokufreeproxy/urls.py
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from proxy import views
+
+# FILE: herokufreeproxy/wsgi.py
+import os
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
+
+# FILE: manage.py
+import os
+import sys

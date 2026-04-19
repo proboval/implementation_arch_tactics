@@ -1,0 +1,229 @@
+{
+  "nodes": [
+    "app",
+    "app.config",
+    "app.database",
+    "app.main",
+    "app.models",
+    "app.routers",
+    "app.routers.auth",
+    "app.routers.chat",
+    "app.routers.favorites",
+    "app.routers.knowledge",
+    "app.services",
+    "app.services.asr",
+    "app.services.bilibili",
+    "app.services.content_fetcher",
+    "app.services.rag",
+    "app.services.wbi",
+    "test.debug_asr_single",
+    "test.diagnose_rag",
+    "test.sync_cache_vectors"
+  ],
+  "edges": [
+    {
+      "source": "app.database",
+      "target": "app.config"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models"
+    },
+    {
+      "source": "app.main",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.auth"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.chat"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.favorites"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.knowledge"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.auth"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.chat"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.favorites"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.knowledge"
+    },
+    {
+      "source": "app.routers.auth",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.auth",
+      "target": "app.models"
+    },
+    {
+      "source": "app.routers.auth",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "app.routers.chat",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.chat",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.chat",
+      "target": "app.models"
+    },
+    {
+      "source": "app.routers.chat",
+      "target": "app.routers.knowledge"
+    },
+    {
+      "source": "app.routers.favorites",
+      "target": "app.models"
+    },
+    {
+      "source": "app.routers.favorites",
+      "target": "app.routers.auth"
+    },
+    {
+      "source": "app.routers.favorites",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.models"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.routers.auth"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.services.asr"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.services.content_fetcher"
+    },
+    {
+      "source": "app.routers.knowledge",
+      "target": "app.services.rag"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.asr"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.content_fetcher"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.rag"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.wbi"
+    },
+    {
+      "source": "app.services.asr",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.bilibili",
+      "target": "app.services.wbi"
+    },
+    {
+      "source": "app.services.content_fetcher",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.content_fetcher",
+      "target": "app.services.asr"
+    },
+    {
+      "source": "app.services.content_fetcher",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "app.services.rag",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.rag",
+      "target": "app.models"
+    },
+    {
+      "source": "test.debug_asr_single",
+      "target": "app.services.asr"
+    },
+    {
+      "source": "test.debug_asr_single",
+      "target": "app.services.bilibili"
+    },
+    {
+      "source": "test.debug_asr_single",
+      "target": "app.services.content_fetcher"
+    },
+    {
+      "source": "test.diagnose_rag",
+      "target": "app.config"
+    },
+    {
+      "source": "test.diagnose_rag",
+      "target": "app.database"
+    },
+    {
+      "source": "test.diagnose_rag",
+      "target": "app.models"
+    },
+    {
+      "source": "test.diagnose_rag",
+      "target": "app.services.rag"
+    },
+    {
+      "source": "test.sync_cache_vectors",
+      "target": "app.database"
+    },
+    {
+      "source": "test.sync_cache_vectors",
+      "target": "app.models"
+    },
+    {
+      "source": "test.sync_cache_vectors",
+      "target": "app.services.rag"
+    }
+  ]
+}

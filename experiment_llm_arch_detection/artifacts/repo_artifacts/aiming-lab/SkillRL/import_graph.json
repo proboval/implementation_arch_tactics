@@ -1,0 +1,4168 @@
+{
+  "nodes": [
+    "agent_system.environments",
+    "agent_system.environments.base",
+    "agent_system.environments.env_manager",
+    "agent_system.environments.env_package.alfworld",
+    "agent_system.environments.env_package.alfworld.alfworld",
+    "agent_system.environments.env_package.alfworld.alfworld.agents",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.agent",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.agent.base_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.agent.text_dagger_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.agent.text_dqn_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.agent.vision_dagger_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller.base",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller.mrcnn",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller.mrcnn_astar",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller.oracle",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.controller.oracle_astar",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.coco_eval",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.coco_utils",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.engine",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.group_by_aspect_ratio",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.mrcnn",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.train",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.transforms",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.detector.utils",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.environment",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_hybrid",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_thor_env",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_tw_env",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.eval",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.eval.evaluate_dagger",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.eval.evaluate_dqn",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.eval.evaluate_vision_dagger",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.expert",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.expert.handcoded_expert",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.expert.handcoded_expert_thor",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.expert.handcoded_expert_tw",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules.generic",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules.layers",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules.memory",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules.model",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.modules.segment_tree",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.utils",
+    "agent_system.environments.env_package.alfworld.alfworld.agents.utils.misc",
+    "agent_system.environments.env_package.alfworld.alfworld.gen",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.agents",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.agents.agent_base",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.agents.deterministic_planner_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.agents.plan_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.agents.semantic_map_planner_agent",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.constants",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.game_states",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.game_states.game_state_base",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.game_states.planned_game_state",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.game_states.task_game_state",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.game_states.task_game_state_full_knowledge",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.goal_library",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.graph",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.graph.graph_obj",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.layouts.precompute_layout_locations",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.planner",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.planner.ff_planner_handler",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.scripts.generate_trajectories",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.scripts.replay_checks",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.bb_util",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.dataset_management_util",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.game_util",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.image_util",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.py_util",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.replay_json",
+    "agent_system.environments.env_package.alfworld.alfworld.gen.utils.video_util",
+    "agent_system.environments.env_package.alfworld.alfworld.info",
+    "agent_system.environments.env_package.alfworld.alfworld.utils",
+    "agent_system.environments.env_package.alfworld.envs",
+    "agent_system.environments.env_package.alfworld.projection",
+    "agent_system.environments.env_package.appworld",
+    "agent_system.environments.env_package.appworld.envs",
+    "agent_system.environments.env_package.appworld.projection",
+    "agent_system.environments.env_package.gym_cards",
+    "agent_system.environments.env_package.gym_cards.envs",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards.envs",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards.envs.blackjack",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards.envs.ezpoints",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards.envs.numberline",
+    "agent_system.environments.env_package.gym_cards.gym-cards.gym_cards.envs.points",
+    "agent_system.environments.env_package.gym_cards.gym-cards.setup",
+    "agent_system.environments.env_package.gym_cards.gym-cards.text_wrapper",
+    "agent_system.environments.env_package.gym_cards.projection",
+    "agent_system.environments.env_package.search",
+    "agent_system.environments.env_package.search.envs",
+    "agent_system.environments.env_package.search.projection",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.core",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.envs",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.base_text_env",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.registration",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.env",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.utils",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.error",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.tools",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.tools.core",
+    "agent_system.environments.env_package.search.third_party.skyrl_gym.tools.search",
+    "agent_system.environments.env_package.sokoban",
+    "agent_system.environments.env_package.sokoban.envs",
+    "agent_system.environments.env_package.sokoban.projection",
+    "agent_system.environments.env_package.sokoban.sokoban",
+    "agent_system.environments.env_package.sokoban.sokoban.base",
+    "agent_system.environments.env_package.sokoban.sokoban.env",
+    "agent_system.environments.env_package.sokoban.sokoban.room_utils",
+    "agent_system.environments.env_package.sokoban.sokoban.utils",
+    "agent_system.environments.env_package.webshop",
+    "agent_system.environments.env_package.webshop.envs",
+    "agent_system.environments.env_package.webshop.projection",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.agent",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.env",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.generate_search",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.logger",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.models.bert",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.models.modules",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.models.rnn",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.test",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.train_choice_il",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.train_rl",
+    "agent_system.environments.env_package.webshop.webshop.baseline_models.train_search_il",
+    "agent_system.environments.env_package.webshop.webshop.conftest",
+    "agent_system.environments.env_package.webshop.webshop.run_web_agent_text_env",
+    "agent_system.environments.env_package.webshop.webshop.search_engine.convert_product_file_format",
+    "agent_system.environments.env_package.webshop.webshop.search_engine.lucene_searcher",
+    "agent_system.environments.env_package.webshop.webshop.transfer",
+    "agent_system.environments.env_package.webshop.webshop.transfer.app",
+    "agent_system.environments.env_package.webshop.webshop.transfer.predict_help",
+    "agent_system.environments.env_package.webshop.webshop.transfer.webshop_lite",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.app",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.attributes.annotate",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.attributes.generate_attrs",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.engine",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.engine.engine",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.engine.goal",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.engine.normalize",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.envs",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.envs.web_agent_site_env",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.envs.web_agent_text_env",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.models",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.models.models",
+    "agent_system.environments.env_package.webshop.webshop.web_agent_site.utils",
+    "agent_system.environments.prompts",
+    "agent_system.environments.prompts.alfworld",
+    "agent_system.environments.prompts.appworld",
+    "agent_system.environments.prompts.gym_cards",
+    "agent_system.environments.prompts.search",
+    "agent_system.environments.prompts.sokoban",
+    "agent_system.environments.prompts.webshop",
+    "agent_system.memory",
+    "agent_system.memory.base",
+    "agent_system.memory.memory",
+    "agent_system.memory.retrieval_memory",
+    "agent_system.memory.skill_updater",
+    "agent_system.memory.skills_only_memory",
+    "agent_system.multi_turn_rollout",
+    "agent_system.multi_turn_rollout.rollout_loop",
+    "agent_system.multi_turn_rollout.utils",
+    "agent_system.reward_manager",
+    "agent_system.reward_manager.episode",
+    "docs.conf",
+    "examples.data_preprocess.aime2024_multiturn_w_tool",
+    "examples.data_preprocess.dapo_multiturn_w_tool",
+    "examples.data_preprocess.full_hh_rlhf",
+    "examples.data_preprocess.geo3k",
+    "examples.data_preprocess.gsm8k",
+    "examples.data_preprocess.gsm8k_multiturn_w_tool",
+    "examples.data_preprocess.hellaswag",
+    "examples.data_preprocess.math_dataset",
+    "examples.data_preprocess.multiturn",
+    "examples.data_preprocess.prepare",
+    "examples.data_preprocess.preprocess_search_r1_dataset",
+    "examples.prompt_agent.gpt4o_alfworld",
+    "examples.search.retriever.retrieval_server",
+    "examples.search.searchr1_download",
+    "examples.split_placement.main_ppo_split",
+    "examples.split_placement.split_monkey_patch",
+    "gigpo.core_gigpo",
+    "recipe.dapo.dapo_ray_trainer",
+    "recipe.dapo.main_dapo",
+    "recipe.prime",
+    "recipe.prime.main_prime",
+    "recipe.prime.prime_core_algos",
+    "recipe.prime.prime_dp_rm",
+    "recipe.prime.prime_fsdp_workers",
+    "recipe.prime.prime_ray_trainer",
+    "recipe.r1",
+    "recipe.r1.data_process",
+    "recipe.r1.main_eval",
+    "recipe.r1.reward_score",
+    "recipe.r1.tasks",
+    "recipe.r1.tasks.gpqa",
+    "recipe.r1.tasks.livecodebench",
+    "recipe.r1.tasks.math",
+    "recipe.spin.core_algos",
+    "recipe.spin.dp_actor",
+    "recipe.spin.fsdp_workers",
+    "recipe.spin.main_spin",
+    "recipe.spin.spin_trainer",
+    "recipe.sppo",
+    "recipe.sppo.dp_actor",
+    "recipe.sppo.main_sppo",
+    "recipe.sppo.sppo_ray_trainer",
+    "recipe.sppo.sppo_worker",
+    "scripts.converter_hf_to_mcore",
+    "scripts.diagnose",
+    "scripts.model_merger",
+    "setup",
+    "skill_generation.alfworld",
+    "skill_generation.search",
+    "skill_generation.webshop",
+    "tests",
+    "tests.distributed.test_tensor_dict",
+    "tests.e2e",
+    "tests.e2e.arithmetic_sequence.data.create_dataset",
+    "tests.e2e.arithmetic_sequence.model.create_model_tokenizer",
+    "tests.e2e.arithmetic_sequence.rl.main_trainer",
+    "tests.e2e.check_custom_rwd_fn",
+    "tests.e2e.check_results",
+    "tests.e2e.envs",
+    "tests.e2e.envs.digit_completion",
+    "tests.e2e.envs.digit_completion.task",
+    "tests.e2e.envs.digit_completion.tokenizer",
+    "tests.e2e.sft.test_sp_loss_match",
+    "tests.gpu_utility.test_memory_buffers",
+    "tests.gpu_utility.test_ops",
+    "tests.gpu_utility.test_torch_functional",
+    "tests.kernels.test_linear_cross_entropy",
+    "tests.models.test_transformer",
+    "tests.models.test_transformers_ulysses",
+    "tests.ray_cpu.check_worker_alive.main",
+    "tests.ray_cpu.test_auto_padding",
+    "tests.ray_cpu.test_check_worker_alive",
+    "tests.ray_cpu.test_decorator",
+    "tests.ray_cpu.test_fused_workers",
+    "tests.ray_cpu.test_ray_local_envs",
+    "tests.ray_cpu.test_ray_utils",
+    "tests.ray_gpu.detached_worker.client",
+    "tests.ray_gpu.detached_worker.server",
+    "tests.ray_gpu.test_colocated_workers",
+    "tests.ray_gpu.test_colocated_workers_fused",
+    "tests.ray_gpu.test_data_transfer",
+    "tests.ray_gpu.test_driverfunc_to_worker",
+    "tests.ray_gpu.test_high_level_scheduling_api",
+    "tests.ray_gpu.test_rvdz",
+    "tests.ray_gpu.test_worker_group_basics",
+    "tests.ray_gpu.test_worker_group_torch",
+    "tests.reward_score.test_sandbox_fusion",
+    "tests.sandbox.test_sandbox",
+    "tests.sanity.check_license",
+    "tests.sanity.test_import",
+    "tests.single_controller.base.test_decorator",
+    "tests.test_protocol",
+    "tests.trainer",
+    "tests.trainer.ppo",
+    "tests.trainer.ppo.test_metric_utils",
+    "tests.utils.cpu_tests.test_fs",
+    "tests.utils.cpu_tests.test_import_utils",
+    "tests.utils.cpu_tests.test_model",
+    "tests.utils.cpu_tests.test_module",
+    "tests.utils.cpu_tests.test_timeout_decorator",
+    "tests.utils.gpu_tests.checkpoint.test_fsdp_ckpt",
+    "tests.utils.gpu_tests.dataset.test_multiturn_sft_dataset",
+    "tests.utils.gpu_tests.dataset.test_rl_dataset",
+    "tests.utils.gpu_tests.dataset.test_rm_dataset",
+    "tests.utils.gpu_tests.dataset.test_sft_dataset",
+    "tests.utils.gpu_tests.megatron.test_pipeline_parallel",
+    "tests.utils.gpu_tests.test_activation_offload",
+    "tests.utils.gpu_tests.test_flops_counter",
+    "tests.utils.gpu_tests.test_seqlen_balancing",
+    "tests.utils.gpu_tests.test_torch_functional",
+    "tests.workers.rollout.async_rollout_utils",
+    "tests.workers.rollout.run_fsdp_vllm",
+    "tests.workers.rollout.test_async_sglang_server",
+    "tests.workers.rollout.test_hf_rollout",
+    "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+    "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+    "tests.workers.rollout.test_sglang_async_rollout_w_tools",
+    "tests.workers.rollout.test_sglang_spmd",
+    "tests.workers.rollout.test_vllm_hf_loader",
+    "tests.workers.rollout.test_vllm_multi_turn",
+    "tests.workers.rollout.test_vllm_spmd",
+    "tests.workers.rollout.test_vllm_tool_calling",
+    "tests.workers.rollout.utils_sglang",
+    "verl",
+    "verl.models",
+    "verl.models.llama",
+    "verl.models.llama.megatron",
+    "verl.models.llama.megatron.checkpoint_utils",
+    "verl.models.llama.megatron.checkpoint_utils.llama_loader",
+    "verl.models.llama.megatron.checkpoint_utils.llama_loader_depracated",
+    "verl.models.llama.megatron.checkpoint_utils.llama_saver",
+    "verl.models.llama.megatron.layers",
+    "verl.models.llama.megatron.layers.parallel_attention",
+    "verl.models.llama.megatron.layers.parallel_decoder",
+    "verl.models.llama.megatron.layers.parallel_linear",
+    "verl.models.llama.megatron.layers.parallel_mlp",
+    "verl.models.llama.megatron.layers.parallel_rmsnorm",
+    "verl.models.llama.megatron.modeling_llama_megatron",
+    "verl.models.mcore",
+    "verl.models.mcore.config_converter",
+    "verl.models.mcore.loader",
+    "verl.models.mcore.model_forward",
+    "verl.models.mcore.model_initializer",
+    "verl.models.mcore.patch_v012",
+    "verl.models.mcore.registry",
+    "verl.models.mcore.saver",
+    "verl.models.mcore.util",
+    "verl.models.mcore.weight_converter",
+    "verl.models.qwen2",
+    "verl.models.qwen2.megatron",
+    "verl.models.qwen2.megatron.checkpoint_utils",
+    "verl.models.qwen2.megatron.checkpoint_utils.qwen2_loader",
+    "verl.models.qwen2.megatron.checkpoint_utils.qwen2_loader_depracated",
+    "verl.models.qwen2.megatron.checkpoint_utils.qwen2_saver",
+    "verl.models.qwen2.megatron.layers",
+    "verl.models.qwen2.megatron.layers.parallel_attention",
+    "verl.models.qwen2.megatron.layers.parallel_decoder",
+    "verl.models.qwen2.megatron.layers.parallel_linear",
+    "verl.models.qwen2.megatron.layers.parallel_mlp",
+    "verl.models.qwen2.megatron.layers.parallel_rmsnorm",
+    "verl.models.qwen2.megatron.modeling_qwen2_megatron",
+    "verl.models.registry",
+    "verl.models.transformers",
+    "verl.models.transformers.kimi_vl",
+    "verl.models.transformers.llama",
+    "verl.models.transformers.monkey_patch",
+    "verl.models.transformers.qwen2",
+    "verl.models.transformers.qwen2_5_vl",
+    "verl.models.transformers.qwen2_vl",
+    "verl.models.transformers.qwen3_vl",
+    "verl.models.weight_loader_registry",
+    "verl.protocol",
+    "verl.single_controller",
+    "verl.single_controller.base",
+    "verl.single_controller.base.decorator",
+    "verl.single_controller.base.megatron",
+    "verl.single_controller.base.megatron.worker",
+    "verl.single_controller.base.megatron.worker_group",
+    "verl.single_controller.base.register_center",
+    "verl.single_controller.base.register_center.ray",
+    "verl.single_controller.base.worker",
+    "verl.single_controller.base.worker_group",
+    "verl.single_controller.ray",
+    "verl.single_controller.ray.base",
+    "verl.single_controller.ray.megatron",
+    "verl.third_party",
+    "verl.third_party.sglang",
+    "verl.third_party.sglang.parallel_state",
+    "verl.third_party.vllm",
+    "verl.third_party.vllm.vllm_v_0_5_4",
+    "verl.third_party.vllm.vllm_v_0_5_4.arg_utils",
+    "verl.third_party.vllm.vllm_v_0_5_4.config",
+    "verl.third_party.vllm.vllm_v_0_5_4.dtensor_weight_loaders",
+    "verl.third_party.vllm.vllm_v_0_5_4.hf_weight_loader",
+    "verl.third_party.vllm.vllm_v_0_5_4.llm",
+    "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp",
+    "verl.third_party.vllm.vllm_v_0_5_4.megatron_weight_loaders",
+    "verl.third_party.vllm.vllm_v_0_5_4.model_loader",
+    "verl.third_party.vllm.vllm_v_0_5_4.model_runner",
+    "verl.third_party.vllm.vllm_v_0_5_4.parallel_state",
+    "verl.third_party.vllm.vllm_v_0_5_4.spmd_gpu_executor",
+    "verl.third_party.vllm.vllm_v_0_5_4.tokenizer",
+    "verl.third_party.vllm.vllm_v_0_5_4.worker",
+    "verl.third_party.vllm.vllm_v_0_6_3",
+    "verl.third_party.vllm.vllm_v_0_6_3.arg_utils",
+    "verl.third_party.vllm.vllm_v_0_6_3.config",
+    "verl.third_party.vllm.vllm_v_0_6_3.dtensor_weight_loaders",
+    "verl.third_party.vllm.vllm_v_0_6_3.hf_weight_loader",
+    "verl.third_party.vllm.vllm_v_0_6_3.llm",
+    "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp",
+    "verl.third_party.vllm.vllm_v_0_6_3.megatron_weight_loaders",
+    "verl.third_party.vllm.vllm_v_0_6_3.model_loader",
+    "verl.third_party.vllm.vllm_v_0_6_3.model_runner",
+    "verl.third_party.vllm.vllm_v_0_6_3.parallel_state",
+    "verl.third_party.vllm.vllm_v_0_6_3.spmd_gpu_executor",
+    "verl.third_party.vllm.vllm_v_0_6_3.tokenizer",
+    "verl.third_party.vllm.vllm_v_0_6_3.worker",
+    "verl.tools",
+    "verl.tools.base_tool",
+    "verl.tools.gsm8k_tool",
+    "verl.tools.sandbox_fusion_tools",
+    "verl.tools.schemas",
+    "verl.tools.search_tool",
+    "verl.tools.utils",
+    "verl.tools.utils.search_r1_like_utils",
+    "verl.trainer",
+    "verl.trainer.constants_ppo",
+    "verl.trainer.fsdp_sft_trainer",
+    "verl.trainer.main_eval",
+    "verl.trainer.main_generation",
+    "verl.trainer.main_ppo",
+    "verl.trainer.ppo",
+    "verl.trainer.ppo.core_algos",
+    "verl.trainer.ppo.metric_utils",
+    "verl.trainer.ppo.ray_trainer",
+    "verl.trainer.ppo.reward",
+    "verl.utils",
+    "verl.utils.activation_offload",
+    "verl.utils.checkpoint",
+    "verl.utils.checkpoint.checkpoint_manager",
+    "verl.utils.checkpoint.fsdp_checkpoint_manager",
+    "verl.utils.checkpoint.megatron_checkpoint_manager",
+    "verl.utils.config",
+    "verl.utils.dataset",
+    "verl.utils.dataset.multiturn_sft_dataset",
+    "verl.utils.dataset.rl_dataset",
+    "verl.utils.dataset.rm_dataset",
+    "verl.utils.dataset.sft_dataset",
+    "verl.utils.dataset.vision_utils",
+    "verl.utils.debug",
+    "verl.utils.debug.performance",
+    "verl.utils.debug.profile",
+    "verl.utils.debug.trajectory_tracker",
+    "verl.utils.device",
+    "verl.utils.distributed",
+    "verl.utils.experimental",
+    "verl.utils.experimental.torch_functional",
+    "verl.utils.flops_counter",
+    "verl.utils.fs",
+    "verl.utils.fsdp_utils",
+    "verl.utils.hdfs_io",
+    "verl.utils.import_utils",
+    "verl.utils.logger",
+    "verl.utils.logger.aggregate_logger",
+    "verl.utils.logging_utils",
+    "verl.utils.megatron",
+    "verl.utils.megatron.memory",
+    "verl.utils.megatron.optimizer",
+    "verl.utils.megatron.pipeline_parallel",
+    "verl.utils.megatron.sequence_parallel",
+    "verl.utils.megatron.tensor_parallel",
+    "verl.utils.megatron_utils",
+    "verl.utils.memory_buffer",
+    "verl.utils.metric",
+    "verl.utils.metric.utils",
+    "verl.utils.model",
+    "verl.utils.net_utils",
+    "verl.utils.py_functional",
+    "verl.utils.ray_utils",
+    "verl.utils.rendezvous",
+    "verl.utils.rendezvous.ray_backend",
+    "verl.utils.reward_score",
+    "verl.utils.reward_score.geo3k",
+    "verl.utils.reward_score.gsm8k",
+    "verl.utils.reward_score.math",
+    "verl.utils.reward_score.math_batch",
+    "verl.utils.reward_score.math_dapo",
+    "verl.utils.reward_score.math_verify",
+    "verl.utils.reward_score.prime_code",
+    "verl.utils.reward_score.prime_code.testing_util",
+    "verl.utils.reward_score.prime_code.utils",
+    "verl.utils.reward_score.prime_math",
+    "verl.utils.reward_score.prime_math.grader",
+    "verl.utils.reward_score.prime_math.math_normalize",
+    "verl.utils.reward_score.sandbox_fusion",
+    "verl.utils.reward_score.sandbox_fusion.utils",
+    "verl.utils.reward_score.search_r1_like_qa_em",
+    "verl.utils.seqlen_balancing",
+    "verl.utils.tokenizer",
+    "verl.utils.torch_dtypes",
+    "verl.utils.torch_functional",
+    "verl.utils.tracking",
+    "verl.utils.transformers_compat",
+    "verl.utils.ulysses",
+    "verl.utils.vllm_utils",
+    "verl.workers",
+    "verl.workers.actor",
+    "verl.workers.actor.base",
+    "verl.workers.actor.dp_actor",
+    "verl.workers.actor.megatron_actor",
+    "verl.workers.critic",
+    "verl.workers.critic.base",
+    "verl.workers.critic.dp_critic",
+    "verl.workers.critic.megatron_critic",
+    "verl.workers.fsdp_workers",
+    "verl.workers.megatron_workers",
+    "verl.workers.reward_manager",
+    "verl.workers.reward_manager.batch",
+    "verl.workers.reward_manager.dapo",
+    "verl.workers.reward_manager.naive",
+    "verl.workers.reward_manager.prime",
+    "verl.workers.reward_model",
+    "verl.workers.reward_model.base",
+    "verl.workers.reward_model.megatron",
+    "verl.workers.reward_model.megatron.reward_model",
+    "verl.workers.rollout",
+    "verl.workers.rollout.async_server",
+    "verl.workers.rollout.base",
+    "verl.workers.rollout.hf_rollout",
+    "verl.workers.rollout.naive",
+    "verl.workers.rollout.naive.naive_rollout",
+    "verl.workers.rollout.schemas",
+    "verl.workers.rollout.sglang_rollout",
+    "verl.workers.rollout.sglang_rollout.async_sglang_server",
+    "verl.workers.rollout.sglang_rollout.sglang_rollout",
+    "verl.workers.rollout.sglang_rollout.utils",
+    "verl.workers.rollout.tokenizer",
+    "verl.workers.rollout.vllm_rollout",
+    "verl.workers.rollout.vllm_rollout.fire_vllm_rollout",
+    "verl.workers.rollout.vllm_rollout.vllm_async_server",
+    "verl.workers.rollout.vllm_rollout.vllm_rollout",
+    "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+    "verl.workers.sharding_manager",
+    "verl.workers.sharding_manager.base",
+    "verl.workers.sharding_manager.fsdp_sglang",
+    "verl.workers.sharding_manager.fsdp_ulysses",
+    "verl.workers.sharding_manager.fsdp_vllm",
+    "verl.workers.sharding_manager.megatron_sglang",
+    "verl.workers.sharding_manager.megatron_vllm"
+  ],
+  "edges": [
+    {
+      "source": "agent_system.environments",
+      "target": "agent_system.environments.env_manager"
+    },
+    {
+      "source": "agent_system.environments.base",
+      "target": "agent_system.environments.prompts"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.base"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.alfworld"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.appworld"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.gym_cards"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.search"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.sokoban"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.env_package.webshop"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.environments.prompts"
+    },
+    {
+      "source": "agent_system.environments.env_manager",
+      "target": "agent_system.memory"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld",
+      "target": "agent_system.environments.env_package.alfworld.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld",
+      "target": "agent_system.environments.env_package.alfworld.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld.alfworld.agents.environment",
+      "target": "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_hybrid"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld.alfworld.agents.environment",
+      "target": "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_thor_env"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld.alfworld.agents.environment",
+      "target": "agent_system.environments.env_package.alfworld.alfworld.agents.environment.alfred_tw_env"
+    },
+    {
+      "source": "agent_system.environments.env_package.alfworld.envs",
+      "target": "agent_system.environments.env_package.alfworld.alfworld.agents.environment"
+    },
+    {
+      "source": "agent_system.environments.env_package.appworld",
+      "target": "agent_system.environments.env_package.appworld.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.appworld",
+      "target": "agent_system.environments.env_package.appworld.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.gym_cards",
+      "target": "agent_system.environments.env_package.gym_cards.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.gym_cards",
+      "target": "agent_system.environments.env_package.gym_cards.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.search",
+      "target": "agent_system.environments.env_package.search.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.search",
+      "target": "agent_system.environments.env_package.search.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.envs",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.env"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.core"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.registration"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.error"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.registration"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.base_text_env",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.registration",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.error"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.env",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.base_text_env"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.env",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.utils"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.envs.search.env",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools.search"
+    },
+    {
+      "source": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools.search",
+      "target": "agent_system.environments.env_package.search.third_party.skyrl_gym.tools.core"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban",
+      "target": "agent_system.environments.env_package.sokoban.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban",
+      "target": "agent_system.environments.env_package.sokoban.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban.envs",
+      "target": "agent_system.environments.env_package.sokoban.sokoban"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban.sokoban",
+      "target": "agent_system.environments.env_package.sokoban.sokoban.env"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban.sokoban.env",
+      "target": "agent_system.environments.env_package.sokoban.sokoban.base"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban.sokoban.env",
+      "target": "agent_system.environments.env_package.sokoban.sokoban.room_utils"
+    },
+    {
+      "source": "agent_system.environments.env_package.sokoban.sokoban.env",
+      "target": "agent_system.environments.env_package.sokoban.sokoban.utils"
+    },
+    {
+      "source": "agent_system.environments.env_package.webshop",
+      "target": "agent_system.environments.env_package.webshop.envs"
+    },
+    {
+      "source": "agent_system.environments.env_package.webshop",
+      "target": "agent_system.environments.env_package.webshop.projection"
+    },
+    {
+      "source": "agent_system.environments.env_package.webshop.webshop.baseline_models.models.bert",
+      "target": "agent_system.environments.env_package.webshop.webshop.baseline_models.models.modules"
+    },
+    {
+      "source": "agent_system.environments.env_package.webshop.webshop.baseline_models.models.rnn",
+      "target": "agent_system.environments.env_package.webshop.webshop.baseline_models.models.modules"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.alfworld"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.appworld"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.gym_cards"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.search"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.sokoban"
+    },
+    {
+      "source": "agent_system.environments.prompts",
+      "target": "agent_system.environments.prompts.webshop"
+    },
+    {
+      "source": "agent_system.memory",
+      "target": "agent_system.memory.memory"
+    },
+    {
+      "source": "agent_system.memory",
+      "target": "agent_system.memory.retrieval_memory"
+    },
+    {
+      "source": "agent_system.memory",
+      "target": "agent_system.memory.skill_updater"
+    },
+    {
+      "source": "agent_system.memory",
+      "target": "agent_system.memory.skills_only_memory"
+    },
+    {
+      "source": "agent_system.memory.memory",
+      "target": "agent_system.memory.base"
+    },
+    {
+      "source": "agent_system.memory.retrieval_memory",
+      "target": "agent_system.memory.base"
+    },
+    {
+      "source": "agent_system.memory.skills_only_memory",
+      "target": "agent_system.memory.base"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout",
+      "target": "agent_system.multi_turn_rollout.rollout_loop"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout",
+      "target": "agent_system.multi_turn_rollout.utils"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "agent_system.environments"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "agent_system.multi_turn_rollout.utils"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.models.transformers.qwen2_vl"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.models.transformers.qwen3_vl"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.rollout_loop",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "agent_system.multi_turn_rollout.utils",
+      "target": "verl"
+    },
+    {
+      "source": "agent_system.reward_manager",
+      "target": "agent_system.reward_manager.episode"
+    },
+    {
+      "source": "agent_system.reward_manager.episode",
+      "target": "verl"
+    },
+    {
+      "source": "examples.data_preprocess.aime2024_multiturn_w_tool",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.dapo_multiturn_w_tool",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.full_hh_rlhf",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "examples.data_preprocess.geo3k",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.gsm8k",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.gsm8k_multiturn_w_tool",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.hellaswag",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.math_dataset",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.math_dataset",
+      "target": "verl.utils.reward_score.math"
+    },
+    {
+      "source": "examples.data_preprocess.multiturn",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.prepare",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.data_preprocess.preprocess_search_r1_dataset",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "examples.prompt_agent.gpt4o_alfworld",
+      "target": "agent_system.environments.env_manager"
+    },
+    {
+      "source": "examples.prompt_agent.gpt4o_alfworld",
+      "target": "agent_system.environments.env_package.alfworld"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.utils"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.utils.reward_score.gsm8k"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.utils.reward_score.math"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "examples.split_placement.main_ppo_split",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "examples.split_placement.split_monkey_patch",
+      "target": "verl"
+    },
+    {
+      "source": "examples.split_placement.split_monkey_patch",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "examples.split_placement.split_monkey_patch",
+      "target": "verl.utils.metric"
+    },
+    {
+      "source": "examples.split_placement.split_monkey_patch",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "gigpo.core_gigpo",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.dapo.dapo_ray_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.dapo.dapo_ray_trainer",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "recipe.dapo.dapo_ray_trainer",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "recipe.dapo.dapo_ray_trainer",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.dapo.dapo_ray_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "recipe.dapo.dapo_ray_trainer"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "recipe.dapo.main_dapo",
+      "target": "verl.workers.reward_manager"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "recipe.prime.prime_fsdp_workers"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "recipe.prime.prime_ray_trainer"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "recipe.prime.main_prime",
+      "target": "verl.workers.reward_manager"
+    },
+    {
+      "source": "recipe.prime.prime_core_algos",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.prime.prime_core_algos",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "recipe.prime.prime_core_algos"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.prime.prime_dp_rm",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "recipe.prime.prime_core_algos"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "recipe.prime.prime_dp_rm"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.models.transformers.monkey_patch"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.torch_dtypes"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "recipe.prime.prime_fsdp_workers",
+      "target": "verl.workers.sharding_manager.fsdp_ulysses"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "recipe.prime.prime_core_algos"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.utils.checkpoint.checkpoint_manager"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.utils.metric"
+    },
+    {
+      "source": "recipe.prime.prime_ray_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "recipe.r1.data_process",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "recipe.r1.main_eval",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "recipe.r1.main_eval",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.r1.reward_score",
+      "target": "recipe.r1.tasks.gpqa"
+    },
+    {
+      "source": "recipe.r1.reward_score",
+      "target": "recipe.r1.tasks.livecodebench"
+    },
+    {
+      "source": "recipe.r1.reward_score",
+      "target": "recipe.r1.tasks.math"
+    },
+    {
+      "source": "recipe.r1.tasks.livecodebench",
+      "target": "verl.utils.reward_score.prime_code.testing_util"
+    },
+    {
+      "source": "recipe.spin.dp_actor",
+      "target": "recipe.spin.core_algos"
+    },
+    {
+      "source": "recipe.spin.dp_actor",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.spin.dp_actor",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "recipe.spin.dp_actor",
+      "target": "verl.workers.actor"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "recipe.spin.dp_actor"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.models.transformers.monkey_patch"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "recipe.spin.fsdp_workers",
+      "target": "verl.workers.sharding_manager.fsdp_ulysses"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "recipe.spin.fsdp_workers"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "recipe.spin.spin_trainer"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "recipe.spin.main_spin",
+      "target": "verl.workers.reward_manager"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "recipe.spin.core_algos"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.trainer.main_ppo"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.utils.checkpoint.checkpoint_manager"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.spin.spin_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "recipe.sppo.dp_actor",
+      "target": "verl.workers.actor.dp_actor"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "recipe.sppo.sppo_ray_trainer"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "recipe.sppo.sppo_worker"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.utils"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "recipe.sppo.main_sppo",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "recipe.sppo.sppo_ray_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "recipe.sppo.dp_actor"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "recipe.sppo.sppo_worker",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "scripts.converter_hf_to_mcore",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "scripts.converter_hf_to_mcore",
+      "target": "verl.models.mcore.loader"
+    },
+    {
+      "source": "scripts.converter_hf_to_mcore",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "scripts.diagnose",
+      "target": "verl"
+    },
+    {
+      "source": "scripts.model_merger",
+      "target": "verl.utils"
+    },
+    {
+      "source": "scripts.model_merger",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "tests.distributed.test_tensor_dict",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.distributed.test_tensor_dict",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "tests.distributed.test_tensor_dict",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.distributed.test_tensor_dict",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "tests.distributed.test_tensor_dict",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.data.create_dataset",
+      "target": "tests.e2e.envs.digit_completion"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.model.create_model_tokenizer",
+      "target": "tests.e2e.envs.digit_completion"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "tests.e2e.envs.digit_completion"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "tests.e2e.envs.digit_completion.task"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.e2e.arithmetic_sequence.rl.main_trainer",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "tests.e2e.envs",
+      "target": "tests.e2e.envs.digit_completion"
+    },
+    {
+      "source": "tests.e2e.envs.digit_completion",
+      "target": "tests.e2e.envs.digit_completion.task"
+    },
+    {
+      "source": "tests.e2e.envs.digit_completion",
+      "target": "tests.e2e.envs.digit_completion.tokenizer"
+    },
+    {
+      "source": "tests.e2e.sft.test_sp_loss_match",
+      "target": "verl.trainer.fsdp_sft_trainer"
+    },
+    {
+      "source": "tests.e2e.sft.test_sp_loss_match",
+      "target": "verl.utils"
+    },
+    {
+      "source": "tests.e2e.sft.test_sp_loss_match",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.e2e.sft.test_sp_loss_match",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.gpu_utility.test_ops",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "tests.gpu_utility.test_ops",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.gpu_utility.test_torch_functional",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.gpu_utility.test_torch_functional",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.kernels.test_linear_cross_entropy",
+      "target": "verl.utils.experimental.torch_functional"
+    },
+    {
+      "source": "tests.kernels.test_linear_cross_entropy",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.models.test_transformer",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.models.test_transformer",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.models.transformers.monkey_patch"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "tests.models.test_transformers_ulysses",
+      "target": "verl.workers.sharding_manager.fsdp_ulysses"
+    },
+    {
+      "source": "tests.ray_cpu.check_worker_alive.main",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_cpu.check_worker_alive.main",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_cpu.check_worker_alive.main",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_auto_padding",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_cpu.test_auto_padding",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.ray_cpu.test_auto_padding",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_auto_padding",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_cpu.test_auto_padding",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_decorator",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.ray_cpu.test_decorator",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_cpu.test_decorator",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_cpu.test_decorator",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.ray_cpu.test_fused_workers",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_fused_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_cpu.test_fused_workers",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_ray_local_envs",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_cpu.test_ray_local_envs",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_cpu.test_ray_utils",
+      "target": "verl.utils.ray_utils"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.client",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.client",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.client",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.models.llama.megatron"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.single_controller.base.megatron.worker"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.utils.megatron.optimizer"
+    },
+    {
+      "source": "tests.ray_gpu.detached_worker.server",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers_fused",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers_fused",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers_fused",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_gpu.test_colocated_workers_fused",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_data_transfer",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.test_data_transfer",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_data_transfer",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_gpu.test_data_transfer",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.ray_gpu.test_data_transfer",
+      "target": "verl.utils.ray_utils"
+    },
+    {
+      "source": "tests.ray_gpu.test_driverfunc_to_worker",
+      "target": "verl"
+    },
+    {
+      "source": "tests.ray_gpu.test_driverfunc_to_worker",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_gpu.test_driverfunc_to_worker",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.ray_gpu.test_driverfunc_to_worker",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_high_level_scheduling_api",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_gpu.test_high_level_scheduling_api",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_rvdz",
+      "target": "verl.utils.rendezvous.ray_backend"
+    },
+    {
+      "source": "tests.ray_gpu.test_worker_group_basics",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.ray_gpu.test_worker_group_basics",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_gpu.test_worker_group_basics",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.ray_gpu.test_worker_group_torch",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "tests.ray_gpu.test_worker_group_torch",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.reward_score.test_sandbox_fusion",
+      "target": "verl.utils.reward_score.sandbox_fusion.utils"
+    },
+    {
+      "source": "tests.sandbox.test_sandbox",
+      "target": "verl.utils.reward_score.prime_code"
+    },
+    {
+      "source": "tests.sandbox.test_sandbox",
+      "target": "verl.utils.reward_score.sandbox_fusion"
+    },
+    {
+      "source": "tests.sandbox.test_sandbox",
+      "target": "verl.workers.reward_manager.prime"
+    },
+    {
+      "source": "tests.sanity.test_import",
+      "target": "verl"
+    },
+    {
+      "source": "tests.sanity.test_import",
+      "target": "verl.single_controller"
+    },
+    {
+      "source": "tests.single_controller.base.test_decorator",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "tests.test_protocol",
+      "target": "verl"
+    },
+    {
+      "source": "tests.test_protocol",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.trainer.ppo.test_metric_utils",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "tests.trainer.ppo.test_metric_utils",
+      "target": "verl.utils.metric"
+    },
+    {
+      "source": "tests.utils.cpu_tests.test_fs",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.utils.cpu_tests.test_import_utils",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "tests.utils.cpu_tests.test_model",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.utils.cpu_tests.test_timeout_decorator",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "tests.utils.gpu_tests.checkpoint.test_fsdp_ckpt",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "tests.utils.gpu_tests.checkpoint.test_fsdp_ckpt",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.utils.gpu_tests.checkpoint.test_fsdp_ckpt",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_multiturn_sft_dataset",
+      "target": "verl.utils.dataset.multiturn_sft_dataset"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_rl_dataset",
+      "target": "verl"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_rl_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_rl_dataset",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_rm_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_rm_dataset",
+      "target": "verl.utils.dataset.rm_dataset"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_sft_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "tests.utils.gpu_tests.dataset.test_sft_dataset",
+      "target": "verl.utils.dataset.sft_dataset"
+    },
+    {
+      "source": "tests.utils.gpu_tests.megatron.test_pipeline_parallel",
+      "target": "verl.utils.megatron.pipeline_parallel"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_activation_offload",
+      "target": "verl.utils.activation_offload"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_activation_offload",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_activation_offload",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_flops_counter",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_seqlen_balancing",
+      "target": "verl"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_seqlen_balancing",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_seqlen_balancing",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "tests.utils.gpu_tests.test_torch_functional",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.workers.rollout.async_rollout_utils",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "tests.workers.rollout.async_rollout_utils",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "tests.workers.rollout.async_rollout_utils",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "tests.workers.rollout.async_rollout_utils",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "tests.workers.rollout.async_rollout_utils",
+      "target": "verl.workers.rollout.async_server"
+    },
+    {
+      "source": "tests.workers.rollout.run_fsdp_vllm",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "tests.workers.rollout.run_fsdp_vllm",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.workers.rollout.run_fsdp_vllm",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.workers.rollout.run_fsdp_vllm",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.workers.rollout.run_fsdp_vllm",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_async_sglang_server",
+      "target": "verl.workers.rollout.sglang_rollout.async_sglang_server"
+    },
+    {
+      "source": "tests.workers.rollout.test_hf_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "tests.workers.rollout.test_hf_rollout",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.workers.rollout.test_hf_rollout",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.workers.rollout.test_hf_rollout",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.workers.rollout.test_hf_rollout",
+      "target": "verl.workers.rollout.hf_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+      "target": "verl.tools.search_tool"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+      "target": "verl.workers.rollout.schemas"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_search_tools",
+      "target": "verl.workers.rollout.sglang_rollout.sglang_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+      "target": "verl.tools.sandbox_fusion_tools"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+      "target": "verl.workers.rollout.schemas"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_sf_tools",
+      "target": "verl.workers.rollout.sglang_rollout.sglang_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_w_tools",
+      "target": "verl"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_w_tools",
+      "target": "verl.workers.rollout.sglang_rollout.sglang_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_sglang_async_rollout_w_tools",
+      "target": "verl.workers.sharding_manager.fsdp_sglang"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_hf_loader",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_hf_loader",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_hf_loader",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_hf_loader",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_rollout"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_multi_turn",
+      "target": "tests.workers.rollout.async_rollout_utils"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_multi_turn",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_spmd",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_spmd",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_spmd",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_tool_calling",
+      "target": "tests.workers.rollout.async_rollout_utils"
+    },
+    {
+      "source": "tests.workers.rollout.test_vllm_tool_calling",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "tests.workers.rollout.utils_sglang",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "tests.workers.rollout.utils_sglang",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl",
+      "target": "verl.utils.logging_utils"
+    },
+    {
+      "source": "verl.models.llama.megatron",
+      "target": "verl.models.llama.megatron.modeling_llama_megatron"
+    },
+    {
+      "source": "verl.models.llama.megatron.checkpoint_utils.llama_loader",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.llama.megatron.checkpoint_utils.llama_loader_depracated",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.llama.megatron.checkpoint_utils.llama_saver",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers",
+      "target": "verl.models.llama.megatron.layers.parallel_attention"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers",
+      "target": "verl.models.llama.megatron.layers.parallel_decoder"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers",
+      "target": "verl.models.llama.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers",
+      "target": "verl.models.llama.megatron.layers.parallel_mlp"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers",
+      "target": "verl.models.llama.megatron.layers.parallel_rmsnorm"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_attention",
+      "target": "verl.models.llama.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_attention",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_decoder",
+      "target": "verl.models.llama.megatron.layers.parallel_attention"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_decoder",
+      "target": "verl.models.llama.megatron.layers.parallel_mlp"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_decoder",
+      "target": "verl.models.llama.megatron.layers.parallel_rmsnorm"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_decoder",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_mlp",
+      "target": "verl.models.llama.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_mlp",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.llama.megatron.layers.parallel_rmsnorm",
+      "target": "verl.utils.megatron.sequence_parallel"
+    },
+    {
+      "source": "verl.models.llama.megatron.modeling_llama_megatron",
+      "target": "verl.models.llama.megatron.layers"
+    },
+    {
+      "source": "verl.models.llama.megatron.modeling_llama_megatron",
+      "target": "verl.utils.megatron.sequence_parallel"
+    },
+    {
+      "source": "verl.models.llama.megatron.modeling_llama_megatron",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.llama.megatron.modeling_llama_megatron",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.mcore",
+      "target": "verl.models.mcore.registry"
+    },
+    {
+      "source": "verl.models.mcore.config_converter",
+      "target": "verl.models.mcore.patch_v012"
+    },
+    {
+      "source": "verl.models.mcore.loader",
+      "target": "verl.models.mcore.saver"
+    },
+    {
+      "source": "verl.models.mcore.loader",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.mcore.model_forward",
+      "target": "verl.models.mcore.util"
+    },
+    {
+      "source": "verl.models.mcore.model_forward",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.mcore.model_initializer",
+      "target": "verl.models.llama.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.mcore.model_initializer",
+      "target": "verl.models.mcore.config_converter"
+    },
+    {
+      "source": "verl.models.mcore.registry",
+      "target": "verl.models.mcore.config_converter"
+    },
+    {
+      "source": "verl.models.mcore.registry",
+      "target": "verl.models.mcore.model_forward"
+    },
+    {
+      "source": "verl.models.mcore.registry",
+      "target": "verl.models.mcore.model_initializer"
+    },
+    {
+      "source": "verl.models.mcore.registry",
+      "target": "verl.models.mcore.weight_converter"
+    },
+    {
+      "source": "verl.models.mcore.saver",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.qwen2.megatron",
+      "target": "verl.models.qwen2.megatron.modeling_qwen2_megatron"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.checkpoint_utils.qwen2_loader",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.checkpoint_utils.qwen2_loader_depracated",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.checkpoint_utils.qwen2_saver",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers",
+      "target": "verl.models.qwen2.megatron.layers.parallel_attention"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers",
+      "target": "verl.models.qwen2.megatron.layers.parallel_decoder"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers",
+      "target": "verl.models.qwen2.megatron.layers.parallel_mlp"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers",
+      "target": "verl.models.qwen2.megatron.layers.parallel_rmsnorm"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_attention",
+      "target": "verl.models.qwen2.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_attention",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_decoder",
+      "target": "verl.models.qwen2.megatron.layers.parallel_attention"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_decoder",
+      "target": "verl.models.qwen2.megatron.layers.parallel_mlp"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_decoder",
+      "target": "verl.models.qwen2.megatron.layers.parallel_rmsnorm"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_decoder",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_mlp",
+      "target": "verl.models.qwen2.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_mlp",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.layers.parallel_rmsnorm",
+      "target": "verl.utils.megatron.sequence_parallel"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.modeling_qwen2_megatron",
+      "target": "verl.models.qwen2.megatron.layers"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.modeling_qwen2_megatron",
+      "target": "verl.utils.megatron.sequence_parallel"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.modeling_qwen2_megatron",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.models.qwen2.megatron.modeling_qwen2_megatron",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.models.transformers.kimi_vl",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.models.transformers.llama",
+      "target": "verl.utils.experimental.torch_functional"
+    },
+    {
+      "source": "verl.models.transformers.llama",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.models.transformers.kimi_vl"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.models.transformers.qwen2_vl"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.models.transformers.qwen3_vl"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.utils.transformers_compat"
+    },
+    {
+      "source": "verl.models.transformers.monkey_patch",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.models.transformers.qwen2",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.models.transformers.qwen2_5_vl",
+      "target": "verl.utils.experimental.torch_functional"
+    },
+    {
+      "source": "verl.models.transformers.qwen2_vl",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.models.transformers.qwen2_vl",
+      "target": "verl.utils.experimental.torch_functional"
+    },
+    {
+      "source": "verl.models.transformers.qwen2_vl",
+      "target": "verl.utils.transformers_compat"
+    },
+    {
+      "source": "verl.models.transformers.qwen2_vl",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.models.transformers.qwen3_vl",
+      "target": "verl.utils.experimental.torch_functional"
+    },
+    {
+      "source": "verl.models.weight_loader_registry",
+      "target": "verl.models.mcore.loader"
+    },
+    {
+      "source": "verl.models.weight_loader_registry",
+      "target": "verl.models.mcore.saver"
+    },
+    {
+      "source": "verl.protocol",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.protocol",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.protocol",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.single_controller",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "verl.single_controller.base",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "verl.single_controller.base",
+      "target": "verl.single_controller.base.worker_group"
+    },
+    {
+      "source": "verl.single_controller.base.decorator",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.single_controller.base.decorator",
+      "target": "verl.single_controller.base.megatron.worker_group"
+    },
+    {
+      "source": "verl.single_controller.base.decorator",
+      "target": "verl.single_controller.base.worker_group"
+    },
+    {
+      "source": "verl.single_controller.base.decorator",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker",
+      "target": "verl.single_controller.base.worker"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker_group",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "verl.single_controller.base.megatron.worker_group",
+      "target": "verl.single_controller.base.megatron.worker"
+    },
+    {
+      "source": "verl.single_controller.base.worker",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "verl.single_controller.base.worker",
+      "target": "verl.single_controller.base.register_center.ray"
+    },
+    {
+      "source": "verl.single_controller.base.worker",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.single_controller.base.worker",
+      "target": "verl.utils.ray_utils"
+    },
+    {
+      "source": "verl.single_controller.base.worker_group",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "verl.single_controller.ray",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "verl.single_controller.ray.base",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.single_controller.ray.base",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "verl.single_controller.ray.base",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "verl.single_controller.ray.megatron",
+      "target": "verl.single_controller.base.megatron.worker"
+    },
+    {
+      "source": "verl.single_controller.ray.megatron",
+      "target": "verl.single_controller.base.megatron.worker_group"
+    },
+    {
+      "source": "verl.single_controller.ray.megatron",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "verl.third_party.vllm",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.llm"
+    },
+    {
+      "source": "verl.third_party.vllm",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.parallel_state"
+    },
+    {
+      "source": "verl.third_party.vllm",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.llm"
+    },
+    {
+      "source": "verl.third_party.vllm",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.parallel_state"
+    },
+    {
+      "source": "verl.third_party.vllm",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.arg_utils",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.arg_utils"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm",
+      "target": "verl.workers.rollout.tokenizer"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.arg_utils"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.spmd_gpu_executor"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.tokenizer"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.dtensor_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.hf_weight_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.megatron_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_runner",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.model_runner",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.model_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.spmd_gpu_executor",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.spmd_gpu_executor",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.worker"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.dtensor_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.hf_weight_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.megatron_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.model_runner"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_5_4.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_5_4.parallel_state"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.arg_utils",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.arg_utils"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm",
+      "target": "verl.workers.rollout.tokenizer"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.arg_utils"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.spmd_gpu_executor"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.llm_engine_sp",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.tokenizer"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.dtensor_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.hf_weight_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_loader",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.megatron_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_runner",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.model_runner",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.model_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.spmd_gpu_executor",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.spmd_gpu_executor",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.worker"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.config"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.dtensor_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.hf_weight_loader"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.megatron_weight_loaders"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.model_runner"
+    },
+    {
+      "source": "verl.third_party.vllm.vllm_v_0_6_3.worker",
+      "target": "verl.third_party.vllm.vllm_v_0_6_3.parallel_state"
+    },
+    {
+      "source": "verl.tools.base_tool",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.tools.gsm8k_tool",
+      "target": "verl.tools.base_tool"
+    },
+    {
+      "source": "verl.tools.gsm8k_tool",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.tools.gsm8k_tool",
+      "target": "verl.utils.reward_score.gsm8k"
+    },
+    {
+      "source": "verl.tools.sandbox_fusion_tools",
+      "target": "verl.tools.base_tool"
+    },
+    {
+      "source": "verl.tools.sandbox_fusion_tools",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.tools.sandbox_fusion_tools",
+      "target": "verl.utils.reward_score.sandbox_fusion.utils"
+    },
+    {
+      "source": "verl.tools.search_tool",
+      "target": "verl.tools.base_tool"
+    },
+    {
+      "source": "verl.tools.search_tool",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.tools.search_tool",
+      "target": "verl.tools.utils.search_r1_like_utils"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.models.transformers.monkey_patch"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.dataset"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.dataset.multiturn_sft_dataset"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.distributed"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.trainer.fsdp_sft_trainer",
+      "target": "verl.workers.sharding_manager.fsdp_ulysses"
+    },
+    {
+      "source": "verl.trainer.main_eval",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "verl.trainer.main_eval",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.trainer.main_generation",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "agent_system.environments"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "agent_system.multi_turn_rollout"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "agent_system.reward_manager"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.single_controller.ray.megatron"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.trainer.constants_ppo"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.trainer.ppo.ray_trainer"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.utils.vllm_utils"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.workers.fsdp_workers"
+    },
+    {
+      "source": "verl.trainer.main_ppo",
+      "target": "verl.workers.megatron_workers"
+    },
+    {
+      "source": "verl.trainer.ppo.core_algos",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.trainer.ppo.metric_utils",
+      "target": "verl"
+    },
+    {
+      "source": "verl.trainer.ppo.metric_utils",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.trainer.ppo.metric_utils",
+      "target": "verl.utils.metric"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "agent_system.memory.skill_updater"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "agent_system.multi_turn_rollout"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "gigpo.core_gigpo"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.single_controller.ray"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.trainer.main_ppo"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.trainer.ppo.metric_utils"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.trainer.ppo.reward"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.checkpoint.checkpoint_manager"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.metric"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.utils.tracking"
+    },
+    {
+      "source": "verl.trainer.ppo.ray_trainer",
+      "target": "verl.workers.rollout.async_server"
+    },
+    {
+      "source": "verl.trainer.ppo.reward",
+      "target": "verl"
+    },
+    {
+      "source": "verl.trainer.ppo.reward",
+      "target": "verl.utils.reward_score"
+    },
+    {
+      "source": "verl.trainer.ppo.reward",
+      "target": "verl.workers.reward_manager"
+    },
+    {
+      "source": "verl.utils",
+      "target": "verl.utils.tokenizer"
+    },
+    {
+      "source": "verl.utils.activation_offload",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.utils.checkpoint.checkpoint_manager",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.checkpoint.fsdp_checkpoint_manager",
+      "target": "verl.utils.checkpoint.checkpoint_manager"
+    },
+    {
+      "source": "verl.utils.checkpoint.fsdp_checkpoint_manager",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.checkpoint.fsdp_checkpoint_manager",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.checkpoint.fsdp_checkpoint_manager",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.utils.checkpoint.megatron_checkpoint_manager",
+      "target": "verl.models.weight_loader_registry"
+    },
+    {
+      "source": "verl.utils.checkpoint.megatron_checkpoint_manager",
+      "target": "verl.utils.checkpoint.checkpoint_manager"
+    },
+    {
+      "source": "verl.utils.checkpoint.megatron_checkpoint_manager",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.checkpoint.megatron_checkpoint_manager",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "verl.utils.checkpoint.megatron_checkpoint_manager",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.utils.dataset",
+      "target": "verl.utils.dataset.rl_dataset"
+    },
+    {
+      "source": "verl.utils.dataset",
+      "target": "verl.utils.dataset.rm_dataset"
+    },
+    {
+      "source": "verl.utils.dataset",
+      "target": "verl.utils.dataset.sft_dataset"
+    },
+    {
+      "source": "verl.utils.dataset.multiturn_sft_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.utils.dataset.multiturn_sft_dataset",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.models.transformers.qwen2_vl"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.models.transformers.qwen3_vl"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.utils.dataset.vision_utils"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.utils.dataset.rl_dataset",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.utils.dataset.rm_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.utils.dataset.rm_dataset",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.dataset.sft_dataset",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.utils.dataset.sft_dataset",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.dataset.sft_dataset",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.utils.debug",
+      "target": "verl.utils.debug.performance"
+    },
+    {
+      "source": "verl.utils.debug.performance",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.debug.performance",
+      "target": "verl.utils.logger.aggregate_logger"
+    },
+    {
+      "source": "verl.utils.debug.trajectory_tracker",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "verl.utils.distributed",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.flops_counter",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.fs",
+      "target": "verl.utils.hdfs_io"
+    },
+    {
+      "source": "verl.utils.fsdp_utils",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.utils.megatron.pipeline_parallel",
+      "target": "verl.utils.megatron.sequence_parallel"
+    },
+    {
+      "source": "verl.utils.megatron_utils",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.utils.megatron_utils",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.utils.megatron_utils",
+      "target": "verl.utils.torch_dtypes"
+    },
+    {
+      "source": "verl.utils.metric",
+      "target": "verl.utils.metric.utils"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.models.llama.megatron.layers.parallel_linear"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.models.mcore.loader"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.models.mcore.saver"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.models.registry"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.models.weight_loader_registry"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.utils.model",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.geo3k"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.gsm8k"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.math"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.math_dapo"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.prime_code"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.prime_math"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.sandbox_fusion"
+    },
+    {
+      "source": "verl.utils.reward_score",
+      "target": "verl.utils.reward_score.search_r1_like_qa_em"
+    },
+    {
+      "source": "verl.utils.reward_score.math_batch",
+      "target": "verl.utils.reward_score.math"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_code",
+      "target": "verl.utils.reward_score.prime_code.utils"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_code.utils",
+      "target": "verl.utils.reward_score.prime_code.testing_util"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_math",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_math",
+      "target": "verl.utils.reward_score.prime_math.grader"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_math",
+      "target": "verl.utils.reward_score.prime_math.math_normalize"
+    },
+    {
+      "source": "verl.utils.reward_score.prime_math.grader",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.utils.reward_score.sandbox_fusion",
+      "target": "verl.utils.reward_score.sandbox_fusion.utils"
+    },
+    {
+      "source": "verl.utils.tracking",
+      "target": "verl.utils.logger.aggregate_logger"
+    },
+    {
+      "source": "verl.utils.vllm_utils",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "verl.workers.actor",
+      "target": "verl.workers.actor.base"
+    },
+    {
+      "source": "verl.workers.actor",
+      "target": "verl.workers.actor.dp_actor"
+    },
+    {
+      "source": "verl.workers.actor.base",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.workers.actor.dp_actor",
+      "target": "verl.workers.actor"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.debug.profile"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.megatron.pipeline_parallel"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.megatron.tensor_parallel"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.actor.megatron_actor",
+      "target": "verl.workers.actor"
+    },
+    {
+      "source": "verl.workers.critic",
+      "target": "verl.workers.critic.base"
+    },
+    {
+      "source": "verl.workers.critic",
+      "target": "verl.workers.critic.dp_critic"
+    },
+    {
+      "source": "verl.workers.critic.base",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.trainer.ppo.core_algos"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.utils.megatron.pipeline_parallel"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.critic.megatron_critic",
+      "target": "verl.workers.critic"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.models.transformers.monkey_patch"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.single_controller.base"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.activation_offload"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.checkpoint.fsdp_checkpoint_manager"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.import_utils"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.py_functional"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.torch_dtypes"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.actor"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.critic"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.rollout"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.rollout.sglang_rollout"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.rollout.vllm_rollout"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.sharding_manager.base"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.sharding_manager.fsdp_sglang"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.sharding_manager.fsdp_ulysses"
+    },
+    {
+      "source": "verl.workers.fsdp_workers",
+      "target": "verl.workers.sharding_manager.fsdp_vllm"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.single_controller.base.decorator"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.single_controller.base.megatron.worker"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.checkpoint.megatron_checkpoint_manager"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.flops_counter"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.megatron.optimizer"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.utils.torch_dtypes"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.actor.megatron_actor"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.critic.megatron_critic"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.reward_model.megatron.reward_model"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.rollout.sglang_rollout"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.rollout.vllm_rollout"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.sharding_manager.megatron_sglang"
+    },
+    {
+      "source": "verl.workers.megatron_workers",
+      "target": "verl.workers.sharding_manager.megatron_vllm"
+    },
+    {
+      "source": "verl.workers.reward_manager",
+      "target": "verl.workers.reward_manager.batch"
+    },
+    {
+      "source": "verl.workers.reward_manager",
+      "target": "verl.workers.reward_manager.dapo"
+    },
+    {
+      "source": "verl.workers.reward_manager",
+      "target": "verl.workers.reward_manager.naive"
+    },
+    {
+      "source": "verl.workers.reward_manager",
+      "target": "verl.workers.reward_manager.prime"
+    },
+    {
+      "source": "verl.workers.reward_manager.batch",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_manager.dapo",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_manager.dapo",
+      "target": "verl.utils.reward_score"
+    },
+    {
+      "source": "verl.workers.reward_manager.naive",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_manager.naive",
+      "target": "verl.utils.reward_score"
+    },
+    {
+      "source": "verl.workers.reward_manager.prime",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_manager.prime",
+      "target": "verl.utils.reward_score"
+    },
+    {
+      "source": "verl.workers.reward_model",
+      "target": "verl.workers.reward_model.base"
+    },
+    {
+      "source": "verl.workers.reward_model.base",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron",
+      "target": "verl.workers.reward_model.megatron.reward_model"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl.models.mcore"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl.utils.megatron.pipeline_parallel"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl.utils.seqlen_balancing"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.reward_model.megatron.reward_model",
+      "target": "verl.workers.reward_model.base"
+    },
+    {
+      "source": "verl.workers.rollout",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.rollout",
+      "target": "verl.workers.rollout.hf_rollout"
+    },
+    {
+      "source": "verl.workers.rollout",
+      "target": "verl.workers.rollout.naive"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.single_controller.ray.base"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.utils"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.workers.rollout.sglang_rollout.async_sglang_server"
+    },
+    {
+      "source": "verl.workers.rollout.async_server",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_async_server"
+    },
+    {
+      "source": "verl.workers.rollout.base",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.hf_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.hf_rollout",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.workers.rollout.hf_rollout",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.hf_rollout",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.rollout.naive",
+      "target": "verl.workers.rollout.naive.naive_rollout"
+    },
+    {
+      "source": "verl.workers.rollout.naive.naive_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.naive.naive_rollout",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.naive.naive_rollout",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.rollout.schemas",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.workers.rollout.schemas",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout",
+      "target": "verl.workers.rollout.sglang_rollout.sglang_rollout"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.async_sglang_server",
+      "target": "verl.workers.rollout.async_server"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.third_party.sglang.parallel_state"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.tools.base_tool"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.tools.schemas"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.utils.model"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.utils.net_utils"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.workers.rollout.schemas"
+    },
+    {
+      "source": "verl.workers.rollout.sglang_rollout.sglang_rollout",
+      "target": "verl.workers.rollout.sglang_rollout.utils"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout",
+      "target": "verl.workers.rollout.vllm_rollout.fire_vllm_rollout"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_rollout"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.fire_vllm_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.fire_vllm_rollout",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.fire_vllm_rollout",
+      "target": "verl.workers.rollout.vllm_rollout.vllm_rollout"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_async_server",
+      "target": "verl.utils.fs"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_async_server",
+      "target": "verl.workers.rollout.async_server"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.rollout.vllm_rollout.vllm_rollout_spmd",
+      "target": "verl.workers.rollout.base"
+    },
+    {
+      "source": "verl.workers.sharding_manager.base",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_sglang",
+      "target": "verl.workers.sharding_manager.base"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_ulysses",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_ulysses",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_ulysses",
+      "target": "verl.utils.ulysses"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_ulysses",
+      "target": "verl.workers.sharding_manager.base"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.utils.device"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.utils.fsdp_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.utils.vllm_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.fsdp_vllm",
+      "target": "verl.workers.sharding_manager.base"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_sglang",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_sglang",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_sglang",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_sglang",
+      "target": "verl.workers.sharding_manager.base"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.models.mcore.weight_converter"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.protocol"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.third_party.vllm"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.utils.debug"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.utils.megatron_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.utils.memory_buffer"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.utils.torch_functional"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.utils.vllm_utils"
+    },
+    {
+      "source": "verl.workers.sharding_manager.megatron_vllm",
+      "target": "verl.workers.sharding_manager.base"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+# FILE: main.py
+import os
+import uvicorn
+from src.main import app
+
+# FILE: src/api/routes.py
+from __future__ import annotations
+import logging
+from fastapi import APIRouter
+from ..core.config import config
+from ..models.task import (
+    CreateTaskRequest,
+    CreateTaskResponse,
+    GetBalanceRequest,
+    GetBalanceResponse,
+    GetTaskResultRequest,
+    GetTaskResultResponse,
+    SolutionObject,
+)
+from ..services.task_manager import TaskStatus, task_manager
+
+def _check_client_keyNone: ...
+
+async def create_taskNone: ...
+
+async def get_task_resultNone: ...
+
+async def get_balanceNone: ...
+
+async def healthNone: ...
+
+# FILE: src/core/config.py
+from __future__ import annotations
+import os
+from dataclasses import dataclass
+
+class Config:
+    def captcha_base_urlNone: ...
+    def captcha_api_keyNone: ...
+    def captcha_modelNone: ...
+    def captcha_multimodal_modelNone: ...
+
+def load_configNone: ...
+
+# FILE: src/main.py
+from __future__ import annotations
+import logging
+from contextlib import asynccontextmanager
+from typing import AsyncIterator
+from fastapi import FastAPI
+from .api.routes import router
+from .core.config import config
+from .services.classification import ClassificationSolver
+from .services.hcaptcha import HCaptchaSolver
+from .services.recognition import CaptchaRecognizer
+from .services.recaptcha_v2 import RecaptchaV2Solver
+from .services.recaptcha_v3 import RecaptchaV3Solver
+from .services.task_manager import task_manager
+from .services.turnstile import TurnstileSolver
+
+async def lifespanNone: ...
+
+async def rootNone: ...
+
+# FILE: src/models/task.py
+from __future__ import annotations
+from pydantic import BaseModel, Field
+
+class TaskObject(BaseModel):
+
+class CreateTaskRequest(BaseModel):
+
+class CreateTaskResponse(BaseModel):
+
+class GetTaskResultRequest(BaseModel):
+
+class SolutionObject(BaseModel):
+
+class GetTaskResultResponse(BaseModel):
+
+class GetBalanceRequest(BaseModel):
+
+class GetBalanceResponse(BaseModel):
+
+# FILE: src/services/classification.py
+from __future__ import annotations
+import base64
+import io
+import json
+import logging
+import re
+from typing import Any
+from openai import AsyncOpenAI
+from PIL import Image
+from ..core.config import Config
+
+class ClassificationSolver:
+    def __init__None: ...
+    async def solveNone: ...
+    def _get_system_promptNone: ...
+    def _extract_imagesNone: ...
+    def _prepare_imageNone: ...
+    async def _classifyNone: ...
+    def _parse_jsonNone: ...
+
+# FILE: src/services/hcaptcha.py
+from __future__ import annotations
+import asyncio
+import logging
+from typing import Any
+from playwright.async_api import Browser, Playwright, async_playwright
+from ..core.config import Config
+
+class HCaptchaSolver:
+    def __init__None: ...
+    async def startNone: ...
+    async def stopNone: ...
+    async def solveNone: ...
+    async def _solve_onceNone: ...
+
+# FILE: src/services/recaptcha_v2.py
+from __future__ import annotations
+import asyncio
+import logging
+from typing import Any
+import httpx
+from playwright.async_api import Browser, Playwright, async_playwright
+from ..core.config import Config
+
+class RecaptchaV2Solver:
+    def __init__None: ...
+    async def startNone: ...
+    async def stopNone: ...
+    async def solveNone: ...
+    async def _solve_onceNone: ...
+    async def _solve_checkboxNone: ...
+    async def _solve_audio_challengeNone: ...
+    async def _transcribe_audioNone: ...
+
+# FILE: src/services/recaptcha_v3.py
+from __future__ import annotations
+import asyncio
+import logging
+from typing import Any
+from playwright.async_api import Browser, Playwright, async_playwright
+from ..core.config import Config
+
+class RecaptchaV3Solver:
+    def __init__None: ...
+    async def startNone: ...
+    async def stopNone: ...
+    async def solveNone: ...
+    async def _solve_onceNone: ...
+
+# FILE: src/services/recognition.py
+from __future__ import annotations
+import base64
+import io
+import json
+import logging
+import re
+from typing import Any
+from openai import AsyncOpenAI
+from PIL import Image
+from ..core.config import Config
+
+class CaptchaRecognizer:
+    def __init__None: ...
+    async def recognizeNone: ...
+    def _preprocess_imageNone: ...
+    async def _call_modelNone: ...
+    def _parse_jsonNone: ...
+    async def solveNone: ...
+
+# FILE: src/services/task_manager.py
+from __future__ import annotations
+import asyncio
+import logging
+import uuid
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum
+from typing import Any, Protocol
+
+class TaskStatus(str, Enum):
+
+class Task:
+
+class Solver(Protocol):
+    async def solveNone: ...
+
+class TaskManager:
+    def __init__None: ...
+    def register_solverNone: ...
+    def create_taskNone: ...
+    def get_taskNone: ...
+    def supported_typesNone: ...
+    async def _process_taskNone: ...
+    def _cleanup_expiredNone: ...
+
+# FILE: src/services/turnstile.py
+from __future__ import annotations
+import asyncio
+import logging
+from typing import Any
+from playwright.async_api import Browser, Playwright, async_playwright
+from ..core.config import Config
+
+class TurnstileSolver:
+    def __init__None: ...
+    async def startNone: ...
+    async def stopNone: ...
+    async def solveNone: ...
+    async def _solve_onceNone: ...
+
+# FILE: tests/test_api.py
+from __future__ import annotations
+import importlib
+import os
+import sys
+from pathlib import Path
+from unittest.mock import AsyncMock
+import pytest
+from fastapi.testclient import TestClient
+
+def _load_appNone: ...
+
+def test_health_endpointNone: ...
+
+def test_root_endpointNone: ...
+
+def test_root_endpoint_reports_all_supported_typesNone: ...
+
+def test_get_balanceNone: ...
+
+def test_get_balance_requires_client_keyNone: ...
+
+def test_create_task_unsupported_typeNone: ...
+
+def test_create_task_missing_fields_recaptcha_v3None: ...
+
+def test_create_task_missing_fields_recaptcha_v2None: ...
+
+def test_create_task_missing_fields_hcaptchaNone: ...
+
+def test_create_task_missing_fields_turnstileNone: ...
+
+def test_create_task_missing_fields_imageNone: ...
+
+def test_create_task_missing_fields_classificationNone: ...
+
+def test_create_task_invalid_client_keyNone: ...
+
+def test_get_task_result_not_foundNone: ...
+
+def test_create_recaptcha_v3_task_acceptedNone: ...
+
+def test_create_turnstile_task_acceptedNone: ...
+
+def test_create_classification_task_acceptedNone: ...

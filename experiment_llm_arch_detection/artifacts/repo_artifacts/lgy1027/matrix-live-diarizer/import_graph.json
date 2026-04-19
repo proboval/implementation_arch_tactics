@@ -1,0 +1,260 @@
+{
+  "nodes": [
+    "app",
+    "app.api",
+    "app.api.health",
+    "app.api.speakers",
+    "app.api.upload",
+    "app.api.websocket",
+    "app.config",
+    "app.constants",
+    "app.exceptions",
+    "app.middleware",
+    "app.middleware.rate_limit",
+    "app.schemas",
+    "app.schemas.response",
+    "app.services",
+    "app.services.session",
+    "engine.asr_engine",
+    "engine.speaker",
+    "engine.speaker.base_engine",
+    "engine.speaker.campplus_engine",
+    "engine.speaker.eres2net_engine",
+    "engine.speaker.speaker_factory",
+    "engine.speaker.wespeaker_engine",
+    "main",
+    "tests",
+    "tests.test_audio_chunking",
+    "tests.test_base_engine",
+    "tests.test_engine_switch",
+    "tests.test_exceptions",
+    "tests.test_health",
+    "tests.test_logging",
+    "tests.test_rate_limit",
+    "tests.test_rate_limit_integration",
+    "tests.test_speaker_management",
+    "tests.test_upload_security"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "app.api"
+    },
+    {
+      "source": "app",
+      "target": "app.api.health"
+    },
+    {
+      "source": "app",
+      "target": "app.api.upload"
+    },
+    {
+      "source": "app",
+      "target": "app.api.websocket"
+    },
+    {
+      "source": "app",
+      "target": "app.config"
+    },
+    {
+      "source": "app",
+      "target": "app.constants"
+    },
+    {
+      "source": "app",
+      "target": "app.middleware.rate_limit"
+    },
+    {
+      "source": "app",
+      "target": "engine.asr_engine"
+    },
+    {
+      "source": "app",
+      "target": "engine.speaker"
+    },
+    {
+      "source": "app.api",
+      "target": "app.api.health"
+    },
+    {
+      "source": "app.api",
+      "target": "app.api.speakers"
+    },
+    {
+      "source": "app.api",
+      "target": "app.api.upload"
+    },
+    {
+      "source": "app.api",
+      "target": "app.api.websocket"
+    },
+    {
+      "source": "app.api.speakers",
+      "target": "app.schemas.response"
+    },
+    {
+      "source": "app.api.speakers",
+      "target": "engine.speaker.speaker_factory"
+    },
+    {
+      "source": "app.api.upload",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.upload",
+      "target": "app.constants"
+    },
+    {
+      "source": "app.api.upload",
+      "target": "app.schemas"
+    },
+    {
+      "source": "app.api.upload",
+      "target": "engine.speaker"
+    },
+    {
+      "source": "app.api.upload",
+      "target": "engine.speaker.speaker_factory"
+    },
+    {
+      "source": "app.api.websocket",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.websocket",
+      "target": "app.constants"
+    },
+    {
+      "source": "app.api.websocket",
+      "target": "app.services"
+    },
+    {
+      "source": "app.api.websocket",
+      "target": "engine.speaker.speaker_factory"
+    },
+    {
+      "source": "app.middleware",
+      "target": "app.middleware.rate_limit"
+    },
+    {
+      "source": "app.schemas",
+      "target": "app.schemas.response"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.session"
+    },
+    {
+      "source": "app.services.session",
+      "target": "app.constants"
+    },
+    {
+      "source": "engine.speaker",
+      "target": "engine.speaker.speaker_factory"
+    },
+    {
+      "source": "engine.speaker.campplus_engine",
+      "target": "engine.speaker.base_engine"
+    },
+    {
+      "source": "engine.speaker.eres2net_engine",
+      "target": "engine.speaker.base_engine"
+    },
+    {
+      "source": "engine.speaker.speaker_factory",
+      "target": "engine.speaker.campplus_engine"
+    },
+    {
+      "source": "engine.speaker.speaker_factory",
+      "target": "engine.speaker.eres2net_engine"
+    },
+    {
+      "source": "engine.speaker.speaker_factory",
+      "target": "engine.speaker.wespeaker_engine"
+    },
+    {
+      "source": "engine.speaker.wespeaker_engine",
+      "target": "engine.speaker.base_engine"
+    },
+    {
+      "source": "main",
+      "target": "app"
+    },
+    {
+      "source": "main",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.test_audio_chunking",
+      "target": "app.api.upload"
+    },
+    {
+      "source": "tests.test_base_engine",
+      "target": "engine.speaker.base_engine"
+    },
+    {
+      "source": "tests.test_engine_switch",
+      "target": "app"
+    },
+    {
+      "source": "tests.test_engine_switch",
+      "target": "app.api.speakers"
+    },
+    {
+      "source": "tests.test_engine_switch",
+      "target": "app.schemas.response"
+    },
+    {
+      "source": "tests.test_engine_switch",
+      "target": "engine.speaker.speaker_factory"
+    },
+    {
+      "source": "tests.test_exceptions",
+      "target": "app.api.upload"
+    },
+    {
+      "source": "tests.test_exceptions",
+      "target": "app.exceptions"
+    },
+    {
+      "source": "tests.test_health",
+      "target": "app.api.health"
+    },
+    {
+      "source": "tests.test_logging",
+      "target": "app.exceptions"
+    },
+    {
+      "source": "tests.test_logging",
+      "target": "engine.speaker.base_engine"
+    },
+    {
+      "source": "tests.test_rate_limit",
+      "target": "app.api.speakers"
+    },
+    {
+      "source": "tests.test_rate_limit",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.test_rate_limit",
+      "target": "app.middleware"
+    },
+    {
+      "source": "tests.test_rate_limit_integration",
+      "target": "app.middleware.rate_limit"
+    },
+    {
+      "source": "tests.test_speaker_management",
+      "target": "app.api.speakers"
+    },
+    {
+      "source": "tests.test_speaker_management",
+      "target": "app.schemas.response"
+    },
+    {
+      "source": "tests.test_upload_security",
+      "target": "app.api.upload"
+    }
+  ]
+}

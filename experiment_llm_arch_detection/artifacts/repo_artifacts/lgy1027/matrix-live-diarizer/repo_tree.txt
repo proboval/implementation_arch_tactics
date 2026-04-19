@@ -1,0 +1,50 @@
+matrix-live-diarizer
+├── app
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── health.py
+│   │   ├── speakers.py
+│   │   ├── upload.py
+│   │   └── websocket.py
+│   ├── middleware
+│   │   ├── __init__.py
+│   │   └── rate_limit.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   └── response.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   └── session.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── constants.py
+│   └── exceptions.py
+├── engine
+│   ├── speaker
+│   │   ├── __init__.py
+│   │   ├── base_engine.py
+│   │   ├── campplus_engine.py
+│   │   ├── eres2net_engine.py
+│   │   ├── speaker_factory.py
+│   │   └── wespeaker_engine.py
+│   └── asr_engine.py
+├── tests
+│   ├── __init__.py
+│   ├── test_audio_chunking.py
+│   ├── test_base_engine.py
+│   ├── test_engine_switch.py
+│   ├── test_exceptions.py
+│   ├── test_health.py
+│   ├── test_logging.py
+│   ├── test_rate_limit.py
+│   ├── test_rate_limit_integration.py
+│   ├── test_speaker_management.py
+│   └── test_upload_security.py
+├── web
+│   └── index.html
+├── .env.example
+├── .gitignore
+├── main.py
+├── README.md
+├── requirements.txt
+└── TODO.md

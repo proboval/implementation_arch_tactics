@@ -1,0 +1,1198 @@
+OpenSpace
+├── assets
+│   ├── add_custom_panel.png
+│   ├── benchmark_income.png
+│   ├── benchmark_kpi.png
+│   ├── benchmark_quality_tokens.png
+│   ├── benchmark_skill_taxonomy.png
+│   ├── benchmark_task_showcase.png
+│   ├── cli-typing.gif
+│   ├── command_palette.png
+│   ├── framework.png
+│   ├── frontend_1.gif
+│   ├── frontend_2.gif
+│   ├── frontend_3.gif
+│   ├── frontend_4.gif
+│   ├── logo.png
+│   ├── manga.png
+│   ├── manga_v1.png
+│   ├── my_daily_monitor_dark.png
+│   ├── my_daily_monitor_evograph.png
+│   ├── my_daily_monitor_light.png
+│   ├── settings_api_keys.png
+│   └── settings_preferences.png
+├── frontend
+│   ├── public
+│   │   └── openspace_icon.webp
+│   ├── src
+│   │   ├── api
+│   │   │   ├── client.ts
+│   │   │   ├── index.ts
+│   │   │   ├── overview.ts
+│   │   │   ├── skills.ts
+│   │   │   ├── types.ts
+│   │   │   └── workflows.ts
+│   │   ├── components
+│   │   │   ├── skill-detail
+│   │   │   │   ├── DiffViewer.tsx
+│   │   │   │   ├── SkillEvolutionGraph.tsx
+│   │   │   │   ├── SkillVersionDrawer.tsx
+│   │   │   │   └── SkillVersionFilterBar.tsx
+│   │   │   ├── EmptyState.tsx
+│   │   │   ├── ErrorBoundary.tsx
+│   │   │   ├── LineageGraph.tsx
+│   │   │   ├── MetricCard.tsx
+│   │   │   └── ProgressBar.tsx
+│   │   ├── hooks
+│   │   │   └── useSkillEvolutionGraphData.ts
+│   │   ├── i18n
+│   │   │   ├── en.json
+│   │   │   ├── index.ts
+│   │   │   └── zh.json
+│   │   ├── layouts
+│   │   │   └── MainLayout.tsx
+│   │   ├── pages
+│   │   │   ├── DashboardPage.tsx
+│   │   │   ├── SkillDetailPage.tsx
+│   │   │   ├── SkillsPage.tsx
+│   │   │   ├── WorkflowDetailPage.tsx
+│   │   │   └── WorkflowsPage.tsx
+│   │   ├── utils
+│   │   │   ├── diffParser.ts
+│   │   │   ├── format.ts
+│   │   │   └── skillClasses.ts
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   └── vite-env.d.ts
+│   ├── .env.example
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── gdpval_bench
+│   ├── .openspace
+│   │   └── openspace.db
+│   ├── skills
+│   │   ├── audio-track-production
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── audio-track-production-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── audio-track-production-enhanced-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── audio-track-production-enhanced-enhanced-b8f537
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── audio-track-production-enhanced-enhanced-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── cascade-fail-recovery
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── code-exec-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── code-exec-fallback-266cba
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── code-execution-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── code-execution-fallback-e81068
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── create-soap-note
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── create-soap-note-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── debug-sandbox-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── delegated-file-edit-verification
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── deliverable-completion
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── detect-zero-iteration-failure
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── detect-zero-iteration-failures
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── direct-reportlab-pdf-generation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced
+│   │   │   ├── .skill_id
+│   │   │   ├── sanitize_for_pdf.sh
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-2794b4
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-3d3a9a
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-618c9b
+│   │   │   ├── .skill_id
+│   │   │   ├── sanitize_for_pdf.sh
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-96865f
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-9f3b1f
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-enhanced-c5d426
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── document-gen-fallback-enhanced-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-read-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-shell-extract
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-shell-parse
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-shell-parse-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-shell-parse-enhanced-4bba79
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── docx-shell-workaround
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-creation-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-debug-extraction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-heredoc-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-heredoc-workaround
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-subtotal-audit
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── excel-unmerge-before-write
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── execute-code-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-code-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-file-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-file-ops
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-python-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-python-shell
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── fallback-script-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ffmpeg-encoder-check
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ffmpeg-encoder-check-4855c0
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ffmpeg-graceful-degradation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── file-locate-verify
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── finalize-zip-deliverable
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── graceful-tool-failure
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── heredoc-file-write
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── http-response-handling
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── incremental-excel-build
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── irregular-excel-parsing
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── local-pdf-extraction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── locate-missing-artifacts
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── medical-soap-note-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── multi-deliverable-tracking
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── multi-deliverable-tracking-1e842b
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── multi-deliverable-tracking-2eb609
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── multi-pass-video-editing
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── openpyxl-merged-cell-safe-write
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── openpyxl-sandbox-workaround
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pandoc-pdf-error-diagnosis
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pandoc-pdf-error-recovery
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pandoc-pdf-error-resolution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pandoc-unicode-sanitize
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pandoc-unicode-workaround
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-generation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-generator
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-workflow-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-workflow-enhanced-780c5d
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-checklist-workflow-enhanced-a53b26
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-debug-unbuffered
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-download-extract-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-download-extract-fallback-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-download-extract-fallback-enhanced-29b2f4
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-download-extract-fallback-enhanced-899f5b
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-download-extract-fallback-enhanced-e27e0c
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-engine-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-extraction-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-extraction-fallback-7db3aa
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-extraction-fallback-80956b
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-extraction-fallbacks
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-extraction-fallbacks-7d54a9
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-gen-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-gen-fallback-501bcc
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-gen-fallback-dee20c
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-generation-troubleshooting
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-page-verification-correction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-read-file-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-text-extraction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-text-extraction-9424c5
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-text-extraction-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-text-extraction-fallback-85d5ca
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification-check
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification-check-112b09
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification-cli
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification-cli-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdf-verification-cli-enhanced-657992
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pdftotext-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ppt-workflow-location
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ppt-workflow-location-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ppt-workflow-location-enhanced-72b4a5
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ppt-workflow-location-enhanced-877e03
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pptx-debug-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pptx-file-validation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pptx-shell-verify
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── pptx-validation-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── prioritize-context-data
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── prioritize-context-data-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── prioritize-reference-files
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── prioritize-reference-files-6e4111
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-debug-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-debug-execution-911f17
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-debug-pattern
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-execution-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-execution-fallback-9d4989
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-heredoc-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-shell-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-shell-workaround
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── python-spreadsheet-debug
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── regulatory-fallback-research
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── regulatory-research-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── reliable-excel-workbook-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── reliable-pdf-extraction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── reliable-pdf-extraction-ac5f89
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── reliable-script-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── reportlab-styles
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── research-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── research-fallback-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── resilient-data-gathering
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── resilient-spreadsheet-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── robust-file-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── robust-file-generation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── robust-pdf-extraction
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── robust-pdf-read
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── route-failed-searches-to-shell-agent
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── run-shell-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── run-shell-python-file-io
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── safe-script-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── safe-video-concat-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-exec-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-execution-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-execution-fallback-238489
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-execution-fallback-717e65
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-failure-recovery
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-fallback-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-fallback-execution-048d5a
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-fallback-execution-5eda7b
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-fallback-python
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-fallback-python-e5d7ae
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── sandbox-file-discovery-and-validation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── search-fail-pivot
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── search-fallback-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-agent-delegation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-agent-file-ops
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-agent-file-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-doc-gen-and-locate
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-error-debug-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-python-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── shell-python-heredoc
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── soap-note-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── soap-note-creation-b354d8
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-audit-edit-validate
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-audit-edit-validate-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-audit-edit-validate-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-enhanced-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-enhanced-enhanced-2e6773
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-enhanced-enhanced-f0b1db
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-merged-343937
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-python-merged-f07ee1
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-direct-verification
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-proof-gate-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-proof-gate-merged-fedf41
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── spreadsheet-proof-gate-merged-fedf41-merged
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ssl-proxy-debug-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ssl-proxy-troubleshoot
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── ssl-proxy-troubleshoot-fb786c
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── structured-document-creation
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── task-verification-checkpoints
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── timecode-audio-edit-workflow
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── verified-script-execution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── verify-all-deliverables
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── verify-success-after-unknown-error
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── web-tool-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── web3-fullstack-systematic-build
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── web3-fullstack-systematic-build-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── working-directory-resolution
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── write-file-fallback-report
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── write-file-fallback-report-enhanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── write-file-fallback-report-enhanced-4bc5c2
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── zero-iteration-failure-analysis
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── zip-deliverable-finalization
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   └── zip-export-deliverable
+│   │       ├── .skill_id
+│   │       └── SKILL.md
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── calc_subset_performance.py
+│   ├── config.json
+│   ├── README.md
+│   ├── requirements-eval.txt
+│   ├── run_benchmark.py
+│   ├── task_loader.py
+│   ├── tasks_50.json
+│   ├── tasks_50_full.jsonl
+│   └── token_tracker.py
+├── openspace
+│   ├── agents
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── grounding_agent.py
+│   │   ├── message_utils.py
+│   │   └── visual_analyzer.py
+│   ├── cloud
+│   │   ├── cli
+│   │   │   ├── __init__.py
+│   │   │   ├── download_skill.py
+│   │   │   └── upload_skill.py
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── client.py
+│   │   ├── embedding.py
+│   │   └── search.py
+│   ├── communication
+│   │   ├── adapters
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── feishu.py
+│   │   │   └── whatsapp.py
+│   │   ├── bridges
+│   │   │   └── whatsapp
+│   │   │       ├── allowlist.js
+│   │   │       ├── bridge.js
+│   │   │       └── package.json
+│   │   ├── __init__.py
+│   │   ├── attachment_cache.py
+│   │   ├── config.py
+│   │   ├── gateway.py
+│   │   ├── gateway_runtime.py
+│   │   ├── policy.py
+│   │   ├── runtime_manager.py
+│   │   ├── session_store.py
+│   │   └── types.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── config_agents.json
+│   │   ├── config_communication.json.example
+│   │   ├── config_dev.json.example
+│   │   ├── config_grounding.json
+│   │   ├── config_mcp.json.example
+│   │   ├── config_security.json
+│   │   ├── constants.py
+│   │   ├── grounding.py
+│   │   ├── loader.py
+│   │   ├── README.md
+│   │   └── utils.py
+│   ├── grounding
+│   │   ├── backends
+│   │   │   ├── gui
+│   │   │   │   ├── transport
+│   │   │   │   │   ├── actions.py
+│   │   │   │   │   ├── connector.py
+│   │   │   │   │   └── local_connector.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── anthropic_client.py
+│   │   │   │   ├── anthropic_utils.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── provider.py
+│   │   │   │   ├── session.py
+│   │   │   │   └── tool.py
+│   │   │   ├── mcp
+│   │   │   │   ├── transport
+│   │   │   │   │   ├── connectors
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── base.py
+│   │   │   │   │   │   ├── http.py
+│   │   │   │   │   │   ├── sandbox.py
+│   │   │   │   │   │   ├── stdio.py
+│   │   │   │   │   │   ├── utils.py
+│   │   │   │   │   │   └── websocket.py
+│   │   │   │   │   └── task_managers
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       ├── sse.py
+│   │   │   │   │       ├── stdio.py
+│   │   │   │   │       ├── streamable_http.py
+│   │   │   │   │       └── websocket.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── client.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── installer.py
+│   │   │   │   ├── provider.py
+│   │   │   │   ├── session.py
+│   │   │   │   ├── tool_cache.py
+│   │   │   │   └── tool_converter.py
+│   │   │   ├── shell
+│   │   │   │   ├── transport
+│   │   │   │   │   ├── connector.py
+│   │   │   │   │   └── local_connector.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── productivity_tools.py
+│   │   │   │   ├── provider.py
+│   │   │   │   └── session.py
+│   │   │   ├── web
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── provider.py
+│   │   │   │   └── session.py
+│   │   │   └── __init__.py
+│   │   └── core
+│   │       ├── quality
+│   │       │   ├── __init__.py
+│   │       │   ├── manager.py
+│   │       │   ├── store.py
+│   │       │   └── types.py
+│   │       ├── security
+│   │       │   ├── __init__.py
+│   │       │   ├── e2b_sandbox.py
+│   │       │   ├── policies.py
+│   │       │   └── sandbox.py
+│   │       ├── system
+│   │       │   ├── __init__.py
+│   │       │   ├── provider.py
+│   │       │   └── tool.py
+│   │       ├── tool
+│   │       │   ├── __init__.py
+│   │       │   ├── base.py
+│   │       │   ├── local_tool.py
+│   │       │   └── remote_tool.py
+│   │       ├── transport
+│   │       │   ├── connectors
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── aiohttp_connector.py
+│   │       │   │   └── base.py
+│   │       │   └── task_managers
+│   │       │       ├── __init__.py
+│   │       │       ├── aiohttp_connection_manager.py
+│   │       │       ├── async_ctx.py
+│   │       │       ├── base.py
+│   │       │       ├── noop.py
+│   │       │       └── placeholder.py
+│   │       ├── exceptions.py
+│   │       ├── grounding_client.py
+│   │       ├── provider.py
+│   │       ├── search_tools.py
+│   │       ├── session.py
+│   │       └── types.py
+│   ├── host_detection
+│   │   ├── __init__.py
+│   │   ├── nanobot.py
+│   │   ├── openclaw.py
+│   │   └── resolver.py
+│   ├── host_skills
+│   │   ├── delegate-task
+│   │   │   └── SKILL.md
+│   │   ├── skill-discovery
+│   │   │   └── SKILL.md
+│   │   └── README.md
+│   ├── llm
+│   │   ├── __init__.py
+│   │   └── client.py
+│   ├── local_server
+│   │   ├── platform_adapters
+│   │   │   ├── __init__.py
+│   │   │   ├── linux_adapter.py
+│   │   │   ├── macos_adapter.py
+│   │   │   ├── pyxcursor.py
+│   │   │   └── windows_adapter.py
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── accessibility.py
+│   │   │   └── screenshot.py
+│   │   ├── __init__.py
+│   │   ├── config.json
+│   │   ├── feature_checker.py
+│   │   ├── health_checker.py
+│   │   ├── main.py
+│   │   ├── README.md
+│   │   ├── requirements.txt
+│   │   └── run.sh
+│   ├── platforms
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── recording.py
+│   │   ├── screenshot.py
+│   │   └── system_info.py
+│   ├── prompts
+│   │   ├── __init__.py
+│   │   ├── grounding_agent_prompts.py
+│   │   └── skill_engine_prompts.py
+│   ├── recording
+│   │   ├── __init__.py
+│   │   ├── action_recorder.py
+│   │   ├── manager.py
+│   │   ├── recorder.py
+│   │   ├── utils.py
+│   │   ├── video.py
+│   │   └── viewer.py
+│   ├── skill_engine
+│   │   ├── __init__.py
+│   │   ├── analyzer.py
+│   │   ├── conversation_formatter.py
+│   │   ├── evolver.py
+│   │   ├── fuzzy_match.py
+│   │   ├── patch.py
+│   │   ├── registry.py
+│   │   ├── retrieve_tool.py
+│   │   ├── skill_ranker.py
+│   │   ├── skill_utils.py
+│   │   ├── store.py
+│   │   └── types.py
+│   ├── skills
+│   │   └── README.md
+│   ├── utils
+│   │   ├── telemetry
+│   │   │   ├── __init__.py
+│   │   │   ├── events.py
+│   │   │   ├── telemetry.py
+│   │   │   └── utils.py
+│   │   ├── cli_display.py
+│   │   ├── display.py
+│   │   ├── logging.py
+│   │   ├── ui.py
+│   │   └── ui_integration.py
+│   ├── .env.example
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── dashboard_server.py
+│   ├── mcp_server.py
+│   └── tool_layer.py
+├── showcase
+│   ├── .openspace
+│   │   └── openspace.db
+│   ├── my-daily-monitor
+│   │   ├── server
+│   │   │   ├── routes
+│   │   │   │   ├── calendar.ts
+│   │   │   │   ├── email.ts
+│   │   │   │   ├── feishu.ts
+│   │   │   │   ├── github.ts
+│   │   │   │   ├── health.ts
+│   │   │   │   ├── news.ts
+│   │   │   │   ├── office.ts
+│   │   │   │   ├── social.ts
+│   │   │   │   ├── stock.ts
+│   │   │   │   └── system.ts
+│   │   │   └── index.ts
+│   │   ├── src
+│   │   │   ├── components
+│   │   │   │   ├── BreakingNewsBanner.ts
+│   │   │   │   ├── CodeStatusPanel.ts
+│   │   │   │   ├── CommandPalette.ts
+│   │   │   │   ├── DevOpsPanel.ts
+│   │   │   │   ├── EmailPanel.ts
+│   │   │   │   ├── FeishuPanel.ts
+│   │   │   │   ├── FinancePanel.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── InsightsPanel.ts
+│   │   │   │   ├── LiveNewsPanel.ts
+│   │   │   │   ├── MapPanel.ts
+│   │   │   │   ├── MiniGlobe.ts
+│   │   │   │   ├── MyMonitorsPanel.ts
+│   │   │   │   ├── NewsPanel.ts
+│   │   │   │   ├── NewsWebPanel.ts
+│   │   │   │   ├── OfficePanel.ts
+│   │   │   │   ├── Panel.ts
+│   │   │   │   ├── QuickLinksPanel.ts
+│   │   │   │   ├── SchedulePanel.ts
+│   │   │   │   ├── SettingsModal.ts
+│   │   │   │   ├── SocialPanel.ts
+│   │   │   │   ├── StockPanel.ts
+│   │   │   │   ├── SystemHealthPanel.ts
+│   │   │   │   ├── TodayFocusSidebar.ts
+│   │   │   │   ├── TwitterWebPanel.ts
+│   │   │   │   ├── WeatherPanel.ts
+│   │   │   │   ├── WebPanel.ts
+│   │   │   │   ├── WorldClockPanel.ts
+│   │   │   │   └── XiaohongshuWebPanel.ts
+│   │   │   ├── config
+│   │   │   │   ├── preferences.ts
+│   │   │   │   └── settings-keys.ts
+│   │   │   ├── services
+│   │   │   │   ├── ai-summary.ts
+│   │   │   │   ├── code-status.ts
+│   │   │   │   ├── email.ts
+│   │   │   │   ├── feishu.ts
+│   │   │   │   ├── finance.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── news.ts
+│   │   │   │   ├── office.ts
+│   │   │   │   ├── refresh-scheduler.ts
+│   │   │   │   ├── schedule.ts
+│   │   │   │   ├── settings-store.ts
+│   │   │   │   ├── social.ts
+│   │   │   │   ├── stock-market.ts
+│   │   │   │   └── system-health.ts
+│   │   │   ├── styles
+│   │   │   │   ├── happy-theme.css
+│   │   │   │   └── main.css
+│   │   │   ├── utils
+│   │   │   │   ├── circuit-breaker.ts
+│   │   │   │   ├── format.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── sparkline.ts
+│   │   │   │   └── theme-manager.ts
+│   │   │   ├── main.ts
+│   │   │   └── vite-env.d.ts
+│   │   ├── .gitignore
+│   │   ├── index.html
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite-api-plugin.ts
+│   │   └── vite.config.ts
+│   ├── skills
+│   │   ├── api-proxy-endpoint
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── codebase-pattern-analyzer
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── combined-head-linecount-check
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── create-full-stack-panel-feature
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── create-full-stack-panel-feature-with-server-wiring
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── create-skill-from-source-code
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── css-append-selector-verify
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── dashboard-domain-specification
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── data-driven-panel
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── data-service
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── data-service-circuit-breaker-aware
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── data-service-optional-params
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── data-service-proxy-direct
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── dir-verify-parallel-shell-audit
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── dynamic-panel-component
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── enhance-typescript-ui-components
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── finnhub-stock-api
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── full-stack-panel-authoring
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── idempotent-file-replace
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── large-file-write-heredoc
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── large-file-write-mkdir
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── large-file-write-via-temp-script
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── list-and-count-directories
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── news-api-integration
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-base-advanced
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-breaker-backoff
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-breaker-stateful
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-component
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-component-aggregator
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-component-colocated-helpers
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-component-with-push-sidebar
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-component-xss-safe
+│   │   │   ├── src
+│   │   │   │   └── utils
+│   │   │   │       └── esc.ts
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-data-resilient
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-event-forms
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-grid-layout
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-retry-localstorage
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-state-persistence
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── panel-visual-badges
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── personal-monitor-domain
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── project-scaffold
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── push-based-widget-module-pattern
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── react-localstorage-keyboard-nav
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── refresh-scheduler
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── safe-css-append
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── skill-template-generator
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── smart-poll-loop
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── typescript-compile-check-resilient
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── typescript-compile-check-resilient-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── typescript-import-audit
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── typescript-typecheck-fallback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── unicode-safe-file-writing
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── vanilla-ts-http-route-handler
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── verify-directory-structure
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── verify-directory-structure-parallel-audit
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── virtual-list
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── worldmonitor-reference
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── write-special-chars-heredoc
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   ├── write-special-chars-readback
+│   │   │   ├── .skill_id
+│   │   │   └── SKILL.md
+│   │   └── write-special-chars-ts-check
+│   │       ├── .skill_id
+│   │       └── SKILL.md
+│   └── README.md
+├── .gitignore
+├── COMMUNICATION.md
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── README_CN.md
+└── requirements.txt

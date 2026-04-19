@@ -1,0 +1,262 @@
+# FILE: app/main.py
+from contextlib import asynccontextmanager
+from os import getenv
+from pathlib import Path
+from agno.os import AgentOS
+from dash.agents.analyst import analyst
+from dash.agents.engineer import engineer
+from dash.settings import SLACK_SIGNING_SECRET, SLACK_TOKEN, dash_knowledge, dash_learnings
+from dash.team import dash
+from db import get_postgres_db
+
+def _register_schedulesNone: ...
+
+async def lifespanNone: ...
+
+def reload_knowledgeNone: ...
+
+# FILE: dash/__main__.py
+from dash.team import dash
+
+# FILE: dash/agents/analyst.py
+from agno.agent import Agent
+from dash.instructions import build_analyst_instructions
+from dash.settings import MODEL, agent_db, dash_knowledge, dash_learning
+from dash.tools.build import build_analyst_tools
+
+# FILE: dash/agents/engineer.py
+from agno.agent import Agent
+from dash.instructions import build_engineer_instructions
+from dash.settings import MODEL, agent_db, dash_knowledge, dash_learning
+from dash.tools.build import build_engineer_tools
+
+# FILE: dash/context/business_rules.py
+import json
+from pathlib import Path
+from typing import Any
+from agno.utils.log import logger
+from dash.paths import BUSINESS_DIR
+
+def load_business_rulesNone: ...
+
+def build_business_contextNone: ...
+
+# FILE: dash/context/semantic_model.py
+import json
+from pathlib import Path
+from typing import Any
+from agno.utils.log import logger
+from dash.paths import TABLES_DIR
+
+def load_table_metadataNone: ...
+
+def build_semantic_modelNone: ...
+
+def format_semantic_modelNone: ...
+
+# FILE: dash/instructions.py
+from dash.context.business_rules import build_business_context
+from dash.context.semantic_model import build_semantic_model, format_semantic_model
+
+def build_leader_instructionsNone: ...
+
+def build_analyst_instructionsNone: ...
+
+def build_engineer_instructionsNone: ...
+
+# FILE: dash/paths.py
+from pathlib import Path
+
+# FILE: dash/settings.py
+from os import getenv
+from agno.learn import LearnedKnowledgeConfig, LearningMachine, LearningMode
+from agno.models.openai import OpenAIResponses
+from db import create_knowledge, get_postgres_db
+
+# FILE: dash/team.py
+from agno.team import Team, TeamMode
+from dash.agents.analyst import analyst
+from dash.agents.engineer import engineer
+from dash.instructions import build_leader_instructions
+from dash.settings import MODEL, SLACK_TOKEN, agent_db, dash_learning
+
+# FILE: dash/tools/build.py
+from agno.knowledge import Knowledge
+from agno.tools.reasoning import ReasoningTools
+from agno.tools.sql import SQLTools
+from dash.tools.introspect import create_introspect_schema_tool
+from dash.tools.save_query import create_save_validated_query_tool
+from dash.tools.update_knowledge import create_update_knowledge_tool
+from db import DASH_SCHEMA, db_url, get_readonly_engine, get_sql_engine
+
+def build_analyst_toolsNone: ...
+
+def build_engineer_toolsNone: ...
+
+# FILE: dash/tools/introspect.py
+from agno.tools import tool
+from agno.utils.log import logger
+from sqlalchemy import Engine, create_engine, inspect, text
+from sqlalchemy.exc import DatabaseError, OperationalError
+from db.session import DASH_SCHEMA
+
+def create_introspect_schema_toolNone: ...
+
+# FILE: dash/tools/save_query.py
+import json
+from agno.knowledge import Knowledge
+from agno.knowledge.reader.text_reader import TextReader
+from agno.tools import tool
+from agno.utils.log import logger
+
+def create_save_validated_query_toolNone: ...
+
+# FILE: dash/tools/update_knowledge.py
+from agno.knowledge import Knowledge
+from agno.knowledge.reader.text_reader import TextReader
+from agno.tools import tool
+from agno.utils.log import logger
+
+def create_update_knowledge_toolNone: ...
+
+# FILE: db/__init__.py
+from db.session import DASH_SCHEMA, create_knowledge, get_postgres_db, get_readonly_engine, get_sql_engine
+from db.url import db_url
+
+# FILE: db/session.py
+import re
+from agno.db.postgres import PostgresDb
+from agno.knowledge import Knowledge
+from agno.knowledge.embedder.openai import OpenAIEmbedder
+from agno.vectordb.pgvector import PgVector, SearchType
+from sqlalchemy import Engine, create_engine, event, text
+from db.url import db_url
+
+def _guard_public_schemaNone: ...
+
+def get_sql_engineNone: ...
+
+def get_readonly_engineNone: ...
+
+def get_postgres_dbNone: ...
+
+def create_knowledgeNone: ...
+
+# FILE: db/url.py
+from os import getenv
+from urllib.parse import quote
+
+def build_db_urlNone: ...
+
+# FILE: evals/__init__.py
+from agno.models.openai import OpenAIResponses
+
+# FILE: evals/__main__.py
+import argparse
+import sys
+from dotenv import load_dotenv
+from evals import CATEGORIES
+
+def mainNone: ...
+
+# FILE: evals/improve.py
+from __future__ import annotations
+import importlib
+import json
+import shutil
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+from dash.paths import BUSINESS_DIR, DASH_DIR, QUERIES_DIR
+
+class Change:
+
+class ImprovementPlan:
+
+class RoundReport:
+
+def _build_analysis_promptNone: ...
+
+def get_improvement_planNone: ...
+
+def _backupNone: ...
+
+def _restoreNone: ...
+
+def apply_changesNone: ...
+
+def reload_teamNone: ...
+
+def _test_status_mapNone: ...
+
+def run_improvement_loopNone: ...
+
+def _print_round_reportNone: ...
+
+# FILE: evals/run.py
+from __future__ import annotations
+import importlib
+import time
+from typing import Literal
+from agno.eval.accuracy import AccuracyEval
+from agno.eval.agent_as_judge import AgentAsJudgeEval
+from agno.eval.reliability import ReliabilityEval
+from evals import CATEGORIES, JUDGE_MODEL
+
+def _get_teamNone: ...
+
+def run_judge_casesNone: ...
+
+def run_reliability_casesNone: ...
+
+def run_accuracy_casesNone: ...
+
+def _print_statusNone: ...
+
+def run_evalsNone: ...
+
+# FILE: evals/smoke.py
+from __future__ import annotations
+import argparse
+import re
+import sys
+import time
+from dataclasses import dataclass, field
+
+class SmokeTest:
+
+class SmokeResult:
+
+def run_testNone: ...
+
+def _check_requirementsNone: ...
+
+def run_smoke_testsNone: ...
+
+# FILE: scripts/generate_data.py
+import argparse
+import random
+from datetime import date, datetime, timedelta
+from typing import NamedTuple
+import pandas as pd
+from sqlalchemy import create_engine, text
+from db import db_url
+
+class PlanInfo(NamedTuple):
+
+def _company_nameNone: ...
+
+def _plan_for_sizeNone: ...
+
+def _churn_probabilityNone: ...
+
+def _random_date_in_monthNone: ...
+
+def generateNone: ...
+
+def load_dataNone: ...
+
+# FILE: scripts/load_knowledge.py
+from dash.paths import KNOWLEDGE_DIR
+
+def load_knowledgeNone: ...

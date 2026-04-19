@@ -1,0 +1,64 @@
+# FILE: src/config.py
+from pydantic_settings import BaseSettings
+
+class Config(BaseSettings):
+
+# FILE: src/exceptions.py
+from fastapi import HTTPException, status
+
+class TranscriptionError(HTTPException):
+    def __init__None: ...
+
+class OllamaError(HTTPException):
+    def __init__None: ...
+
+class InvalidAudioFile(HTTPException):
+    def __init__None: ...
+
+# FILE: src/main.py
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from src.transcription.router import router as transcription_router
+
+async def health_checkNone: ...
+
+# FILE: src/transcription/dependencies.py
+from pathlib import Path
+from fastapi import UploadFile
+from src.exceptions import InvalidAudioFile
+from src.transcription.constants import ALLOWED_AUDIO_EXTENSIONS, MAX_AUDIO_FILE_SIZE
+from src.transcription.exceptions import AudioTooLarge, UnsupportedAudioFormat
+
+async def valid_audio_fileNone: ...
+
+# FILE: src/transcription/exceptions.py
+from fastapi import HTTPException, status
+
+class AudioTooLarge(HTTPException):
+    def __init__None: ...
+
+class UnsupportedAudioFormat(HTTPException):
+    def __init__None: ...
+
+# FILE: src/transcription/router.py
+from fastapi import APIRouter
+from src.transcription.service import transcription_service
+
+async def transcribe_and_correctNone: ...
+
+# FILE: src/transcription/service.py
+import os
+from pathlib import Path
+from typing import BinaryIO
+from faster_whisper import WhisperModel
+import ollama
+from src.config import settings
+from src.exceptions import TranscriptionError, OllamaError
+from src.transcription.constants import CORRECTION_PROMPT
+
+class TranscriptionService:
+    def __init__None: ...
+    def whisper_modelNone: ...
+    async def transcribe_audioNone: ...
+    async def correct_text_with_ollamaNone: ...
+    async def process_fixed_audioNone: ...

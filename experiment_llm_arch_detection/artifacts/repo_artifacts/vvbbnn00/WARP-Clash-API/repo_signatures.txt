@@ -1,0 +1,231 @@
+# FILE: app.py
+import argparse
+import sys
+from config import PORT, HOST
+from utils.entrypoints import optimizeEntrypoints
+from utils.logger import createLogger
+
+def linuxStartWebNone: ...
+
+def mainNone: ...
+
+# FILE: config.py
+import os
+
+# FILE: models/__init__.py
+from .account import Account
+from .entrypoint import Entrypoint
+
+# FILE: models/account.py
+import datetime
+import json
+import logging
+
+class Account:
+    def __str__None: ...
+    def saveNone: ...
+    def loadNone: ...
+
+# FILE: models/entrypoint.py
+import datetime
+
+class Entrypoint:
+    def __str__None: ...
+    def __repr__None: ...
+
+# FILE: services/account.py
+import logging
+from services.cloudflare import updatePublicKey, updateLicenseKey
+from services.common import getCurrentAccount
+from utils.wireguard import generateWireguardKeys
+
+def resetAccountKeyNone: ...
+
+def doUpdateLicenseKeyNone: ...
+
+# FILE: services/cloudflare.py
+import datetime
+import random
+import requests
+import faker
+from models import Account
+
+def genAccountFromResponseNone: ...
+
+def registerNone: ...
+
+def getAccountNone: ...
+
+def updateLicenseKeyNone: ...
+
+def updatePublicKeyNone: ...
+
+def getClientConfigNone: ...
+
+# FILE: services/common.py
+import logging
+from models import Account
+from services.cloudflare import register
+from utils.wireguard import generateWireguardKeys
+
+def getCurrentAccountNone: ...
+
+# FILE: services/scheduled_service.py
+import sys
+import time
+import logging
+from apscheduler.schedulers.background import BackgroundScheduler
+from config import DO_GET_WARP_DATA, REOPTIMIZE_INTERVAL, GET_WARP_DATA_INTERVAL
+from services.tasks import doAddDataTaskOnce, saveAccount, reoptimizeEntryPoints
+
+def mainNone: ...
+
+# FILE: services/subscription.py
+import base64
+import configparser
+import copy
+import json
+import logging
+import random
+import string
+import tempfile
+import urllib.parse
+import yaml
+from flask import request
+from config import PUBLIC_URL, RANDOM_COUNT, SECRET_KEY, SHARE_SUBSCRIPTION
+from models import Account
+from services.common import getCurrentAccount
+from utils.entrypoints import getEntrypoints, getBestEntrypoints
+from utils.geoip import GeoIP
+from utils.node_name import NodeNameGenerator
+
+def getRandomEntryPointsNone: ...
+
+def generateClashSubFileNone: ...
+
+def generateWireguardSubFileNone: ...
+
+def generateSurgeSubFileNone: ...
+
+def generateShadowRocketSubFileNone: ...
+
+def generateSingBoxSubFileNone: ...
+
+def generateLoonSubFileNone: ...
+
+# FILE: services/tasks.py
+import logging
+import sys
+import time
+from models import Account
+from services.cloudflare import register
+from services.common import getCurrentAccount
+from utils.entrypoints import optimizeEntrypoints
+from utils.wireguard import generateWireguardKeys
+from services.cloudflare import getAccount
+from utils.proxy import getProxy
+
+def doAddDataTaskOnceNone: ...
+
+def saveAccountNone: ...
+
+def reoptimizeEntryPointsNone: ...
+
+# FILE: services/web_service.py
+import logging
+import time
+from functools import wraps
+from faker import Faker
+from flask import Flask, request, make_response, current_app, render_template
+from config import SECRET_KEY, REQUEST_RATE_LIMIT, SHARE_SUBSCRIPTION
+from services.account import resetAccountKey, doUpdateLicenseKey
+from services.common import getCurrentAccount
+from services.subscription import generateClashSubFile, generateWireguardSubFile, generateSurgeSubFile, \
+    generateShadowRocketSubFile, generateSingBoxSubFile, generateLoonSubFile
+from utils.sub_useragent import getSubTypeFromUA
+
+def authorizedNone: ...
+
+def rateLimitNone: ...
+
+def attachEndpointsNone: ...
+
+def createAppNone: ...
+
+# FILE: tests/test_utils.py
+import unittest
+from utils.entrypoints import *
+from utils.geoip import GeoIP, countryCodeToEmoji
+from utils.proxy import getProxy
+from utils.wireguard import generateWireguardKeys
+
+class TestUtils(unittest.TestCase):
+    def test_getProxyNone: ...
+    def test_WireguardNone: ...
+    def test_EntryPointsNone: ...
+    def test_GeoIPNone: ...
+
+# FILE: utils/entrypoints.py
+import copy
+import csv
+import logging
+import os
+from flask import current_app
+from config import DELAY_THRESHOLD, LOSS_THRESHOLD
+from models import Entrypoint
+
+def _getLoggerNone: ...
+
+def readCsvNone: ...
+
+def reloadEntrypointsNone: ...
+
+def getEntrypointsNone: ...
+
+def getBestEntrypointsNone: ...
+
+def optimizeEntrypointsNone: ...
+
+# FILE: utils/geoip.py
+import logging
+import maxminddb
+
+def countryCodeToEmojiNone: ...
+
+class GeoIP:
+    def __init__None: ...
+    def lookupNone: ...
+    def lookup_emojiNone: ...
+    def closeNone: ...
+
+# FILE: utils/logger.py
+import logging
+import os
+from logging.handlers import TimedRotatingFileHandler
+
+def createLoggerNone: ...
+
+# FILE: utils/node_name.py
+import uuid
+from faker import Faker
+
+class NodeNameGenerator:
+    def __init__None: ...
+    def generate_unique_nameNone: ...
+    def nextNone: ...
+
+# FILE: utils/proxy.py
+import requests
+from config import PROXY_POOL_URL
+
+def getProxyNone: ...
+
+# FILE: utils/sub_useragent.py
+def getSubTypeFromUANone: ...
+
+# FILE: utils/wireguard.py
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import x25519
+from base64 import b64encode
+
+def generateWireguardKeysNone: ...

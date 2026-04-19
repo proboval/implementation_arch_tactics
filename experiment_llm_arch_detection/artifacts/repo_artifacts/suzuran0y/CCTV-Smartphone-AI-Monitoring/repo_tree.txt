@@ -1,0 +1,119 @@
+CCTV-Smartphone-AI-Monitoring
+├── app
+│   ├── ai
+│   │   ├── __init__.py
+│   │   ├── ai_ark.py
+│   │   ├── ai_monitor_worker.py
+│   │   ├── ai_store.py
+│   │   └── motion_trigger.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   └── config_store.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── frame_buffer.py
+│   │   ├── logger.py
+│   │   ├── runtime.py
+│   │   └── upload_stats.py
+│   ├── net
+│   │   ├── __init__.py
+│   │   └── net_discovery.py
+│   ├── recorder
+│   │   ├── __init__.py
+│   │   ├── recorder.py
+│   │   └── recorder_worker.py
+│   ├── web
+│   │   ├── static
+│   │   │   ├── dashboard.js
+│   │   │   └── style.css
+│   │   ├── templates
+│   │   │   └── dashboard.html
+│   │   ├── __init__.py
+│   │   └── webapp.py
+│   └── __init__.py
+├── assets
+│   ├── ai_monitoring_record.png
+│   ├── app_failed_hint.jpg
+│   ├── app_main_page.jpg
+│   ├── app_setting_page.jpg
+│   ├── dashboard_ai_on.png
+│   ├── dashboard_ingest_on.png
+│   ├── dashboard_recording.png
+│   └── readme_banner.png
+├── log
+│   └── .gitkeep
+├── PhoneCamSender
+│   ├── app
+│   │   ├── src
+│   │   │   ├── androidTest
+│   │   │   │   └── java
+│   │   │   │       └── com
+│   │   │   │           └── example
+│   │   │   ├── main
+│   │   │   │   ├── java
+│   │   │   │   │   └── com
+│   │   │   │   │       └── example
+│   │   │   │   ├── res
+│   │   │   │   │   ├── drawable
+│   │   │   │   │   │   ├── ic_launcher_background.xml
+│   │   │   │   │   │   └── ic_launcher_foreground.xml
+│   │   │   │   │   ├── layout
+│   │   │   │   │   │   ├── activity_main.xml
+│   │   │   │   │   │   └── activity_settings.xml
+│   │   │   │   │   ├── mipmap-anydpi
+│   │   │   │   │   │   ├── ic_launcher.xml
+│   │   │   │   │   │   └── ic_launcher_round.xml
+│   │   │   │   │   ├── mipmap-hdpi
+│   │   │   │   │   │   ├── ic_launcher.webp
+│   │   │   │   │   │   └── ic_launcher_round.webp
+│   │   │   │   │   ├── mipmap-mdpi
+│   │   │   │   │   │   ├── ic_launcher.webp
+│   │   │   │   │   │   └── ic_launcher_round.webp
+│   │   │   │   │   ├── mipmap-xhdpi
+│   │   │   │   │   │   ├── ic_launcher.webp
+│   │   │   │   │   │   └── ic_launcher_round.webp
+│   │   │   │   │   ├── mipmap-xxhdpi
+│   │   │   │   │   │   ├── ic_launcher.webp
+│   │   │   │   │   │   └── ic_launcher_round.webp
+│   │   │   │   │   ├── mipmap-xxxhdpi
+│   │   │   │   │   │   ├── ic_launcher.webp
+│   │   │   │   │   │   └── ic_launcher_round.webp
+│   │   │   │   │   ├── values
+│   │   │   │   │   │   ├── colors.xml
+│   │   │   │   │   │   ├── strings.xml
+│   │   │   │   │   │   └── themes.xml
+│   │   │   │   │   ├── values-night
+│   │   │   │   │   │   └── themes.xml
+│   │   │   │   │   └── xml
+│   │   │   │   │       ├── backup_rules.xml
+│   │   │   │   │       └── data_extraction_rules.xml
+│   │   │   │   └── AndroidManifest.xml
+│   │   │   └── test
+│   │   │       └── java
+│   │   │           └── com
+│   │   │               └── example
+│   │   ├── .gitignore
+│   │   ├── build.gradle.kts
+│   │   └── proguard-rules.pro
+│   ├── gradle
+│   │   ├── wrapper
+│   │   │   ├── gradle-wrapper.jar
+│   │   │   └── gradle-wrapper.properties
+│   │   └── libs.versions.toml
+│   ├── .gitignore
+│   ├── build.gradle.kts
+│   ├── CamFlow-v1.1.0.apk
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   ├── Keystore
+│   └── settings.gradle.kts
+├── recordings
+│   └── .gitkeep
+├── .gitignore
+├── CamFlow_UserGuide.md
+├── CamFlow_UserGuide_CN.md
+├── README.md
+├── README_CN.md
+├── requirements.txt
+└── server.py

@@ -1,0 +1,72 @@
+SoulX-FlashHead
+├── assets
+│   ├── flashhead_logo.png
+│   ├── soul_event_link.png
+│   ├── soul_group.png
+│   ├── SoulX_FlashHead.pdf
+│   └── wechat_group.png
+├── examples
+│   ├── girl.png
+│   └── podcast_sichuan_16k.wav
+├── flash_head
+│   ├── audio_analysis
+│   │   ├── torch_utils.py
+│   │   └── wav2vec2.py
+│   ├── configs
+│   │   └── infer_params.yaml
+│   ├── ltx_video
+│   │   ├── models
+│   │   │   ├── autoencoders
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── causal_conv3d.py
+│   │   │   │   ├── causal_video_autoencoder.py
+│   │   │   │   ├── conv_nd_factory.py
+│   │   │   │   ├── dual_conv3d.py
+│   │   │   │   ├── pixel_norm.py
+│   │   │   │   ├── vae.py
+│   │   │   │   ├── vae_encode.py
+│   │   │   │   └── video_autoencoder.py
+│   │   │   ├── transformers
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── attention.py
+│   │   │   │   ├── embeddings.py
+│   │   │   │   ├── symmetric_patchifier.py
+│   │   │   │   └── transformer3d.py
+│   │   │   └── __init__.py
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── diffusers_config_mapping.py
+│   │   │   ├── prompt_enhance_utils.py
+│   │   │   ├── skip_layer_strategy.py
+│   │   │   └── torch_utils.py
+│   │   ├── .DS_Store
+│   │   ├── __init__.py
+│   │   └── ltx_vae.py
+│   ├── src
+│   │   ├── distributed
+│   │   │   └── usp_device.py
+│   │   ├── modules
+│   │   │   └── flash_head_model.py
+│   │   ├── pipeline
+│   │   │   └── flash_head_pipeline.py
+│   │   └── .DS_Store
+│   ├── utils
+│   │   ├── cpu_face_handler.py
+│   │   ├── facecrop.py
+│   │   └── utils.py
+│   ├── wan
+│   │   └── modules
+│   │       ├── __init__.py
+│   │       └── vae.py
+│   ├── .DS_Store
+│   └── inference.py
+├── .gitignore
+├── generate_video.py
+├── gradio_app.py
+├── gradio_app_streaming.py
+├── inference_script_multi_gpu_pro.sh
+├── inference_script_single_gpu_lite.sh
+├── inference_script_single_gpu_pro.sh
+├── LICENSE
+├── README.md
+└── requirements.txt

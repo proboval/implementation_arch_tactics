@@ -1,0 +1,1557 @@
+{
+  "nodes": [
+    "api_server",
+    "app",
+    "app.core",
+    "app.core.cache",
+    "app.core.config",
+    "app.core.dependencies",
+    "app.core.helpers",
+    "app.core.utils",
+    "app.main",
+    "app.models",
+    "app.models.assistant",
+    "app.models.auth",
+    "app.models.dashboard",
+    "app.models.funds",
+    "app.models.news",
+    "app.models.portfolios",
+    "app.models.recommendations",
+    "app.models.reports",
+    "app.models.settings",
+    "app.models.stocks",
+    "app.models.stress_test",
+    "app.routers",
+    "app.routers.admin",
+    "app.routers.alerts",
+    "app.routers.assistant",
+    "app.routers.auth",
+    "app.routers.commodities",
+    "app.routers.compare",
+    "app.routers.dashboard",
+    "app.routers.details",
+    "app.routers.funds",
+    "app.routers.generate",
+    "app.routers.health",
+    "app.routers.market",
+    "app.routers.news",
+    "app.routers.portfolios",
+    "app.routers.preferences",
+    "app.routers.recommendations",
+    "app.routers.reports",
+    "app.routers.sentiment",
+    "app.routers.settings",
+    "app.routers.stocks",
+    "app.routers.widgets",
+    "app.static",
+    "check_db",
+    "config.settings",
+    "fix_funds_schema",
+    "main",
+    "reset_circuit_breaker",
+    "src",
+    "src.analysis",
+    "src.analysis.base_analyst",
+    "src.analysis.commodities",
+    "src.analysis.commodities.gold_silver",
+    "src.analysis.commodities.quantitative",
+    "src.analysis.dashboard",
+    "src.analysis.fund",
+    "src.analysis.fund.comparison",
+    "src.analysis.fund.diagnosis",
+    "src.analysis.fund.portfolio_analysis",
+    "src.analysis.fund.risk_metrics",
+    "src.analysis.portfolio",
+    "src.analysis.portfolio.correlation",
+    "src.analysis.portfolio.risk_metrics",
+    "src.analysis.portfolio.signals",
+    "src.analysis.portfolio.stress_test",
+    "src.analysis.post_market",
+    "src.analysis.pre_market",
+    "src.analysis.recommendation",
+    "src.analysis.recommendation.engine",
+    "src.analysis.recommendation.factor_store",
+    "src.analysis.recommendation.factor_store.cache",
+    "src.analysis.recommendation.factor_store.daily_computer",
+    "src.analysis.recommendation.factor_store.rate_limiter",
+    "src.analysis.recommendation.fund_engine",
+    "src.analysis.recommendation.fund_engine.engine",
+    "src.analysis.recommendation.fund_engine.factors",
+    "src.analysis.recommendation.fund_engine.factors.manager",
+    "src.analysis.recommendation.fund_engine.factors.performance",
+    "src.analysis.recommendation.fund_engine.factors.risk",
+    "src.analysis.recommendation.fund_engine.strategies",
+    "src.analysis.recommendation.fund_engine.strategies.alpha",
+    "src.analysis.recommendation.fund_engine.strategies.momentum",
+    "src.analysis.recommendation.llm_synthesis",
+    "src.analysis.recommendation.llm_synthesis.explainer",
+    "src.analysis.recommendation.stock_engine",
+    "src.analysis.recommendation.stock_engine.engine",
+    "src.analysis.recommendation.stock_engine.factors",
+    "src.analysis.recommendation.stock_engine.factors.fundamental",
+    "src.analysis.recommendation.stock_engine.factors.sentiment",
+    "src.analysis.recommendation.stock_engine.factors.technical",
+    "src.analysis.recommendation.stock_engine.strategies",
+    "src.analysis.recommendation.stock_engine.strategies.long_term",
+    "src.analysis.recommendation.stock_engine.strategies.short_term",
+    "src.analysis.sentiment",
+    "src.analysis.sentiment.dashboard",
+    "src.analysis.sentiment.market_cycle",
+    "src.analysis.sentiment.money_flow",
+    "src.analysis.sentiment.news_mining",
+    "src.analysis.sentiment.social_media",
+    "src.analysis.strategies",
+    "src.analysis.strategies.base_strategy",
+    "src.analysis.strategies.commodity",
+    "src.analysis.strategies.equity",
+    "src.analysis.strategies.factory",
+    "src.analysis.strategies.stock",
+    "src.analysis.widget_service",
+    "src.auth",
+    "src.cache",
+    "src.cache.cache_manager",
+    "src.data_sources",
+    "src.data_sources.akshare_api",
+    "src.data_sources.circuit_breaker",
+    "src.data_sources.data_source_manager",
+    "src.data_sources.rate_limiter",
+    "src.data_sources.sector_mappings",
+    "src.data_sources.technical_analysis",
+    "src.data_sources.tushare_client",
+    "src.data_sources.utils",
+    "src.data_sources.web_search",
+    "src.data_sources.yfinance_api",
+    "src.data_sources.yfinance_client",
+    "src.llm",
+    "src.llm.client",
+    "src.llm.prompts",
+    "src.llm.recommendation_prompts",
+    "src.llm.stock_diagnosis_prompt",
+    "src.llm.tools",
+    "src.llm.tools.executor",
+    "src.llm.tools.schemas",
+    "src.report_gen",
+    "src.scheduler",
+    "src.scheduler.manager",
+    "src.services",
+    "src.services.ai_scenario_service",
+    "src.services.assistant_service",
+    "src.services.email_service",
+    "src.services.news_service",
+    "src.storage",
+    "src.storage.db",
+    "src.storage.user_preferences",
+    "test_hsgt_min",
+    "test_scan"
+  ],
+  "edges": [
+    {
+      "source": "api_server",
+      "target": "config.settings"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.commodities.gold_silver"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.dashboard"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.fund"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.portfolio"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.portfolio.stress_test"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.post_market"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.pre_market"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.recommendation"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.sentiment.dashboard"
+    },
+    {
+      "source": "api_server",
+      "target": "src.analysis.widget_service"
+    },
+    {
+      "source": "api_server",
+      "target": "src.auth"
+    },
+    {
+      "source": "api_server",
+      "target": "src.cache.cache_manager"
+    },
+    {
+      "source": "api_server",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "api_server",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "api_server",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "api_server",
+      "target": "src.data_sources.web_search"
+    },
+    {
+      "source": "api_server",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "api_server",
+      "target": "src.llm.stock_diagnosis_prompt"
+    },
+    {
+      "source": "api_server",
+      "target": "src.report_gen"
+    },
+    {
+      "source": "api_server",
+      "target": "src.scheduler.manager"
+    },
+    {
+      "source": "api_server",
+      "target": "src.services.ai_scenario_service"
+    },
+    {
+      "source": "api_server",
+      "target": "src.services.assistant_service"
+    },
+    {
+      "source": "api_server",
+      "target": "src.services.news_service"
+    },
+    {
+      "source": "api_server",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "api_server",
+      "target": "src.storage.user_preferences"
+    },
+    {
+      "source": "app.core",
+      "target": "app.core.cache"
+    },
+    {
+      "source": "app.core",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.core",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.core",
+      "target": "app.core.helpers"
+    },
+    {
+      "source": "app.core",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.core.dependencies",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.core.dependencies",
+      "target": "src.auth"
+    },
+    {
+      "source": "app.core.helpers",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "app.core.helpers",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "app.core.utils",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers"
+    },
+    {
+      "source": "app.main",
+      "target": "app.static"
+    },
+    {
+      "source": "app.main",
+      "target": "src.analysis.dashboard"
+    },
+    {
+      "source": "app.main",
+      "target": "src.scheduler.manager"
+    },
+    {
+      "source": "app.main",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.models.auth",
+      "target": "src.auth"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.admin"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.alerts"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.assistant"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.auth"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.commodities"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.compare"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.dashboard"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.details"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.funds"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.generate"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.health"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.market"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.news"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.portfolios"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.preferences"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.recommendations"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.reports"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.sentiment"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.settings"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.stocks"
+    },
+    {
+      "source": "app.routers",
+      "target": "app.routers.widgets"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "app.models.settings"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "src.data_sources.web_search"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.alerts",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.alerts",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.alerts",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.assistant",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.assistant",
+      "target": "app.models.assistant"
+    },
+    {
+      "source": "app.routers.assistant",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.assistant",
+      "target": "src.services.assistant_service"
+    },
+    {
+      "source": "app.routers.auth",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.auth",
+      "target": "src.auth"
+    },
+    {
+      "source": "app.routers.commodities",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.commodities",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.commodities",
+      "target": "app.models.reports"
+    },
+    {
+      "source": "app.routers.commodities",
+      "target": "app.models.settings"
+    },
+    {
+      "source": "app.routers.commodities",
+      "target": "src.analysis.commodities.gold_silver"
+    },
+    {
+      "source": "app.routers.compare",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.compare",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "app.models.dashboard"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "src.analysis.dashboard"
+    },
+    {
+      "source": "app.routers.dashboard",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.details",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.details",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "app.core.helpers"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "app.models.funds"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "src.analysis.fund"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "src.scheduler.manager"
+    },
+    {
+      "source": "app.routers.funds",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.generate",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.generate",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.generate",
+      "target": "app.models.settings"
+    },
+    {
+      "source": "app.routers.generate",
+      "target": "src.scheduler.manager"
+    },
+    {
+      "source": "app.routers.generate",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "app.core.cache"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "app.core.config"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "config.settings"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "app.routers.market",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.news",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.news",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.news",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.news",
+      "target": "app.models.news"
+    },
+    {
+      "source": "app.routers.news",
+      "target": "src.services.news_service"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.core.helpers"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.models.portfolios"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "app.models.stress_test"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.analysis.fund"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.analysis.portfolio"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.analysis.portfolio.stress_test"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.services.ai_scenario_service"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.services.assistant_service"
+    },
+    {
+      "source": "app.routers.portfolios",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.preferences",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.preferences",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.preferences",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.preferences",
+      "target": "src.storage.user_preferences"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.factor_store.daily_computer"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.fund_engine"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.fund_engine.engine"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.stock_engine"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.analysis.recommendation.stock_engine.engine"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "app.routers.recommendations",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.reports",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.reports",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.reports",
+      "target": "app.models.reports"
+    },
+    {
+      "source": "app.routers.reports",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.sentiment",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.sentiment",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.sentiment",
+      "target": "src.analysis.sentiment.dashboard"
+    },
+    {
+      "source": "app.routers.settings",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.settings",
+      "target": "app.models.settings"
+    },
+    {
+      "source": "app.routers.settings",
+      "target": "src.services.email_service"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "app.core.cache"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "app.models.stocks"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "src.llm.stock_diagnosis_prompt"
+    },
+    {
+      "source": "app.routers.stocks",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.routers.widgets",
+      "target": "app.core.dependencies"
+    },
+    {
+      "source": "app.routers.widgets",
+      "target": "app.core.utils"
+    },
+    {
+      "source": "app.routers.widgets",
+      "target": "app.models.auth"
+    },
+    {
+      "source": "app.routers.widgets",
+      "target": "src.analysis.widget_service"
+    },
+    {
+      "source": "app.routers.widgets",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "app.static",
+      "target": "app.core.config"
+    },
+    {
+      "source": "main",
+      "target": "src.analysis.post_market"
+    },
+    {
+      "source": "main",
+      "target": "src.analysis.pre_market"
+    },
+    {
+      "source": "main",
+      "target": "src.report_gen"
+    },
+    {
+      "source": "reset_circuit_breaker",
+      "target": "src.data_sources.circuit_breaker"
+    },
+    {
+      "source": "src.analysis.base_analyst",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.analysis.base_analyst",
+      "target": "src.data_sources.web_search"
+    },
+    {
+      "source": "src.analysis.base_analyst",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.analysis.commodities.quantitative"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.data_sources.web_search"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.data_sources.yfinance_api"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.analysis.commodities.gold_silver",
+      "target": "src.llm.prompts"
+    },
+    {
+      "source": "src.analysis.dashboard",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.analysis.dashboard",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "src.analysis.fund",
+      "target": "src.analysis.fund.comparison"
+    },
+    {
+      "source": "src.analysis.fund",
+      "target": "src.analysis.fund.diagnosis"
+    },
+    {
+      "source": "src.analysis.fund",
+      "target": "src.analysis.fund.portfolio_analysis"
+    },
+    {
+      "source": "src.analysis.fund",
+      "target": "src.analysis.fund.risk_metrics"
+    },
+    {
+      "source": "src.analysis.portfolio",
+      "target": "src.analysis.portfolio.correlation"
+    },
+    {
+      "source": "src.analysis.portfolio",
+      "target": "src.analysis.portfolio.risk_metrics"
+    },
+    {
+      "source": "src.analysis.portfolio",
+      "target": "src.analysis.portfolio.signals"
+    },
+    {
+      "source": "src.analysis.portfolio",
+      "target": "src.analysis.portfolio.stress_test"
+    },
+    {
+      "source": "src.analysis.post_market",
+      "target": "src.analysis.base_analyst"
+    },
+    {
+      "source": "src.analysis.post_market",
+      "target": "src.analysis.strategies.factory"
+    },
+    {
+      "source": "src.analysis.pre_market",
+      "target": "src.analysis.base_analyst"
+    },
+    {
+      "source": "src.analysis.pre_market",
+      "target": "src.analysis.strategies.factory"
+    },
+    {
+      "source": "src.analysis.recommendation",
+      "target": "src.analysis.recommendation.engine"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.fund_engine"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.fund_engine.engine"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.llm_synthesis.explainer"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.stock_engine"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.analysis.recommendation.stock_engine.engine"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.engine",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store",
+      "target": "src.analysis.recommendation.factor_store.daily_computer"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.cache",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.factor_store.rate_limiter"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.fund_engine.factors.manager"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.fund_engine.factors.performance"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.fund_engine.factors.risk"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.fund_engine.strategies.alpha"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.fund_engine.strategies.momentum"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.stock_engine.factors.fundamental"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.stock_engine.factors.sentiment"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.stock_engine.factors.technical"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.stock_engine.strategies.long_term"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.analysis.recommendation.stock_engine.strategies.short_term"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.factor_store.daily_computer",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine",
+      "target": "src.analysis.recommendation.fund_engine.engine"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.fund_engine.factors.manager"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.fund_engine.factors.performance"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.fund_engine.factors.risk"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.fund_engine.strategies.alpha"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.analysis.recommendation.fund_engine.strategies.momentum"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.engine",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors",
+      "target": "src.analysis.recommendation.fund_engine.factors.manager"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors",
+      "target": "src.analysis.recommendation.fund_engine.factors.performance"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors",
+      "target": "src.analysis.recommendation.fund_engine.factors.risk"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors.manager",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors.performance",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.factors.risk",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.strategies",
+      "target": "src.analysis.recommendation.fund_engine.strategies.alpha"
+    },
+    {
+      "source": "src.analysis.recommendation.fund_engine.strategies",
+      "target": "src.analysis.recommendation.fund_engine.strategies.momentum"
+    },
+    {
+      "source": "src.analysis.recommendation.llm_synthesis",
+      "target": "src.analysis.recommendation.llm_synthesis.explainer"
+    },
+    {
+      "source": "src.analysis.recommendation.llm_synthesis.explainer",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine",
+      "target": "src.analysis.recommendation.stock_engine.engine"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.factor_store.cache"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.stock_engine.factors.fundamental"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.stock_engine.factors.sentiment"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.stock_engine.factors.technical"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.stock_engine.strategies.long_term"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.analysis.recommendation.stock_engine.strategies.short_term"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.engine",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors",
+      "target": "src.analysis.recommendation.stock_engine.factors.fundamental"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors",
+      "target": "src.analysis.recommendation.stock_engine.factors.sentiment"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors",
+      "target": "src.analysis.recommendation.stock_engine.factors.technical"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors.fundamental",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors.sentiment",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.factors.technical",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.strategies",
+      "target": "src.analysis.recommendation.stock_engine.strategies.long_term"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.strategies",
+      "target": "src.analysis.recommendation.stock_engine.strategies.short_term"
+    },
+    {
+      "source": "src.analysis.recommendation.stock_engine.strategies.short_term",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.sentiment.dashboard",
+      "target": "src.analysis.sentiment.market_cycle"
+    },
+    {
+      "source": "src.analysis.sentiment.dashboard",
+      "target": "src.analysis.sentiment.money_flow"
+    },
+    {
+      "source": "src.analysis.sentiment.dashboard",
+      "target": "src.analysis.sentiment.news_mining"
+    },
+    {
+      "source": "src.analysis.sentiment.dashboard",
+      "target": "src.analysis.sentiment.social_media"
+    },
+    {
+      "source": "src.analysis.sentiment.dashboard",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.analysis.sentiment.money_flow",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.sentiment.news_mining",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.analysis.strategies",
+      "target": "src.analysis.strategies.base_strategy"
+    },
+    {
+      "source": "src.analysis.strategies",
+      "target": "src.analysis.strategies.commodity"
+    },
+    {
+      "source": "src.analysis.strategies",
+      "target": "src.analysis.strategies.equity"
+    },
+    {
+      "source": "src.analysis.strategies",
+      "target": "src.analysis.strategies.factory"
+    },
+    {
+      "source": "src.analysis.strategies.commodity",
+      "target": "src.analysis.strategies.base_strategy"
+    },
+    {
+      "source": "src.analysis.strategies.commodity",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.analysis.strategies.commodity",
+      "target": "src.data_sources.yfinance_api"
+    },
+    {
+      "source": "src.analysis.strategies.commodity",
+      "target": "src.llm.prompts"
+    },
+    {
+      "source": "src.analysis.strategies.equity",
+      "target": "src.analysis.strategies.base_strategy"
+    },
+    {
+      "source": "src.analysis.strategies.equity",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.analysis.strategies.equity",
+      "target": "src.llm.prompts"
+    },
+    {
+      "source": "src.analysis.strategies.factory",
+      "target": "src.analysis.strategies.commodity"
+    },
+    {
+      "source": "src.analysis.strategies.factory",
+      "target": "src.analysis.strategies.equity"
+    },
+    {
+      "source": "src.analysis.strategies.factory",
+      "target": "src.analysis.strategies.stock"
+    },
+    {
+      "source": "src.analysis.strategies.stock",
+      "target": "src.analysis.strategies.base_strategy"
+    },
+    {
+      "source": "src.analysis.strategies.stock",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.analysis.strategies.stock",
+      "target": "src.data_sources.technical_analysis"
+    },
+    {
+      "source": "src.analysis.strategies.stock",
+      "target": "src.llm.prompts"
+    },
+    {
+      "source": "src.analysis.widget_service",
+      "target": "src.data_sources.circuit_breaker"
+    },
+    {
+      "source": "src.analysis.widget_service",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "src.analysis.widget_service",
+      "target": "src.data_sources.rate_limiter"
+    },
+    {
+      "source": "src.analysis.widget_service",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.analysis.widget_service",
+      "target": "src.data_sources.utils"
+    },
+    {
+      "source": "src.auth",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.cache",
+      "target": "src.cache.cache_manager"
+    },
+    {
+      "source": "src.cache.cache_manager",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.data_sources.akshare_api",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.data_sources.akshare_api",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "src.data_sources.akshare_api",
+      "target": "src.data_sources.web_search"
+    },
+    {
+      "source": "src.data_sources.circuit_breaker",
+      "target": "src.cache.cache_manager"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.cache.cache_manager"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.circuit_breaker"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.rate_limiter"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.sector_mappings"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.utils"
+    },
+    {
+      "source": "src.data_sources.data_source_manager",
+      "target": "src.data_sources.yfinance_client"
+    },
+    {
+      "source": "src.data_sources.technical_analysis",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.data_sources.tushare_client",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.data_sources.tushare_client",
+      "target": "src.analysis.recommendation.factor_store.rate_limiter"
+    },
+    {
+      "source": "src.data_sources.tushare_client",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.llm.client",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.llm.tools",
+      "target": "src.llm.tools.executor"
+    },
+    {
+      "source": "src.llm.tools",
+      "target": "src.llm.tools.schemas"
+    },
+    {
+      "source": "src.llm.tools.executor",
+      "target": "src.analysis.portfolio.stress_test"
+    },
+    {
+      "source": "src.llm.tools.executor",
+      "target": "src.analysis.widget_service"
+    },
+    {
+      "source": "src.llm.tools.executor",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.llm.tools.executor",
+      "target": "src.services.news_service"
+    },
+    {
+      "source": "src.llm.tools.executor",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.scheduler",
+      "target": "src.scheduler.manager"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.analysis.dashboard"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.analysis.post_market"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.analysis.pre_market"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.analysis.recommendation.factor_store.daily_computer"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.data_sources.data_source_manager"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.report_gen"
+    },
+    {
+      "source": "src.scheduler.manager",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.news_service"
+    },
+    {
+      "source": "src.services.ai_scenario_service",
+      "target": "src.data_sources.akshare_api"
+    },
+    {
+      "source": "src.services.ai_scenario_service",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.services.assistant_service",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.services.assistant_service",
+      "target": "src.llm.tools.executor"
+    },
+    {
+      "source": "src.services.assistant_service",
+      "target": "src.llm.tools.schemas"
+    },
+    {
+      "source": "src.services.assistant_service",
+      "target": "src.services.news_service"
+    },
+    {
+      "source": "src.services.assistant_service",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "config.settings"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "src.data_sources.circuit_breaker"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "src.data_sources.rate_limiter"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "src.llm.client"
+    },
+    {
+      "source": "src.services.news_service",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "src.storage",
+      "target": "src.storage.db"
+    },
+    {
+      "source": "test_scan",
+      "target": "config.settings"
+    },
+    {
+      "source": "test_scan",
+      "target": "src.data_sources.tushare_client"
+    },
+    {
+      "source": "test_scan",
+      "target": "src.data_sources.yfinance_client"
+    }
+  ]
+}

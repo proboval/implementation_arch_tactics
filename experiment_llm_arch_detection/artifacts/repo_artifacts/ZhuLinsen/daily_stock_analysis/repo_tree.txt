@@ -1,0 +1,717 @@
+daily_stock_analysis
+├── .claude
+│   └── skills
+│       ├── analyze-issue
+│       │   └── SKILL.md
+│       ├── analyze-pr
+│       │   └── SKILL.md
+│       ├── fix-issue
+│       │   └── SKILL.md
+│       └── README.md
+├── .github
+│   ├── instructions
+│   │   ├── backend.instructions.md
+│   │   ├── client.instructions.md
+│   │   └── governance.instructions.md
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   ├── config.yml
+│   │   └── feature_request.md
+│   ├── scripts
+│   │   └── ai_review.py
+│   ├── workflows
+│   │   ├── auto-tag.yml
+│   │   ├── ci.yml
+│   │   ├── create-release.yml
+│   │   ├── daily_analysis.yml
+│   │   ├── desktop-release.yml
+│   │   ├── docker-publish.yml
+│   │   ├── ghcr-dockerhub.yml
+│   │   ├── network-smoke.yml
+│   │   ├── pr-review.yml
+│   │   └── stale.yml
+│   ├── CODEOWNERS
+│   ├── copilot-instructions.md
+│   ├── FUNDING.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── release.yml
+├── api
+│   ├── middlewares
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   └── error_handler.py
+│   ├── v1
+│   │   ├── endpoints
+│   │   │   ├── __init__.py
+│   │   │   ├── agent.py
+│   │   │   ├── analysis.py
+│   │   │   ├── auth.py
+│   │   │   ├── backtest.py
+│   │   │   ├── health.py
+│   │   │   ├── history.py
+│   │   │   ├── portfolio.py
+│   │   │   ├── stocks.py
+│   │   │   ├── system_config.py
+│   │   │   └── usage.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── analysis.py
+│   │   │   ├── backtest.py
+│   │   │   ├── common.py
+│   │   │   ├── history.py
+│   │   │   ├── portfolio.py
+│   │   │   ├── stocks.py
+│   │   │   ├── system_config.py
+│   │   │   └── usage.py
+│   │   ├── __init__.py
+│   │   └── router.py
+│   ├── __init__.py
+│   ├── app.py
+│   └── deps.py
+├── apps
+│   ├── dsa-desktop
+│   │   ├── renderer
+│   │   │   └── loading.html
+│   │   ├── installer.nsh
+│   │   ├── main.js
+│   │   ├── package.json
+│   │   └── preload.js
+│   └── dsa-web
+│       ├── e2e
+│       │   ├── report-markdown.spec.ts
+│       │   └── smoke.spec.ts
+│       ├── public
+│       │   ├── stocks.index.json
+│       │   └── vite.svg
+│       ├── src
+│       │   ├── api
+│       │   │   ├── agent.ts
+│       │   │   ├── analysis.ts
+│       │   │   ├── auth.ts
+│       │   │   ├── backtest.ts
+│       │   │   ├── error.ts
+│       │   │   ├── history.ts
+│       │   │   ├── index.ts
+│       │   │   ├── portfolio.ts
+│       │   │   ├── stocks.ts
+│       │   │   ├── systemConfig.ts
+│       │   │   └── utils.ts
+│       │   ├── assets
+│       │   │   └── react.svg
+│       │   ├── components
+│       │   │   ├── common
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── Button.test.tsx
+│       │   │   │   │   ├── Input.test.tsx
+│       │   │   │   │   └── ScrollArea.test.tsx
+│       │   │   │   ├── ApiErrorAlert.tsx
+│       │   │   │   ├── AppPage.tsx
+│       │   │   │   ├── Badge.tsx
+│       │   │   │   ├── Button.tsx
+│       │   │   │   ├── Card.tsx
+│       │   │   │   ├── Checkbox.tsx
+│       │   │   │   ├── Collapsible.tsx
+│       │   │   │   ├── ConfirmDialog.tsx
+│       │   │   │   ├── Drawer.tsx
+│       │   │   │   ├── EmptyState.tsx
+│       │   │   │   ├── EyeToggleIcon.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── InlineAlert.tsx
+│       │   │   │   ├── Input.tsx
+│       │   │   │   ├── JsonViewer.tsx
+│       │   │   │   ├── Loading.tsx
+│       │   │   │   ├── PageHeader.tsx
+│       │   │   │   ├── Pagination.tsx
+│       │   │   │   ├── ParticleBackground.tsx
+│       │   │   │   ├── ScoreGauge.tsx
+│       │   │   │   ├── ScrollArea.tsx
+│       │   │   │   ├── SectionCard.tsx
+│       │   │   │   ├── Select.tsx
+│       │   │   │   ├── StatCard.tsx
+│       │   │   │   ├── StatusDot.tsx
+│       │   │   │   ├── StickyActionBar.tsx
+│       │   │   │   ├── ToastViewport.tsx
+│       │   │   │   ├── Toolbar.tsx
+│       │   │   │   └── Tooltip.tsx
+│       │   │   ├── dashboard
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── DashboardStateBlock.test.tsx
+│       │   │   │   ├── DashboardPanelHeader.tsx
+│       │   │   │   ├── DashboardStateBlock.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── history
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── HistoryList.test.tsx
+│       │   │   │   ├── HistoryList.tsx
+│       │   │   │   ├── HistoryListItem.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── layout
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── Shell.test.tsx
+│       │   │   │   │   └── SidebarNav.test.tsx
+│       │   │   │   ├── Shell.tsx
+│       │   │   │   ├── ShellHeader.tsx
+│       │   │   │   └── SidebarNav.tsx
+│       │   │   ├── report
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── ReportDetails.test.tsx
+│       │   │   │   │   ├── ReportMarkdown.test.tsx
+│       │   │   │   │   ├── ReportNews.test.tsx
+│       │   │   │   │   └── ReportOverview.test.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── ReportDetails.tsx
+│       │   │   │   ├── ReportMarkdown.tsx
+│       │   │   │   ├── ReportNews.tsx
+│       │   │   │   ├── ReportOverview.tsx
+│       │   │   │   ├── ReportStrategy.tsx
+│       │   │   │   └── ReportSummary.tsx
+│       │   │   ├── settings
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── AuthSettingsCard.test.tsx
+│       │   │   │   │   ├── IntelligentImport.test.tsx
+│       │   │   │   │   ├── LLMChannelEditor.test.tsx
+│       │   │   │   │   └── SettingsField.test.tsx
+│       │   │   │   ├── AuthSettingsCard.tsx
+│       │   │   │   ├── ChangePasswordCard.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── IntelligentImport.tsx
+│       │   │   │   ├── LLMChannelEditor.tsx
+│       │   │   │   ├── SettingsAlert.tsx
+│       │   │   │   ├── SettingsCategoryNav.tsx
+│       │   │   │   ├── SettingsField.tsx
+│       │   │   │   ├── SettingsLoading.tsx
+│       │   │   │   └── SettingsSectionCard.tsx
+│       │   │   ├── StockAutocomplete
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── StockAutocomplete.test.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── StockAutocomplete.tsx
+│       │   │   │   └── SuggestionsList.tsx
+│       │   │   ├── tasks
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── TaskPanel.test.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── TaskPanel.tsx
+│       │   │   └── theme
+│       │   │       ├── __tests__
+│       │   │       │   └── ThemeToggle.test.tsx
+│       │   │       ├── ThemeProvider.tsx
+│       │   │       └── ThemeToggle.tsx
+│       │   ├── contexts
+│       │   │   ├── __tests__
+│       │   │   │   └── AuthContext.test.tsx
+│       │   │   └── AuthContext.tsx
+│       │   ├── hooks
+│       │   │   ├── __tests__
+│       │   │   │   ├── useAutocomplete.test.tsx
+│       │   │   │   ├── useDashboardLifecycle.test.tsx
+│       │   │   │   ├── useSystemConfig.test.tsx
+│       │   │   │   └── useTaskStream.test.tsx
+│       │   │   ├── index.ts
+│       │   │   ├── useAuth.ts
+│       │   │   ├── useAutocomplete.ts
+│       │   │   ├── useDashboardLifecycle.ts
+│       │   │   ├── useHomeDashboardState.ts
+│       │   │   ├── useStockIndex.ts
+│       │   │   ├── useSystemConfig.ts
+│       │   │   └── useTaskStream.ts
+│       │   ├── pages
+│       │   │   ├── __tests__
+│       │   │   │   ├── BacktestPage.test.tsx
+│       │   │   │   ├── ChatPage.test.tsx
+│       │   │   │   ├── HomePage.test.tsx
+│       │   │   │   ├── LoginPage.test.tsx
+│       │   │   │   ├── PortfolioPage.test.tsx
+│       │   │   │   └── SettingsPage.test.tsx
+│       │   │   ├── BacktestPage.tsx
+│       │   │   ├── ChatPage.tsx
+│       │   │   ├── HomePage.tsx
+│       │   │   ├── LoginPage.tsx
+│       │   │   ├── NotFoundPage.tsx
+│       │   │   ├── PortfolioPage.tsx
+│       │   │   └── SettingsPage.tsx
+│       │   ├── stores
+│       │   │   ├── __tests__
+│       │   │   │   ├── agentChatStore.test.ts
+│       │   │   │   └── stockPoolStore.test.ts
+│       │   │   ├── agentChatStore.ts
+│       │   │   ├── analysisStore.ts
+│       │   │   ├── index.ts
+│       │   │   └── stockPoolStore.ts
+│       │   ├── types
+│       │   │   ├── analysis.ts
+│       │   │   ├── backtest.ts
+│       │   │   ├── portfolio.ts
+│       │   │   ├── stockIndex.ts
+│       │   │   └── systemConfig.ts
+│       │   ├── utils
+│       │   │   ├── __tests__
+│       │   │   │   ├── chatScroll.test.ts
+│       │   │   │   ├── cn.test.ts
+│       │   │   │   ├── markdown.stock-report.test.ts
+│       │   │   │   ├── markdown.test.ts
+│       │   │   │   ├── normalizeQuery.test.ts
+│       │   │   │   ├── searchStocks.test.ts
+│       │   │   │   ├── stockIndexLoader.test.ts
+│       │   │   │   └── stockName.test.ts
+│       │   │   ├── chatExport.ts
+│       │   │   ├── chatFollowUp.ts
+│       │   │   ├── chatScroll.ts
+│       │   │   ├── cn.ts
+│       │   │   ├── constants.ts
+│       │   │   ├── format.ts
+│       │   │   ├── markdown.ts
+│       │   │   ├── normalizeQuery.ts
+│       │   │   ├── reportLanguage.ts
+│       │   │   ├── searchStocks.ts
+│       │   │   ├── stockIndexFields.ts
+│       │   │   ├── stockIndexLoader.ts
+│       │   │   ├── stockName.ts
+│       │   │   ├── systemConfigI18n.ts
+│       │   │   ├── uuid.ts
+│       │   │   └── validation.ts
+│       │   ├── App.css
+│       │   ├── App.tsx
+│       │   ├── index.css
+│       │   ├── main.tsx
+│       │   └── setupTests.ts
+│       ├── tests
+│       │   ├── index.theme-bootstrap.test.ts
+│       │   ├── login-theme-tokens.test.ts
+│       │   ├── settings_field_description_fallback.test.tsx
+│       │   └── ui_governance.test.ts
+│       ├── .gitignore
+│       ├── eslint.config.js
+│       ├── index.html
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── playwright.config.ts
+│       ├── postcss.config.js
+│       ├── tailwind.config.js
+│       ├── tsconfig.app.json
+│       ├── tsconfig.json
+│       ├── tsconfig.node.json
+│       ├── vite.config.ts
+│       └── vitest.config.ts
+├── bot
+│   ├── commands
+│   │   ├── __init__.py
+│   │   ├── analyze.py
+│   │   ├── ask.py
+│   │   ├── base.py
+│   │   ├── batch.py
+│   │   ├── chat.py
+│   │   ├── help.py
+│   │   ├── history.py
+│   │   ├── market.py
+│   │   ├── research.py
+│   │   ├── status.py
+│   │   └── strategies.py
+│   ├── platforms
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── dingtalk.py
+│   │   ├── dingtalk_stream.py
+│   │   ├── discord.py
+│   │   └── feishu_stream.py
+│   ├── __init__.py
+│   ├── dispatcher.py
+│   ├── handler.py
+│   └── models.py
+├── data_provider
+│   ├── __init__.py
+│   ├── akshare_fetcher.py
+│   ├── baostock_fetcher.py
+│   ├── base.py
+│   ├── efinance_fetcher.py
+│   ├── fundamental_adapter.py
+│   ├── longbridge_fetcher.py
+│   ├── pytdx_fetcher.py
+│   ├── realtime_types.py
+│   ├── tickflow_fetcher.py
+│   ├── tushare_fetcher.py
+│   ├── us_index_mapping.py
+│   └── yfinance_fetcher.py
+├── docker
+│   ├── docker-compose.yml
+│   └── Dockerfile
+├── docs
+│   ├── architecture
+│   │   └── api_spec.json
+│   ├── bot
+│   │   ├── add-dingding-bot.png
+│   │   ├── add-group-bot.png
+│   │   ├── appkey.png
+│   │   ├── configbot.png
+│   │   ├── dingding-bot-config.md
+│   │   ├── discord-bot-config.md
+│   │   ├── envconfig.png
+│   │   ├── feishu-bot-config.md
+│   │   ├── group.png
+│   │   ├── img.png
+│   │   ├── img_1.png
+│   │   ├── img_10.png
+│   │   ├── img_2.png
+│   │   ├── img_3.png
+│   │   ├── img_4.png
+│   │   ├── img_5.png
+│   │   ├── img_6.png
+│   │   ├── img_7.png
+│   │   ├── img_8.png
+│   │   └── img_9.png
+│   ├── docker
+│   │   └── zeabur-deployment.md
+│   ├── bot-command.md
+│   ├── bot-command_EN.md
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── CONTRIBUTING_EN.md
+│   ├── deploy-webui-cloud.md
+│   ├── DEPLOY.md
+│   ├── DEPLOY_EN.md
+│   ├── desktop-package.md
+│   ├── FAQ.md
+│   ├── FAQ_EN.md
+│   ├── full-guide.md
+│   ├── full-guide_EN.md
+│   ├── image-extract-prompt.md
+│   ├── INDEX_EN.md
+│   ├── LLM_CONFIG_GUIDE.md
+│   ├── LLM_CONFIG_GUIDE_EN.md
+│   ├── openclaw-skill-integration.md
+│   ├── README_CHT.md
+│   ├── README_EN.md
+│   └── TUSHARE_STOCK_LIST_GUIDE.md
+├── patch
+│   ├── __init__.py
+│   └── eastmoney_patch.py
+├── scripts
+│   ├── build-all-macos.sh
+│   ├── build-all.ps1
+│   ├── build-backend-macos.sh
+│   ├── build-backend.ps1
+│   ├── build-desktop-macos.sh
+│   ├── build-desktop.ps1
+│   ├── check_ai_assets.py
+│   ├── ci_gate.sh
+│   ├── fetch_tushare_stock_list.py
+│   ├── generate_index_from_csv.py
+│   ├── generate_stock_index.py
+│   └── run-desktop.ps1
+├── sources
+│   ├── dsa_vi
+│   │   ├── darklogo.iconset
+│   │   │   ├── icon_128x128.png
+│   │   │   ├── icon_128x128@2x.png
+│   │   │   ├── icon_16x16.png
+│   │   │   ├── icon_16x16@2x.png
+│   │   │   ├── icon_256x256.png
+│   │   │   ├── icon_256x256@2x.png
+│   │   │   ├── icon_32x32.png
+│   │   │   ├── icon_32x32@2x.png
+│   │   │   ├── icon_512x512.png
+│   │   │   ├── icon_512x512@2x.png
+│   │   │   └── icon_64x64.png
+│   │   ├── lightlogo.iconset
+│   │   │   ├── icon_128x128.png
+│   │   │   ├── icon_128x128@2x.png
+│   │   │   ├── icon_16x16.png
+│   │   │   ├── icon_16x16@2x.png
+│   │   │   ├── icon_256x256.png
+│   │   │   ├── icon_256x256@2x.png
+│   │   │   ├── icon_32x32.png
+│   │   │   ├── icon_32x32@2x.png
+│   │   │   ├── icon_512x512.png
+│   │   │   ├── icon_512x512@2x.png
+│   │   │   └── icon_64x64.png
+│   │   ├── banner.png
+│   │   ├── bannersource.psd
+│   │   ├── darklogo.ico
+│   │   ├── darklogo.png
+│   │   ├── darklogo.psd
+│   │   ├── dsa_logo.ai
+│   │   ├── gen_icons.py
+│   │   ├── lightlogo.ico
+│   │   ├── lightlogo.png
+│   │   └── lightlogo.psd
+│   ├── 2026-01-10_155341_daily_analysis.gif
+│   ├── alipay.jpg
+│   ├── all_2026-01-13_221547.gif
+│   ├── dapan_2026-01-13_22-14-52.png
+│   ├── fastapi_server.png
+│   ├── ko-fi.png
+│   ├── sample.png
+│   ├── secret_config.png
+│   ├── serpapi_banner_en.png
+│   ├── serpapi_banner_zh.png
+│   ├── wechatpay.jpg
+│   └── xiaohongshu.png
+├── src
+│   ├── agent
+│   │   ├── agents
+│   │   │   ├── __init__.py
+│   │   │   ├── base_agent.py
+│   │   │   ├── decision_agent.py
+│   │   │   ├── intel_agent.py
+│   │   │   ├── portfolio_agent.py
+│   │   │   ├── risk_agent.py
+│   │   │   └── technical_agent.py
+│   │   ├── skills
+│   │   │   ├── __init__.py
+│   │   │   ├── aggregator.py
+│   │   │   ├── base.py
+│   │   │   ├── defaults.py
+│   │   │   ├── router.py
+│   │   │   └── skill_agent.py
+│   │   ├── strategies
+│   │   │   ├── __init__.py
+│   │   │   ├── aggregator.py
+│   │   │   ├── router.py
+│   │   │   └── strategy_agent.py
+│   │   ├── tools
+│   │   │   ├── __init__.py
+│   │   │   ├── analysis_tools.py
+│   │   │   ├── backtest_tools.py
+│   │   │   ├── data_tools.py
+│   │   │   ├── market_tools.py
+│   │   │   ├── registry.py
+│   │   │   └── search_tools.py
+│   │   ├── __init__.py
+│   │   ├── conversation.py
+│   │   ├── events.py
+│   │   ├── executor.py
+│   │   ├── factory.py
+│   │   ├── llm_adapter.py
+│   │   ├── memory.py
+│   │   ├── orchestrator.py
+│   │   ├── protocols.py
+│   │   ├── research.py
+│   │   └── runner.py
+│   ├── core
+│   │   ├── backtest_engine.py
+│   │   ├── config_manager.py
+│   │   ├── config_registry.py
+│   │   ├── market_profile.py
+│   │   ├── market_review.py
+│   │   ├── market_strategy.py
+│   │   ├── pipeline.py
+│   │   └── trading_calendar.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   ├── stock_index_loader.py
+│   │   └── stock_mapping.py
+│   ├── notification_sender
+│   │   ├── __init__.py
+│   │   ├── astrbot_sender.py
+│   │   ├── custom_webhook_sender.py
+│   │   ├── discord_sender.py
+│   │   ├── email_sender.py
+│   │   ├── feishu_sender.py
+│   │   ├── pushover_sender.py
+│   │   ├── pushplus_sender.py
+│   │   ├── serverchan3_sender.py
+│   │   ├── slack_sender.py
+│   │   ├── telegram_sender.py
+│   │   └── wechat_sender.py
+│   ├── repositories
+│   │   ├── __init__.py
+│   │   ├── analysis_repo.py
+│   │   ├── backtest_repo.py
+│   │   ├── portfolio_repo.py
+│   │   └── stock_repo.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   └── report_schema.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── agent_model_service.py
+│   │   ├── analysis_service.py
+│   │   ├── backtest_service.py
+│   │   ├── history_comparison_service.py
+│   │   ├── history_service.py
+│   │   ├── image_stock_extractor.py
+│   │   ├── import_parser.py
+│   │   ├── name_to_code_resolver.py
+│   │   ├── portfolio_import_service.py
+│   │   ├── portfolio_risk_service.py
+│   │   ├── portfolio_service.py
+│   │   ├── report_renderer.py
+│   │   ├── social_sentiment_service.py
+│   │   ├── stock_code_utils.py
+│   │   ├── stock_service.py
+│   │   ├── system_config_service.py
+│   │   ├── task_queue.py
+│   │   └── task_service.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── analysis_metadata.py
+│   │   └── data_processing.py
+│   ├── __init__.py
+│   ├── analyzer.py
+│   ├── auth.py
+│   ├── config.py
+│   ├── enums.py
+│   ├── feishu_doc.py
+│   ├── formatters.py
+│   ├── logging_config.py
+│   ├── market_analyzer.py
+│   ├── market_context.py
+│   ├── md2img.py
+│   ├── notification.py
+│   ├── report_language.py
+│   ├── scheduler.py
+│   ├── search_service.py
+│   ├── stock_analyzer.py
+│   ├── storage.py
+│   └── webui_frontend.py
+├── strategies
+│   ├── bottom_volume.yaml
+│   ├── box_oscillation.yaml
+│   ├── bull_trend.yaml
+│   ├── chan_theory.yaml
+│   ├── dragon_head.yaml
+│   ├── emotion_cycle.yaml
+│   ├── ma_golden_cross.yaml
+│   ├── one_yang_three_yin.yaml
+│   ├── README.md
+│   ├── shrink_pullback.yaml
+│   ├── volume_breakout.yaml
+│   └── wave_theory.yaml
+├── templates
+│   ├── _macros.j2
+│   ├── report_brief.j2
+│   ├── report_markdown.j2
+│   └── report_wechat.j2
+├── tests
+│   ├── __init__.py
+│   ├── litellm_stub.py
+│   ├── longbridge_live_smoke.py
+│   ├── test_agent_executor.py
+│   ├── test_agent_models_api.py
+│   ├── test_agent_orchestrator_sniper_fallback.py
+│   ├── test_agent_pipeline.py
+│   ├── test_agent_registry.py
+│   ├── test_agent_sse_cleanup.py
+│   ├── test_akshare_realtime_logging.py
+│   ├── test_analysis_api_contract.py
+│   ├── test_analysis_history.py
+│   ├── test_analysis_integration.py
+│   ├── test_analysis_metadata.py
+│   ├── test_analyzer_news_prompt.py
+│   ├── test_anspire_search.py
+│   ├── test_api_app_cors.py
+│   ├── test_ask_command.py
+│   ├── test_auth.py
+│   ├── test_auth_api.py
+│   ├── test_auth_status_setup_state.py
+│   ├── test_autocomplete_pr0.py
+│   ├── test_backtest_engine.py
+│   ├── test_backtest_service.py
+│   ├── test_backtest_summary.py
+│   ├── test_bot_dispatcher_async.py
+│   ├── test_chip_structure_fallback.py
+│   ├── test_config_env_compat.py
+│   ├── test_config_manager.py
+│   ├── test_config_registry.py
+│   ├── test_config_validate_structured.py
+│   ├── test_conversation_manager.py
+│   ├── test_cwe345_xff_bypass.py
+│   ├── test_data_fetcher_prefetch_stock_names.py
+│   ├── test_data_tools_get_capital_flow.py
+│   ├── test_data_tools_get_stock_info.py
+│   ├── test_data_tools_portfolio_snapshot.py
+│   ├── test_desktop_installer_config.py
+│   ├── test_discord_platform.py
+│   ├── test_feishu_stream.py
+│   ├── test_feishu_stream_ordering.py
+│   ├── test_fetcher_logging.py
+│   ├── test_formatters.py
+│   ├── test_fundamental_adapter.py
+│   ├── test_fundamental_context.py
+│   ├── test_generate_index_from_csv.py
+│   ├── test_get_latest_data.py
+│   ├── test_history_news_fallback.py
+│   ├── test_hk_realtime_routing.py
+│   ├── test_hk_stock_name_fallback.py
+│   ├── test_image_stock_extractor_litellm.py
+│   ├── test_import_parser.py
+│   ├── test_llm_channel_config.py
+│   ├── test_llm_usage.py
+│   ├── test_longbridge_fetcher.py
+│   ├── test_main_schedule_mode.py
+│   ├── test_market_analyzer_generate_text.py
+│   ├── test_market_review.py
+│   ├── test_market_strategy.py
+│   ├── test_multi_agent.py
+│   ├── test_name_to_code_resolver.py
+│   ├── test_news_intel.py
+│   ├── test_news_strategy_config.py
+│   ├── test_notification.py
+│   ├── test_notification_sender.py
+│   ├── test_pipeline_augment_realtime.py
+│   ├── test_pipeline_fetch_error.py
+│   ├── test_pipeline_notification_image_routing.py
+│   ├── test_pipeline_optional_service_resilience.py
+│   ├── test_pipeline_prefetch_dry_run.py
+│   ├── test_pipeline_realtime_indicators.py
+│   ├── test_pipeline_related_boards.py
+│   ├── test_pipeline_single_notify_thread_safety.py
+│   ├── test_pipeline_single_stock_notify.py
+│   ├── test_portfolio_api.py
+│   ├── test_portfolio_pr2.py
+│   ├── test_portfolio_service.py
+│   ├── test_realtime_quote_fallback_logging.py
+│   ├── test_realtime_types.py
+│   ├── test_report_integrity.py
+│   ├── test_report_language.py
+│   ├── test_report_renderer.py
+│   ├── test_report_schema.py
+│   ├── test_scheduler_background.py
+│   ├── test_search_news_freshness.py
+│   ├── test_search_performance.py
+│   ├── test_search_searxng.py
+│   ├── test_search_serpapi_provider.py
+│   ├── test_search_service_concurrency.py
+│   ├── test_search_tavily_provider.py
+│   ├── test_skill_load_warning.py
+│   ├── test_social_sentiment_service.py
+│   ├── test_stock_analyzer_bias.py
+│   ├── test_stock_code_bse.py
+│   ├── test_stock_code_utils.py
+│   ├── test_stock_index_loader.py
+│   ├── test_stooq_fallback.py
+│   ├── test_storage.py
+│   ├── test_system_config_api.py
+│   ├── test_system_config_service.py
+│   ├── test_task_queue_config_sync.py
+│   ├── test_task_service.py
+│   ├── test_tickflow_fetcher.py
+│   ├── test_tickflow_market_review_fallback.py
+│   ├── test_trading_calendar.py
+│   ├── test_tushare_fetcher_followups.py
+│   ├── test_tushare_fetcher_get_stock_list.py
+│   ├── test_tushare_fetcher_http_client.py
+│   ├── test_us_index_mapping.py
+│   ├── test_webui_frontend.py
+│   └── test_yfinance_us_indices.py
+├── .dockerignore
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── AGENTS.md
+├── analyzer_service.py
+├── CLAUDE.md
+├── LICENSE
+├── litellm_config.example.yaml
+├── main.py
+├── pyproject.toml
+├── README.md
+├── requirements-ci.txt
+├── requirements.txt
+├── review.md
+├── server.py
+├── setup.cfg
+├── SKILL.md
+├── test.sh
+├── test_env.py
+└── webui.py

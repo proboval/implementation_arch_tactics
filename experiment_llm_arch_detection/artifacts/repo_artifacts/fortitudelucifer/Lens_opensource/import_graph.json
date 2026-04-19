@@ -1,0 +1,691 @@
+{
+  "nodes": [
+    "run_all_pipelines",
+    "scripts._common.anonymizer",
+    "scripts._common.check_paths",
+    "scripts._common.download_models",
+    "scripts._common.jsonl_utils",
+    "scripts._common.media_filter",
+    "scripts._common.migrate_merged_files",
+    "scripts._common.path_utils",
+    "scripts._common.schema_utils",
+    "scripts._common.text_normalize",
+    "scripts.advisor",
+    "scripts.advisor.analyzers",
+    "scripts.advisor.api",
+    "scripts.advisor.api.server",
+    "scripts.advisor.augmentor",
+    "scripts.advisor.chunk_based_rag",
+    "scripts.advisor.config",
+    "scripts.advisor.errors",
+    "scripts.advisor.extractor",
+    "scripts.advisor.formatter",
+    "scripts.advisor.generator",
+    "scripts.advisor.graph_rag",
+    "scripts.advisor.graph_rag_enhanced",
+    "scripts.advisor.inference",
+    "scripts.advisor.intent_classifier",
+    "scripts.advisor.key_rotator",
+    "scripts.advisor.model_router",
+    "scripts.advisor.pipeline_executor",
+    "scripts.advisor.query_rewriter",
+    "scripts.advisor.run_all",
+    "scripts.advisor.run_all._00_verify_environment",
+    "scripts.advisor.run_all._01_extract_conversations",
+    "scripts.advisor.run_all._02_generate_analysis",
+    "scripts.advisor.run_all._02b_model_comparison",
+    "scripts.advisor.run_all._02c_fusion_pipeline",
+    "scripts.advisor.run_all._02c_rerun_moa",
+    "scripts.advisor.run_all._03_export_for_review",
+    "scripts.advisor.run_all._03b_ai_review",
+    "scripts.advisor.run_all._04_import_reviewed",
+    "scripts.advisor.run_all._05_format_training_data",
+    "scripts.advisor.run_all._05b_filter_split_training",
+    "scripts.advisor.run_all._05c_deanonymize_training",
+    "scripts.advisor.run_all._06_train_model",
+    "scripts.advisor.run_all._07_run_inference",
+    "scripts.advisor.run_all._07b_eval_compare",
+    "scripts.advisor.run_all._08_run_dialogue",
+    "scripts.advisor.run_all._09_build_graph",
+    "scripts.advisor.run_all._10_augment_data",
+    "scripts.advisor.safety_layer",
+    "scripts.advisor.schema_validator",
+    "scripts.advisor.schemas",
+    "scripts.advisor.streaming",
+    "scripts.advisor.test_backends",
+    "scripts.advisor.trainer",
+    "scripts.compression",
+    "scripts.compression.engine",
+    "scripts.compression.generate_report",
+    "scripts.compression.image_compressor",
+    "scripts.compression.llm_pii_scanner",
+    "scripts.compression.pii_detector",
+    "scripts.compression.privacy_shield",
+    "scripts.compression.quality_validator",
+    "scripts.compression.run_full_anonymization",
+    "scripts.compression.sample_comparison",
+    "scripts.compression.scan_pii",
+    "scripts.compression.sft_optimizer",
+    "scripts.compression.sft_trimmer",
+    "scripts.compression.sticker_compressor",
+    "scripts.compression.two_stage_pii",
+    "scripts.compression.two_stage_pii.candidate_extractor",
+    "scripts.compression.two_stage_pii.llm_validator",
+    "scripts.compression.two_stage_pii.models",
+    "scripts.compression.two_stage_pii.name_replacer",
+    "scripts.compression.two_stage_pii.scanner",
+    "scripts.compression.validate_sft_quality",
+    "scripts.compression.video_compressor",
+    "scripts.compression.voice_compressor",
+    "scripts.extract.extract_html_to_jsonl",
+    "scripts.extract.extract_quote_info",
+    "scripts.extract.fix_recall_speaker",
+    "scripts.image.loader",
+    "scripts.image.router",
+    "scripts.image.run_all._01_run_ocr",
+    "scripts.image.run_all._02.5_run_compress",
+    "scripts.image.run_all._02_run_caption",
+    "scripts.image.run_all._03_merge_engine",
+    "scripts.image.run_all._04_update_timeline",
+    "scripts.linkfile.extractor",
+    "scripts.linkfile.run_all._01.5_run_file_summary",
+    "scripts.linkfile.run_all._01_extract_and_anonymize",
+    "scripts.linkfile.run_all._02_merge_engine",
+    "scripts.linkfile.run_all._03_update_timeline",
+    "scripts.sticker.run_all._01_run_download",
+    "scripts.sticker.run_all._02_run_sniff",
+    "scripts.sticker.run_all._03_run_process",
+    "scripts.sticker.run_all._04_run_triage",
+    "scripts.sticker.run_all._05.5_run_compress",
+    "scripts.sticker.run_all._05_run_caption",
+    "scripts.sticker.run_all._06_merge_engine",
+    "scripts.sticker.run_all._07_update_timeline",
+    "scripts.sticker.run_all._08_cleanup_frames",
+    "scripts.timeline",
+    "scripts.timeline.postprocess_timeline",
+    "scripts.timeline.run_anonymization",
+    "scripts.timeline.run_postprocess",
+    "scripts.timeline.timeline_postprocessor",
+    "scripts.video.run_all._01_run_extract",
+    "scripts.video.run_all._02_run_transcribe",
+    "scripts.video.run_all._03.5_run_compress",
+    "scripts.video.run_all._03_run_caption",
+    "scripts.video.run_all._04_merge_engine",
+    "scripts.video.run_all._05_update_timeline",
+    "scripts.video.sync_video_to_slim",
+    "scripts.voice.run_all._01_run_funasr",
+    "scripts.voice.run_all._01b_run_whisper",
+    "scripts.voice.run_all._02.5_run_compress",
+    "scripts.voice.run_all._02_run_emotion",
+    "scripts.voice.run_all._03_merge_engine",
+    "scripts.voice.run_all._04_update_timeline",
+    "scripts.workspace.init_workspace",
+    "scripts.workspace.run_ingest"
+  ],
+  "edges": [
+    {
+      "source": "scripts._common.migrate_merged_files",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts._common.migrate_merged_files",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.analyzers"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.augmentor"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.config"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.errors"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.extractor"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.formatter"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.inference"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.model_router"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.safety_layer"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.schema_validator"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.schemas"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.streaming"
+    },
+    {
+      "source": "scripts.advisor",
+      "target": "scripts.advisor.trainer"
+    },
+    {
+      "source": "scripts.advisor.analyzers",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.chunk_based_rag"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.extractor"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.intent_classifier"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.run_all._02c_fusion_pipeline"
+    },
+    {
+      "source": "scripts.advisor.api.server",
+      "target": "scripts.advisor.run_all._03b_ai_review"
+    },
+    {
+      "source": "scripts.advisor.chunk_based_rag",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor.generator",
+      "target": "scripts.advisor.safety_layer"
+    },
+    {
+      "source": "scripts.advisor.generator",
+      "target": "scripts.advisor.schema_validator"
+    },
+    {
+      "source": "scripts.advisor.generator",
+      "target": "scripts.advisor.schemas"
+    },
+    {
+      "source": "scripts.advisor.graph_rag_enhanced",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor.graph_rag_enhanced",
+      "target": "scripts.advisor.intent_classifier"
+    },
+    {
+      "source": "scripts.advisor.graph_rag_enhanced",
+      "target": "scripts.advisor.query_rewriter"
+    },
+    {
+      "source": "scripts.advisor.model_router",
+      "target": "scripts.advisor.errors"
+    },
+    {
+      "source": "scripts.advisor.pipeline_executor",
+      "target": "scripts.advisor.run_all._02c_fusion_pipeline"
+    },
+    {
+      "source": "scripts.advisor.run_all._01_extract_conversations",
+      "target": "scripts.advisor.extractor"
+    },
+    {
+      "source": "scripts.advisor.run_all._02_generate_analysis",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.run_all._02b_model_comparison",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.run_all._02c_fusion_pipeline",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.run_all._02c_fusion_pipeline",
+      "target": "scripts.advisor.key_rotator"
+    },
+    {
+      "source": "scripts.advisor.run_all._02c_fusion_pipeline",
+      "target": "scripts.advisor.pipeline_executor"
+    },
+    {
+      "source": "scripts.advisor.run_all._02c_rerun_moa",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.run_all._02c_rerun_moa",
+      "target": "scripts.advisor.run_all._02c_fusion_pipeline"
+    },
+    {
+      "source": "scripts.advisor.run_all._03_export_for_review",
+      "target": "scripts.advisor.formatter"
+    },
+    {
+      "source": "scripts.advisor.run_all._03b_ai_review",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.advisor.run_all._04_import_reviewed",
+      "target": "scripts.advisor.formatter"
+    },
+    {
+      "source": "scripts.advisor.run_all._05_format_training_data",
+      "target": "scripts.advisor.formatter"
+    },
+    {
+      "source": "scripts.advisor.run_all._06_train_model",
+      "target": "scripts.advisor.trainer"
+    },
+    {
+      "source": "scripts.advisor.run_all._07_run_inference",
+      "target": "scripts.advisor.inference"
+    },
+    {
+      "source": "scripts.advisor.run_all._08_run_dialogue",
+      "target": "scripts.advisor.streaming"
+    },
+    {
+      "source": "scripts.advisor.run_all._09_build_graph",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor.run_all._10_augment_data",
+      "target": "scripts.advisor.augmentor"
+    },
+    {
+      "source": "scripts.advisor.safety_layer",
+      "target": "scripts.advisor.schemas"
+    },
+    {
+      "source": "scripts.advisor.schema_validator",
+      "target": "scripts.advisor.schemas"
+    },
+    {
+      "source": "scripts.advisor.streaming",
+      "target": "scripts.advisor.graph_rag"
+    },
+    {
+      "source": "scripts.advisor.streaming",
+      "target": "scripts.advisor.safety_layer"
+    },
+    {
+      "source": "scripts.advisor.test_backends",
+      "target": "scripts.advisor.generator"
+    },
+    {
+      "source": "scripts.compression.engine",
+      "target": "scripts.compression.image_compressor"
+    },
+    {
+      "source": "scripts.compression.engine",
+      "target": "scripts.compression.sticker_compressor"
+    },
+    {
+      "source": "scripts.compression.engine",
+      "target": "scripts.compression.video_compressor"
+    },
+    {
+      "source": "scripts.compression.engine",
+      "target": "scripts.compression.voice_compressor"
+    },
+    {
+      "source": "scripts.compression.privacy_shield",
+      "target": "scripts.compression.two_stage_pii.scanner"
+    },
+    {
+      "source": "scripts.compression.run_full_anonymization",
+      "target": "scripts.compression.privacy_shield"
+    },
+    {
+      "source": "scripts.compression.sample_comparison",
+      "target": "scripts.compression.image_compressor"
+    },
+    {
+      "source": "scripts.compression.sample_comparison",
+      "target": "scripts.compression.sticker_compressor"
+    },
+    {
+      "source": "scripts.compression.sample_comparison",
+      "target": "scripts.compression.video_compressor"
+    },
+    {
+      "source": "scripts.compression.sample_comparison",
+      "target": "scripts.compression.voice_compressor"
+    },
+    {
+      "source": "scripts.compression.scan_pii",
+      "target": "scripts.compression.pii_detector"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii",
+      "target": "scripts.compression.two_stage_pii.candidate_extractor"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii",
+      "target": "scripts.compression.two_stage_pii.llm_validator"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii",
+      "target": "scripts.compression.two_stage_pii.models"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii",
+      "target": "scripts.compression.two_stage_pii.name_replacer"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii",
+      "target": "scripts.compression.two_stage_pii.scanner"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.candidate_extractor",
+      "target": "scripts.compression.two_stage_pii.candidate_extractor"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.candidate_extractor",
+      "target": "scripts.compression.two_stage_pii.models"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.llm_validator",
+      "target": "scripts.compression.two_stage_pii.models"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.name_replacer",
+      "target": "scripts.compression.two_stage_pii.models"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.scanner",
+      "target": "scripts.compression.two_stage_pii.candidate_extractor"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.scanner",
+      "target": "scripts.compression.two_stage_pii.llm_validator"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.scanner",
+      "target": "scripts.compression.two_stage_pii.models"
+    },
+    {
+      "source": "scripts.compression.two_stage_pii.scanner",
+      "target": "scripts.compression.two_stage_pii.name_replacer"
+    },
+    {
+      "source": "scripts.image.loader",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.image.router",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.image.router",
+      "target": "scripts.image.loader"
+    },
+    {
+      "source": "scripts.image.run_all._01_run_ocr",
+      "target": "scripts._common.media_filter"
+    },
+    {
+      "source": "scripts.image.run_all._01_run_ocr",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.image.run_all._01_run_ocr",
+      "target": "scripts.image.loader"
+    },
+    {
+      "source": "scripts.image.run_all._01_run_ocr",
+      "target": "scripts.image.router"
+    },
+    {
+      "source": "scripts.image.run_all._02.5_run_compress",
+      "target": "scripts.compression.image_compressor"
+    },
+    {
+      "source": "scripts.image.run_all._02_run_caption",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.image.run_all._02_run_caption",
+      "target": "scripts.image.loader"
+    },
+    {
+      "source": "scripts.image.run_all._03_merge_engine",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.image.run_all._03_merge_engine",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.image.run_all._03_merge_engine",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.image.run_all._04_update_timeline",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.linkfile.run_all._01.5_run_file_summary",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.linkfile.run_all._01_extract_and_anonymize",
+      "target": "scripts._common.anonymizer"
+    },
+    {
+      "source": "scripts.linkfile.run_all._01_extract_and_anonymize",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.linkfile.run_all._01_extract_and_anonymize",
+      "target": "scripts.linkfile.extractor"
+    },
+    {
+      "source": "scripts.linkfile.run_all._02_merge_engine",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.linkfile.run_all._02_merge_engine",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.linkfile.run_all._03_update_timeline",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._01_run_download",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._01_run_download",
+      "target": "scripts._common.media_filter"
+    },
+    {
+      "source": "scripts.sticker.run_all._01_run_download",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._02_run_sniff",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._02_run_sniff",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._03_run_process",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._03_run_process",
+      "target": "scripts._common.media_filter"
+    },
+    {
+      "source": "scripts.sticker.run_all._03_run_process",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._04_run_triage",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._04_run_triage",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._05.5_run_compress",
+      "target": "scripts.compression.sticker_compressor"
+    },
+    {
+      "source": "scripts.sticker.run_all._05_run_caption",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._05_run_caption",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._06_merge_engine",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._06_merge_engine",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._06_merge_engine",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._07_update_timeline",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.sticker.run_all._08_cleanup_frames",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.timeline.run_anonymization",
+      "target": "scripts.compression.privacy_shield"
+    },
+    {
+      "source": "scripts.timeline.run_postprocess",
+      "target": "scripts.timeline.timeline_postprocessor"
+    },
+    {
+      "source": "scripts.video.run_all._01_run_extract",
+      "target": "scripts._common.media_filter"
+    },
+    {
+      "source": "scripts.video.run_all._01_run_extract",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.video.run_all._02_run_transcribe",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.video.run_all._02_run_transcribe",
+      "target": "scripts._common.text_normalize"
+    },
+    {
+      "source": "scripts.video.run_all._03.5_run_compress",
+      "target": "scripts.compression.video_compressor"
+    },
+    {
+      "source": "scripts.video.run_all._03_run_caption",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.video.run_all._04_merge_engine",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.video.run_all._04_merge_engine",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.video.run_all._05_update_timeline",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.video.sync_video_to_slim",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._01_run_funasr",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._01_run_funasr",
+      "target": "scripts._common.text_normalize"
+    },
+    {
+      "source": "scripts.voice.run_all._01b_run_whisper",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._01b_run_whisper",
+      "target": "scripts._common.text_normalize"
+    },
+    {
+      "source": "scripts.voice.run_all._02.5_run_compress",
+      "target": "scripts.compression.voice_compressor"
+    },
+    {
+      "source": "scripts.voice.run_all._02_run_emotion",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._03_merge_engine",
+      "target": "scripts._common.jsonl_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._03_merge_engine",
+      "target": "scripts._common.path_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._03_merge_engine",
+      "target": "scripts._common.schema_utils"
+    },
+    {
+      "source": "scripts.voice.run_all._04_update_timeline",
+      "target": "scripts._common.anonymizer"
+    },
+    {
+      "source": "scripts.voice.run_all._04_update_timeline",
+      "target": "scripts._common.path_utils"
+    }
+  ]
+}

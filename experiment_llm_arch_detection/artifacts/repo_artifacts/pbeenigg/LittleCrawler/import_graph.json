@@ -1,0 +1,862 @@
+{
+  "nodes": [
+    "api",
+    "api.main",
+    "api.routers",
+    "api.routers.auth",
+    "api.routers.crawler",
+    "api.routers.data",
+    "api.routers.publisher",
+    "api.routers.websocket",
+    "api.schemas",
+    "api.schemas.auth",
+    "api.schemas.crawler",
+    "api.services",
+    "api.services.auth_service",
+    "api.services.crawler_manager",
+    "config",
+    "config.base_config",
+    "config.db_config",
+    "config.xhs_config",
+    "config.zhihu_config",
+    "main",
+    "src",
+    "src.core",
+    "src.core.arg",
+    "src.core.base_crawler",
+    "src.core.var",
+    "src.models",
+    "src.models.m_xiaohongshu",
+    "src.models.m_zhihu",
+    "src.platforms",
+    "src.platforms.xhs",
+    "src.platforms.xhs.client",
+    "src.platforms.xhs.core",
+    "src.platforms.xhs.exception",
+    "src.platforms.xhs.extractor",
+    "src.platforms.xhs.field",
+    "src.platforms.xhs.help",
+    "src.platforms.xhs.login",
+    "src.platforms.xhs.playwright_sign",
+    "src.platforms.xhs.publisher",
+    "src.platforms.xhs.xhs_sign",
+    "src.platforms.zhihu",
+    "src.platforms.zhihu.client",
+    "src.platforms.zhihu.core",
+    "src.platforms.zhihu.exception",
+    "src.platforms.zhihu.field",
+    "src.platforms.zhihu.help",
+    "src.platforms.zhihu.login",
+    "src.services",
+    "src.services.cache",
+    "src.services.cache.abs_cache",
+    "src.services.cache.cache_factory",
+    "src.services.cache.local_cache",
+    "src.services.cache.redis_cache",
+    "src.services.proxy",
+    "src.services.proxy.base_proxy",
+    "src.services.proxy.providers",
+    "src.services.proxy.providers.jishu_http_proxy",
+    "src.services.proxy.providers.kuaidl_proxy",
+    "src.services.proxy.providers.wandou_http_proxy",
+    "src.services.proxy.proxy_ip_pool",
+    "src.services.proxy.proxy_mixin",
+    "src.services.proxy.types",
+    "src.storage",
+    "src.storage.base",
+    "src.storage.base.db",
+    "src.storage.base.db_session",
+    "src.storage.base.excel_store_base",
+    "src.storage.base.models",
+    "src.storage.base.mongodb_store_base",
+    "src.storage.xhs",
+    "src.storage.xhs._store_impl",
+    "src.storage.xhs.xhs_store_media",
+    "src.storage.zhihu",
+    "src.storage.zhihu._store_impl",
+    "src.utils",
+    "src.utils.app_runner",
+    "src.utils.async_file_writer",
+    "src.utils.browser_launcher",
+    "src.utils.cdp_browser",
+    "src.utils.crawler_util",
+    "src.utils.easing",
+    "src.utils.file_header_manager",
+    "src.utils.slider_util",
+    "src.utils.time_util",
+    "src.utils.utils",
+    "src.utils.words",
+    "src.utils.zhihu_const",
+    "tests"
+  ],
+  "edges": [
+    {
+      "source": "api.main",
+      "target": "api.routers"
+    },
+    {
+      "source": "api.main",
+      "target": "api.services.auth_service"
+    },
+    {
+      "source": "api.routers",
+      "target": "api.routers.auth"
+    },
+    {
+      "source": "api.routers",
+      "target": "api.routers.crawler"
+    },
+    {
+      "source": "api.routers",
+      "target": "api.routers.data"
+    },
+    {
+      "source": "api.routers",
+      "target": "api.routers.publisher"
+    },
+    {
+      "source": "api.routers",
+      "target": "api.routers.websocket"
+    },
+    {
+      "source": "api.routers.auth",
+      "target": "api.schemas.auth"
+    },
+    {
+      "source": "api.routers.auth",
+      "target": "api.services.auth_service"
+    },
+    {
+      "source": "api.routers.crawler",
+      "target": "api.routers.auth"
+    },
+    {
+      "source": "api.routers.crawler",
+      "target": "api.schemas"
+    },
+    {
+      "source": "api.routers.crawler",
+      "target": "api.services.crawler_manager"
+    },
+    {
+      "source": "api.routers.data",
+      "target": "api.routers.auth"
+    },
+    {
+      "source": "api.routers.publisher",
+      "target": "api.routers.auth"
+    },
+    {
+      "source": "api.routers.publisher",
+      "target": "src.platforms.xhs.publisher"
+    },
+    {
+      "source": "api.routers.publisher",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "api.routers.websocket",
+      "target": "api.services.crawler_manager"
+    },
+    {
+      "source": "api.schemas",
+      "target": "api.schemas.auth"
+    },
+    {
+      "source": "api.schemas",
+      "target": "api.schemas.crawler"
+    },
+    {
+      "source": "api.services",
+      "target": "api.services.crawler_manager"
+    },
+    {
+      "source": "api.services.crawler_manager",
+      "target": "api.schemas"
+    },
+    {
+      "source": "config",
+      "target": "config.base_config"
+    },
+    {
+      "source": "config",
+      "target": "config.db_config"
+    },
+    {
+      "source": "config.base_config",
+      "target": "config.xhs_config"
+    },
+    {
+      "source": "config.base_config",
+      "target": "config.zhihu_config"
+    },
+    {
+      "source": "main",
+      "target": "config"
+    },
+    {
+      "source": "main",
+      "target": "src.core.arg"
+    },
+    {
+      "source": "main",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "main",
+      "target": "src.core.var"
+    },
+    {
+      "source": "main",
+      "target": "src.platforms.xhs"
+    },
+    {
+      "source": "main",
+      "target": "src.platforms.zhihu"
+    },
+    {
+      "source": "main",
+      "target": "src.storage.base.db"
+    },
+    {
+      "source": "main",
+      "target": "src.storage.base.excel_store_base"
+    },
+    {
+      "source": "main",
+      "target": "src.utils.app_runner"
+    },
+    {
+      "source": "main",
+      "target": "src.utils.async_file_writer"
+    },
+    {
+      "source": "src.core",
+      "target": "src.core.arg"
+    },
+    {
+      "source": "src.core.arg",
+      "target": "config"
+    },
+    {
+      "source": "src.core.arg",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.core.base_crawler",
+      "target": "src.utils.cdp_browser"
+    },
+    {
+      "source": "src.platforms.xhs",
+      "target": "src.platforms.xhs.core"
+    },
+    {
+      "source": "src.platforms.xhs",
+      "target": "src.platforms.xhs.field"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.platforms.xhs.exception"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.platforms.xhs.extractor"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.platforms.xhs.field"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.platforms.xhs.help"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.platforms.xhs.playwright_sign"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.services.proxy.proxy_mixin"
+    },
+    {
+      "source": "src.platforms.xhs.client",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.models.m_xiaohongshu"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.platforms.xhs.client"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.platforms.xhs.exception"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.platforms.xhs.field"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.platforms.xhs.help"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.platforms.xhs.login"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.storage.xhs"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.utils.cdp_browser"
+    },
+    {
+      "source": "src.platforms.xhs.core",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.xhs.help",
+      "target": "src.models.m_xiaohongshu"
+    },
+    {
+      "source": "src.platforms.xhs.help",
+      "target": "src.utils.crawler_util"
+    },
+    {
+      "source": "src.platforms.xhs.login",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.xhs.login",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.xhs.login",
+      "target": "src.services.cache.cache_factory"
+    },
+    {
+      "source": "src.platforms.xhs.login",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.xhs.playwright_sign",
+      "target": "src.platforms.xhs.xhs_sign"
+    },
+    {
+      "source": "src.platforms.xhs.publisher",
+      "target": "src.platforms.xhs.playwright_sign"
+    },
+    {
+      "source": "src.platforms.xhs.publisher",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.zhihu",
+      "target": "src.platforms.zhihu.core"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.models.m_zhihu"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.platforms.zhihu.exception"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.platforms.zhihu.field"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.platforms.zhihu.help"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.services.proxy.proxy_mixin"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.zhihu.client",
+      "target": "src.utils.zhihu_const"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.models.m_zhihu"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.platforms.zhihu.client"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.platforms.zhihu.exception"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.platforms.zhihu.help"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.platforms.zhihu.login"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.storage.zhihu"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.utils.cdp_browser"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.zhihu.core",
+      "target": "src.utils.zhihu_const"
+    },
+    {
+      "source": "src.platforms.zhihu.field",
+      "target": "src.utils.zhihu_const"
+    },
+    {
+      "source": "src.platforms.zhihu.help",
+      "target": "src.models.m_zhihu"
+    },
+    {
+      "source": "src.platforms.zhihu.help",
+      "target": "src.utils.crawler_util"
+    },
+    {
+      "source": "src.platforms.zhihu.help",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.platforms.zhihu.help",
+      "target": "src.utils.zhihu_const"
+    },
+    {
+      "source": "src.platforms.zhihu.login",
+      "target": "config"
+    },
+    {
+      "source": "src.platforms.zhihu.login",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.platforms.zhihu.login",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.cache"
+    },
+    {
+      "source": "src.services",
+      "target": "src.services.proxy"
+    },
+    {
+      "source": "src.services.cache.cache_factory",
+      "target": "src.services.cache.local_cache"
+    },
+    {
+      "source": "src.services.cache.cache_factory",
+      "target": "src.services.cache.redis_cache"
+    },
+    {
+      "source": "src.services.cache.local_cache",
+      "target": "src.services.cache.abs_cache"
+    },
+    {
+      "source": "src.services.cache.redis_cache",
+      "target": "config.db_config"
+    },
+    {
+      "source": "src.services.cache.redis_cache",
+      "target": "src.services.cache.abs_cache"
+    },
+    {
+      "source": "src.services.proxy",
+      "target": "src.services.proxy.base_proxy"
+    },
+    {
+      "source": "src.services.proxy.base_proxy",
+      "target": "config"
+    },
+    {
+      "source": "src.services.proxy.base_proxy",
+      "target": "src.services.cache.abs_cache"
+    },
+    {
+      "source": "src.services.proxy.base_proxy",
+      "target": "src.services.cache.cache_factory"
+    },
+    {
+      "source": "src.services.proxy.base_proxy",
+      "target": "src.services.proxy.types"
+    },
+    {
+      "source": "src.services.proxy.base_proxy",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services.proxy.providers",
+      "target": "src.services.proxy.providers.jishu_http_proxy"
+    },
+    {
+      "source": "src.services.proxy.providers",
+      "target": "src.services.proxy.providers.kuaidl_proxy"
+    },
+    {
+      "source": "src.services.proxy.providers",
+      "target": "src.services.proxy.providers.wandou_http_proxy"
+    },
+    {
+      "source": "src.services.proxy.providers.jishu_http_proxy",
+      "target": "src.services.proxy"
+    },
+    {
+      "source": "src.services.proxy.providers.jishu_http_proxy",
+      "target": "src.services.proxy.types"
+    },
+    {
+      "source": "src.services.proxy.providers.jishu_http_proxy",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services.proxy.providers.kuaidl_proxy",
+      "target": "src.services.proxy"
+    },
+    {
+      "source": "src.services.proxy.providers.kuaidl_proxy",
+      "target": "src.services.proxy.types"
+    },
+    {
+      "source": "src.services.proxy.providers.kuaidl_proxy",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services.proxy.providers.wandou_http_proxy",
+      "target": "src.services.proxy"
+    },
+    {
+      "source": "src.services.proxy.providers.wandou_http_proxy",
+      "target": "src.services.proxy.types"
+    },
+    {
+      "source": "src.services.proxy.providers.wandou_http_proxy",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services.proxy.proxy_ip_pool",
+      "target": "config"
+    },
+    {
+      "source": "src.services.proxy.proxy_ip_pool",
+      "target": "src.services.proxy.base_proxy"
+    },
+    {
+      "source": "src.services.proxy.proxy_ip_pool",
+      "target": "src.services.proxy.providers"
+    },
+    {
+      "source": "src.services.proxy.proxy_ip_pool",
+      "target": "src.services.proxy.types"
+    },
+    {
+      "source": "src.services.proxy.proxy_ip_pool",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.services.proxy.proxy_mixin",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.services.proxy.proxy_mixin",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.base.db",
+      "target": "src.storage.base.db_session"
+    },
+    {
+      "source": "src.storage.base.db",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.base.db_session",
+      "target": "config"
+    },
+    {
+      "source": "src.storage.base.db_session",
+      "target": "config.db_config"
+    },
+    {
+      "source": "src.storage.base.db_session",
+      "target": "src.storage.base.models"
+    },
+    {
+      "source": "src.storage.base.excel_store_base",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.storage.base.excel_store_base",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.base.mongodb_store_base",
+      "target": "config.db_config"
+    },
+    {
+      "source": "src.storage.base.mongodb_store_base",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.xhs",
+      "target": "config"
+    },
+    {
+      "source": "src.storage.xhs",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.storage.xhs",
+      "target": "src.storage.xhs._store_impl"
+    },
+    {
+      "source": "src.storage.xhs",
+      "target": "src.storage.xhs.xhs_store_media"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.storage.base.db_session"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.storage.base.excel_store_base"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.storage.base.models"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.storage.base.mongodb_store_base"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.utils.async_file_writer"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.utils.time_util"
+    },
+    {
+      "source": "src.storage.xhs._store_impl",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.xhs.xhs_store_media",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.storage.xhs.xhs_store_media",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "config"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "src.models.m_zhihu"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "src.storage.zhihu._store_impl"
+    },
+    {
+      "source": "src.storage.zhihu",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "config"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.core.base_crawler"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.core.var"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.storage.base.db_session"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.storage.base.excel_store_base"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.storage.base.models"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.storage.base.mongodb_store_base"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.utils.async_file_writer"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.storage.zhihu._store_impl",
+      "target": "src.utils.words"
+    },
+    {
+      "source": "src.utils.async_file_writer",
+      "target": "config"
+    },
+    {
+      "source": "src.utils.async_file_writer",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.utils.async_file_writer",
+      "target": "src.utils.words"
+    },
+    {
+      "source": "src.utils.browser_launcher",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.utils.cdp_browser",
+      "target": "config"
+    },
+    {
+      "source": "src.utils.cdp_browser",
+      "target": "src.utils.browser_launcher"
+    },
+    {
+      "source": "src.utils.cdp_browser",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.utils.crawler_util",
+      "target": "src.services.proxy.proxy_ip_pool"
+    },
+    {
+      "source": "src.utils.crawler_util",
+      "target": "src.utils.utils"
+    },
+    {
+      "source": "src.utils.slider_util",
+      "target": "src.utils.easing"
+    },
+    {
+      "source": "src.utils.utils",
+      "target": "src.utils.crawler_util"
+    },
+    {
+      "source": "src.utils.utils",
+      "target": "src.utils.slider_util"
+    },
+    {
+      "source": "src.utils.utils",
+      "target": "src.utils.time_util"
+    },
+    {
+      "source": "src.utils.words",
+      "target": "config"
+    },
+    {
+      "source": "src.utils.words",
+      "target": "src.utils.utils"
+    }
+  ]
+}

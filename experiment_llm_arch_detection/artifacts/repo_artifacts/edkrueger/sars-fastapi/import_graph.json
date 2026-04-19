@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    "app",
+    "app.database",
+    "app.main",
+    "app.models",
+    "app.schemas",
+    "load"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "app.models"
+    },
+    {
+      "source": "app",
+      "target": "app.schemas"
+    },
+    {
+      "source": "app.main",
+      "target": "app.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.models"
+    },
+    {
+      "source": "app.main",
+      "target": "app.schemas"
+    },
+    {
+      "source": "app.models",
+      "target": "app.database"
+    },
+    {
+      "source": "load",
+      "target": "app.database"
+    },
+    {
+      "source": "load",
+      "target": "app.models"
+    }
+  ]
+}

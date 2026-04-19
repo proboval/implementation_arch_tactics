@@ -1,0 +1,89 @@
+Edit-Banana
+├── config
+│   └── config.yaml.example
+├── docs
+│   └── SETUP_SAM3.md
+├── flowchart_text
+│   ├── src
+│   │   └── __init__.py
+│   └── main.py
+├── modules
+│   ├── text
+│   │   ├── ocr
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── local_ocr.py
+│   │   │   ├── paddle_ocr.py
+│   │   │   └── pix2text.py
+│   │   ├── processors
+│   │   │   ├── __init__.py
+│   │   │   ├── font_family.py
+│   │   │   ├── font_size.py
+│   │   │   ├── formula.py
+│   │   │   └── style.py
+│   │   ├── __init__.py
+│   │   ├── coord_processor.py
+│   │   ├── restorer.py
+│   │   └── xml_generator.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── color_utils.py
+│   │   ├── drawio_library.py
+│   │   ├── image_utils.py
+│   │   └── xml_utils.py
+│   ├── __init__.py
+│   ├── base.py
+│   ├── basic_shape_processor.py
+│   ├── data_types.py
+│   ├── icon_picture_processor.py
+│   ├── metric_evaluator.py
+│   ├── README.md
+│   ├── refinement_processor.py
+│   ├── sam3_info_extractor.py
+│   └── xml_merger.py
+├── prompts
+│   ├── arrow.py
+│   ├── background.py
+│   ├── image.py
+│   └── shape.py
+├── sam3
+│   └── README.md
+├── sam3_service
+│   ├── __init__.py
+│   ├── client.py
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── rmbg_client.py
+│   ├── rmbg_server.py
+│   ├── run_all_service.py
+│   ├── run_rmbg_servers.sh
+│   ├── run_servers.sh
+│   └── server.py
+├── scripts
+│   ├── merge_xml.py
+│   ├── setup_rmbg.py
+│   └── setup_sam3.sh
+├── static
+│   ├── demo
+│   │   ├── cut.gif
+│   │   ├── frontend.png
+│   │   ├── original_1.jpg
+│   │   ├── original_2.png
+│   │   ├── original_3.jpg
+│   │   ├── original_4.jpg
+│   │   ├── recon_1.png
+│   │   ├── recon_2.png
+│   │   ├── recon_3.png
+│   │   ├── recon_4.png
+│   │   └── save.gif
+│   ├── banana.jpg
+│   ├── compressed-banana.jpg
+│   └── wechatGroup.jpg
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── main.py
+├── README.md
+├── README_CN.md
+├── requirements.txt
+└── server_pa.py

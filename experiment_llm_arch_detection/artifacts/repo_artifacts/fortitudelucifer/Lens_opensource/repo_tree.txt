@@ -1,0 +1,256 @@
+Lens_opensource
+├── assets
+│   ├── 10.png
+│   ├── 2.png
+│   ├── 4.png
+│   ├── 7.png
+│   ├── 8.png
+│   ├── lens_data.png
+│   ├── lens_logo_high_precision.png
+│   ├── lens_logo_high_precision.svg
+│   ├── lens_logo_high_precision_with_bg.svg
+│   ├── lens_vector.png
+│   ├── lens_vector.svg
+│   ├── lens_vector_ultra_precision.svg
+│   ├── lyz_logo.png
+│   ├── raw1.png
+│   └── raw2.png
+├── configs
+│   ├── advisor.yaml
+│   ├── caption.yaml
+│   ├── compression.yaml
+│   ├── confirmed_names.yaml
+│   ├── linkfile.yaml
+│   ├── media_filter.yaml
+│   ├── router.yaml
+│   ├── sft_optimizer.yaml
+│   ├── sticker.yaml
+│   ├── sticker_intent_map.yaml
+│   ├── timeline_postprocess.yaml
+│   ├── video.yaml
+│   └── voice.yaml
+├── docs
+│   ├── advisor_moa_fusion_overview.md
+│   ├── advisor_pipeline_overview.md
+│   ├── advisor_rag_overview.md
+│   ├── advisor_service_overview.md
+│   ├── advisor_step_by_step.md
+│   ├── advisor_training_overview.md
+│   ├── agent_sft_pipeline_overview.md
+│   ├── image_pipeline_overview.md
+│   ├── ingestion_guide.md
+│   ├── ingestion_pipeline_overview.md
+│   ├── linkfile_pipeline_overview.md
+│   ├── modality_fields_and_models.md
+│   ├── pii_detection_guide.md
+│   ├── pipeline.md
+│   ├── privacy_mapping.md
+│   ├── sticker_pipeline_overview.md
+│   ├── video_pipeline_overview.md
+│   ├── voice_pipeline_overview.md
+│   └── workspace_init.md
+├── frontend
+│   ├── public
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── assets
+│   │   │   ├── lens_logo_high_precision.svg
+│   │   │   ├── lyz_logo.png
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── chat
+│   │   │   │   ├── BottomInput.tsx
+│   │   │   │   ├── ChatArea.tsx
+│   │   │   │   ├── ChatSidebar.tsx
+│   │   │   │   ├── ChatTopBar.tsx
+│   │   │   │   ├── MarkdownContent.tsx
+│   │   │   │   └── ThinkingUI.tsx
+│   │   │   ├── dashboard
+│   │   │   │   ├── ActivityFeed.tsx
+│   │   │   │   ├── ModelConfig.tsx
+│   │   │   │   ├── PipelinePanel.tsx
+│   │   │   │   └── StatsCard.tsx
+│   │   │   ├── layout
+│   │   │   │   ├── Sidebar.tsx
+│   │   │   │   └── TopNav.tsx
+│   │   │   ├── ui
+│   │   │   │   ├── alert.tsx
+│   │   │   │   ├── badge.tsx
+│   │   │   │   ├── button.tsx
+│   │   │   │   ├── card.tsx
+│   │   │   │   ├── input.tsx
+│   │   │   │   ├── label.tsx
+│   │   │   │   ├── select.tsx
+│   │   │   │   ├── tabs.tsx
+│   │   │   │   └── textarea.tsx
+│   │   │   ├── ApiKeyChecker.tsx
+│   │   │   ├── ModelSelector.tsx
+│   │   │   ├── ModelTester.tsx
+│   │   │   └── ReviewPanel.tsx
+│   │   ├── pages
+│   │   │   ├── ChatPage.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   └── WelcomeScreen.tsx
+│   │   ├── types
+│   │   │   └── index.ts
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── constants.ts
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── eslint.config.js
+│   └── vite.config.ts
+├── scripts
+│   ├── _common
+│   │   ├── anonymizer.py
+│   │   ├── check_paths.py
+│   │   ├── download_models.py
+│   │   ├── jsonl_utils.py
+│   │   ├── media_filter.py
+│   │   ├── migrate_merged_files.py
+│   │   ├── path_utils.py
+│   │   ├── schema_utils.py
+│   │   └── text_normalize.py
+│   ├── advisor
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   └── server.py
+│   │   ├── run_all
+│   │   │   ├── _00_verify_environment.py
+│   │   │   ├── _01_extract_conversations.py
+│   │   │   ├── _02_generate_analysis.py
+│   │   │   ├── _02b_model_comparison.py
+│   │   │   ├── _02c_fusion_pipeline.py
+│   │   │   ├── _02c_rerun_moa.py
+│   │   │   ├── _03_export_for_review.py
+│   │   │   ├── _03b_ai_review.py
+│   │   │   ├── _04_import_reviewed.py
+│   │   │   ├── _05_format_training_data.py
+│   │   │   ├── _05b_filter_split_training.py
+│   │   │   ├── _05c_deanonymize_training.py
+│   │   │   ├── _06_train_model.py
+│   │   │   ├── _07_run_inference.py
+│   │   │   ├── _07b_eval_compare.py
+│   │   │   ├── _08_run_dialogue.py
+│   │   │   ├── _09_build_graph.py
+│   │   │   ├── _10_augment_data.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── analyzers.py
+│   │   ├── augmentor.py
+│   │   ├── chunk_based_rag.py
+│   │   ├── config.py
+│   │   ├── errors.py
+│   │   ├── extractor.py
+│   │   ├── formatter.py
+│   │   ├── generator.py
+│   │   ├── graph_rag.py
+│   │   ├── graph_rag_enhanced.py
+│   │   ├── inference.py
+│   │   ├── intent_classifier.py
+│   │   ├── key_rotator.py
+│   │   ├── model_router.py
+│   │   ├── pipeline_executor.py
+│   │   ├── query_rewriter.py
+│   │   ├── safety_layer.py
+│   │   ├── schema_validator.py
+│   │   ├── schemas.py
+│   │   ├── streaming.py
+│   │   ├── test_backends.py
+│   │   └── trainer.py
+│   ├── compression
+│   │   ├── two_stage_pii
+│   │   │   ├── __init__.py
+│   │   │   ├── candidate_extractor.py
+│   │   │   ├── llm_validator.py
+│   │   │   ├── models.py
+│   │   │   ├── name_replacer.py
+│   │   │   └── scanner.py
+│   │   ├── __init__.py
+│   │   ├── engine.py
+│   │   ├── generate_report.py
+│   │   ├── image_compressor.py
+│   │   ├── llm_pii_scanner.py
+│   │   ├── pii_detector.py
+│   │   ├── privacy_shield.py
+│   │   ├── quality_validator.py
+│   │   ├── run_full_anonymization.py
+│   │   ├── sample_comparison.py
+│   │   ├── scan_pii.py
+│   │   ├── sft_optimizer.py
+│   │   ├── sft_trimmer.py
+│   │   ├── sticker_compressor.py
+│   │   ├── two_stage_pii.py
+│   │   ├── validate_sft_quality.py
+│   │   ├── video_compressor.py
+│   │   └── voice_compressor.py
+│   ├── extract
+│   │   ├── extract_html_to_jsonl.py
+│   │   ├── extract_quote_info.py
+│   │   └── fix_recall_speaker.py
+│   ├── image
+│   │   ├── run_all
+│   │   │   ├── _01_run_ocr.py
+│   │   │   ├── _02.5_run_compress.py
+│   │   │   ├── _02_run_caption.py
+│   │   │   ├── _03_merge_engine.py
+│   │   │   └── _04_update_timeline.py
+│   │   ├── loader.py
+│   │   └── router.py
+│   ├── linkfile
+│   │   ├── run_all
+│   │   │   ├── _01.5_run_file_summary.py
+│   │   │   ├── _01_extract_and_anonymize.py
+│   │   │   ├── _02_merge_engine.py
+│   │   │   └── _03_update_timeline.py
+│   │   └── extractor.py
+│   ├── sticker
+│   │   └── run_all
+│   │       ├── _01_run_download.py
+│   │       ├── _02_run_sniff.py
+│   │       ├── _03_run_process.py
+│   │       ├── _04_run_triage.py
+│   │       ├── _05.5_run_compress.py
+│   │       ├── _05_run_caption.py
+│   │       ├── _06_merge_engine.py
+│   │       ├── _07_update_timeline.py
+│   │       └── _08_cleanup_frames.py
+│   ├── timeline
+│   │   ├── __init__.py
+│   │   ├── postprocess_timeline.py
+│   │   ├── run_anonymization.py
+│   │   ├── run_postprocess.py
+│   │   └── timeline_postprocessor.py
+│   ├── video
+│   │   ├── run_all
+│   │   │   ├── _01_run_extract.py
+│   │   │   ├── _02_run_transcribe.py
+│   │   │   ├── _03.5_run_compress.py
+│   │   │   ├── _03_run_caption.py
+│   │   │   ├── _04_merge_engine.py
+│   │   │   └── _05_update_timeline.py
+│   │   └── sync_video_to_slim.py
+│   ├── voice
+│   │   └── run_all
+│   │       ├── _01_run_funasr.py
+│   │       ├── _01b_run_whisper.py
+│   │       ├── _02.5_run_compress.py
+│   │       ├── _02_run_emotion.py
+│   │       ├── _03_merge_engine.py
+│   │       └── _04_update_timeline.py
+│   └── workspace
+│       ├── init_workspace.py
+│       └── run_ingest.py
+├── .gitignore
+├── CONTRIBUTING.md
+├── environment.yml
+├── LICENSE
+├── MANIFEST.md
+├── PLACEHOLDER_REPLACEMENT_GUIDE.md
+├── README.md
+├── README_CN.md
+├── requirements.txt
+├── RoadMap.md
+├── run_agent_sft_pipeline.sh
+├── run_all_pipelines.py
+└── SECURITY.md

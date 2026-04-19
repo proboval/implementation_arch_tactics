@@ -1,0 +1,3562 @@
+{
+  "nodes": [
+    ".github.scripts.ai_review",
+    "analyzer_service",
+    "api",
+    "api.app",
+    "api.deps",
+    "api.middlewares",
+    "api.middlewares.auth",
+    "api.middlewares.error_handler",
+    "api.v1",
+    "api.v1.endpoints",
+    "api.v1.endpoints.agent",
+    "api.v1.endpoints.analysis",
+    "api.v1.endpoints.auth",
+    "api.v1.endpoints.backtest",
+    "api.v1.endpoints.health",
+    "api.v1.endpoints.history",
+    "api.v1.endpoints.portfolio",
+    "api.v1.endpoints.stocks",
+    "api.v1.endpoints.system_config",
+    "api.v1.endpoints.usage",
+    "api.v1.router",
+    "api.v1.schemas",
+    "api.v1.schemas.analysis",
+    "api.v1.schemas.backtest",
+    "api.v1.schemas.common",
+    "api.v1.schemas.history",
+    "api.v1.schemas.portfolio",
+    "api.v1.schemas.stocks",
+    "api.v1.schemas.system_config",
+    "api.v1.schemas.usage",
+    "bot",
+    "bot.commands",
+    "bot.commands.analyze",
+    "bot.commands.ask",
+    "bot.commands.base",
+    "bot.commands.batch",
+    "bot.commands.chat",
+    "bot.commands.help",
+    "bot.commands.history",
+    "bot.commands.market",
+    "bot.commands.research",
+    "bot.commands.status",
+    "bot.commands.strategies",
+    "bot.dispatcher",
+    "bot.handler",
+    "bot.models",
+    "bot.platforms",
+    "bot.platforms.base",
+    "bot.platforms.dingtalk",
+    "bot.platforms.dingtalk_stream",
+    "bot.platforms.discord",
+    "bot.platforms.feishu_stream",
+    "data_provider",
+    "data_provider.akshare_fetcher",
+    "data_provider.baostock_fetcher",
+    "data_provider.base",
+    "data_provider.efinance_fetcher",
+    "data_provider.fundamental_adapter",
+    "data_provider.longbridge_fetcher",
+    "data_provider.pytdx_fetcher",
+    "data_provider.realtime_types",
+    "data_provider.tickflow_fetcher",
+    "data_provider.tushare_fetcher",
+    "data_provider.us_index_mapping",
+    "data_provider.yfinance_fetcher",
+    "main",
+    "patch",
+    "patch.eastmoney_patch",
+    "scripts.check_ai_assets",
+    "scripts.fetch_tushare_stock_list",
+    "scripts.generate_index_from_csv",
+    "scripts.generate_stock_index",
+    "server",
+    "sources.dsa_vi.gen_icons",
+    "src",
+    "src.agent",
+    "src.agent.agents",
+    "src.agent.agents.base_agent",
+    "src.agent.agents.decision_agent",
+    "src.agent.agents.intel_agent",
+    "src.agent.agents.portfolio_agent",
+    "src.agent.agents.risk_agent",
+    "src.agent.agents.technical_agent",
+    "src.agent.conversation",
+    "src.agent.events",
+    "src.agent.executor",
+    "src.agent.factory",
+    "src.agent.llm_adapter",
+    "src.agent.memory",
+    "src.agent.orchestrator",
+    "src.agent.protocols",
+    "src.agent.research",
+    "src.agent.runner",
+    "src.agent.skills",
+    "src.agent.skills.aggregator",
+    "src.agent.skills.base",
+    "src.agent.skills.defaults",
+    "src.agent.skills.router",
+    "src.agent.skills.skill_agent",
+    "src.agent.strategies",
+    "src.agent.strategies.aggregator",
+    "src.agent.strategies.router",
+    "src.agent.strategies.strategy_agent",
+    "src.agent.tools",
+    "src.agent.tools.analysis_tools",
+    "src.agent.tools.backtest_tools",
+    "src.agent.tools.data_tools",
+    "src.agent.tools.market_tools",
+    "src.agent.tools.registry",
+    "src.agent.tools.search_tools",
+    "src.analyzer",
+    "src.auth",
+    "src.config",
+    "src.core.backtest_engine",
+    "src.core.config_manager",
+    "src.core.config_registry",
+    "src.core.market_profile",
+    "src.core.market_review",
+    "src.core.market_strategy",
+    "src.core.pipeline",
+    "src.core.trading_calendar",
+    "src.data",
+    "src.data.stock_index_loader",
+    "src.data.stock_mapping",
+    "src.enums",
+    "src.feishu_doc",
+    "src.formatters",
+    "src.logging_config",
+    "src.market_analyzer",
+    "src.market_context",
+    "src.md2img",
+    "src.notification",
+    "src.notification_sender",
+    "src.notification_sender.astrbot_sender",
+    "src.notification_sender.custom_webhook_sender",
+    "src.notification_sender.discord_sender",
+    "src.notification_sender.email_sender",
+    "src.notification_sender.feishu_sender",
+    "src.notification_sender.pushover_sender",
+    "src.notification_sender.pushplus_sender",
+    "src.notification_sender.serverchan3_sender",
+    "src.notification_sender.slack_sender",
+    "src.notification_sender.telegram_sender",
+    "src.notification_sender.wechat_sender",
+    "src.report_language",
+    "src.repositories",
+    "src.repositories.analysis_repo",
+    "src.repositories.backtest_repo",
+    "src.repositories.portfolio_repo",
+    "src.repositories.stock_repo",
+    "src.scheduler",
+    "src.schemas",
+    "src.schemas.report_schema",
+    "src.search_service",
+    "src.services",
+    "src.services.agent_model_service",
+    "src.services.analysis_service",
+    "src.services.backtest_service",
+    "src.services.history_comparison_service",
+    "src.services.history_service",
+    "src.services.image_stock_extractor",
+    "src.services.import_parser",
+    "src.services.name_to_code_resolver",
+    "src.services.portfolio_import_service",
+    "src.services.portfolio_risk_service",
+    "src.services.portfolio_service",
+    "src.services.report_renderer",
+    "src.services.social_sentiment_service",
+    "src.services.stock_code_utils",
+    "src.services.stock_service",
+    "src.services.system_config_service",
+    "src.services.task_queue",
+    "src.services.task_service",
+    "src.stock_analyzer",
+    "src.storage",
+    "src.utils",
+    "src.utils.analysis_metadata",
+    "src.utils.data_processing",
+    "src.webui_frontend",
+    "test_env",
+    "tests",
+    "tests.litellm_stub",
+    "tests.longbridge_live_smoke",
+    "tests.test_agent_executor",
+    "tests.test_agent_models_api",
+    "tests.test_agent_orchestrator_sniper_fallback",
+    "tests.test_agent_pipeline",
+    "tests.test_agent_registry",
+    "tests.test_agent_sse_cleanup",
+    "tests.test_akshare_realtime_logging",
+    "tests.test_analysis_api_contract",
+    "tests.test_analysis_history",
+    "tests.test_analysis_integration",
+    "tests.test_analysis_metadata",
+    "tests.test_analyzer_news_prompt",
+    "tests.test_anspire_search",
+    "tests.test_api_app_cors",
+    "tests.test_ask_command",
+    "tests.test_auth",
+    "tests.test_auth_api",
+    "tests.test_auth_status_setup_state",
+    "tests.test_autocomplete_pr0",
+    "tests.test_backtest_engine",
+    "tests.test_backtest_service",
+    "tests.test_backtest_summary",
+    "tests.test_bot_dispatcher_async",
+    "tests.test_chip_structure_fallback",
+    "tests.test_config_env_compat",
+    "tests.test_config_manager",
+    "tests.test_config_registry",
+    "tests.test_config_validate_structured",
+    "tests.test_conversation_manager",
+    "tests.test_cwe345_xff_bypass",
+    "tests.test_data_fetcher_prefetch_stock_names",
+    "tests.test_data_tools_get_capital_flow",
+    "tests.test_data_tools_get_stock_info",
+    "tests.test_data_tools_portfolio_snapshot",
+    "tests.test_desktop_installer_config",
+    "tests.test_discord_platform",
+    "tests.test_feishu_stream",
+    "tests.test_feishu_stream_ordering",
+    "tests.test_fetcher_logging",
+    "tests.test_formatters",
+    "tests.test_fundamental_adapter",
+    "tests.test_fundamental_context",
+    "tests.test_generate_index_from_csv",
+    "tests.test_get_latest_data",
+    "tests.test_history_news_fallback",
+    "tests.test_hk_realtime_routing",
+    "tests.test_hk_stock_name_fallback",
+    "tests.test_image_stock_extractor_litellm",
+    "tests.test_import_parser",
+    "tests.test_llm_channel_config",
+    "tests.test_llm_usage",
+    "tests.test_longbridge_fetcher",
+    "tests.test_main_schedule_mode",
+    "tests.test_market_analyzer_generate_text",
+    "tests.test_market_review",
+    "tests.test_market_strategy",
+    "tests.test_multi_agent",
+    "tests.test_name_to_code_resolver",
+    "tests.test_news_intel",
+    "tests.test_news_strategy_config",
+    "tests.test_notification",
+    "tests.test_notification_sender",
+    "tests.test_pipeline_augment_realtime",
+    "tests.test_pipeline_fetch_error",
+    "tests.test_pipeline_notification_image_routing",
+    "tests.test_pipeline_optional_service_resilience",
+    "tests.test_pipeline_prefetch_dry_run",
+    "tests.test_pipeline_realtime_indicators",
+    "tests.test_pipeline_related_boards",
+    "tests.test_pipeline_single_notify_thread_safety",
+    "tests.test_pipeline_single_stock_notify",
+    "tests.test_portfolio_api",
+    "tests.test_portfolio_pr2",
+    "tests.test_portfolio_service",
+    "tests.test_realtime_quote_fallback_logging",
+    "tests.test_realtime_types",
+    "tests.test_report_integrity",
+    "tests.test_report_language",
+    "tests.test_report_renderer",
+    "tests.test_report_schema",
+    "tests.test_scheduler_background",
+    "tests.test_search_news_freshness",
+    "tests.test_search_performance",
+    "tests.test_search_searxng",
+    "tests.test_search_serpapi_provider",
+    "tests.test_search_service_concurrency",
+    "tests.test_search_tavily_provider",
+    "tests.test_skill_load_warning",
+    "tests.test_social_sentiment_service",
+    "tests.test_stock_analyzer_bias",
+    "tests.test_stock_code_bse",
+    "tests.test_stock_code_utils",
+    "tests.test_stock_index_loader",
+    "tests.test_stooq_fallback",
+    "tests.test_storage",
+    "tests.test_system_config_api",
+    "tests.test_system_config_service",
+    "tests.test_task_queue_config_sync",
+    "tests.test_task_service",
+    "tests.test_tickflow_fetcher",
+    "tests.test_tickflow_market_review_fallback",
+    "tests.test_trading_calendar",
+    "tests.test_tushare_fetcher_followups",
+    "tests.test_tushare_fetcher_get_stock_list",
+    "tests.test_tushare_fetcher_http_client",
+    "tests.test_us_index_mapping",
+    "tests.test_webui_frontend",
+    "tests.test_yfinance_us_indices",
+    "webui"
+  ],
+  "edges": [
+    {
+      "source": "analyzer_service",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "analyzer_service",
+      "target": "src.config"
+    },
+    {
+      "source": "analyzer_service",
+      "target": "src.core.market_review"
+    },
+    {
+      "source": "analyzer_service",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "analyzer_service",
+      "target": "src.enums"
+    },
+    {
+      "source": "analyzer_service",
+      "target": "src.notification"
+    },
+    {
+      "source": "api.app",
+      "target": "api.middlewares.auth"
+    },
+    {
+      "source": "api.app",
+      "target": "api.middlewares.error_handler"
+    },
+    {
+      "source": "api.app",
+      "target": "api.v1"
+    },
+    {
+      "source": "api.app",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.app",
+      "target": "src.services.system_config_service"
+    },
+    {
+      "source": "api.deps",
+      "target": "src.config"
+    },
+    {
+      "source": "api.deps",
+      "target": "src.services.system_config_service"
+    },
+    {
+      "source": "api.deps",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.middlewares",
+      "target": "api.middlewares.error_handler"
+    },
+    {
+      "source": "api.middlewares.auth",
+      "target": "src.auth"
+    },
+    {
+      "source": "api.v1",
+      "target": "api.v1.router"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.agent"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.analysis"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.auth"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.backtest"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.health"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.history"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.portfolio"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.stocks"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.system_config"
+    },
+    {
+      "source": "api.v1.endpoints",
+      "target": "api.v1.endpoints.usage"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.agent.research"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.config"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.notification"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.services.agent_model_service"
+    },
+    {
+      "source": "api.v1.endpoints.agent",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "api.v1.schemas.analysis"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "api.v1.schemas.history"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.config"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.report_language"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.services.analysis_service"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.services.name_to_code_resolver"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.services.stock_code_utils"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.v1.endpoints.analysis",
+      "target": "src.utils.data_processing"
+    },
+    {
+      "source": "api.v1.endpoints.auth",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.auth",
+      "target": "src.auth"
+    },
+    {
+      "source": "api.v1.endpoints.auth",
+      "target": "src.config"
+    },
+    {
+      "source": "api.v1.endpoints.auth",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "api.v1.endpoints.backtest",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.backtest",
+      "target": "api.v1.schemas.backtest"
+    },
+    {
+      "source": "api.v1.endpoints.backtest",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.backtest",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "api.v1.endpoints.backtest",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.v1.endpoints.health",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "api.v1.schemas.history"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "src.report_language"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "src.services.history_service"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.v1.endpoints.history",
+      "target": "src.utils.data_processing"
+    },
+    {
+      "source": "api.v1.endpoints.portfolio",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.portfolio",
+      "target": "api.v1.schemas.portfolio"
+    },
+    {
+      "source": "api.v1.endpoints.portfolio",
+      "target": "src.services.portfolio_import_service"
+    },
+    {
+      "source": "api.v1.endpoints.portfolio",
+      "target": "src.services.portfolio_risk_service"
+    },
+    {
+      "source": "api.v1.endpoints.portfolio",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "api.v1.endpoints.stocks",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.stocks",
+      "target": "api.v1.schemas.stocks"
+    },
+    {
+      "source": "api.v1.endpoints.stocks",
+      "target": "src.services.image_stock_extractor"
+    },
+    {
+      "source": "api.v1.endpoints.stocks",
+      "target": "src.services.import_parser"
+    },
+    {
+      "source": "api.v1.endpoints.stocks",
+      "target": "src.services.stock_service"
+    },
+    {
+      "source": "api.v1.endpoints.system_config",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.system_config",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.endpoints.system_config",
+      "target": "api.v1.schemas.system_config"
+    },
+    {
+      "source": "api.v1.endpoints.system_config",
+      "target": "src.services.system_config_service"
+    },
+    {
+      "source": "api.v1.endpoints.usage",
+      "target": "api.deps"
+    },
+    {
+      "source": "api.v1.endpoints.usage",
+      "target": "api.v1.schemas.usage"
+    },
+    {
+      "source": "api.v1.endpoints.usage",
+      "target": "src.storage"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.agent"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.analysis"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.auth"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.backtest"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.history"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.portfolio"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.stocks"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.system_config"
+    },
+    {
+      "source": "api.v1.router",
+      "target": "api.v1.endpoints.usage"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.analysis"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.backtest"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.common"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.history"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.portfolio"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.stocks"
+    },
+    {
+      "source": "api.v1.schemas",
+      "target": "api.v1.schemas.system_config"
+    },
+    {
+      "source": "api.v1.schemas.analysis",
+      "target": "src.utils.analysis_metadata"
+    },
+    {
+      "source": "bot",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "bot",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.analyze"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.ask"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.batch"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.chat"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.help"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.history"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.market"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.research"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.status"
+    },
+    {
+      "source": "bot.commands",
+      "target": "bot.commands.strategies"
+    },
+    {
+      "source": "bot.commands.analyze",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.analyze",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.analyze",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "bot.commands.analyze",
+      "target": "src.enums"
+    },
+    {
+      "source": "bot.commands.analyze",
+      "target": "src.services.task_service"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.agents.portfolio_agent"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.conversation"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.ask",
+      "target": "src.storage"
+    },
+    {
+      "source": "bot.commands.base",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.batch",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.batch",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.batch",
+      "target": "main"
+    },
+    {
+      "source": "bot.commands.batch",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.chat",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.chat",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.chat",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "bot.commands.chat",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.chat",
+      "target": "src.storage"
+    },
+    {
+      "source": "bot.commands.help",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.help",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "bot.commands.help",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.history",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.history",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.history",
+      "target": "src.storage"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "src.market_analyzer"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "src.notification"
+    },
+    {
+      "source": "bot.commands.market",
+      "target": "src.search_service"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "src.agent.research"
+    },
+    {
+      "source": "bot.commands.research",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.status",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.status",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.status",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.commands.strategies",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.commands.strategies",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.commands.strategies",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "bot.commands.strategies",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "bot.commands"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "src.agent.orchestrator"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "bot.dispatcher",
+      "target": "src.services.name_to_code_resolver"
+    },
+    {
+      "source": "bot.handler",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "bot.handler",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.handler",
+      "target": "bot.platforms"
+    },
+    {
+      "source": "bot.handler",
+      "target": "bot.platforms.base"
+    },
+    {
+      "source": "bot.handler",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.platforms",
+      "target": "bot.platforms.base"
+    },
+    {
+      "source": "bot.platforms",
+      "target": "bot.platforms.dingtalk"
+    },
+    {
+      "source": "bot.platforms",
+      "target": "bot.platforms.dingtalk_stream"
+    },
+    {
+      "source": "bot.platforms",
+      "target": "bot.platforms.feishu_stream"
+    },
+    {
+      "source": "bot.platforms.base",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.platforms.dingtalk",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.platforms.dingtalk",
+      "target": "bot.platforms.base"
+    },
+    {
+      "source": "bot.platforms.dingtalk",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.platforms.dingtalk_stream",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "bot.platforms.dingtalk_stream",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.platforms.dingtalk_stream",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.platforms.discord",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.platforms.discord",
+      "target": "bot.platforms.base"
+    },
+    {
+      "source": "bot.platforms.discord",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.platforms.discord",
+      "target": "src.formatters"
+    },
+    {
+      "source": "bot.platforms.feishu_stream",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "bot.platforms.feishu_stream",
+      "target": "bot.models"
+    },
+    {
+      "source": "bot.platforms.feishu_stream",
+      "target": "src.config"
+    },
+    {
+      "source": "bot.platforms.feishu_stream",
+      "target": "src.formatters"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.akshare_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.baostock_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.efinance_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.longbridge_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.pytdx_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "data_provider",
+      "target": "data_provider.yfinance_fetcher"
+    },
+    {
+      "source": "data_provider.akshare_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.akshare_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.akshare_fetcher",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "data_provider.akshare_fetcher",
+      "target": "patch.eastmoney_patch"
+    },
+    {
+      "source": "data_provider.akshare_fetcher",
+      "target": "src.config"
+    },
+    {
+      "source": "data_provider.baostock_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.akshare_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.baostock_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.efinance_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.fundamental_adapter"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.longbridge_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.pytdx_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.tickflow_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "data_provider.yfinance_fetcher"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "src.config"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "src.data.stock_index_loader"
+    },
+    {
+      "source": "data_provider.base",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "data_provider.efinance_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.efinance_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.efinance_fetcher",
+      "target": "patch.eastmoney_patch"
+    },
+    {
+      "source": "data_provider.efinance_fetcher",
+      "target": "src.config"
+    },
+    {
+      "source": "data_provider.longbridge_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.longbridge_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.longbridge_fetcher",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "data_provider.longbridge_fetcher",
+      "target": "src.config"
+    },
+    {
+      "source": "data_provider.longbridge_fetcher",
+      "target": "src.report_language"
+    },
+    {
+      "source": "data_provider.pytdx_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.tickflow_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.tushare_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.tushare_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.tushare_fetcher",
+      "target": "src.config"
+    },
+    {
+      "source": "data_provider.yfinance_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "data_provider.yfinance_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "data_provider.yfinance_fetcher",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "data_provider.yfinance_fetcher",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "main",
+      "target": "bot.platforms"
+    },
+    {
+      "source": "main",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "main",
+      "target": "src.agent.events"
+    },
+    {
+      "source": "main",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "main",
+      "target": "src.config"
+    },
+    {
+      "source": "main",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "main",
+      "target": "src.core.market_review"
+    },
+    {
+      "source": "main",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "main",
+      "target": "src.core.trading_calendar"
+    },
+    {
+      "source": "main",
+      "target": "src.feishu_doc"
+    },
+    {
+      "source": "main",
+      "target": "src.logging_config"
+    },
+    {
+      "source": "main",
+      "target": "src.notification"
+    },
+    {
+      "source": "main",
+      "target": "src.scheduler"
+    },
+    {
+      "source": "main",
+      "target": "src.search_service"
+    },
+    {
+      "source": "main",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "main",
+      "target": "src.webui_frontend"
+    },
+    {
+      "source": "scripts.generate_stock_index",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "server",
+      "target": "api.app"
+    },
+    {
+      "source": "server",
+      "target": "src.config"
+    },
+    {
+      "source": "server",
+      "target": "src.logging_config"
+    },
+    {
+      "source": "src.agent",
+      "target": "src.agent.executor"
+    },
+    {
+      "source": "src.agent",
+      "target": "src.agent.memory"
+    },
+    {
+      "source": "src.agent",
+      "target": "src.agent.orchestrator"
+    },
+    {
+      "source": "src.agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.decision_agent"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.intel_agent"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.portfolio_agent"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.risk_agent"
+    },
+    {
+      "source": "src.agent.agents",
+      "target": "src.agent.agents.technical_agent"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.memory"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.agents.base_agent",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.agents.decision_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents.decision_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.decision_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents.decision_agent",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.agent.agents.intel_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents.intel_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.intel_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents.portfolio_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents.portfolio_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.portfolio_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents.risk_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents.risk_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.risk_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.agents.technical_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.agents.technical_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.agents.technical_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.conversation",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.agent.events",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.agent.events",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.events",
+      "target": "src.notification"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.agent.conversation"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.market_context"
+    },
+    {
+      "source": "src.agent.executor",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.executor"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.orchestrator"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.analysis_tools"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.backtest_tools"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.market_tools"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.agent.tools.search_tools"
+    },
+    {
+      "source": "src.agent.factory",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.llm_adapter",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.memory",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.memory",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "src.agent.memory",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.agents.decision_agent"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.agents.intel_agent"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.agents.risk_agent"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.agents.technical_agent"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.conversation"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.executor"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.skills.aggregator"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.skills.router"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.skills.skill_agent"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.orchestrator",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.agent.research",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.research",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.research",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.research",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.runner",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.agent.runner",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.agent.runner",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.runner",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.agent.skills",
+      "target": "src.agent.skills.aggregator"
+    },
+    {
+      "source": "src.agent.skills",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "src.agent.skills",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.skills",
+      "target": "src.agent.skills.router"
+    },
+    {
+      "source": "src.agent.skills",
+      "target": "src.agent.skills.skill_agent"
+    },
+    {
+      "source": "src.agent.skills.aggregator",
+      "target": "src.agent.memory"
+    },
+    {
+      "source": "src.agent.skills.aggregator",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.skills.aggregator",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.skills.aggregator",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.skills.aggregator",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "src.agent.skills.defaults",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "src.agent.skills.router",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "src.agent.skills.router",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.skills.router",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.skills.router",
+      "target": "src.config"
+    },
+    {
+      "source": "src.agent.skills.skill_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "src.agent.skills.skill_agent",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "src.agent.skills.skill_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.agent.skills.skill_agent",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "src.agent.skills.skill_agent",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.agent.strategies",
+      "target": "src.agent.strategies.aggregator"
+    },
+    {
+      "source": "src.agent.strategies",
+      "target": "src.agent.strategies.router"
+    },
+    {
+      "source": "src.agent.strategies",
+      "target": "src.agent.strategies.strategy_agent"
+    },
+    {
+      "source": "src.agent.strategies.aggregator",
+      "target": "src.agent.skills.aggregator"
+    },
+    {
+      "source": "src.agent.strategies.router",
+      "target": "src.agent.skills.router"
+    },
+    {
+      "source": "src.agent.strategies.strategy_agent",
+      "target": "src.agent.skills.skill_agent"
+    },
+    {
+      "source": "src.agent.tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.analysis_tools",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.agent.tools.analysis_tools",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.agent.tools.analysis_tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.analysis_tools",
+      "target": "src.stock_analyzer"
+    },
+    {
+      "source": "src.agent.tools.analysis_tools",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.agent.tools.backtest_tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.backtest_tools",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "src.agent.tools.data_tools",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.agent.tools.data_tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.data_tools",
+      "target": "src.services.portfolio_risk_service"
+    },
+    {
+      "source": "src.agent.tools.data_tools",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "src.agent.tools.data_tools",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.agent.tools.market_tools",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.agent.tools.market_tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.search_tools",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "src.agent.tools.search_tools",
+      "target": "src.search_service"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.config"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.market_context"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.schemas.report_schema"
+    },
+    {
+      "source": "src.analyzer",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.auth",
+      "target": "src.config"
+    },
+    {
+      "source": "src.config",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.config",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.core.config_registry",
+      "target": "src.config"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.config"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.market_analyzer"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.notification"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.core.market_review",
+      "target": "src.search_service"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "bot.models"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.agent.factory"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.config"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.core.trading_calendar"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.enums"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.md2img"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.notification"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.search_service"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.services.social_sentiment_service"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.stock_analyzer"
+    },
+    {
+      "source": "src.core.pipeline",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.core.trading_calendar",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.data",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "src.data.stock_index_loader",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "src.feishu_doc",
+      "target": "src.config"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "src.config"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "src.core.market_profile"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "src.core.market_strategy"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.market_analyzer",
+      "target": "src.search_service"
+    },
+    {
+      "source": "src.md2img",
+      "target": "src.config"
+    },
+    {
+      "source": "src.md2img",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification",
+      "target": "bot.models"
+    },
+    {
+      "source": "src.notification",
+      "target": "bot.platforms.feishu_stream"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.enums"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.md2img"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.notification_sender"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.services.history_comparison_service"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.services.report_renderer"
+    },
+    {
+      "source": "src.notification",
+      "target": "src.utils.data_processing"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.astrbot_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.custom_webhook_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.discord_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.email_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.feishu_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.pushover_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.pushplus_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.serverchan3_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.slack_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.telegram_sender"
+    },
+    {
+      "source": "src.notification_sender",
+      "target": "src.notification_sender.wechat_sender"
+    },
+    {
+      "source": "src.notification_sender.astrbot_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.astrbot_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.custom_webhook_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.custom_webhook_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.discord_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.discord_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.email_sender",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.notification_sender.email_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.email_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.feishu_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.feishu_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.pushover_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.pushover_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.pushplus_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.pushplus_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.serverchan3_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.slack_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.slack_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.notification_sender.telegram_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.wechat_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "src.notification_sender.wechat_sender",
+      "target": "src.formatters"
+    },
+    {
+      "source": "src.repositories",
+      "target": "src.repositories.analysis_repo"
+    },
+    {
+      "source": "src.repositories",
+      "target": "src.repositories.backtest_repo"
+    },
+    {
+      "source": "src.repositories",
+      "target": "src.repositories.stock_repo"
+    },
+    {
+      "source": "src.repositories.analysis_repo",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.repositories.backtest_repo",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.repositories.portfolio_repo",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.repositories.stock_repo",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.schemas",
+      "target": "src.schemas.report_schema"
+    },
+    {
+      "source": "src.search_service",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "src.search_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.agent_model_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.analysis_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.analysis_service",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "src.services.analysis_service",
+      "target": "src.enums"
+    },
+    {
+      "source": "src.services.analysis_service",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.services.analysis_service",
+      "target": "src.repositories.analysis_repo"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "src.core.backtest_engine"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "src.repositories.backtest_repo"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "src.repositories.stock_repo"
+    },
+    {
+      "source": "src.services.backtest_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.services.history_comparison_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.services.history_service",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "src.services.history_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.history_service",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.services.history_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.services.history_service",
+      "target": "src.utils.data_processing"
+    },
+    {
+      "source": "src.services.image_stock_extractor",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.import_parser",
+      "target": "src.services.name_to_code_resolver"
+    },
+    {
+      "source": "src.services.import_parser",
+      "target": "src.services.stock_code_utils"
+    },
+    {
+      "source": "src.services.name_to_code_resolver",
+      "target": "src.data.stock_mapping"
+    },
+    {
+      "source": "src.services.name_to_code_resolver",
+      "target": "src.services.stock_code_utils"
+    },
+    {
+      "source": "src.services.portfolio_import_service",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.services.portfolio_import_service",
+      "target": "src.repositories.portfolio_repo"
+    },
+    {
+      "source": "src.services.portfolio_import_service",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "src.services.portfolio_risk_service",
+      "target": "data_provider"
+    },
+    {
+      "source": "src.services.portfolio_risk_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.portfolio_risk_service",
+      "target": "src.repositories.portfolio_repo"
+    },
+    {
+      "source": "src.services.portfolio_risk_service",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "src.services.portfolio_service",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.services.portfolio_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.portfolio_service",
+      "target": "src.repositories.portfolio_repo"
+    },
+    {
+      "source": "src.services.report_renderer",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "src.services.report_renderer",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.report_renderer",
+      "target": "src.report_language"
+    },
+    {
+      "source": "src.services.stock_service",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.services.stock_service",
+      "target": "src.repositories.stock_repo"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.agent.events"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.core.config_registry"
+    },
+    {
+      "source": "src.services.system_config_service",
+      "target": "src.search_service"
+    },
+    {
+      "source": "src.services.task_queue",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "src.services.task_queue",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.task_queue",
+      "target": "src.services.analysis_service"
+    },
+    {
+      "source": "src.services.task_queue",
+      "target": "src.utils.analysis_metadata"
+    },
+    {
+      "source": "src.services.task_service",
+      "target": "bot.models"
+    },
+    {
+      "source": "src.services.task_service",
+      "target": "main"
+    },
+    {
+      "source": "src.services.task_service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.services.task_service",
+      "target": "src.enums"
+    },
+    {
+      "source": "src.services.task_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "src.stock_analyzer",
+      "target": "src.config"
+    },
+    {
+      "source": "src.storage",
+      "target": "src.config"
+    },
+    {
+      "source": "src.storage",
+      "target": "src.search_service"
+    },
+    {
+      "source": "test_env",
+      "target": "data_provider"
+    },
+    {
+      "source": "test_env",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "test_env",
+      "target": "src.config"
+    },
+    {
+      "source": "test_env",
+      "target": "src.notification"
+    },
+    {
+      "source": "test_env",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.longbridge_live_smoke",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.longbridge_live_smoke",
+      "target": "data_provider.longbridge_fetcher"
+    },
+    {
+      "source": "tests.test_agent_executor",
+      "target": "src.agent.executor"
+    },
+    {
+      "source": "tests.test_agent_executor",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "tests.test_agent_executor",
+      "target": "src.agent.runner"
+    },
+    {
+      "source": "tests.test_agent_executor",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "tests.test_agent_models_api",
+      "target": "api.v1.endpoints.agent"
+    },
+    {
+      "source": "tests.test_agent_models_api",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_agent_models_api",
+      "target": "src.services.agent_model_service"
+    },
+    {
+      "source": "tests.test_agent_orchestrator_sniper_fallback",
+      "target": "src.agent.orchestrator"
+    },
+    {
+      "source": "tests.test_agent_orchestrator_sniper_fallback",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "tests.test_agent_orchestrator_sniper_fallback",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.agent.executor"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.agent.llm_adapter"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_agent_pipeline",
+      "target": "src.enums"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.skills.skill_agent"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.analysis_tools"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.backtest_tools"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.market_tools"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "src.agent.tools.search_tools"
+    },
+    {
+      "source": "tests.test_agent_registry",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_agent_sse_cleanup",
+      "target": "api.v1.endpoints.agent"
+    },
+    {
+      "source": "tests.test_agent_sse_cleanup",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_akshare_realtime_logging",
+      "target": "data_provider.akshare_fetcher"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "api.v1.endpoints.analysis"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "src.enums"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "src.services.analysis_service"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "src.services.image_stock_extractor"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "tests.test_analysis_api_contract",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "api.v1.endpoints.history"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "api.v1.schemas.history"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "src.services.history_service"
+    },
+    {
+      "source": "tests.test_analysis_history",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_analysis_integration",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_analysis_integration",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_analysis_integration",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_analysis_integration",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "tests.test_analysis_metadata",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "tests.test_analysis_metadata",
+      "target": "src.utils.analysis_metadata"
+    },
+    {
+      "source": "tests.test_analyzer_news_prompt",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_anspire_search",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_anspire_search",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_api_app_cors",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_ask_command",
+      "target": "bot.commands.ask"
+    },
+    {
+      "source": "tests.test_ask_command",
+      "target": "bot.models"
+    },
+    {
+      "source": "tests.test_ask_command",
+      "target": "src.agent.skills.base"
+    },
+    {
+      "source": "tests.test_ask_command",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_auth",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_auth_api",
+      "target": "api.middlewares.auth"
+    },
+    {
+      "source": "tests.test_auth_api",
+      "target": "api.v1.endpoints.auth"
+    },
+    {
+      "source": "tests.test_auth_api",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_auth_api",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_auth_status_setup_state",
+      "target": "api.v1.endpoints.auth"
+    },
+    {
+      "source": "tests.test_auth_status_setup_state",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_autocomplete_pr0",
+      "target": "api.v1.schemas.analysis"
+    },
+    {
+      "source": "tests.test_autocomplete_pr0",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "tests.test_backtest_engine",
+      "target": "src.core.backtest_engine"
+    },
+    {
+      "source": "tests.test_backtest_service",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_backtest_service",
+      "target": "src.core.backtest_engine"
+    },
+    {
+      "source": "tests.test_backtest_service",
+      "target": "src.services.backtest_service"
+    },
+    {
+      "source": "tests.test_backtest_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_backtest_summary",
+      "target": "src.core.backtest_engine"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.commands.base"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.commands.chat"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.commands.history"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.dispatcher"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.handler"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "bot.models"
+    },
+    {
+      "source": "tests.test_bot_dispatcher_async",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_chip_structure_fallback",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_chip_structure_fallback",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_config_env_compat",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_config_manager",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "tests.test_config_registry",
+      "target": "src.core.config_registry"
+    },
+    {
+      "source": "tests.test_config_validate_structured",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_conversation_manager",
+      "target": "src.agent.conversation"
+    },
+    {
+      "source": "tests.test_cwe345_xff_bypass",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_data_fetcher_prefetch_stock_names",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_data_fetcher_prefetch_stock_names",
+      "target": "data_provider.pytdx_fetcher"
+    },
+    {
+      "source": "tests.test_data_fetcher_prefetch_stock_names",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_data_tools_get_capital_flow",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "tests.test_data_tools_get_stock_info",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "tests.test_data_tools_portfolio_snapshot",
+      "target": "src.agent.tools.data_tools"
+    },
+    {
+      "source": "tests.test_discord_platform",
+      "target": "bot.models"
+    },
+    {
+      "source": "tests.test_discord_platform",
+      "target": "bot.platforms.discord"
+    },
+    {
+      "source": "tests.test_feishu_stream",
+      "target": "bot.platforms.feishu_stream"
+    },
+    {
+      "source": "tests.test_feishu_stream_ordering",
+      "target": "bot.models"
+    },
+    {
+      "source": "tests.test_feishu_stream_ordering",
+      "target": "bot.platforms.feishu_stream"
+    },
+    {
+      "source": "tests.test_fetcher_logging",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_fetcher_logging",
+      "target": "data_provider.efinance_fetcher"
+    },
+    {
+      "source": "tests.test_formatters",
+      "target": "src.formatters"
+    },
+    {
+      "source": "tests.test_fundamental_adapter",
+      "target": "data_provider.fundamental_adapter"
+    },
+    {
+      "source": "tests.test_fundamental_context",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_get_latest_data",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_get_latest_data",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_history_news_fallback",
+      "target": "src.services.history_service"
+    },
+    {
+      "source": "tests.test_hk_realtime_routing",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_hk_stock_name_fallback",
+      "target": "data_provider.akshare_fetcher"
+    },
+    {
+      "source": "tests.test_hk_stock_name_fallback",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_image_stock_extractor_litellm",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_image_stock_extractor_litellm",
+      "target": "src.services.image_stock_extractor"
+    },
+    {
+      "source": "tests.test_import_parser",
+      "target": "src.services.import_parser"
+    },
+    {
+      "source": "tests.test_llm_channel_config",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_llm_usage",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_longbridge_fetcher",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_longbridge_fetcher",
+      "target": "data_provider.longbridge_fetcher"
+    },
+    {
+      "source": "tests.test_longbridge_fetcher",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_main_schedule_mode",
+      "target": "main"
+    },
+    {
+      "source": "tests.test_main_schedule_mode",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_main_schedule_mode",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_market_analyzer_generate_text",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_market_analyzer_generate_text",
+      "target": "src.core.market_profile"
+    },
+    {
+      "source": "tests.test_market_analyzer_generate_text",
+      "target": "src.core.market_strategy"
+    },
+    {
+      "source": "tests.test_market_analyzer_generate_text",
+      "target": "src.market_analyzer"
+    },
+    {
+      "source": "tests.test_market_review",
+      "target": "src.core.market_review"
+    },
+    {
+      "source": "tests.test_market_review",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_market_strategy",
+      "target": "src.core.market_strategy"
+    },
+    {
+      "source": "tests.test_market_strategy",
+      "target": "src.market_analyzer"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "api.v1.endpoints.agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "bot.commands.research"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "bot.models"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.agents.base_agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.agents.decision_agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.agents.intel_agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.agents.portfolio_agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.agents.technical_agent"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.events"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.memory"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.orchestrator"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.protocols"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.research"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.skills.defaults"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.strategies.aggregator"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.strategies.router"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.agent.tools.registry"
+    },
+    {
+      "source": "tests.test_multi_agent",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_name_to_code_resolver",
+      "target": "src.services.name_to_code_resolver"
+    },
+    {
+      "source": "tests.test_news_intel",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_news_intel",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_news_intel",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_news_strategy_config",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_notification",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_notification",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_notification",
+      "target": "src.notification"
+    },
+    {
+      "source": "tests.test_notification_sender",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_notification_sender",
+      "target": "src.notification_sender"
+    },
+    {
+      "source": "tests.test_pipeline_augment_realtime",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_fetch_error",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_notification_image_routing",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_notification_image_routing",
+      "target": "src.enums"
+    },
+    {
+      "source": "tests.test_pipeline_notification_image_routing",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_pipeline_optional_service_resilience",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_prefetch_dry_run",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_prefetch_dry_run",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_pipeline_realtime_indicators",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_pipeline_realtime_indicators",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_pipeline_realtime_indicators",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_realtime_indicators",
+      "target": "src.stock_analyzer"
+    },
+    {
+      "source": "tests.test_pipeline_related_boards",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_single_notify_thread_safety",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_pipeline_single_notify_thread_safety",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_single_notify_thread_safety",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_pipeline_single_stock_notify",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_pipeline_single_stock_notify",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_pipeline_single_stock_notify",
+      "target": "src.enums"
+    },
+    {
+      "source": "tests.test_pipeline_single_stock_notify",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_portfolio_api",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_portfolio_api",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_portfolio_api",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_portfolio_api",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "tests.test_portfolio_api",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "api.app"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.auth"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.services.portfolio_import_service"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.services.portfolio_risk_service"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "tests.test_portfolio_pr2",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_portfolio_service",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_portfolio_service",
+      "target": "src.repositories.portfolio_repo"
+    },
+    {
+      "source": "tests.test_portfolio_service",
+      "target": "src.services.portfolio_service"
+    },
+    {
+      "source": "tests.test_portfolio_service",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "src.agent.events"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "src.core.pipeline"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "src.enums"
+    },
+    {
+      "source": "tests.test_realtime_quote_fallback_logging",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_realtime_types",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_report_integrity",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_report_language",
+      "target": "src.report_language"
+    },
+    {
+      "source": "tests.test_report_renderer",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_report_renderer",
+      "target": "src.services.report_renderer"
+    },
+    {
+      "source": "tests.test_report_schema",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_report_schema",
+      "target": "src.schemas.report_schema"
+    },
+    {
+      "source": "tests.test_scheduler_background",
+      "target": "src.scheduler"
+    },
+    {
+      "source": "tests.test_search_news_freshness",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_search_performance",
+      "target": "src.services.name_to_code_resolver"
+    },
+    {
+      "source": "tests.test_search_searxng",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_search_serpapi_provider",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_search_service_concurrency",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_search_tavily_provider",
+      "target": "src.search_service"
+    },
+    {
+      "source": "tests.test_skill_load_warning",
+      "target": "bot.commands.ask"
+    },
+    {
+      "source": "tests.test_skill_load_warning",
+      "target": "src.agent.skills.aggregator"
+    },
+    {
+      "source": "tests.test_skill_load_warning",
+      "target": "src.agent.skills.router"
+    },
+    {
+      "source": "tests.test_skill_load_warning",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_social_sentiment_service",
+      "target": "data_provider.us_index_mapping"
+    },
+    {
+      "source": "tests.test_social_sentiment_service",
+      "target": "src.services.social_sentiment_service"
+    },
+    {
+      "source": "tests.test_stock_analyzer_bias",
+      "target": "src.stock_analyzer"
+    },
+    {
+      "source": "tests.test_stock_code_bse",
+      "target": "data_provider.akshare_fetcher"
+    },
+    {
+      "source": "tests.test_stock_code_bse",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_stock_code_bse",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "tests.test_stock_code_utils",
+      "target": "src.services.stock_code_utils"
+    },
+    {
+      "source": "tests.test_stock_index_loader",
+      "target": "src.data.stock_index_loader"
+    },
+    {
+      "source": "tests.test_stooq_fallback",
+      "target": "data_provider.realtime_types"
+    },
+    {
+      "source": "tests.test_stooq_fallback",
+      "target": "data_provider.yfinance_fetcher"
+    },
+    {
+      "source": "tests.test_storage",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_storage",
+      "target": "src.storage"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "api.v1.endpoints.system_config"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "api.v1.schemas.system_config"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "src.services.system_config_service"
+    },
+    {
+      "source": "tests.test_system_config_api",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_system_config_service",
+      "target": "src.config"
+    },
+    {
+      "source": "tests.test_system_config_service",
+      "target": "src.core.config_manager"
+    },
+    {
+      "source": "tests.test_system_config_service",
+      "target": "src.services.system_config_service"
+    },
+    {
+      "source": "tests.test_system_config_service",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_task_queue_config_sync",
+      "target": "src.services.task_queue"
+    },
+    {
+      "source": "tests.test_task_service",
+      "target": "src.analyzer"
+    },
+    {
+      "source": "tests.test_task_service",
+      "target": "src.services.task_service"
+    },
+    {
+      "source": "tests.test_task_service",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_tickflow_fetcher",
+      "target": "data_provider.tickflow_fetcher"
+    },
+    {
+      "source": "tests.test_tickflow_market_review_fallback",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_trading_calendar",
+      "target": "src.core.trading_calendar"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_followups",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_followups",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_get_stock_list",
+      "target": "data_provider.base"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_get_stock_list",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_get_stock_list",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_http_client",
+      "target": "data_provider.tushare_fetcher"
+    },
+    {
+      "source": "tests.test_tushare_fetcher_http_client",
+      "target": "tests.litellm_stub"
+    },
+    {
+      "source": "tests.test_webui_frontend",
+      "target": "src.webui_frontend"
+    },
+    {
+      "source": "tests.test_yfinance_us_indices",
+      "target": "data_provider.yfinance_fetcher"
+    },
+    {
+      "source": "webui",
+      "target": "src.config"
+    },
+    {
+      "source": "webui",
+      "target": "src.logging_config"
+    }
+  ]
+}

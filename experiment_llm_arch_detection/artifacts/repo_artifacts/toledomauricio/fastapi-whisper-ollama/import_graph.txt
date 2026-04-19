@@ -1,0 +1,11 @@
+# Nodes: 8
+# Edges: 8
+
+src.main -> src.transcription.router
+src.transcription.dependencies -> src.exceptions
+src.transcription.dependencies -> src.transcription.constants
+src.transcription.dependencies -> src.transcription.exceptions
+src.transcription.router -> src.transcription.service
+src.transcription.service -> src.config
+src.transcription.service -> src.exceptions
+src.transcription.service -> src.transcription.constants

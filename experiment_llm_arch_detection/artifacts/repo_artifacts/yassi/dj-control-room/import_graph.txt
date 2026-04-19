@@ -1,0 +1,25 @@
+# Nodes: 29
+# Edges: 22
+
+dj_control_room.admin -> dj_control_room.admin_integration
+dj_control_room.admin -> dj_control_room.models
+dj_control_room.admin_integration -> dj_control_room.featured_panels
+dj_control_room.admin_integration -> dj_control_room.registry
+dj_control_room.admin_integration -> dj_control_room.utils
+dj_control_room.apps -> dj_control_room.admin_integration
+dj_control_room.apps -> dj_control_room.registry
+dj_control_room.registry -> dj_control_room.featured_panels
+dj_control_room.urls -> dj_control_room.views
+dj_control_room.utils -> dj_control_room.conf
+dj_control_room.utils -> dj_control_room.featured_panels
+dj_control_room.utils -> dj_control_room.registry
+dj_control_room.views -> dj_control_room.conf
+dj_control_room.views -> dj_control_room.featured_panels
+dj_control_room.views -> dj_control_room.registry
+dj_control_room.views -> dj_control_room.utils
+example_project.example_project.apps -> dj_control_room.registry
+example_project.example_project.apps -> example_project.example_project.example_panels
+tests.test_admin -> tests.base
+tests.test_registry -> dj_control_room.registry
+tests.test_utils -> dj_control_room.registry
+tests.test_utils -> dj_control_room.utils

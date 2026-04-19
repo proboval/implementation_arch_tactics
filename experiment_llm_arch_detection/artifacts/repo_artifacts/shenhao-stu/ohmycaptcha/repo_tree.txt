@@ -1,0 +1,99 @@
+ohmycaptcha
+├── .github
+│   └── workflows
+│       └── docs.yml
+├── docs
+│   ├── assets
+│   │   ├── .gitkeep
+│   │   ├── ohmycaptcha-diagram.png
+│   │   └── ohmycaptcha-hero.png
+│   ├── deployment
+│   │   ├── huggingface.md
+│   │   ├── local-model.md
+│   │   └── render.md
+│   ├── stylesheets
+│   │   └── extra.css
+│   ├── usage
+│   │   ├── classification.md
+│   │   ├── hcaptcha.md
+│   │   ├── image-captcha.md
+│   │   ├── recaptcha-v2.md
+│   │   ├── recaptcha-v3.md
+│   │   └── turnstile.md
+│   ├── zh
+│   │   ├── deployment
+│   │   │   ├── huggingface.md
+│   │   │   ├── local-model.md
+│   │   │   └── render.md
+│   │   ├── usage
+│   │   │   ├── classification.md
+│   │   │   ├── hcaptcha.md
+│   │   │   ├── image-captcha.md
+│   │   │   ├── recaptcha-v2.md
+│   │   │   ├── recaptcha-v3.md
+│   │   │   └── turnstile.md
+│   │   ├── acceptance.md
+│   │   ├── api-reference.md
+│   │   ├── faq.md
+│   │   ├── getting-started.md
+│   │   ├── index.md
+│   │   ├── positioning.md
+│   │   └── skill.md
+│   ├── acceptance.md
+│   ├── api-reference.md
+│   ├── faq.md
+│   ├── getting-started.md
+│   ├── index.md
+│   ├── positioning.md
+│   └── skill.md
+├── skills
+│   ├── ohmycaptcha
+│   │   └── SKILL.md
+│   ├── ohmycaptcha-image
+│   │   ├── evals
+│   │   │   └── evals.json
+│   │   └── SKILL.md
+│   └── README.md
+├── src
+│   ├── api
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   └── config.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── task.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── classification.py
+│   │   ├── hcaptcha.py
+│   │   ├── recaptcha_v2.py
+│   │   ├── recaptcha_v3.py
+│   │   ├── recognition.py
+│   │   ├── task_manager.py
+│   │   └── turnstile.py
+│   ├── __init__.py
+│   └── main.py
+├── tests
+│   └── test_api.py
+├── typings
+│   ├── fastapi
+│   │   ├── __init__.pyi
+│   │   └── testclient.pyi
+│   └── uvicorn
+│       └── __init__.pyi
+├── .gitignore
+├── CONTRIBUTING.md
+├── DISCLAIMER.md
+├── DISCLAIMER.zh-CN.md
+├── Dockerfile.render
+├── LICENSE
+├── main.py
+├── mkdocs.yml
+├── pyrightconfig.json
+├── README.md
+├── README.zh-CN.md
+├── render.yaml
+├── requirements.txt
+└── SECURITY.md

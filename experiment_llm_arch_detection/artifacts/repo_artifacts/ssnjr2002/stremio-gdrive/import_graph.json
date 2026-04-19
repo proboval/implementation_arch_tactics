@@ -1,0 +1,58 @@
+{
+  "nodes": [
+    "sgd",
+    "sgd.cache",
+    "sgd.gdrive",
+    "sgd.meta",
+    "sgd.ptn",
+    "sgd.routes",
+    "sgd.streams",
+    "sgd.utils"
+  ],
+  "edges": [
+    {
+      "source": "sgd",
+      "target": "sgd.gdrive"
+    },
+    {
+      "source": "sgd",
+      "target": "sgd.routes"
+    },
+    {
+      "source": "sgd.gdrive",
+      "target": "sgd.cache"
+    },
+    {
+      "source": "sgd.meta",
+      "target": "sgd.cache"
+    },
+    {
+      "source": "sgd.meta",
+      "target": "sgd.utils"
+    },
+    {
+      "source": "sgd.routes",
+      "target": "sgd.gdrive"
+    },
+    {
+      "source": "sgd.routes",
+      "target": "sgd.meta"
+    },
+    {
+      "source": "sgd.routes",
+      "target": "sgd.streams"
+    },
+    {
+      "source": "sgd.streams",
+      "target": "sgd.ptn"
+    },
+    {
+      "source": "sgd.streams",
+      "target": "sgd.utils"
+    },
+    {
+      "source": "sgd.utils",
+      "target": "sgd.cache"
+    }
+  ]
+}

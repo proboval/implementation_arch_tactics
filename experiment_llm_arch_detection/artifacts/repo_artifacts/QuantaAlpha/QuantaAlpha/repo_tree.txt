@@ -1,0 +1,300 @@
+QuantaAlpha
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug-report.md
+│   │   ├── documentation.md
+│   │   ├── feature-request.md
+│   │   └── question.md
+│   ├── dependabot.yml
+│   ├── FUNDING.yml
+│   └── PULL_REQUEST_TEMPLATE.md
+├── configs
+│   ├── .env.example
+│   ├── backtest.yaml
+│   └── experiment.yaml
+├── docs
+│   ├── _static
+│   │   ├── excess_return.png
+│   │   ├── figure3.png
+│   │   ├── overview.jpg
+│   │   └── workflow.png
+│   ├── images
+│   │   ├── case_study.png
+│   │   ├── demo.mp4
+│   │   ├── figure3.png
+│   │   ├── figure4.png
+│   │   ├── overview.jpg
+│   │   ├── WeChat.jpg
+│   │   └── 主实验.png
+│   ├── conf.py
+│   ├── experiment_guide.md
+│   ├── experiment_hyperparameters.md
+│   ├── index.rst
+│   ├── make.bat
+│   ├── Makefile
+│   ├── PROJECT_STRUCTURE.md
+│   ├── requirements.txt
+│   └── user_guide.md
+├── frontend-v2
+│   ├── backend
+│   │   ├── app.py
+│   │   └── requirements.txt
+│   ├── src
+│   │   ├── components
+│   │   │   ├── layout
+│   │   │   │   └── Layout.tsx
+│   │   │   ├── ui
+│   │   │   │   ├── Badge.tsx
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── Card.tsx
+│   │   │   │   ├── HoverCard.tsx
+│   │   │   │   ├── Progress.tsx
+│   │   │   │   └── Textarea.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   ├── ExecutionPanel.tsx
+│   │   │   ├── FactorList.tsx
+│   │   │   ├── FactorStatsRow.tsx
+│   │   │   ├── InputPanel.tsx
+│   │   │   ├── LiveCharts.tsx
+│   │   │   ├── MetricsPanel.tsx
+│   │   │   ├── ParticleBackground.tsx
+│   │   │   ├── ProgressSidebar.tsx
+│   │   │   └── ResultVisualization.tsx
+│   │   ├── context
+│   │   │   └── TaskContext.tsx
+│   │   ├── pages
+│   │   │   ├── BacktestPage.tsx
+│   │   │   ├── FactorLibraryPage.tsx
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── MiningDashboardPage.tsx
+│   │   │   └── SettingsPage.tsx
+│   │   ├── services
+│   │   │   └── api.ts
+│   │   ├── types
+│   │   │   └── index.ts
+│   │   ├── utils
+│   │   │   ├── index.ts
+│   │   │   └── miningDirections.ts
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── QUICKSTART.md
+│   ├── README.md
+│   ├── start.sh
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── quantaalpha
+│   ├── app
+│   │   ├── benchmark
+│   │   │   ├── factor
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── analysis.py
+│   │   │   │   └── eval.py
+│   │   │   ├── model
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── eval.py
+│   │   │   └── __init__.py
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── health_check.py
+│   │   │   └── info.py
+│   │   └── __init__.py
+│   ├── backtest
+│   │   ├── __init__.py
+│   │   ├── custom_factor_calculator.py
+│   │   ├── factor_calculator.py
+│   │   ├── factor_loader.py
+│   │   ├── README.md
+│   │   ├── run_backtest.py
+│   │   └── runner.py
+│   ├── coder
+│   │   ├── costeer
+│   │   │   ├── __init__.py
+│   │   │   ├── config.py
+│   │   │   ├── evaluators.py
+│   │   │   ├── evolvable_subjects.py
+│   │   │   ├── evolving_agent.py
+│   │   │   ├── evolving_strategy.py
+│   │   │   ├── knowledge_management.py
+│   │   │   ├── prompts.yaml
+│   │   │   ├── scheduler.py
+│   │   │   └── task.py
+│   │   ├── knowledge
+│   │   │   ├── __init__.py
+│   │   │   ├── graph.py
+│   │   │   └── vector_base.py
+│   │   └── __init__.py
+│   ├── components
+│   │   ├── benchmark
+│   │   │   ├── __init__.py
+│   │   │   ├── conf.py
+│   │   │   ├── eval_method.py
+│   │   │   └── example.json
+│   │   ├── proposal
+│   │   │   ├── __init__.py
+│   │   │   └── prompts.yaml
+│   │   ├── runner
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   ├── contrib
+│   │   ├── model
+│   │   │   ├── coder
+│   │   │   │   ├── benchmark
+│   │   │   │   │   ├── gt_code
+│   │   │   │   │   │   ├── A-DGN.py
+│   │   │   │   │   │   ├── dirgnn.py
+│   │   │   │   │   │   ├── gpsconv.py
+│   │   │   │   │   │   ├── linkx.py
+│   │   │   │   │   │   ├── pmlp.py
+│   │   │   │   │   │   └── visnet.py
+│   │   │   │   │   ├── eval.py
+│   │   │   │   │   └── model_dict.json
+│   │   │   │   ├── one_shot
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── prompt.yaml
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── eva_utils.py
+│   │   │   │   ├── evaluators.py
+│   │   │   │   ├── evolving_strategy.py
+│   │   │   │   ├── gt_code.py
+│   │   │   │   ├── model.py
+│   │   │   │   ├── model_execute_template_v1.txt
+│   │   │   │   ├── model_execute_template_v2.txt
+│   │   │   │   ├── prompts.yaml
+│   │   │   │   └── task_loader.py
+│   │   │   ├── __init__.py
+│   │   │   ├── experiment.py
+│   │   │   ├── prompts.yaml
+│   │   │   ├── proposal.py
+│   │   │   ├── qlib_coder.py
+│   │   │   └── runner.py
+│   │   └── __init__.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── conf.py
+│   │   ├── developer.py
+│   │   ├── evaluation.py
+│   │   ├── evolving_agent.py
+│   │   ├── evolving_framework.py
+│   │   ├── exception.py
+│   │   ├── experiment.py
+│   │   ├── knowledge_base.py
+│   │   ├── prompts.py
+│   │   ├── proposal.py
+│   │   ├── scenario.py
+│   │   ├── template.py
+│   │   └── utils.py
+│   ├── docker
+│   │   ├── __init__.py
+│   │   └── Dockerfile
+│   ├── factors
+│   │   ├── coder
+│   │   │   ├── __init__.py
+│   │   │   ├── config.py
+│   │   │   ├── eva_utils.py
+│   │   │   ├── evaluators.py
+│   │   │   ├── evolving_strategy.py
+│   │   │   ├── expr_parser.py
+│   │   │   ├── factor.py
+│   │   │   ├── factor_ast.py
+│   │   │   ├── function_lib.py
+│   │   │   ├── prompts.yaml
+│   │   │   ├── qa_prompts.yaml
+│   │   │   ├── template.jinjia2
+│   │   │   └── test.py
+│   │   ├── data_template
+│   │   │   ├── __init__.py
+│   │   │   ├── generate.py
+│   │   │   └── README.md
+│   │   ├── factor_template
+│   │   │   ├── conf_baseline.yaml
+│   │   │   └── conf_combined_factors.yaml
+│   │   ├── loader
+│   │   │   ├── __init__.py
+│   │   │   ├── json_loader.py
+│   │   │   ├── pdf_loader.py
+│   │   │   └── prompts.yaml
+│   │   ├── prompts
+│   │   │   ├── __init__.py
+│   │   │   ├── experiment.yaml
+│   │   │   ├── prompts.yaml
+│   │   │   └── proposal.yaml
+│   │   ├── regulator
+│   │   │   ├── __init__.py
+│   │   │   ├── consistency_checker.py
+│   │   │   ├── consistency_prompts.yaml
+│   │   │   └── factor_regulator.py
+│   │   ├── __init__.py
+│   │   ├── experiment.py
+│   │   ├── feedback.py
+│   │   ├── library.py
+│   │   ├── proposal.py
+│   │   ├── qlib_coder.py
+│   │   ├── qlib_experiment_init.py
+│   │   ├── qlib_utils.py
+│   │   ├── runner.py
+│   │   └── workspace.py
+│   ├── llm
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   └── config.py
+│   ├── log
+│   │   ├── __init__.py
+│   │   └── time.py
+│   ├── pipeline
+│   │   ├── evolution
+│   │   │   ├── __init__.py
+│   │   │   ├── controller.py
+│   │   │   ├── crossover.py
+│   │   │   ├── mutation.py
+│   │   │   └── trajectory.py
+│   │   ├── prompts
+│   │   │   ├── __init__.py
+│   │   │   ├── evolution_prompts.yaml
+│   │   │   └── planning_prompts.yaml
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── factor_backtest.py
+│   │   ├── factor_from_report.py
+│   │   ├── factor_mining.py
+│   │   ├── loop.py
+│   │   ├── planning.py
+│   │   └── settings.py
+│   ├── utils
+│   │   ├── agent
+│   │   │   ├── __init__.py
+│   │   │   ├── ret.py
+│   │   │   ├── tpl.py
+│   │   │   └── tpl.yaml
+│   │   ├── document_reader
+│   │   │   ├── __init__.py
+│   │   │   └── document_reader.py
+│   │   ├── loader
+│   │   │   ├── __init__.py
+│   │   │   ├── experiment_loader.py
+│   │   │   └── task_loader.py
+│   │   ├── __init__.py
+│   │   ├── env.py
+│   │   └── workflow.py
+│   ├── __init__.py
+│   └── cli.py
+├── requirements
+│   ├── docs.txt
+│   ├── lint.txt
+│   ├── package.txt
+│   └── test.txt
+├── .gitattributes
+├── .gitignore
+├── launcher.py
+├── pyproject.toml
+├── README.md
+├── README_CN.md
+├── requirements.txt
+└── run.sh

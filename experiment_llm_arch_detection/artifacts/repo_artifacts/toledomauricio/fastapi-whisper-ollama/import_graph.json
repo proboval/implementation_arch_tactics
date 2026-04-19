@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    "src.config",
+    "src.exceptions",
+    "src.main",
+    "src.transcription.constants",
+    "src.transcription.dependencies",
+    "src.transcription.exceptions",
+    "src.transcription.router",
+    "src.transcription.service"
+  ],
+  "edges": [
+    {
+      "source": "src.main",
+      "target": "src.transcription.router"
+    },
+    {
+      "source": "src.transcription.dependencies",
+      "target": "src.exceptions"
+    },
+    {
+      "source": "src.transcription.dependencies",
+      "target": "src.transcription.constants"
+    },
+    {
+      "source": "src.transcription.dependencies",
+      "target": "src.transcription.exceptions"
+    },
+    {
+      "source": "src.transcription.router",
+      "target": "src.transcription.service"
+    },
+    {
+      "source": "src.transcription.service",
+      "target": "src.config"
+    },
+    {
+      "source": "src.transcription.service",
+      "target": "src.exceptions"
+    },
+    {
+      "source": "src.transcription.service",
+      "target": "src.transcription.constants"
+    }
+  ]
+}

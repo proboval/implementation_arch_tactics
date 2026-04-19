@@ -1,0 +1,839 @@
+{
+  "nodes": [
+    "app",
+    "app.auth",
+    "app.auth.dependencies",
+    "app.config",
+    "app.database",
+    "app.main",
+    "app.middleware",
+    "app.middleware.request_logger",
+    "app.models",
+    "app.models.activity_log",
+    "app.models.agent",
+    "app.models.module",
+    "app.models.patrol_record",
+    "app.models.request_log",
+    "app.models.review_record",
+    "app.models.reward_log",
+    "app.models.rule",
+    "app.models.sub_task",
+    "app.models.task",
+    "app.routers",
+    "app.routers.admin",
+    "app.routers.admin_agents",
+    "app.routers.admin_config",
+    "app.routers.admin_dashboard",
+    "app.routers.admin_logs",
+    "app.routers.admin_reviews",
+    "app.routers.admin_scores",
+    "app.routers.admin_tasks",
+    "app.routers.agents",
+    "app.routers.feed",
+    "app.routers.logs",
+    "app.routers.prompts",
+    "app.routers.review_records",
+    "app.routers.rules",
+    "app.routers.scores",
+    "app.routers.setup",
+    "app.routers.sub_tasks",
+    "app.routers.tasks",
+    "app.routers.tools",
+    "app.routers.webui",
+    "app.schemas",
+    "app.schemas.admin_agent",
+    "app.schemas.admin_dashboard",
+    "app.schemas.admin_log",
+    "app.schemas.admin_review",
+    "app.schemas.admin_score",
+    "app.schemas.admin_task",
+    "app.services",
+    "app.services.admin_agent_query_service",
+    "app.services.admin_dashboard_query_service",
+    "app.services.admin_log_query_service",
+    "app.services.admin_review_query_service",
+    "app.services.admin_score_query_service",
+    "app.services.admin_score_service",
+    "app.services.admin_task_query_service",
+    "app.services.agent_service",
+    "app.services.pagination",
+    "app.services.prompt_service",
+    "app.services.review_service",
+    "app.services.reward_service",
+    "app.services.rule_service",
+    "app.services.sub_task_service",
+    "app.services.task_service",
+    "app.services.webui_updater",
+    "skills.antigravity-gemini-image.scripts.generate_gemini_image",
+    "skills.grok-search-runtime.projects.grok-search.internal",
+    "skills.grok-search-runtime.projects.grok-search.internal.context",
+    "skills.grok-search-runtime.projects.grok-search.scripts.grok_search",
+    "skills.grok-search-runtime.tools",
+    "skills.grok-search-runtime.tools.context_router",
+    "skills.grok-search-runtime.tools.context_router.context_router",
+    "skills.grok-search-runtime.tools.grok_search",
+    "skills.grok-search-runtime.tools.grok_search.context",
+    "skills.local-web-search.scripts.local_web_search",
+    "skills.pack-skills",
+    "skills.task-cli",
+    "skills.wordpress-skill.wordpress-cli"
+  ],
+  "edges": [
+    {
+      "source": "app.auth.dependencies",
+      "target": "app.database"
+    },
+    {
+      "source": "app.auth.dependencies",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.auth.dependencies",
+      "target": "app.routers.admin"
+    },
+    {
+      "source": "app.database",
+      "target": "app.config"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.patrol_record"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.rule"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.main",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.main",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.middleware.request_logger"
+    },
+    {
+      "source": "app.main",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_agents"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_dashboard"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_logs"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_reviews"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_scores"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.admin_tasks"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.agents"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.feed"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.logs"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.prompts"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.review_records"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.rules"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.scores"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.setup"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.sub_tasks"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.tasks"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.tools"
+    },
+    {
+      "source": "app.main",
+      "target": "app.routers.webui"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services.webui_updater"
+    },
+    {
+      "source": "app.middleware.request_logger",
+      "target": "app.database"
+    },
+    {
+      "source": "app.middleware.request_logger",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.middleware.request_logger",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.models",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.models.activity_log",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.agent",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.module",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.patrol_record",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.request_log",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.review_record",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.reward_log",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.rule",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.sub_task",
+      "target": "app.database"
+    },
+    {
+      "source": "app.models.task",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.admin_agents",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_agents",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_agents",
+      "target": "app.schemas.admin_agent"
+    },
+    {
+      "source": "app.routers.admin_agents",
+      "target": "app.services.admin_agent_query_service"
+    },
+    {
+      "source": "app.routers.admin_agents",
+      "target": "app.services.agent_service"
+    },
+    {
+      "source": "app.routers.admin_config",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_config",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.admin_dashboard",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_dashboard",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_dashboard",
+      "target": "app.schemas.admin_dashboard"
+    },
+    {
+      "source": "app.routers.admin_dashboard",
+      "target": "app.services.admin_dashboard_query_service"
+    },
+    {
+      "source": "app.routers.admin_logs",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_logs",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_logs",
+      "target": "app.schemas.admin_log"
+    },
+    {
+      "source": "app.routers.admin_logs",
+      "target": "app.services.admin_log_query_service"
+    },
+    {
+      "source": "app.routers.admin_reviews",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_reviews",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_reviews",
+      "target": "app.schemas.admin_review"
+    },
+    {
+      "source": "app.routers.admin_reviews",
+      "target": "app.services.admin_review_query_service"
+    },
+    {
+      "source": "app.routers.admin_scores",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_scores",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_scores",
+      "target": "app.schemas.admin_score"
+    },
+    {
+      "source": "app.routers.admin_scores",
+      "target": "app.services.admin_score_query_service"
+    },
+    {
+      "source": "app.routers.admin_scores",
+      "target": "app.services.admin_score_service"
+    },
+    {
+      "source": "app.routers.admin_tasks",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.admin_tasks",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.admin_tasks",
+      "target": "app.schemas.admin_task"
+    },
+    {
+      "source": "app.routers.admin_tasks",
+      "target": "app.services.admin_task_query_service"
+    },
+    {
+      "source": "app.routers.agents",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.agents",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.agents",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.agents",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.agents",
+      "target": "app.services.agent_service"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.routers.feed",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.routers.logs",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.logs",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.logs",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.routers.logs",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.prompts",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.prompts",
+      "target": "app.services.prompt_service"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.services.pagination"
+    },
+    {
+      "source": "app.routers.review_records",
+      "target": "app.services.review_service"
+    },
+    {
+      "source": "app.routers.rules",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.rules",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.rules",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.rules",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.rules",
+      "target": "app.services.rule_service"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.services.pagination"
+    },
+    {
+      "source": "app.routers.scores",
+      "target": "app.services.reward_service"
+    },
+    {
+      "source": "app.routers.setup",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.setup",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.setup",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.services.pagination"
+    },
+    {
+      "source": "app.routers.sub_tasks",
+      "target": "app.services.sub_task_service"
+    },
+    {
+      "source": "app.routers.tasks",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.tasks",
+      "target": "app.database"
+    },
+    {
+      "source": "app.routers.tasks",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.tasks",
+      "target": "app.services.pagination"
+    },
+    {
+      "source": "app.routers.tasks",
+      "target": "app.services.task_service"
+    },
+    {
+      "source": "app.routers.tools",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.tools",
+      "target": "app.config"
+    },
+    {
+      "source": "app.routers.tools",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.routers.webui",
+      "target": "app.auth.dependencies"
+    },
+    {
+      "source": "app.routers.webui",
+      "target": "app.services.webui_updater"
+    },
+    {
+      "source": "app.services.admin_agent_query_service",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.services.admin_agent_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_agent_query_service",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.services.admin_agent_query_service",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.services.admin_agent_query_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.admin_dashboard_query_service",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.services.admin_log_query_service",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.services.admin_log_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_review_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_review_query_service",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.services.admin_review_query_service",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.services.admin_review_query_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.admin_review_query_service",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.services.admin_score_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_score_query_service",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.services.admin_score_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_score_service",
+      "target": "app.services.reward_service"
+    },
+    {
+      "source": "app.services.admin_task_query_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.admin_task_query_service",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.services.admin_task_query_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.admin_task_query_service",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.activity_log"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.patrol_record"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.request_log"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.services.agent_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.prompt_service",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.review_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.review_service",
+      "target": "app.models.review_record"
+    },
+    {
+      "source": "app.services.review_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.review_service",
+      "target": "app.services.reward_service"
+    },
+    {
+      "source": "app.services.review_service",
+      "target": "app.services.sub_task_service"
+    },
+    {
+      "source": "app.services.reward_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.reward_service",
+      "target": "app.models.reward_log"
+    },
+    {
+      "source": "app.services.rule_service",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.rule_service",
+      "target": "app.models.rule"
+    },
+    {
+      "source": "app.services.sub_task_service",
+      "target": "app.models.agent"
+    },
+    {
+      "source": "app.services.sub_task_service",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.services.sub_task_service",
+      "target": "app.models.sub_task"
+    },
+    {
+      "source": "app.services.sub_task_service",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.services.task_service",
+      "target": "app.models.module"
+    },
+    {
+      "source": "app.services.task_service",
+      "target": "app.models.task"
+    },
+    {
+      "source": "app.services.webui_updater",
+      "target": "app.config"
+    },
+    {
+      "source": "skills.grok-search-runtime.projects.grok-search.internal",
+      "target": "skills.grok-search-runtime.projects.grok-search.internal.context"
+    },
+    {
+      "source": "skills.grok-search-runtime.tools.context_router",
+      "target": "skills.grok-search-runtime.tools.context_router.context_router"
+    },
+    {
+      "source": "skills.grok-search-runtime.tools.grok_search",
+      "target": "skills.grok-search-runtime.tools.grok_search.context"
+    }
+  ]
+}

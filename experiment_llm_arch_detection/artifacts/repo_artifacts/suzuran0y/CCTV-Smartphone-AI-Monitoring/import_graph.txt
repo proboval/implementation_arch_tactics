@@ -1,0 +1,18 @@
+# Nodes: 21
+# Edges: 15
+
+app.ai.ai_monitor_worker -> app.ai.ai_ark
+app.ai.ai_monitor_worker -> app.ai.ai_store
+app.ai.ai_monitor_worker -> app.ai.motion_trigger
+app.recorder.recorder_worker -> app.recorder.recorder
+app.web.webapp -> app.config.config_store
+app.web.webapp -> app.recorder.recorder_worker
+server -> app.ai.ai_monitor_worker
+server -> app.ai.ai_store
+server -> app.config.config_store
+server -> app.core.frame_buffer
+server -> app.core.logger
+server -> app.core.runtime
+server -> app.core.upload_stats
+server -> app.recorder.recorder_worker
+server -> app.web.webapp

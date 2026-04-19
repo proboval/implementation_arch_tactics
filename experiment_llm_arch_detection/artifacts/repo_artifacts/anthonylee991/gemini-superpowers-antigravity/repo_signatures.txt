@@ -1,0 +1,114 @@
+# FILE: .agent/skills/superpowers-workflow/scripts/record_activation.py
+from __future__ import annotations
+import argparse
+from datetime import datetime, timezone
+from pathlib import Path
+
+def find_repo_rootNone: ...
+
+def mainNone: ...
+
+# FILE: .agent/skills/superpowers-workflow/scripts/spawn_subagent.py
+import argparse
+import json
+import subprocess
+import sys
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+def find_repo_rootNone: ...
+
+def load_skill_instructionsNone: ...
+
+def spawn_subagentNone: ...
+
+def mainNone: ...
+
+# FILE: .agent/skills/superpowers-workflow/scripts/write_artifact.py
+from __future__ import annotations
+import argparse
+import sys
+from pathlib import Path
+
+def find_repo_rootNone: ...
+
+def mainNone: ...
+
+# FILE: e2e_demo/api/app.py
+from __future__ import annotations
+from fastapi import FastAPI, Header, HTTPException
+from pydantic import BaseModel
+from typing import Any
+
+class SinkUpsert(BaseModel):
+
+def seed_sourceNone: ...
+
+def source_itemsNone: ...
+
+def sink_upsertNone: ...
+
+def sink_listNone: ...
+
+def admin_resetNone: ...
+
+# FILE: e2e_demo/sync_tool/sync.py
+from __future__ import annotations
+import argparse
+import os
+import random
+import time
+import uuid
+import logging
+import json
+from dataclasses import dataclass
+from typing import Any
+from pathlib import Path
+import httpx
+
+def find_repo_rootNone: ...
+
+class RetryPolicy:
+
+def backoffNone: ...
+
+def should_retryNone: ...
+
+def request_with_retriesNone: ...
+
+def fetch_all_source_itemsNone: ...
+
+def upsert_sink_itemsNone: ...
+
+def mainNone: ...
+
+# FILE: e2e_demo/tests/test_e2e.py
+from __future__ import annotations
+import os
+import json
+import socket
+import subprocess
+import sys
+import time
+from pathlib import Path
+import httpx
+
+def free_portNone: ...
+
+def wait_until_upNone: ...
+
+def start_apiNone: ...
+
+def run_syncNone: ...
+
+def reset_apiNone: ...
+
+def sink_stateNone: ...
+
+def test_e2e_sync_is_idempotent_and_handles_retriesNone: ...
+
+def test_e2e_sync_limitNone: ...
+
+def test_e2e_dry_run_reportNone: ...

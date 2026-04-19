@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    "app",
+    "arxiv",
+    "llm",
+    "rebuttal_service",
+    "tools"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "rebuttal_service"
+    },
+    {
+      "source": "rebuttal_service",
+      "target": "arxiv"
+    },
+    {
+      "source": "rebuttal_service",
+      "target": "llm"
+    },
+    {
+      "source": "rebuttal_service",
+      "target": "tools"
+    },
+    {
+      "source": "tools",
+      "target": "arxiv"
+    }
+  ]
+}

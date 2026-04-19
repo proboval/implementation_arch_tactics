@@ -1,0 +1,21 @@
+# Nodes: 21
+# Edges: 18
+
+app -> ce3
+app -> config
+ce3 -> config
+ce3 -> prompts.system_prompts
+ce3 -> tools.base
+tools.browsertool -> tools.base
+tools.createfolderstool -> tools.base
+tools.diffeditortool -> tools.base
+tools.duckduckgotool -> tools.base
+tools.e2bcodetool -> tools.base
+tools.filecontentreadertool -> tools.base
+tools.filecreatortool -> tools.base
+tools.fileedittool -> tools.base
+tools.lintingtool -> tools.base
+tools.screenshottool -> tools.base
+tools.toolcreator -> tools.base
+tools.uvpackagemanager -> tools.base
+tools.webscrapertool -> tools.base

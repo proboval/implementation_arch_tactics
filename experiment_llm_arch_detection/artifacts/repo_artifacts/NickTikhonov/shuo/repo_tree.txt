@@ -1,0 +1,42 @@
+shuo
+├── .claude
+│   └── settings.json
+├── .entire
+│   ├── .gitignore
+│   └── settings.json
+├── docs
+│   └── api-plan.md
+├── scripts
+│   ├── bench_chart.py
+│   ├── llm-bench.txt
+│   ├── llm-full.txt
+│   ├── service_map.py
+│   └── visualize.py
+├── shuo
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── flux.py
+│   │   ├── llm.py
+│   │   ├── player.py
+│   │   ├── tts.py
+│   │   ├── tts_pool.py
+│   │   └── twilio_client.py
+│   ├── __init__.py
+│   ├── agent.py
+│   ├── conversation.py
+│   ├── log.py
+│   ├── server.py
+│   ├── state.py
+│   ├── tracer.py
+│   └── types.py
+├── tests
+│   ├── __init__.py
+│   └── test_update.py
+├── .env.example
+├── .gitignore
+├── main.py
+├── Procfile
+├── README.md
+├── requirements.txt
+├── service_map.png
+└── ttft_bench.png

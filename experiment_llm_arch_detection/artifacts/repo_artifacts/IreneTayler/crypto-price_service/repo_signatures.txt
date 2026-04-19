@@ -1,0 +1,148 @@
+# FILE: app/celery_app.py
+import asyncio
+from datetime import timedelta
+from typing import TYPE_CHECKING
+from celery import Celery
+from .config import get_settings
+from .database import create_engine_and_session_factory
+from .deribit_client import fetch_prices_for_indices
+from .repositories import PriceRepository
+
+def _get_worker_session_factoryNone: ...
+
+async def _fetch_and_storeNone: ...
+
+def fetch_and_store_pricesNone: ...
+
+# FILE: app/config.py
+from pydantic import Field
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    def database_url_asyncNone: ...
+    def database_url_syncNone: ...
+
+def get_settingsNone: ...
+
+# FILE: app/database.py
+from typing import TYPE_CHECKING
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    async_sessionmaker,
+    create_async_engine,
+)
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+
+def create_engine_and_session_factoryNone: ...
+
+async def init_dbNone: ...
+
+# FILE: app/deribit_client.py
+import asyncio
+import time
+from typing import Any
+import aiohttp
+from .config import get_settings
+
+class DeribitClientError(Exception):
+
+class DeribitClient:
+    def __init__None: ...
+    async def _requestNone: ...
+    async def get_index_priceNone: ...
+
+async def fetch_prices_for_indicesNone: ...
+
+# FILE: app/main.py
+from typing import Annotated, AsyncIterator, Optional
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
+from sqlalchemy.ext.asyncio import AsyncSession
+from .config import get_settings
+from .database import create_engine_and_session_factory, init_db
+from .repositories import PriceRepository
+from .schemas import HealthResponse, LatestPriceResponse, PriceRead
+from .services import PriceService
+
+async def get_dbNone: ...
+
+def get_price_serviceNone: ...
+
+async def on_startupNone: ...
+
+async def health_checkNone: ...
+
+async def list_pricesNone: ...
+
+async def latest_priceNone: ...
+
+async def prices_by_dateNone: ...
+
+# FILE: app/models.py
+from sqlalchemy import BigInteger, Column, Float, Integer, String
+from .database import Base
+
+class Price(Base):
+
+# FILE: app/repositories/__init__.py
+from .price_repository import PriceRepository
+
+# FILE: app/repositories/price_repository.py
+from collections.abc import Sequence
+from typing import Optional
+from sqlalchemy import desc, select
+from sqlalchemy.ext.asyncio import AsyncSession
+from ..models import Price
+
+class PriceRepository:
+    def __init__None: ...
+    async def find_all_by_tickerNone: ...
+    async def find_latest_by_tickerNone: ...
+    async def addNone: ...
+
+# FILE: app/schemas.py
+from pydantic import BaseModel, ConfigDict
+
+class PriceBase(BaseModel):
+
+class PriceRead(PriceBase):
+
+class LatestPriceResponse(BaseModel):
+
+class HealthResponse(BaseModel):
+
+# FILE: app/services/__init__.py
+from .price_service import PriceService
+
+# FILE: app/services/price_service.py
+from collections.abc import Sequence
+from typing import Optional
+from ..models import Price
+from ..repositories import PriceRepository
+
+class PriceService:
+    def __init__None: ...
+    async def get_all_by_tickerNone: ...
+    async def get_latestNone: ...
+
+# FILE: tests/test_api.py
+import asyncio
+from datetime import datetime
+import pytest
+from fastapi.testclient import TestClient
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.config import get_settings
+from app.database import create_engine_and_session_factory, init_db
+from app.main import app
+from app.models import Price
+
+def _engine_and_factoryNone: ...
+
+async def db_sessionNone: ...
+
+def clientNone: ...
+
+async def test_latest_price_not_foundNone: ...
+
+async def test_create_and_get_latest_priceNone: ...

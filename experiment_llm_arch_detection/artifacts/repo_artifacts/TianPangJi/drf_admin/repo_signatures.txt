@@ -1,0 +1,901 @@
+# FILE: celery_tasks/main.py
+import os
+from celery import Celery
+
+# FILE: celery_tasks/sms/tasks.py
+from celery_tasks.main import app
+
+def send_sms_codeNone: ...
+
+# FILE: drf_admin/apps/cmdb/admin.py
+from django.contrib import admin
+from cmdb.models import Assets, Servers, SecurityDevices, StorageDevices, NetworkDevices, IDC, Cabinets, Accounts
+
+# FILE: drf_admin/apps/cmdb/apps.py
+from django.apps import AppConfig
+
+class CmdbConfig(AppConfig):
+    def readyNone: ...
+
+# FILE: drf_admin/apps/cmdb/migrations/0001_initial.py
+from django.db import migrations, models
+import django.db.models.deletion
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/cmdb/migrations/0002_auto_20210306_1416.py
+from django.conf import settings
+from django.db import migrations, models
+import django.db.models.deletion
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/cmdb/models.py
+from django.conf import settings
+from django.db import models
+from drf_admin.utils.models import BaseModel, BasePasswordModels
+
+class Assets(BaseModel):
+    def __str__None: ...
+
+class Servers(models.Model):
+    def __str__None: ...
+
+class SecurityDevices(models.Model):
+    def __str__None: ...
+
+class StorageDevices(models.Model):
+    def __str__None: ...
+
+class NetworkDevices(models.Model):
+    def __str__None: ...
+
+class IDC(BaseModel):
+    def __str__None: ...
+
+class Cabinets(BaseModel):
+    def __str__None: ...
+
+class Accounts(BasePasswordModels):
+    def __str__None: ...
+
+# FILE: drf_admin/apps/cmdb/serializers/assets.py
+from django.contrib.auth import get_user_model
+from drf_writable_nested import WritableNestedModelSerializer
+from rest_framework import serializers
+from cmdb.models import Assets
+
+class AssetsAdminSerializer(serializers.ModelSerializer):
+
+class BaseAssetsSerializer(WritableNestedModelSerializer):
+    def to_representationNone: ...
+
+# FILE: drf_admin/apps/cmdb/serializers/servers.py
+from drf_writable_nested import WritableNestedModelSerializer
+from rest_framework import serializers
+from cmdb.models import Accounts, Servers
+from cmdb.serializers.assets import BaseAssetsSerializer
+
+class AccountsSerializer(serializers.ModelSerializer):
+    def to_representationNone: ...
+
+class ServersSerializer(WritableNestedModelSerializer):
+    def to_representationNone: ...
+
+class ServersAssetsSerializer(BaseAssetsSerializer):
+    def saveNone: ...
+
+# FILE: drf_admin/apps/cmdb/signals.py
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from cmdb.models import Accounts
+
+def encrypt_password_accountsNone: ...
+
+# FILE: drf_admin/apps/cmdb/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/apps/cmdb/urls.py
+from django.urls import path, include
+from cmdb.views import servers, assets
+from drf_admin.utils import routers
+
+# FILE: drf_admin/apps/cmdb/views/assets.py
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AnonymousUser
+from django.db.models import Q
+from rest_framework import status
+from rest_framework.filters import SearchFilter
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from cmdb.models import Assets, IDC, Cabinets
+from cmdb.serializers.assets import AssetsAdminSerializer
+from drf_admin.common.models import get_child_ids
+from drf_admin.utils.views import ChoiceAPIView, AdminViewSet
+from system.models import Departments
+
+class AssetsStatusAPIView(ChoiceAPIView):
+
+class AssetsAdminListAPIView(ListAPIView):
+
+class IDCCabinetsTreeAPIView(APIView):
+    def getNone: ...
+
+class BaseAssetsAPIView(AdminViewSet):
+    def get_querysetNone: ...
+
+# FILE: drf_admin/apps/cmdb/views/servers.py
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+from cmdb.models import Servers
+from cmdb.serializers.servers import ServersAssetsSerializer
+from cmdb.views.assets import BaseAssetsAPIView
+from drf_admin.utils.views import ChoiceAPIView
+
+class ServersViewSet(BaseAssetsAPIView):
+    def get_querysetNone: ...
+
+class ServersSystemTypeAPIView(ChoiceAPIView):
+
+class ServersTypeAPIView(ChoiceAPIView):
+
+# FILE: drf_admin/apps/information/admin.py
+from django.contrib import admin
+
+# FILE: drf_admin/apps/information/apps.py
+from django.apps import AppConfig
+
+class InformationConfig(AppConfig):
+
+# FILE: drf_admin/apps/information/models.py
+from django.db import models
+
+# FILE: drf_admin/apps/information/serializers/centre.py
+from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+    def validateNone: ...
+    def updateNone: ...
+
+class ChangeInformationSerializer(serializers.ModelSerializer):
+    def validate_mobileNone: ...
+
+class ChangeAvatarSerializer(serializers.ModelSerializer):
+
+# FILE: drf_admin/apps/information/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/apps/information/urls.py
+from django.urls import path
+from information.views import centre
+
+# FILE: drf_admin/apps/information/views/centre.py
+from rest_framework import mixins
+from rest_framework.generics import GenericAPIView
+from information.serializers.centre import ChangePasswordSerializer, ChangeInformationSerializer, ChangeAvatarSerializer
+
+class ChangePasswordAPIView(mixins.UpdateModelMixin, GenericAPIView):
+    def putNone: ...
+    def get_objectNone: ...
+
+class ChangeInformationAPIView(mixins.UpdateModelMixin, GenericAPIView):
+    def putNone: ...
+    def get_objectNone: ...
+
+class ChangeAvatarAPIView(mixins.UpdateModelMixin, GenericAPIView):
+    def putNone: ...
+    def get_objectNone: ...
+
+# FILE: drf_admin/apps/monitor/admin.py
+from django.contrib import admin
+
+# FILE: drf_admin/apps/monitor/apps.py
+from django.apps import AppConfig
+
+class MonitorConfig(AppConfig):
+    def readyNone: ...
+
+# FILE: drf_admin/apps/monitor/consumers/service.py
+import json
+import uuid
+from datetime import datetime
+import psutil
+from channels.db import database_sync_to_async
+from channels.generic.websocket import AsyncWebsocketConsumer
+from django.conf import settings
+
+class ResourcesConsumer(AsyncWebsocketConsumer):
+    async def connectNone: ...
+    async def receiveNone: ...
+    async def disconnectNone: ...
+    async def service_messageNone: ...
+    def get_dataNone: ...
+
+# FILE: drf_admin/apps/monitor/migrations/0001_initial.py
+from django.db import migrations, models
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/monitor/migrations/0002_onlineusers_user.py
+from django.conf import settings
+from django.db import migrations, models
+import django.db.models.deletion
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/monitor/models.py
+from django.conf import settings
+from django.db import models
+from drf_admin.utils.models import BaseModel
+
+class ErrorLogs(BaseModel):
+
+class IpBlackList(BaseModel):
+
+class OnlineUsers(BaseModel):
+
+# FILE: drf_admin/apps/monitor/notification.py
+import threading
+import time
+from django.conf import settings
+from redis import StrictRedis
+from monitor.models import OnlineUsers
+
+def online_user_notificationsNone: ...
+
+# FILE: drf_admin/apps/monitor/serializers/crud.py
+from django.contrib.contenttypes.models import ContentType
+from easyaudit.models import CRUDEvent
+from rest_framework import serializers
+
+class CRUDSerializer(serializers.ModelSerializer):
+    def get_event_type_displayNone: ...
+    def get_usernameNone: ...
+    def get_content_type_displayNone: ...
+    def to_representationNone: ...
+
+# FILE: drf_admin/apps/monitor/serializers/error.py
+from rest_framework import serializers
+from monitor.models import ErrorLogs
+
+class ErrorLogsSerializer(serializers.ModelSerializer):
+
+# FILE: drf_admin/apps/monitor/serializers/ip.py
+from rest_framework import serializers
+from monitor.models import IpBlackList
+
+class IpBlackListSerializer(serializers.ModelSerializer):
+
+# FILE: drf_admin/apps/monitor/serializers/users.py
+from django_redis import get_redis_connection
+from rest_framework import serializers
+from monitor.models import OnlineUsers
+
+class OnlineUsersSerializer(serializers.ModelSerializer):
+    def get_idNone: ...
+    def get_usernameNone: ...
+    def get_nameNone: ...
+    def get_browserNone: ...
+    def get_osNone: ...
+    def get_last_timeNone: ...
+    def to_representationNone: ...
+
+# FILE: drf_admin/apps/monitor/signals.py
+from django.db.models.signals import pre_save, post_delete
+from django.dispatch import receiver
+from django_redis import get_redis_connection
+from .models import IpBlackList
+
+def create_update_ip_black_listNone: ...
+
+def delete_ip_black_listNone: ...
+
+# FILE: drf_admin/apps/monitor/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/apps/monitor/urls.py
+from django.urls import path, include
+from drf_admin.utils import routers
+from monitor.views import users, service, error, ip, crud
+
+# FILE: drf_admin/apps/monitor/views/crud.py
+from easyaudit.models import CRUDEvent
+from rest_framework.generics import ListAPIView
+from monitor.serializers.crud import CRUDSerializer
+
+class CRUDListAPIView(ListAPIView):
+    def get_querysetNone: ...
+
+# FILE: drf_admin/apps/monitor/views/error.py
+from rest_framework import status
+from rest_framework.filters import SearchFilter
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
+from monitor.models import ErrorLogs
+from monitor.serializers.error import ErrorLogsSerializer
+
+class ErrorLogAPIView(ListAPIView):
+    def deleteNone: ...
+
+# FILE: drf_admin/apps/monitor/views/ip.py
+from rest_framework.filters import SearchFilter
+from drf_admin.utils.views import AdminViewSet
+from monitor.models import IpBlackList
+from monitor.serializers.ip import IpBlackListSerializer
+
+class IpBlackListViewSet(AdminViewSet):
+
+# FILE: drf_admin/apps/monitor/views/service.py
+import platform
+import socket
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+class ServiceMonitorAPIView(APIView):
+    def getNone: ...
+    def get_host_ipNone: ...
+
+# FILE: drf_admin/apps/monitor/views/users.py
+from rest_framework.filters import SearchFilter
+from rest_framework.generics import ListAPIView
+from monitor.models import OnlineUsers
+from monitor.serializers.users import OnlineUsersSerializer
+
+class OnlineUsersListAPIView(ListAPIView):
+
+# FILE: drf_admin/apps/oauth/admin.py
+from django.contrib import admin
+
+# FILE: drf_admin/apps/oauth/apps.py
+from django.apps import AppConfig
+
+class OauthConfig(AppConfig):
+
+# FILE: drf_admin/apps/oauth/migrations/0001_initial.py
+import django.contrib.auth.models
+import django.contrib.auth.validators
+from django.db import migrations, models
+import django.db.models.deletion
+import django.utils.timezone
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/oauth/models.py
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class Users(AbstractUser):
+    def __str__None: ...
+    def _get_user_permissionsNone: ...
+    def get_user_infoNone: ...
+
+# FILE: drf_admin/apps/oauth/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/apps/oauth/urls.py
+from django.urls import path
+from rest_framework_jwt.views import refresh_jwt_token
+from oauth.views import oauth, home
+
+# FILE: drf_admin/apps/oauth/utils.py
+import json
+import re
+import requests
+from django.contrib.auth import get_user_model
+from django.contrib.auth.backends import ModelBackend
+
+class UsernameMobileAuthBackend(ModelBackend):
+    def authenticateNone: ...
+
+def get_request_ipNone: ...
+
+def get_ip_addressNone: ...
+
+def get_request_browserNone: ...
+
+def get_request_osNone: ...
+
+# FILE: drf_admin/apps/oauth/views/home.py
+from django.contrib.auth import get_user_model
+from django_redis import get_redis_connection
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from cmdb.models import Assets
+from monitor.models import OnlineUsers
+
+class HomeAPIView(APIView):
+    def getNone: ...
+
+# FILE: drf_admin/apps/oauth/views/oauth.py
+import json
+from django_redis import get_redis_connection
+from rest_framework import status
+from rest_framework.exceptions import ValidationError
+from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
+from rest_framework.views import APIView
+from rest_framework_jwt.views import ObtainJSONWebToken
+
+class UserLoginView(ObtainJSONWebToken):
+    def postNone: ...
+
+class UserInfoView(APIView):
+    def getNone: ...
+
+class LogoutAPIView(APIView):
+    def postNone: ...
+
+# FILE: drf_admin/apps/system/admin.py
+from django.contrib import admin
+from django.contrib.auth import get_user_model
+from system.models import Permissions, Roles, Departments
+
+# FILE: drf_admin/apps/system/apps.py
+from django.apps import AppConfig
+
+class SystemConfig(AppConfig):
+    def readyNone: ...
+
+# FILE: drf_admin/apps/system/filters/users.py
+import django_filters
+from django.contrib.auth import get_user_model
+from drf_admin.common.models import get_child_ids
+from system.models import Departments
+
+class UsersFilter(django_filters.rest_framework.FilterSet):
+    def department_service_filterNone: ...
+
+# FILE: drf_admin/apps/system/jobs/decorators.py
+import logging
+import time
+import traceback
+from functools import wraps
+from drf_admin.common.redis import acquire_lock, release_lock
+
+def single_taskNone: ...
+
+# FILE: drf_admin/apps/system/jobs/run.py
+from apscheduler.schedulers.background import BackgroundScheduler
+from django.conf import settings
+from django_apscheduler.jobstores import DjangoJobStore
+
+# FILE: drf_admin/apps/system/jobs/tasks.py
+from system.jobs.decorators import single_task
+
+def database_backupNone: ...
+
+def project_data_resetNone: ...
+
+# FILE: drf_admin/apps/system/jobs/warehouse/backup.py
+import os
+import time
+from django.conf import settings
+
+def mysqlNone: ...
+
+# FILE: drf_admin/apps/system/migrations/0001_initial.py
+from django.db import migrations, models
+import django.db.models.deletion
+
+class Migration(migrations.Migration):
+
+# FILE: drf_admin/apps/system/models.py
+from django.db import models
+from drf_admin.utils.models import BaseModel
+
+class Permissions(BaseModel):
+    def __str__None: ...
+
+class Roles(BaseModel):
+    def __str__None: ...
+
+class Departments(BaseModel):
+    def __str__None: ...
+
+# FILE: drf_admin/apps/system/serializers/departments.py
+from rest_framework import serializers
+from drf_admin.common.models import get_child_ids
+from drf_admin.utils.views import TreeSerializer
+from system.models import Departments
+
+class DepartmentsSerializer(serializers.ModelSerializer):
+    def updateNone: ...
+
+class DepartmentsTreeSerializer(TreeSerializer):
+
+# FILE: drf_admin/apps/system/serializers/jobs.py
+import uuid
+from inspect import getmembers, isfunction
+from apscheduler.triggers.cron import CronTrigger
+from django_apscheduler.models import DjangoJobExecution
+from rest_framework import serializers
+from system.jobs import tasks
+from system.jobs.run import scheduler
+
+class JobFunctionsSerializer(serializers.Serializer):
+    def get_nameNone: ...
+    def get_descNone: ...
+
+class JobsListSerializer(serializers.Serializer):
+    def get_idNone: ...
+    def get_nameNone: ...
+    def get_descNone: ...
+    def get_next_run_timeNone: ...
+    def get_cronNone: ...
+
+class JobCreateSerializer(serializers.Serializer):
+    def get_idNone: ...
+    def get_descNone: ...
+    def get_next_run_timeNone: ...
+    def validateNone: ...
+    def get_cronNone: ...
+    def createNone: ...
+    def to_representationNone: ...
+
+class JobUpdateSerializer(serializers.Serializer):
+    def validateNone: ...
+    def saveNone: ...
+    def to_representationNone: ...
+
+class JobExecutionsSerializer(serializers.ModelSerializer):
+
+# FILE: drf_admin/apps/system/serializers/permissions.py
+from rest_framework import serializers
+from drf_admin.common.models import get_child_ids
+from drf_admin.utils.views import TreeSerializer
+from system.models import Permissions
+
+class PermissionsSerializer(serializers.ModelSerializer):
+    def validateNone: ...
+    def updateNone: ...
+    def createNone: ...
+
+class PermissionsTreeSerializer(TreeSerializer):
+
+# FILE: drf_admin/apps/system/serializers/roles.py
+from rest_framework import serializers
+from system.models import Roles
+
+class RolesSerializer(serializers.ModelSerializer):
+
+class RolesPartialSerializer(serializers.ModelSerializer):
+    def validateNone: ...
+
+# FILE: drf_admin/apps/system/serializers/users.py
+import re
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
+class UsersSerializer(serializers.ModelSerializer):
+    def validateNone: ...
+    def get_roles_listNone: ...
+    def createNone: ...
+
+class UsersPartialSerializer(serializers.ModelSerializer):
+
+class ResetPasswordSerializer(serializers.ModelSerializer):
+    def validateNone: ...
+    def saveNone: ...
+
+# FILE: drf_admin/apps/system/signals.py
+import json
+import logging
+from django.db.models.signals import pre_save, pre_delete, post_save
+from django.dispatch import receiver
+from django_redis import get_redis_connection
+from system.models import Permissions
+
+def update_permissions_to_redisNone: ...
+
+def create_permissions_to_redisNone: ...
+
+def delete_permissions_from_redisNone: ...
+
+# FILE: drf_admin/apps/system/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/apps/system/urls.py
+from django.urls import path, include
+from drf_admin.utils import routers
+from system.views import users, roles, permissions, departments, jobs
+
+# FILE: drf_admin/apps/system/views/departments.py
+from rest_framework.filters import SearchFilter, OrderingFilter
+from drf_admin.utils.views import AdminViewSet, TreeAPIView
+from system.models import Departments
+from system.serializers.departments import DepartmentsSerializer, DepartmentsTreeSerializer
+
+class DepartmentsViewSet(AdminViewSet, TreeAPIView):
+    def get_serializer_classNone: ...
+
+# FILE: drf_admin/apps/system/views/jobs.py
+from inspect import isfunction, getmembers
+from apscheduler.jobstores.base import JobLookupError
+from django_apscheduler.models import DjangoJobExecution
+from django_filters.rest_framework import DjangoFilterBackend
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status
+from rest_framework.filters import SearchFilter
+from rest_framework.generics import ListAPIView, ListCreateAPIView, DestroyAPIView
+from rest_framework.response import Response
+from rest_framework import mixins
+from system.jobs import tasks
+from system.jobs.run import scheduler
+from system.serializers.jobs import JobsListSerializer, JobCreateSerializer, JobFunctionsSerializer, \
+    JobUpdateSerializer, JobExecutionsSerializer
+
+class JobFunctionsListAPIView(ListAPIView):
+    def get_querysetNone: ...
+    def filter_querysetNone: ...
+
+class JobsListCreateAPIView(ListCreateAPIView):
+    def filter_querysetNone: ...
+    def get_querysetNone: ...
+    def get_serializer_classNone: ...
+    def deleteNone: ...
+
+class JobUpdateDestroyAPIView(mixins.UpdateModelMixin, DestroyAPIView):
+    def get_querysetNone: ...
+    def get_job_idNone: ...
+    def patchNone: ...
+    def deleteNone: ...
+
+class JobExecutionsListAPIView(ListAPIView):
+
+# FILE: drf_admin/apps/system/views/permissions.py
+from rest_framework.filters import SearchFilter, OrderingFilter
+from drf_admin.utils.views import AdminViewSet, TreeAPIView, ChoiceAPIView
+from system.models import Permissions
+from system.serializers.permissions import PermissionsSerializer, PermissionsTreeSerializer
+
+class PermissionsViewSet(AdminViewSet, TreeAPIView):
+    def get_serializer_classNone: ...
+
+class PermissionsMethodsAPIView(ChoiceAPIView):
+
+# FILE: drf_admin/apps/system/views/roles.py
+from rest_framework import status
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.response import Response
+from drf_admin.utils.views import AdminViewSet
+from system.models import Roles
+from system.serializers.roles import RolesSerializer, RolesPartialSerializer
+
+class RolesViewSet(AdminViewSet):
+    def get_serializer_classNone: ...
+    def updateNone: ...
+    def destroyNone: ...
+    def partial_updateNone: ...
+    def multiple_deleteNone: ...
+
+# FILE: drf_admin/apps/system/views/users.py
+from django.contrib.auth import get_user_model
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import mixins
+from rest_framework.exceptions import ValidationError
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.generics import GenericAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from drf_admin.apps.system.serializers.users import UsersSerializer, UsersPartialSerializer, ResetPasswordSerializer
+from drf_admin.utils.views import AdminViewSet
+from system.filters.users import UsersFilter
+from system.models import Permissions
+
+class UsersViewSet(AdminViewSet):
+    def get_serializer_classNone: ...
+
+class ResetPasswordAPIView(mixins.UpdateModelMixin, GenericAPIView):
+    def patchNone: ...
+
+class PermissionsAPIView(APIView):
+    def getNone: ...
+
+# FILE: drf_admin/apps/work/admin.py
+from django.contrib import admin
+
+# FILE: drf_admin/apps/work/apps.py
+from django.apps import AppConfig
+
+class WorkConfig(AppConfig):
+
+# FILE: drf_admin/apps/work/models.py
+from django.conf import settings
+from django.db import models
+from drf_admin.utils.models import BaseModel
+
+class Tasks(BaseModel):
+    def __str__None: ...
+
+class TasksProgress(BaseModel):
+
+# FILE: drf_admin/apps/work/tests.py
+from django.test import TestCase
+
+# FILE: drf_admin/common/models.py
+def get_child_idsNone: ...
+
+# FILE: drf_admin/common/permissions.py
+import json
+from system.models import Permissions
+
+def redis_storage_permissionsNone: ...
+
+# FILE: drf_admin/common/redis.py
+import uuid
+from django_redis import get_redis_connection
+
+def acquire_lockNone: ...
+
+def release_lockNone: ...
+
+# FILE: drf_admin/routing.py
+import os
+import django
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.urls import re_path
+from drf_admin.utils.websocket import TokenAuthMiddleware
+from monitor.consumers import service
+
+# FILE: drf_admin/settings/dev.py
+import datetime
+import os
+import sys
+import psutil
+
+# FILE: drf_admin/settings/pro.py
+import os
+
+# FILE: drf_admin/urls.py
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include, re_path
+from django.views.decorators.clickjacking import xframe_options_exempt
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
+# FILE: drf_admin/utils/exceptions.py
+import logging
+import traceback
+from django.core.exceptions import PermissionDenied
+from django.db import DatabaseError
+from django.http import Http404
+from redis.exceptions import RedisError
+from rest_framework import status, exceptions
+from rest_framework.exceptions import ErrorDetail
+from rest_framework.response import Response
+from rest_framework.views import set_rollback
+from monitor.models import ErrorLogs
+from oauth.utils import get_request_ip
+
+def errors_handlerNone: ...
+
+def exception_handlerNone: ...
+
+def write_error_logsNone: ...
+
+# FILE: drf_admin/utils/middleware.py
+import json
+import logging
+import time
+from django.utils.deprecation import MiddlewareMixin
+from django_redis import get_redis_connection
+from rest_framework import status
+from rest_framework.response import Response
+from monitor.models import OnlineUsers
+from oauth.utils import get_request_browser, get_request_os, get_request_ip
+
+class OperationLogMiddleware:
+    def __init__None: ...
+    def __call__None: ...
+
+class ResponseMiddleware(MiddlewareMixin):
+    def process_requestNone: ...
+    def process_viewNone: ...
+    def process_exceptionNone: ...
+    def process_responseNone: ...
+
+class OnlineUsersMiddleware(MiddlewareMixin):
+    def process_responseNone: ...
+
+class IpBlackListMiddleware(MiddlewareMixin):
+    def process_requestNone: ...
+
+# FILE: drf_admin/utils/models.py
+import base64
+from Crypto.Cipher import AES
+from django.conf import settings
+from django.db import models
+
+class BaseModel(models.Model):
+
+class BasePasswordModels(models.Model):
+    def encryptNone: ...
+    def set_passwordNone: ...
+    def get_password_displayNone: ...
+
+# FILE: drf_admin/utils/pagination.py
+from rest_framework.pagination import PageNumberPagination
+
+class GlobalPagination(PageNumberPagination):
+
+# FILE: drf_admin/utils/permissions.py
+import json
+import re
+from django.conf import settings
+from django_redis import get_redis_connection
+from rest_framework import status
+from rest_framework.exceptions import APIException
+from rest_framework.permissions import BasePermission
+from drf_admin.common.permissions import redis_storage_permissions
+
+class UserLock(APIException):
+
+class RbacPermission(BasePermission):
+    def pro_uriNone: ...
+    def has_permissionNone: ...
+
+# FILE: drf_admin/utils/routers.py
+from rest_framework.routers import SimpleRouter, Route, DynamicRoute
+
+class AdminRouter(SimpleRouter):
+
+# FILE: drf_admin/utils/swagger_schema.py
+from drf_yasg.inspectors import SwaggerAutoSchema
+
+class OperationIDAutoSchema(SwaggerAutoSchema):
+    def get_operation_idNone: ...
+
+# FILE: drf_admin/utils/views.py
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status, serializers
+from rest_framework.exceptions import ValidationError
+from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from drf_admin.utils.swagger_schema import OperationIDAutoSchema
+
+class MultipleDestroyMixin:
+    def validate_idsNone: ...
+    def multiple_deleteNone: ...
+
+class AdminViewSet(ModelViewSet, MultipleDestroyMixin):
+
+class TreeSerializer(serializers.ModelSerializer):
+
+class TreeAPIView(ListAPIView):
+    def listNone: ...
+
+class ChoiceAPIView(APIView):
+    def getNone: ...
+    def get_choiceNone: ...
+
+# FILE: drf_admin/utils/websocket.py
+from urllib.parse import parse_qs
+from django.db import close_old_connections
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
+class WebSocketTokenAuthentication(JSONWebTokenAuthentication):
+    def get_jwt_valueNone: ...
+
+class TokenAuthMiddleware:
+    def __init__None: ...
+    def __call__None: ...
+
+# FILE: drf_admin/wsgi.py
+import os
+from django.core.wsgi import get_wsgi_application
+
+# FILE: manage.py
+import os
+import sys
+
+def mainNone: ...

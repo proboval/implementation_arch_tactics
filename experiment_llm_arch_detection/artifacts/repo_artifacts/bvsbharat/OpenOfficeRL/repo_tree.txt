@@ -1,0 +1,208 @@
+OpenOfficeRL
+├── demo
+│   ├── api
+│   │   ├── .gitignore
+│   │   ├── claude_bridge.py
+│   │   ├── requirements.txt
+│   │   ├── rl_bridge.py
+│   │   ├── rl_environment.py
+│   │   ├── routes.py
+│   │   └── server.py
+│   ├── frontend
+│   │   ├── public
+│   │   │   ├── agents
+│   │   │   │   ├── ceo.png
+│   │   │   │   ├── content.png
+│   │   │   │   ├── customer.png
+│   │   │   │   ├── dev.png
+│   │   │   │   ├── hr.png
+│   │   │   │   ├── marketing.png
+│   │   │   │   ├── sales.png
+│   │   │   │   ├── scene.png
+│   │   │   │   ├── sloth_ceo.png
+│   │   │   │   ├── sloth_content.png
+│   │   │   │   ├── sloth_customer.png
+│   │   │   │   ├── sloth_dev.png
+│   │   │   │   ├── sloth_hr.png
+│   │   │   │   ├── sloth_marketing.png
+│   │   │   │   ├── sloth_sales.png
+│   │   │   │   └── sloths.jpg
+│   │   │   └── game
+│   │   │       ├── sprites
+│   │   │       │   ├── atlas.json
+│   │   │       │   ├── ceo.png
+│   │   │       │   ├── content.png
+│   │   │       │   ├── customer.png
+│   │   │       │   ├── dev.png
+│   │   │       │   ├── hr.png
+│   │   │       │   ├── marketing.png
+│   │   │       │   ├── sales.png
+│   │   │       │   ├── scene.png
+│   │   │       │   └── speech_bubble.png
+│   │   │       ├── tilesets
+│   │   │       │   ├── blocks_1.png
+│   │   │       │   ├── CuteRPG_Field_B.png
+│   │   │       │   ├── CuteRPG_Field_C.png
+│   │   │       │   ├── CuteRPG_Forest_B.png
+│   │   │       │   ├── CuteRPG_Forest_C.png
+│   │   │       │   ├── CuteRPG_Village_B.png
+│   │   │       │   ├── interiors_pt1.png
+│   │   │       │   ├── interiors_pt2.png
+│   │   │       │   ├── interiors_pt3.png
+│   │   │       │   ├── interiors_pt4.png
+│   │   │       │   ├── interiors_pt5.png
+│   │   │       │   └── Room_Builder_32x32.png
+│   │   │       ├── office_map.json
+│   │   │       ├── tree_big_0.png
+│   │   │       ├── tree_big_cluster.png
+│   │   │       ├── tree_medium_col2.png
+│   │   │       ├── tree_medium_col3.png
+│   │   │       ├── tree_medium_col4.png
+│   │   │       ├── tree_medium_col5.png
+│   │   │       ├── tree_small_col2.png
+│   │   │       ├── tree_small_col3.png
+│   │   │       ├── tree_small_col4.png
+│   │   │       └── tree_small_col5.png
+│   │   ├── src
+│   │   │   ├── assets
+│   │   │   │   └── speech_bubble.svg
+│   │   │   ├── components
+│   │   │   │   ├── fourd
+│   │   │   │   │   ├── FourDView.tsx
+│   │   │   │   │   ├── Office3D.tsx
+│   │   │   │   │   └── TimelineScrubber.tsx
+│   │   │   │   ├── AgentCard.tsx
+│   │   │   │   ├── BenchmarkPanel.tsx
+│   │   │   │   ├── ConversationLog.tsx
+│   │   │   │   ├── EpisodeControls.tsx
+│   │   │   │   ├── MapOverlays.tsx
+│   │   │   │   ├── MarketDashboard.tsx
+│   │   │   │   ├── ModelSelector.tsx
+│   │   │   │   ├── ModeSelector.tsx
+│   │   │   │   ├── OfficeMap.tsx
+│   │   │   │   ├── PhaserGame.tsx
+│   │   │   │   ├── PlaygroundView.tsx
+│   │   │   │   ├── RewardPanel.tsx
+│   │   │   │   ├── ScenarioSelector.tsx
+│   │   │   │   ├── TimelineView.tsx
+│   │   │   │   └── ViewToggle.tsx
+│   │   │   ├── constants
+│   │   │   │   └── fourd.ts
+│   │   │   ├── game
+│   │   │   │   ├── agentBehavior.ts
+│   │   │   │   ├── agentStatusOverlay.ts
+│   │   │   │   ├── collaborationVisuals.ts
+│   │   │   │   ├── easing.ts
+│   │   │   │   ├── officeDesign.ts
+│   │   │   │   ├── officeLayout.ts
+│   │   │   │   ├── OfficeScene.ts
+│   │   │   │   ├── OfficeScene.ts.bak
+│   │   │   │   ├── OfficeSceneV2.ts
+│   │   │   │   ├── pathfinding.ts
+│   │   │   │   ├── speechBubbles.ts
+│   │   │   │   ├── spriteCache.ts
+│   │   │   │   └── visualEffects.ts
+│   │   │   ├── hooks
+│   │   │   │   ├── useEffectiveState.ts
+│   │   │   │   └── useWebSocket.ts
+│   │   │   ├── store
+│   │   │   │   └── useStore.ts
+│   │   │   ├── types
+│   │   │   │   ├── fourd.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── App.tsx
+│   │   │   ├── index.css
+│   │   │   └── main.tsx
+│   │   ├── .gitignore
+│   │   ├── index.html
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── tailwind.config.js
+│   │   ├── tsconfig.json
+│   │   └── vite.config.ts
+│   └── package.json
+├── docs
+│   ├── FINAL_DELIVERABLES.txt
+│   ├── GETTING_STARTED.md
+│   ├── Idea.md
+│   ├── IMPLEMENTATION_STATUS.md
+│   ├── MarketVille_PRD.md
+│   ├── NEXT_STEPS_PHASE5.md
+│   ├── OFFICESCENESV2_MIGRATION.md
+│   ├── PHASE5_COMPLETION.md
+│   ├── PHASE_5_COMPLETE.md
+│   ├── PLAN_IMPLEMENTATION_SUMMARY.md
+│   ├── QUICK_REFERENCE.md
+│   ├── RESOURCES.md
+│   └── RULES_JUDGING.md
+├── examples
+│   ├── run_agent.py
+│   └── simple_agent.py
+├── office_os
+│   ├── agents
+│   │   ├── __init__.py
+│   │   ├── base_agent.py
+│   │   ├── llm_agent.py
+│   │   ├── memory.py
+│   │   └── prompts.py
+│   ├── docs
+│   │   ├── google-sheets-setup.md
+│   │   ├── northflank-h100-setup.md
+│   │   └── TECHNICAL.md
+│   ├── integrations
+│   │   ├── __init__.py
+│   │   └── sheets.py
+│   ├── market
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── events.py
+│   │   ├── metrics.py
+│   │   ├── scenarios.py
+│   │   ├── simulator.py
+│   │   └── state.py
+│   ├── server
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   ├── office_os_environment.py
+│   │   └── requirements.txt
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── test_env.py
+│   ├── training
+│   │   ├── __init__.py
+│   │   ├── collector.py
+│   │   ├── Dockerfile.northflank
+│   │   ├── entrypoint.sh
+│   │   ├── keepalive.sh
+│   │   ├── office_os_training_demo.ipynb
+│   │   ├── run_training.sh
+│   │   ├── start_train_worker.sh
+│   │   ├── start_vllm.sh
+│   │   ├── train_worker.py
+│   │   └── trainer.py
+│   ├── training_data
+│   │   ├── trajectories_day_3.jsonl
+│   │   └── trajectories_day_6.jsonl
+│   ├── .gitignore
+│   ├── __init__.py
+│   ├── client.py
+│   ├── demo_inference.py
+│   ├── frontend.py
+│   ├── generate_training_data.py
+│   ├── models.py
+│   ├── openenv.yaml
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── run_agents.py
+│   ├── send_training.py
+│   ├── train_loop.py
+│   └── uv.lock
+├── .gitignore
+├── LICENSE
+├── main.py
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+└── uv.lock

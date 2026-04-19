@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    "config_manager",
+    "main",
+    "pdf_generator",
+    "server"
+  ],
+  "edges": [
+    {
+      "source": "main",
+      "target": "server"
+    },
+    {
+      "source": "server",
+      "target": "config_manager"
+    },
+    {
+      "source": "server",
+      "target": "pdf_generator"
+    }
+  ]
+}

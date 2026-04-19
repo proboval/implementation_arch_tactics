@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    "Claude-Eng-v2.main",
+    "Claude-Eng-v2.ollama-eng",
+    "app",
+    "ce3",
+    "config",
+    "prompts.system_prompts",
+    "test",
+    "tools.base",
+    "tools.browsertool",
+    "tools.createfolderstool",
+    "tools.diffeditortool",
+    "tools.duckduckgotool",
+    "tools.e2bcodetool",
+    "tools.filecontentreadertool",
+    "tools.filecreatortool",
+    "tools.fileedittool",
+    "tools.lintingtool",
+    "tools.screenshottool",
+    "tools.toolcreator",
+    "tools.uvpackagemanager",
+    "tools.webscrapertool"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "ce3"
+    },
+    {
+      "source": "app",
+      "target": "config"
+    },
+    {
+      "source": "ce3",
+      "target": "config"
+    },
+    {
+      "source": "ce3",
+      "target": "prompts.system_prompts"
+    },
+    {
+      "source": "ce3",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.browsertool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.createfolderstool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.diffeditortool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.duckduckgotool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.e2bcodetool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.filecontentreadertool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.filecreatortool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.fileedittool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.lintingtool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.screenshottool",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.toolcreator",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.uvpackagemanager",
+      "target": "tools.base"
+    },
+    {
+      "source": "tools.webscrapertool",
+      "target": "tools.base"
+    }
+  ]
+}

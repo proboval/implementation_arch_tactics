@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    "app",
+    "byte",
+    "like_count_pb2",
+    "uid_generator_pb2"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "byte"
+    },
+    {
+      "source": "app",
+      "target": "like_count_pb2"
+    },
+    {
+      "source": "app",
+      "target": "uid_generator_pb2"
+    }
+  ]
+}

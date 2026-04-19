@@ -1,0 +1,174 @@
+{
+  "nodes": [
+    "flash_head.audio_analysis.torch_utils",
+    "flash_head.audio_analysis.wav2vec2",
+    "flash_head.inference",
+    "flash_head.ltx_video",
+    "flash_head.ltx_video.ltx_vae",
+    "flash_head.ltx_video.models",
+    "flash_head.ltx_video.models.autoencoders",
+    "flash_head.ltx_video.models.autoencoders.causal_conv3d",
+    "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+    "flash_head.ltx_video.models.autoencoders.conv_nd_factory",
+    "flash_head.ltx_video.models.autoencoders.dual_conv3d",
+    "flash_head.ltx_video.models.autoencoders.pixel_norm",
+    "flash_head.ltx_video.models.autoencoders.vae",
+    "flash_head.ltx_video.models.autoencoders.vae_encode",
+    "flash_head.ltx_video.models.autoencoders.video_autoencoder",
+    "flash_head.ltx_video.models.transformers",
+    "flash_head.ltx_video.models.transformers.attention",
+    "flash_head.ltx_video.models.transformers.embeddings",
+    "flash_head.ltx_video.models.transformers.symmetric_patchifier",
+    "flash_head.ltx_video.models.transformers.transformer3d",
+    "flash_head.ltx_video.utils",
+    "flash_head.ltx_video.utils.diffusers_config_mapping",
+    "flash_head.ltx_video.utils.prompt_enhance_utils",
+    "flash_head.ltx_video.utils.skip_layer_strategy",
+    "flash_head.ltx_video.utils.torch_utils",
+    "flash_head.src.distributed.usp_device",
+    "flash_head.src.modules.flash_head_model",
+    "flash_head.src.pipeline.flash_head_pipeline",
+    "flash_head.utils.cpu_face_handler",
+    "flash_head.utils.facecrop",
+    "flash_head.utils.utils",
+    "flash_head.wan.modules",
+    "flash_head.wan.modules.vae",
+    "generate_video",
+    "gradio_app",
+    "gradio_app_streaming"
+  ],
+  "edges": [
+    {
+      "source": "flash_head.audio_analysis.wav2vec2",
+      "target": "flash_head.audio_analysis.torch_utils"
+    },
+    {
+      "source": "flash_head.inference",
+      "target": "flash_head.src.distributed.usp_device"
+    },
+    {
+      "source": "flash_head.inference",
+      "target": "flash_head.src.pipeline.flash_head_pipeline"
+    },
+    {
+      "source": "flash_head.ltx_video.ltx_vae",
+      "target": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.conv_nd_factory"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.pixel_norm"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.vae"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+      "target": "flash_head.ltx_video.models.transformers.attention"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder",
+      "target": "flash_head.ltx_video.utils.diffusers_config_mapping"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.conv_nd_factory",
+      "target": "flash_head.ltx_video.models.autoencoders.causal_conv3d"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.conv_nd_factory",
+      "target": "flash_head.ltx_video.models.autoencoders.dual_conv3d"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.vae",
+      "target": "flash_head.ltx_video.models.autoencoders.conv_nd_factory"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.vae_encode",
+      "target": "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.vae_encode",
+      "target": "flash_head.ltx_video.models.autoencoders.video_autoencoder"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.conv_nd_factory"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.pixel_norm"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.video_autoencoder",
+      "target": "flash_head.ltx_video.models.autoencoders.vae"
+    },
+    {
+      "source": "flash_head.ltx_video.models.autoencoders.video_autoencoder",
+      "target": "flash_head.ltx_video.utils.torch_utils"
+    },
+    {
+      "source": "flash_head.ltx_video.models.transformers.attention",
+      "target": "flash_head.ltx_video.utils.skip_layer_strategy"
+    },
+    {
+      "source": "flash_head.ltx_video.models.transformers.transformer3d",
+      "target": "flash_head.ltx_video.models.transformers.attention"
+    },
+    {
+      "source": "flash_head.ltx_video.models.transformers.transformer3d",
+      "target": "flash_head.ltx_video.utils.diffusers_config_mapping"
+    },
+    {
+      "source": "flash_head.ltx_video.models.transformers.transformer3d",
+      "target": "flash_head.ltx_video.utils.skip_layer_strategy"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.audio_analysis.wav2vec2"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.ltx_video.ltx_vae"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.src.modules.flash_head_model"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.utils.facecrop"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.utils.utils"
+    },
+    {
+      "source": "flash_head.src.pipeline.flash_head_pipeline",
+      "target": "flash_head.wan.modules"
+    },
+    {
+      "source": "flash_head.utils.facecrop",
+      "target": "flash_head.utils.cpu_face_handler"
+    },
+    {
+      "source": "flash_head.wan.modules",
+      "target": "flash_head.wan.modules.vae"
+    },
+    {
+      "source": "generate_video",
+      "target": "flash_head.inference"
+    },
+    {
+      "source": "gradio_app",
+      "target": "flash_head.inference"
+    },
+    {
+      "source": "gradio_app_streaming",
+      "target": "flash_head.inference"
+    }
+  ]
+}

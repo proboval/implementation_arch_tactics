@@ -1,0 +1,2929 @@
+{
+  "nodes": [
+    "ultralytics",
+    "ultralytics.cfg",
+    "ultralytics.data",
+    "ultralytics.data.annotator",
+    "ultralytics.data.augment",
+    "ultralytics.data.base",
+    "ultralytics.data.build",
+    "ultralytics.data.converter",
+    "ultralytics.data.dataset",
+    "ultralytics.data.loaders",
+    "ultralytics.data.split",
+    "ultralytics.data.split_dota",
+    "ultralytics.data.utils",
+    "ultralytics.engine",
+    "ultralytics.engine.exporter",
+    "ultralytics.engine.model",
+    "ultralytics.engine.predictor",
+    "ultralytics.engine.results",
+    "ultralytics.engine.trainer",
+    "ultralytics.engine.tuner",
+    "ultralytics.engine.validator",
+    "ultralytics.hub",
+    "ultralytics.hub.auth",
+    "ultralytics.hub.google",
+    "ultralytics.hub.session",
+    "ultralytics.hub.utils",
+    "ultralytics.models",
+    "ultralytics.models.fastsam",
+    "ultralytics.models.fastsam.model",
+    "ultralytics.models.fastsam.predict",
+    "ultralytics.models.fastsam.utils",
+    "ultralytics.models.fastsam.val",
+    "ultralytics.models.nas",
+    "ultralytics.models.nas.model",
+    "ultralytics.models.nas.predict",
+    "ultralytics.models.nas.val",
+    "ultralytics.models.rtdetr",
+    "ultralytics.models.rtdetr.model",
+    "ultralytics.models.rtdetr.predict",
+    "ultralytics.models.rtdetr.train",
+    "ultralytics.models.rtdetr.val",
+    "ultralytics.models.sam",
+    "ultralytics.models.sam.amg",
+    "ultralytics.models.sam.build",
+    "ultralytics.models.sam.build_sam3",
+    "ultralytics.models.sam.model",
+    "ultralytics.models.sam.modules",
+    "ultralytics.models.sam.modules.blocks",
+    "ultralytics.models.sam.modules.decoders",
+    "ultralytics.models.sam.modules.encoders",
+    "ultralytics.models.sam.modules.memory_attention",
+    "ultralytics.models.sam.modules.sam",
+    "ultralytics.models.sam.modules.tiny_encoder",
+    "ultralytics.models.sam.modules.transformer",
+    "ultralytics.models.sam.modules.utils",
+    "ultralytics.models.sam.predict",
+    "ultralytics.models.sam.sam3",
+    "ultralytics.models.sam.sam3.decoder",
+    "ultralytics.models.sam.sam3.encoder",
+    "ultralytics.models.sam.sam3.geometry_encoders",
+    "ultralytics.models.sam.sam3.maskformer_segmentation",
+    "ultralytics.models.sam.sam3.model_misc",
+    "ultralytics.models.sam.sam3.necks",
+    "ultralytics.models.sam.sam3.sam3_image",
+    "ultralytics.models.sam.sam3.text_encoder_ve",
+    "ultralytics.models.sam.sam3.vitdet",
+    "ultralytics.models.sam.sam3.vl_combiner",
+    "ultralytics.models.utils",
+    "ultralytics.models.utils.loss",
+    "ultralytics.models.utils.ops",
+    "ultralytics.models.yolo",
+    "ultralytics.models.yolo.classify",
+    "ultralytics.models.yolo.classify.predict",
+    "ultralytics.models.yolo.classify.train",
+    "ultralytics.models.yolo.classify.val",
+    "ultralytics.models.yolo.detect",
+    "ultralytics.models.yolo.detect.predict",
+    "ultralytics.models.yolo.detect.train",
+    "ultralytics.models.yolo.detect.val",
+    "ultralytics.models.yolo.model",
+    "ultralytics.models.yolo.obb",
+    "ultralytics.models.yolo.obb.predict",
+    "ultralytics.models.yolo.obb.train",
+    "ultralytics.models.yolo.obb.val",
+    "ultralytics.models.yolo.pose",
+    "ultralytics.models.yolo.pose.predict",
+    "ultralytics.models.yolo.pose.train",
+    "ultralytics.models.yolo.pose.val",
+    "ultralytics.models.yolo.segment",
+    "ultralytics.models.yolo.segment.predict",
+    "ultralytics.models.yolo.segment.train",
+    "ultralytics.models.yolo.segment.val",
+    "ultralytics.models.yolo.world",
+    "ultralytics.models.yolo.world.train",
+    "ultralytics.models.yolo.world.train_world",
+    "ultralytics.models.yolo.yoloe",
+    "ultralytics.models.yolo.yoloe.predict",
+    "ultralytics.models.yolo.yoloe.train",
+    "ultralytics.models.yolo.yoloe.train_seg",
+    "ultralytics.models.yolo.yoloe.val",
+    "ultralytics.nn",
+    "ultralytics.nn.autobackend",
+    "ultralytics.nn.modules",
+    "ultralytics.nn.modules.activation",
+    "ultralytics.nn.modules.block",
+    "ultralytics.nn.modules.conv",
+    "ultralytics.nn.modules.head",
+    "ultralytics.nn.modules.lwf_modules",
+    "ultralytics.nn.modules.metaformer",
+    "ultralytics.nn.modules.ops_dcnv3.functions",
+    "ultralytics.nn.modules.ops_dcnv3.functions.dcnv3_func",
+    "ultralytics.nn.modules.ops_dcnv3.modules",
+    "ultralytics.nn.modules.ops_dcnv3.modules.dcnv3",
+    "ultralytics.nn.modules.ops_dcnv3.setup",
+    "ultralytics.nn.modules.ops_dcnv3.test",
+    "ultralytics.nn.modules.transformer",
+    "ultralytics.nn.modules.utils",
+    "ultralytics.nn.tasks",
+    "ultralytics.nn.text_model",
+    "ultralytics.optim",
+    "ultralytics.optim.muon",
+    "ultralytics.solutions",
+    "ultralytics.solutions.ai_gym",
+    "ultralytics.solutions.analytics",
+    "ultralytics.solutions.config",
+    "ultralytics.solutions.distance_calculation",
+    "ultralytics.solutions.heatmap",
+    "ultralytics.solutions.instance_segmentation",
+    "ultralytics.solutions.object_blurrer",
+    "ultralytics.solutions.object_counter",
+    "ultralytics.solutions.object_cropper",
+    "ultralytics.solutions.parking_management",
+    "ultralytics.solutions.queue_management",
+    "ultralytics.solutions.region_counter",
+    "ultralytics.solutions.security_alarm",
+    "ultralytics.solutions.similarity_search",
+    "ultralytics.solutions.solutions",
+    "ultralytics.solutions.speed_estimation",
+    "ultralytics.solutions.streamlit_inference",
+    "ultralytics.solutions.trackzone",
+    "ultralytics.solutions.vision_eye",
+    "ultralytics.trackers",
+    "ultralytics.trackers.basetrack",
+    "ultralytics.trackers.bot_sort",
+    "ultralytics.trackers.byte_tracker",
+    "ultralytics.trackers.track",
+    "ultralytics.trackers.utils",
+    "ultralytics.trackers.utils.gmc",
+    "ultralytics.trackers.utils.kalman_filter",
+    "ultralytics.trackers.utils.matching",
+    "ultralytics.utils",
+    "ultralytics.utils.autobatch",
+    "ultralytics.utils.autodevice",
+    "ultralytics.utils.benchmarks",
+    "ultralytics.utils.callbacks",
+    "ultralytics.utils.callbacks.base",
+    "ultralytics.utils.callbacks.clearml",
+    "ultralytics.utils.callbacks.comet",
+    "ultralytics.utils.callbacks.dvc",
+    "ultralytics.utils.callbacks.hub",
+    "ultralytics.utils.callbacks.mlflow",
+    "ultralytics.utils.callbacks.neptune",
+    "ultralytics.utils.callbacks.platform",
+    "ultralytics.utils.callbacks.raytune",
+    "ultralytics.utils.callbacks.tensorboard",
+    "ultralytics.utils.callbacks.wb",
+    "ultralytics.utils.checks",
+    "ultralytics.utils.cpu",
+    "ultralytics.utils.dist",
+    "ultralytics.utils.downloads",
+    "ultralytics.utils.errors",
+    "ultralytics.utils.events",
+    "ultralytics.utils.export",
+    "ultralytics.utils.export.engine",
+    "ultralytics.utils.export.imx",
+    "ultralytics.utils.export.tensorflow",
+    "ultralytics.utils.files",
+    "ultralytics.utils.git",
+    "ultralytics.utils.instance",
+    "ultralytics.utils.logger",
+    "ultralytics.utils.loss",
+    "ultralytics.utils.metrics",
+    "ultralytics.utils.nms",
+    "ultralytics.utils.ops",
+    "ultralytics.utils.patches",
+    "ultralytics.utils.plotting",
+    "ultralytics.utils.tal",
+    "ultralytics.utils.torch_utils",
+    "ultralytics.utils.tqdm",
+    "ultralytics.utils.triton",
+    "ultralytics.utils.tuner"
+  ],
+  "edges": [
+    {
+      "source": "ultralytics",
+      "target": "ultralytics.models"
+    },
+    {
+      "source": "ultralytics",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics.hub"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics.solutions"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics.solutions.config"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.cfg",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.data",
+      "target": "ultralytics.data.base"
+    },
+    {
+      "source": "ultralytics.data",
+      "target": "ultralytics.data.build"
+    },
+    {
+      "source": "ultralytics.data",
+      "target": "ultralytics.data.dataset"
+    },
+    {
+      "source": "ultralytics.data.annotator",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils.instance"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.data.augment",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.data.base",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.base",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.base",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.data.dataset"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.data.loaders"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.build",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.data.converter",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.data.base"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.data.converter"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.utils.instance"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.data.dataset",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.data.loaders",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.loaders",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.loaders",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.data.loaders",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.data.split",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.split",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.split_dota",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.data.split_dota",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.split_dota",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.data.split"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.data.utils",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.data.dataset"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.export"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.export.imx"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.export.tensorflow"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.nms"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.engine.exporter",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.engine.exporter"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.engine.tuner"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.hub"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.trackers"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.utils.benchmarks"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.model",
+      "target": "ultralytics.utils.tuner"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.engine.predictor",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.engine.results",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.engine.results",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.engine.results",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.data.converter"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.optim"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.autobatch"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.dist"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.engine.trainer",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.engine.tuner",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.tuner",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.tuner",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.tuner",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.engine.tuner",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.utils.callbacks"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.engine.validator",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.engine.exporter"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.hub.auth"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.hub.session"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.hub.utils"
+    },
+    {
+      "source": "ultralytics.hub",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.hub.auth",
+      "target": "ultralytics.hub.utils"
+    },
+    {
+      "source": "ultralytics.hub.auth",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.hub.session",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.hub.session",
+      "target": "ultralytics.hub.utils"
+    },
+    {
+      "source": "ultralytics.hub.session",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.hub.session",
+      "target": "ultralytics.utils.errors"
+    },
+    {
+      "source": "ultralytics.hub.utils",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models",
+      "target": "ultralytics.models.fastsam"
+    },
+    {
+      "source": "ultralytics.models",
+      "target": "ultralytics.models.nas"
+    },
+    {
+      "source": "ultralytics.models",
+      "target": "ultralytics.models.rtdetr"
+    },
+    {
+      "source": "ultralytics.models",
+      "target": "ultralytics.models.sam"
+    },
+    {
+      "source": "ultralytics.models",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.fastsam",
+      "target": "ultralytics.models.fastsam.model"
+    },
+    {
+      "source": "ultralytics.models.fastsam",
+      "target": "ultralytics.models.fastsam.predict"
+    },
+    {
+      "source": "ultralytics.models.fastsam",
+      "target": "ultralytics.models.fastsam.val"
+    },
+    {
+      "source": "ultralytics.models.fastsam.model",
+      "target": "ultralytics.engine.model"
+    },
+    {
+      "source": "ultralytics.models.fastsam.model",
+      "target": "ultralytics.models.fastsam.predict"
+    },
+    {
+      "source": "ultralytics.models.fastsam.model",
+      "target": "ultralytics.models.fastsam.val"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.models.fastsam.utils"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.nn.text_model"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.fastsam.predict",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.fastsam.val",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.nas",
+      "target": "ultralytics.models.nas.model"
+    },
+    {
+      "source": "ultralytics.models.nas",
+      "target": "ultralytics.models.nas.predict"
+    },
+    {
+      "source": "ultralytics.models.nas",
+      "target": "ultralytics.models.nas.val"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.engine.model"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.models.nas.predict"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.models.nas.val"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.models.nas.model",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.nas.predict",
+      "target": "ultralytics.models.yolo.detect.predict"
+    },
+    {
+      "source": "ultralytics.models.nas.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.nas.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.nas.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.rtdetr",
+      "target": "ultralytics.models.rtdetr.model"
+    },
+    {
+      "source": "ultralytics.models.rtdetr",
+      "target": "ultralytics.models.rtdetr.predict"
+    },
+    {
+      "source": "ultralytics.models.rtdetr",
+      "target": "ultralytics.models.rtdetr.val"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.engine.model"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.models.rtdetr.predict"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.models.rtdetr.train"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.models.rtdetr.val"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.model",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.predict",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.predict",
+      "target": "ultralytics.engine.predictor"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.train",
+      "target": "ultralytics.models.rtdetr.val"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.train",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.val",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.val",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.rtdetr.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.sam",
+      "target": "ultralytics.models.sam.model"
+    },
+    {
+      "source": "ultralytics.models.sam",
+      "target": "ultralytics.models.sam.predict"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.decoders"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.memory_attention"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.sam"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.tiny_encoder"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.models.sam.modules.transformer"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.models.sam.build",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.modules.blocks"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.modules.encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.modules.memory_attention"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.modules.sam"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.decoder"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.encoder"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.geometry_encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.maskformer_segmentation"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.model_misc"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.necks"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.sam3_image"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.text_encoder_ve"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.vitdet"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.models.sam.sam3.vl_combiner"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.models.sam.build_sam3",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.models.sam.model",
+      "target": "ultralytics.engine.model"
+    },
+    {
+      "source": "ultralytics.models.sam.model",
+      "target": "ultralytics.models.sam.build"
+    },
+    {
+      "source": "ultralytics.models.sam.model",
+      "target": "ultralytics.models.sam.build_sam3"
+    },
+    {
+      "source": "ultralytics.models.sam.model",
+      "target": "ultralytics.models.sam.predict"
+    },
+    {
+      "source": "ultralytics.models.sam.model",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.blocks",
+      "target": "ultralytics.models.sam.modules.transformer"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.blocks",
+      "target": "ultralytics.models.sam.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.blocks",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.decoders",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.encoders",
+      "target": "ultralytics.models.sam.modules.blocks"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.encoders",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.memory_attention",
+      "target": "ultralytics.models.sam.modules.blocks"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.models.sam.modules.blocks"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.models.sam.modules.decoders"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.models.sam.modules.encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.models.sam.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.sam",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.tiny_encoder",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.tiny_encoder",
+      "target": "ultralytics.utils.instance"
+    },
+    {
+      "source": "ultralytics.models.sam.modules.transformer",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.engine.predictor"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.models.sam.amg"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.models.sam.build"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.models.sam.build_sam3"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.models.sam.sam3.geometry_encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.sam.predict",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.decoder",
+      "target": "ultralytics.models.sam.sam3.model_misc"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.decoder",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.decoder",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.decoder",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.encoder",
+      "target": "ultralytics.models.sam.sam3.model_misc"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.encoder",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.geometry_encoders",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.geometry_encoders",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.maskformer_segmentation",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.sam3_image",
+      "target": "ultralytics.models.sam.modules.sam"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.sam3_image",
+      "target": "ultralytics.models.sam.sam3.geometry_encoders"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.sam3_image",
+      "target": "ultralytics.models.sam.sam3.vl_combiner"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.sam3_image",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.sam3_image",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.text_encoder_ve",
+      "target": "ultralytics.models.sam.sam3.model_misc"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.vitdet",
+      "target": "ultralytics.models.sam.modules.blocks"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.vitdet",
+      "target": "ultralytics.models.sam.modules.utils"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.vitdet",
+      "target": "ultralytics.models.sam.sam3.model_misc"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.vitdet",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.models.sam.sam3.vl_combiner",
+      "target": "ultralytics.models.sam.sam3.necks"
+    },
+    {
+      "source": "ultralytics.models.utils.loss",
+      "target": "ultralytics.models.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.utils.loss",
+      "target": "ultralytics.utils.loss"
+    },
+    {
+      "source": "ultralytics.models.utils.loss",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.utils.ops",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.utils.ops",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.classify"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.model"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.obb"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.pose"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.world"
+    },
+    {
+      "source": "ultralytics.models.yolo",
+      "target": "ultralytics.models.yolo.yoloe"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify",
+      "target": "ultralytics.models.yolo.classify.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify",
+      "target": "ultralytics.models.yolo.classify.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify",
+      "target": "ultralytics.models.yolo.classify.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.predict",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.predict",
+      "target": "ultralytics.engine.predictor"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.engine.trainer"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.train",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.val",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.val",
+      "target": "ultralytics.engine.validator"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.val",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.val",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.yolo.classify.val",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect",
+      "target": "ultralytics.models.yolo.detect.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect",
+      "target": "ultralytics.models.yolo.detect.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect",
+      "target": "ultralytics.models.yolo.detect.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.predict",
+      "target": "ultralytics.engine.predictor"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.predict",
+      "target": "ultralytics.utils.nms"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.engine.trainer"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.train",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.data.converter"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.engine.validator"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.utils.nms"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.detect.val",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics.data.build"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics.engine.model"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.model",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb",
+      "target": "ultralytics.models.yolo.obb.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb",
+      "target": "ultralytics.models.yolo.obb.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb",
+      "target": "ultralytics.models.yolo.obb.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.predict",
+      "target": "ultralytics.models.yolo.detect.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.train",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.utils.nms"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.obb.val",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose",
+      "target": "ultralytics.models.yolo.pose.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose",
+      "target": "ultralytics.models.yolo.pose.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose",
+      "target": "ultralytics.models.yolo.pose.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.predict",
+      "target": "ultralytics.models.yolo.detect.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.train",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.train",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.val",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.val",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.yolo.pose.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment",
+      "target": "ultralytics.models.yolo.segment.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment",
+      "target": "ultralytics.models.yolo.segment.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment",
+      "target": "ultralytics.models.yolo.segment.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.predict",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.predict",
+      "target": "ultralytics.models.yolo.detect.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.predict",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.train",
+      "target": "ultralytics.models.yolo"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.val",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.val",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.val",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.models.yolo.segment.val",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.models.yolo.world",
+      "target": "ultralytics.models.yolo.world.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train_world",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train_world",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train_world",
+      "target": "ultralytics.models.yolo.world"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train_world",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.world.train_world",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe",
+      "target": "ultralytics.models.yolo.yoloe.predict"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe",
+      "target": "ultralytics.models.yolo.yoloe.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe",
+      "target": "ultralytics.models.yolo.yoloe.train_seg"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe",
+      "target": "ultralytics.models.yolo.yoloe.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.predict",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.predict",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.predict",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.models.yolo.world.train_world"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.models.yolo.yoloe.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train_seg",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train_seg",
+      "target": "ultralytics.models.yolo.yoloe.train"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train_seg",
+      "target": "ultralytics.models.yolo.yoloe.val"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train_seg",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.train_seg",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.data"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.data.augment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.models.yolo.detect"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.models.yolo.segment"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.nn.modules.head"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.models.yolo.yoloe.val",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.nn",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.engine.exporter"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.nn.tasks"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.export.tensorflow"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.nms"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.nn.autobackend",
+      "target": "ultralytics.utils.triton"
+    },
+    {
+      "source": "ultralytics.nn.modules",
+      "target": "ultralytics.nn.modules.block"
+    },
+    {
+      "source": "ultralytics.nn.modules",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules",
+      "target": "ultralytics.nn.modules.head"
+    },
+    {
+      "source": "ultralytics.nn.modules",
+      "target": "ultralytics.nn.modules.lwf_modules"
+    },
+    {
+      "source": "ultralytics.nn.modules",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.nn.modules.block",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules.block",
+      "target": "ultralytics.nn.modules.lwf_modules"
+    },
+    {
+      "source": "ultralytics.nn.modules.block",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.nn.modules.block",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.models.utils.ops"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.nn.modules.block"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.nn.modules.lwf_modules"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.nn.modules.transformer"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.utils.tal"
+    },
+    {
+      "source": "ultralytics.nn.modules.head",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.nn.modules.lwf_modules",
+      "target": "ultralytics.nn.modules.block"
+    },
+    {
+      "source": "ultralytics.nn.modules.lwf_modules",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules.lwf_modules",
+      "target": "ultralytics.nn.modules.head"
+    },
+    {
+      "source": "ultralytics.nn.modules.lwf_modules",
+      "target": "ultralytics.nn.modules.ops_dcnv3.modules"
+    },
+    {
+      "source": "ultralytics.nn.modules.metaformer",
+      "target": "ultralytics.nn.modules.lwf_modules"
+    },
+    {
+      "source": "ultralytics.nn.modules.ops_dcnv3.functions",
+      "target": "ultralytics.nn.modules.ops_dcnv3.functions.dcnv3_func"
+    },
+    {
+      "source": "ultralytics.nn.modules.ops_dcnv3.modules",
+      "target": "ultralytics.nn.modules.ops_dcnv3.modules.dcnv3"
+    },
+    {
+      "source": "ultralytics.nn.modules.ops_dcnv3.modules.dcnv3",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules.ops_dcnv3.modules.dcnv3",
+      "target": "ultralytics.nn.modules.ops_dcnv3.functions"
+    },
+    {
+      "source": "ultralytics.nn.modules.transformer",
+      "target": "ultralytics.nn.modules.conv"
+    },
+    {
+      "source": "ultralytics.nn.modules.transformer",
+      "target": "ultralytics.nn.modules.utils"
+    },
+    {
+      "source": "ultralytics.nn.modules.transformer",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.models.utils.loss"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.nn.text_model"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.loss"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.nn.tasks",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.nn.text_model",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.nn.text_model",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.nn.text_model",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.nn.text_model",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.optim",
+      "target": "ultralytics.optim.muon"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.ai_gym"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.analytics"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.distance_calculation"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.heatmap"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.instance_segmentation"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.object_blurrer"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.object_counter"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.object_cropper"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.parking_management"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.queue_management"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.region_counter"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.security_alarm"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.similarity_search"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.speed_estimation"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.streamlit_inference"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.trackzone"
+    },
+    {
+      "source": "ultralytics.solutions",
+      "target": "ultralytics.solutions.vision_eye"
+    },
+    {
+      "source": "ultralytics.solutions.ai_gym",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.analytics",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.analytics",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.distance_calculation",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.distance_calculation",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.heatmap",
+      "target": "ultralytics.solutions.object_counter"
+    },
+    {
+      "source": "ultralytics.solutions.heatmap",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.instance_segmentation",
+      "target": "ultralytics.engine.results"
+    },
+    {
+      "source": "ultralytics.solutions.instance_segmentation",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.object_blurrer",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.object_blurrer",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.object_blurrer",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.object_counter",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.object_counter",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.object_cropper",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.object_cropper",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.parking_management",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.parking_management",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.parking_management",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.solutions.queue_management",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.queue_management",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.region_counter",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.region_counter",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.security_alarm",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.security_alarm",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.security_alarm",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.nn.text_model"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.solutions.similarity_search",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics.solutions.config"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.solutions.solutions",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.speed_estimation",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.speed_estimation",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.streamlit_inference",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.solutions.streamlit_inference",
+      "target": "ultralytics.data.utils"
+    },
+    {
+      "source": "ultralytics.solutions.streamlit_inference",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.solutions.streamlit_inference",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.solutions.streamlit_inference",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.solutions.trackzone",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.trackzone",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.solutions.vision_eye",
+      "target": "ultralytics.solutions.solutions"
+    },
+    {
+      "source": "ultralytics.solutions.vision_eye",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.trackers",
+      "target": "ultralytics.trackers.bot_sort"
+    },
+    {
+      "source": "ultralytics.trackers",
+      "target": "ultralytics.trackers.byte_tracker"
+    },
+    {
+      "source": "ultralytics.trackers",
+      "target": "ultralytics.trackers.track"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.trackers.basetrack"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.trackers.byte_tracker"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.trackers.utils.gmc"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.trackers.utils.kalman_filter"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.trackers.utils.matching"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.trackers.bot_sort",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.trackers.byte_tracker",
+      "target": "ultralytics.trackers.basetrack"
+    },
+    {
+      "source": "ultralytics.trackers.byte_tracker",
+      "target": "ultralytics.trackers.utils.kalman_filter"
+    },
+    {
+      "source": "ultralytics.trackers.byte_tracker",
+      "target": "ultralytics.trackers.utils.matching"
+    },
+    {
+      "source": "ultralytics.trackers.byte_tracker",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.trackers.byte_tracker",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.trackers.track",
+      "target": "ultralytics.nn.modules.head"
+    },
+    {
+      "source": "ultralytics.trackers.track",
+      "target": "ultralytics.trackers.bot_sort"
+    },
+    {
+      "source": "ultralytics.trackers.track",
+      "target": "ultralytics.trackers.byte_tracker"
+    },
+    {
+      "source": "ultralytics.trackers.track",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.trackers.track",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.trackers.utils.gmc",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.trackers.utils.matching",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.trackers.utils.matching",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.utils",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils",
+      "target": "ultralytics.utils.git"
+    },
+    {
+      "source": "ultralytics.utils",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.utils",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils",
+      "target": "ultralytics.utils.tqdm"
+    },
+    {
+      "source": "ultralytics.utils.autobatch",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.autobatch",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.autodevice",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.autodevice",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.engine.exporter"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.utils.benchmarks",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks",
+      "target": "ultralytics.utils.callbacks.base"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.clearml"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.comet"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.dvc"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.hub"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.mlflow"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.neptune"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.platform"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.raytune"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.tensorboard"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.base",
+      "target": "ultralytics.utils.callbacks.wb"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.clearml",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.clearml",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.comet",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.comet",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.comet",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.dvc",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.dvc",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.hub",
+      "target": "ultralytics.hub"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.hub",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.hub",
+      "target": "ultralytics.utils.events"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.hub",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.mlflow",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.neptune",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.neptune",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.platform",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.platform",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.platform",
+      "target": "ultralytics.utils.logger"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.platform",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.raytune",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.tensorboard",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.wb",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.callbacks.wb",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.checks",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.checks",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.checks",
+      "target": "ultralytics.utils.callbacks.platform"
+    },
+    {
+      "source": "ultralytics.utils.checks",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.utils.checks",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.dist",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.dist",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.downloads",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.downloads",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.errors",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.events",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.events",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.events",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.utils.events",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.export",
+      "target": "ultralytics.utils.export.engine"
+    },
+    {
+      "source": "ultralytics.utils.export",
+      "target": "ultralytics.utils.export.imx"
+    },
+    {
+      "source": "ultralytics.utils.export",
+      "target": "ultralytics.utils.export.tensorflow"
+    },
+    {
+      "source": "ultralytics.utils.export.engine",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.export.engine",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.export.imx",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.utils.export.imx",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.export.imx",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.utils.export.imx",
+      "target": "ultralytics.utils.tal"
+    },
+    {
+      "source": "ultralytics.utils.export.imx",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.export.tensorflow",
+      "target": "ultralytics.nn.modules"
+    },
+    {
+      "source": "ultralytics.utils.export.tensorflow",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.export.tensorflow",
+      "target": "ultralytics.utils.downloads"
+    },
+    {
+      "source": "ultralytics.utils.export.tensorflow",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.utils.export.tensorflow",
+      "target": "ultralytics.utils.tal"
+    },
+    {
+      "source": "ultralytics.utils.files",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.files",
+      "target": "ultralytics.nn.autobackend"
+    },
+    {
+      "source": "ultralytics.utils.files",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.instance",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.logger",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.logger",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.loss",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.utils.loss",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.loss",
+      "target": "ultralytics.utils.tal"
+    },
+    {
+      "source": "ultralytics.utils.loss",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.metrics",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.metrics",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.metrics",
+      "target": "ultralytics.utils.plotting"
+    },
+    {
+      "source": "ultralytics.utils.nms",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.nms",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.utils.nms",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.ops",
+      "target": "ultralytics.data.converter"
+    },
+    {
+      "source": "ultralytics.utils.ops",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.patches",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.plotting",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.plotting",
+      "target": "ultralytics.utils.files"
+    },
+    {
+      "source": "ultralytics.utils.plotting",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.tal",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.tal",
+      "target": "ultralytics.utils.metrics"
+    },
+    {
+      "source": "ultralytics.utils.tal",
+      "target": "ultralytics.utils.ops"
+    },
+    {
+      "source": "ultralytics.utils.tal",
+      "target": "ultralytics.utils.torch_utils"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils.autodevice"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils.benchmarks"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils.checks"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils.cpu"
+    },
+    {
+      "source": "ultralytics.utils.torch_utils",
+      "target": "ultralytics.utils.patches"
+    },
+    {
+      "source": "ultralytics.utils.tqdm",
+      "target": "ultralytics.utils"
+    },
+    {
+      "source": "ultralytics.utils.tuner",
+      "target": "ultralytics.cfg"
+    },
+    {
+      "source": "ultralytics.utils.tuner",
+      "target": "ultralytics.utils.checks"
+    }
+  ]
+}

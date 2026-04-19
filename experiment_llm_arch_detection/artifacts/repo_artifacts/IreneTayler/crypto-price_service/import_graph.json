@@ -1,0 +1,107 @@
+{
+  "nodes": [
+    "app",
+    "app.celery_app",
+    "app.config",
+    "app.database",
+    "app.deribit_client",
+    "app.main",
+    "app.models",
+    "app.repositories",
+    "app.repositories.price_repository",
+    "app.schemas",
+    "app.services",
+    "app.services.price_service",
+    "tests.test_api"
+  ],
+  "edges": [
+    {
+      "source": "app.celery_app",
+      "target": "app.config"
+    },
+    {
+      "source": "app.celery_app",
+      "target": "app.database"
+    },
+    {
+      "source": "app.celery_app",
+      "target": "app.deribit_client"
+    },
+    {
+      "source": "app.celery_app",
+      "target": "app.repositories"
+    },
+    {
+      "source": "app.database",
+      "target": "app.config"
+    },
+    {
+      "source": "app.database",
+      "target": "app.models"
+    },
+    {
+      "source": "app.deribit_client",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.repositories"
+    },
+    {
+      "source": "app.main",
+      "target": "app.schemas"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services"
+    },
+    {
+      "source": "app.models",
+      "target": "app.database"
+    },
+    {
+      "source": "app.repositories",
+      "target": "app.repositories.price_repository"
+    },
+    {
+      "source": "app.repositories.price_repository",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.price_service"
+    },
+    {
+      "source": "app.services.price_service",
+      "target": "app.models"
+    },
+    {
+      "source": "app.services.price_service",
+      "target": "app.repositories"
+    },
+    {
+      "source": "tests.test_api",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.test_api",
+      "target": "app.database"
+    },
+    {
+      "source": "tests.test_api",
+      "target": "app.main"
+    },
+    {
+      "source": "tests.test_api",
+      "target": "app.models"
+    }
+  ]
+}

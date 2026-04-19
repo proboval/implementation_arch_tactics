@@ -1,0 +1,24 @@
+# Nodes: 13
+# Edges: 21
+
+agent -> config
+agent -> tools.datadog_tools
+agent -> tools.kubernetes_tools
+agent -> tools.langchain_tools
+agent -> tools.pagerduty_tools
+app -> agent
+app -> config
+server -> agent
+server -> config
+test_apm -> config
+test_apm -> tools.datadog_tools
+test_config -> config
+test_datadog -> config
+test_datadog -> tools.datadog_tools
+tools -> tools.datadog_tools
+tools -> tools.pagerduty_tools
+tools.langchain_tools -> tools.datadog_tools
+tools.langchain_tools -> tools.kubernetes_tools
+tools.langchain_tools -> tools.pagerduty_tools
+verify_setup -> agent
+verify_setup -> config

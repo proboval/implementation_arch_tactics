@@ -1,0 +1,295 @@
+{
+  "nodes": [
+    "ai.llm",
+    "ai_data_builder",
+    "ai_output_schema",
+    "api.analyze_service",
+    "api.analyze_streaming",
+    "api.server",
+    "backtest_validator",
+    "binance",
+    "chanlun_adapter",
+    "chanlun_ai",
+    "chanlun_ai_exporter",
+    "chanlun_icl",
+    "chanlun_local.engine",
+    "chanlun_local.mapper",
+    "chanlun_visualizer",
+    "confidence_constraint",
+    "db_manager",
+    "evaluate_outcome",
+    "history_context",
+    "learning_feedback",
+    "learning_visualizer",
+    "logic_validator",
+    "multi_level_analyzer",
+    "output_formatter",
+    "prediction_validator",
+    "prompt_builder",
+    "query_stats",
+    "rule_engine",
+    "scoring_engine",
+    "signal_quality",
+    "stat_hint",
+    "state_machine_converter",
+    "stats_by_interval",
+    "stats_by_symbol",
+    "stats_enhanced",
+    "stats_formatter",
+    "stats_report",
+    "stats_visualizer",
+    "test_advanced_features",
+    "test_simple_icl",
+    "weight_optimizer"
+  ],
+  "edges": [
+    {
+      "source": "api.analyze_service",
+      "target": "ai.llm"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "ai_output_schema"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "binance"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "chanlun_ai_exporter"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "chanlun_icl"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "prompt_builder"
+    },
+    {
+      "source": "api.analyze_service",
+      "target": "state_machine_converter"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "ai.llm"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "ai_output_schema"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "binance"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "chanlun_ai_exporter"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "chanlun_icl"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "prompt_builder"
+    },
+    {
+      "source": "api.analyze_streaming",
+      "target": "state_machine_converter"
+    },
+    {
+      "source": "api.server",
+      "target": "api.analyze_service"
+    },
+    {
+      "source": "api.server",
+      "target": "api.analyze_streaming"
+    },
+    {
+      "source": "api.server",
+      "target": "binance"
+    },
+    {
+      "source": "api.server",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "api.server",
+      "target": "chanlun_local.engine"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "ai.llm"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "ai_output_schema"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "binance"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "chanlun_ai_exporter"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "chanlun_icl"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "confidence_constraint"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "db_manager"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "history_context"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "learning_feedback"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "logic_validator"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "output_formatter"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "prediction_validator"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "prompt_builder"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "query_stats"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "rule_engine"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "signal_quality"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "state_machine_converter"
+    },
+    {
+      "source": "chanlun_ai",
+      "target": "stats_formatter"
+    },
+    {
+      "source": "chanlun_icl",
+      "target": "chanlun_local.engine"
+    },
+    {
+      "source": "chanlun_local.mapper",
+      "target": "chanlun_local.engine"
+    },
+    {
+      "source": "chanlun_visualizer",
+      "target": "binance"
+    },
+    {
+      "source": "chanlun_visualizer",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "chanlun_visualizer",
+      "target": "chanlun_icl"
+    },
+    {
+      "source": "confidence_constraint",
+      "target": "learning_feedback"
+    },
+    {
+      "source": "evaluate_outcome",
+      "target": "binance"
+    },
+    {
+      "source": "evaluate_outcome",
+      "target": "db_manager"
+    },
+    {
+      "source": "evaluate_outcome",
+      "target": "scoring_engine"
+    },
+    {
+      "source": "history_context",
+      "target": "db_manager"
+    },
+    {
+      "source": "learning_feedback",
+      "target": "db_manager"
+    },
+    {
+      "source": "multi_level_analyzer",
+      "target": "binance"
+    },
+    {
+      "source": "multi_level_analyzer",
+      "target": "chanlun_adapter"
+    },
+    {
+      "source": "multi_level_analyzer",
+      "target": "chanlun_ai_exporter"
+    },
+    {
+      "source": "multi_level_analyzer",
+      "target": "chanlun_icl"
+    },
+    {
+      "source": "prompt_builder",
+      "target": "ai_output_schema"
+    },
+    {
+      "source": "prompt_builder",
+      "target": "stat_hint"
+    },
+    {
+      "source": "signal_quality",
+      "target": "db_manager"
+    },
+    {
+      "source": "test_advanced_features",
+      "target": "chanlun_local.engine"
+    },
+    {
+      "source": "test_advanced_features",
+      "target": "chanlun_local.mapper"
+    },
+    {
+      "source": "test_simple_icl",
+      "target": "chanlun_local.engine"
+    },
+    {
+      "source": "test_simple_icl",
+      "target": "chanlun_local.mapper"
+    }
+  ]
+}

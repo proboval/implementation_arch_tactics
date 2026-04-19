@@ -1,0 +1,133 @@
+{
+  "nodes": [
+    "core",
+    "core.server",
+    "core.system_info",
+    "core.utils",
+    "main",
+    "models",
+    "models.networks",
+    "models.training",
+    "processing",
+    "processing.analyzer",
+    "processing.engine",
+    "processing.sora_process",
+    "utils",
+    "utils.image_utils",
+    "utils.video_io"
+  ],
+  "edges": [
+    {
+      "source": "core",
+      "target": "core.server"
+    },
+    {
+      "source": "core",
+      "target": "core.system_info"
+    },
+    {
+      "source": "core",
+      "target": "core.utils"
+    },
+    {
+      "source": "core",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "core.server",
+      "target": "core.system_info"
+    },
+    {
+      "source": "core.server",
+      "target": "processing.analyzer"
+    },
+    {
+      "source": "core.server",
+      "target": "processing.engine"
+    },
+    {
+      "source": "core.server",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "core.system_info",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "core.utils",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "main",
+      "target": "core.server"
+    },
+    {
+      "source": "main",
+      "target": "core.utils"
+    },
+    {
+      "source": "main",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "models",
+      "target": "models.networks"
+    },
+    {
+      "source": "models",
+      "target": "models.training"
+    },
+    {
+      "source": "models",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "models.networks",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "models.training",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "processing",
+      "target": "processing.analyzer"
+    },
+    {
+      "source": "processing",
+      "target": "processing.engine"
+    },
+    {
+      "source": "processing",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "processing.analyzer",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "processing.engine",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "utils",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "utils",
+      "target": "utils.image_utils"
+    },
+    {
+      "source": "utils",
+      "target": "utils.video_io"
+    },
+    {
+      "source": "utils.image_utils",
+      "target": "processing.sora_process"
+    },
+    {
+      "source": "utils.video_io",
+      "target": "processing.sora_process"
+    }
+  ]
+}

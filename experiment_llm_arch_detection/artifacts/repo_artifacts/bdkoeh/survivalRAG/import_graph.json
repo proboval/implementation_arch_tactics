@@ -1,0 +1,238 @@
+{
+  "nodes": [
+    "cli",
+    "meshtastic_main",
+    "pipeline",
+    "pipeline._chromadb_compat",
+    "pipeline.benchmark",
+    "pipeline.chunk",
+    "pipeline.chunk_all",
+    "pipeline.classify",
+    "pipeline.clean",
+    "pipeline.embed",
+    "pipeline.evaluate",
+    "pipeline.extract",
+    "pipeline.extract_all",
+    "pipeline.generate",
+    "pipeline.ingest",
+    "pipeline.meshtastic_bridge",
+    "pipeline.models",
+    "pipeline.process_documents",
+    "pipeline.prompt",
+    "pipeline.report",
+    "pipeline.rerank",
+    "pipeline.retrieve",
+    "pipeline.rewrite",
+    "pipeline.spellcheck",
+    "pipeline.split",
+    "pipeline.validate",
+    "pipeline.wikimed",
+    "pipeline.writer",
+    "sources.scripts.validate-manifests",
+    "tests.test_meshtastic_handler",
+    "tests.test_meshtastic_split",
+    "web"
+  ],
+  "edges": [
+    {
+      "source": "cli",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "cli",
+      "target": "pipeline.retrieve"
+    },
+    {
+      "source": "meshtastic_main",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "meshtastic_main",
+      "target": "pipeline.meshtastic_bridge"
+    },
+    {
+      "source": "meshtastic_main",
+      "target": "pipeline.retrieve"
+    },
+    {
+      "source": "pipeline.benchmark",
+      "target": "pipeline.chunk"
+    },
+    {
+      "source": "pipeline.benchmark",
+      "target": "pipeline.embed"
+    },
+    {
+      "source": "pipeline.chunk",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.chunk_all",
+      "target": "pipeline.chunk"
+    },
+    {
+      "source": "pipeline.chunk_all",
+      "target": "pipeline.embed"
+    },
+    {
+      "source": "pipeline.classify",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.embed",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.embed",
+      "target": "pipeline.spellcheck"
+    },
+    {
+      "source": "pipeline.evaluate",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "pipeline.evaluate",
+      "target": "pipeline.prompt"
+    },
+    {
+      "source": "pipeline.evaluate",
+      "target": "pipeline.retrieve"
+    },
+    {
+      "source": "pipeline.extract_all",
+      "target": "pipeline.clean"
+    },
+    {
+      "source": "pipeline.extract_all",
+      "target": "pipeline.extract"
+    },
+    {
+      "source": "pipeline.extract_all",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.extract_all",
+      "target": "pipeline.split"
+    },
+    {
+      "source": "pipeline.extract_all",
+      "target": "pipeline.writer"
+    },
+    {
+      "source": "pipeline.generate",
+      "target": "pipeline.prompt"
+    },
+    {
+      "source": "pipeline.ingest",
+      "target": "pipeline._chromadb_compat"
+    },
+    {
+      "source": "pipeline.ingest",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.meshtastic_bridge",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.classify"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.clean"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.extract"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.extract_all"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.report"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.split"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.validate"
+    },
+    {
+      "source": "pipeline.process_documents",
+      "target": "pipeline.writer"
+    },
+    {
+      "source": "pipeline.prompt",
+      "target": "pipeline.retrieve"
+    },
+    {
+      "source": "pipeline.report",
+      "target": "pipeline.validate"
+    },
+    {
+      "source": "pipeline.retrieve",
+      "target": "pipeline._chromadb_compat"
+    },
+    {
+      "source": "pipeline.retrieve",
+      "target": "pipeline.embed"
+    },
+    {
+      "source": "pipeline.retrieve",
+      "target": "pipeline.ingest"
+    },
+    {
+      "source": "pipeline.retrieve",
+      "target": "pipeline.rerank"
+    },
+    {
+      "source": "pipeline.rewrite",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "pipeline.wikimed",
+      "target": "pipeline.embed"
+    },
+    {
+      "source": "pipeline.wikimed",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "pipeline.writer",
+      "target": "pipeline.models"
+    },
+    {
+      "source": "tests.test_meshtastic_handler",
+      "target": "pipeline.meshtastic_bridge"
+    },
+    {
+      "source": "tests.test_meshtastic_split",
+      "target": "pipeline.meshtastic_bridge"
+    },
+    {
+      "source": "web",
+      "target": "pipeline.generate"
+    },
+    {
+      "source": "web",
+      "target": "pipeline.prompt"
+    },
+    {
+      "source": "web",
+      "target": "pipeline.retrieve"
+    },
+    {
+      "source": "web",
+      "target": "pipeline.rewrite"
+    }
+  ]
+}

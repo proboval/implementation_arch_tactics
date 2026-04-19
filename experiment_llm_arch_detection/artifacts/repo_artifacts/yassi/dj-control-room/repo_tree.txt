@@ -1,0 +1,79 @@
+dj-control-room
+├── .github
+│   ├── workflows
+│   │   ├── python-publish.yml
+│   │   └── test.yml
+│   └── FUNDING.yml
+├── dj_control_room
+│   ├── static
+│   │   └── dj_control_room
+│   │       ├── css
+│   │       │   └── styles.css
+│   │       └── images
+│   │           └── glyph.png
+│   ├── templates
+│   │   └── admin
+│   │       └── dj_control_room
+│   │           ├── base.html
+│   │           ├── index.html
+│   │           └── install_panel.html
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── admin_integration.py
+│   ├── apps.py
+│   ├── conf.py
+│   ├── featured_panels.py
+│   ├── models.py
+│   ├── panels.py
+│   ├── registry.py
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── docs
+│   ├── api-reference.md
+│   ├── configuration.md
+│   ├── creating-panels.md
+│   ├── development.md
+│   ├── index.md
+│   └── installation.md
+├── example_project
+│   ├── example_project
+│   │   ├── management
+│   │   │   ├── commands
+│   │   │   │   └── __init__.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── asgi.py
+│   │   ├── example_panels.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── Dockerfile
+│   └── manage.py
+├── images
+│   ├── full-screenshot.png
+│   ├── grid_image.png
+│   ├── hero-dark.png
+│   ├── hero-light.png
+│   └── sidebar.png
+├── tests
+│   ├── __init__.py
+│   ├── base.py
+│   ├── conftest.py
+│   ├── test_admin.py
+│   ├── test_registry.py
+│   └── test_utils.py
+├── .gitignore
+├── codecov.yml
+├── CREATING_PANELS.md
+├── docker-compose.yml
+├── LICENSE
+├── Makefile
+├── MANIFEST.in
+├── mkdocs.yml
+├── pyproject.toml
+├── pytest.ini
+├── README.md
+├── requirements.txt
+└── setup.py

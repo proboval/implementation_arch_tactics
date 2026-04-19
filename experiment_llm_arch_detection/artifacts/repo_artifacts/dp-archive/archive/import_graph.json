@@ -1,0 +1,1418 @@
+{
+  "nodes": [
+    "app",
+    "app.agent",
+    "app.agent.agent",
+    "app.agent.event_stream",
+    "app.agent.steering",
+    "app.agent.tools",
+    "app.api",
+    "app.api.deps",
+    "app.api.v1",
+    "app.api.v1.agent",
+    "app.api.v1.agents",
+    "app.api.v1.auth",
+    "app.api.v1.backup",
+    "app.api.v1.browser",
+    "app.api.v1.channels",
+    "app.api.v1.display_builder",
+    "app.api.v1.execute",
+    "app.api.v1.executors",
+    "app.api.v1.files",
+    "app.api.v1.mcp",
+    "app.api.v1.memory",
+    "app.api.v1.models",
+    "app.api.v1.published",
+    "app.api.v1.registry",
+    "app.api.v1.router",
+    "app.api.v1.scheduler",
+    "app.api.v1.sessions",
+    "app.api.v1.settings",
+    "app.api.v1.skills",
+    "app.api.v1.system",
+    "app.api.v1.terminal",
+    "app.api.v1.tools",
+    "app.api.v1.traces",
+    "app.channels",
+    "app.channels.base",
+    "app.channels.feishu",
+    "app.channels.telegram",
+    "app.config",
+    "app.core",
+    "app.core.schema_validator",
+    "app.core.skill_manager",
+    "app.core.tools_registry",
+    "app.db",
+    "app.db.database",
+    "app.db.models",
+    "app.llm",
+    "app.llm.code_generator",
+    "app.llm.intent_parser",
+    "app.llm.models",
+    "app.llm.provider",
+    "app.main",
+    "app.models",
+    "app.models.package",
+    "app.models.request",
+    "app.models.skill",
+    "app.repositories",
+    "app.repositories.skill_repo",
+    "app.repositories.version_repo",
+    "app.services",
+    "app.services.agent_runner",
+    "app.services.auth_service",
+    "app.services.channel_manager",
+    "app.services.embedding_service",
+    "app.services.executor_client",
+    "app.services.executor_config",
+    "app.services.memory_service",
+    "app.services.scheduler",
+    "app.services.skill_service",
+    "app.services.task_manager",
+    "app.terminal",
+    "app.terminal.pty_manager",
+    "app.tools",
+    "app.tools.code_executor",
+    "app.tools.file_scanner",
+    "app.tools.ipython_kernel",
+    "app.tools.mcp_client",
+    "app.utils",
+    "docker.executor.executor_server",
+    "docker.executor.ipython_kernel",
+    "seed_skills.audio-extractor.scripts.extract_audio",
+    "seed_skills.doc.scripts.render_docx",
+    "seed_skills.imagegen.scripts.image_gen",
+    "seed_skills.mcp-builder.scripts.connections",
+    "seed_skills.mcp-builder.scripts.evaluation",
+    "seed_skills.media-downloader.scripts.download",
+    "seed_skills.rdkit.scripts.molecular_properties",
+    "seed_skills.rdkit.scripts.similarity_search",
+    "seed_skills.rdkit.scripts.substructure_filter",
+    "seed_skills.skill-creator.scripts.init_skill",
+    "seed_skills.skill-creator.scripts.package_skill",
+    "seed_skills.skill-creator.scripts.quick_validate",
+    "seed_skills.skill-evolver.scripts.analyze_traces",
+    "seed_skills.skill-evolver.scripts.extract_issue_context",
+    "seed_skills.skill-finder.scripts.add_skill",
+    "seed_skills.skill-finder.scripts.find_skills",
+    "seed_skills.skill-updater.scripts.analyze_skill",
+    "seed_skills.slack-gif-creator.core.color_palettes",
+    "seed_skills.slack-gif-creator.core.easing",
+    "seed_skills.slack-gif-creator.core.frame_composer",
+    "seed_skills.slack-gif-creator.core.gif_builder",
+    "seed_skills.slack-gif-creator.core.typography",
+    "seed_skills.slack-gif-creator.core.validators",
+    "seed_skills.slack-gif-creator.core.visual_effects",
+    "seed_skills.slack-gif-creator.templates.bounce",
+    "seed_skills.slack-gif-creator.templates.explode",
+    "seed_skills.slack-gif-creator.templates.fade",
+    "seed_skills.slack-gif-creator.templates.flip",
+    "seed_skills.slack-gif-creator.templates.kaleidoscope",
+    "seed_skills.slack-gif-creator.templates.morph",
+    "seed_skills.slack-gif-creator.templates.move",
+    "seed_skills.slack-gif-creator.templates.pulse",
+    "seed_skills.slack-gif-creator.templates.shake",
+    "seed_skills.slack-gif-creator.templates.slide",
+    "seed_skills.slack-gif-creator.templates.spin",
+    "seed_skills.slack-gif-creator.templates.wiggle",
+    "seed_skills.slack-gif-creator.templates.zoom",
+    "seed_skills.sora.scripts.sora",
+    "seed_skills.speech.scripts.text_to_speech",
+    "seed_skills.spreadsheet.references.examples.openpyxl.create_basic_spreadsheet",
+    "seed_skills.spreadsheet.references.examples.openpyxl.create_spreadsheet_with_styling",
+    "seed_skills.spreadsheet.references.examples.openpyxl.read_existing_spreadsheet",
+    "seed_skills.spreadsheet.references.examples.openpyxl.styling_spreadsheet",
+    "seed_skills.trace-qa.scripts.fetch_trace",
+    "tests",
+    "tests.conftest",
+    "tests.factories",
+    "tests.mocks",
+    "tests.mocks.mock_anthropic",
+    "tests.mocks.mock_code_executor",
+    "tests.test_agent.test_agent_memory",
+    "tests.test_api",
+    "tests.test_api.conftest",
+    "tests.test_api.test_agent_run",
+    "tests.test_api.test_agent_stream",
+    "tests.test_api.test_agents_api",
+    "tests.test_api.test_auth",
+    "tests.test_api.test_channels",
+    "tests.test_api.test_display_builder",
+    "tests.test_api.test_execute_api",
+    "tests.test_api.test_files_api",
+    "tests.test_api.test_health",
+    "tests.test_api.test_mcp_api",
+    "tests.test_api.test_memory_api",
+    "tests.test_api.test_published_api",
+    "tests.test_api.test_registry_evolve",
+    "tests.test_api.test_registry_import_export",
+    "tests.test_api.test_registry_skills",
+    "tests.test_api.test_registry_versions",
+    "tests.test_api.test_scheduler",
+    "tests.test_api.test_sessions",
+    "tests.test_api.test_settings_api",
+    "tests.test_api.test_skills_api",
+    "tests.test_api.test_system_api",
+    "tests.test_api.test_tools_api",
+    "tests.test_api.test_traces_api",
+    "tests.test_core",
+    "tests.test_core.test_context_compression",
+    "tests.test_core.test_event_stream",
+    "tests.test_core.test_llm_provider",
+    "tests.test_core.test_schema_validator",
+    "tests.test_core.test_seed_hash",
+    "tests.test_core.test_skill_manager",
+    "tests.test_core.test_steering",
+    "tests.test_core.test_stream_retry",
+    "tests.test_e2e",
+    "tests.test_e2e.conftest",
+    "tests.test_e2e.test_context_compression",
+    "tests.test_e2e.test_e2e_agent_real",
+    "tests.test_e2e.test_e2e_compression_real",
+    "tests.test_e2e.test_e2e_data_analysis",
+    "tests.test_e2e.test_e2e_memory",
+    "tests.test_e2e.test_e2e_memory_real",
+    "tests.test_e2e.test_e2e_published_agent",
+    "tests.test_e2e.test_e2e_workflows",
+    "tests.test_e2e.test_memory_bootstrap_real",
+    "tests.test_e2e.test_memory_flush_real",
+    "tests.test_services",
+    "tests.test_services.test_agent_runner",
+    "tests.test_services.test_channel_manager_streaming",
+    "tests.test_services.test_embedding_service",
+    "tests.test_services.test_memory_service",
+    "tests.test_services.test_skill_service",
+    "tests.test_services.test_task_manager",
+    "tests.test_subprocess_write"
+  ],
+  "edges": [
+    {
+      "source": "app.agent",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "app.agent",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "app.agent",
+      "target": "app.agent.steering"
+    },
+    {
+      "source": "app.agent",
+      "target": "app.agent.tools"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.agent.tools"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.config"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.core.tools_registry"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.llm"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.agent.agent",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "app.agent.event_stream",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "app.agent.steering",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.config"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.services.executor_client"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.services.executor_config"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.tools.code_executor"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.tools.file_scanner"
+    },
+    {
+      "source": "app.agent.tools",
+      "target": "app.tools.mcp_client"
+    },
+    {
+      "source": "app.api.deps",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.deps",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.deps",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.deps",
+      "target": "app.services.auth_service"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.agent"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.api.v1.display_builder"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.api.v1.executors"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "app.api.v1.agent",
+      "target": "app.services.agent_runner"
+    },
+    {
+      "source": "app.api.v1.agents",
+      "target": "app.api.v1.executors"
+    },
+    {
+      "source": "app.api.v1.agents",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.agents",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.auth",
+      "target": "app.api.deps"
+    },
+    {
+      "source": "app.api.v1.auth",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.auth",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.auth",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.auth",
+      "target": "app.services.auth_service"
+    },
+    {
+      "source": "app.api.v1.backup",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.backup",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.browser",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.channels",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.channels",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.channels",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.agent.tools"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.llm.code_generator"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.llm.intent_parser"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.models.request"
+    },
+    {
+      "source": "app.api.v1.execute",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "app.api.v1.executors",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.executors",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.executors",
+      "target": "app.services.executor_client"
+    },
+    {
+      "source": "app.api.v1.executors",
+      "target": "app.services.executor_config"
+    },
+    {
+      "source": "app.api.v1.files",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.mcp",
+      "target": "app.tools.mcp_client"
+    },
+    {
+      "source": "app.api.v1.memory",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "app.api.v1.models",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.models",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.api.v1.models",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.agent"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.api.v1.agent"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.api.v1.display_builder"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.api.v1.executors"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.published",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.agent"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.api.v1.settings"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.core.schema_validator"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.models.package"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.repositories.skill_repo"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.services.skill_service"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.services.task_manager"
+    },
+    {
+      "source": "app.api.v1.registry",
+      "target": "app.tools.mcp_client"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.agent"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.agents"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.auth"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.backup"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.browser"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.channels"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.execute"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.executors"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.files"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.mcp"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.memory"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.models"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.published"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.registry"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.scheduler"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.settings"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.skills"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.system"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.terminal"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.tools"
+    },
+    {
+      "source": "app.api.v1.router",
+      "target": "app.api.v1.traces"
+    },
+    {
+      "source": "app.api.v1.scheduler",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.scheduler",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.scheduler",
+      "target": "app.services.scheduler"
+    },
+    {
+      "source": "app.api.v1.sessions",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "app.api.v1.sessions",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.sessions",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.sessions",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.api.v1.settings",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.skills",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "app.api.v1.skills",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "app.api.v1.system",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.system",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.system",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.api.v1.terminal",
+      "target": "app.terminal.pty_manager"
+    },
+    {
+      "source": "app.api.v1.tools",
+      "target": "app.config"
+    },
+    {
+      "source": "app.api.v1.tools",
+      "target": "app.core.tools_registry"
+    },
+    {
+      "source": "app.api.v1.tools",
+      "target": "app.tools"
+    },
+    {
+      "source": "app.api.v1.traces",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.api.v1.traces",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.channels.feishu",
+      "target": "app.channels.base"
+    },
+    {
+      "source": "app.channels.telegram",
+      "target": "app.channels.base"
+    },
+    {
+      "source": "app.core.skill_manager",
+      "target": "app.config"
+    },
+    {
+      "source": "app.core.skill_manager",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "app.db",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.db",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.db.database",
+      "target": "app.config"
+    },
+    {
+      "source": "app.db.database",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "app.db.database",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.db.models",
+      "target": "app.config"
+    },
+    {
+      "source": "app.db.models",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.llm",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.llm",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "app.llm.intent_parser",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "app.llm.intent_parser",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "app.llm.provider",
+      "target": "app.config"
+    },
+    {
+      "source": "app.llm.provider",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "app.main",
+      "target": "app.api.v1.router"
+    },
+    {
+      "source": "app.main",
+      "target": "app.config"
+    },
+    {
+      "source": "app.main",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.main",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services.auth_service"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "app.main",
+      "target": "app.services.scheduler"
+    },
+    {
+      "source": "app.repositories",
+      "target": "app.repositories.skill_repo"
+    },
+    {
+      "source": "app.repositories",
+      "target": "app.repositories.version_repo"
+    },
+    {
+      "source": "app.repositories.skill_repo",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.repositories.version_repo",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services",
+      "target": "app.services.skill_service"
+    },
+    {
+      "source": "app.services.agent_runner",
+      "target": "app.agent"
+    },
+    {
+      "source": "app.services.agent_runner",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services.auth_service",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.channels.base"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.channels.feishu"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.channels.telegram"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.services.agent_runner"
+    },
+    {
+      "source": "app.services.channel_manager",
+      "target": "app.tools.code_executor"
+    },
+    {
+      "source": "app.services.embedding_service",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.executor_client",
+      "target": "app.services.executor_config"
+    },
+    {
+      "source": "app.services.executor_config",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.memory_service",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.memory_service",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.services.memory_service",
+      "target": "app.services.embedding_service"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.services.agent_runner"
+    },
+    {
+      "source": "app.services.scheduler",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.config"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.core.schema_validator"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.models.package"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.repositories.skill_repo"
+    },
+    {
+      "source": "app.services.skill_service",
+      "target": "app.repositories.version_repo"
+    },
+    {
+      "source": "app.services.task_manager",
+      "target": "app.db.database"
+    },
+    {
+      "source": "app.services.task_manager",
+      "target": "app.db.models"
+    },
+    {
+      "source": "app.tools",
+      "target": "app.tools.code_executor"
+    },
+    {
+      "source": "app.tools.code_executor",
+      "target": "app.config"
+    },
+    {
+      "source": "app.tools.code_executor",
+      "target": "app.tools.ipython_kernel"
+    },
+    {
+      "source": "app.tools.mcp_client",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.conftest",
+      "target": "app.api.v1.router"
+    },
+    {
+      "source": "tests.conftest",
+      "target": "app.db.database"
+    },
+    {
+      "source": "tests.conftest",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.factories",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.mocks.mock_anthropic",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "tests.test_agent.test_agent_memory",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_agent.test_agent_memory",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "tests.test_api.conftest",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_agent_run",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.agent.steering"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.api.v1.agent"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_api.test_agent_stream",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_agents_api",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_agents_api",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_auth",
+      "target": "app.api.v1.auth"
+    },
+    {
+      "source": "tests.test_api.test_auth",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.test_api.test_auth",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_auth",
+      "target": "app.services.auth_service"
+    },
+    {
+      "source": "tests.test_api.test_channels",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_display_builder",
+      "target": "app.api.v1.display_builder"
+    },
+    {
+      "source": "tests.test_api.test_execute_api",
+      "target": "app.config"
+    },
+    {
+      "source": "tests.test_api.test_execute_api",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "tests.test_api.test_files_api",
+      "target": "app.api.v1.files"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.agent.steering"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.api.v1.published"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_api.test_published_api",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_registry_evolve",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_registry_evolve",
+      "target": "app.services.task_manager"
+    },
+    {
+      "source": "tests.test_api.test_registry_evolve",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_registry_import_export",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_registry_skills",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_registry_skills",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_registry_versions",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_scheduler",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_sessions",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_api.test_sessions",
+      "target": "app.db.database"
+    },
+    {
+      "source": "tests.test_api.test_sessions",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_api.test_settings_api",
+      "target": "app.api.v1.settings"
+    },
+    {
+      "source": "tests.test_api.test_skills_api",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "tests.test_api.test_system_api",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_api.test_tools_api",
+      "target": "tests.mocks.mock_code_executor"
+    },
+    {
+      "source": "tests.test_api.test_traces_api",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_core.test_context_compression",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_core.test_context_compression",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_core.test_context_compression",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "tests.test_core.test_context_compression",
+      "target": "tests.mocks.mock_anthropic"
+    },
+    {
+      "source": "tests.test_core.test_event_stream",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_core.test_event_stream",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_core.test_llm_provider",
+      "target": "app.llm.models"
+    },
+    {
+      "source": "tests.test_core.test_llm_provider",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "tests.test_core.test_schema_validator",
+      "target": "app.core.schema_validator"
+    },
+    {
+      "source": "tests.test_core.test_seed_hash",
+      "target": "app.db.database"
+    },
+    {
+      "source": "tests.test_core.test_skill_manager",
+      "target": "app.core.skill_manager"
+    },
+    {
+      "source": "tests.test_core.test_steering",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_core.test_steering",
+      "target": "app.agent.steering"
+    },
+    {
+      "source": "tests.test_core.test_stream_retry",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_core.test_stream_retry",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_core.test_stream_retry",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_core.test_stream_retry",
+      "target": "app.llm.provider"
+    },
+    {
+      "source": "tests.test_e2e.conftest",
+      "target": "app.api.v1.router"
+    },
+    {
+      "source": "tests.test_e2e.conftest",
+      "target": "app.db.database"
+    },
+    {
+      "source": "tests.test_e2e.conftest",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_e2e.test_context_compression",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_e2e.test_context_compression",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_e2e.test_context_compression",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_e2e.test_context_compression",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_agent_real",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_compression_real",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_compression_real",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_compression_real",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_compression_real",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_data_analysis",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_memory",
+      "target": "app.agent.tools"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_memory_real",
+      "target": "app.services.embedding_service"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_memory_real",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_published_agent",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.agent.tools"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.api.v1.channels"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.api.v1.files"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.api.v1.sessions"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.models.skill"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.services.task_manager"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.tools.code_executor"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "app.tools.file_scanner"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "tests.mocks.mock_code_executor"
+    },
+    {
+      "source": "tests.test_e2e.test_e2e_workflows",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_memory_bootstrap_real",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "tests.test_e2e.test_memory_bootstrap_real",
+      "target": "tests.test_e2e.conftest"
+    },
+    {
+      "source": "tests.test_e2e.test_memory_flush_real",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_e2e.test_memory_flush_real",
+      "target": "app.llm"
+    },
+    {
+      "source": "tests.test_services.test_agent_runner",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_services.test_agent_runner",
+      "target": "app.services.agent_runner"
+    },
+    {
+      "source": "tests.test_services.test_agent_runner",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "tests.test_services.test_agent_runner",
+      "target": "app.services.scheduler"
+    },
+    {
+      "source": "tests.test_services.test_channel_manager_streaming",
+      "target": "app.agent.agent"
+    },
+    {
+      "source": "tests.test_services.test_channel_manager_streaming",
+      "target": "app.agent.event_stream"
+    },
+    {
+      "source": "tests.test_services.test_channel_manager_streaming",
+      "target": "app.db.models"
+    },
+    {
+      "source": "tests.test_services.test_channel_manager_streaming",
+      "target": "app.services.channel_manager"
+    },
+    {
+      "source": "tests.test_services.test_embedding_service",
+      "target": "app.services.embedding_service"
+    },
+    {
+      "source": "tests.test_services.test_memory_service",
+      "target": "app.db.database"
+    },
+    {
+      "source": "tests.test_services.test_memory_service",
+      "target": "app.services.memory_service"
+    },
+    {
+      "source": "tests.test_services.test_skill_service",
+      "target": "app.services.skill_service"
+    },
+    {
+      "source": "tests.test_services.test_skill_service",
+      "target": "tests.factories"
+    },
+    {
+      "source": "tests.test_services.test_task_manager",
+      "target": "app.services.task_manager"
+    }
+  ]
+}

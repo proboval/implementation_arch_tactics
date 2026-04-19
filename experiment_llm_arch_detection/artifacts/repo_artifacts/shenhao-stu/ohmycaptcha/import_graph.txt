@@ -1,0 +1,23 @@
+# Nodes: 18
+# Edges: 20
+
+main -> src.core.config
+main -> src.main
+src.api.routes -> src.core.config
+src.api.routes -> src.models.task
+src.api.routes -> src.services.task_manager
+src.main -> src.api.routes
+src.main -> src.core.config
+src.main -> src.services.classification
+src.main -> src.services.hcaptcha
+src.main -> src.services.recaptcha_v2
+src.main -> src.services.recaptcha_v3
+src.main -> src.services.recognition
+src.main -> src.services.task_manager
+src.main -> src.services.turnstile
+src.services.classification -> src.core.config
+src.services.hcaptcha -> src.core.config
+src.services.recaptcha_v2 -> src.core.config
+src.services.recaptcha_v3 -> src.core.config
+src.services.recognition -> src.core.config
+src.services.turnstile -> src.core.config

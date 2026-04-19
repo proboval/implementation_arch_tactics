@@ -1,0 +1,60 @@
+sre-copilot
+├── .claude
+│   ├── commands
+│   │   └── aicore-bootstrap.md
+│   ├── hooks
+│   │   └── user-prompt-submit.sh
+│   └── claude.json
+├── .github
+│   └── workflows
+│       └── docker-build-push.yaml
+├── deploy
+│   └── chart
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── deployment.yaml
+│       │   ├── hpa.yaml
+│       │   ├── ingress.yaml
+│       │   ├── namespace.yaml
+│       │   ├── secret.yaml
+│       │   ├── service.yaml
+│       │   └── serviceaccount.yaml
+│       ├── Chart.yaml
+│       ├── README.md
+│       └── values.yaml
+├── frontend
+│   ├── src
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   └── vite.config.js
+├── tools
+│   ├── __init__.py
+│   ├── CLAUDE.md
+│   ├── datadog_tools.py
+│   ├── kubernetes_tools.py
+│   ├── langchain_tools.py
+│   └── pagerduty_tools.py
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── agent.py
+├── app.py
+├── CLAUDE.md
+├── CODE_FLOW.md
+├── config.py
+├── demo.gif
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── requirements.txt
+├── server.py
+├── start.sh
+├── test_apm.py
+├── test_config.py
+├── test_datadog.py
+└── verify_setup.py

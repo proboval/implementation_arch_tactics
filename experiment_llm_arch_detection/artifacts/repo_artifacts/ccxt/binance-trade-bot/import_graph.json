@@ -1,0 +1,268 @@
+{
+  "nodes": [
+    ".pre-commit-hooks.sort-coins-file",
+    "backtest",
+    "binance_trade_bot",
+    "binance_trade_bot.__main__",
+    "binance_trade_bot.api_server",
+    "binance_trade_bot.auto_trader",
+    "binance_trade_bot.backtest",
+    "binance_trade_bot.binance_api_manager",
+    "binance_trade_bot.binance_stream_manager",
+    "binance_trade_bot.config",
+    "binance_trade_bot.crypto_trading",
+    "binance_trade_bot.database",
+    "binance_trade_bot.logger",
+    "binance_trade_bot.models",
+    "binance_trade_bot.models.base",
+    "binance_trade_bot.models.coin",
+    "binance_trade_bot.models.coin_value",
+    "binance_trade_bot.models.current_coin",
+    "binance_trade_bot.models.pair",
+    "binance_trade_bot.models.scout_history",
+    "binance_trade_bot.models.trade",
+    "binance_trade_bot.notifications",
+    "binance_trade_bot.scheduler",
+    "binance_trade_bot.strategies",
+    "binance_trade_bot.strategies.default_strategy",
+    "binance_trade_bot.strategies.multiple_coins_strategy"
+  ],
+  "edges": [
+    {
+      "source": "backtest",
+      "target": "binance_trade_bot.backtest"
+    },
+    {
+      "source": "binance_trade_bot",
+      "target": "binance_trade_bot.backtest"
+    },
+    {
+      "source": "binance_trade_bot",
+      "target": "binance_trade_bot.binance_api_manager"
+    },
+    {
+      "source": "binance_trade_bot",
+      "target": "binance_trade_bot.crypto_trading"
+    },
+    {
+      "source": "binance_trade_bot.__main__",
+      "target": "binance_trade_bot.crypto_trading"
+    },
+    {
+      "source": "binance_trade_bot.api_server",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.api_server",
+      "target": "binance_trade_bot.database"
+    },
+    {
+      "source": "binance_trade_bot.api_server",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.api_server",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.auto_trader",
+      "target": "binance_trade_bot.binance_api_manager"
+    },
+    {
+      "source": "binance_trade_bot.auto_trader",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.auto_trader",
+      "target": "binance_trade_bot.database"
+    },
+    {
+      "source": "binance_trade_bot.auto_trader",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.auto_trader",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.binance_api_manager"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.binance_stream_manager"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.database"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.backtest",
+      "target": "binance_trade_bot.strategies"
+    },
+    {
+      "source": "binance_trade_bot.binance_api_manager",
+      "target": "binance_trade_bot.binance_stream_manager"
+    },
+    {
+      "source": "binance_trade_bot.binance_api_manager",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.binance_api_manager",
+      "target": "binance_trade_bot.database"
+    },
+    {
+      "source": "binance_trade_bot.binance_api_manager",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.binance_api_manager",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.binance_stream_manager",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.binance_stream_manager",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.config",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.binance_api_manager"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.database"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.scheduler"
+    },
+    {
+      "source": "binance_trade_bot.crypto_trading",
+      "target": "binance_trade_bot.strategies"
+    },
+    {
+      "source": "binance_trade_bot.database",
+      "target": "binance_trade_bot.config"
+    },
+    {
+      "source": "binance_trade_bot.database",
+      "target": "binance_trade_bot.logger"
+    },
+    {
+      "source": "binance_trade_bot.database",
+      "target": "binance_trade_bot.models"
+    },
+    {
+      "source": "binance_trade_bot.logger",
+      "target": "binance_trade_bot.notifications"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.coin"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.coin_value"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.current_coin"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.pair"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.scout_history"
+    },
+    {
+      "source": "binance_trade_bot.models",
+      "target": "binance_trade_bot.models.trade"
+    },
+    {
+      "source": "binance_trade_bot.models.coin",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.coin_value",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.coin_value",
+      "target": "binance_trade_bot.models.coin"
+    },
+    {
+      "source": "binance_trade_bot.models.current_coin",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.current_coin",
+      "target": "binance_trade_bot.models.coin"
+    },
+    {
+      "source": "binance_trade_bot.models.pair",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.pair",
+      "target": "binance_trade_bot.models.coin"
+    },
+    {
+      "source": "binance_trade_bot.models.scout_history",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.scout_history",
+      "target": "binance_trade_bot.models.pair"
+    },
+    {
+      "source": "binance_trade_bot.models.trade",
+      "target": "binance_trade_bot.models.base"
+    },
+    {
+      "source": "binance_trade_bot.models.trade",
+      "target": "binance_trade_bot.models.coin"
+    },
+    {
+      "source": "binance_trade_bot.strategies.default_strategy",
+      "target": "binance_trade_bot.auto_trader"
+    },
+    {
+      "source": "binance_trade_bot.strategies.multiple_coins_strategy",
+      "target": "binance_trade_bot.auto_trader"
+    }
+  ]
+}

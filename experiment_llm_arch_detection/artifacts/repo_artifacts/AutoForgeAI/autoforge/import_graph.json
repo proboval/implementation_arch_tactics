@@ -1,0 +1,719 @@
+{
+  "nodes": [
+    "agent",
+    "api",
+    "api.database",
+    "api.dependency_resolver",
+    "api.migration",
+    "auth",
+    "autoforge_paths",
+    "autonomous_agent_demo",
+    "client",
+    "env_constants",
+    "mcp_server",
+    "mcp_server.feature_mcp",
+    "parallel_orchestrator",
+    "progress",
+    "prompts",
+    "rate_limit_utils",
+    "registry",
+    "security",
+    "server",
+    "server.main",
+    "server.routers",
+    "server.routers.agent",
+    "server.routers.assistant_chat",
+    "server.routers.devserver",
+    "server.routers.expand_project",
+    "server.routers.features",
+    "server.routers.filesystem",
+    "server.routers.projects",
+    "server.routers.scaffold",
+    "server.routers.schedules",
+    "server.routers.settings",
+    "server.routers.spec_creation",
+    "server.routers.terminal",
+    "server.schemas",
+    "server.services",
+    "server.services.assistant_chat_session",
+    "server.services.assistant_database",
+    "server.services.browser_view_service",
+    "server.services.chat_constants",
+    "server.services.dev_server_manager",
+    "server.services.expand_chat_session",
+    "server.services.process_manager",
+    "server.services.project_config",
+    "server.services.scheduler_service",
+    "server.services.spec_chat_session",
+    "server.services.terminal_manager",
+    "server.utils",
+    "server.utils.document_extraction",
+    "server.utils.process_utils",
+    "server.utils.project_helpers",
+    "server.utils.validation",
+    "server.websocket",
+    "start",
+    "start_ui",
+    "temp_cleanup",
+    "test_client",
+    "test_dependency_resolver",
+    "test_devserver_security",
+    "test_rate_limit_utils",
+    "test_security",
+    "test_security_integration"
+  ],
+  "edges": [
+    {
+      "source": "agent",
+      "target": "client"
+    },
+    {
+      "source": "agent",
+      "target": "progress"
+    },
+    {
+      "source": "agent",
+      "target": "prompts"
+    },
+    {
+      "source": "agent",
+      "target": "rate_limit_utils"
+    },
+    {
+      "source": "api",
+      "target": "api.database"
+    },
+    {
+      "source": "api.database",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "api.migration",
+      "target": "api.database"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "agent"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "parallel_orchestrator"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "prompts"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "registry"
+    },
+    {
+      "source": "autonomous_agent_demo",
+      "target": "temp_cleanup"
+    },
+    {
+      "source": "client",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "client",
+      "target": "registry"
+    },
+    {
+      "source": "client",
+      "target": "security"
+    },
+    {
+      "source": "mcp_server.feature_mcp",
+      "target": "api.database"
+    },
+    {
+      "source": "mcp_server.feature_mcp",
+      "target": "api.dependency_resolver"
+    },
+    {
+      "source": "mcp_server.feature_mcp",
+      "target": "api.migration"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "api.database"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "api.dependency_resolver"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "progress"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "registry"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "server.utils.process_utils"
+    },
+    {
+      "source": "parallel_orchestrator",
+      "target": "temp_cleanup"
+    },
+    {
+      "source": "progress",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "prompts",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "registry",
+      "target": "env_constants"
+    },
+    {
+      "source": "server.main",
+      "target": "server.routers"
+    },
+    {
+      "source": "server.main",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.assistant_chat_session"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.dev_server_manager"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.expand_chat_session"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.process_manager"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.scheduler_service"
+    },
+    {
+      "source": "server.main",
+      "target": "server.services.terminal_manager"
+    },
+    {
+      "source": "server.main",
+      "target": "server.websocket"
+    },
+    {
+      "source": "server.main",
+      "target": "temp_cleanup"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.agent"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.assistant_chat"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.devserver"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.expand_project"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.features"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.filesystem"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.projects"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.scaffold"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.schedules"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.settings"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.spec_creation"
+    },
+    {
+      "source": "server.routers",
+      "target": "server.routers.terminal"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "registry"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.services.process_manager"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.services.scheduler_service"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.agent",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.assistant_chat",
+      "target": "server.services.assistant_chat_session"
+    },
+    {
+      "source": "server.routers.assistant_chat",
+      "target": "server.services.assistant_database"
+    },
+    {
+      "source": "server.routers.assistant_chat",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.assistant_chat",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "security"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "server.services.dev_server_manager"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "server.services.project_config"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.devserver",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.expand_project",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.routers.expand_project",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.expand_project",
+      "target": "server.services.expand_chat_session"
+    },
+    {
+      "source": "server.routers.expand_project",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.expand_project",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "api.database"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "api.dependency_resolver"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.features",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.filesystem",
+      "target": "security"
+    },
+    {
+      "source": "server.routers.filesystem",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "api.database"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "progress"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "prompts"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "registry"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "server.routers.filesystem"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "server.services.assistant_database"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "server.services.scheduler_service"
+    },
+    {
+      "source": "server.routers.projects",
+      "target": "start"
+    },
+    {
+      "source": "server.routers.scaffold",
+      "target": "server.routers.filesystem"
+    },
+    {
+      "source": "server.routers.schedules",
+      "target": "api.database"
+    },
+    {
+      "source": "server.routers.schedules",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.schedules",
+      "target": "server.services.scheduler_service"
+    },
+    {
+      "source": "server.routers.schedules",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.schedules",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.settings",
+      "target": "registry"
+    },
+    {
+      "source": "server.routers.settings",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.settings",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.routers.spec_creation",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.routers.spec_creation",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.routers.spec_creation",
+      "target": "server.services.spec_chat_session"
+    },
+    {
+      "source": "server.routers.spec_creation",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.spec_creation",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.routers.terminal",
+      "target": "server.services.terminal_manager"
+    },
+    {
+      "source": "server.routers.terminal",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.routers.terminal",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "server.schemas",
+      "target": "registry"
+    },
+    {
+      "source": "server.services",
+      "target": "server.services.process_manager"
+    },
+    {
+      "source": "server.services",
+      "target": "server.services.project_config"
+    },
+    {
+      "source": "server.services",
+      "target": "server.services.terminal_manager"
+    },
+    {
+      "source": "server.services.assistant_chat_session",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.assistant_chat_session",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.assistant_chat_session",
+      "target": "server.services.assistant_database"
+    },
+    {
+      "source": "server.services.assistant_chat_session",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.services.assistant_database",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.chat_constants",
+      "target": "env_constants"
+    },
+    {
+      "source": "server.services.chat_constants",
+      "target": "rate_limit_utils"
+    },
+    {
+      "source": "server.services.chat_constants",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.services.chat_constants",
+      "target": "server.utils.document_extraction"
+    },
+    {
+      "source": "server.services.dev_server_manager",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.dev_server_manager",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.dev_server_manager",
+      "target": "server.utils.process_utils"
+    },
+    {
+      "source": "server.services.expand_chat_session",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.expand_chat_session",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.expand_chat_session",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.services.expand_chat_session",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.services.expand_chat_session",
+      "target": "server.utils.document_extraction"
+    },
+    {
+      "source": "server.services.process_manager",
+      "target": "api.database"
+    },
+    {
+      "source": "server.services.process_manager",
+      "target": "auth"
+    },
+    {
+      "source": "server.services.process_manager",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.process_manager",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.process_manager",
+      "target": "server.utils.process_utils"
+    },
+    {
+      "source": "server.services.scheduler_service",
+      "target": "api.database"
+    },
+    {
+      "source": "server.services.scheduler_service",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.scheduler_service",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.scheduler_service",
+      "target": "server.services.process_manager"
+    },
+    {
+      "source": "server.services.spec_chat_session",
+      "target": "autoforge_paths"
+    },
+    {
+      "source": "server.services.spec_chat_session",
+      "target": "registry"
+    },
+    {
+      "source": "server.services.spec_chat_session",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.services.spec_chat_session",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.services.spec_chat_session",
+      "target": "server.utils.document_extraction"
+    },
+    {
+      "source": "server.utils.project_helpers",
+      "target": "registry"
+    },
+    {
+      "source": "server.websocket",
+      "target": "progress"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.schemas"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.services.browser_view_service"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.services.chat_constants"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.services.dev_server_manager"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.services.process_manager"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.utils.project_helpers"
+    },
+    {
+      "source": "server.websocket",
+      "target": "server.utils.validation"
+    },
+    {
+      "source": "start",
+      "target": "auth"
+    },
+    {
+      "source": "start",
+      "target": "prompts"
+    },
+    {
+      "source": "start",
+      "target": "registry"
+    },
+    {
+      "source": "test_client",
+      "target": "client"
+    },
+    {
+      "source": "test_dependency_resolver",
+      "target": "api.dependency_resolver"
+    },
+    {
+      "source": "test_devserver_security",
+      "target": "server.routers.devserver"
+    },
+    {
+      "source": "test_devserver_security",
+      "target": "server.services.dev_server_manager"
+    },
+    {
+      "source": "test_rate_limit_utils",
+      "target": "rate_limit_utils"
+    },
+    {
+      "source": "test_security",
+      "target": "security"
+    },
+    {
+      "source": "test_security_integration",
+      "target": "security"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+any-auto-register
+├── .codex-review
+│   ├── integration
+│   ├── pr46
+│   └── pr49
+├── .github
+│   └── workflows
+│       └── docker-image.yml
+├── api
+│   ├── __init__.py
+│   ├── accounts.py
+│   ├── actions.py
+│   ├── auth.py
+│   ├── chatgpt.py
+│   ├── config.py
+│   ├── contribution.py
+│   ├── integrations.py
+│   ├── mail_imports.py
+│   ├── outlook.py
+│   ├── platforms.py
+│   ├── proxies.py
+│   └── tasks.py
+├── core
+│   ├── executors
+│   │   ├── __init__.py
+│   │   ├── playwright.py
+│   │   └── protocol.py
+│   ├── luckmail
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   ├── exceptions.py
+│   │   ├── http_client.py
+│   │   ├── models.py
+│   │   ├── supplier.py
+│   │   └── user.py
+│   ├── __init__.py
+│   ├── applemail_pool.py
+│   ├── base_captcha.py
+│   ├── base_executor.py
+│   ├── base_mailbox.py
+│   ├── base_platform.py
+│   ├── browser_runtime.py
+│   ├── config_store.py
+│   ├── db.py
+│   ├── email_domain_policy.py
+│   ├── http_client.py
+│   ├── proxy_pool.py
+│   ├── proxy_utils.py
+│   ├── registry.py
+│   ├── scheduler.py
+│   └── task_runtime.py
+├── docker
+│   └── entrypoint.sh
+├── docs
+│   ├── images
+│   │   ├── dashang.JPG
+│   │   ├── dashboard.png
+│   │   └── settings-integrations.png
+│   ├── superpowers
+│   │   ├── plans
+│   │   │   ├── 2026-03-30-readme-image-fix.md
+│   │   │   └── 2026-04-06-outlook-otp-polling-logs.md
+│   │   └── specs
+│   │       ├── 2026-03-30-readme-image-fix-design.md
+│   │       ├── 2026-04-06-outlook-otp-polling-logs-design.md
+│   │       └── 2026-04-07-microsoft-mail-import-filter-design.md
+│   └── CLAWCLOUD_DEPLOY.md
+├── electron
+│   ├── build-backend.sh
+│   ├── electron-builder.yml
+│   ├── main.js
+│   ├── package-lock.json
+│   └── package.json
+├── frontend
+│   ├── public
+│   │   ├── favicon.svg
+│   │   ├── gzxsylogo.jpg
+│   │   ├── icons.svg
+│   │   ├── logo.png
+│   │   └── xiaoyelogo.jpg
+│   ├── src
+│   │   ├── assets
+│   │   │   ├── hero.png
+│   │   │   ├── react.svg
+│   │   │   └── vite.svg
+│   │   ├── components
+│   │   │   ├── settings
+│   │   │   │   └── MailImportPanel.tsx
+│   │   │   ├── ChatGPTRegistrationModeSwitch.tsx
+│   │   │   └── TaskLogPanel.tsx
+│   │   ├── hooks
+│   │   │   └── usePersistentChatGPTRegistrationMode.ts
+│   │   ├── lib
+│   │   │   ├── chatgptRegistrationMode.ts
+│   │   │   ├── chatgptRegistrationRequestAdapter.ts
+│   │   │   ├── configValueParsers.ts
+│   │   │   ├── platformExecutorOptions.ts
+│   │   │   └── utils.ts
+│   │   ├── pages
+│   │   │   ├── Accounts.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Login.tsx
+│   │   │   ├── Proxies.tsx
+│   │   │   ├── RegisterTaskPage.tsx
+│   │   │   ├── RunningTasks.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   └── TaskHistory.tsx
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   └── theme.ts
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── mail
+│   └── PWC91JSDS3TLN6AB_20260403_124953.txt
+├── platforms
+│   ├── chatgpt
+│   │   ├── __init__.py
+│   │   ├── access_token_only_registration_engine.py
+│   │   ├── chatgpt_client.py
+│   │   ├── chatgpt_registration_mode_adapter.py
+│   │   ├── constants.py
+│   │   ├── cpa_upload.py
+│   │   ├── http_client.py
+│   │   ├── oauth.py
+│   │   ├── oauth_client.py
+│   │   ├── oauth_pkce_client.py
+│   │   ├── payment.py
+│   │   ├── phone_service.py
+│   │   ├── plugin.py
+│   │   ├── refresh_token_registration_engine.py
+│   │   ├── sentinel_batch.py
+│   │   ├── sentinel_browser.py
+│   │   ├── sentinel_token.py
+│   │   ├── status_probe.py
+│   │   ├── sub2api_upload.py
+│   │   ├── token_refresh.py
+│   │   └── utils.py
+│   ├── cursor
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   ├── plugin.py
+│   │   └── switch.py
+│   ├── grok
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   ├── grok2api_upload.py
+│   │   └── plugin.py
+│   ├── kiro
+│   │   ├── __init__.py
+│   │   ├── account_manager_upload.py
+│   │   ├── core.py
+│   │   ├── plugin.py
+│   │   └── switch.py
+│   ├── openblocklabs
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   └── plugin.py
+│   ├── tavily
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   └── plugin.py
+│   ├── trae
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   ├── plugin.py
+│   │   └── switch.py
+│   └── __init__.py
+├── scripts
+│   ├── js
+│   │   └── openai_sentinel_quickjs.js
+│   ├── generate_chatgpt_payment_links.py
+│   ├── install_camoufox.py
+│   └── sentinel_multi_helper.py
+├── services
+│   ├── mail_imports
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── microsoft_import_rules.py
+│   │   ├── providers.py
+│   │   ├── registry.py
+│   │   └── schemas.py
+│   ├── turnstile_solver
+│   │   ├── __init__.py
+│   │   ├── api_solver.py
+│   │   ├── browser_configs.py
+│   │   ├── db_results.py
+│   │   └── start.py
+│   ├── __init__.py
+│   ├── chatgpt_account_state.py
+│   ├── chatgpt_sync.py
+│   ├── cliproxyapi_sync.py
+│   ├── cpa_manager.py
+│   ├── external_apps.py
+│   ├── external_sync.py
+│   ├── grok2api_runtime.py
+│   └── solver_manager.py
+├── tests
+│   ├── test_base_mailbox_cfworker.py
+│   ├── test_chatgpt_account_state.py
+│   ├── test_chatgpt_birthdate_range.py
+│   ├── test_chatgpt_phone_flow.py
+│   ├── test_chatgpt_plugin.py
+│   ├── test_chatgpt_register.py
+│   ├── test_chatgpt_registration_mode_adapter.py
+│   ├── test_chatgpt_sentinel_batch.py
+│   ├── test_chatgpt_status_probe.py
+│   ├── test_chatgpt_sync.py
+│   ├── test_cliproxyapi_sync.py
+│   ├── test_cloudmail_mailbox.py
+│   ├── test_config_store_env_fallback.py
+│   ├── test_duckmail_mailbox.py
+│   ├── test_email_domain_policy.py
+│   ├── test_external_sync_contribution_mode.py
+│   ├── test_freemail_mailbox.py
+│   ├── test_gptmail_mailbox.py
+│   ├── test_luckmail_mailbox.py
+│   ├── test_luckmail_proxy_chain.py
+│   ├── test_mail_imports_service.py
+│   ├── test_mailbox_task_control.py
+│   ├── test_opentrashmail_mailbox.py
+│   ├── test_outlook_mailbox_oauth.py
+│   ├── test_register_task_controls.py
+│   └── test_task_runtime.py
+├── .dockerignore
+├── .gitignore
+├── check_config.py
+├── docker-compose.yml
+├── Dockerfile
+├── main.py
+├── README.md
+├── requirements.txt
+├── smstome_tool.py
+├── start_backend.bat
+├── start_backend.ps1
+├── stop_backend.bat
+└── stop_backend.ps1

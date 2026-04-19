@@ -1,0 +1,531 @@
+# FILE: app/config.py
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
+
+class Settings(BaseSettings):
+
+# FILE: app/database.py
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from sqlalchemy.orm import declarative_base
+from app.config import settings
+
+async def get_dbNone: ...
+
+async def init_dbNone: ...
+
+async def close_dbNone: ...
+
+# FILE: app/db_migrations.py
+import logging
+import sqlite3
+from pathlib import Path
+from datetime import datetime
+
+def get_db_pathNone: ...
+
+def column_existsNone: ...
+
+def run_auto_migrationNone: ...
+
+# FILE: app/dependencies/auth.py
+import logging
+from fastapi import Request, HTTPException, status
+from fastapi.responses import RedirectResponse
+
+def get_current_userNone: ...
+
+async def require_adminNone: ...
+
+def optional_userNone: ...
+
+# FILE: app/main.py
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, FileResponse
+from starlette.middleware.sessions import SessionMiddleware
+import logging
+from pathlib import Path
+from datetime import datetime
+from contextlib import asynccontextmanager
+from app.routes import redeem, auth, admin, api, user, warranty
+from app.config import settings
+from app.database import init_db, close_db, AsyncSessionLocal
+from app.services.auth import auth_service
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+async def lifespanNone: ...
+
+async def http_exception_handlerNone: ...
+
+def format_datetimeNone: ...
+
+def escape_jsNone: ...
+
+async def login_pageNone: ...
+
+async def health_checkNone: ...
+
+async def faviconNone: ...
+
+# FILE: app/models.py
+from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, ForeignKey, Index
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+from app.database import Base
+from app.utils.time_utils import get_now
+
+class Team(Base):
+
+class TeamAccount(Base):
+
+class RedemptionCode(Base):
+
+class RedemptionRecord(Base):
+
+class Setting(Base):
+
+# FILE: app/routes/admin.py
+import logging
+from typing import Optional, List
+from fastapi import APIRouter, Depends, HTTPException, status, Request
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
+import json
+from sqlalchemy.ext.asyncio import AsyncSession
+from pydantic import BaseModel, Field
+from app.database import get_db
+from app.dependencies.auth import require_admin
+from app.services.team import TeamService
+from app.services.redemption import RedemptionService
+from app.utils.time_utils import get_now
+import json
+
+class TeamImportRequest(BaseModel):
+
+class AddMemberRequest(BaseModel):
+
+class CodeGenerateRequest(BaseModel):
+
+class TeamUpdateRequest(BaseModel):
+
+class CodeUpdateRequest(BaseModel):
+
+class BulkCodeUpdateRequest(BaseModel):
+
+class BulkActionRequest(BaseModel):
+
+async def admin_dashboardNone: ...
+
+async def delete_teamNone: ...
+
+async def get_team_infoNone: ...
+
+async def update_teamNone: ...
+
+async def team_importNone: ...
+
+async def team_members_listNone: ...
+
+async def add_team_memberNone: ...
+
+async def delete_team_memberNone: ...
+
+async def revoke_team_inviteNone: ...
+
+async def enable_team_device_authNone: ...
+
+async def batch_refresh_teamsNone: ...
+
+async def batch_delete_teamsNone: ...
+
+async def batch_enable_device_authNone: ...
+
+async def codes_list_pageNone: ...
+
+async def generate_codesNone: ...
+
+async def delete_codeNone: ...
+
+async def export_codesNone: ...
+
+async def update_codeNone: ...
+
+async def bulk_update_codesNone: ...
+
+async def records_pageNone: ...
+
+async def withdraw_recordNone: ...
+
+async def settings_pageNone: ...
+
+class ProxyConfigRequest(BaseModel):
+
+class LogLevelRequest(BaseModel):
+
+class WebhookSettingsRequest(BaseModel):
+
+async def update_proxy_configNone: ...
+
+async def update_log_levelNone: ...
+
+async def update_webhook_settingsNone: ...
+
+# FILE: app/routes/api.py
+import logging
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import JSONResponse
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db
+from app.dependencies.auth import get_current_user
+from app.services.team import TeamService
+
+async def refresh_teamNone: ...
+
+# FILE: app/routes/auth.py
+import logging
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, status, Request
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db
+from app.services.auth import auth_service
+from app.dependencies.auth import get_current_user
+
+class LoginRequest(BaseModel):
+
+class ChangePasswordRequest(BaseModel):
+
+class LoginResponse(BaseModel):
+
+class LogoutResponse(BaseModel):
+
+class ChangePasswordResponse(BaseModel):
+
+async def loginNone: ...
+
+async def logoutNone: ...
+
+async def change_passwordNone: ...
+
+async def get_auth_statusNone: ...
+
+# FILE: app/routes/redeem.py
+import logging
+from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional, List, Dict, Any
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db
+from app.services.redeem_flow import redeem_flow_service
+
+class VerifyCodeRequest(BaseModel):
+
+class RedeemRequest(BaseModel):
+
+class TeamInfo(BaseModel):
+
+class VerifyCodeResponse(BaseModel):
+
+class RedeemResponse(BaseModel):
+
+async def verify_codeNone: ...
+
+async def confirm_redeemNone: ...
+
+# FILE: app/routes/user.py
+import logging
+from fastapi import APIRouter, Request, Depends
+from fastapi.responses import HTMLResponse
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db
+
+async def redeem_pageNone: ...
+
+# FILE: app/routes/warranty.py
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, EmailStr
+from typing import Optional
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db
+from app.services.warranty import warranty_service
+
+class WarrantyCheckRequest(BaseModel):
+
+class WarrantyCheckRecord(BaseModel):
+
+class WarrantyCheckResponse(BaseModel):
+
+async def check_warrantyNone: ...
+
+class EnableDeviceAuthRequest(BaseModel):
+
+async def enable_device_authNone: ...
+
+# FILE: app/services/auth.py
+import logging
+import bcrypt
+from typing import Optional, Dict, Any
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.models import Setting
+from app.config import settings
+
+class AuthService:
+    def __init__None: ...
+    def hash_passwordNone: ...
+    def verify_passwordNone: ...
+    async def get_admin_password_hashNone: ...
+    async def set_admin_password_hashNone: ...
+    async def initialize_admin_passwordNone: ...
+    async def verify_admin_loginNone: ...
+    async def change_admin_passwordNone: ...
+
+# FILE: app/services/chatgpt.py
+import asyncio
+import logging
+import random
+from typing import Optional, Dict, Any, List
+from curl_cffi.requests import AsyncSession
+from app.services.settings import settings_service
+from sqlalchemy.ext.asyncio import AsyncSession as DBAsyncSession
+from app.utils.jwt_parser import JWTParser
+
+class ChatGPTService:
+    def __init__None: ...
+    async def _get_proxy_configNone: ...
+    async def _create_sessionNone: ...
+    async def _get_sessionNone: ...
+    async def _make_requestNone: ...
+    async def send_inviteNone: ...
+    async def get_membersNone: ...
+    async def get_invitesNone: ...
+    async def delete_inviteNone: ...
+    async def delete_memberNone: ...
+    async def toggle_beta_featureNone: ...
+    async def get_account_infoNone: ...
+    async def get_account_settingsNone: ...
+    async def refresh_access_token_with_session_tokenNone: ...
+    async def refresh_access_token_with_refresh_tokenNone: ...
+    async def clear_sessionNone: ...
+    async def closeNone: ...
+
+# FILE: app/services/encryption.py
+import logging
+from cryptography.fernet import Fernet
+from app.config import settings
+import base64
+import hashlib
+
+class EncryptionService:
+    def __init__None: ...
+    def _create_fernetNone: ...
+    def encrypt_tokenNone: ...
+    def decrypt_tokenNone: ...
+
+# FILE: app/services/notification.py
+import logging
+import httpx
+import asyncio
+from typing import Optional, Any, Dict
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.services.settings import settings_service
+from app.services.redemption import RedemptionService
+from app.services.team import team_service
+from app.database import AsyncSessionLocal
+
+class NotificationService:
+    def __init__None: ...
+    async def check_and_notify_low_stockNone: ...
+    async def send_webhook_notificationNone: ...
+
+# FILE: app/services/redeem_flow.py
+import logging
+import asyncio
+import traceback
+from collections import defaultdict
+from typing import Optional, Dict, Any, List
+from datetime import datetime, timedelta
+from sqlalchemy import select, update, delete, func, text
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import AsyncSessionLocal
+from app.models import RedemptionCode, RedemptionRecord, Team
+from app.services.redemption import RedemptionService
+from app.services.team import TeamService
+from app.services.warranty import warranty_service
+from app.services.notification import notification_service
+from app.utils.time_utils import get_now
+
+class RedeemFlowService:
+    def __init__None: ...
+    async def verify_code_and_get_teamsNone: ...
+    async def select_team_autoNone: ...
+    async def redeem_and_join_teamNone: ...
+    async def _background_verify_syncNone: ...
+
+# FILE: app/services/redemption.py
+import logging
+import secrets
+import string
+from typing import Optional, Dict, Any, List
+from datetime import datetime, timedelta
+from sqlalchemy import select, update, delete, and_, or_, func
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
+from app.models import RedemptionCode, RedemptionRecord, Team
+from app.utils.time_utils import get_now
+
+class RedemptionService:
+    def __init__None: ...
+    def _generate_random_codeNone: ...
+    async def generate_code_singleNone: ...
+    async def generate_code_batchNone: ...
+    async def validate_codeNone: ...
+    async def use_codeNone: ...
+    async def get_all_codesNone: ...
+    async def get_unused_countNone: ...
+    async def get_code_by_codeNone: ...
+    async def get_unused_codesNone: ...
+    async def get_all_recordsNone: ...
+    async def delete_codeNone: ...
+    async def update_codeNone: ...
+    async def withdraw_recordNone: ...
+    async def bulk_update_codesNone: ...
+    async def get_statsNone: ...
+
+# FILE: app/services/settings.py
+from typing import Optional, Dict
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.models import Setting
+import logging
+
+class SettingsService:
+    def __init__None: ...
+    async def get_settingNone: ...
+    async def get_all_settingsNone: ...
+    async def update_settingNone: ...
+    async def update_settingsNone: ...
+    def clear_cacheNone: ...
+    async def get_proxy_configNone: ...
+    async def update_proxy_configNone: ...
+    async def get_log_levelNone: ...
+    async def update_log_levelNone: ...
+
+# FILE: app/services/team.py
+import logging
+import asyncio
+from typing import Optional, Dict, Any, List
+from datetime import datetime
+from sqlalchemy import select, update, delete, func
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
+from app.models import Team, TeamAccount, RedemptionCode
+from app.services.chatgpt import ChatGPTService
+from app.services.encryption import encryption_service
+from app.utils.token_parser import TokenParser
+from app.utils.jwt_parser import JWTParser
+from app.utils.time_utils import get_now
+
+class TeamService:
+    def __init__None: ...
+    async def _handle_api_errorNone: ...
+    async def _reset_error_statusNone: ...
+    async def ensure_access_tokenNone: ...
+    async def import_team_singleNone: ...
+    async def update_teamNone: ...
+    async def get_team_infoNone: ...
+    async def import_team_batchNone: ...
+    async def sync_team_infoNone: ...
+    async def sync_all_teamsNone: ...
+    async def get_team_membersNone: ...
+    async def revoke_team_inviteNone: ...
+    async def add_team_memberNone: ...
+    async def delete_team_memberNone: ...
+    async def enable_device_code_authNone: ...
+    async def get_available_teamsNone: ...
+    async def get_team_by_idNone: ...
+    async def get_all_teamsNone: ...
+    async def remove_invite_or_memberNone: ...
+    async def delete_teamNone: ...
+    async def get_total_available_seatsNone: ...
+    async def get_statsNone: ...
+
+# FILE: app/services/warranty.py
+import logging
+import asyncio
+from typing import Optional, Dict, Any, List
+from datetime import datetime, timedelta
+from sqlalchemy import select, and_, or_, delete
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
+from app.models import RedemptionCode, RedemptionRecord, Team
+from app.utils.time_utils import get_now
+
+class WarrantyService:
+    def __init__None: ...
+    async def check_warranty_statusNone: ...
+    async def validate_warranty_reuseNone: ...
+
+# FILE: app/utils/jwt_parser.py
+import jwt
+from typing import Optional, Dict, Any
+from datetime import datetime
+import logging
+from app.utils.time_utils import get_now
+
+class JWTParser:
+    def __init__None: ...
+    def decode_tokenNone: ...
+    def extract_emailNone: ...
+    def extract_user_idNone: ...
+    def get_expiration_timeNone: ...
+    def is_token_expiredNone: ...
+    def validate_tokenNone: ...
+
+def create_jwt_parserNone: ...
+
+# FILE: app/utils/time_utils.py
+from datetime import datetime
+import pytz
+from app.config import settings
+
+def get_nowNone: ...
+
+# FILE: app/utils/token_parser.py
+import re
+from typing import List, Optional, Dict
+import logging
+
+class TokenParser:
+    def extract_jwt_tokensNone: ...
+    def extract_emailsNone: ...
+    def extract_account_idsNone: ...
+    def parse_team_import_textNone: ...
+    def validate_jwt_formatNone: ...
+    def validate_email_formatNone: ...
+    def validate_account_id_formatNone: ...
+
+# FILE: init_db.py
+import asyncio
+import bcrypt
+from sqlalchemy import select
+from app.database import init_db, AsyncSessionLocal
+from app.models import Setting
+from app.config import settings
+
+async def create_default_settingsNone: ...
+
+async def mainNone: ...
+
+# FILE: test_webhook.py
+import asyncio
+import httpx
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
+from app.services.notification import notification_service
+from app.services.settings import settings_service
+from app.models import Setting
+
+async def test_webhookNone: ...

@@ -1,0 +1,371 @@
+{
+  "nodes": [
+    "api",
+    "fastcode",
+    "fastcode.agent_tools",
+    "fastcode.answer_generator",
+    "fastcode.cache",
+    "fastcode.call_extractor",
+    "fastcode.definition_extractor",
+    "fastcode.embedder",
+    "fastcode.global_index_builder",
+    "fastcode.graph_builder",
+    "fastcode.import_extractor",
+    "fastcode.indexer",
+    "fastcode.iterative_agent",
+    "fastcode.llm_utils",
+    "fastcode.loader",
+    "fastcode.main",
+    "fastcode.module_resolver",
+    "fastcode.parser",
+    "fastcode.path_utils",
+    "fastcode.query_processor",
+    "fastcode.repo_overview",
+    "fastcode.repo_selector",
+    "fastcode.retriever",
+    "fastcode.symbol_resolver",
+    "fastcode.tree_sitter_parser",
+    "fastcode.utils",
+    "fastcode.vector_store",
+    "main",
+    "mcp_server",
+    "nanobot.nanobot",
+    "nanobot.nanobot.__main__",
+    "nanobot.nanobot.agent",
+    "nanobot.nanobot.agent.context",
+    "nanobot.nanobot.agent.loop",
+    "nanobot.nanobot.agent.memory",
+    "nanobot.nanobot.agent.skills",
+    "nanobot.nanobot.agent.subagent",
+    "nanobot.nanobot.agent.tools",
+    "nanobot.nanobot.agent.tools.base",
+    "nanobot.nanobot.agent.tools.cron",
+    "nanobot.nanobot.agent.tools.fastcode",
+    "nanobot.nanobot.agent.tools.filesystem",
+    "nanobot.nanobot.agent.tools.message",
+    "nanobot.nanobot.agent.tools.registry",
+    "nanobot.nanobot.agent.tools.shell",
+    "nanobot.nanobot.agent.tools.spawn",
+    "nanobot.nanobot.agent.tools.web",
+    "nanobot.nanobot.bus",
+    "nanobot.nanobot.bus.events",
+    "nanobot.nanobot.bus.queue",
+    "nanobot.nanobot.channels",
+    "nanobot.nanobot.channels.base",
+    "nanobot.nanobot.channels.dingtalk",
+    "nanobot.nanobot.channels.discord",
+    "nanobot.nanobot.channels.email",
+    "nanobot.nanobot.channels.feishu",
+    "nanobot.nanobot.channels.manager",
+    "nanobot.nanobot.channels.qq",
+    "nanobot.nanobot.channels.slack",
+    "nanobot.nanobot.channels.telegram",
+    "nanobot.nanobot.channels.whatsapp",
+    "nanobot.nanobot.cli",
+    "nanobot.nanobot.cli.commands",
+    "nanobot.nanobot.config",
+    "nanobot.nanobot.config.loader",
+    "nanobot.nanobot.config.schema",
+    "nanobot.nanobot.cron",
+    "nanobot.nanobot.cron.service",
+    "nanobot.nanobot.cron.types",
+    "nanobot.nanobot.heartbeat",
+    "nanobot.nanobot.heartbeat.service",
+    "nanobot.nanobot.providers",
+    "nanobot.nanobot.providers.base",
+    "nanobot.nanobot.providers.litellm_provider",
+    "nanobot.nanobot.providers.registry",
+    "nanobot.nanobot.providers.transcription",
+    "nanobot.nanobot.session",
+    "nanobot.nanobot.session.manager",
+    "nanobot.nanobot.utils",
+    "nanobot.nanobot.utils.helpers",
+    "web_app"
+  ],
+  "edges": [
+    {
+      "source": "api",
+      "target": "fastcode"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.agent_tools"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.answer_generator"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.indexer"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.iterative_agent"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.loader"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.main"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.parser"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.repo_overview"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.repo_selector"
+    },
+    {
+      "source": "fastcode",
+      "target": "fastcode.retriever"
+    },
+    {
+      "source": "fastcode.agent_tools",
+      "target": "fastcode.path_utils"
+    },
+    {
+      "source": "fastcode.answer_generator",
+      "target": "fastcode.llm_utils"
+    },
+    {
+      "source": "fastcode.answer_generator",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.call_extractor",
+      "target": "fastcode.tree_sitter_parser"
+    },
+    {
+      "source": "fastcode.definition_extractor",
+      "target": "fastcode.tree_sitter_parser"
+    },
+    {
+      "source": "fastcode.global_index_builder",
+      "target": "fastcode.indexer"
+    },
+    {
+      "source": "fastcode.global_index_builder",
+      "target": "fastcode.path_utils"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.call_extractor"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.indexer"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.module_resolver"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.path_utils"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.symbol_resolver"
+    },
+    {
+      "source": "fastcode.graph_builder",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.import_extractor",
+      "target": "fastcode.tree_sitter_parser"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.embedder"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.loader"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.parser"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.repo_overview"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.indexer",
+      "target": "fastcode.vector_store"
+    },
+    {
+      "source": "fastcode.iterative_agent",
+      "target": "fastcode.agent_tools"
+    },
+    {
+      "source": "fastcode.iterative_agent",
+      "target": "fastcode.llm_utils"
+    },
+    {
+      "source": "fastcode.iterative_agent",
+      "target": "fastcode.path_utils"
+    },
+    {
+      "source": "fastcode.loader",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.answer_generator"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.cache"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.embedder"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.global_index_builder"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.graph_builder"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.indexer"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.loader"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.module_resolver"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.parser"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.query_processor"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.retriever"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.symbol_resolver"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.main",
+      "target": "fastcode.vector_store"
+    },
+    {
+      "source": "fastcode.module_resolver",
+      "target": "fastcode.global_index_builder"
+    },
+    {
+      "source": "fastcode.parser",
+      "target": "fastcode.tree_sitter_parser"
+    },
+    {
+      "source": "fastcode.parser",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.query_processor",
+      "target": "fastcode.llm_utils"
+    },
+    {
+      "source": "fastcode.repo_overview",
+      "target": "fastcode.llm_utils"
+    },
+    {
+      "source": "fastcode.repo_selector",
+      "target": "fastcode.llm_utils"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.embedder"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.graph_builder"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.indexer"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.iterative_agent"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.query_processor"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.repo_selector"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "fastcode.retriever",
+      "target": "fastcode.vector_store"
+    },
+    {
+      "source": "fastcode.symbol_resolver",
+      "target": "fastcode.global_index_builder"
+    },
+    {
+      "source": "fastcode.symbol_resolver",
+      "target": "fastcode.module_resolver"
+    },
+    {
+      "source": "fastcode.vector_store",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "main",
+      "target": "fastcode"
+    },
+    {
+      "source": "mcp_server",
+      "target": "fastcode"
+    },
+    {
+      "source": "mcp_server",
+      "target": "fastcode.utils"
+    },
+    {
+      "source": "nanobot.nanobot.cli.commands",
+      "target": "nanobot"
+    },
+    {
+      "source": "web_app",
+      "target": "fastcode"
+    }
+  ]
+}

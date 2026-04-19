@@ -1,0 +1,296 @@
+{
+  "nodes": [
+    "backend",
+    "backend.api",
+    "backend.api.main",
+    "backend.api.routers",
+    "backend.api.routers.analysis",
+    "backend.api.routers.news",
+    "backend.api.routers.pipeline",
+    "backend.api.routers.predict",
+    "backend.api.routers.stocks",
+    "backend.batch_collect",
+    "backend.batch_submit",
+    "backend.bulk_fetch",
+    "backend.config",
+    "backend.database",
+    "backend.migration",
+    "backend.ml",
+    "backend.ml.backtest",
+    "backend.ml.experiment",
+    "backend.ml.features",
+    "backend.ml.features_v2",
+    "backend.ml.inference",
+    "backend.ml.lstm_model",
+    "backend.ml.model",
+    "backend.ml.similar",
+    "backend.ml.train",
+    "backend.pipeline",
+    "backend.pipeline.alignment",
+    "backend.pipeline.layer0",
+    "backend.pipeline.layer1",
+    "backend.pipeline.layer2",
+    "backend.pipeline.similarity",
+    "backend.polygon",
+    "backend.polygon.client",
+    "backend.weekly_update"
+  ],
+  "edges": [
+    {
+      "source": "backend.api.main",
+      "target": "backend.api.routers.analysis"
+    },
+    {
+      "source": "backend.api.main",
+      "target": "backend.api.routers.news"
+    },
+    {
+      "source": "backend.api.main",
+      "target": "backend.api.routers.predict"
+    },
+    {
+      "source": "backend.api.main",
+      "target": "backend.api.routers.stocks"
+    },
+    {
+      "source": "backend.api.main",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.api.routers.analysis",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.api.routers.analysis",
+      "target": "backend.pipeline.layer2"
+    },
+    {
+      "source": "backend.api.routers.analysis",
+      "target": "backend.pipeline.similarity"
+    },
+    {
+      "source": "backend.api.routers.news",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.api.routers.pipeline",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.api.routers.pipeline",
+      "target": "backend.pipeline.alignment"
+    },
+    {
+      "source": "backend.api.routers.pipeline",
+      "target": "backend.pipeline.layer0"
+    },
+    {
+      "source": "backend.api.routers.pipeline",
+      "target": "backend.pipeline.layer1"
+    },
+    {
+      "source": "backend.api.routers.pipeline",
+      "target": "backend.polygon.client"
+    },
+    {
+      "source": "backend.api.routers.predict",
+      "target": "backend.ml.inference"
+    },
+    {
+      "source": "backend.api.routers.predict",
+      "target": "backend.ml.model"
+    },
+    {
+      "source": "backend.api.routers.predict",
+      "target": "backend.ml.similar"
+    },
+    {
+      "source": "backend.api.routers.stocks",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.api.routers.stocks",
+      "target": "backend.polygon.client"
+    },
+    {
+      "source": "backend.batch_collect",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.batch_collect",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.batch_submit",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.batch_submit",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.batch_submit",
+      "target": "backend.pipeline.layer1"
+    },
+    {
+      "source": "backend.bulk_fetch",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.bulk_fetch",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.bulk_fetch",
+      "target": "backend.pipeline.alignment"
+    },
+    {
+      "source": "backend.bulk_fetch",
+      "target": "backend.pipeline.layer0"
+    },
+    {
+      "source": "backend.bulk_fetch",
+      "target": "backend.polygon.client"
+    },
+    {
+      "source": "backend.database",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.migration",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.migration",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.backtest",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.experiment",
+      "target": "backend.ml.features_v2"
+    },
+    {
+      "source": "backend.ml.features",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.features_v2",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.features_v2",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.inference",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.inference",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.inference",
+      "target": "backend.ml.lstm_model"
+    },
+    {
+      "source": "backend.ml.lstm_model",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.lstm_model",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.lstm_model",
+      "target": "backend.ml.features_v2"
+    },
+    {
+      "source": "backend.ml.model",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.similar",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.similar",
+      "target": "backend.ml.features"
+    },
+    {
+      "source": "backend.ml.train",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.ml.train",
+      "target": "backend.ml.backtest"
+    },
+    {
+      "source": "backend.ml.train",
+      "target": "backend.ml.lstm_model"
+    },
+    {
+      "source": "backend.ml.train",
+      "target": "backend.ml.model"
+    },
+    {
+      "source": "backend.pipeline.alignment",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.pipeline.layer0",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.pipeline.layer1",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.pipeline.layer1",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.pipeline.layer2",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.pipeline.layer2",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.pipeline.similarity",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.pipeline.similarity",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.polygon.client",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.weekly_update",
+      "target": "backend.config"
+    },
+    {
+      "source": "backend.weekly_update",
+      "target": "backend.database"
+    },
+    {
+      "source": "backend.weekly_update",
+      "target": "backend.pipeline.alignment"
+    },
+    {
+      "source": "backend.weekly_update",
+      "target": "backend.pipeline.layer0"
+    },
+    {
+      "source": "backend.weekly_update",
+      "target": "backend.polygon.client"
+    }
+  ]
+}

@@ -1,0 +1,384 @@
+LWF-YOLO
+├── configs
+│   ├── datasets
+│   │   └── bccd.yaml.example
+│   └── models
+│       └── lwf-yolo.yaml
+├── docs
+│   └── custom_modules.md
+├── scripts
+│   └── build_dcnv3.sh
+├── ultralytics
+│   ├── assets
+│   │   ├── bus.jpg
+│   │   └── zidane.jpg
+│   ├── cfg
+│   │   ├── datasets
+│   │   │   ├── african-wildlife.yaml
+│   │   │   ├── Argoverse.yaml
+│   │   │   ├── brain-tumor.yaml
+│   │   │   ├── carparts-seg.yaml
+│   │   │   ├── coco-pose.yaml
+│   │   │   ├── coco.yaml
+│   │   │   ├── coco12-formats.yaml
+│   │   │   ├── coco128-seg.yaml
+│   │   │   ├── coco128.yaml
+│   │   │   ├── coco8-grayscale.yaml
+│   │   │   ├── coco8-multispectral.yaml
+│   │   │   ├── coco8-pose.yaml
+│   │   │   ├── coco8-seg.yaml
+│   │   │   ├── coco8.yaml
+│   │   │   ├── construction-ppe.yaml
+│   │   │   ├── crack-seg.yaml
+│   │   │   ├── dog-pose.yaml
+│   │   │   ├── dota8-multispectral.yaml
+│   │   │   ├── dota8.yaml
+│   │   │   ├── DOTAv1.5.yaml
+│   │   │   ├── DOTAv1.yaml
+│   │   │   ├── GlobalWheat2020.yaml
+│   │   │   ├── hand-keypoints.yaml
+│   │   │   ├── HomeObjects-3K.yaml
+│   │   │   ├── ImageNet.yaml
+│   │   │   ├── kitti.yaml
+│   │   │   ├── lvis.yaml
+│   │   │   ├── medical-pills.yaml
+│   │   │   ├── Objects365.yaml
+│   │   │   ├── open-images-v7.yaml
+│   │   │   ├── package-seg.yaml
+│   │   │   ├── signature.yaml
+│   │   │   ├── SKU-110K.yaml
+│   │   │   ├── tiger-pose.yaml
+│   │   │   ├── TT100K.yaml
+│   │   │   ├── VisDrone.yaml
+│   │   │   ├── VOC.yaml
+│   │   │   └── xView.yaml
+│   │   ├── models
+│   │   │   ├── 11
+│   │   │   │   ├── LWF-YOLO
+│   │   │   │   │   └── yaml
+│   │   │   │   │       └── LWF-YOLO.yaml
+│   │   │   │   ├── lwf-yolo.yaml
+│   │   │   │   └── yolo11.yaml
+│   │   │   ├── 12
+│   │   │   │   ├── yolo12-cls.yaml
+│   │   │   │   ├── yolo12-obb.yaml
+│   │   │   │   ├── yolo12-pose.yaml
+│   │   │   │   ├── yolo12-seg.yaml
+│   │   │   │   └── yolo12.yaml
+│   │   │   ├── 26
+│   │   │   │   ├── yolo26-cls.yaml
+│   │   │   │   ├── yolo26-obb.yaml
+│   │   │   │   ├── yolo26-p2.yaml
+│   │   │   │   ├── yolo26-p6.yaml
+│   │   │   │   ├── yolo26-pose.yaml
+│   │   │   │   ├── yolo26-seg.yaml
+│   │   │   │   ├── yolo26.yaml
+│   │   │   │   ├── yoloe-26-seg.yaml
+│   │   │   │   └── yoloe-26.yaml
+│   │   │   ├── rt-detr
+│   │   │   │   ├── rtdetr-l.yaml
+│   │   │   │   ├── rtdetr-resnet101.yaml
+│   │   │   │   ├── rtdetr-resnet50.yaml
+│   │   │   │   └── rtdetr-x.yaml
+│   │   │   ├── v10
+│   │   │   │   ├── yolov10b.yaml
+│   │   │   │   ├── yolov10l.yaml
+│   │   │   │   ├── yolov10m.yaml
+│   │   │   │   ├── yolov10n.yaml
+│   │   │   │   ├── yolov10s.yaml
+│   │   │   │   └── yolov10x.yaml
+│   │   │   ├── v3
+│   │   │   │   ├── yolov3-spp.yaml
+│   │   │   │   ├── yolov3-tiny.yaml
+│   │   │   │   └── yolov3.yaml
+│   │   │   ├── v5
+│   │   │   │   ├── yolov5-p6.yaml
+│   │   │   │   └── yolov5.yaml
+│   │   │   ├── v6
+│   │   │   │   └── yolov6.yaml
+│   │   │   ├── v8
+│   │   │   │   ├── yoloe-v8-seg.yaml
+│   │   │   │   ├── yoloe-v8.yaml
+│   │   │   │   ├── yolov8-cls-resnet101.yaml
+│   │   │   │   ├── yolov8-cls-resnet50.yaml
+│   │   │   │   ├── yolov8-cls.yaml
+│   │   │   │   ├── yolov8-ghost-p2.yaml
+│   │   │   │   ├── yolov8-ghost-p6.yaml
+│   │   │   │   ├── yolov8-ghost.yaml
+│   │   │   │   ├── yolov8-obb.yaml
+│   │   │   │   ├── yolov8-p2.yaml
+│   │   │   │   ├── yolov8-p6.yaml
+│   │   │   │   ├── yolov8-pose-p6.yaml
+│   │   │   │   ├── yolov8-pose.yaml
+│   │   │   │   ├── yolov8-rtdetr.yaml
+│   │   │   │   ├── yolov8-seg-p6.yaml
+│   │   │   │   ├── yolov8-seg.yaml
+│   │   │   │   ├── yolov8-world.yaml
+│   │   │   │   ├── yolov8-worldv2.yaml
+│   │   │   │   └── yolov8.yaml
+│   │   │   ├── v9
+│   │   │   │   ├── yolov9c-seg.yaml
+│   │   │   │   ├── yolov9c.yaml
+│   │   │   │   ├── yolov9e-seg.yaml
+│   │   │   │   ├── yolov9e.yaml
+│   │   │   │   ├── yolov9m.yaml
+│   │   │   │   ├── yolov9s.yaml
+│   │   │   │   └── yolov9t.yaml
+│   │   │   └── README.md
+│   │   ├── trackers
+│   │   │   ├── botsort.yaml
+│   │   │   └── bytetrack.yaml
+│   │   ├── __init__.py
+│   │   └── default.yaml
+│   ├── data
+│   │   ├── scripts
+│   │   │   ├── download_weights.sh
+│   │   │   ├── get_coco.sh
+│   │   │   ├── get_coco128.sh
+│   │   │   └── get_imagenet.sh
+│   │   ├── __init__.py
+│   │   ├── annotator.py
+│   │   ├── augment.py
+│   │   ├── base.py
+│   │   ├── build.py
+│   │   ├── converter.py
+│   │   ├── dataset.py
+│   │   ├── loaders.py
+│   │   ├── split.py
+│   │   ├── split_dota.py
+│   │   └── utils.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   ├── exporter.py
+│   │   ├── model.py
+│   │   ├── predictor.py
+│   │   ├── results.py
+│   │   ├── trainer.py
+│   │   ├── tuner.py
+│   │   └── validator.py
+│   ├── hub
+│   │   ├── google
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── session.py
+│   │   └── utils.py
+│   ├── models
+│   │   ├── fastsam
+│   │   │   ├── __init__.py
+│   │   │   ├── model.py
+│   │   │   ├── predict.py
+│   │   │   ├── utils.py
+│   │   │   └── val.py
+│   │   ├── nas
+│   │   │   ├── __init__.py
+│   │   │   ├── model.py
+│   │   │   ├── predict.py
+│   │   │   └── val.py
+│   │   ├── rtdetr
+│   │   │   ├── __init__.py
+│   │   │   ├── model.py
+│   │   │   ├── predict.py
+│   │   │   ├── train.py
+│   │   │   └── val.py
+│   │   ├── sam
+│   │   │   ├── modules
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── blocks.py
+│   │   │   │   ├── decoders.py
+│   │   │   │   ├── encoders.py
+│   │   │   │   ├── memory_attention.py
+│   │   │   │   ├── sam.py
+│   │   │   │   ├── tiny_encoder.py
+│   │   │   │   ├── transformer.py
+│   │   │   │   └── utils.py
+│   │   │   ├── sam3
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── decoder.py
+│   │   │   │   ├── encoder.py
+│   │   │   │   ├── geometry_encoders.py
+│   │   │   │   ├── maskformer_segmentation.py
+│   │   │   │   ├── model_misc.py
+│   │   │   │   ├── necks.py
+│   │   │   │   ├── sam3_image.py
+│   │   │   │   ├── text_encoder_ve.py
+│   │   │   │   ├── vitdet.py
+│   │   │   │   └── vl_combiner.py
+│   │   │   ├── __init__.py
+│   │   │   ├── amg.py
+│   │   │   ├── build.py
+│   │   │   ├── build_sam3.py
+│   │   │   ├── model.py
+│   │   │   └── predict.py
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── loss.py
+│   │   │   └── ops.py
+│   │   ├── yolo
+│   │   │   ├── classify
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── val.py
+│   │   │   ├── detect
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── val.py
+│   │   │   ├── obb
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── val.py
+│   │   │   ├── pose
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── val.py
+│   │   │   ├── segment
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── val.py
+│   │   │   ├── world
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── train.py
+│   │   │   │   └── train_world.py
+│   │   │   ├── yoloe
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── predict.py
+│   │   │   │   ├── train.py
+│   │   │   │   ├── train_seg.py
+│   │   │   │   └── val.py
+│   │   │   ├── __init__.py
+│   │   │   └── model.py
+│   │   └── __init__.py
+│   ├── nn
+│   │   ├── modules
+│   │   │   ├── ops_dcnv3
+│   │   │   │   ├── functions
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── dcnv3_func.py
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── dcnv3.py
+│   │   │   │   ├── src
+│   │   │   │   │   ├── cpu
+│   │   │   │   │   │   ├── dcnv3_cpu.cpp
+│   │   │   │   │   │   └── dcnv3_cpu.h
+│   │   │   │   │   ├── cuda
+│   │   │   │   │   │   ├── dcnv3_cuda.cu
+│   │   │   │   │   │   ├── dcnv3_cuda.h
+│   │   │   │   │   │   └── dcnv3_im2col_cuda.cuh
+│   │   │   │   │   ├── dcnv3.h
+│   │   │   │   │   └── vision.cpp
+│   │   │   │   ├── make.sh
+│   │   │   │   ├── setup.py
+│   │   │   │   └── test.py
+│   │   │   ├── __init__.py
+│   │   │   ├── activation.py
+│   │   │   ├── block.py
+│   │   │   ├── conv.py
+│   │   │   ├── head.py
+│   │   │   ├── lwf_modules.py
+│   │   │   ├── metaformer.py
+│   │   │   ├── transformer.py
+│   │   │   └── utils.py
+│   │   ├── __init__.py
+│   │   ├── autobackend.py
+│   │   ├── tasks.py
+│   │   └── text_model.py
+│   ├── optim
+│   │   ├── __init__.py
+│   │   └── muon.py
+│   ├── solutions
+│   │   ├── templates
+│   │   │   └── similarity-search.html
+│   │   ├── __init__.py
+│   │   ├── ai_gym.py
+│   │   ├── analytics.py
+│   │   ├── config.py
+│   │   ├── distance_calculation.py
+│   │   ├── heatmap.py
+│   │   ├── instance_segmentation.py
+│   │   ├── object_blurrer.py
+│   │   ├── object_counter.py
+│   │   ├── object_cropper.py
+│   │   ├── parking_management.py
+│   │   ├── queue_management.py
+│   │   ├── region_counter.py
+│   │   ├── security_alarm.py
+│   │   ├── similarity_search.py
+│   │   ├── solutions.py
+│   │   ├── speed_estimation.py
+│   │   ├── streamlit_inference.py
+│   │   ├── trackzone.py
+│   │   └── vision_eye.py
+│   ├── trackers
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── gmc.py
+│   │   │   ├── kalman_filter.py
+│   │   │   └── matching.py
+│   │   ├── __init__.py
+│   │   ├── basetrack.py
+│   │   ├── bot_sort.py
+│   │   ├── byte_tracker.py
+│   │   ├── README.md
+│   │   └── track.py
+│   ├── utils
+│   │   ├── callbacks
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── clearml.py
+│   │   │   ├── comet.py
+│   │   │   ├── dvc.py
+│   │   │   ├── hub.py
+│   │   │   ├── mlflow.py
+│   │   │   ├── neptune.py
+│   │   │   ├── platform.py
+│   │   │   ├── raytune.py
+│   │   │   ├── tensorboard.py
+│   │   │   └── wb.py
+│   │   ├── export
+│   │   │   ├── __init__.py
+│   │   │   ├── engine.py
+│   │   │   ├── imx.py
+│   │   │   └── tensorflow.py
+│   │   ├── __init__.py
+│   │   ├── autobatch.py
+│   │   ├── autodevice.py
+│   │   ├── benchmarks.py
+│   │   ├── checks.py
+│   │   ├── cpu.py
+│   │   ├── dist.py
+│   │   ├── downloads.py
+│   │   ├── errors.py
+│   │   ├── events.py
+│   │   ├── files.py
+│   │   ├── git.py
+│   │   ├── instance.py
+│   │   ├── logger.py
+│   │   ├── loss.py
+│   │   ├── metrics.py
+│   │   ├── nms.py
+│   │   ├── ops.py
+│   │   ├── patches.py
+│   │   ├── plotting.py
+│   │   ├── tal.py
+│   │   ├── torch_utils.py
+│   │   ├── tqdm.py
+│   │   ├── triton.py
+│   │   └── tuner.py
+│   ├── __init__.py
+│   └── py.typed
+├── weights
+│   └── README.md
+├── .gitignore
+├── CITATION.cff
+├── LICENSE
+├── MANIFEST.in
+├── NOTICE
+├── pyproject.toml
+├── README.md
+└── requirements.txt

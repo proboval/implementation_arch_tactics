@@ -1,0 +1,360 @@
+{
+  "nodes": [
+    "easytrader",
+    "easytrader.api",
+    "easytrader.clienttrader",
+    "easytrader.config",
+    "easytrader.config.client",
+    "easytrader.exceptions",
+    "easytrader.follower",
+    "easytrader.gf_clienttrader",
+    "easytrader.gj_clienttrader",
+    "easytrader.grid_strategies",
+    "easytrader.ht_clienttrader",
+    "easytrader.htzq_clienttrader",
+    "easytrader.joinquant_follower",
+    "easytrader.log",
+    "easytrader.miniqmt",
+    "easytrader.miniqmt.miniqmt_trader",
+    "easytrader.pop_dialog_handler",
+    "easytrader.refresh_strategies",
+    "easytrader.remoteclient",
+    "easytrader.ricequant_follower",
+    "easytrader.server",
+    "easytrader.universal_clienttrader",
+    "easytrader.utils",
+    "easytrader.utils.captcha",
+    "easytrader.utils.misc",
+    "easytrader.utils.perf",
+    "easytrader.utils.stock",
+    "easytrader.utils.win_gui",
+    "easytrader.webtrader",
+    "easytrader.wk_clienttrader",
+    "easytrader.xq_follower",
+    "easytrader.xqtrader",
+    "easytrader.yh_clienttrader",
+    "setup",
+    "tests",
+    "tests.test_easytrader",
+    "tests.test_xq_follower",
+    "tests.test_xqtrader"
+  ],
+  "edges": [
+    {
+      "source": "easytrader",
+      "target": "easytrader.api"
+    },
+    {
+      "source": "easytrader",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.gf_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.gj_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.ht_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.htzq_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.joinquant_follower"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.miniqmt.miniqmt_trader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.ricequant_follower"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.universal_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.wk_clienttrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.xq_follower"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.xqtrader"
+    },
+    {
+      "source": "easytrader.api",
+      "target": "easytrader.yh_clienttrader"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.config.client"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.grid_strategies"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.pop_dialog_handler"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.refresh_strategies"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.utils.misc"
+    },
+    {
+      "source": "easytrader.clienttrader",
+      "target": "easytrader.utils.perf"
+    },
+    {
+      "source": "easytrader.follower",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.follower",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.gf_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.gf_clienttrader",
+      "target": "easytrader.utils.captcha"
+    },
+    {
+      "source": "easytrader.gj_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.gj_clienttrader",
+      "target": "easytrader.utils.captcha"
+    },
+    {
+      "source": "easytrader.grid_strategies",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.grid_strategies",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.grid_strategies",
+      "target": "easytrader.utils.captcha"
+    },
+    {
+      "source": "easytrader.grid_strategies",
+      "target": "easytrader.utils.win_gui"
+    },
+    {
+      "source": "easytrader.ht_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.ht_clienttrader",
+      "target": "easytrader.grid_strategies"
+    },
+    {
+      "source": "easytrader.htzq_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.htzq_clienttrader",
+      "target": "easytrader.grid_strategies"
+    },
+    {
+      "source": "easytrader.joinquant_follower",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.joinquant_follower",
+      "target": "easytrader.follower"
+    },
+    {
+      "source": "easytrader.joinquant_follower",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.miniqmt",
+      "target": "easytrader.miniqmt.miniqmt_trader"
+    },
+    {
+      "source": "easytrader.miniqmt.miniqmt_trader",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.miniqmt.miniqmt_trader",
+      "target": "easytrader.utils.perf"
+    },
+    {
+      "source": "easytrader.miniqmt.miniqmt_trader",
+      "target": "easytrader.utils.stock"
+    },
+    {
+      "source": "easytrader.pop_dialog_handler",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.pop_dialog_handler",
+      "target": "easytrader.utils.perf"
+    },
+    {
+      "source": "easytrader.pop_dialog_handler",
+      "target": "easytrader.utils.win_gui"
+    },
+    {
+      "source": "easytrader.refresh_strategies",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.refresh_strategies",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.refresh_strategies",
+      "target": "easytrader.utils.captcha"
+    },
+    {
+      "source": "easytrader.refresh_strategies",
+      "target": "easytrader.utils.win_gui"
+    },
+    {
+      "source": "easytrader.remoteclient",
+      "target": "easytrader.utils.misc"
+    },
+    {
+      "source": "easytrader.ricequant_follower",
+      "target": "easytrader.follower"
+    },
+    {
+      "source": "easytrader.ricequant_follower",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.server",
+      "target": "easytrader.api"
+    },
+    {
+      "source": "easytrader.server",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.universal_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.universal_clienttrader",
+      "target": "easytrader.grid_strategies"
+    },
+    {
+      "source": "easytrader.utils.captcha",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.utils.perf",
+      "target": "easytrader"
+    },
+    {
+      "source": "easytrader.webtrader",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.webtrader",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.webtrader",
+      "target": "easytrader.utils.misc"
+    },
+    {
+      "source": "easytrader.webtrader",
+      "target": "easytrader.utils.stock"
+    },
+    {
+      "source": "easytrader.wk_clienttrader",
+      "target": "easytrader.ht_clienttrader"
+    },
+    {
+      "source": "easytrader.xq_follower",
+      "target": "easytrader.follower"
+    },
+    {
+      "source": "easytrader.xq_follower",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.xq_follower",
+      "target": "easytrader.utils.misc"
+    },
+    {
+      "source": "easytrader.xqtrader",
+      "target": "easytrader.exceptions"
+    },
+    {
+      "source": "easytrader.xqtrader",
+      "target": "easytrader.log"
+    },
+    {
+      "source": "easytrader.xqtrader",
+      "target": "easytrader.utils.misc"
+    },
+    {
+      "source": "easytrader.xqtrader",
+      "target": "easytrader.webtrader"
+    },
+    {
+      "source": "easytrader.yh_clienttrader",
+      "target": "easytrader.clienttrader"
+    },
+    {
+      "source": "easytrader.yh_clienttrader",
+      "target": "easytrader.grid_strategies"
+    },
+    {
+      "source": "easytrader.yh_clienttrader",
+      "target": "easytrader.utils.captcha"
+    },
+    {
+      "source": "tests.test_easytrader",
+      "target": "easytrader"
+    },
+    {
+      "source": "tests.test_xq_follower",
+      "target": "easytrader.xq_follower"
+    },
+    {
+      "source": "tests.test_xqtrader",
+      "target": "easytrader.xqtrader"
+    }
+  ]
+}

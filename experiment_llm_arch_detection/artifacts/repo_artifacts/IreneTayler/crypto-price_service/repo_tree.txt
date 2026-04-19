@@ -1,0 +1,24 @@
+crypto-price_service
+├── app
+│   ├── repositories
+│   │   ├── __init__.py
+│   │   └── price_repository.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   └── price_service.py
+│   ├── __init__.py
+│   ├── celery_app.py
+│   ├── config.py
+│   ├── database.py
+│   ├── deribit_client.py
+│   ├── main.py
+│   ├── models.py
+│   └── schemas.py
+├── tests
+│   └── test_api.py
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── pytest.ini
+├── README.md
+└── requirements.txt

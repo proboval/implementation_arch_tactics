@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    "app",
+    "app.ai",
+    "app.ai.ai_ark",
+    "app.ai.ai_monitor_worker",
+    "app.ai.ai_store",
+    "app.ai.motion_trigger",
+    "app.config",
+    "app.config.config_store",
+    "app.core",
+    "app.core.frame_buffer",
+    "app.core.logger",
+    "app.core.runtime",
+    "app.core.upload_stats",
+    "app.net",
+    "app.net.net_discovery",
+    "app.recorder",
+    "app.recorder.recorder",
+    "app.recorder.recorder_worker",
+    "app.web",
+    "app.web.webapp",
+    "server"
+  ],
+  "edges": [
+    {
+      "source": "app.ai.ai_monitor_worker",
+      "target": "app.ai.ai_ark"
+    },
+    {
+      "source": "app.ai.ai_monitor_worker",
+      "target": "app.ai.ai_store"
+    },
+    {
+      "source": "app.ai.ai_monitor_worker",
+      "target": "app.ai.motion_trigger"
+    },
+    {
+      "source": "app.recorder.recorder_worker",
+      "target": "app.recorder.recorder"
+    },
+    {
+      "source": "app.web.webapp",
+      "target": "app.config.config_store"
+    },
+    {
+      "source": "app.web.webapp",
+      "target": "app.recorder.recorder_worker"
+    },
+    {
+      "source": "server",
+      "target": "app.ai.ai_monitor_worker"
+    },
+    {
+      "source": "server",
+      "target": "app.ai.ai_store"
+    },
+    {
+      "source": "server",
+      "target": "app.config.config_store"
+    },
+    {
+      "source": "server",
+      "target": "app.core.frame_buffer"
+    },
+    {
+      "source": "server",
+      "target": "app.core.logger"
+    },
+    {
+      "source": "server",
+      "target": "app.core.runtime"
+    },
+    {
+      "source": "server",
+      "target": "app.core.upload_stats"
+    },
+    {
+      "source": "server",
+      "target": "app.recorder.recorder_worker"
+    },
+    {
+      "source": "server",
+      "target": "app.web.webapp"
+    }
+  ]
+}

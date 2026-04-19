@@ -1,0 +1,8 @@
+# Nodes: 5
+# Edges: 5
+
+app -> rebuttal_service
+rebuttal_service -> arxiv
+rebuttal_service -> llm
+rebuttal_service -> tools
+tools -> arxiv

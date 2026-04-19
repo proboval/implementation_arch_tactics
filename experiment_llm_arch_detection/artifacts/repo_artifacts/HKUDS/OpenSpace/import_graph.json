@@ -1,0 +1,2260 @@
+{
+  "nodes": [
+    "gdpval_bench",
+    "gdpval_bench.__main__",
+    "gdpval_bench.calc_subset_performance",
+    "gdpval_bench.run_benchmark",
+    "gdpval_bench.task_loader",
+    "gdpval_bench.token_tracker",
+    "openspace",
+    "openspace.__main__",
+    "openspace.agents",
+    "openspace.agents.base",
+    "openspace.agents.grounding_agent",
+    "openspace.agents.message_utils",
+    "openspace.agents.visual_analyzer",
+    "openspace.cloud",
+    "openspace.cloud.auth",
+    "openspace.cloud.cli",
+    "openspace.cloud.cli.download_skill",
+    "openspace.cloud.cli.upload_skill",
+    "openspace.cloud.client",
+    "openspace.cloud.embedding",
+    "openspace.cloud.search",
+    "openspace.communication",
+    "openspace.communication.adapters",
+    "openspace.communication.adapters.base",
+    "openspace.communication.adapters.feishu",
+    "openspace.communication.adapters.whatsapp",
+    "openspace.communication.attachment_cache",
+    "openspace.communication.config",
+    "openspace.communication.gateway",
+    "openspace.communication.gateway_runtime",
+    "openspace.communication.policy",
+    "openspace.communication.runtime_manager",
+    "openspace.communication.session_store",
+    "openspace.communication.types",
+    "openspace.config",
+    "openspace.config.constants",
+    "openspace.config.grounding",
+    "openspace.config.loader",
+    "openspace.config.utils",
+    "openspace.dashboard_server",
+    "openspace.grounding.backends",
+    "openspace.grounding.backends.gui",
+    "openspace.grounding.backends.gui.anthropic_client",
+    "openspace.grounding.backends.gui.anthropic_utils",
+    "openspace.grounding.backends.gui.config",
+    "openspace.grounding.backends.gui.provider",
+    "openspace.grounding.backends.gui.session",
+    "openspace.grounding.backends.gui.tool",
+    "openspace.grounding.backends.gui.transport.actions",
+    "openspace.grounding.backends.gui.transport.connector",
+    "openspace.grounding.backends.gui.transport.local_connector",
+    "openspace.grounding.backends.mcp",
+    "openspace.grounding.backends.mcp.client",
+    "openspace.grounding.backends.mcp.config",
+    "openspace.grounding.backends.mcp.installer",
+    "openspace.grounding.backends.mcp.provider",
+    "openspace.grounding.backends.mcp.session",
+    "openspace.grounding.backends.mcp.tool_cache",
+    "openspace.grounding.backends.mcp.tool_converter",
+    "openspace.grounding.backends.mcp.transport.connectors",
+    "openspace.grounding.backends.mcp.transport.connectors.base",
+    "openspace.grounding.backends.mcp.transport.connectors.http",
+    "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+    "openspace.grounding.backends.mcp.transport.connectors.stdio",
+    "openspace.grounding.backends.mcp.transport.connectors.utils",
+    "openspace.grounding.backends.mcp.transport.connectors.websocket",
+    "openspace.grounding.backends.mcp.transport.task_managers",
+    "openspace.grounding.backends.mcp.transport.task_managers.sse",
+    "openspace.grounding.backends.mcp.transport.task_managers.stdio",
+    "openspace.grounding.backends.mcp.transport.task_managers.streamable_http",
+    "openspace.grounding.backends.mcp.transport.task_managers.websocket",
+    "openspace.grounding.backends.shell",
+    "openspace.grounding.backends.shell.productivity_tools",
+    "openspace.grounding.backends.shell.provider",
+    "openspace.grounding.backends.shell.session",
+    "openspace.grounding.backends.shell.transport.connector",
+    "openspace.grounding.backends.shell.transport.local_connector",
+    "openspace.grounding.backends.web",
+    "openspace.grounding.backends.web.provider",
+    "openspace.grounding.backends.web.session",
+    "openspace.grounding.core.exceptions",
+    "openspace.grounding.core.grounding_client",
+    "openspace.grounding.core.provider",
+    "openspace.grounding.core.quality",
+    "openspace.grounding.core.quality.manager",
+    "openspace.grounding.core.quality.store",
+    "openspace.grounding.core.quality.types",
+    "openspace.grounding.core.search_tools",
+    "openspace.grounding.core.security",
+    "openspace.grounding.core.security.e2b_sandbox",
+    "openspace.grounding.core.security.policies",
+    "openspace.grounding.core.security.sandbox",
+    "openspace.grounding.core.session",
+    "openspace.grounding.core.system",
+    "openspace.grounding.core.system.provider",
+    "openspace.grounding.core.system.tool",
+    "openspace.grounding.core.tool",
+    "openspace.grounding.core.tool.base",
+    "openspace.grounding.core.tool.local_tool",
+    "openspace.grounding.core.tool.remote_tool",
+    "openspace.grounding.core.transport.connectors",
+    "openspace.grounding.core.transport.connectors.aiohttp_connector",
+    "openspace.grounding.core.transport.connectors.base",
+    "openspace.grounding.core.transport.task_managers",
+    "openspace.grounding.core.transport.task_managers.aiohttp_connection_manager",
+    "openspace.grounding.core.transport.task_managers.async_ctx",
+    "openspace.grounding.core.transport.task_managers.base",
+    "openspace.grounding.core.transport.task_managers.noop",
+    "openspace.grounding.core.transport.task_managers.placeholder",
+    "openspace.grounding.core.types",
+    "openspace.host_detection",
+    "openspace.host_detection.nanobot",
+    "openspace.host_detection.openclaw",
+    "openspace.host_detection.resolver",
+    "openspace.llm",
+    "openspace.llm.client",
+    "openspace.local_server",
+    "openspace.local_server.feature_checker",
+    "openspace.local_server.health_checker",
+    "openspace.local_server.main",
+    "openspace.local_server.platform_adapters",
+    "openspace.local_server.platform_adapters.linux_adapter",
+    "openspace.local_server.platform_adapters.macos_adapter",
+    "openspace.local_server.platform_adapters.pyxcursor",
+    "openspace.local_server.platform_adapters.windows_adapter",
+    "openspace.local_server.utils",
+    "openspace.local_server.utils.accessibility",
+    "openspace.local_server.utils.screenshot",
+    "openspace.mcp_server",
+    "openspace.platforms",
+    "openspace.platforms.config",
+    "openspace.platforms.recording",
+    "openspace.platforms.screenshot",
+    "openspace.platforms.system_info",
+    "openspace.prompts",
+    "openspace.prompts.grounding_agent_prompts",
+    "openspace.prompts.skill_engine_prompts",
+    "openspace.recording",
+    "openspace.recording.action_recorder",
+    "openspace.recording.manager",
+    "openspace.recording.recorder",
+    "openspace.recording.utils",
+    "openspace.recording.video",
+    "openspace.recording.viewer",
+    "openspace.skill_engine",
+    "openspace.skill_engine.analyzer",
+    "openspace.skill_engine.conversation_formatter",
+    "openspace.skill_engine.evolver",
+    "openspace.skill_engine.fuzzy_match",
+    "openspace.skill_engine.patch",
+    "openspace.skill_engine.registry",
+    "openspace.skill_engine.retrieve_tool",
+    "openspace.skill_engine.skill_ranker",
+    "openspace.skill_engine.skill_utils",
+    "openspace.skill_engine.store",
+    "openspace.skill_engine.types",
+    "openspace.tool_layer",
+    "openspace.utils.cli_display",
+    "openspace.utils.display",
+    "openspace.utils.logging",
+    "openspace.utils.telemetry",
+    "openspace.utils.telemetry.events",
+    "openspace.utils.telemetry.telemetry",
+    "openspace.utils.telemetry.utils",
+    "openspace.utils.ui",
+    "openspace.utils.ui_integration"
+  ],
+  "edges": [
+    {
+      "source": "gdpval_bench.__main__",
+      "target": "gdpval_bench.run_benchmark"
+    },
+    {
+      "source": "gdpval_bench.run_benchmark",
+      "target": "gdpval_bench.task_loader"
+    },
+    {
+      "source": "gdpval_bench.run_benchmark",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "gdpval_bench.run_benchmark",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "gdpval_bench.run_benchmark",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace",
+      "target": "openspace.agents"
+    },
+    {
+      "source": "openspace",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.communication.gateway"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.grounding.backends.mcp"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.utils.cli_display"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.utils.ui"
+    },
+    {
+      "source": "openspace.__main__",
+      "target": "openspace.utils.ui_integration"
+    },
+    {
+      "source": "openspace.agents",
+      "target": "openspace.agents.base"
+    },
+    {
+      "source": "openspace.agents",
+      "target": "openspace.agents.grounding_agent"
+    },
+    {
+      "source": "openspace.agents.base",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.agents.base",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.agents.base",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.agents.base",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.agents.base"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.agents.message_utils"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.agents.visual_analyzer"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.prompts"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.skill_engine.retrieve_tool"
+    },
+    {
+      "source": "openspace.agents.grounding_agent",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.agents.message_utils",
+      "target": "openspace.prompts"
+    },
+    {
+      "source": "openspace.agents.message_utils",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.platforms.screenshot"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.prompts"
+    },
+    {
+      "source": "openspace.agents.visual_analyzer",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.cloud",
+      "target": "openspace.cloud.auth"
+    },
+    {
+      "source": "openspace.cloud",
+      "target": "openspace.cloud.client"
+    },
+    {
+      "source": "openspace.cloud",
+      "target": "openspace.cloud.embedding"
+    },
+    {
+      "source": "openspace.cloud",
+      "target": "openspace.cloud.search"
+    },
+    {
+      "source": "openspace.cloud.auth",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.cloud.cli.download_skill",
+      "target": "openspace.cloud.auth"
+    },
+    {
+      "source": "openspace.cloud.cli.download_skill",
+      "target": "openspace.cloud.client"
+    },
+    {
+      "source": "openspace.cloud.cli.upload_skill",
+      "target": "openspace.cloud.auth"
+    },
+    {
+      "source": "openspace.cloud.cli.upload_skill",
+      "target": "openspace.cloud.client"
+    },
+    {
+      "source": "openspace.cloud.client",
+      "target": "openspace.skill_engine.skill_utils"
+    },
+    {
+      "source": "openspace.cloud.embedding",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.cloud.search",
+      "target": "openspace.cloud.auth"
+    },
+    {
+      "source": "openspace.cloud.search",
+      "target": "openspace.cloud.client"
+    },
+    {
+      "source": "openspace.cloud.search",
+      "target": "openspace.cloud.embedding"
+    },
+    {
+      "source": "openspace.cloud.search",
+      "target": "openspace.skill_engine.skill_ranker"
+    },
+    {
+      "source": "openspace.cloud.search",
+      "target": "openspace.skill_engine.skill_utils"
+    },
+    {
+      "source": "openspace.communication",
+      "target": "openspace.communication.config"
+    },
+    {
+      "source": "openspace.communication",
+      "target": "openspace.communication.session_store"
+    },
+    {
+      "source": "openspace.communication",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.adapters",
+      "target": "openspace.communication.adapters.base"
+    },
+    {
+      "source": "openspace.communication.adapters",
+      "target": "openspace.communication.adapters.feishu"
+    },
+    {
+      "source": "openspace.communication.adapters",
+      "target": "openspace.communication.adapters.whatsapp"
+    },
+    {
+      "source": "openspace.communication.adapters.base",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.adapters.base",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.communication.adapters.base"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.communication.attachment_cache"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.communication.config"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.communication.policy"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.adapters.feishu",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.adapters.whatsapp",
+      "target": "openspace.communication.adapters.base"
+    },
+    {
+      "source": "openspace.communication.adapters.whatsapp",
+      "target": "openspace.communication.attachment_cache"
+    },
+    {
+      "source": "openspace.communication.adapters.whatsapp",
+      "target": "openspace.communication.config"
+    },
+    {
+      "source": "openspace.communication.adapters.whatsapp",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.adapters.whatsapp",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.attachment_cache",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.attachment_cache",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.config",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.communication.config",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.adapters"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.adapters.base"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.attachment_cache"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.config"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.gateway_runtime"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.policy"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.runtime_manager"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.session_store"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.communication.gateway",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.gateway_runtime",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.policy",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.runtime_manager",
+      "target": "openspace.communication.config"
+    },
+    {
+      "source": "openspace.communication.runtime_manager",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.runtime_manager",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.communication.runtime_manager",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.communication.session_store",
+      "target": "openspace.communication.types"
+    },
+    {
+      "source": "openspace.communication.session_store",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.config",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.config",
+      "target": "openspace.config.grounding"
+    },
+    {
+      "source": "openspace.config",
+      "target": "openspace.config.loader"
+    },
+    {
+      "source": "openspace.config",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.config.grounding",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.config.grounding",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.config.grounding",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.config.loader",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.config.loader",
+      "target": "openspace.config.grounding"
+    },
+    {
+      "source": "openspace.config.loader",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.config.loader",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.dashboard_server",
+      "target": "openspace.recording.action_recorder"
+    },
+    {
+      "source": "openspace.dashboard_server",
+      "target": "openspace.recording.utils"
+    },
+    {
+      "source": "openspace.dashboard_server",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "openspace.dashboard_server",
+      "target": "openspace.skill_engine.types"
+    },
+    {
+      "source": "openspace.grounding.backends",
+      "target": "openspace.grounding.backends.gui.provider"
+    },
+    {
+      "source": "openspace.grounding.backends",
+      "target": "openspace.grounding.backends.mcp.provider"
+    },
+    {
+      "source": "openspace.grounding.backends",
+      "target": "openspace.grounding.backends.shell.provider"
+    },
+    {
+      "source": "openspace.grounding.backends",
+      "target": "openspace.grounding.backends.web.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.anthropic_client"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.anthropic_utils"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.session"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui",
+      "target": "openspace.grounding.backends.gui.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.anthropic_client",
+      "target": "openspace.grounding.backends.gui.anthropic_utils"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.anthropic_client",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.anthropic_utils",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.config",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.backends.gui.session"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.backends.gui.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.backends.gui.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.platforms"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.provider",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.backends.gui.anthropic_client"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.backends.gui.config"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.backends.gui.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.backends.gui.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.backends.gui.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.session",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.grounding.backends.gui.anthropic_client"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.grounding.backends.gui.transport.actions"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.grounding.backends.gui.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.grounding.core.tool.base"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.recording.manager"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.tool",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.connector",
+      "target": "openspace.grounding.backends.gui.transport.actions"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.connector",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.connector",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.local_connector",
+      "target": "openspace.grounding.backends.gui.transport.actions"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.local_connector",
+      "target": "openspace.grounding.core.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.local_connector",
+      "target": "openspace.grounding.core.transport.task_managers.noop"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.local_connector",
+      "target": "openspace.local_server.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.gui.transport.local_connector",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp",
+      "target": "openspace.grounding.backends.mcp.client"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp",
+      "target": "openspace.grounding.backends.mcp.installer"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp",
+      "target": "openspace.grounding.backends.mcp.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp",
+      "target": "openspace.grounding.backends.mcp.session"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp",
+      "target": "openspace.grounding.backends.mcp.tool_cache"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.grounding.backends.mcp.config"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.grounding.backends.mcp.installer"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.grounding.backends.mcp.session"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.client",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.grounding.backends.mcp.installer"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.grounding.backends.mcp.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.grounding.core.security"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.config",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.installer",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.installer",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.backends.mcp.client"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.backends.mcp.installer"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.backends.mcp.session"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.backends.mcp.tool_cache"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.backends.mcp.tool_converter"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.provider",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.session",
+      "target": "openspace.grounding.backends.mcp.tool_converter"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.session",
+      "target": "openspace.grounding.backends.mcp.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.session",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.session",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.session",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.tool_cache",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.tool_converter",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.tool_converter",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.tool_converter",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.tool_converter",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.http"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.sandbox"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.stdio"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.websocket"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.base",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.base",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.base",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.http",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.http",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.http",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.http",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.http",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+      "target": "openspace.grounding.core.security"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.sandbox",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.stdio",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.stdio",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.stdio",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.websocket",
+      "target": "openspace.grounding.backends.mcp.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.websocket",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.websocket",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.connectors.websocket",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers.sse"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers.stdio"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers.streamable_http"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers",
+      "target": "openspace.grounding.backends.mcp.transport.task_managers.websocket"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.sse",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.sse",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.stdio",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.stdio",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.streamable_http",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.streamable_http",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.websocket",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.backends.mcp.transport.task_managers.websocket",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.shell",
+      "target": "openspace.grounding.backends.shell.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.shell",
+      "target": "openspace.grounding.backends.shell.session"
+    },
+    {
+      "source": "openspace.grounding.backends.shell",
+      "target": "openspace.grounding.backends.shell.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell",
+      "target": "openspace.grounding.backends.shell.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.productivity_tools",
+      "target": "openspace.grounding.backends.shell.session"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.productivity_tools",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.productivity_tools",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.productivity_tools",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.grounding.backends.shell.session"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.grounding.backends.shell.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.grounding.backends.shell.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.platforms.config"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.provider",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.backends.shell.productivity_tools"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.backends.shell.transport.connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.backends.shell.transport.local_connector"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.core.security.policies"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.platforms"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.session",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.connector",
+      "target": "openspace.grounding.core.security"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.connector",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.connector",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.connector",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.local_connector",
+      "target": "openspace.grounding.core.security"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.local_connector",
+      "target": "openspace.grounding.core.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.local_connector",
+      "target": "openspace.grounding.core.transport.task_managers.noop"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.local_connector",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.shell.transport.local_connector",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.web",
+      "target": "openspace.grounding.backends.web.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.web",
+      "target": "openspace.grounding.backends.web.session"
+    },
+    {
+      "source": "openspace.grounding.backends.web.provider",
+      "target": "openspace.grounding.backends.web.session"
+    },
+    {
+      "source": "openspace.grounding.backends.web.provider",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.backends.web.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.web.provider",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.grounding.backends.web.session",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.exceptions"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.quality"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.search_tools"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.system"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.grounding_client",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.grounding.core.security.policies"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.grounding.core.session"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.provider",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.quality",
+      "target": "openspace.grounding.core.quality.manager"
+    },
+    {
+      "source": "openspace.grounding.core.quality",
+      "target": "openspace.grounding.core.quality.store"
+    },
+    {
+      "source": "openspace.grounding.core.quality",
+      "target": "openspace.grounding.core.quality.types"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.grounding.core.quality.store"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.grounding.core.quality.types"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.grounding.core.quality.manager",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.quality.store",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.grounding.core.quality.store",
+      "target": "openspace.grounding.core.quality.types"
+    },
+    {
+      "source": "openspace.grounding.core.quality.store",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.grounding.core.quality"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.grounding.core.tool.base"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.grounding.core.search_tools",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.security",
+      "target": "openspace.grounding.core.security.e2b_sandbox"
+    },
+    {
+      "source": "openspace.grounding.core.security",
+      "target": "openspace.grounding.core.security.policies"
+    },
+    {
+      "source": "openspace.grounding.core.security",
+      "target": "openspace.grounding.core.security.sandbox"
+    },
+    {
+      "source": "openspace.grounding.core.security.e2b_sandbox",
+      "target": "openspace.grounding.core.security.sandbox"
+    },
+    {
+      "source": "openspace.grounding.core.security.e2b_sandbox",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.security.e2b_sandbox",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.security.policies",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.security.policies",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.grounding.core.security.sandbox",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.session",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.grounding.core.session",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.core.session",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.session",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.system",
+      "target": "openspace.grounding.core.system.provider"
+    },
+    {
+      "source": "openspace.grounding.core.system",
+      "target": "openspace.grounding.core.system.tool"
+    },
+    {
+      "source": "openspace.grounding.core.system.provider",
+      "target": "openspace.grounding.core.exceptions"
+    },
+    {
+      "source": "openspace.grounding.core.system.provider",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.grounding.core.system.provider",
+      "target": "openspace.grounding.core.provider"
+    },
+    {
+      "source": "openspace.grounding.core.system.provider",
+      "target": "openspace.grounding.core.system.tool"
+    },
+    {
+      "source": "openspace.grounding.core.system.provider",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.system.tool",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.grounding.core.system.tool",
+      "target": "openspace.grounding.core.tool.local_tool"
+    },
+    {
+      "source": "openspace.grounding.core.system.tool",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.tool",
+      "target": "openspace.grounding.core.tool.base"
+    },
+    {
+      "source": "openspace.grounding.core.tool",
+      "target": "openspace.grounding.core.tool.local_tool"
+    },
+    {
+      "source": "openspace.grounding.core.tool",
+      "target": "openspace.grounding.core.tool.remote_tool"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.grounding.core.exceptions"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.grounding.core.quality"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.grounding.core.tool.base",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.tool.local_tool",
+      "target": "openspace.grounding.core.tool.base"
+    },
+    {
+      "source": "openspace.grounding.core.tool.remote_tool",
+      "target": "openspace.grounding.core.tool.base"
+    },
+    {
+      "source": "openspace.grounding.core.tool.remote_tool",
+      "target": "openspace.grounding.core.transport.connectors"
+    },
+    {
+      "source": "openspace.grounding.core.tool.remote_tool",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.grounding.core.tool.remote_tool",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors",
+      "target": "openspace.grounding.core.transport.connectors.aiohttp_connector"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors",
+      "target": "openspace.grounding.core.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors.aiohttp_connector",
+      "target": "openspace.grounding.core.transport.connectors.base"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors.aiohttp_connector",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors.aiohttp_connector",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.transport.connectors.base",
+      "target": "openspace.grounding.core.transport.task_managers"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers",
+      "target": "openspace.grounding.core.transport.task_managers.aiohttp_connection_manager"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers",
+      "target": "openspace.grounding.core.transport.task_managers.async_ctx"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers",
+      "target": "openspace.grounding.core.transport.task_managers.noop"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers",
+      "target": "openspace.grounding.core.transport.task_managers.placeholder"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers.aiohttp_connection_manager",
+      "target": "openspace.grounding.core.transport.task_managers.async_ctx"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers.async_ctx",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers.base",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers.noop",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.grounding.core.transport.task_managers.placeholder",
+      "target": "openspace.grounding.core.transport.task_managers.base"
+    },
+    {
+      "source": "openspace.host_detection",
+      "target": "openspace.host_detection.nanobot"
+    },
+    {
+      "source": "openspace.host_detection",
+      "target": "openspace.host_detection.openclaw"
+    },
+    {
+      "source": "openspace.host_detection",
+      "target": "openspace.host_detection.resolver"
+    },
+    {
+      "source": "openspace.host_detection.openclaw",
+      "target": "openspace.host_detection.nanobot"
+    },
+    {
+      "source": "openspace.host_detection.resolver",
+      "target": "openspace.host_detection.nanobot"
+    },
+    {
+      "source": "openspace.host_detection.resolver",
+      "target": "openspace.host_detection.openclaw"
+    },
+    {
+      "source": "openspace.llm",
+      "target": "openspace.llm.client"
+    },
+    {
+      "source": "openspace.llm.client",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "openspace.llm.client",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.llm.client",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.llm.client",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server",
+      "target": "openspace.local_server.main"
+    },
+    {
+      "source": "openspace.local_server.feature_checker",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.health_checker",
+      "target": "openspace.local_server.feature_checker"
+    },
+    {
+      "source": "openspace.local_server.health_checker",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.local_server.health_checker",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.config.utils"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.local_server.feature_checker"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.local_server.health_checker"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.local_server.platform_adapters"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.local_server.utils"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.local_server.main",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters",
+      "target": "openspace.local_server.platform_adapters.linux_adapter"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters",
+      "target": "openspace.local_server.platform_adapters.macos_adapter"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters",
+      "target": "openspace.local_server.platform_adapters.windows_adapter"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters.linux_adapter",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters.macos_adapter",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.platform_adapters.windows_adapter",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.utils",
+      "target": "openspace.local_server.utils.accessibility"
+    },
+    {
+      "source": "openspace.local_server.utils",
+      "target": "openspace.local_server.utils.screenshot"
+    },
+    {
+      "source": "openspace.local_server.utils.accessibility",
+      "target": "openspace.local_server.platform_adapters.linux_adapter"
+    },
+    {
+      "source": "openspace.local_server.utils.accessibility",
+      "target": "openspace.local_server.platform_adapters.macos_adapter"
+    },
+    {
+      "source": "openspace.local_server.utils.accessibility",
+      "target": "openspace.local_server.platform_adapters.windows_adapter"
+    },
+    {
+      "source": "openspace.local_server.utils.accessibility",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.local_server.utils.screenshot",
+      "target": "openspace.local_server.platform_adapters.linux_adapter"
+    },
+    {
+      "source": "openspace.local_server.utils.screenshot",
+      "target": "openspace.local_server.platform_adapters.macos_adapter"
+    },
+    {
+      "source": "openspace.local_server.utils.screenshot",
+      "target": "openspace.local_server.platform_adapters.windows_adapter"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.cloud.auth"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.cloud.client"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.cloud.search"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.host_detection"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.skill_engine.evolver"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.skill_engine.types"
+    },
+    {
+      "source": "openspace.mcp_server",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.platforms",
+      "target": "openspace.platforms.config"
+    },
+    {
+      "source": "openspace.platforms",
+      "target": "openspace.platforms.recording"
+    },
+    {
+      "source": "openspace.platforms",
+      "target": "openspace.platforms.screenshot"
+    },
+    {
+      "source": "openspace.platforms",
+      "target": "openspace.platforms.system_info"
+    },
+    {
+      "source": "openspace.platforms.config",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.platforms.recording",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.platforms.recording",
+      "target": "openspace.platforms.config"
+    },
+    {
+      "source": "openspace.platforms.recording",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.platforms.screenshot",
+      "target": "openspace.platforms.config"
+    },
+    {
+      "source": "openspace.platforms.screenshot",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.platforms.system_info",
+      "target": "openspace.platforms.config"
+    },
+    {
+      "source": "openspace.platforms.system_info",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.prompts",
+      "target": "openspace.prompts.grounding_agent_prompts"
+    },
+    {
+      "source": "openspace.prompts",
+      "target": "openspace.prompts.skill_engine_prompts"
+    },
+    {
+      "source": "openspace.recording.action_recorder",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.recording.manager",
+      "target": "openspace.platforms"
+    },
+    {
+      "source": "openspace.recording.manager",
+      "target": "openspace.recording.action_recorder"
+    },
+    {
+      "source": "openspace.recording.manager",
+      "target": "openspace.recording.recorder"
+    },
+    {
+      "source": "openspace.recording.manager",
+      "target": "openspace.recording.utils"
+    },
+    {
+      "source": "openspace.recording.manager",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.recording.recorder",
+      "target": "openspace.platforms"
+    },
+    {
+      "source": "openspace.recording.recorder",
+      "target": "openspace.recording.video"
+    },
+    {
+      "source": "openspace.recording.recorder",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.recording.utils",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.recording.utils",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.recording.video",
+      "target": "openspace.platforms"
+    },
+    {
+      "source": "openspace.recording.video",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.recording.viewer",
+      "target": "openspace.recording.action_recorder"
+    },
+    {
+      "source": "openspace.recording.viewer",
+      "target": "openspace.recording.utils"
+    },
+    {
+      "source": "openspace.recording.viewer",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.grounding.core.quality"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.prompts"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.skill_engine.conversation_formatter"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.skill_engine.registry"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.skill_engine.store"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.skill_engine.types"
+    },
+    {
+      "source": "openspace.skill_engine.analyzer",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.grounding.core.quality.types"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.grounding.core.tool"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.prompts"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.skill_engine.patch"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.skill_engine.registry"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.skill_engine.skill_utils"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.skill_engine.store"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.skill_engine.types"
+    },
+    {
+      "source": "openspace.skill_engine.evolver",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.fuzzy_match",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.patch",
+      "target": "openspace.skill_engine.fuzzy_match"
+    },
+    {
+      "source": "openspace.skill_engine.patch",
+      "target": "openspace.skill_engine.skill_utils"
+    },
+    {
+      "source": "openspace.skill_engine.patch",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.registry",
+      "target": "gdpval_bench.token_tracker"
+    },
+    {
+      "source": "openspace.skill_engine.registry",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.skill_engine.registry",
+      "target": "openspace.skill_engine.skill_ranker"
+    },
+    {
+      "source": "openspace.skill_engine.registry",
+      "target": "openspace.skill_engine.skill_utils"
+    },
+    {
+      "source": "openspace.skill_engine.registry",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.cloud.search"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.grounding.core.tool.local_tool"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.skill_engine.store"
+    },
+    {
+      "source": "openspace.skill_engine.retrieve_tool",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.skill_ranker",
+      "target": "openspace.cloud.embedding"
+    },
+    {
+      "source": "openspace.skill_engine.skill_ranker",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.skill_engine.skill_ranker",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.skill_utils",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.skill_engine.store",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.skill_engine.store",
+      "target": "openspace.skill_engine.patch"
+    },
+    {
+      "source": "openspace.skill_engine.store",
+      "target": "openspace.skill_engine.types"
+    },
+    {
+      "source": "openspace.skill_engine.store",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.agents"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.config"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.config.constants"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.config.loader"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.grounding.core.grounding_client"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.grounding.core.types"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.llm"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.recording"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.skill_engine"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.skill_engine.evolver"
+    },
+    {
+      "source": "openspace.tool_layer",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.utils.cli_display",
+      "target": "openspace.tool_layer"
+    },
+    {
+      "source": "openspace.utils.cli_display",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.utils.ui",
+      "target": "openspace.utils.display"
+    },
+    {
+      "source": "openspace.utils.ui_integration",
+      "target": "openspace.utils.logging"
+    },
+    {
+      "source": "openspace.utils.ui_integration",
+      "target": "openspace.utils.ui"
+    }
+  ]
+}

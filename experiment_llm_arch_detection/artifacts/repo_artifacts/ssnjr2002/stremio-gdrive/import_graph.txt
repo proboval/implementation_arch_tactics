@@ -1,0 +1,14 @@
+# Nodes: 8
+# Edges: 11
+
+sgd -> sgd.gdrive
+sgd -> sgd.routes
+sgd.gdrive -> sgd.cache
+sgd.meta -> sgd.cache
+sgd.meta -> sgd.utils
+sgd.routes -> sgd.gdrive
+sgd.routes -> sgd.meta
+sgd.routes -> sgd.streams
+sgd.streams -> sgd.ptn
+sgd.streams -> sgd.utils
+sgd.utils -> sgd.cache

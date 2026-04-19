@@ -1,0 +1,469 @@
+# FILE: app/config.py
+from pydantic_settings import BaseSettings
+from pydantic import Field, AliasChoices
+from typing import Optional
+import os
+
+class Settings(BaseSettings):
+
+def ensure_directoriesNone: ...
+
+# FILE: app/database.py
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from contextlib import asynccontextmanager
+from app.config import settings
+from app.models import Base
+import os
+
+async def init_dbNone: ...
+
+async def get_dbNone: ...
+
+async def get_db_contextNone: ...
+
+# FILE: app/main.py
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from loguru import logger
+import sys
+from app.config import settings, ensure_directories
+from app.database import init_db
+from app.routers import auth, favorites, knowledge, chat
+
+async def lifespanNone: ...
+
+async def rootNone: ...
+
+async def health_checkNone: ...
+
+# FILE: app/models.py
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, JSON
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel
+from enum import Enum
+
+class VideoCache(Base):
+
+class UserSession(Base):
+
+class FavoriteFolder(Base):
+
+class FavoriteVideo(Base):
+
+class ContentSource(str, Enum):
+
+class VideoInfo(BaseModel):
+
+class VideoContent(BaseModel):
+
+class QRCodeResponse(BaseModel):
+
+class LoginStatusResponse(BaseModel):
+
+class FavoriteFolderInfo(BaseModel):
+
+class ChatRequest(BaseModel):
+
+class ChatResponse(BaseModel):
+
+# FILE: app/routers/__init__.py
+from app.routers import auth, favorites, knowledge, chat
+
+# FILE: app/routers/auth.py
+from fastapi import APIRouter, HTTPException, Depends
+from loguru import logger
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from app.database import get_db, get_db_context
+from app.models import QRCodeResponse, LoginStatusResponse, UserSession as UserSessionModel
+from app.services.bilibili import BilibiliService
+import uuid
+
+async def generate_qrcodeNone: ...
+
+async def poll_qrcode_statusNone: ...
+
+async def get_session_infoNone: ...
+
+async def logoutNone: ...
+
+async def get_sessionNone: ...
+
+# FILE: app/routers/chat.py
+import re
+import json
+from typing import List, Optional
+from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import StreamingResponse
+from loguru import logger
+from sqlalchemy import select, func, or_
+from sqlalchemy.ext.asyncio import AsyncSession
+from openai import OpenAI
+from langchain.schema import Document
+from app.database import get_db
+from app.models import ChatRequest, ChatResponse, FavoriteFolder, FavoriteVideo, VideoCache
+from app.config import settings
+from app.routers.knowledge import get_rag_service
+
+def _get_llm_clientNone: ...
+
+def _build_overview_messagesNone: ...
+
+def _build_rag_messagesNone: ...
+
+def _build_fallback_messagesNone: ...
+
+def _build_direct_messagesNone: ...
+
+def _build_direct_messages_with_contextNone: ...
+
+def _log_final_payloadNone: ...
+
+def _build_db_list_messagesNone: ...
+
+def _build_db_summary_messagesNone: ...
+
+def _is_list_questionNone: ...
+
+def _is_summary_questionNone: ...
+
+def _is_general_questionNone: ...
+
+def _is_collection_intentNone: ...
+
+def _is_overview_questionNone: ...
+
+def _route_with_rulesNone: ...
+
+def _route_with_llmNone: ...
+
+def _extract_keywordsNone: ...
+
+def _filter_docs_by_keywordsNone: ...
+
+async def _is_related_to_collectionNone: ...
+
+async def _get_folder_ids_for_sessionNone: ...
+
+async def _get_bvids_by_folder_idsNone: ...
+
+async def _get_video_contextNone: ...
+
+async def _get_video_titles_contextNone: ...
+
+async def _prepare_messagesNone: ...
+
+async def ask_questionNone: ...
+
+async def ask_question_streamNone: ...
+
+async def search_videosNone: ...
+
+# FILE: app/routers/favorites.py
+from fastapi import APIRouter, HTTPException, Query
+from loguru import logger
+from typing import List, Optional
+from pydantic import BaseModel
+from app.models import FavoriteFolderInfo
+from app.services.bilibili import BilibiliService
+from app.routers.auth import get_session
+
+def _is_default_folderNone: ...
+
+class OrganizePreviewRequest(BaseModel):
+
+class OrganizePreviewItem(BaseModel):
+
+class OrganizePreviewResponse(BaseModel):
+
+class OrganizeMoveItem(BaseModel):
+
+class OrganizeExecuteRequest(BaseModel):
+
+class CleanInvalidRequest(BaseModel):
+
+async def get_favorites_listNone: ...
+
+async def get_favorite_videosNone: ...
+
+async def get_all_favorite_videosNone: ...
+
+async def organize_previewNone: ...
+
+async def organize_executeNone: ...
+
+async def clean_invalid_resourcesNone: ...
+
+# FILE: app/routers/knowledge.py
+from datetime import datetime
+from fastapi import APIRouter, HTTPException, Query, BackgroundTasks, Depends
+from loguru import logger
+from typing import List, Optional, Callable
+from pydantic import BaseModel
+from sqlalchemy import select, func, delete
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.database import get_db, get_db_context
+from app.models import FavoriteFolder, FavoriteVideo, VideoCache, UserSession, ContentSource, VideoContent
+from app.services.bilibili import BilibiliService
+from app.services.content_fetcher import ContentFetcher
+from app.services.asr import ASRService
+from app.services.rag import RAGService
+from app.routers.auth import get_session
+
+def get_rag_serviceNone: ...
+
+class BuildRequest(BaseModel):
+
+class BuildStatus(BaseModel):
+
+class FolderStatus(BaseModel):
+
+class SyncRequest(BaseModel):
+
+class SyncResult(BaseModel):
+
+async def _get_or_create_folderNone: ...
+
+def _extract_video_infoNone: ...
+
+async def _upsert_video_cacheNone: ...
+
+async def _sync_folderNone: ...
+
+async def get_knowledge_statsNone: ...
+
+async def get_folder_statusNone: ...
+
+async def sync_foldersNone: ...
+
+async def build_knowledge_baseNone: ...
+
+async def _build_knowledge_base_taskNone: ...
+
+async def get_build_statusNone: ...
+
+async def clear_knowledge_baseNone: ...
+
+async def delete_video_from_knowledgeNone: ...
+
+# FILE: app/services/__init__.py
+from app.services.bilibili import BilibiliService
+from app.services.content_fetcher import ContentFetcher
+from app.services.asr import ASRService
+from app.services.rag import RAGService
+from app.services.wbi import wbi_signer
+
+# FILE: app/services/asr.py
+import asyncio
+import json
+import os
+import shutil
+import subprocess
+import time
+from http import HTTPStatus
+from typing import Optional, Any
+from urllib import request as urlrequest
+import httpx
+import dashscope
+from dashscope.audio.asr import Transcription, Recognition
+from dashscope.common.utils import default_headers, join_url
+from dashscope.utils.oss_utils import OssUtils
+from loguru import logger
+from app.config import settings
+
+class ASRService:
+    def __init__None: ...
+    def _configureNone: ...
+    def _get_output_valueNone: ...
+    def _transcode_audio_to_pcmNone: ...
+    def _transcode_audio_to_wavNone: ...
+    def _prepare_recognition_inputNone: ...
+    def _recognize_local_fileNone: ...
+    def _download_transcriptionNone: ...
+    def _build_api_urlNone: ...
+    def _submit_transcription_task_restfulNone: ...
+    def _fetch_transcription_task_restfulNone: ...
+    def _transcribe_sync_restfulNone: ...
+    def _transcribe_syncNone: ...
+    def _upload_temp_fileNone: ...
+    async def transcribe_urlNone: ...
+    async def transcribe_local_fileNone: ...
+    def _transcribe_sync_with_modelNone: ...
+
+# FILE: app/services/bilibili.py
+import httpx
+import qrcode
+import io
+import base64
+from typing import Optional, Dict, Any, List
+from loguru import logger
+from app.services.wbi import wbi_signer
+
+class BilibiliService:
+    def __init__None: ...
+    def _get_cookiesNone: ...
+    async def closeNone: ...
+    async def generate_qrcodeNone: ...
+    async def poll_qrcode_statusNone: ...
+    async def get_user_infoNone: ...
+    async def get_user_favoritesNone: ...
+    async def get_favorite_contentNone: ...
+    async def get_all_favorite_videosNone: ...
+    async def move_favorite_resourcesNone: ...
+    async def clean_favorite_resourcesNone: ...
+    async def get_video_infoNone: ...
+    async def get_video_summaryNone: ...
+    async def get_player_infoNone: ...
+    async def get_audio_urlNone: ...
+    async def download_subtitleNone: ...
+    async def download_audio_to_fileNone: ...
+
+# FILE: app/services/content_fetcher.py
+from typing import Optional
+from urllib.parse import urlparse
+import asyncio
+import math
+import os
+import shutil
+import subprocess
+import time
+import httpx
+from loguru import logger
+from app.models import VideoContent, ContentSource
+from app.services.bilibili import BilibiliService
+from app.services.asr import ASRService
+
+class ContentFetcher:
+    def __init__None: ...
+    async def fetch_contentNone: ...
+    async def _try_asrNone: ...
+    async def _probe_audio_urlNone: ...
+    async def _try_asr_with_local_audioNone: ...
+    def _transcode_audio_to_wavNone: ...
+    def _get_audio_duration_secNone: ...
+    def _split_audio_wavNone: ...
+    async def _try_ai_summaryNone: ...
+    async def _try_subtitleNone: ...
+    async def fetch_all_videos_contentNone: ...
+
+# FILE: app/services/rag.py
+from typing import List, Optional
+from loguru import logger
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_chroma import Chroma
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema.runnable import RunnablePassthrough
+from langchain.schema.output_parser import StrOutputParser
+from app.config import settings
+from app.models import VideoContent
+
+class RAGService:
+    def __init__None: ...
+    def add_video_contentNone: ...
+    def add_videos_batchNone: ...
+    def searchNone: ...
+    async def _fallback_answerNone: ...
+    async def answer_questionNone: ...
+    async def summarize_contentNone: ...
+    def get_collection_statsNone: ...
+    def clear_collectionNone: ...
+    def delete_videoNone: ...
+
+# FILE: app/services/wbi.py
+import time
+import hashlib
+from urllib.parse import urlencode
+from functools import reduce
+import httpx
+from typing import Optional, Dict
+
+class WbiSigner:
+    def __init__None: ...
+    def _get_mixin_keyNone: ...
+    async def _fetch_wbi_keysNone: ...
+    async def ensure_keysNone: ...
+    def _filter_paramsNone: ...
+    async def signNone: ...
+
+# FILE: test/debug_asr_single.py
+import argparse
+import asyncio
+import json
+import os
+import shutil
+import subprocess
+import time
+from http import HTTPStatus
+from urllib import request as urlrequest
+from urllib.parse import urlparse
+from loguru import logger
+import httpx
+import dashscope
+from dashscope.audio.asr import Transcription, Recognition
+from dashscope.utils.oss_utils import OssUtils
+from app.services.bilibili import BilibiliService
+from app.services.asr import ASRService
+from app.services.content_fetcher import ContentFetcher
+
+def _get_output_valueNone: ...
+
+def _download_transcriptionNone: ...
+
+async def _probe_audio_urlNone: ...
+
+def _transcode_audio_to_wavNone: ...
+
+def _transcode_audio_to_pcmNone: ...
+
+def _transcribe_official_syncNone: ...
+
+async def _transcribe_officialNone: ...
+
+async def _try_official_asrNone: ...
+
+async def run_onceNone: ...
+
+def mainNone: ...
+
+# FILE: test/diagnose_rag.py
+import asyncio
+import os
+import sys
+from app.config import settings
+from app.services.rag import RAGService
+from langchain_chroma import Chroma
+from sqlalchemy import select
+from app.models import VideoCache
+from app.database import get_db_context
+from dotenv import load_dotenv
+
+async def diagnoseNone: ...
+
+# FILE: test/sync_cache_vectors.py
+import argparse
+import asyncio
+from typing import Iterable, Optional
+from loguru import logger
+from sqlalchemy import select
+from app.database import get_db_context
+from app.models import VideoCache, ContentSource, VideoContent
+from app.services.rag import RAGService
+
+def _parse_sourceNone: ...
+
+def _has_vectorsNone: ...
+
+async def _load_cachesNone: ...
+
+async def _sync_vectorsNone: ...
+
+def _parse_argsNone: ...
+
+def mainNone: ...

@@ -1,0 +1,1230 @@
+{
+  "nodes": [
+    "api",
+    "api.accounts",
+    "api.actions",
+    "api.auth",
+    "api.chatgpt",
+    "api.config",
+    "api.contribution",
+    "api.integrations",
+    "api.mail_imports",
+    "api.outlook",
+    "api.platforms",
+    "api.proxies",
+    "api.tasks",
+    "check_config",
+    "core",
+    "core.applemail_pool",
+    "core.base_captcha",
+    "core.base_executor",
+    "core.base_mailbox",
+    "core.base_platform",
+    "core.browser_runtime",
+    "core.config_store",
+    "core.db",
+    "core.email_domain_policy",
+    "core.executors",
+    "core.executors.playwright",
+    "core.executors.protocol",
+    "core.http_client",
+    "core.luckmail",
+    "core.luckmail.client",
+    "core.luckmail.exceptions",
+    "core.luckmail.http_client",
+    "core.luckmail.models",
+    "core.luckmail.supplier",
+    "core.luckmail.user",
+    "core.proxy_pool",
+    "core.proxy_utils",
+    "core.registry",
+    "core.scheduler",
+    "core.task_runtime",
+    "main",
+    "platforms",
+    "platforms.chatgpt",
+    "platforms.chatgpt.access_token_only_registration_engine",
+    "platforms.chatgpt.chatgpt_client",
+    "platforms.chatgpt.chatgpt_registration_mode_adapter",
+    "platforms.chatgpt.constants",
+    "platforms.chatgpt.cpa_upload",
+    "platforms.chatgpt.http_client",
+    "platforms.chatgpt.oauth",
+    "platforms.chatgpt.oauth_client",
+    "platforms.chatgpt.oauth_pkce_client",
+    "platforms.chatgpt.payment",
+    "platforms.chatgpt.phone_service",
+    "platforms.chatgpt.plugin",
+    "platforms.chatgpt.refresh_token_registration_engine",
+    "platforms.chatgpt.sentinel_batch",
+    "platforms.chatgpt.sentinel_browser",
+    "platforms.chatgpt.sentinel_token",
+    "platforms.chatgpt.status_probe",
+    "platforms.chatgpt.sub2api_upload",
+    "platforms.chatgpt.token_refresh",
+    "platforms.chatgpt.utils",
+    "platforms.cursor",
+    "platforms.cursor.core",
+    "platforms.cursor.plugin",
+    "platforms.cursor.switch",
+    "platforms.grok",
+    "platforms.grok.core",
+    "platforms.grok.grok2api_upload",
+    "platforms.grok.plugin",
+    "platforms.kiro",
+    "platforms.kiro.account_manager_upload",
+    "platforms.kiro.core",
+    "platforms.kiro.plugin",
+    "platforms.kiro.switch",
+    "platforms.openblocklabs",
+    "platforms.openblocklabs.core",
+    "platforms.openblocklabs.plugin",
+    "platforms.tavily",
+    "platforms.tavily.core",
+    "platforms.tavily.plugin",
+    "platforms.trae",
+    "platforms.trae.core",
+    "platforms.trae.plugin",
+    "platforms.trae.switch",
+    "scripts.generate_chatgpt_payment_links",
+    "scripts.install_camoufox",
+    "scripts.sentinel_multi_helper",
+    "services",
+    "services.chatgpt_account_state",
+    "services.chatgpt_sync",
+    "services.cliproxyapi_sync",
+    "services.cpa_manager",
+    "services.external_apps",
+    "services.external_sync",
+    "services.grok2api_runtime",
+    "services.mail_imports",
+    "services.mail_imports.base",
+    "services.mail_imports.microsoft_import_rules",
+    "services.mail_imports.providers",
+    "services.mail_imports.registry",
+    "services.mail_imports.schemas",
+    "services.solver_manager",
+    "services.turnstile_solver",
+    "services.turnstile_solver.api_solver",
+    "services.turnstile_solver.browser_configs",
+    "services.turnstile_solver.db_results",
+    "services.turnstile_solver.start",
+    "smstome_tool",
+    "tests.test_base_mailbox_cfworker",
+    "tests.test_chatgpt_account_state",
+    "tests.test_chatgpt_birthdate_range",
+    "tests.test_chatgpt_phone_flow",
+    "tests.test_chatgpt_plugin",
+    "tests.test_chatgpt_register",
+    "tests.test_chatgpt_registration_mode_adapter",
+    "tests.test_chatgpt_sentinel_batch",
+    "tests.test_chatgpt_status_probe",
+    "tests.test_chatgpt_sync",
+    "tests.test_cliproxyapi_sync",
+    "tests.test_cloudmail_mailbox",
+    "tests.test_config_store_env_fallback",
+    "tests.test_duckmail_mailbox",
+    "tests.test_email_domain_policy",
+    "tests.test_external_sync_contribution_mode",
+    "tests.test_freemail_mailbox",
+    "tests.test_gptmail_mailbox",
+    "tests.test_luckmail_mailbox",
+    "tests.test_luckmail_proxy_chain",
+    "tests.test_mail_imports_service",
+    "tests.test_mailbox_task_control",
+    "tests.test_opentrashmail_mailbox",
+    "tests.test_outlook_mailbox_oauth",
+    "tests.test_register_task_controls",
+    "tests.test_task_runtime"
+  ],
+  "edges": [
+    {
+      "source": "api.accounts",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "api.accounts",
+      "target": "core.db"
+    },
+    {
+      "source": "api.accounts",
+      "target": "core.registry"
+    },
+    {
+      "source": "api.accounts",
+      "target": "core.scheduler"
+    },
+    {
+      "source": "api.actions",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "api.actions",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.actions",
+      "target": "core.db"
+    },
+    {
+      "source": "api.actions",
+      "target": "core.registry"
+    },
+    {
+      "source": "api.actions",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "api.actions",
+      "target": "services.chatgpt_sync"
+    },
+    {
+      "source": "api.actions",
+      "target": "services.cliproxyapi_sync"
+    },
+    {
+      "source": "api.auth",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "core.db"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "platforms.chatgpt.cpa_upload"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "platforms.chatgpt.payment"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "platforms.chatgpt.status_probe"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "platforms.chatgpt.sub2api_upload"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "platforms.chatgpt.token_refresh"
+    },
+    {
+      "source": "api.chatgpt",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "api.config",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.config",
+      "target": "services.mail_imports"
+    },
+    {
+      "source": "api.contribution",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.integrations",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "api.integrations",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.integrations",
+      "target": "core.db"
+    },
+    {
+      "source": "api.integrations",
+      "target": "platforms.grok.grok2api_upload"
+    },
+    {
+      "source": "api.integrations",
+      "target": "platforms.kiro.account_manager_upload"
+    },
+    {
+      "source": "api.integrations",
+      "target": "services.chatgpt_sync"
+    },
+    {
+      "source": "api.integrations",
+      "target": "services.external_apps"
+    },
+    {
+      "source": "api.integrations",
+      "target": "services.grok2api_runtime"
+    },
+    {
+      "source": "api.mail_imports",
+      "target": "services.mail_imports"
+    },
+    {
+      "source": "api.outlook",
+      "target": "services.mail_imports"
+    },
+    {
+      "source": "api.platforms",
+      "target": "core.registry"
+    },
+    {
+      "source": "api.proxies",
+      "target": "core.db"
+    },
+    {
+      "source": "api.proxies",
+      "target": "core.proxy_pool"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.config_store"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.db"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.email_domain_policy"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.proxy_pool"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.registry"
+    },
+    {
+      "source": "api.tasks",
+      "target": "core.task_runtime"
+    },
+    {
+      "source": "api.tasks",
+      "target": "services.external_sync"
+    },
+    {
+      "source": "check_config",
+      "target": "core.config_store"
+    },
+    {
+      "source": "check_config",
+      "target": "core.db"
+    },
+    {
+      "source": "core.base_mailbox",
+      "target": "core.applemail_pool"
+    },
+    {
+      "source": "core.base_mailbox",
+      "target": "core.db"
+    },
+    {
+      "source": "core.base_mailbox",
+      "target": "core.luckmail"
+    },
+    {
+      "source": "core.base_mailbox",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.base_mailbox",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "core.base_platform",
+      "target": "core.base_captcha"
+    },
+    {
+      "source": "core.base_platform",
+      "target": "core.executors.playwright"
+    },
+    {
+      "source": "core.base_platform",
+      "target": "core.executors.protocol"
+    },
+    {
+      "source": "core.config_store",
+      "target": "core.db"
+    },
+    {
+      "source": "core.executors.playwright",
+      "target": "core.base_executor"
+    },
+    {
+      "source": "core.executors.playwright",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "core.executors.playwright",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.executors.protocol",
+      "target": "core.base_executor"
+    },
+    {
+      "source": "core.executors.protocol",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.http_client",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.luckmail",
+      "target": "core.luckmail.client"
+    },
+    {
+      "source": "core.luckmail",
+      "target": "core.luckmail.exceptions"
+    },
+    {
+      "source": "core.luckmail",
+      "target": "core.luckmail.models"
+    },
+    {
+      "source": "core.luckmail",
+      "target": "core.luckmail.supplier"
+    },
+    {
+      "source": "core.luckmail",
+      "target": "core.luckmail.user"
+    },
+    {
+      "source": "core.luckmail.client",
+      "target": "core.luckmail.http_client"
+    },
+    {
+      "source": "core.luckmail.client",
+      "target": "core.luckmail.supplier"
+    },
+    {
+      "source": "core.luckmail.client",
+      "target": "core.luckmail.user"
+    },
+    {
+      "source": "core.luckmail.http_client",
+      "target": "core.luckmail.exceptions"
+    },
+    {
+      "source": "core.luckmail.http_client",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.luckmail.supplier",
+      "target": "core.luckmail.http_client"
+    },
+    {
+      "source": "core.luckmail.supplier",
+      "target": "core.luckmail.models"
+    },
+    {
+      "source": "core.luckmail.user",
+      "target": "core.luckmail.http_client"
+    },
+    {
+      "source": "core.luckmail.user",
+      "target": "core.luckmail.models"
+    },
+    {
+      "source": "core.proxy_pool",
+      "target": "core.db"
+    },
+    {
+      "source": "core.proxy_pool",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "core.registry",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "core.registry",
+      "target": "platforms"
+    },
+    {
+      "source": "core.scheduler",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "core.scheduler",
+      "target": "core.db"
+    },
+    {
+      "source": "core.scheduler",
+      "target": "core.registry"
+    },
+    {
+      "source": "core.scheduler",
+      "target": "services.cpa_manager"
+    },
+    {
+      "source": "main",
+      "target": "api.accounts"
+    },
+    {
+      "source": "main",
+      "target": "api.actions"
+    },
+    {
+      "source": "main",
+      "target": "api.auth"
+    },
+    {
+      "source": "main",
+      "target": "api.config"
+    },
+    {
+      "source": "main",
+      "target": "api.contribution"
+    },
+    {
+      "source": "main",
+      "target": "api.integrations"
+    },
+    {
+      "source": "main",
+      "target": "api.mail_imports"
+    },
+    {
+      "source": "main",
+      "target": "api.outlook"
+    },
+    {
+      "source": "main",
+      "target": "api.platforms"
+    },
+    {
+      "source": "main",
+      "target": "api.proxies"
+    },
+    {
+      "source": "main",
+      "target": "api.tasks"
+    },
+    {
+      "source": "main",
+      "target": "core.config_store"
+    },
+    {
+      "source": "main",
+      "target": "core.db"
+    },
+    {
+      "source": "main",
+      "target": "core.registry"
+    },
+    {
+      "source": "main",
+      "target": "core.scheduler"
+    },
+    {
+      "source": "main",
+      "target": "services.solver_manager"
+    },
+    {
+      "source": "platforms.chatgpt.access_token_only_registration_engine",
+      "target": "core.task_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.access_token_only_registration_engine",
+      "target": "platforms.chatgpt.chatgpt_client"
+    },
+    {
+      "source": "platforms.chatgpt.access_token_only_registration_engine",
+      "target": "platforms.chatgpt.refresh_token_registration_engine"
+    },
+    {
+      "source": "platforms.chatgpt.access_token_only_registration_engine",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_client",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_client",
+      "target": "platforms.chatgpt.sentinel_browser"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_client",
+      "target": "platforms.chatgpt.sentinel_token"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_client",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_registration_mode_adapter",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_registration_mode_adapter",
+      "target": "platforms.chatgpt.access_token_only_registration_engine"
+    },
+    {
+      "source": "platforms.chatgpt.chatgpt_registration_mode_adapter",
+      "target": "platforms.chatgpt.refresh_token_registration_engine"
+    },
+    {
+      "source": "platforms.chatgpt.cpa_upload",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.chatgpt.http_client",
+      "target": "core.http_client"
+    },
+    {
+      "source": "platforms.chatgpt.http_client",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "platforms.chatgpt.oauth",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.oauth",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "core.task_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "platforms.chatgpt.phone_service"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "platforms.chatgpt.sentinel_browser"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "platforms.chatgpt.sentinel_token"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_client",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_pkce_client",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.oauth_pkce_client",
+      "target": "platforms.chatgpt.oauth"
+    },
+    {
+      "source": "platforms.chatgpt.payment",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.payment",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.phone_service",
+      "target": "smstome_tool"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.chatgpt_registration_mode_adapter"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.cpa_upload"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.payment"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.status_probe"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.sub2api_upload"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "platforms.chatgpt.token_refresh"
+    },
+    {
+      "source": "platforms.chatgpt.plugin",
+      "target": "services.cliproxyapi_sync"
+    },
+    {
+      "source": "platforms.chatgpt.refresh_token_registration_engine",
+      "target": "core.task_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.refresh_token_registration_engine",
+      "target": "platforms.chatgpt.chatgpt_client"
+    },
+    {
+      "source": "platforms.chatgpt.refresh_token_registration_engine",
+      "target": "platforms.chatgpt.oauth"
+    },
+    {
+      "source": "platforms.chatgpt.refresh_token_registration_engine",
+      "target": "platforms.chatgpt.oauth_client"
+    },
+    {
+      "source": "platforms.chatgpt.refresh_token_registration_engine",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_batch",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_batch",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_batch",
+      "target": "core.proxy_pool"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_batch",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_browser",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "platforms.chatgpt.sentinel_browser",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.chatgpt.status_probe",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "platforms.chatgpt.sub2api_upload",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.chatgpt.sub2api_upload",
+      "target": "platforms.chatgpt.cpa_upload"
+    },
+    {
+      "source": "platforms.chatgpt.token_refresh",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "platforms.chatgpt.utils",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "platforms.cursor.core",
+      "target": "core.base_captcha"
+    },
+    {
+      "source": "platforms.cursor.core",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.cursor.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.cursor.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.cursor.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.cursor.plugin",
+      "target": "platforms.cursor.core"
+    },
+    {
+      "source": "platforms.cursor.plugin",
+      "target": "platforms.cursor.switch"
+    },
+    {
+      "source": "platforms.grok.core",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "platforms.grok.grok2api_upload",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "platforms.grok.core"
+    },
+    {
+      "source": "platforms.grok.plugin",
+      "target": "platforms.grok.grok2api_upload"
+    },
+    {
+      "source": "platforms.kiro.account_manager_upload",
+      "target": "core.config_store"
+    },
+    {
+      "source": "platforms.kiro.core",
+      "target": "core.browser_runtime"
+    },
+    {
+      "source": "platforms.kiro.core",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "platforms.kiro.account_manager_upload"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "platforms.kiro.core"
+    },
+    {
+      "source": "platforms.kiro.plugin",
+      "target": "platforms.kiro.switch"
+    },
+    {
+      "source": "platforms.openblocklabs.core",
+      "target": "core.proxy_utils"
+    },
+    {
+      "source": "platforms.openblocklabs.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.openblocklabs.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.openblocklabs.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.openblocklabs.plugin",
+      "target": "platforms.openblocklabs.core"
+    },
+    {
+      "source": "platforms.tavily.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.tavily.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.tavily.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.tavily.plugin",
+      "target": "platforms.tavily.core"
+    },
+    {
+      "source": "platforms.trae.plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "platforms.trae.plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "platforms.trae.plugin",
+      "target": "core.registry"
+    },
+    {
+      "source": "platforms.trae.plugin",
+      "target": "platforms.trae.core"
+    },
+    {
+      "source": "platforms.trae.plugin",
+      "target": "platforms.trae.switch"
+    },
+    {
+      "source": "scripts.generate_chatgpt_payment_links",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "scripts.generate_chatgpt_payment_links",
+      "target": "core.db"
+    },
+    {
+      "source": "scripts.generate_chatgpt_payment_links",
+      "target": "core.registry"
+    },
+    {
+      "source": "scripts.sentinel_multi_helper",
+      "target": "platforms.chatgpt.sentinel_batch"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "core.db"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "platforms.chatgpt.cpa_upload"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "platforms.chatgpt.status_probe"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "services.chatgpt_sync",
+      "target": "services.cliproxyapi_sync"
+    },
+    {
+      "source": "services.cliproxyapi_sync",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.cliproxyapi_sync",
+      "target": "platforms.chatgpt.status_probe"
+    },
+    {
+      "source": "services.cliproxyapi_sync",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "services.cpa_manager",
+      "target": "api.tasks"
+    },
+    {
+      "source": "services.cpa_manager",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.external_apps",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "platforms.chatgpt.cpa_upload"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "platforms.chatgpt.sub2api_upload"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "platforms.grok.grok2api_upload"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "platforms.kiro.account_manager_upload"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "services.chatgpt_sync"
+    },
+    {
+      "source": "services.external_sync",
+      "target": "services.grok2api_runtime"
+    },
+    {
+      "source": "services.grok2api_runtime",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.grok2api_runtime",
+      "target": "services.external_apps"
+    },
+    {
+      "source": "services.mail_imports",
+      "target": "services.mail_imports.registry"
+    },
+    {
+      "source": "services.mail_imports",
+      "target": "services.mail_imports.schemas"
+    },
+    {
+      "source": "services.mail_imports.base",
+      "target": "services.mail_imports.schemas"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "core.applemail_pool"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "core.config_store"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "core.db"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "services.mail_imports.base"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "services.mail_imports.microsoft_import_rules"
+    },
+    {
+      "source": "services.mail_imports.providers",
+      "target": "services.mail_imports.schemas"
+    },
+    {
+      "source": "services.mail_imports.registry",
+      "target": "services.mail_imports.base"
+    },
+    {
+      "source": "services.mail_imports.registry",
+      "target": "services.mail_imports.providers"
+    },
+    {
+      "source": "services.mail_imports.registry",
+      "target": "services.mail_imports.schemas"
+    },
+    {
+      "source": "smstome_tool",
+      "target": "core.config_store"
+    },
+    {
+      "source": "tests.test_base_mailbox_cfworker",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_chatgpt_account_state",
+      "target": "services.chatgpt_account_state"
+    },
+    {
+      "source": "tests.test_chatgpt_birthdate_range",
+      "target": "platforms.chatgpt.constants"
+    },
+    {
+      "source": "tests.test_chatgpt_birthdate_range",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "tests.test_chatgpt_phone_flow",
+      "target": "platforms.chatgpt.oauth_client"
+    },
+    {
+      "source": "tests.test_chatgpt_phone_flow",
+      "target": "platforms.chatgpt.phone_service"
+    },
+    {
+      "source": "tests.test_chatgpt_phone_flow",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "tests.test_chatgpt_phone_flow",
+      "target": "smstome_tool"
+    },
+    {
+      "source": "tests.test_chatgpt_plugin",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_chatgpt_plugin",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "tests.test_chatgpt_plugin",
+      "target": "platforms.chatgpt.plugin"
+    },
+    {
+      "source": "tests.test_chatgpt_register",
+      "target": "platforms.chatgpt.chatgpt_client"
+    },
+    {
+      "source": "tests.test_chatgpt_register",
+      "target": "platforms.chatgpt.oauth_client"
+    },
+    {
+      "source": "tests.test_chatgpt_register",
+      "target": "platforms.chatgpt.refresh_token_registration_engine"
+    },
+    {
+      "source": "tests.test_chatgpt_register",
+      "target": "platforms.chatgpt.utils"
+    },
+    {
+      "source": "tests.test_chatgpt_registration_mode_adapter",
+      "target": "platforms.chatgpt.chatgpt_registration_mode_adapter"
+    },
+    {
+      "source": "tests.test_chatgpt_sentinel_batch",
+      "target": "platforms.chatgpt.sentinel_batch"
+    },
+    {
+      "source": "tests.test_chatgpt_status_probe",
+      "target": "platforms.chatgpt.status_probe"
+    },
+    {
+      "source": "tests.test_chatgpt_sync",
+      "target": "core.db"
+    },
+    {
+      "source": "tests.test_chatgpt_sync",
+      "target": "services.chatgpt_sync"
+    },
+    {
+      "source": "tests.test_cliproxyapi_sync",
+      "target": "services.cliproxyapi_sync"
+    },
+    {
+      "source": "tests.test_cloudmail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_config_store_env_fallback",
+      "target": "core.config_store"
+    },
+    {
+      "source": "tests.test_duckmail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_email_domain_policy",
+      "target": "core.email_domain_policy"
+    },
+    {
+      "source": "tests.test_external_sync_contribution_mode",
+      "target": "services.external_sync"
+    },
+    {
+      "source": "tests.test_freemail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_gptmail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_luckmail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_luckmail_mailbox",
+      "target": "core.luckmail.models"
+    },
+    {
+      "source": "tests.test_luckmail_proxy_chain",
+      "target": "core.luckmail.client"
+    },
+    {
+      "source": "tests.test_luckmail_proxy_chain",
+      "target": "core.luckmail.http_client"
+    },
+    {
+      "source": "tests.test_mail_imports_service",
+      "target": "services.mail_imports.providers"
+    },
+    {
+      "source": "tests.test_mail_imports_service",
+      "target": "services.mail_imports.schemas"
+    },
+    {
+      "source": "tests.test_mailbox_task_control",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_mailbox_task_control",
+      "target": "core.task_runtime"
+    },
+    {
+      "source": "tests.test_opentrashmail_mailbox",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_outlook_mailbox_oauth",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_register_task_controls",
+      "target": "api.tasks"
+    },
+    {
+      "source": "tests.test_register_task_controls",
+      "target": "core.base_mailbox"
+    },
+    {
+      "source": "tests.test_register_task_controls",
+      "target": "core.base_platform"
+    },
+    {
+      "source": "tests.test_task_runtime",
+      "target": "core.task_runtime"
+    }
+  ]
+}

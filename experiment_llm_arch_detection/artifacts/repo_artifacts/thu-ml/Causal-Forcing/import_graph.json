@@ -1,0 +1,1181 @@
+{
+  "nodes": [
+    "demo",
+    "demo_utils.constant",
+    "demo_utils.memory",
+    "demo_utils.taehv",
+    "demo_utils.utils",
+    "demo_utils.vae",
+    "demo_utils.vae_block3",
+    "demo_utils.vae_torch2trt",
+    "get_causal_ode_data_chunkwise",
+    "get_causal_ode_data_framewise",
+    "inference",
+    "long_video.app",
+    "long_video.inference",
+    "long_video.model",
+    "long_video.model.base",
+    "long_video.model.causvid",
+    "long_video.model.diffusion",
+    "long_video.model.dmd",
+    "long_video.model.gan",
+    "long_video.model.ode_regression",
+    "long_video.model.sid",
+    "long_video.pipeline",
+    "long_video.pipeline.bidirectional_diffusion_inference",
+    "long_video.pipeline.bidirectional_inference",
+    "long_video.pipeline.causal_diffusion_inference",
+    "long_video.pipeline.rolling_forcing_inference",
+    "long_video.pipeline.rolling_forcing_training",
+    "long_video.train",
+    "long_video.trainer",
+    "long_video.trainer.diffusion",
+    "long_video.trainer.distillation",
+    "long_video.trainer.gan",
+    "long_video.trainer.ode",
+    "long_video.utils.dataset",
+    "long_video.utils.distributed",
+    "long_video.utils.lmdb",
+    "long_video.utils.loss",
+    "long_video.utils.misc",
+    "long_video.utils.scheduler",
+    "long_video.utils.wan_wrapper",
+    "long_video.wan",
+    "long_video.wan.configs",
+    "long_video.wan.configs.shared_config",
+    "long_video.wan.configs.wan_i2v_14B",
+    "long_video.wan.configs.wan_t2v_14B",
+    "long_video.wan.configs.wan_t2v_1_3B",
+    "long_video.wan.distributed",
+    "long_video.wan.distributed.fsdp",
+    "long_video.wan.distributed.xdit_context_parallel",
+    "long_video.wan.image2video",
+    "long_video.wan.modules",
+    "long_video.wan.modules.attention",
+    "long_video.wan.modules.causal_model",
+    "long_video.wan.modules.clip",
+    "long_video.wan.modules.model",
+    "long_video.wan.modules.t5",
+    "long_video.wan.modules.tokenizers",
+    "long_video.wan.modules.vae",
+    "long_video.wan.modules.xlm_roberta",
+    "long_video.wan.text2video",
+    "long_video.wan.utils",
+    "long_video.wan.utils.fm_solvers",
+    "long_video.wan.utils.fm_solvers_unipc",
+    "long_video.wan.utils.prompt_extend",
+    "long_video.wan.utils.qwen_vl_utils",
+    "long_video.wan.utils.utils",
+    "model",
+    "model.base",
+    "model.causvid",
+    "model.diffusion",
+    "model.dmd",
+    "model.gan",
+    "model.naive_consistency",
+    "model.ode_regression",
+    "model.sid",
+    "pipeline",
+    "pipeline.bidirectional_diffusion_inference",
+    "pipeline.bidirectional_inference",
+    "pipeline.bidirectional_training",
+    "pipeline.causal_diffusion_inference",
+    "pipeline.causal_inference",
+    "pipeline.self_forcing_training",
+    "pipeline.teacher_forcing_training",
+    "setup",
+    "train",
+    "trainer",
+    "trainer.diffusion",
+    "trainer.distillation",
+    "trainer.gan",
+    "trainer.naive_cd",
+    "trainer.ode",
+    "utils.create_lmdb_iterative",
+    "utils.dataset",
+    "utils.distributed",
+    "utils.lmdb_",
+    "utils.loss",
+    "utils.merge_and_get_clean",
+    "utils.merge_lmdb",
+    "utils.misc",
+    "utils.scheduler",
+    "utils.wan_wrapper",
+    "wan",
+    "wan.configs",
+    "wan.configs.shared_config",
+    "wan.configs.wan_i2v_14B",
+    "wan.configs.wan_t2v_14B",
+    "wan.configs.wan_t2v_1_3B",
+    "wan.distributed",
+    "wan.distributed.fsdp",
+    "wan.distributed.xdit_context_parallel",
+    "wan.image2video",
+    "wan.modules",
+    "wan.modules.attention",
+    "wan.modules.causal_model",
+    "wan.modules.clip",
+    "wan.modules.model",
+    "wan.modules.t5",
+    "wan.modules.tokenizers",
+    "wan.modules.vae",
+    "wan.modules.xlm_roberta",
+    "wan.text2video",
+    "wan.utils",
+    "wan.utils.fm_solvers",
+    "wan.utils.fm_solvers_unipc",
+    "wan.utils.prompt_extend",
+    "wan.utils.qwen_vl_utils",
+    "wan.utils.utils"
+  ],
+  "edges": [
+    {
+      "source": "demo",
+      "target": "demo_utils.constant"
+    },
+    {
+      "source": "demo",
+      "target": "demo_utils.memory"
+    },
+    {
+      "source": "demo",
+      "target": "demo_utils.taehv"
+    },
+    {
+      "source": "demo",
+      "target": "demo_utils.utils"
+    },
+    {
+      "source": "demo",
+      "target": "demo_utils.vae"
+    },
+    {
+      "source": "demo",
+      "target": "demo_utils.vae_block3"
+    },
+    {
+      "source": "demo",
+      "target": "pipeline"
+    },
+    {
+      "source": "demo",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "demo_utils.vae",
+      "target": "demo_utils.constant"
+    },
+    {
+      "source": "demo_utils.vae",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "demo_utils.vae_block3",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "demo_utils.vae_torch2trt",
+      "target": "demo_utils.vae"
+    },
+    {
+      "source": "demo_utils.vae_torch2trt",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "get_causal_ode_data_chunkwise",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "get_causal_ode_data_chunkwise",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "get_causal_ode_data_chunkwise",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "get_causal_ode_data_chunkwise",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "get_causal_ode_data_framewise",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "get_causal_ode_data_framewise",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "get_causal_ode_data_framewise",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "get_causal_ode_data_framewise",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "inference",
+      "target": "demo_utils.memory"
+    },
+    {
+      "source": "inference",
+      "target": "pipeline"
+    },
+    {
+      "source": "inference",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "inference",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.app",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.inference",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.inference",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "long_video.inference",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.causvid"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.diffusion"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.dmd"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.gan"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.ode_regression"
+    },
+    {
+      "source": "long_video.model",
+      "target": "long_video.model.sid"
+    },
+    {
+      "source": "long_video.model.base",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.model.base",
+      "target": "utils.loss"
+    },
+    {
+      "source": "long_video.model.base",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.model.causvid",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.causvid",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.model.diffusion",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.diffusion",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.model.dmd",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.dmd",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.model.dmd",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.model.gan",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.gan",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.model.ode_regression",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.ode_regression",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.model.sid",
+      "target": "model.base"
+    },
+    {
+      "source": "long_video.model.sid",
+      "target": "pipeline"
+    },
+    {
+      "source": "long_video.model.sid",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.pipeline",
+      "target": "long_video.pipeline.bidirectional_diffusion_inference"
+    },
+    {
+      "source": "long_video.pipeline",
+      "target": "long_video.pipeline.bidirectional_inference"
+    },
+    {
+      "source": "long_video.pipeline",
+      "target": "long_video.pipeline.causal_diffusion_inference"
+    },
+    {
+      "source": "long_video.pipeline",
+      "target": "long_video.pipeline.rolling_forcing_inference"
+    },
+    {
+      "source": "long_video.pipeline",
+      "target": "long_video.pipeline.rolling_forcing_training"
+    },
+    {
+      "source": "long_video.pipeline.bidirectional_diffusion_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.pipeline.bidirectional_diffusion_inference",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "long_video.pipeline.bidirectional_diffusion_inference",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "long_video.pipeline.bidirectional_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.pipeline.causal_diffusion_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.pipeline.causal_diffusion_inference",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "long_video.pipeline.causal_diffusion_inference",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "long_video.pipeline.rolling_forcing_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.pipeline.rolling_forcing_training",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "long_video.pipeline.rolling_forcing_training",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "long_video.train",
+      "target": "trainer"
+    },
+    {
+      "source": "long_video.trainer",
+      "target": "long_video.trainer.diffusion"
+    },
+    {
+      "source": "long_video.trainer",
+      "target": "long_video.trainer.distillation"
+    },
+    {
+      "source": "long_video.trainer",
+      "target": "long_video.trainer.gan"
+    },
+    {
+      "source": "long_video.trainer",
+      "target": "long_video.trainer.ode"
+    },
+    {
+      "source": "long_video.trainer.diffusion",
+      "target": "model"
+    },
+    {
+      "source": "long_video.trainer.diffusion",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "long_video.trainer.diffusion",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "long_video.trainer.diffusion",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.trainer.distillation",
+      "target": "model"
+    },
+    {
+      "source": "long_video.trainer.distillation",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "long_video.trainer.distillation",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "long_video.trainer.distillation",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.trainer.gan",
+      "target": "model"
+    },
+    {
+      "source": "long_video.trainer.gan",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "long_video.trainer.gan",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "long_video.trainer.gan",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.trainer.ode",
+      "target": "model"
+    },
+    {
+      "source": "long_video.trainer.ode",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "long_video.trainer.ode",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "long_video.trainer.ode",
+      "target": "utils.misc"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "wan.modules.causal_model"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "wan.modules.t5"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "wan.modules.tokenizers"
+    },
+    {
+      "source": "long_video.utils.wan_wrapper",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "long_video.wan",
+      "target": "long_video.wan.configs"
+    },
+    {
+      "source": "long_video.wan",
+      "target": "long_video.wan.distributed"
+    },
+    {
+      "source": "long_video.wan",
+      "target": "long_video.wan.image2video"
+    },
+    {
+      "source": "long_video.wan",
+      "target": "long_video.wan.modules"
+    },
+    {
+      "source": "long_video.wan",
+      "target": "long_video.wan.text2video"
+    },
+    {
+      "source": "long_video.wan.configs",
+      "target": "long_video.wan.configs.wan_i2v_14B"
+    },
+    {
+      "source": "long_video.wan.configs",
+      "target": "long_video.wan.configs.wan_t2v_14B"
+    },
+    {
+      "source": "long_video.wan.configs",
+      "target": "long_video.wan.configs.wan_t2v_1_3B"
+    },
+    {
+      "source": "long_video.wan.configs.wan_i2v_14B",
+      "target": "long_video.wan.configs.shared_config"
+    },
+    {
+      "source": "long_video.wan.configs.wan_t2v_14B",
+      "target": "long_video.wan.configs.shared_config"
+    },
+    {
+      "source": "long_video.wan.configs.wan_t2v_1_3B",
+      "target": "long_video.wan.configs.shared_config"
+    },
+    {
+      "source": "long_video.wan.distributed.xdit_context_parallel",
+      "target": "long_video.wan.modules.model"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.distributed.fsdp"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.distributed.xdit_context_parallel"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.modules.clip"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.modules.model"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.modules.t5"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.modules.vae"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.utils.fm_solvers"
+    },
+    {
+      "source": "long_video.wan.image2video",
+      "target": "long_video.wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "long_video.wan.modules",
+      "target": "long_video.wan.modules.attention"
+    },
+    {
+      "source": "long_video.wan.modules",
+      "target": "long_video.wan.modules.model"
+    },
+    {
+      "source": "long_video.wan.modules",
+      "target": "long_video.wan.modules.t5"
+    },
+    {
+      "source": "long_video.wan.modules",
+      "target": "long_video.wan.modules.tokenizers"
+    },
+    {
+      "source": "long_video.wan.modules",
+      "target": "long_video.wan.modules.vae"
+    },
+    {
+      "source": "long_video.wan.modules.causal_model",
+      "target": "wan.modules.attention"
+    },
+    {
+      "source": "long_video.wan.modules.causal_model",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "long_video.wan.modules.clip",
+      "target": "long_video.wan.modules.attention"
+    },
+    {
+      "source": "long_video.wan.modules.clip",
+      "target": "long_video.wan.modules.tokenizers"
+    },
+    {
+      "source": "long_video.wan.modules.clip",
+      "target": "long_video.wan.modules.xlm_roberta"
+    },
+    {
+      "source": "long_video.wan.modules.model",
+      "target": "long_video.wan.modules.attention"
+    },
+    {
+      "source": "long_video.wan.modules.t5",
+      "target": "long_video.wan.modules.tokenizers"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.distributed.fsdp"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.distributed.xdit_context_parallel"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.modules.model"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.modules.t5"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.modules.vae"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.utils.fm_solvers"
+    },
+    {
+      "source": "long_video.wan.text2video",
+      "target": "long_video.wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "long_video.wan.utils",
+      "target": "long_video.wan.utils.fm_solvers"
+    },
+    {
+      "source": "long_video.wan.utils",
+      "target": "long_video.wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "long_video.wan.utils.prompt_extend",
+      "target": "long_video.wan.utils.qwen_vl_utils"
+    },
+    {
+      "source": "model",
+      "target": "model.causvid"
+    },
+    {
+      "source": "model",
+      "target": "model.diffusion"
+    },
+    {
+      "source": "model",
+      "target": "model.dmd"
+    },
+    {
+      "source": "model",
+      "target": "model.gan"
+    },
+    {
+      "source": "model",
+      "target": "model.naive_consistency"
+    },
+    {
+      "source": "model",
+      "target": "model.ode_regression"
+    },
+    {
+      "source": "model",
+      "target": "model.sid"
+    },
+    {
+      "source": "model.base",
+      "target": "pipeline"
+    },
+    {
+      "source": "model.base",
+      "target": "utils.loss"
+    },
+    {
+      "source": "model.base",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.causvid",
+      "target": "model.base"
+    },
+    {
+      "source": "model.causvid",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.diffusion",
+      "target": "model.base"
+    },
+    {
+      "source": "model.diffusion",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.dmd",
+      "target": "model.base"
+    },
+    {
+      "source": "model.dmd",
+      "target": "pipeline"
+    },
+    {
+      "source": "model.dmd",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.gan",
+      "target": "model.base"
+    },
+    {
+      "source": "model.gan",
+      "target": "pipeline"
+    },
+    {
+      "source": "model.naive_consistency",
+      "target": "model.base"
+    },
+    {
+      "source": "model.naive_consistency",
+      "target": "pipeline"
+    },
+    {
+      "source": "model.naive_consistency",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "model.naive_consistency",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.ode_regression",
+      "target": "model.base"
+    },
+    {
+      "source": "model.ode_regression",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "model.sid",
+      "target": "model.base"
+    },
+    {
+      "source": "model.sid",
+      "target": "pipeline"
+    },
+    {
+      "source": "model.sid",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.bidirectional_diffusion_inference"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.bidirectional_inference"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.bidirectional_training"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.causal_diffusion_inference"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.causal_inference"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.self_forcing_training"
+    },
+    {
+      "source": "pipeline",
+      "target": "pipeline.teacher_forcing_training"
+    },
+    {
+      "source": "pipeline.bidirectional_diffusion_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.bidirectional_diffusion_inference",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "pipeline.bidirectional_diffusion_inference",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "pipeline.bidirectional_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.bidirectional_training",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "pipeline.bidirectional_training",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.causal_diffusion_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.causal_diffusion_inference",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "pipeline.causal_diffusion_inference",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "pipeline.causal_inference",
+      "target": "demo_utils.memory"
+    },
+    {
+      "source": "pipeline.causal_inference",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.self_forcing_training",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "pipeline.self_forcing_training",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "pipeline.teacher_forcing_training",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "pipeline.teacher_forcing_training",
+      "target": "utils.wan_wrapper"
+    },
+    {
+      "source": "train",
+      "target": "trainer"
+    },
+    {
+      "source": "trainer",
+      "target": "trainer.diffusion"
+    },
+    {
+      "source": "trainer",
+      "target": "trainer.distillation"
+    },
+    {
+      "source": "trainer",
+      "target": "trainer.gan"
+    },
+    {
+      "source": "trainer",
+      "target": "trainer.naive_cd"
+    },
+    {
+      "source": "trainer",
+      "target": "trainer.ode"
+    },
+    {
+      "source": "trainer.diffusion",
+      "target": "model"
+    },
+    {
+      "source": "trainer.diffusion",
+      "target": "pipeline"
+    },
+    {
+      "source": "trainer.diffusion",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "trainer.diffusion",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "trainer.diffusion",
+      "target": "utils.misc"
+    },
+    {
+      "source": "trainer.distillation",
+      "target": "model"
+    },
+    {
+      "source": "trainer.distillation",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "trainer.distillation",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "trainer.distillation",
+      "target": "utils.misc"
+    },
+    {
+      "source": "trainer.gan",
+      "target": "model"
+    },
+    {
+      "source": "trainer.gan",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "trainer.gan",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "trainer.gan",
+      "target": "utils.misc"
+    },
+    {
+      "source": "trainer.naive_cd",
+      "target": "model"
+    },
+    {
+      "source": "trainer.naive_cd",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "trainer.naive_cd",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "trainer.naive_cd",
+      "target": "utils.misc"
+    },
+    {
+      "source": "trainer.ode",
+      "target": "model"
+    },
+    {
+      "source": "trainer.ode",
+      "target": "utils.dataset"
+    },
+    {
+      "source": "trainer.ode",
+      "target": "utils.distributed"
+    },
+    {
+      "source": "trainer.ode",
+      "target": "utils.misc"
+    },
+    {
+      "source": "utils.dataset",
+      "target": "utils.lmdb_"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "utils.scheduler"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "wan.modules.causal_model"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "wan.modules.t5"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "wan.modules.tokenizers"
+    },
+    {
+      "source": "utils.wan_wrapper",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "wan",
+      "target": "wan.configs"
+    },
+    {
+      "source": "wan",
+      "target": "wan.distributed"
+    },
+    {
+      "source": "wan",
+      "target": "wan.image2video"
+    },
+    {
+      "source": "wan",
+      "target": "wan.modules"
+    },
+    {
+      "source": "wan",
+      "target": "wan.text2video"
+    },
+    {
+      "source": "wan.configs",
+      "target": "wan.configs.wan_i2v_14B"
+    },
+    {
+      "source": "wan.configs",
+      "target": "wan.configs.wan_t2v_14B"
+    },
+    {
+      "source": "wan.configs",
+      "target": "wan.configs.wan_t2v_1_3B"
+    },
+    {
+      "source": "wan.configs.wan_i2v_14B",
+      "target": "wan.configs.shared_config"
+    },
+    {
+      "source": "wan.configs.wan_t2v_14B",
+      "target": "wan.configs.shared_config"
+    },
+    {
+      "source": "wan.configs.wan_t2v_1_3B",
+      "target": "wan.configs.shared_config"
+    },
+    {
+      "source": "wan.distributed.xdit_context_parallel",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.distributed.fsdp"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.distributed.xdit_context_parallel"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.modules.clip"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.modules.t5"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "wan.image2video",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "wan.modules",
+      "target": "wan.modules.attention"
+    },
+    {
+      "source": "wan.modules",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "wan.modules",
+      "target": "wan.modules.t5"
+    },
+    {
+      "source": "wan.modules",
+      "target": "wan.modules.tokenizers"
+    },
+    {
+      "source": "wan.modules",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "wan.modules.causal_model",
+      "target": "wan.modules.attention"
+    },
+    {
+      "source": "wan.modules.causal_model",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "wan.modules.clip",
+      "target": "wan.modules.attention"
+    },
+    {
+      "source": "wan.modules.clip",
+      "target": "wan.modules.tokenizers"
+    },
+    {
+      "source": "wan.modules.clip",
+      "target": "wan.modules.xlm_roberta"
+    },
+    {
+      "source": "wan.modules.model",
+      "target": "wan.modules.attention"
+    },
+    {
+      "source": "wan.modules.t5",
+      "target": "wan.modules.tokenizers"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.distributed.fsdp"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.distributed.xdit_context_parallel"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.modules.model"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.modules.t5"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.modules.vae"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "wan.text2video",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "wan.utils",
+      "target": "wan.utils.fm_solvers"
+    },
+    {
+      "source": "wan.utils",
+      "target": "wan.utils.fm_solvers_unipc"
+    },
+    {
+      "source": "wan.utils.prompt_extend",
+      "target": "wan.utils.qwen_vl_utils"
+    }
+  ]
+}

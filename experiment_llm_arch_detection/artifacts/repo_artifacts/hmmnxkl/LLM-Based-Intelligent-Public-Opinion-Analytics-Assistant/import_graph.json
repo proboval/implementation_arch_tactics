@@ -1,0 +1,447 @@
+{
+  "nodes": [
+    "app",
+    "hotsearch_analysis_agent.config",
+    "hotsearch_analysis_agent.config.prompts",
+    "hotsearch_analysis_agent.config.settings",
+    "hotsearch_analysis_agent.config.validator",
+    "hotsearch_analysis_agent.core",
+    "hotsearch_analysis_agent.core.agent",
+    "hotsearch_analysis_agent.core.memory",
+    "hotsearch_analysis_agent.core.tools",
+    "hotsearch_analysis_agent.main",
+    "hotsearch_analysis_agent.utils",
+    "hotsearch_analysis_agent.utils.advanced_sentiment",
+    "hotsearch_analysis_agent.utils.clustering",
+    "hotsearch_analysis_agent.utils.content_extractor",
+    "hotsearch_analysis_agent.utils.platform_mapper",
+    "hotsearch_analysis_agent.utils.sentiment_analyzer",
+    "hotsearch_analysis_agent.vector_db",
+    "hotsearch_analysis_agent.vector_db.manager",
+    "hotsearch_analysis_agent.vector_db.sentiment_vector_manager",
+    "hotsearch_analysis_agent.vector_db.title_vector_manager",
+    "hotsearchcrawler",
+    "hotsearchcrawler.douyinmiddlewares",
+    "hotsearchcrawler.fakemiddlewares",
+    "hotsearchcrawler.ipmiddlewares",
+    "hotsearchcrawler.items",
+    "hotsearchcrawler.middlewares",
+    "hotsearchcrawler.pipelines",
+    "hotsearchcrawler.runspider-test",
+    "hotsearchcrawler.settings",
+    "hotsearchcrawler.spiders",
+    "hotsearchcrawler.spiders.baidu_spider",
+    "hotsearchcrawler.spiders.base1_spider",
+    "hotsearchcrawler.spiders.base2_spider",
+    "hotsearchcrawler.spiders.base3_spider",
+    "hotsearchcrawler.spiders.base4_spider",
+    "hotsearchcrawler.spiders.base5_spder",
+    "hotsearchcrawler.spiders.base_ip_spider",
+    "hotsearchcrawler.spiders.base_spider",
+    "hotsearchcrawler.spiders.bilibili_spider",
+    "hotsearchcrawler.spiders.douyin_fun_spider",
+    "hotsearchcrawler.spiders.douyin_hot_spider",
+    "hotsearchcrawler.spiders.douyin_society_spider",
+    "hotsearchcrawler.spiders.ifeng_spider",
+    "hotsearchcrawler.spiders.kuaishou_spider",
+    "hotsearchcrawler.spiders.pengpai",
+    "hotsearchcrawler.spiders.sll_spider",
+    "hotsearchcrawler.spiders.sougou",
+    "hotsearchcrawler.spiders.tencent_spider",
+    "hotsearchcrawler.spiders.toutiao_car_spider",
+    "hotsearchcrawler.spiders.toutiao_education_spider",
+    "hotsearchcrawler.spiders.toutiao_fun_spider",
+    "hotsearchcrawler.spiders.toutiao_spider",
+    "hotsearchcrawler.spiders.uc_hotnew_spider",
+    "hotsearchcrawler.spiders.uc_interact_spider",
+    "hotsearchcrawler.spiders.uc_spider",
+    "hotsearchcrawler.spiders.uc_video_spider",
+    "hotsearchcrawler.spiders.wangyi_hotnew_spider",
+    "hotsearchcrawler.spiders.wangyi_hotsearch_spider",
+    "hotsearchcrawler.spiders.wangyi_hottalk_spider",
+    "hotsearchcrawler.spiders.wangyi_hottopic_spider",
+    "hotsearchcrawler.spiders.weibo",
+    "hotsearchcrawler.spiders.xiaohongshu",
+    "hotsearchcrawler.spiders.zhihu_hot_spider",
+    "hotsearchcrawler.spiders.zhihu_search_spider",
+    "hotsearchcrawler.uc1middlewares",
+    "hotsearchcrawler.ucmiddlewares",
+    "hotsearchcrawler.wangyimiddlewares",
+    "run_spiders",
+    "test_push_task"
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "app",
+      "target": "hotsearch_analysis_agent.core.tools"
+    },
+    {
+      "source": "app",
+      "target": "hotsearch_analysis_agent.main"
+    },
+    {
+      "source": "app",
+      "target": "hotsearch_analysis_agent.utils.content_extractor"
+    },
+    {
+      "source": "hotsearch_analysis_agent.config.validator",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.agent",
+      "target": "hotsearch_analysis_agent.config.prompts"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.agent",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.agent",
+      "target": "hotsearch_analysis_agent.core.tools"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.agent",
+      "target": "hotsearch_analysis_agent.utils.platform_mapper"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.memory",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.utils.clustering"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.utils.content_extractor"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.utils.platform_mapper"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.utils.sentiment_analyzer"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.vector_db.manager"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.vector_db.sentiment_vector_manager"
+    },
+    {
+      "source": "hotsearch_analysis_agent.core.tools",
+      "target": "hotsearch_analysis_agent.vector_db.title_vector_manager"
+    },
+    {
+      "source": "hotsearch_analysis_agent.main",
+      "target": "hotsearch_analysis_agent.config.validator"
+    },
+    {
+      "source": "hotsearch_analysis_agent.main",
+      "target": "hotsearch_analysis_agent.core.agent"
+    },
+    {
+      "source": "hotsearch_analysis_agent.main",
+      "target": "hotsearch_analysis_agent.vector_db.manager"
+    },
+    {
+      "source": "hotsearch_analysis_agent.main",
+      "target": "hotsearch_analysis_agent.vector_db.title_vector_manager"
+    },
+    {
+      "source": "hotsearch_analysis_agent.utils.content_extractor",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.utils.platform_mapper",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.utils.sentiment_analyzer",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.manager",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.manager",
+      "target": "hotsearch_analysis_agent.utils.content_extractor"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.sentiment_vector_manager",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.sentiment_vector_manager",
+      "target": "hotsearch_analysis_agent.utils.advanced_sentiment"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.title_vector_manager",
+      "target": "hotsearch_analysis_agent.config.settings"
+    },
+    {
+      "source": "hotsearch_analysis_agent.vector_db.title_vector_manager",
+      "target": "hotsearch_analysis_agent.utils.platform_mapper"
+    },
+    {
+      "source": "hotsearchcrawler.pipelines",
+      "target": "hotsearchcrawler.settings"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.baidu_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.bilibili_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.douyin_fun_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.douyin_hot_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.douyin_society_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.ifeng_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.kuaishou_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.pengpai"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.sll_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.sougou"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.tencent_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.toutiao_car_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.toutiao_education_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.toutiao_fun_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.toutiao_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.uc_hotnew_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.uc_interact_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.uc_video_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.wangyi_hotnew_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.wangyi_hotsearch_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.wangyi_hottalk_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.wangyi_hottopic_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.weibo"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.xiaohongshu"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.zhihu_hot_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders",
+      "target": "hotsearchcrawler.spiders.zhihu_search_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.baidu_spider",
+      "target": "hotsearchcrawler.spiders.base5_spder"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base1_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base2_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base3_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base4_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base5_spder",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base_ip_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.base_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.bilibili_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.douyin_fun_spider",
+      "target": "hotsearchcrawler.spiders.base2_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.douyin_hot_spider",
+      "target": "hotsearchcrawler.spiders.base2_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.douyin_society_spider",
+      "target": "hotsearchcrawler.spiders.base2_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.ifeng_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.kuaishou_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.pengpai",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.sll_spider",
+      "target": "hotsearchcrawler.spiders.base5_spder"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.sougou",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.tencent_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.toutiao_car_spider",
+      "target": "hotsearchcrawler.spiders.base_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.toutiao_education_spider",
+      "target": "hotsearchcrawler.spiders.base_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.toutiao_fun_spider",
+      "target": "hotsearchcrawler.spiders.base_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.toutiao_spider",
+      "target": "hotsearchcrawler.spiders.base5_spder"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.uc_hotnew_spider",
+      "target": "hotsearchcrawler.spiders.base3_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.uc_interact_spider",
+      "target": "hotsearchcrawler.spiders.base4_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.uc_spider",
+      "target": "hotsearchcrawler.spiders.base_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.uc_video_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.wangyi_hotnew_spider",
+      "target": "hotsearchcrawler.spiders.base1_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.wangyi_hotsearch_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.wangyi_hotsearch_spider",
+      "target": "hotsearchcrawler.spiders.base1_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.wangyi_hottalk_spider",
+      "target": "hotsearchcrawler.spiders.base1_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.wangyi_hottopic_spider",
+      "target": "hotsearchcrawler.spiders.base1_spider"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.weibo",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.xiaohongshu",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.zhihu_hot_spider",
+      "target": "hotsearchcrawler.items"
+    },
+    {
+      "source": "hotsearchcrawler.spiders.zhihu_search_spider",
+      "target": "hotsearchcrawler.items"
+    }
+  ]
+}

@@ -1,0 +1,982 @@
+archive
+├── app
+│   ├── agent
+│   │   ├── __init__.py
+│   │   ├── agent.py
+│   │   ├── event_stream.py
+│   │   ├── steering.py
+│   │   └── tools.py
+│   ├── api
+│   │   ├── v1
+│   │   │   ├── __init__.py
+│   │   │   ├── agent.py
+│   │   │   ├── agents.py
+│   │   │   ├── auth.py
+│   │   │   ├── backup.py
+│   │   │   ├── browser.py
+│   │   │   ├── channels.py
+│   │   │   ├── display_builder.py
+│   │   │   ├── execute.py
+│   │   │   ├── executors.py
+│   │   │   ├── files.py
+│   │   │   ├── mcp.py
+│   │   │   ├── memory.py
+│   │   │   ├── models.py
+│   │   │   ├── published.py
+│   │   │   ├── registry.py
+│   │   │   ├── router.py
+│   │   │   ├── scheduler.py
+│   │   │   ├── sessions.py
+│   │   │   ├── settings.py
+│   │   │   ├── skills.py
+│   │   │   ├── system.py
+│   │   │   ├── terminal.py
+│   │   │   ├── tools.py
+│   │   │   └── traces.py
+│   │   ├── __init__.py
+│   │   └── deps.py
+│   ├── channels
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── feishu.py
+│   │   └── telegram.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── schema_validator.py
+│   │   ├── skill_manager.py
+│   │   └── tools_registry.py
+│   ├── db
+│   │   ├── __init__.py
+│   │   ├── database.py
+│   │   └── models.py
+│   ├── llm
+│   │   ├── __init__.py
+│   │   ├── code_generator.py
+│   │   ├── intent_parser.py
+│   │   ├── models.py
+│   │   └── provider.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── package.py
+│   │   ├── request.py
+│   │   └── skill.py
+│   ├── repositories
+│   │   ├── __init__.py
+│   │   ├── skill_repo.py
+│   │   └── version_repo.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── agent_runner.py
+│   │   ├── auth_service.py
+│   │   ├── channel_manager.py
+│   │   ├── embedding_service.py
+│   │   ├── executor_client.py
+│   │   ├── executor_config.py
+│   │   ├── memory_service.py
+│   │   ├── scheduler.py
+│   │   ├── skill_service.py
+│   │   └── task_manager.py
+│   ├── terminal
+│   │   ├── __init__.py
+│   │   └── pty_manager.py
+│   ├── tools
+│   │   ├── __init__.py
+│   │   ├── code_executor.py
+│   │   ├── file_scanner.py
+│   │   ├── ipython_kernel.py
+│   │   └── mcp_client.py
+│   ├── utils
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── config.py
+│   └── main.py
+├── config
+│   ├── executors.json
+│   ├── mcp-secrets.json
+│   ├── mcp.json
+│   ├── seed_agents.json
+│   └── seed_skills.json
+├── docker
+│   ├── api
+│   │   ├── Dockerfile
+│   │   └── entrypoint.sh
+│   ├── backups
+│   │   ├── docker-compose.yaml.20260204_165027.bak
+│   │   ├── docker-compose.yaml.20260204_173255.bak
+│   │   ├── docker-compose.yaml.20260204_173708.bak
+│   │   ├── docker-compose.yaml.20260204_173952.bak
+│   │   └── docker-compose.yaml.20260204_174014.bak
+│   ├── db
+│   │   └── init-test-db.sql
+│   ├── docs
+│   │   └── Dockerfile
+│   ├── executor
+│   │   ├── Dockerfile.base
+│   │   ├── Dockerfile.chemscout
+│   │   ├── Dockerfile.cuda
+│   │   ├── Dockerfile.diagram
+│   │   ├── Dockerfile.ml
+│   │   ├── Dockerfile.remotion
+│   │   ├── executor_server.py
+│   │   ├── ipython_kernel.py
+│   │   └── requirements.txt
+│   ├── nginx
+│   │   └── nginx.conf
+│   ├── web
+│   │   ├── Dockerfile
+│   │   └── entrypoint.sh
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── docker-compose.dev.yaml
+│   ├── docker-compose.yaml
+│   ├── init.sh
+│   ├── Makefile
+│   ├── redeploy.sh
+│   └── test_session.sh
+├── docs
+│   ├── docs
+│   │   ├── concepts
+│   │   │   ├── agents.md
+│   │   │   ├── executors.md
+│   │   │   ├── mcp.md
+│   │   │   ├── memory.md
+│   │   │   ├── models.md
+│   │   │   ├── skills.md
+│   │   │   └── tools.md
+│   │   ├── how-to
+│   │   │   ├── backup-restore.md
+│   │   │   ├── build-custom-executor.md
+│   │   │   ├── configure-mcp.md
+│   │   │   ├── create-agent.md
+│   │   │   ├── create-skill.md
+│   │   │   ├── evolve-skills.md
+│   │   │   ├── import-export-skills.md
+│   │   │   ├── publish-agent.md
+│   │   │   ├── run-tests.md
+│   │   │   └── use-external-skills.md
+│   │   ├── reference
+│   │   │   ├── api.md
+│   │   │   ├── configuration.md
+│   │   │   └── skill-format.md
+│   │   ├── development-setup.md
+│   │   ├── faq.md
+│   │   ├── introduction.md
+│   │   └── quickstart.md
+│   ├── examples
+│   │   ├── article-to-slides-agent.gif
+│   │   ├── chemscout-agent.gif
+│   │   ├── evolve-your-agent.gif
+│   │   └── skill-compose-your-agent.gif
+│   ├── images
+│   │   ├── architecture.png
+│   │   └── screenshot.png
+│   ├── src
+│   │   ├── components
+│   │   │   └── HomepageFeatures
+│   │   │       ├── index.tsx
+│   │   │       └── styles.module.css
+│   │   └── css
+│   │       └── custom.css
+│   ├── static
+│   │   ├── img
+│   │   │   ├── architecture.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo.png
+│   │   │   └── logo.svg
+│   │   └── .nojekyll
+│   ├── .gitignore
+│   ├── docusaurus.config.ts
+│   ├── package.json
+│   ├── README.md
+│   ├── sidebars.ts
+│   └── tsconfig.json
+├── scripts
+│   ├── restart-dev.sh
+│   └── run-tests.sh
+├── seed_skills
+│   ├── ai-writing-detection
+│   │   ├── references
+│   │   │   ├── citation-patterns.md
+│   │   │   ├── content-patterns.md
+│   │   │   ├── false-positive-prevention.md
+│   │   │   ├── formatting-patterns.md
+│   │   │   ├── markup-artifacts.md
+│   │   │   ├── model-fingerprints.md
+│   │   │   ├── structural-patterns.md
+│   │   │   └── vocabulary-patterns.md
+│   │   └── SKILL.md
+│   ├── audio-extractor
+│   │   ├── scripts
+│   │   │   └── extract_audio.py
+│   │   └── SKILL.md
+│   ├── biopython
+│   │   ├── references
+│   │   │   ├── advanced.md
+│   │   │   ├── alignment.md
+│   │   │   ├── blast.md
+│   │   │   ├── databases.md
+│   │   │   ├── phylogenetics.md
+│   │   │   ├── sequence_io.md
+│   │   │   └── structure.md
+│   │   └── SKILL.md
+│   ├── brand-identity
+│   │   └── SKILL.md
+│   ├── canvas-design
+│   │   ├── canvas-fonts
+│   │   │   ├── ArsenalSC-OFL.txt
+│   │   │   ├── ArsenalSC-Regular.ttf
+│   │   │   ├── BigShoulders-Bold.ttf
+│   │   │   ├── BigShoulders-OFL.txt
+│   │   │   ├── BigShoulders-Regular.ttf
+│   │   │   ├── Boldonse-OFL.txt
+│   │   │   ├── Boldonse-Regular.ttf
+│   │   │   ├── BricolageGrotesque-Bold.ttf
+│   │   │   ├── BricolageGrotesque-OFL.txt
+│   │   │   ├── BricolageGrotesque-Regular.ttf
+│   │   │   ├── CrimsonPro-Bold.ttf
+│   │   │   ├── CrimsonPro-Italic.ttf
+│   │   │   ├── CrimsonPro-OFL.txt
+│   │   │   ├── CrimsonPro-Regular.ttf
+│   │   │   ├── DMMono-OFL.txt
+│   │   │   ├── DMMono-Regular.ttf
+│   │   │   ├── EricaOne-OFL.txt
+│   │   │   ├── EricaOne-Regular.ttf
+│   │   │   ├── GeistMono-Bold.ttf
+│   │   │   ├── GeistMono-OFL.txt
+│   │   │   ├── GeistMono-Regular.ttf
+│   │   │   ├── Gloock-OFL.txt
+│   │   │   ├── Gloock-Regular.ttf
+│   │   │   ├── IBMPlexMono-Bold.ttf
+│   │   │   ├── IBMPlexMono-OFL.txt
+│   │   │   ├── IBMPlexMono-Regular.ttf
+│   │   │   ├── IBMPlexSerif-Bold.ttf
+│   │   │   ├── IBMPlexSerif-BoldItalic.ttf
+│   │   │   ├── IBMPlexSerif-Italic.ttf
+│   │   │   ├── IBMPlexSerif-Regular.ttf
+│   │   │   ├── InstrumentSans-Bold.ttf
+│   │   │   ├── InstrumentSans-BoldItalic.ttf
+│   │   │   ├── InstrumentSans-Italic.ttf
+│   │   │   ├── InstrumentSans-OFL.txt
+│   │   │   ├── InstrumentSans-Regular.ttf
+│   │   │   ├── InstrumentSerif-Italic.ttf
+│   │   │   ├── InstrumentSerif-Regular.ttf
+│   │   │   ├── Italiana-OFL.txt
+│   │   │   ├── Italiana-Regular.ttf
+│   │   │   ├── JetBrainsMono-Bold.ttf
+│   │   │   ├── JetBrainsMono-OFL.txt
+│   │   │   ├── JetBrainsMono-Regular.ttf
+│   │   │   ├── Jura-Light.ttf
+│   │   │   ├── Jura-Medium.ttf
+│   │   │   ├── Jura-OFL.txt
+│   │   │   ├── LibreBaskerville-OFL.txt
+│   │   │   ├── LibreBaskerville-Regular.ttf
+│   │   │   ├── Lora-Bold.ttf
+│   │   │   ├── Lora-BoldItalic.ttf
+│   │   │   ├── Lora-Italic.ttf
+│   │   │   ├── Lora-OFL.txt
+│   │   │   ├── Lora-Regular.ttf
+│   │   │   ├── NationalPark-Bold.ttf
+│   │   │   ├── NationalPark-OFL.txt
+│   │   │   ├── NationalPark-Regular.ttf
+│   │   │   ├── NothingYouCouldDo-OFL.txt
+│   │   │   ├── NothingYouCouldDo-Regular.ttf
+│   │   │   ├── Outfit-Bold.ttf
+│   │   │   ├── Outfit-OFL.txt
+│   │   │   ├── Outfit-Regular.ttf
+│   │   │   ├── PixelifySans-Medium.ttf
+│   │   │   ├── PixelifySans-OFL.txt
+│   │   │   ├── PoiretOne-OFL.txt
+│   │   │   ├── PoiretOne-Regular.ttf
+│   │   │   ├── RedHatMono-Bold.ttf
+│   │   │   ├── RedHatMono-OFL.txt
+│   │   │   ├── RedHatMono-Regular.ttf
+│   │   │   ├── Silkscreen-OFL.txt
+│   │   │   ├── Silkscreen-Regular.ttf
+│   │   │   ├── SmoochSans-Medium.ttf
+│   │   │   ├── SmoochSans-OFL.txt
+│   │   │   ├── Tektur-Medium.ttf
+│   │   │   ├── Tektur-OFL.txt
+│   │   │   ├── Tektur-Regular.ttf
+│   │   │   ├── WorkSans-Bold.ttf
+│   │   │   ├── WorkSans-BoldItalic.ttf
+│   │   │   ├── WorkSans-Italic.ttf
+│   │   │   ├── WorkSans-OFL.txt
+│   │   │   ├── WorkSans-Regular.ttf
+│   │   │   ├── YoungSerif-OFL.txt
+│   │   │   └── YoungSerif-Regular.ttf
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── code-to-diagram
+│   │   ├── references
+│   │   │   └── mermaid-patterns.md
+│   │   └── SKILL.md
+│   ├── copywriting
+│   │   └── SKILL.md
+│   ├── doc
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   ├── doc-small.svg
+│   │   │   └── doc.png
+│   │   ├── scripts
+│   │   │   └── render_docx.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── gemini-imagegen
+│   │   └── SKILL.md
+│   ├── humanizer
+│   │   ├── README.md
+│   │   ├── SKILL.md
+│   │   └── WARP.md
+│   ├── humanizer-zh
+│   │   └── SKILL.md
+│   ├── imagegen
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   ├── imagegen-small.svg
+│   │   │   └── imagegen.png
+│   │   ├── references
+│   │   │   ├── cli.md
+│   │   │   ├── codex-network.md
+│   │   │   ├── image-api.md
+│   │   │   ├── prompting.md
+│   │   │   └── sample-prompts.md
+│   │   ├── scripts
+│   │   │   └── image_gen.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── invoice-organizer
+│   │   └── SKILL.md
+│   ├── markdown-to-storyboard
+│   │   └── SKILL.md
+│   ├── mcp-builder
+│   │   ├── reference
+│   │   │   ├── evaluation.md
+│   │   │   ├── mcp_best_practices.md
+│   │   │   ├── node_mcp_server.md
+│   │   │   ├── python_mcp_server.md
+│   │   │   └── skills-api-integration.md
+│   │   ├── scripts
+│   │   │   ├── connections.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── example_evaluation.xml
+│   │   │   └── requirements.txt
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── media-downloader
+│   │   ├── scripts
+│   │   │   └── download.py
+│   │   └── SKILL.md
+│   ├── pdb-database
+│   │   ├── references
+│   │   │   └── api_reference.md
+│   │   └── SKILL.md
+│   ├── pdf
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   └── pdf.png
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── planning-with-files
+│   │   ├── templates
+│   │   │   ├── findings.md
+│   │   │   ├── progress.md
+│   │   │   └── task_plan.md
+│   │   ├── examples.md
+│   │   ├── reference.md
+│   │   └── SKILL.md
+│   ├── pubmed-database
+│   │   ├── references
+│   │   │   ├── api_reference.md
+│   │   │   ├── common_queries.md
+│   │   │   └── search_syntax.md
+│   │   └── SKILL.md
+│   ├── rdkit
+│   │   ├── references
+│   │   │   ├── api_reference.md
+│   │   │   ├── descriptors_reference.md
+│   │   │   └── smarts_patterns.md
+│   │   ├── scripts
+│   │   │   ├── molecular_properties.py
+│   │   │   ├── similarity_search.py
+│   │   │   └── substructure_filter.py
+│   │   └── SKILL.md
+│   ├── remotion-best-practices
+│   │   ├── rules
+│   │   │   ├── assets
+│   │   │   │   ├── charts-bar-chart.tsx
+│   │   │   │   ├── text-animations-typewriter.tsx
+│   │   │   │   └── text-animations-word-highlight.tsx
+│   │   │   ├── 3d.md
+│   │   │   ├── animations.md
+│   │   │   ├── assets.md
+│   │   │   ├── audio-visualization.md
+│   │   │   ├── audio.md
+│   │   │   ├── calculate-metadata.md
+│   │   │   ├── can-decode.md
+│   │   │   ├── charts.md
+│   │   │   ├── compositions.md
+│   │   │   ├── display-captions.md
+│   │   │   ├── extract-frames.md
+│   │   │   ├── ffmpeg.md
+│   │   │   ├── fonts.md
+│   │   │   ├── get-audio-duration.md
+│   │   │   ├── get-video-dimensions.md
+│   │   │   ├── get-video-duration.md
+│   │   │   ├── gifs.md
+│   │   │   ├── images.md
+│   │   │   ├── import-srt-captions.md
+│   │   │   ├── light-leaks.md
+│   │   │   ├── lottie.md
+│   │   │   ├── maps.md
+│   │   │   ├── measuring-dom-nodes.md
+│   │   │   ├── measuring-text.md
+│   │   │   ├── parameters.md
+│   │   │   ├── sequencing.md
+│   │   │   ├── subtitles.md
+│   │   │   ├── tailwind.md
+│   │   │   ├── text-animations.md
+│   │   │   ├── timing.md
+│   │   │   ├── transcribe-captions.md
+│   │   │   ├── transitions.md
+│   │   │   ├── transparent-videos.md
+│   │   │   ├── trimming.md
+│   │   │   ├── videos.md
+│   │   │   └── voiceover.md
+│   │   └── SKILL.md
+│   ├── skill-creator
+│   │   ├── references
+│   │   │   ├── output-patterns.md
+│   │   │   └── workflows.md
+│   │   ├── scripts
+│   │   │   ├── init_skill.py
+│   │   │   ├── package_skill.py
+│   │   │   └── quick_validate.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── skill-evolver
+│   │   ├── references
+│   │   │   └── issue-patterns.md
+│   │   ├── scripts
+│   │   │   ├── analyze_traces.py
+│   │   │   └── extract_issue_context.py
+│   │   ├── skill-evolver.skill
+│   │   └── SKILL.md
+│   ├── skill-finder
+│   │   ├── scripts
+│   │   │   ├── add_skill.py
+│   │   │   └── find_skills.py
+│   │   └── SKILL.md
+│   ├── skill-updater
+│   │   ├── scripts
+│   │   │   └── analyze_skill.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── skills-planner
+│   │   └── SKILL.md
+│   ├── slack-gif-creator
+│   │   ├── core
+│   │   │   ├── color_palettes.py
+│   │   │   ├── easing.py
+│   │   │   ├── frame_composer.py
+│   │   │   ├── gif_builder.py
+│   │   │   ├── typography.py
+│   │   │   ├── validators.py
+│   │   │   └── visual_effects.py
+│   │   ├── templates
+│   │   │   ├── bounce.py
+│   │   │   ├── explode.py
+│   │   │   ├── fade.py
+│   │   │   ├── flip.py
+│   │   │   ├── kaleidoscope.py
+│   │   │   ├── morph.py
+│   │   │   ├── move.py
+│   │   │   ├── pulse.py
+│   │   │   ├── shake.py
+│   │   │   ├── slide.py
+│   │   │   ├── spin.py
+│   │   │   ├── wiggle.py
+│   │   │   └── zoom.py
+│   │   ├── LICENSE.txt
+│   │   ├── requirements.txt
+│   │   └── SKILL.md
+│   ├── sora
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   ├── sora-small.svg
+│   │   │   └── sora.png
+│   │   ├── references
+│   │   │   ├── cinematic-shots.md
+│   │   │   ├── cli.md
+│   │   │   ├── codex-network.md
+│   │   │   ├── prompting.md
+│   │   │   ├── sample-prompts.md
+│   │   │   ├── social-ads.md
+│   │   │   ├── troubleshooting.md
+│   │   │   └── video-api.md
+│   │   ├── scripts
+│   │   │   └── sora.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── speech
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   ├── speech-small.svg
+│   │   │   └── speech.png
+│   │   ├── references
+│   │   │   ├── accessibility.md
+│   │   │   ├── audio-api.md
+│   │   │   ├── cli.md
+│   │   │   ├── codex-network.md
+│   │   │   ├── ivr.md
+│   │   │   ├── narration.md
+│   │   │   ├── prompting.md
+│   │   │   ├── sample-prompts.md
+│   │   │   ├── voice-directions.md
+│   │   │   └── voiceover.md
+│   │   ├── scripts
+│   │   │   └── text_to_speech.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── spreadsheet
+│   │   ├── agents
+│   │   │   └── openai.yaml
+│   │   ├── assets
+│   │   │   ├── spreadsheet-small.svg
+│   │   │   └── spreadsheet.png
+│   │   ├── references
+│   │   │   └── examples
+│   │   │       └── openpyxl
+│   │   │           ├── create_basic_spreadsheet.py
+│   │   │           ├── create_spreadsheet_with_styling.py
+│   │   │           ├── read_existing_spreadsheet.py
+│   │   │           └── styling_spreadsheet.py
+│   │   ├── LICENSE.txt
+│   │   └── SKILL.md
+│   ├── storyboard-to-slides
+│   │   └── SKILL.md
+│   ├── trace-qa
+│   │   ├── scripts
+│   │   │   └── fetch_trace.py
+│   │   └── SKILL.md
+│   ├── twitter-algorithm-optimizer
+│   │   └── SKILL.md
+│   └── .gitkeep
+├── tests
+│   ├── e2e
+│   │   ├── pages
+│   │   │   ├── agents-list.spec.ts
+│   │   │   ├── agents-new.spec.ts
+│   │   │   ├── chat-panel.spec.ts
+│   │   │   ├── home.spec.ts
+│   │   │   ├── mcp.spec.ts
+│   │   │   ├── skills-detail.spec.ts
+│   │   │   ├── skills-list.spec.ts
+│   │   │   ├── tools.spec.ts
+│   │   │   └── traces.spec.ts
+│   │   ├── package.json
+│   │   └── playwright.config.ts
+│   ├── mocks
+│   │   ├── __init__.py
+│   │   ├── mock_anthropic.py
+│   │   └── mock_code_executor.py
+│   ├── scripts
+│   │   ├── run_all_tests.sh
+│   │   └── setup_test_db.sh
+│   ├── test_agent
+│   │   └── test_agent_memory.py
+│   ├── test_api
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_agent_run.py
+│   │   ├── test_agent_stream.py
+│   │   ├── test_agents_api.py
+│   │   ├── test_auth.py
+│   │   ├── test_channels.py
+│   │   ├── test_display_builder.py
+│   │   ├── test_execute_api.py
+│   │   ├── test_files_api.py
+│   │   ├── test_health.py
+│   │   ├── test_mcp_api.py
+│   │   ├── test_memory_api.py
+│   │   ├── test_published_api.py
+│   │   ├── test_registry_evolve.py
+│   │   ├── test_registry_import_export.py
+│   │   ├── test_registry_skills.py
+│   │   ├── test_registry_versions.py
+│   │   ├── test_scheduler.py
+│   │   ├── test_sessions.py
+│   │   ├── test_settings_api.py
+│   │   ├── test_skills_api.py
+│   │   ├── test_system_api.py
+│   │   ├── test_tools_api.py
+│   │   └── test_traces_api.py
+│   ├── test_core
+│   │   ├── __init__.py
+│   │   ├── test_context_compression.py
+│   │   ├── test_event_stream.py
+│   │   ├── test_llm_provider.py
+│   │   ├── test_schema_validator.py
+│   │   ├── test_seed_hash.py
+│   │   ├── test_skill_manager.py
+│   │   ├── test_steering.py
+│   │   └── test_stream_retry.py
+│   ├── test_e2e
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_context_compression.py
+│   │   ├── test_e2e_agent_real.py
+│   │   ├── test_e2e_compression_real.py
+│   │   ├── test_e2e_data_analysis.py
+│   │   ├── test_e2e_memory.py
+│   │   ├── test_e2e_memory_real.py
+│   │   ├── test_e2e_published_agent.py
+│   │   ├── test_e2e_workflows.py
+│   │   ├── test_memory_bootstrap_real.py
+│   │   └── test_memory_flush_real.py
+│   ├── test_files
+│   │   └── qdrant.zip
+│   ├── test_services
+│   │   ├── __init__.py
+│   │   ├── test_agent_runner.py
+│   │   ├── test_channel_manager_streaming.py
+│   │   ├── test_embedding_service.py
+│   │   ├── test_memory_service.py
+│   │   ├── test_skill_service.py
+│   │   └── test_task_manager.py
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── factories.py
+│   ├── README.md
+│   ├── test_subprocess_write.py
+│   └── TESTING_GUIDE.md
+├── web
+│   ├── public
+│   │   └── logo.png
+│   ├── src
+│   │   ├── app
+│   │   │   ├── accounts
+│   │   │   │   └── page.tsx
+│   │   │   ├── agents
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── new
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── backup
+│   │   │   │   └── page.tsx
+│   │   │   ├── channels
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── new
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── chat
+│   │   │   │   └── page.tsx
+│   │   │   ├── environment
+│   │   │   │   └── page.tsx
+│   │   │   ├── executors
+│   │   │   │   └── page.tsx
+│   │   │   ├── files
+│   │   │   │   └── page.tsx
+│   │   │   ├── import
+│   │   │   │   └── page.tsx
+│   │   │   ├── login
+│   │   │   │   └── page.tsx
+│   │   │   ├── mcp
+│   │   │   │   └── page.tsx
+│   │   │   ├── published
+│   │   │   │   └── [id]
+│   │   │   │       └── page.tsx
+│   │   │   ├── scheduled-tasks
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── new
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── sessions
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── skills
+│   │   │   │   ├── [name]
+│   │   │   │   │   ├── versions
+│   │   │   │   │   │   └── new
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── evolve
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── find
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── new
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── terminal
+│   │   │   │   └── page.tsx
+│   │   │   ├── tools
+│   │   │   │   └── page.tsx
+│   │   │   ├── traces
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── providers.tsx
+│   │   ├── components
+│   │   │   ├── agents
+│   │   │   │   ├── agent-builder-chat.tsx
+│   │   │   │   ├── agent-config-form.tsx
+│   │   │   │   ├── agent-memory-tab.tsx
+│   │   │   │   ├── publish-card.tsx
+│   │   │   │   └── publish-dialog.tsx
+│   │   │   ├── auth
+│   │   │   │   └── auth-guard.tsx
+│   │   │   ├── chat
+│   │   │   │   ├── stream-events
+│   │   │   │   │   ├── ask-user-card.tsx
+│   │   │   │   │   ├── complete-banner.tsx
+│   │   │   │   │   ├── error-banner.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── output-file-card.tsx
+│   │   │   │   │   ├── steering-message.tsx
+│   │   │   │   │   ├── thinking-block.tsx
+│   │   │   │   │   ├── tool-call-card.tsx
+│   │   │   │   │   ├── tool-result-item.tsx
+│   │   │   │   │   └── turn-divider.tsx
+│   │   │   │   ├── chat-message.tsx
+│   │   │   │   ├── chat-panel.tsx
+│   │   │   │   ├── chat-provider.tsx
+│   │   │   │   └── selects.tsx
+│   │   │   ├── diff
+│   │   │   │   └── diff-viewer.tsx
+│   │   │   ├── editor
+│   │   │   │   └── code-editor.tsx
+│   │   │   ├── files
+│   │   │   │   ├── file-breadcrumbs.tsx
+│   │   │   │   ├── file-browser.tsx
+│   │   │   │   ├── file-entry.tsx
+│   │   │   │   ├── file-list.tsx
+│   │   │   │   ├── file-preview.tsx
+│   │   │   │   ├── file-toolbar.tsx
+│   │   │   │   └── upload-dialog.tsx
+│   │   │   ├── import
+│   │   │   │   ├── conflict-dialog.tsx
+│   │   │   │   ├── file-import-tab.tsx
+│   │   │   │   ├── folder-import-tab.tsx
+│   │   │   │   ├── github-import-tab.tsx
+│   │   │   │   └── import-result-display.tsx
+│   │   │   ├── layout
+│   │   │   │   ├── app-header.tsx
+│   │   │   │   ├── conditional-header.tsx
+│   │   │   │   ├── language-switcher.tsx
+│   │   │   │   ├── nav-link.tsx
+│   │   │   │   └── user-menu.tsx
+│   │   │   ├── mcp
+│   │   │   │   ├── add-server-dialog.tsx
+│   │   │   │   ├── mcp-server-card.tsx
+│   │   │   │   ├── mcp-tool-card.tsx
+│   │   │   │   ├── secret-config-dialog.tsx
+│   │   │   │   ├── secrets-section.tsx
+│   │   │   │   └── tools-list.tsx
+│   │   │   ├── published
+│   │   │   │   └── session-sidebar.tsx
+│   │   │   ├── skill
+│   │   │   │   ├── category-filter-chips.tsx
+│   │   │   │   ├── changelog-list.tsx
+│   │   │   │   ├── delete-skill-dialog.tsx
+│   │   │   │   ├── evolve-trace-modal.tsx
+│   │   │   │   ├── filesystem-sync-dialog.tsx
+│   │   │   │   ├── github-token-hint.tsx
+│   │   │   │   ├── resource-item.tsx
+│   │   │   │   ├── resources-list.tsx
+│   │   │   │   ├── skill-card.tsx
+│   │   │   │   ├── skill-finder-chat.tsx
+│   │   │   │   ├── skill-icon-editor.tsx
+│   │   │   │   ├── skill-list-item.tsx
+│   │   │   │   ├── skill-list.tsx
+│   │   │   │   ├── skill-overview.tsx
+│   │   │   │   ├── skill-type-badge.tsx
+│   │   │   │   ├── unregistered-skills-banner.tsx
+│   │   │   │   ├── update-from-source-modal.tsx
+│   │   │   │   └── version-timeline.tsx
+│   │   │   ├── terminal
+│   │   │   │   └── terminal-console.tsx
+│   │   │   └── ui
+│   │   │       ├── alert-dialog.tsx
+│   │   │       ├── badge.tsx
+│   │   │       ├── button.tsx
+│   │   │       ├── card.tsx
+│   │   │       ├── dialog.tsx
+│   │   │       ├── dropdown-menu.tsx
+│   │   │       ├── empty-state.tsx
+│   │   │       ├── error-banner.tsx
+│   │   │       ├── input.tsx
+│   │   │       ├── label.tsx
+│   │   │       ├── loading-skeleton.tsx
+│   │   │       ├── markdown.tsx
+│   │   │       ├── multi-select.tsx
+│   │   │       ├── progress.tsx
+│   │   │       ├── radio-group.tsx
+│   │   │       ├── select.tsx
+│   │   │       ├── spinner.tsx
+│   │   │       ├── switch.tsx
+│   │   │       ├── table.tsx
+│   │   │       ├── tabs.tsx
+│   │   │       ├── textarea.tsx
+│   │   │       └── tooltip.tsx
+│   │   ├── hooks
+│   │   │   ├── use-agents.ts
+│   │   │   ├── use-backup.ts
+│   │   │   ├── use-browser.ts
+│   │   │   ├── use-channels.ts
+│   │   │   ├── use-chat-engine.ts
+│   │   │   ├── use-chat-session.ts
+│   │   │   ├── use-executors.ts
+│   │   │   ├── use-mcp.ts
+│   │   │   ├── use-memory.ts
+│   │   │   ├── use-published-sessions.ts
+│   │   │   ├── use-scheduled-tasks.ts
+│   │   │   ├── use-skills.ts
+│   │   │   ├── use-tools.ts
+│   │   │   └── use-traces.ts
+│   │   ├── i18n
+│   │   │   ├── locales
+│   │   │   │   ├── en-US
+│   │   │   │   │   ├── agents.json
+│   │   │   │   │   ├── auth.json
+│   │   │   │   │   ├── backup.json
+│   │   │   │   │   ├── channels.json
+│   │   │   │   │   ├── chat.json
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   ├── executors.json
+│   │   │   │   │   ├── files.json
+│   │   │   │   │   ├── home.json
+│   │   │   │   │   ├── import.json
+│   │   │   │   │   ├── mcp.json
+│   │   │   │   │   ├── scheduled-tasks.json
+│   │   │   │   │   ├── sessions.json
+│   │   │   │   │   ├── settings.json
+│   │   │   │   │   ├── skills.json
+│   │   │   │   │   ├── terminal.json
+│   │   │   │   │   ├── tools.json
+│   │   │   │   │   └── traces.json
+│   │   │   │   ├── es
+│   │   │   │   │   ├── agents.json
+│   │   │   │   │   ├── auth.json
+│   │   │   │   │   ├── backup.json
+│   │   │   │   │   ├── channels.json
+│   │   │   │   │   ├── chat.json
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   ├── executors.json
+│   │   │   │   │   ├── files.json
+│   │   │   │   │   ├── home.json
+│   │   │   │   │   ├── import.json
+│   │   │   │   │   ├── mcp.json
+│   │   │   │   │   ├── scheduled-tasks.json
+│   │   │   │   │   ├── sessions.json
+│   │   │   │   │   ├── settings.json
+│   │   │   │   │   ├── skills.json
+│   │   │   │   │   ├── terminal.json
+│   │   │   │   │   ├── tools.json
+│   │   │   │   │   └── traces.json
+│   │   │   │   ├── ja
+│   │   │   │   │   ├── agents.json
+│   │   │   │   │   ├── auth.json
+│   │   │   │   │   ├── backup.json
+│   │   │   │   │   ├── channels.json
+│   │   │   │   │   ├── chat.json
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   ├── executors.json
+│   │   │   │   │   ├── files.json
+│   │   │   │   │   ├── home.json
+│   │   │   │   │   ├── import.json
+│   │   │   │   │   ├── mcp.json
+│   │   │   │   │   ├── scheduled-tasks.json
+│   │   │   │   │   ├── sessions.json
+│   │   │   │   │   ├── settings.json
+│   │   │   │   │   ├── skills.json
+│   │   │   │   │   ├── terminal.json
+│   │   │   │   │   ├── tools.json
+│   │   │   │   │   └── traces.json
+│   │   │   │   ├── pt-BR
+│   │   │   │   │   ├── agents.json
+│   │   │   │   │   ├── auth.json
+│   │   │   │   │   ├── backup.json
+│   │   │   │   │   ├── channels.json
+│   │   │   │   │   ├── chat.json
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   ├── executors.json
+│   │   │   │   │   ├── files.json
+│   │   │   │   │   ├── home.json
+│   │   │   │   │   ├── import.json
+│   │   │   │   │   ├── mcp.json
+│   │   │   │   │   ├── scheduled-tasks.json
+│   │   │   │   │   ├── sessions.json
+│   │   │   │   │   ├── settings.json
+│   │   │   │   │   ├── skills.json
+│   │   │   │   │   ├── terminal.json
+│   │   │   │   │   ├── tools.json
+│   │   │   │   │   └── traces.json
+│   │   │   │   └── zh-CN
+│   │   │   │       ├── agents.json
+│   │   │   │       ├── auth.json
+│   │   │   │       ├── backup.json
+│   │   │   │       ├── channels.json
+│   │   │   │       ├── chat.json
+│   │   │   │       ├── common.json
+│   │   │   │       ├── executors.json
+│   │   │   │       ├── files.json
+│   │   │   │       ├── home.json
+│   │   │   │       ├── import.json
+│   │   │   │       ├── mcp.json
+│   │   │   │       ├── scheduled-tasks.json
+│   │   │   │       ├── sessions.json
+│   │   │   │       ├── settings.json
+│   │   │   │       ├── skills.json
+│   │   │   │       ├── terminal.json
+│   │   │   │       ├── tools.json
+│   │   │   │       └── traces.json
+│   │   │   ├── client.ts
+│   │   │   ├── index.ts
+│   │   │   ├── resources.ts
+│   │   │   └── settings.ts
+│   │   ├── lib
+│   │   │   ├── api.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── formatters.ts
+│   │   │   ├── seed-descriptions.ts
+│   │   │   ├── session-utils.ts
+│   │   │   ├── stream-utils.ts
+│   │   │   └── utils.ts
+│   │   ├── stores
+│   │   │   ├── auth-store.ts
+│   │   │   └── chat-store.ts
+│   │   └── types
+│   │       ├── skill.ts
+│   │       └── stream-events.ts
+│   ├── .eslintrc.json
+│   ├── components.json
+│   ├── next-env.d.ts
+│   ├── next.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── pyproject.toml
+├── README.md
+├── README_es.md
+├── README_ja.md
+├── README_pt-BR.md
+├── README_zh-CN.md
+├── requirements.txt
+└── scheader.png

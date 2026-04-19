@@ -1,0 +1,477 @@
+# FILE: backend/api/main.py
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from backend.database import init_db
+from backend.api.routers import stocks, news, analysis, predict
+
+def startupNone: ...
+
+def healthNone: ...
+
+# FILE: backend/api/routers/analysis.py
+from fastapi import APIRouter
+from pydantic import BaseModel
+from typing import Optional
+from backend.pipeline.layer2 import analyze_article, generate_story, analyze_range
+from backend.pipeline.similarity import find_similar
+from backend.database import get_conn
+
+class DeepAnalysisRequest(BaseModel):
+
+class RangeAnalysisRequest(BaseModel):
+
+class SimilarRequest(BaseModel):
+
+class StoryRequest(BaseModel):
+
+def deep_analysisNone: ...
+
+def create_storyNone: ...
+
+def range_analysisNone: ...
+
+def range_analysis_localNone: ...
+
+def similar_newsNone: ...
+
+# FILE: backend/api/routers/news.py
+from fastapi import APIRouter, Query
+from typing import Optional
+from backend.database import get_conn
+
+def get_news_for_dateNone: ...
+
+def get_news_for_rangeNone: ...
+
+def get_news_particlesNone: ...
+
+def get_news_categoriesNone: ...
+
+def get_news_timelineNone: ...
+
+# FILE: backend/api/routers/pipeline.py
+import logging
+from fastapi import APIRouter, BackgroundTasks
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime, timedelta, timezone
+from backend.database import get_conn
+from backend.polygon.client import fetch_ohlc, fetch_news
+from backend.pipeline.layer0 import run_layer0
+from backend.pipeline.layer1 import get_pending_articles, run_layer1, check_batch_status, collect_batch_results
+from backend.pipeline.alignment import align_news_for_symbol
+import json
+
+class FetchRequest(BaseModel):
+
+class ProcessRequest(BaseModel):
+
+def trigger_fetchNone: ...
+
+def _do_fetchNone: ...
+
+def trigger_processNone: ...
+
+def get_batch_statusNone: ...
+
+# FILE: backend/api/routers/predict.py
+import json
+from pathlib import Path
+from fastapi import APIRouter, HTTPException, Query
+
+def get_predictionNone: ...
+
+def get_backtestNone: ...
+
+def get_forecastNone: ...
+
+def get_similar_daysNone: ...
+
+# FILE: backend/api/routers/stocks.py
+import logging
+from fastapi import APIRouter, Query, HTTPException, BackgroundTasks
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime, timedelta, timezone
+from backend.database import get_conn
+from backend.polygon.client import fetch_ohlc, fetch_news, search_tickers
+
+class AddTickerRequest(BaseModel):
+
+def list_tickersNone: ...
+
+def searchNone: ...
+
+def get_ohlcNone: ...
+
+def add_tickerNone: ...
+
+def _fetch_ticker_dataNone: ...
+
+# FILE: backend/batch_collect.py
+import json
+import sys
+import time
+import anthropic
+from backend.config import settings
+from backend.database import get_conn
+
+def check_statusNone: ...
+
+def collect_resultsNone: ...
+
+def mainNone: ...
+
+# FILE: backend/batch_submit.py
+import json
+import sys
+import time
+from typing import List, Dict, Any
+import anthropic
+from backend.config import settings
+from backend.database import get_conn
+from backend.pipeline.layer1 import (
+    get_pending_articles, _build_batch_prompt, BATCH_SIZE, MODEL, MAX_OUTPUT_TOKENS
+)
+
+def get_top_tickersNone: ...
+
+def build_batch_requestsNone: ...
+
+def submit_batchNone: ...
+
+def mainNone: ...
+
+# FILE: backend/bulk_fetch.py
+import json
+import time
+import sys
+from datetime import datetime, timedelta, timezone
+from backend.config import settings
+from backend.database import get_conn
+from backend.polygon.client import fetch_ohlc, fetch_news, http_get, BASE
+from backend.pipeline.alignment import align_news_for_symbol
+from backend.pipeline.layer0 import run_layer0
+
+def rate_limitNone: ...
+
+def fetch_ticker_nameNone: ...
+
+def fetch_and_store_ohlcNone: ...
+
+def fetch_and_store_newsNone: ...
+
+def mainNone: ...
+
+# FILE: backend/config.py
+from pydantic_settings import BaseSettings
+from pathlib import Path
+
+class Settings(BaseSettings):
+
+# FILE: backend/database.py
+import sqlite3
+from backend.config import settings
+
+def get_connNone: ...
+
+def init_dbNone: ...
+
+# FILE: backend/migration.py
+import csv
+import json
+import re
+from pathlib import Path
+from backend.database import get_conn, init_db
+from backend.config import PROJECT_ROOT
+
+def migrate_tickersNone: ...
+
+def migrate_ohlcNone: ...
+
+def migrate_newsNone: ...
+
+def migrate_parsed_outputNone: ...
+
+def _floatNone: ...
+
+def _intNone: ...
+
+def run_migrationNone: ...
+
+# FILE: backend/ml/backtest.py
+import json
+from pathlib import Path
+import numpy as np
+from xgboost import XGBClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from backend.ml.features import build_features, build_features_multi, FEATURE_COLS
+
+def _run_cvNone: ...
+
+def run_backtestNone: ...
+
+def run_backtest_unifiedNone: ...
+
+# FILE: backend/ml/experiment.py
+import numpy as np
+from xgboost import XGBClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from backend.ml.features_v2 import (
+    build_features_v2,
+    FEATURE_COLS,
+    FEATURE_COLS_V2_MARKET,
+    FEATURE_COLS_V2_CANDLE,
+    get_feature_cols_v2_full,
+)
+
+def _expanding_cvNone: ...
+
+def run_experimentNone: ...
+
+# FILE: backend/ml/features.py
+import pandas as pd
+import numpy as np
+from backend.database import get_conn
+
+def _load_news_featuresNone: ...
+
+def _load_ohlcNone: ...
+
+def build_featuresNone: ...
+
+def build_features_multiNone: ...
+
+# FILE: backend/ml/features_v2.py
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import TruncatedSVD
+from backend.database import get_conn
+from backend.ml.features import build_features, FEATURE_COLS
+
+def _load_market_sentimentNone: ...
+
+def _add_candle_patternsNone: ...
+
+def _build_text_featuresNone: ...
+
+def build_features_v2None: ...
+
+def get_feature_cols_v2_fullNone: ...
+
+# FILE: backend/ml/inference.py
+import json
+from pathlib import Path
+from datetime import datetime, timedelta
+import numpy as np
+import pandas as pd
+import joblib
+from backend.database import get_conn
+from backend.ml.features import build_features, FEATURE_COLS
+
+def _load_recent_newsNone: ...
+
+def _compute_window_featuresNone: ...
+
+def _find_similar_periodsNone: ...
+
+def generate_forecastNone: ...
+
+def _build_conclusionNone: ...
+
+# FILE: backend/ml/lstm_model.py
+import json
+from pathlib import Path
+from datetime import datetime
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import StandardScaler
+import joblib
+from backend.database import get_conn
+from backend.ml.features import build_features, FEATURE_COLS
+from backend.ml.features_v2 import FEATURE_COLS_V2_MARKET
+
+def _load_news_features_filteredNone: ...
+
+def build_features_filteredNone: ...
+
+class SequenceDataset(Dataset):
+    def __init__None: ...
+    def __len__None: ...
+    def __getitem__None: ...
+
+class StockLSTM(nn.Module):
+    def __init__None: ...
+    def forwardNone: ...
+
+def make_sequencesNone: ...
+
+def train_lstmNone: ...
+
+def run_lstm_backtestNone: ...
+
+def train_and_save_lstmNone: ...
+
+def predict_lstmNone: ...
+
+# FILE: backend/ml/model.py
+import json
+from pathlib import Path
+from datetime import datetime
+import numpy as np
+import joblib
+from xgboost import XGBClassifier
+from backend.ml.features import build_features, build_features_multi, FEATURE_COLS
+
+def trainNone: ...
+
+def train_unifiedNone: ...
+
+def predictNone: ...
+
+# FILE: backend/ml/similar.py
+import numpy as np
+import pandas as pd
+from backend.ml.features import build_features, FEATURE_COLS
+from backend.database import get_conn
+
+def find_similar_daysNone: ...
+
+# FILE: backend/ml/train.py
+import argparse
+import time
+from backend.database import get_conn
+from backend.ml.model import train
+from backend.ml.backtest import run_backtest
+
+def get_symbolsNone: ...
+
+def mainNone: ...
+
+# FILE: backend/pipeline/alignment.py
+from datetime import datetime, timedelta
+from typing import Optional
+from backend.database import get_conn
+
+def align_news_for_symbolNone: ...
+
+def _to_iso_dateNone: ...
+
+def _shift_to_trade_dayNone: ...
+
+def _pctNone: ...
+
+# FILE: backend/pipeline/layer0.py
+import json
+import re
+from typing import List, Tuple
+from backend.database import get_conn
+
+def _check_articleNone: ...
+
+def run_layer0None: ...
+
+# FILE: backend/pipeline/layer1.py
+import json
+import re
+from typing import List, Dict, Any
+import anthropic
+from backend.config import settings
+from backend.database import get_conn
+
+def _get_keywordsNone: ...
+
+def _extract_relevant_textNone: ...
+
+def _build_batch_promptNone: ...
+
+def get_pending_articlesNone: ...
+
+def process_batch_groupNone: ...
+
+def run_layer1None: ...
+
+def submit_batch_apiNone: ...
+
+def check_batch_statusNone: ...
+
+def collect_batch_resultsNone: ...
+
+# FILE: backend/pipeline/layer2.py
+import json
+from typing import Dict, Any, Optional, List
+from datetime import datetime, timezone
+import anthropic
+from backend.config import settings
+from backend.database import get_conn
+
+def get_cachedNone: ...
+
+def analyze_articleNone: ...
+
+def generate_storyNone: ...
+
+def analyze_rangeNone: ...
+
+# FILE: backend/pipeline/similarity.py
+import os
+import time
+import pickle
+from typing import Dict, Any, List, Optional
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from backend.config import settings, PROJECT_ROOT
+from backend.database import get_conn
+
+def _needs_rebuildNone: ...
+
+def _build_indexNone: ...
+
+def _load_indexNone: ...
+
+def find_similarNone: ...
+
+# FILE: backend/polygon/client.py
+import time
+import json
+from datetime import datetime, timedelta, timezone
+from typing import Any, Dict, List, Optional
+import requests
+from backend.config import settings
+
+def _headersNone: ...
+
+def http_getNone: ...
+
+def fetch_ohlcNone: ...
+
+def fetch_newsNone: ...
+
+def search_tickersNone: ...
+
+# FILE: backend/weekly_update.py
+import json
+import time
+import sys
+from datetime import datetime, timedelta, timezone
+from backend.config import settings
+from backend.database import get_conn
+from backend.polygon.client import fetch_ohlc, fetch_news, http_get, BASE
+from backend.pipeline.alignment import align_news_for_symbol
+from backend.pipeline.layer0 import run_layer0
+
+def rate_limitNone: ...
+
+def update_ohlcNone: ...
+
+def update_newsNone: ...
+
+def mainNone: ...

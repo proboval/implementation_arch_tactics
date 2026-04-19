@@ -1,0 +1,75 @@
+easytrader
+├── .github
+│   ├── copilot-instructions.md
+│   └── ISSUE_TEMPLATE.md
+├── docs
+│   ├── follow.md
+│   ├── index.md
+│   ├── install.md
+│   ├── miniqmt.md
+│   ├── remote.md
+│   ├── usage.md
+│   └── xueqiu.md
+├── easytrader
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── client.py
+│   │   ├── global.json
+│   │   └── xq.json
+│   ├── miniqmt
+│   │   ├── __init__.py
+│   │   └── miniqmt_trader.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── captcha.py
+│   │   ├── misc.py
+│   │   ├── perf.py
+│   │   ├── stock.py
+│   │   └── win_gui.py
+│   ├── __init__.py
+│   ├── api.py
+│   ├── clienttrader.py
+│   ├── exceptions.py
+│   ├── follower.py
+│   ├── gf_clienttrader.py
+│   ├── gj_clienttrader.py
+│   ├── grid_strategies.py
+│   ├── ht_clienttrader.py
+│   ├── htzq_clienttrader.py
+│   ├── joinquant_follower.py
+│   ├── log.py
+│   ├── pop_dialog_handler.py
+│   ├── refresh_strategies.py
+│   ├── remoteclient.py
+│   ├── ricequant_follower.py
+│   ├── server.py
+│   ├── universal_clienttrader.py
+│   ├── webtrader.py
+│   ├── wk_clienttrader.py
+│   ├── xq_follower.py
+│   ├── xqtrader.py
+│   └── yh_clienttrader.py
+├── tests
+│   ├── __init__.py
+│   ├── test_easytrader.py
+│   ├── test_xq_follower.py
+│   └── test_xqtrader.py
+├── .bumpversion.cfg
+├── .coveragerc
+├── .gitignore
+├── .pylintrc
+├── .readthedocs.yaml
+├── gj_client.json
+├── LICENSE
+├── Makefile
+├── MANIFEST.in
+├── mkdocs.yml
+├── mypy.ini
+├── Pipfile
+├── README.md
+├── readthedocs-requirements.txt
+├── requirements.txt
+├── setup.py
+├── test-requirements.txt
+├── xq.json
+└── yh_client.json

@@ -1,0 +1,25 @@
+Paper2Rebuttal
+├── assets
+│   └── wechat_group.png
+├── prompts
+│   ├── issue_extractor.yaml
+│   ├── issue_extractor_checker.yaml
+│   ├── literature_retrieval.yaml
+│   ├── rebuttal_reviewer.yaml
+│   ├── rebuttal_writer.yaml
+│   ├── reference_analyzer.yaml
+│   ├── reference_filter.yaml
+│   ├── semantic_encoder.yaml
+│   ├── strategy_generator.yaml
+│   ├── strategy_human_refinement.yaml
+│   └── strategy_reviewer.yaml
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── app.py
+├── arxiv.py
+├── llm.py
+├── README.md
+├── rebuttal_service.py
+├── requirements.txt
+└── tools.py
