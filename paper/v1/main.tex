@@ -46,7 +46,7 @@
 
 \begin{document}
 
-\title{Can LLMs Implement Architectural Tactics? Early Results}
+\title{Improving Software Maintainability Through LLM-Implemented Architectural Tactics: Early Empirical Evidence}
 
 \author{Saveliy Chertkov}
 \affiliation{%
@@ -64,7 +64,9 @@
 
 \begin{abstract}
 
-While LLMs have shown strong code refactoring capabilities, their potential for architecture-level quality improvement remains unexplored. We present an automated pipeline that detects repository architecture, selects an appropriate tactic from a predefined catalog, and implements it through iterative code modifications. Applied to 162 open-source Python repositories, the pipeline completed 121 cases: 22 showed MI improvement (mean $\Delta$MI = +2.89 among improved), 92 remained stable, and 7 degraded. A Wilcoxon signed-rank test confirmed statistical significance ($W = 360.0$, $p = 0.001$, $r = 0.28$). Script-based repositories with Decomposability showed the strongest gains. This work provides early empirical evidence on both the potential and limitations of LLMs for architecture-level modifications.
+While LLMs have shown strong code refactoring capabilities, existing approaches apply patterns directly without reasoning about repository architecture. We present an automated pipeline that bridges this gap by detecting the dominant architectural style, selecting an appropriate architectural tactic from a predefined catalog, and implementing it through iterative code modifications---introducing an architecture-aware reasoning layer absent from prior work.
+
+Applied to 162 open-source Python repositories, the pipeline completed 121 cases: 22 showed Maintainability Index (MI) improvement (mean $\Delta$MI = +2.89 among improved, +0.48 overall), 92 remained stable, and 7 degraded; 41 (25.3\%) failed. A Wilcoxon signed-rank test confirmed statistical significance ($W = 360.0$, $p = 0.001$, $r = 0.28$). Script-based repositories with the Decomposability tactic showed the strongest gains. These early results reveal both the potential and current limitations of LLMs for architecture-level maintainability improvement.
 
 \end{abstract}
 
