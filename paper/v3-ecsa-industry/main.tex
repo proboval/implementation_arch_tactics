@@ -36,7 +36,7 @@ Knowing the architectural style of a repository --- modular monolith, layered, s
 \section{Introduction}
 \label{sec:introduction}
 
-Large organizations routinely need to assess the architectural style of dozens or hundreds of repositories for technical debt assessment, migration planning, or tooling configuration --- yet manual classification requires significant expertise and does not scale~\cite{esposito2025generative}. A reliable automated first step would enable downstream tools to select and apply appropriate quality-improvement tactics~\cite{bass2021software} \cite{marquez2022architectural}.
+Large organizations routinely need to assess the architectural style of dozens or hundreds of repositories --- an architect preparing a migration must triage each codebase to select appropriate quality-improvement tactics, a task that quickly becomes impractical at portfolio scale~\cite{esposito2025generative}. A reliable automated first step would enable downstream tools to select and apply appropriate quality-improvement tactics~\cite{bass2021software} \cite{marquez2022architectural}.
 
 Static analysis tools can extract structural metrics but lack semantic reasoning sufficient to distinguish, for example, a modular monolith from a layered architecture~\cite{lenarduzzi2023critical}. While recent LLMs show strong code-understanding capabilities~\cite{liu2025exploring} \cite{piao2025refactoring}, no systematic evaluation of repository-level architectural classification exists. This paper reports on five models and four evidence configurations, addressing: 
 
@@ -54,7 +54,7 @@ Our contributions are: (1)~a manually labeled dataset of 57 Python repositories 
 Architectural styles constrain how components interact and directly shape ISO/IEC 25010 maintainability sub-characteristics --- modularity, analysability, and modifiability~\cite{bass2021software} \cite{ISO25010}. M\'arquez et al.~\cite{marquez2022architectural} systematically mapped architectural tactics to quality attributes, and Kim et al.~\cite{kim2009qualitydriven} showed that selecting appropriate tactics requires knowing the system's style. This coupling between style identification and downstream quality improvement is the direct motivation for our work.
 
 \textbf{Architecture recovery and classification.}
-Traditional architecture recovery reconstructs detailed architectural models from source artifacts~\cite{shokri2024ipsynth}. Such approaches are expensive and require expert interpretation. A lighter task --- coarse-grained \textit{style classification} --- is sufficient for automation: knowing that a system is modular monolith vs.\ layered vs.\ script-based enables appropriate tactic selection without full model reconstruction. Static analysis tools can extract structural metrics but lack the semantic reasoning needed to distinguish styles that share similar package structures~\cite{lenarduzzi2023critical}. To our knowledge, no prior work has systematically evaluated automated style classification at repository scale.
+Traditional architecture recovery reconstructs detailed models from source artifacts, but such approaches are expensive and require expert interpretation. A lighter task --- coarse-grained \textit{style classification} --- is sufficient for automation: knowing that a system is modular monolith vs.\ layered vs.\ script-based enables appropriate tactic selection without full model reconstruction. Static analysis tools can extract structural metrics but lack the semantic reasoning needed to distinguish styles that share similar package structures~\cite{lenarduzzi2023critical}. To our knowledge, no prior work has systematically evaluated automated style classification at repository scale.
 
 \textbf{LLMs in software engineering.}
 LLMs demonstrate strong code-understanding capabilities~\cite{liu2025exploring}, and Piao et al.~\cite{piao2025refactoring} found that prompts enriched with architectural context improve output quality, directly motivating our evidence-type investigation. However, Horikawa et al.~\cite{horikawa2025agentic} showed that even agentic LLM approaches produce mostly low-level edits with limited high-level design changes, leaving repository-level reasoning an open question.
@@ -73,7 +73,7 @@ We define three styles applicable to Python backend repositories. \textbf{Script
 \subsection{Dataset}
 \label{sec:dataset}
 
-Repositories were sourced from GitHub via the Search API. Python was chosen for its dominant role in open-source backend development and its consistent AST-based extraction toolchain. Inclusion criteria: Python source files and \texttt{requirements.txt}, no ML-heavy projects (Jupyter Notebooks or dominant data-science libraries), evidence of active development (stars: 10--28{,}230). After filtering, 59 repositories were retained; one failed artifact extraction due to size, leaving \textbf{57 repositories} (33 modular monolith, 16 layered, 8 script-based; 5--312 Python files, median 38; 3--847 import edges, median 61). Each was cloned at a fixed commit hash. Ground truth labels were assigned by a single expert annotator following the taxonomy in Section~\ref{sec:taxonomy}.
+Repositories were sourced from GitHub via the Search API. Python was chosen for its dominant role in open-source backend development and its consistent AST-based extraction toolchain. Inclusion criteria: Python source files and \texttt{requirements.txt}, no ML-heavy projects (Jupyter Notebooks or dominant data-science libraries), evidence of active development (stars: 10--28{,}230). After filtering, 59 repositories were retained; one failed artifact extraction due to size, leaving \textbf{57 repositories} (33 modular monolith, 16 layered, 8 script-based; 5--312 Python files, median 38; 3--847 import edges, median 61). Each was cloned at a fixed commit hash. Ground truth labels were assigned by a single annotator (a co-author with software architecture background) following the taxonomy in Section~\ref{sec:taxonomy}.
 
 \subsection{Repository Evidence Extraction}
 
@@ -203,7 +203,7 @@ The near-zero Correct/Incorrect $\Delta$ in Table~\ref{tab:confidence} means LLM
 
 \subsection{Practitioner Guidance}
 
-Three recommendations follow directly from the results. (1)~\textbf{P2 (file tree + import graph) is the correct default.} Adding code signatures degrades accuracy and should be avoided; structural metrics provide no consistent benefit. Import graph extraction is pure AST parsing --- lightweight, scriptable, no LLM calls required. (2)~\textbf{Disregard confidence scores entirely.} No model distinguishes correct from incorrect predictions by confidence; high confidence is the default regardless of correctness. (3)~\textbf{The MM/layered boundary is unreliable.} When the distinction matters downstream, route all MM/layered predictions to human review; MM$\to$layered misclassification is the costlier direction, as it applies layer-specific tactics to a domain-organized codebase. When the distinction is not required, collapse to a two-class taxonomy (script-based vs.\ non-script) for substantially higher accuracy.
+Three recommendations follow directly from the results. (1)~\textbf{P2 (file tree + import graph) is the correct default.} Adding code signatures degrades accuracy and should be avoided; structural metrics provide no consistent benefit. Import graph extraction is pure AST parsing --- lightweight, scriptable, no LLM calls required, and the full classification pipeline needs only standard cloud API access with no local GPU or specialized infrastructure. (2)~\textbf{Disregard confidence scores entirely.} No model distinguishes correct from incorrect predictions by confidence; high confidence is the default regardless of correctness. (3)~\textbf{The MM/layered boundary is unreliable.} When the distinction matters downstream, route all MM/layered predictions to human review; MM$\to$layered misclassification is the costlier direction, as it applies layer-specific tactics to a domain-organized codebase. When the distinction is not required, collapse to a two-class taxonomy (script-based vs.\ non-script) for substantially higher accuracy.
 
 \section{Threats to Validity}
 \label{sec:threats}
@@ -219,11 +219,11 @@ Closing the gap toward 85\%+ accuracy will require multi-annotator ground truth 
 
 \section*{Data Availability}
 
-The labeled dataset, repository artifacts, prompt templates, raw model outputs, and evaluation scripts are available at \href{https://zenodo.org/records/20051151?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjFjMzc0MGZjLTM4M2UtNDAyYy05NGE5LTNhZDA1MTBlODAyMyIsImRhdGEiOnt9LCJyYW5kb20iOiJkYjMxN2NlNzQ5ZTBjNDAyZTFkMDgxMjkyY2Q3N2FlMCJ9.LKv3wo1LV9RhHuw6SIpJSvvl27za4XOixLu9g5avR1mTRtuIXb8vZW6Qpp00_IKN0Jyfeii14YwhzXlTohBYvQ}{Zenodo}.
+The labeled dataset, repository artifacts, prompt templates, raw model outputs, and evaluation scripts are available on Zenodo~\cite{chertkov_2026_20051151}.
 
 \section*{Acknowledgements}
 
-AI tools were used for: writing assistance (GitHub Copilot, Claude Sonnet); code generation (GitHub Copilot); data analysis and table generation (Claude Sonnet); literature discovery (Semantic Scholar MCP, NotebookLM). Conceptualization, methodology, data labeling, and scientific conclusions are the authors' own.
+This work used AI tools in the following roles. \textit{Writing and editing:} GitHub Copilot, Claude Sonnet. \textit{Code generation:} GitHub Copilot. \textit{Data management and table generation:} Claude Sonnet. \textit{Literature discovery:} Semantic Scholar MCP, NotebookLM. AI tools were not used for conceptualization, methodology, data labeling, supervision, or ethical review; these remain entirely the authors' own.
 
 \bibliographystyle{splncs04}
 \bibliography{ref}
