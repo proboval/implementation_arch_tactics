@@ -1,0 +1,390 @@
+{
+  "python_files": 75,
+  "packages": 12,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 6.25,
+  "imports_graph": {
+    "tests/conftest.py": [
+      "fastapi",
+      "pytest",
+      "os",
+      "sovereignguard"
+    ],
+    "tests/test_semantic_restorer.py": [
+      "sovereignguard"
+    ],
+    "tests/test_middleware.py": [
+      "fastapi",
+      "pytest",
+      "os",
+      "sovereignguard"
+    ],
+    "tests/test_providers.py": [
+      "sovereignguard"
+    ],
+    "tests/test_new_recognizers.py": [
+      "sovereignguard"
+    ],
+    "tests/test_recognizers.py": [
+      "sovereignguard"
+    ],
+    "tests/test_masker.py": [
+      "re"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_immutable_audit.py": [
+      "pathlib",
+      "json",
+      "sovereignguard"
+    ],
+    "tests/test_restorer.py": [],
+    "tests/test_edge_cases.py": [
+      "pytest",
+      "os",
+      "sovereignguard"
+    ],
+    "tests/test_proxy.py": [
+      "unittest",
+      "sovereignguard"
+    ],
+    "tests/test_integration.py": [
+      "pytest",
+      "fastapi",
+      "sovereignguard",
+      "unittest",
+      "os"
+    ],
+    "sovereignguard/config.py": [
+      "typing",
+      "logging",
+      "pydantic",
+      "pydantic_settings",
+      "enum"
+    ],
+    "sovereignguard/__init__.py": [],
+    "sovereignguard/main.py": [
+      "logging",
+      "uvicorn",
+      "contextlib",
+      "asyncio",
+      "fastapi",
+      "sovereignguard",
+      "structlog",
+      "time"
+    ],
+    "examples/langchain_integration.py": [
+      "langchain_openai"
+    ],
+    "examples/basic_usage.py": [
+      "openai"
+    ],
+    "examples/flask_integration.py": [
+      "flask",
+      "openai"
+    ],
+    "examples/recouvr_integration.py": [
+      "json",
+      "openai"
+    ],
+    "sovereignguard/middleware/auth.py": [
+      "typing",
+      "logging",
+      "starlette",
+      "fastapi",
+      "sovereignguard",
+      "hmac"
+    ],
+    "sovereignguard/middleware/request_size.py": [
+      "logging",
+      "fastapi",
+      "starlette",
+      "sovereignguard"
+    ],
+    "sovereignguard/middleware/__init__.py": [],
+    "sovereignguard/middleware/request_id.py": [
+      "logging",
+      "starlette",
+      "fastapi",
+      "contextvars",
+      "uuid"
+    ],
+    "sovereignguard/middleware/rate_limit.py": [
+      "logging",
+      "starlette",
+      "collections",
+      "fastapi",
+      "sovereignguard",
+      "threading",
+      "time"
+    ],
+    "sovereignguard/proxy/handler.py": [
+      "re",
+      "typing",
+      "logging",
+      "httpx",
+      "sovereignguard",
+      "json"
+    ],
+    "sovereignguard/proxy/__init__.py": [],
+    "sovereignguard/proxy/providers.py": [
+      "logging",
+      "abc",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/proxy/router.py": [
+      "re",
+      "logging",
+      "httpx",
+      "fastapi",
+      "sovereignguard"
+    ],
+    "sovereignguard/proxy/passthrough.py": [
+      "logging",
+      "fastapi",
+      "httpx",
+      "sovereignguard"
+    ],
+    "sovereignguard/utils/__init__.py": [],
+    "sovereignguard/utils/tokenizer.py": [
+      "hashlib",
+      "os",
+      "sovereignguard"
+    ],
+    "sovereignguard/utils/crypto.py": [
+      "sovereignguard",
+      "base64",
+      "os",
+      "cryptography"
+    ],
+    "sovereignguard/utils/exceptions.py": [],
+    "sovereignguard/audit/metrics.py": [
+      "prometheus_client",
+      "logging",
+      "time",
+      "typing"
+    ],
+    "sovereignguard/audit/immutable_logger.py": [
+      "sovereignguard",
+      "typing",
+      "logging",
+      "hashlib",
+      "datetime",
+      "pathlib",
+      "time",
+      "json",
+      "threading",
+      "os"
+    ],
+    "sovereignguard/audit/__init__.py": [],
+    "sovereignguard/audit/logger.py": [
+      "os",
+      "typing",
+      "logging",
+      "pathlib",
+      "sovereignguard",
+      "json",
+      "time"
+    ],
+    "sovereignguard/audit/report.py": [
+      "typing",
+      "logging",
+      "collections",
+      "datetime",
+      "pathlib",
+      "sovereignguard",
+      "json"
+    ],
+    "sovereignguard/recognizers/registry.py": [
+      "logging",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/__init__.py": [],
+    "sovereignguard/recognizers/base.py": [
+      "re",
+      "abc",
+      "dataclasses",
+      "typing"
+    ],
+    "sovereignguard/engine/smart_router.py": [
+      "logging",
+      "enum",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/engine/policy.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "enum",
+      "pathlib",
+      "sovereignguard",
+      "json"
+    ],
+    "sovereignguard/engine/session.py": [
+      "dataclasses",
+      "typing",
+      "logging",
+      "uuid",
+      "time"
+    ],
+    "sovereignguard/engine/__init__.py": [],
+    "sovereignguard/engine/circuit_breaker.py": [
+      "typing",
+      "logging",
+      "enum",
+      "sovereignguard",
+      "threading",
+      "time"
+    ],
+    "sovereignguard/engine/pipeline.py": [
+      "typing",
+      "logging",
+      "concurrent",
+      "asyncio",
+      "sovereignguard",
+      "time"
+    ],
+    "sovereignguard/engine/semantic_restorer.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "sovereignguard"
+    ],
+    "sovereignguard/engine/masker.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "asyncio",
+      "sovereignguard",
+      "uuid"
+    ],
+    "sovereignguard/engine/restorer.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "sovereignguard"
+    ],
+    "sovereignguard/engine/mapping.py": [
+      "dataclasses",
+      "os",
+      "typing",
+      "redis",
+      "json",
+      "hashlib",
+      "base64",
+      "sovereignguard",
+      "sqlite3",
+      "abc",
+      "threading",
+      "hvac",
+      "time"
+    ],
+    "sovereignguard/recognizers/ma/phone.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/ma/cin.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/ma/__init__.py": [],
+    "sovereignguard/recognizers/ma/ice.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/credit_card.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/phone_generic.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/person_name.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/date_of_birth.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/__init__.py": [],
+    "sovereignguard/recognizers/universal/email.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/ip_address.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/universal/iban.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/fr/siret.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/fr/phone.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/fr/address.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/fr/__init__.py": [],
+    "sovereignguard/recognizers/fr/nir.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/national_id.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/phone.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/address.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/person_name.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/__init__.py": [
+      "sovereignguard"
+    ],
+    "sovereignguard/recognizers/tn/company_id.py": [
+      "re",
+      "typing",
+      "sovereignguard"
+    ]
+  }
+}

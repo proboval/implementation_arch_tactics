@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling between simulation core, agent logic, and infrastructure concerns. Static analysis shows high fan-out (avg_fan_out: 5.85) and deep dependency chains (max_directory_depth: 3), with modules like 'office_os/server/office_os_environment.py' directly instantiating MarketSimulator, EventEngine, and RewardCalculator without clear abstraction boundaries. This coupling makes it difficult to test components in isolation (e.g., testing RewardCalculator requires full environment setup) and increases modification scope (any change to market state affects all dependent modules). Decomposability addresses this by introducing clear module boundaries and separation of concerns, isolating the simulation core from agent orchestration and infrastructure concerns.",
+  "target_components": [
+    "office_os/server/office_os_environment.py",
+    "office_os/market/simulator.py",
+    "office_os/market/events.py",
+    "office_os/market/metrics.py",
+    "office_os/agents/llm_agent.py",
+    "office_os/train_loop.py",
+    "office_os/run_agents.py"
+  ],
+  "expected_architectural_change": "Introduce a clean simulation interface layer that abstracts the MarketState and its evolution, decoupling agent orchestration from core simulation logic. The OfficeOsEnvironment will delegate state transitions to a SimulationEngine interface, while agent decision-making will be handled by a separate AgentOrchestrator. This creates testable units: MarketSimulator can be tested with mock state, RewardCalculator with mock transitions, and agents with mock observations.",
+  "implementation_strategy": "1. Extract SimulationEngine interface from OfficeOsEnvironment, moving MarketSimulator, EventEngine, and RewardCalculator into a dedicated simulation package. 2. Create AgentOrchestrator to handle agent selection, observation preparation, and action execution, removing this logic from run_agents.py and train_loop.py. 3. Introduce clear boundaries: simulation package (core state/transition), agents package (decision logic), and orchestration package (coordination). 4. Refactor train_loop.py and run_agents.py to use the orchestrator instead of direct environment manipulation.",
+  "risks": "Initial refactoring may temporarily increase complexity during transition. Requires careful versioning to avoid breaking existing integrations (e.g., demo/api/rl_bridge.py). Testing coverage must be maintained during refactoring to ensure simulation behavior remains unchanged."
+}

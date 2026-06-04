@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between core modules, especially in the authentication and knowledge management layers. The auth.py router directly imports and uses BilibiliService, but also contains duplicated session management logic that is duplicated in favorites.py and knowledge.py routers. The RAGService is instantiated globally in knowledge.py but also directly instantiated in test/debug_asr_single.py and test/sync_cache_vectors.py, creating tight coupling between test code and production services. This coupling forces changes in one area (e.g., session handling) to ripple across multiple files (auth.py, favorites.py, knowledge.py, routers/__init__.py) and makes unit testing difficult due to shared global state and direct instantiation of services. The imports_graph shows that app/routers/auth.py imports app, app/routers/favorites.py imports app, and app/routers/knowledge.py imports app, creating circular dependencies and making the system fragile to changes.",
+  "target_components": [
+    "app/routers/auth.py",
+    "app/routers/favorites.py",
+    "app/routers/knowledge.py",
+    "app/services/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce a dependency injection layer (e.g., via FastAPI dependencies or a service locator pattern) to decouple routers from concrete service implementations. Replace global singleton RAGService with a factory or dependency-injected instance. Extract session management logic into a dedicated service layer to eliminate duplication between auth.py and other routers. This will transform the current tightly-coupled module graph into a layered architecture where routers depend on abstractions (interfaces) rather than concrete implementations.",
+  "implementation_strategy": "1. Create a new app/services/session.py module to encapsulate session management logic currently duplicated across auth.py and other routers. 2. Refactor auth.py, favorites.py, and knowledge.py to accept dependencies via FastAPI Depends() instead of importing services directly. 3. Replace the global _rag_service singleton in knowledge.py with a get_rag_service dependency that can be mocked in tests. 4. Introduce abstract base classes or protocols for BilibiliService, RAGService, and ContentFetcher to enable test doubles. 5. Update test files to inject mock dependencies instead of importing production services directly.",
+  "risks": "Refactoring session management and service instantiation may require updates to existing tests and could temporarily break functionality if dependencies are not correctly wired. However, the layered architecture and existing test files provide clear boundaries for incremental adoption. The risk is mitigated by the fact that changes are localized to module boundaries and can be validated through existing test coverage."
+}

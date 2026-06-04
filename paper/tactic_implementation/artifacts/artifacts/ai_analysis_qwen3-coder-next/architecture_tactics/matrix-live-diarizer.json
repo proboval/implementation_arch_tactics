@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in speaker engine implementations: CamPlusEngine, ERes2NetEngine, and WespeakerEngine each duplicate nearly identical logic for embedding smoothing, threshold management, and client cleanup (e.g., get_smoothed_embedding, reset_buffer, cleanup_client, and compare_and_identify patterns), despite sharing a common base class. Static analysis shows avg_fan_out=5.0 and imports_graph reveals repeated cross-engine dependencies (e.g., speaker_factory.py imports all three engines directly). This duplication increases modification scope: changing a shared behavior (e.g., threshold logic or buffer management) requires changes in 3+ files, risking inconsistency and regressions. Localized Modification addresses this by consolidating shared logic into a single, cohesive module, reducing the impact of changes to one location.",
+  "target_components": [
+    "engine/speaker/campplus_engine.py",
+    "engine/speaker/eres2net_engine.py",
+    "engine/speaker/wespeaker_engine.py",
+    "engine/speaker/base_engine.py"
+  ],
+  "expected_architectural_change": "Move shared implementation logic (e.g., dynamic threshold calculation, embedding smoothing, history tracking, and client cleanup) from concrete engine classes into a new shared mixin or base class (e.g., engine/speaker/mixins/identifiers.py), while keeping engine-specific model loading and collection initialization in their respective classes. This creates a clear separation between engine-agnostic identification logic and engine-specific model integration.",
+  "implementation_strategy": "1. Extract common methods (e.g., _get_dynamic_threshold, get_smoothed_embedding, _check_pending_speakers, cleanup_client) into a new mixin class in engine/speaker/mixins/identifier_mixin.py. 2. Refactor concrete engines to inherit from both BaseSpeakerEngine and the new mixin, removing duplicated code. 3. Update speaker_factory.py to remove direct imports of concrete engines, using dynamic imports via the mixin. 4. Add unit tests for the mixin to ensure behavior consistency across engines. 5. Gradually migrate engine-specific logic into the mixin where safe.",
+  "risks": "Risk of over-engineering if the mixin becomes too generic; must be carefully scoped to only truly duplicated logic. Risk of breaking existing engine-specific behavior if assumptions differ subtly (e.g., CamPlusEngine's pending_speakers logic vs. others). Mitigation: Use feature flags and thorough regression testing during migration."
+}

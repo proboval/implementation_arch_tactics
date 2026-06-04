@@ -1,0 +1,467 @@
+{
+  "python_files": 59,
+  "packages": 10,
+  "max_directory_depth": 7,
+  "avg_files_per_package": 5.9,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "clawmode_integration/task_classifier.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "__future__",
+      "loguru"
+    ],
+    "clawmode_integration/config.py": [
+      "json",
+      "dataclasses",
+      "pathlib",
+      "__future__",
+      "loguru"
+    ],
+    "clawmode_integration/tools.py": [
+      "json",
+      "dataclasses",
+      "typing",
+      "nanobot",
+      "__future__",
+      "datetime",
+      "os"
+    ],
+    "clawmode_integration/agent_loop.py": [
+      "json",
+      "typing",
+      "uuid",
+      "nanobot",
+      "clawmode_integration",
+      "pathlib",
+      "__future__",
+      "datetime",
+      "loguru"
+    ],
+    "clawmode_integration/__init__.py": [
+      "clawmode_integration"
+    ],
+    "clawmode_integration/cli.py": [
+      "asyncio",
+      "typer",
+      "contextlib",
+      "livebench",
+      "nanobot",
+      "clawmode_integration",
+      "pathlib",
+      "rich",
+      "__future__",
+      "os",
+      "loguru",
+      "signal"
+    ],
+    "clawmode_integration/artifact_tools.py": [
+      "json",
+      "typing",
+      "livebench",
+      "nanobot",
+      "clawmode_integration",
+      "docx",
+      "pathlib",
+      "io",
+      "__future__",
+      "reportlab",
+      "pandas",
+      "os"
+    ],
+    "clawmode_integration/provider_wrapper.py": [
+      "typing",
+      "nanobot",
+      "__future__"
+    ],
+    "livebench/main.py": [
+      "asyncio",
+      "json",
+      "dotenv",
+      "pathlib",
+      "agent",
+      "argparse",
+      "sys",
+      "datetime",
+      "os",
+      "traceback"
+    ],
+    "scripts/validate_economic_system.py": [
+      "json",
+      "inspect",
+      "livebench",
+      "pathlib",
+      "shutil",
+      "sys",
+      "os",
+      "tempfile",
+      "traceback"
+    ],
+    "scripts/recalculate_agent_economics.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "shutil",
+      "sys",
+      "datetime",
+      "os",
+      "traceback"
+    ],
+    "scripts/derive_task_completions.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/test_task_value_integration.py": [
+      "json",
+      "livebench",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "scripts/build_e2b_template.py": [
+      "typing",
+      "argparse",
+      "sys",
+      "os",
+      "tempfile",
+      "traceback",
+      "e2b"
+    ],
+    "scripts/test_e2b_template.py": [
+      "e2b_code_interpreter",
+      "argparse",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "scripts/cleanup_failed_runs.py": [
+      "re",
+      "shutil",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "scripts/backfill_balance_task_info.py": [
+      "pathlib",
+      "collections",
+      "json",
+      "datetime"
+    ],
+    "scripts/calculate_task_values.py": [
+      "json",
+      "openai",
+      "time",
+      "typing",
+      "pathlib",
+      "collections",
+      "csv",
+      "datetime",
+      "os"
+    ],
+    "scripts/analyze_economic_improvements.py": [
+      "json",
+      "livebench",
+      "pathlib",
+      "collections",
+      "shutil",
+      "sys",
+      "tempfile"
+    ],
+    "scripts/test_task_exhaustion.py": [
+      "os",
+      "livebench",
+      "sys"
+    ],
+    "scripts/generate_static_data.py": [
+      "pathlib",
+      "shutil",
+      "json"
+    ],
+    "scripts/domain_earnings_analysis.py": [
+      "pathlib",
+      "collections",
+      "json"
+    ],
+    "scripts/estimate_task_hours.py": [
+      "openai",
+      "json",
+      "time",
+      "typing",
+      "pathlib",
+      "pandas",
+      "os",
+      "datetime"
+    ],
+    "scripts/test_economic_tracker.py": [
+      "json",
+      "livebench",
+      "pathlib",
+      "shutil",
+      "sys",
+      "os",
+      "tempfile",
+      "traceback"
+    ],
+    "eval/test_single_category.py": [
+      "json",
+      "pathlib",
+      "generate_meta_prompts",
+      "sys",
+      "pandas",
+      "os",
+      "traceback"
+    ],
+    "eval/generate_meta_prompts.py": [
+      "openai",
+      "json",
+      "time",
+      "typing",
+      "pathlib",
+      "pandas",
+      "os",
+      "datetime"
+    ],
+    "livebench/tools/start_live_services.py": [
+      "time",
+      "subprocess",
+      "pathlib",
+      "sys",
+      "os"
+    ],
+    "livebench/tools/tool_livebench.py": [
+      "json",
+      "fastmcp",
+      "typing",
+      "livebench",
+      "datetime",
+      "os"
+    ],
+    "livebench/tools/__init__.py": [],
+    "livebench/tools/direct_tools.py": [
+      "json",
+      "typing",
+      "livebench",
+      "langchain_core",
+      "datetime",
+      "os"
+    ],
+    "livebench/scheduler/__init__.py": [],
+    "livebench/utils/logger.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "datetime",
+      "os",
+      "traceback"
+    ],
+    "livebench/agent/economic_tracker.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "datetime",
+      "os"
+    ],
+    "livebench/agent/__init__.py": [],
+    "livebench/agent/live_agent.py": [
+      "asyncio",
+      "json",
+      "work",
+      "typing",
+      "livebench",
+      "dotenv",
+      "langchain_mcp_adapters",
+      "prompts",
+      "httpx",
+      "pathlib",
+      "agent",
+      "shutil",
+      "langchain_core",
+      "sys",
+      "datetime",
+      "os",
+      "langchain_openai",
+      "traceback"
+    ],
+    "livebench/agent/wrapup_workflow.py": [
+      "langgraph",
+      "json",
+      "re",
+      "typing",
+      "livebench",
+      "langchain_core",
+      "pathlib",
+      "agent",
+      "os",
+      "langchain_openai",
+      "traceback"
+    ],
+    "livebench/agent/message_formatter.py": [
+      "base64",
+      "typing"
+    ],
+    "livebench/langchain_mcp_adapters/client.py": [
+      "json",
+      "typing",
+      "langchain_core",
+      "httpx",
+      "pydantic"
+    ],
+    "livebench/langchain_mcp_adapters/__init__.py": [
+      "client"
+    ],
+    "livebench/work/llm_evaluator.py": [
+      "json",
+      "openai",
+      "re",
+      "typing",
+      "livebench",
+      "dotenv",
+      "docx",
+      "pathlib",
+      "openpyxl",
+      "datetime",
+      "base64",
+      "os"
+    ],
+    "livebench/work/__init__.py": [],
+    "livebench/work/task_manager.py": [
+      "json",
+      "typing",
+      "numpy",
+      "pathlib",
+      "random",
+      "pandas",
+      "os",
+      "datetime"
+    ],
+    "livebench/work/evaluator.py": [
+      "json",
+      "typing",
+      "llm_evaluator",
+      "datetime",
+      "os"
+    ],
+    "livebench/prompts/__init__.py": [],
+    "livebench/prompts/live_agent_prompt.py": [
+      "os",
+      "typing"
+    ],
+    "livebench/api/server.py": [
+      "uvicorn",
+      "asyncio",
+      "json",
+      "time",
+      "typing",
+      "fastapi",
+      "pathlib",
+      "random",
+      "pydantic",
+      "datetime",
+      "glob",
+      "os"
+    ],
+    "livebench/api/__init__.py": [],
+    "livebench/trading/__init__.py": [],
+    "livebench/data/agent_data/Gemini 3.1 Pro Preview/sandbox/2027-05-05/produce_track.py": [
+      "os",
+      "numpy",
+      "scipy"
+    ],
+    "livebench/data/agent_data/Gemini 3.1 Pro Preview/sandbox/2026-12-21/american_pricing_implementation.py": [
+      "numpy"
+    ],
+    "livebench/data/agent_data/qwen3-max-10dollar-1/sandbox/2026-02-09/video_editing_script.py": [
+      "os",
+      "moviepy"
+    ],
+    "livebench/tools/productivity/code_execution.py": [
+      "typing",
+      "livebench",
+      "subprocess",
+      "langchain_core",
+      "os",
+      "tempfile"
+    ],
+    "livebench/tools/productivity/__init__.py": [
+      "search",
+      "code_execution_sandbox",
+      "file_creation",
+      "file_reading",
+      "video_creation"
+    ],
+    "livebench/tools/productivity/file_reading.py": [
+      "re",
+      "livebench",
+      "openai",
+      "io",
+      "docx",
+      "shutil",
+      "traceback",
+      "concurrent",
+      "PyPDF2",
+      "langchain_core",
+      "pathlib",
+      "openpyxl",
+      "tempfile",
+      "PIL",
+      "time",
+      "typing",
+      "dotenv",
+      "subprocess",
+      "pdf2image",
+      "base64",
+      "os",
+      "requests"
+    ],
+    "livebench/tools/productivity/code_execution_sandbox.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "livebench",
+      "boxlite",
+      "dotenv",
+      "langchain_core",
+      "e2b_code_interpreter",
+      "shutil",
+      "__future__",
+      "shlex",
+      "base64",
+      "os"
+    ],
+    "livebench/tools/productivity/video_creation.py": [
+      "json",
+      "typing",
+      "livebench",
+      "numpy",
+      "langchain_core",
+      "moviepy",
+      "os"
+    ],
+    "livebench/tools/productivity/search.py": [
+      "os",
+      "typing",
+      "langchain_core",
+      "tavily",
+      "requests"
+    ],
+    "livebench/tools/productivity/file_creation.py": [
+      "json",
+      "typing",
+      "livebench",
+      "langchain_core",
+      "docx",
+      "io",
+      "reportlab",
+      "pandas",
+      "os"
+    ]
+  }
+}

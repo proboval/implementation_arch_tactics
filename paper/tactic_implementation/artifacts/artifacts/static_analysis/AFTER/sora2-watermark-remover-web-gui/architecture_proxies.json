@@ -1,0 +1,116 @@
+{
+  "python_files": 16,
+  "packages": 4,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "main.py": [
+      "processing",
+      "logging",
+      "webbrowser",
+      "sys",
+      "threading",
+      "core",
+      "time"
+    ],
+    "core/server.py": [
+      "os",
+      "logging",
+      "sys",
+      "flask",
+      "core",
+      "time"
+    ],
+    "core/system_info.py": [
+      "ctypes",
+      "platform",
+      "subprocess",
+      "os",
+      "torch",
+      "multiprocessing"
+    ],
+    "core/__init__.py": [
+      "processing",
+      "utils",
+      "server",
+      "system_info",
+      "sys"
+    ],
+    "core/utils.py": [
+      "socket",
+      "processing",
+      "os",
+      "sys"
+    ],
+    "processing/analyzer.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ],
+    "processing/__init__.py": [
+      "analyzer",
+      "engine",
+      "sys"
+    ],
+    "processing/engine.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ],
+    "processing/loader.py": [
+      "os",
+      "sys",
+      "datetime",
+      "typing"
+    ],
+    "processing/sora_process.py": [
+      "subprocess",
+      "os",
+      "typing",
+      "random",
+      "binascii",
+      "hashlib",
+      "datetime",
+      "sys",
+      "time"
+    ],
+    "utils/image_utils.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ],
+    "utils/__init__.py": [
+      "video_io",
+      "image_utils",
+      "sys",
+      "processing"
+    ],
+    "utils/video_io.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ],
+    "models/__init__.py": [
+      "training",
+      "processing",
+      "networks",
+      "sys"
+    ],
+    "models/networks.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ],
+    "models/training.py": [
+      "time",
+      "processing",
+      "random",
+      "sys"
+    ]
+  }
+}

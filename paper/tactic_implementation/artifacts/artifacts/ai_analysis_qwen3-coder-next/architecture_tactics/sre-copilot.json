@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor localization of change: the agent.py file (1300+ lines) bundles system prompt, LangGraph state definition, agent orchestration, and tool initialization logic into a single monolithic module. This violates high cohesion and creates ripple effects: adding a new tool requires touching the agent class, modifying the system prompt affects unrelated agent logic, and testing components in isolation is difficult. Static analysis confirms 'C1' (high coupling) and 'A3' (low modularity) factors. The tools/ directory shows good separation, but agent.py acts as a central hub coupling configuration, orchestration, and business logic. Localized Modification will split agent.py into focused modules (e.g., agent/core.py for orchestration, agent/prompt.py for system prompt, agent/tool_loader.py for tool initialization), reducing modification scope and preventing unrelated changes from propagating.",
+  "target_components": [
+    "agent.py",
+    "agent",
+    "agent.py:SYSTEM_PROMPT",
+    "agent.py:SREAgent.__post_init__",
+    "agent.py:SREAgent._setup_graph"
+  ],
+  "expected_architectural_change": "agent.py will be decomposed into a package (agent/) with modules: core.py (LangGraph state and graph construction), prompt.py (system prompt and user instructions), tool_loader.py (tool initialization and binding), and possibly stream.py (streaming logic). The SREAgent class will be split into composition: AgentOrchestrator (core), PromptManager (prompt), and ToolRegistry (tools). This creates stable interfaces and isolates change to one module per concern.",
+  "implementation_strategy": "1. Create agent/ directory with __init__.py. 2. Extract SYSTEM_PROMPT into agent/prompt.py as a constant or class method. 3. Move LangGraph graph construction logic into agent/core.py with a clean interface (e.g., build_graph()). 4. Extract tool initialization logic into agent/tool_loader.py with methods like load_datadog_tools(), load_k8s_tools(). 5. Refactor SREAgent to compose these modules instead of containing their logic. 6. Update imports in server.py and app.py to use new structure. 7. Add unit tests per new module.",
+  "risks": "Low risk if done incrementally. Potential risk: temporary duplication of logic during refactoring. Mitigation: use feature branches, write tests for current behavior first, and refactor in small commits (e.g., extract prompt first, then tools, then graph). No functional changes are required—only structural."
+}

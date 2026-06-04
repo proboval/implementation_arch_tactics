@@ -1,0 +1,256 @@
+{
+  "python_files": 26,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "wrapper_unix.py": [
+      "subprocess",
+      "shlex",
+      "sys",
+      "pathlib",
+      "shutil",
+      "time"
+    ],
+    "store.py": [
+      "os",
+      "pathlib",
+      "json",
+      "uuid",
+      "threading",
+      "time"
+    ],
+    "wrapper_api.py": [
+      "os",
+      "argparse",
+      "wrapper",
+      "sys",
+      "urllib",
+      "time",
+      "pathlib",
+      "threading",
+      "json",
+      "config_loader"
+    ],
+    "config_loader.py": [
+      "pathlib",
+      "tomllib",
+      "sys",
+      "os"
+    ],
+    "run.py": [
+      "argparse",
+      "mcp_bridge",
+      "logging",
+      "uvicorn",
+      "secrets",
+      "asyncio",
+      "fastapi",
+      "app",
+      "sys",
+      "pathlib",
+      "threading",
+      "time",
+      "config_loader"
+    ],
+    "wrapper.py": [
+      "mcp_proxy",
+      "urllib",
+      "wrapper_windows",
+      "argparse",
+      "wrapper_unix",
+      "sys",
+      "time",
+      "json",
+      "shutil",
+      "threading",
+      "pathlib",
+      "os",
+      "config_loader"
+    ],
+    "registry.py": [
+      "dataclasses",
+      "secrets",
+      "pathlib",
+      "time",
+      "colorsys",
+      "uuid",
+      "threading",
+      "json"
+    ],
+    "wrapper_windows.py": [
+      "ctypes",
+      "subprocess",
+      "os",
+      "array",
+      "sys",
+      "threading",
+      "time"
+    ],
+    "build_release.py": [
+      "shutil",
+      "pathlib",
+      "tempfile"
+    ],
+    "rules.py": [
+      "pathlib",
+      "json",
+      "uuid",
+      "threading",
+      "time"
+    ],
+    "agents.py": [
+      "mcp_bridge",
+      "logging",
+      "pathlib",
+      "json",
+      "time"
+    ],
+    "jobs.py": [
+      "pathlib",
+      "json",
+      "uuid",
+      "threading",
+      "time"
+    ],
+    "mcp_bridge.py": [
+      "uuid",
+      "os",
+      "logging",
+      "mcp",
+      "app",
+      "pathlib",
+      "json",
+      "shutil",
+      "threading",
+      "time"
+    ],
+    "session_engine.py": [
+      "logging",
+      "threading",
+      "time"
+    ],
+    "archive.py": [
+      "re",
+      "hashlib",
+      "io",
+      "zipfile",
+      "time",
+      "uuid",
+      "threading",
+      "json"
+    ],
+    "app.py": [
+      "re",
+      "agents",
+      "archive",
+      "app",
+      "sys",
+      "schedules",
+      "summaries",
+      "packaging",
+      "datetime",
+      "rules",
+      "threading",
+      "json",
+      "time",
+      "subprocess",
+      "router",
+      "session_engine",
+      "store",
+      "urllib",
+      "uuid",
+      "jobs",
+      "registry",
+      "mcp_bridge",
+      "logging",
+      "traceback",
+      "starlette",
+      "asyncio",
+      "fastapi",
+      "pathlib",
+      "session_store"
+    ],
+    "router.py": [
+      "re"
+    ],
+    "session_store.py": [
+      "logging",
+      "pathlib",
+      "json",
+      "threading",
+      "time"
+    ],
+    "summaries.py": [
+      "pathlib",
+      "json",
+      "uuid",
+      "threading",
+      "time"
+    ],
+    "schedules.py": [
+      "re",
+      "datetime",
+      "pathlib",
+      "time",
+      "uuid",
+      "threading",
+      "json"
+    ],
+    "mcp_proxy.py": [
+      "re",
+      "logging",
+      "socketserver",
+      "sys",
+      "urllib",
+      "threading",
+      "http",
+      "json"
+    ],
+    "tests/test_router.py": [
+      "pathlib",
+      "unittest",
+      "router",
+      "sys"
+    ],
+    "tests/test_wrapper_mcp_config.py": [
+      "wrapper",
+      "tempfile",
+      "sys",
+      "json",
+      "pathlib",
+      "unittest",
+      "os"
+    ],
+    "tests/test_archive_feature.py": [
+      "summaries",
+      "zipfile",
+      "archive",
+      "asyncio",
+      "fastapi",
+      "store",
+      "app",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "rules",
+      "io",
+      "unittest",
+      "jobs",
+      "json"
+    ],
+    "tests/test_config_overrides.py": [
+      "pathlib",
+      "sys",
+      "unittest",
+      "os",
+      "config_loader"
+    ],
+    "tests/test_channel_fallback.py": [
+      "pathlib",
+      "unittest",
+      "sys",
+      "mcp_bridge"
+    ]
+  }
+}

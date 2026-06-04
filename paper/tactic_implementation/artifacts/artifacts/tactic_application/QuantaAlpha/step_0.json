@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "quantaalpha/pipeline/factor_mining/planning.py",
+  "content": "\"\"\"\nPlanning module for factor mining.\n\nProvides direction generation and configuration loading.\n\"\"\"\n\nfrom pathlib import Path\nfrom typing import Any\n\nfrom quantaalpha.pipeline.settings import ALPHA_AGENT_FACTOR_PROP_SETTING\nfrom quantaalpha.pipeline.planning import generate_parallel_directions\nfrom quantaalpha.pipeline.planning import load_run_config\n\n__all__ = [\n    \"ALPHA_AGENT_FACTOR_PROP_SETTING\",\n    \"generate_parallel_directions\",\n    \"load_run_config\",\n]\n"
+}

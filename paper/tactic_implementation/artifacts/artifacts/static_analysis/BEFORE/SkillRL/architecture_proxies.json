@@ -1,0 +1,3522 @@
+{
+  "python_files": 536,
+  "packages": 99,
+  "max_directory_depth": 9,
+  "avg_files_per_package": 5.414141414141414,
+  "imports_graph": {
+    "setup.py": [
+      "pathlib",
+      "os",
+      "setuptools"
+    ],
+    "gigpo/core_gigpo.py": [
+      "difflib",
+      "numpy",
+      "uuid",
+      "typing",
+      "collections",
+      "verl",
+      "torch"
+    ],
+    "tests/test_protocol.py": [
+      "numpy",
+      "pytest",
+      "random",
+      "tensordict",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/__init__.py": [],
+    "docs/conf.py": [],
+    "skill_generation/alfworld.py": [
+      "typing",
+      "os",
+      "json",
+      "openai"
+    ],
+    "skill_generation/search.py": [
+      "typing",
+      "os",
+      "json",
+      "openai"
+    ],
+    "skill_generation/webshop.py": [
+      "typing",
+      "os",
+      "json",
+      "openai"
+    ],
+    "verl/protocol.py": [
+      "ray",
+      "contextlib",
+      "dataclasses",
+      "typing",
+      "numpy",
+      "packaging",
+      "io",
+      "pickle",
+      "logging",
+      "tensordict",
+      "pandas",
+      "functools",
+      "os",
+      "verl",
+      "copy",
+      "torch"
+    ],
+    "verl/__init__.py": [
+      "packaging",
+      "protocol",
+      "logging",
+      "utils",
+      "os",
+      "modelscope",
+      "importlib"
+    ],
+    "scripts/converter_hf_to_mcore.py": [
+      "transformers",
+      "argparse",
+      "warnings",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "scripts/diagnose.py": [
+      "urllib",
+      "time",
+      "urlparse",
+      "pip",
+      "subprocess",
+      "psutil",
+      "urllib2",
+      "traceback",
+      "platform",
+      "argparse",
+      "sys",
+      "warnings",
+      "verl",
+      "os",
+      "socket",
+      "torch",
+      "importlib"
+    ],
+    "scripts/model_merger.py": [
+      "concurrent",
+      "accelerate",
+      "re",
+      "dataclasses",
+      "safetensors",
+      "typing",
+      "numpy",
+      "transformers",
+      "huggingface_hub",
+      "tqdm",
+      "abc",
+      "pathlib",
+      "argparse",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "agent_system/memory/skill_updater.py": [
+      "re",
+      "json",
+      "openai",
+      "typing",
+      "os"
+    ],
+    "agent_system/memory/memory.py": [
+      "base",
+      "typing"
+    ],
+    "agent_system/memory/skills_only_memory.py": [
+      "base",
+      "sentence_transformers",
+      "json",
+      "typing",
+      "numpy",
+      "os"
+    ],
+    "agent_system/memory/retrieval_memory.py": [
+      "base",
+      "sentence_transformers",
+      "json",
+      "faiss",
+      "time",
+      "typing",
+      "uuid",
+      "numpy",
+      "collections",
+      "pickle",
+      "datetime",
+      "os",
+      "torch"
+    ],
+    "agent_system/memory/__init__.py": [
+      "retrieval_memory",
+      "memory",
+      "skill_updater",
+      "skills_only_memory"
+    ],
+    "agent_system/memory/base.py": [
+      "abc",
+      "typing"
+    ],
+    "agent_system/environments/env_manager.py": [
+      "agent_system",
+      "time",
+      "typing",
+      "numpy",
+      "collections",
+      "torch",
+      "os",
+      "functools",
+      "omegaconf"
+    ],
+    "agent_system/environments/__init__.py": [
+      "agent_system"
+    ],
+    "agent_system/environments/base.py": [
+      "agent_system",
+      "PIL",
+      "typing",
+      "numpy",
+      "collections",
+      "os",
+      "torch"
+    ],
+    "agent_system/reward_manager/episode.py": [
+      "numpy",
+      "verl",
+      "torch"
+    ],
+    "agent_system/reward_manager/__init__.py": [
+      "episode"
+    ],
+    "agent_system/multi_turn_rollout/__init__.py": [
+      "rollout_loop",
+      "utils"
+    ],
+    "agent_system/multi_turn_rollout/rollout_loop.py": [
+      "agent_system",
+      "transformers",
+      "numpy",
+      "uuid",
+      "typing",
+      "verl",
+      "torch"
+    ],
+    "agent_system/multi_turn_rollout/utils.py": [
+      "PIL",
+      "typing",
+      "numpy",
+      "math",
+      "random",
+      "verl",
+      "torch"
+    ],
+    "agent_system/environments/prompts/__init__.py": [
+      "webshop",
+      "search",
+      "gym_cards",
+      "alfworld",
+      "sokoban",
+      "appworld"
+    ],
+    "agent_system/environments/prompts/alfworld.py": [],
+    "agent_system/environments/prompts/gym_cards.py": [],
+    "agent_system/environments/prompts/appworld.py": [],
+    "agent_system/environments/prompts/search.py": [],
+    "agent_system/environments/prompts/webshop.py": [],
+    "agent_system/environments/prompts/sokoban.py": [],
+    "agent_system/environments/env_package/alfworld/envs.py": [
+      "agent_system",
+      "ray",
+      "yaml",
+      "numpy",
+      "gymnasium",
+      "os",
+      "torchvision",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/alfworld/projection.py": [
+      "typing",
+      "re"
+    ],
+    "agent_system/environments/env_package/search/envs.py": [
+      "agent_system",
+      "concurrent",
+      "asyncio",
+      "typing",
+      "numpy",
+      "omegaconf",
+      "copy",
+      "gym"
+    ],
+    "agent_system/environments/env_package/search/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/search/projection.py": [
+      "typing",
+      "re"
+    ],
+    "agent_system/environments/env_package/appworld/envs.py": [
+      "ray",
+      "time",
+      "numpy",
+      "os",
+      "appworld"
+    ],
+    "agent_system/environments/env_package/appworld/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/appworld/projection.py": [
+      "typing",
+      "random",
+      "torch",
+      "re"
+    ],
+    "agent_system/environments/env_package/webshop/envs.py": [
+      "ray",
+      "numpy",
+      "web_agent_site",
+      "sys",
+      "os",
+      "gym"
+    ],
+    "agent_system/environments/env_package/webshop/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/webshop/projection.py": [
+      "typing",
+      "re"
+    ],
+    "agent_system/environments/env_package/sokoban/envs.py": [
+      "agent_system",
+      "numpy",
+      "ray",
+      "gym"
+    ],
+    "agent_system/environments/env_package/sokoban/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/sokoban/projection.py": [
+      "typing",
+      "random",
+      "torch",
+      "re"
+    ],
+    "agent_system/environments/env_package/gym_cards/envs.py": [
+      "numpy",
+      "ray",
+      "gymnasium",
+      "gym_cards"
+    ],
+    "agent_system/environments/env_package/gym_cards/__init__.py": [
+      "envs",
+      "projection"
+    ],
+    "agent_system/environments/env_package/gym_cards/projection.py": [
+      "typing",
+      "random",
+      "torch"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/setup.py": [
+      "setuptools"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/text_wrapper.py": [
+      "typing",
+      "random"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/__init__.py": [
+      "gymnasium",
+      "gym_cards"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/envs/ezpoints.py": [
+      "PIL",
+      "typing",
+      "numpy",
+      "random",
+      "gymnasium",
+      "os"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/envs/points.py": [
+      "PIL",
+      "typing",
+      "numpy",
+      "random",
+      "gymnasium",
+      "os"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/envs/__init__.py": [
+      "gym_cards"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/envs/blackjack.py": [
+      "PIL",
+      "typing",
+      "numpy",
+      "gymnasium",
+      "os"
+    ],
+    "agent_system/environments/env_package/gym_cards/gym-cards/gym_cards/envs/numberline.py": [
+      "PIL",
+      "typing",
+      "numpy",
+      "io",
+      "random",
+      "gymnasium",
+      "os"
+    ],
+    "agent_system/environments/env_package/sokoban/sokoban/env.py": [
+      "agent_system",
+      "gym_sokoban",
+      "numpy",
+      "copy",
+      "gym"
+    ],
+    "agent_system/environments/env_package/sokoban/sokoban/__init__.py": [
+      "env"
+    ],
+    "agent_system/environments/env_package/sokoban/sokoban/utils.py": [
+      "contextlib",
+      "numpy",
+      "random",
+      "logging",
+      "datetime",
+      "os",
+      "zoneinfo",
+      "torch",
+      "gym"
+    ],
+    "agent_system/environments/env_package/sokoban/sokoban/room_utils.py": [
+      "matplotlib",
+      "marshal",
+      "numpy",
+      "collections",
+      "random",
+      "copy"
+    ],
+    "agent_system/environments/env_package/sokoban/sokoban/base.py": [
+      "re",
+      "typing",
+      "transformers",
+      "abc",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/conftest.py": [],
+    "agent_system/environments/env_package/webshop/webshop/run_web_agent_text_env.py": [
+      "web_agent_site",
+      "rich",
+      "gym"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/env.py": [
+      "json",
+      "web_agent_site",
+      "collections",
+      "random",
+      "sys",
+      "os"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/train_rl.py": [
+      "time",
+      "logger",
+      "env",
+      "agent",
+      "collections",
+      "argparse",
+      "logging",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/train_choice_il.py": [
+      "accelerate",
+      "wandb",
+      "json",
+      "datasets",
+      "transformers",
+      "huggingface_hub",
+      "tqdm",
+      "math",
+      "pathlib",
+      "random",
+      "argparse",
+      "logging",
+      "models",
+      "os",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/train_search_il.py": [
+      "json",
+      "datasets",
+      "transformers",
+      "random",
+      "os"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/test.py": [
+      "json",
+      "env",
+      "transformers",
+      "train_choice_il",
+      "random",
+      "sys",
+      "train_rl",
+      "os"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/logger.py": [
+      "wandb",
+      "json",
+      "time",
+      "pandas",
+      "numpy",
+      "tensorflow",
+      "shutil",
+      "collections",
+      "sys",
+      "datetime",
+      "glob",
+      "os",
+      "tempfile"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/agent.py": [
+      "transformers",
+      "collections",
+      "random",
+      "models",
+      "os",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/generate_search.py": [
+      "json",
+      "time",
+      "transformers",
+      "tqdm",
+      "train_search",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/__init__.py": [],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/utils.py": [
+      "bisect",
+      "hashlib",
+      "random",
+      "logging",
+      "os"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/app.py": [
+      "json",
+      "web_agent_site",
+      "pathlib",
+      "random",
+      "argparse",
+      "logging",
+      "rich",
+      "flask",
+      "ast"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/transfer/__init__.py": [],
+    "agent_system/environments/env_package/webshop/webshop/transfer/predict_help.py": [
+      "urllib",
+      "re",
+      "time",
+      "json",
+      "bs4",
+      "torch",
+      "requests",
+      "enum"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/transfer/app.py": [
+      "json",
+      "time",
+      "gradio",
+      "transformers",
+      "webshop_lite",
+      "predict_help",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/transfer/webshop_lite.py": [
+      "flask",
+      "os",
+      "predict_help"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/search_engine/convert_product_file_format.py": [
+      "web_agent_site",
+      "json",
+      "sys",
+      "tqdm"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/search_engine/lucene_searcher.py": [
+      "rich",
+      "json",
+      "pyserini"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/models/models.py": [
+      "random"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/models/__init__.py": [
+      "web_agent_site"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/attributes/annotate.py": [
+      "pathlib",
+      "rich",
+      "yaml"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/attributes/generate_attrs.py": [
+      "sklearn",
+      "json",
+      "yaml",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "random",
+      "rich",
+      "pandas"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/envs/__init__.py": [
+      "web_agent_site",
+      "gym"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/envs/web_agent_site_env.py": [
+      "time",
+      "web_agent_site",
+      "random",
+      "bs4",
+      "selenium",
+      "os",
+      "string",
+      "requests",
+      "gym"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/envs/web_agent_text_env.py": [
+      "json",
+      "time",
+      "numpy",
+      "web_agent_site",
+      "collections",
+      "random",
+      "bs4",
+      "flask",
+      "string",
+      "torch",
+      "gym"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/engine/normalize.py": [
+      "typing",
+      "re"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/engine/__init__.py": [],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/engine/engine.py": [
+      "rank_bm25",
+      "decimal",
+      "json",
+      "re",
+      "tqdm",
+      "cleantext",
+      "web_agent_site",
+      "collections",
+      "random",
+      "rich",
+      "pyserini",
+      "flask",
+      "os",
+      "ast"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/web_agent_site/engine/goal.py": [
+      "spacy",
+      "itertools",
+      "thefuzz",
+      "web_agent_site",
+      "collections",
+      "random",
+      "rich"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/models/modules.py": [
+      "itertools",
+      "torch"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/models/bert.py": [
+      "transformers",
+      "torch",
+      "modules"
+    ],
+    "agent_system/environments/env_package/webshop/webshop/baseline_models/models/rnn.py": [
+      "torch",
+      "modules"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/error.py": [],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/__init__.py": [
+      "agent_system"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/core.py": [
+      "typing",
+      "__future__"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/tools/__init__.py": [
+      "search"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/tools/core.py": [
+      "typing"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/tools/search.py": [
+      "agent_system",
+      "urllib",
+      "json",
+      "time",
+      "typing",
+      "uuid",
+      "logging",
+      "threading",
+      "requests"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/envs/registration.py": [
+      "agent_system",
+      "json",
+      "dataclasses",
+      "typing",
+      "__future__",
+      "copy",
+      "importlib"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/envs/base_text_env.py": [
+      "agent_system",
+      "typing"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/envs/__init__.py": [
+      "agent_system"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/envs/search/env.py": [
+      "agent_system",
+      "typing",
+      "omegaconf",
+      "re"
+    ],
+    "agent_system/environments/env_package/search/third_party/skyrl_gym/envs/search/utils.py": [
+      "string",
+      "re"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/__init__.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/utils.py": [
+      "os"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/info.py": [
+      "os",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/constants.py": [
+      "os",
+      "collections"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/goal_library.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/env/tasks.py": [
+      "numpy",
+      "json",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/env/thor_env.py": [
+      "numpy",
+      "cv2",
+      "alfworld",
+      "collections",
+      "glob",
+      "os",
+      "copy",
+      "ai2thor"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/env/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/env/reward.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/planner/ff_planner_handler.py": [
+      "re",
+      "time",
+      "multiprocessing",
+      "subprocess",
+      "pdb",
+      "alfworld",
+      "sys",
+      "shlex",
+      "ast"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/planner/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/graph/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/graph/graph_obj.py": [
+      "time",
+      "numpy",
+      "alfworld",
+      "random",
+      "networkx",
+      "os"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/agents/agent_base.py": [
+      "numpy",
+      "copy",
+      "time"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/agents/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/agents/plan_agent.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/agents/semantic_map_planner_agent.py": [
+      "glob",
+      "cv2",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/agents/deterministic_planner_agent.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/replay_json.py": [
+      "json"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/video_util.py": [
+      "subprocess",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/bb_util.py": [
+      "numpy",
+      "numbers"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/dataset_management_util.py": [
+      "os",
+      "shutil"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/game_util.py": [
+      "numpy",
+      "cv2",
+      "alfworld",
+      "random",
+      "copy"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/image_util.py": [
+      "numpy",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/utils/py_util.py": [
+      "re",
+      "time",
+      "random",
+      "os",
+      "string"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/game_states/task_game_state.py": [
+      "os",
+      "random",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/game_states/game_state_base.py": [
+      "time",
+      "cv2",
+      "numpy",
+      "alfworld",
+      "random",
+      "glob",
+      "copy"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/game_states/planned_game_state.py": [
+      "json",
+      "alfworld",
+      "abc",
+      "os",
+      "copy"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/game_states/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/game_states/task_game_state_full_knowledge.py": [
+      "numpy",
+      "alfworld",
+      "sys",
+      "os",
+      "copy"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/layouts/precompute_layout_locations.py": [
+      "constants",
+      "json",
+      "time",
+      "cv2",
+      "numpy",
+      "threading",
+      "utils",
+      "os"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/scripts/replay_checks.py": [
+      "json",
+      "time",
+      "numpy",
+      "alfworld",
+      "shutil",
+      "argparse",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/gen/scripts/generate_trajectories.py": [
+      "json",
+      "time",
+      "multiprocessing",
+      "numpy",
+      "alfworld",
+      "shutil",
+      "random",
+      "argparse",
+      "sys",
+      "collections",
+      "pandas",
+      "traceback",
+      "os",
+      "datetime"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/utils/misc.py": [
+      "json",
+      "numpy",
+      "hashlib",
+      "alfworld",
+      "collections",
+      "random",
+      "sys",
+      "os",
+      "string",
+      "textworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/utils/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/agent/base_agent.py": [
+      "transformers",
+      "numpy",
+      "alfworld",
+      "logging",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/agent/text_dagger_agent.py": [
+      "numpy",
+      "alfworld",
+      "logging",
+      "torch",
+      "queue",
+      "copy",
+      "operator"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/agent/__init__.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/agent/vision_dagger_agent.py": [
+      "numpy",
+      "alfworld",
+      "torchvision",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/agent/text_dqn_agent.py": [
+      "numpy",
+      "alfworld",
+      "logging",
+      "torch",
+      "queue",
+      "copy",
+      "operator"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/mrcnn_astar.py": [
+      "os",
+      "json",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/__init__.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/oracle_astar.py": [
+      "os",
+      "json",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/mrcnn.py": [
+      "PIL",
+      "re",
+      "json",
+      "cv2",
+      "numpy",
+      "alfworld",
+      "collections",
+      "random",
+      "torchvision",
+      "sys",
+      "os",
+      "copy",
+      "traceback"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/oracle.py": [
+      "re",
+      "json",
+      "cv2",
+      "numpy",
+      "alfworld",
+      "collections",
+      "random",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/controller/base.py": [
+      "json",
+      "alfworld",
+      "random",
+      "sys",
+      "os",
+      "copy",
+      "enum"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/transforms.py": [
+      "random",
+      "torch",
+      "torchvision"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/coco_eval.py": [
+      "json",
+      "time",
+      "numpy",
+      "alfworld",
+      "collections",
+      "tempfile",
+      "copy",
+      "torch",
+      "pycocotools"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/engine.py": [
+      "time",
+      "math",
+      "alfworld",
+      "sys",
+      "torchvision",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/utils.py": [
+      "builtins",
+      "time",
+      "collections",
+      "pickle",
+      "__future__",
+      "datetime",
+      "os",
+      "torch",
+      "errno"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/train.py": [
+      "time",
+      "alfworld",
+      "argparse",
+      "datetime",
+      "os",
+      "torchvision",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/mrcnn.py": [
+      "alfworld",
+      "sys",
+      "os",
+      "torchvision",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/group_by_aspect_ratio.py": [
+      "bisect",
+      "PIL",
+      "numpy",
+      "collections",
+      "torchvision",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/detector/coco_utils.py": [
+      "PIL",
+      "alfworld",
+      "torchvision",
+      "os",
+      "copy",
+      "torch",
+      "pycocotools"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/environment/alfred_tw_env.py": [
+      "json",
+      "tqdm",
+      "alfworld",
+      "termcolor",
+      "random",
+      "os",
+      "textworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/environment/__init__.py": [
+      "agent_system"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/environment/alfred_hybrid.py": [
+      "random",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/environment/alfred_thor_env.py": [
+      "json",
+      "numpy",
+      "alfworld",
+      "random",
+      "threading",
+      "queue",
+      "os",
+      "traceback"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/eval/evaluate_dqn.py": [
+      "numpy",
+      "alfworld",
+      "sys",
+      "os",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/eval/__init__.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/eval/evaluate_dagger.py": [
+      "numpy",
+      "alfworld",
+      "sys",
+      "os",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/eval/evaluate_vision_dagger.py": [
+      "numpy",
+      "alfworld",
+      "sys",
+      "os",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/expert/handcoded_expert.py": [
+      "json",
+      "re",
+      "alfworld",
+      "random",
+      "sys",
+      "os",
+      "textworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/expert/__init__.py": [
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/expert/handcoded_expert_thor.py": [
+      "os",
+      "json",
+      "sys",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/expert/handcoded_expert_tw.py": [
+      "os",
+      "sys",
+      "alfworld"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/memory.py": [
+      "numpy",
+      "collections",
+      "random",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/generic.py": [
+      "yaml",
+      "numpy",
+      "argparse",
+      "os",
+      "string",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/__init__.py": [],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/model.py": [
+      "numpy",
+      "alfworld",
+      "logging",
+      "os",
+      "copy",
+      "torch"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/segment_tree.py": [
+      "operator"
+    ],
+    "agent_system/environments/env_package/alfworld/alfworld/agents/modules/layers.py": [
+      "numpy",
+      "h5py",
+      "torch",
+      "math"
+    ],
+    "examples/data_preprocess/full_hh_rlhf.py": [
+      "datasets",
+      "tqdm",
+      "argparse",
+      "pandas",
+      "os",
+      "verl"
+    ],
+    "examples/data_preprocess/gsm8k.py": [
+      "re",
+      "datasets",
+      "argparse",
+      "os",
+      "verl"
+    ],
+    "examples/data_preprocess/gsm8k_multiturn_w_tool.py": [
+      "re",
+      "datasets",
+      "argparse",
+      "os",
+      "verl"
+    ],
+    "examples/data_preprocess/math_dataset.py": [
+      "datasets",
+      "os",
+      "verl",
+      "argparse"
+    ],
+    "examples/data_preprocess/geo3k.py": [
+      "datasets",
+      "os",
+      "verl",
+      "argparse"
+    ],
+    "examples/data_preprocess/hellaswag.py": [
+      "re",
+      "datasets",
+      "argparse",
+      "os",
+      "verl"
+    ],
+    "examples/data_preprocess/aime2024_multiturn_w_tool.py": [
+      "datasets",
+      "os",
+      "verl",
+      "argparse"
+    ],
+    "examples/data_preprocess/preprocess_search_r1_dataset.py": [
+      "huggingface_hub",
+      "argparse",
+      "logging",
+      "pandas",
+      "verl",
+      "os",
+      "tempfile"
+    ],
+    "examples/data_preprocess/multiturn.py": [
+      "os",
+      "verl",
+      "argparse",
+      "pandas"
+    ],
+    "examples/data_preprocess/prepare.py": [
+      "datasets",
+      "os",
+      "verl",
+      "argparse"
+    ],
+    "examples/data_preprocess/dapo_multiturn_w_tool.py": [
+      "datasets",
+      "os",
+      "verl",
+      "argparse"
+    ],
+    "examples/split_placement/split_monkey_patch.py": [
+      "numpy",
+      "uuid",
+      "omegaconf",
+      "verl",
+      "copy",
+      "torch",
+      "pprint"
+    ],
+    "examples/split_placement/main_ppo_split.py": [
+      "split_monkey_patch",
+      "ray",
+      "hydra",
+      "omegaconf",
+      "verl",
+      "torch",
+      "pprint"
+    ],
+    "examples/search/searchr1_download.py": [
+      "huggingface_hub",
+      "argparse"
+    ],
+    "examples/prompt_agent/gpt4o_alfworld.py": [
+      "agent_system",
+      "openai",
+      "time",
+      "numpy",
+      "logging",
+      "datetime",
+      "os"
+    ],
+    "examples/search/retriever/retrieval_server.py": [
+      "uvicorn",
+      "faiss",
+      "json",
+      "datasets",
+      "typing",
+      "numpy",
+      "transformers",
+      "fastapi",
+      "argparse",
+      "warnings",
+      "pydantic",
+      "pyserini",
+      "torch"
+    ],
+    "examples/sft_data_generation/preprocess/parse_search.py": [
+      "re",
+      "json",
+      "argparse",
+      "glob",
+      "os"
+    ],
+    "examples/sft_data_generation/preprocess/parse_alfworld.py": [
+      "re",
+      "json",
+      "argparse",
+      "glob",
+      "os"
+    ],
+    "examples/sft_data_generation/preprocess/parse_webshop.py": [
+      "argparse",
+      "parse_alfworld"
+    ],
+    "examples/sft_data_generation/preprocess/dedupe_repetitions.py": [
+      "os",
+      "argparse",
+      "json"
+    ],
+    "examples/sft_data_generation/distillation/distill_webshop.py": [
+      "re",
+      "json",
+      "openai",
+      "argparse",
+      "sys",
+      "os",
+      "skill_retrieval"
+    ],
+    "examples/sft_data_generation/distillation/distill_search.py": [
+      "re",
+      "json",
+      "openai",
+      "argparse",
+      "sys",
+      "os",
+      "skill_retrieval"
+    ],
+    "examples/sft_data_generation/distillation/distill_alfworld.py": [
+      "re",
+      "json",
+      "openai",
+      "random",
+      "argparse",
+      "sys",
+      "os",
+      "skill_retrieval"
+    ],
+    "examples/sft_data_generation/distillation/skill_retrieval.py": [
+      "json"
+    ],
+    "examples/sft_data_generation/postprocess/validate_and_fix_webshop.py": [
+      "re",
+      "json",
+      "collections",
+      "argparse",
+      "copy"
+    ],
+    "examples/sft_data_generation/postprocess/sharegpt_to_pairs.py": [
+      "os",
+      "re",
+      "argparse",
+      "json"
+    ],
+    "examples/sft_data_generation/skill_memory/generate_memory_search.py": [
+      "re",
+      "json",
+      "openai",
+      "uuid",
+      "argparse",
+      "os"
+    ],
+    "examples/sft_data_generation/skill_memory/generate_memory_webshop.py": [
+      "re",
+      "json",
+      "openai",
+      "uuid",
+      "argparse",
+      "os"
+    ],
+    "examples/sft_data_generation/skill_memory/generate_memory_alfworld.py": [
+      "re",
+      "json",
+      "openai",
+      "uuid",
+      "argparse",
+      "os"
+    ],
+    "examples/sft_data_generation/skill_memory/aggregate_skills.py": [
+      "re",
+      "json",
+      "openai",
+      "argparse",
+      "os"
+    ],
+    "verl/tools/search_tool.py": [
+      "ray",
+      "schemas",
+      "contextlib",
+      "json",
+      "base_tool",
+      "typing",
+      "uuid",
+      "logging",
+      "threading",
+      "os",
+      "verl",
+      "enum"
+    ],
+    "verl/tools/gsm8k_tool.py": [
+      "base_tool",
+      "typing",
+      "uuid",
+      "logging",
+      "os",
+      "verl",
+      "schemas"
+    ],
+    "verl/tools/__init__.py": [],
+    "verl/tools/base_tool.py": [
+      "typing",
+      "uuid",
+      "schemas"
+    ],
+    "verl/tools/schemas.py": [
+      "typing",
+      "json",
+      "pydantic"
+    ],
+    "verl/tools/sandbox_fusion_tools.py": [
+      "ray",
+      "schemas",
+      "contextlib",
+      "typing",
+      "uuid",
+      "logging",
+      "threading",
+      "os",
+      "verl",
+      "enum"
+    ],
+    "verl/utils/seqlen_balancing.py": [
+      "heapq",
+      "copy",
+      "torch",
+      "typing"
+    ],
+    "verl/utils/torch_functional.py": [
+      "flash_attn",
+      "contextlib",
+      "typing",
+      "transformers",
+      "math",
+      "tensordict",
+      "torch"
+    ],
+    "verl/utils/megatron_utils.py": [
+      "gc",
+      "typing",
+      "transformers",
+      "warnings",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/utils/config.py": [
+      "typing",
+      "omegaconf"
+    ],
+    "verl/utils/transformers_compat.py": [
+      "typing",
+      "transformers",
+      "packaging",
+      "functools",
+      "importlib"
+    ],
+    "verl/utils/hdfs_io.py": [
+      "os",
+      "shutil",
+      "logging"
+    ],
+    "verl/utils/py_functional.py": [
+      "typing",
+      "multiprocessing",
+      "importlib",
+      "pickle",
+      "queue",
+      "os",
+      "types",
+      "functools",
+      "omegaconf",
+      "signal"
+    ],
+    "verl/utils/net_utils.py": [
+      "ipaddress"
+    ],
+    "verl/utils/device.py": [
+      "torch_npu",
+      "torch",
+      "logging"
+    ],
+    "verl/utils/ulysses.py": [
+      "typing",
+      "torch"
+    ],
+    "verl/utils/__init__.py": [
+      "tokenizer"
+    ],
+    "verl/utils/vllm_utils.py": [
+      "vllm",
+      "typing",
+      "msgspec",
+      "packaging",
+      "verl"
+    ],
+    "verl/utils/model.py": [
+      "accelerate",
+      "typing",
+      "numpy",
+      "transformers",
+      "warnings",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/utils/tokenizer.py": [
+      "transformers",
+      "warnings"
+    ],
+    "verl/utils/distributed.py": [
+      "os",
+      "verl",
+      "torch",
+      "datetime"
+    ],
+    "verl/utils/memory_buffer.py": [
+      "typing",
+      "torch"
+    ],
+    "verl/utils/flops_counter.py": [
+      "transformers",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/torch_dtypes.py": [
+      "typing",
+      "torch"
+    ],
+    "verl/utils/fs.py": [
+      "hdfs_io",
+      "hashlib",
+      "filelock",
+      "shutil",
+      "os",
+      "tempfile"
+    ],
+    "verl/utils/ray_utils.py": [
+      "concurrent",
+      "ray",
+      "asyncio",
+      "typing",
+      "os"
+    ],
+    "verl/utils/activation_offload.py": [
+      "typing",
+      "logging",
+      "__future__",
+      "torch",
+      "os",
+      "verl",
+      "functools"
+    ],
+    "verl/utils/import_utils.py": [
+      "typing",
+      "warnings",
+      "os",
+      "functools",
+      "importlib"
+    ],
+    "verl/utils/tracking.py": [
+      "wandb",
+      "json",
+      "dataclasses",
+      "volcengine_ml_platform",
+      "typing",
+      "numpy",
+      "tempfile",
+      "verl",
+      "pathlib",
+      "warnings",
+      "clearml",
+      "pandas",
+      "torch",
+      "os",
+      "swanlab",
+      "functools",
+      "mlflow",
+      "enum"
+    ],
+    "verl/utils/logging_utils.py": [
+      "os",
+      "torch",
+      "logging"
+    ],
+    "verl/utils/fsdp_utils.py": [
+      "accelerate",
+      "itertools",
+      "peft",
+      "json",
+      "contextlib",
+      "safetensors",
+      "typing",
+      "transformers",
+      "math",
+      "packaging",
+      "collections",
+      "torch",
+      "os",
+      "verl",
+      "functools"
+    ],
+    "verl/models/registry.py": [
+      "typing",
+      "torch",
+      "importlib"
+    ],
+    "verl/models/weight_loader_registry.py": [
+      "verl"
+    ],
+    "verl/models/__init__.py": [],
+    "verl/third_party/__init__.py": [],
+    "verl/workers/megatron_workers.py": [
+      "codetiming",
+      "time",
+      "numpy",
+      "random",
+      "importlib",
+      "warnings",
+      "logging",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf",
+      "megatron"
+    ],
+    "verl/workers/fsdp_workers.py": [
+      "peft",
+      "codetiming",
+      "itertools",
+      "safetensors",
+      "dataclasses",
+      "json",
+      "contextlib",
+      "typing",
+      "transformers",
+      "flash_attn",
+      "psutil",
+      "warnings",
+      "logging",
+      "liger_kernel",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/workers/__init__.py": [],
+    "verl/single_controller/__init__.py": [
+      "base",
+      "os"
+    ],
+    "verl/trainer/__init__.py": [],
+    "verl/trainer/main_eval.py": [
+      "ray",
+      "numpy",
+      "hydra",
+      "tqdm",
+      "collections",
+      "pandas",
+      "verl"
+    ],
+    "verl/trainer/main_generation.py": [
+      "ray",
+      "numpy",
+      "hydra",
+      "omegaconf",
+      "pandas",
+      "os",
+      "verl",
+      "pprint"
+    ],
+    "verl/trainer/main_ppo.py": [
+      "agent_system",
+      "ray",
+      "pprint",
+      "hydra",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/trainer/constants_ppo.py": [
+      "os",
+      "ray",
+      "json"
+    ],
+    "verl/trainer/fsdp_sft_trainer.py": [
+      "peft",
+      "flash_attn",
+      "contextlib",
+      "re",
+      "transformers",
+      "hydra",
+      "tqdm",
+      "logging",
+      "tensordict",
+      "liger_kernel",
+      "os",
+      "verl",
+      "torch",
+      "importlib"
+    ],
+    "verl/trainer/ppo/__init__.py": [],
+    "verl/trainer/ppo/metric_utils.py": [
+      "typing",
+      "numpy",
+      "collections",
+      "torch",
+      "verl",
+      "functools"
+    ],
+    "verl/trainer/ppo/ray_trainer.py": [
+      "ray",
+      "json",
+      "re",
+      "collections",
+      "torchdata",
+      "dataclasses",
+      "gigpo",
+      "verl",
+      "torch",
+      "enum",
+      "codetiming",
+      "contextlib",
+      "uuid",
+      "numpy",
+      "copy",
+      "omegaconf",
+      "agent_system",
+      "typing",
+      "tqdm",
+      "os",
+      "pprint"
+    ],
+    "verl/trainer/ppo/reward.py": [
+      "ray",
+      "multiprocessing",
+      "sys",
+      "os",
+      "verl",
+      "functools",
+      "importlib"
+    ],
+    "verl/trainer/ppo/core_algos.py": [
+      "numpy",
+      "collections",
+      "verl",
+      "copy",
+      "torch"
+    ],
+    "verl/single_controller/ray/__init__.py": [
+      "base"
+    ],
+    "verl/single_controller/ray/megatron.py": [
+      "base",
+      "typing",
+      "verl",
+      "ray"
+    ],
+    "verl/single_controller/ray/base.py": [
+      "ray",
+      "re",
+      "time",
+      "inspect",
+      "typing",
+      "random",
+      "logging",
+      "os",
+      "verl",
+      "copy",
+      "unittest",
+      "string"
+    ],
+    "verl/single_controller/base/worker.py": [
+      "decorator",
+      "ray",
+      "dataclasses",
+      "typing",
+      "packaging",
+      "verl",
+      "os",
+      "socket",
+      "torch"
+    ],
+    "verl/single_controller/base/worker_group.py": [
+      "decorator",
+      "time",
+      "typing",
+      "logging",
+      "threading",
+      "signal"
+    ],
+    "verl/single_controller/base/decorator.py": [
+      "ray",
+      "inspect",
+      "typing",
+      "verl",
+      "types",
+      "functools"
+    ],
+    "verl/single_controller/base/__init__.py": [
+      "worker_group",
+      "worker"
+    ],
+    "verl/single_controller/base/register_center/__init__.py": [],
+    "verl/single_controller/base/register_center/ray.py": [
+      "typing",
+      "ray"
+    ],
+    "verl/single_controller/base/megatron/worker.py": [
+      "transformers",
+      "verl",
+      "megatron"
+    ],
+    "verl/single_controller/base/megatron/worker_group.py": [
+      "typing",
+      "verl",
+      "worker"
+    ],
+    "verl/single_controller/base/megatron/__init__.py": [],
+    "verl/workers/sharding_manager/fsdp_vllm.py": [
+      "base",
+      "peft",
+      "time",
+      "dataclasses",
+      "inspect",
+      "typing",
+      "collections",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/sharding_manager/fsdp_sglang.py": [
+      "base",
+      "sglang",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/sharding_manager/megatron_vllm.py": [
+      "base",
+      "inspect",
+      "logging",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/workers/sharding_manager/__init__.py": [],
+    "verl/workers/sharding_manager/fsdp_ulysses.py": [
+      "base",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/sharding_manager/base.py": [
+      "verl"
+    ],
+    "verl/workers/sharding_manager/megatron_sglang.py": [
+      "base",
+      "sglang",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/reward_manager/prime.py": [
+      "concurrent",
+      "asyncio",
+      "typing",
+      "transformers",
+      "psutil",
+      "torch",
+      "verl",
+      "functools"
+    ],
+    "verl/workers/reward_manager/batch.py": [
+      "verl",
+      "collections",
+      "torch"
+    ],
+    "verl/workers/reward_manager/__init__.py": [
+      "dapo",
+      "batch",
+      "prime",
+      "naive"
+    ],
+    "verl/workers/reward_manager/naive.py": [
+      "verl",
+      "collections",
+      "torch"
+    ],
+    "verl/workers/reward_manager/dapo.py": [
+      "verl",
+      "collections",
+      "torch"
+    ],
+    "verl/workers/rollout/__init__.py": [
+      "base",
+      "hf_rollout",
+      "naive"
+    ],
+    "verl/workers/rollout/tokenizer.py": [
+      "abc",
+      "typing",
+      "numpy",
+      "torch"
+    ],
+    "verl/workers/rollout/schemas.py": [
+      "typing",
+      "transformers",
+      "pydantic",
+      "verl",
+      "torch",
+      "enum"
+    ],
+    "verl/workers/rollout/async_server.py": [
+      "uvicorn",
+      "ray",
+      "threading",
+      "openai",
+      "abc",
+      "fastapi",
+      "socket",
+      "verl",
+      "contextlib",
+      "uuid",
+      "logging",
+      "cachetools",
+      "omegaconf",
+      "asyncio",
+      "starlette",
+      "heapq",
+      "typing",
+      "aiohttp",
+      "os",
+      "importlib"
+    ],
+    "verl/workers/rollout/base.py": [
+      "abc",
+      "verl"
+    ],
+    "verl/workers/rollout/hf_rollout.py": [
+      "base",
+      "contextlib",
+      "transformers",
+      "tensordict",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/critic/__init__.py": [
+      "base",
+      "dp_critic"
+    ],
+    "verl/workers/critic/megatron_critic.py": [
+      "itertools",
+      "typing",
+      "logging",
+      "torch",
+      "os",
+      "verl",
+      "functools",
+      "omegaconf",
+      "megatron"
+    ],
+    "verl/workers/critic/base.py": [
+      "abc",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/reward_model/__init__.py": [
+      "base"
+    ],
+    "verl/workers/reward_model/base.py": [
+      "abc",
+      "verl"
+    ],
+    "verl/workers/actor/megatron_actor.py": [
+      "itertools",
+      "typing",
+      "logging",
+      "torch",
+      "os",
+      "verl",
+      "copy",
+      "functools",
+      "omegaconf",
+      "megatron"
+    ],
+    "verl/workers/actor/__init__.py": [
+      "base",
+      "dp_actor"
+    ],
+    "verl/workers/actor/dp_actor.py": [
+      "itertools",
+      "flash_attn",
+      "time",
+      "typing",
+      "transformers",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/actor/base.py": [
+      "abc",
+      "typing",
+      "verl",
+      "torch"
+    ],
+    "verl/workers/reward_model/megatron/__init__.py": [
+      "reward_model"
+    ],
+    "verl/workers/reward_model/megatron/reward_model.py": [
+      "itertools",
+      "tensordict",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/workers/rollout/naive/__init__.py": [
+      "naive_rollout"
+    ],
+    "verl/workers/rollout/naive/naive_rollout.py": [
+      "base",
+      "verl",
+      "torch",
+      "tensordict"
+    ],
+    "verl/workers/rollout/sglang_rollout/async_sglang_server.py": [
+      "ray",
+      "starlette",
+      "asyncio",
+      "logging",
+      "verl",
+      "omegaconf"
+    ],
+    "verl/workers/rollout/sglang_rollout/__init__.py": [
+      "sglang_rollout"
+    ],
+    "verl/workers/rollout/sglang_rollout/utils.py": [
+      "typing",
+      "numpy",
+      "pickle",
+      "torch"
+    ],
+    "verl/workers/rollout/sglang_rollout/sglang_rollout.py": [
+      "json",
+      "transformers",
+      "sglang",
+      "math",
+      "tensordict",
+      "verl",
+      "torch",
+      "contextlib",
+      "uuid",
+      "numpy",
+      "logging",
+      "__future__",
+      "sys",
+      "copy",
+      "omegaconf",
+      "asyncio",
+      "time",
+      "typing",
+      "os",
+      "importlib"
+    ],
+    "verl/workers/rollout/vllm_rollout/fire_vllm_rollout.py": [
+      "contextlib",
+      "vllm",
+      "typing",
+      "tensordict",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/workers/rollout/vllm_rollout/__init__.py": [
+      "fire_vllm_rollout",
+      "re",
+      "packaging",
+      "vllm_rollout_spmd",
+      "vllm_rollout",
+      "os",
+      "importlib"
+    ],
+    "verl/workers/rollout/vllm_rollout/vllm_rollout.py": [
+      "contextlib",
+      "vllm",
+      "typing",
+      "logging",
+      "tensordict",
+      "os",
+      "verl",
+      "copy",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/workers/rollout/vllm_rollout/vllm_async_server.py": [
+      "ray",
+      "starlette",
+      "vllm",
+      "cloudpickle",
+      "typing",
+      "collections",
+      "logging",
+      "verl",
+      "omegaconf"
+    ],
+    "verl/workers/rollout/vllm_rollout/vllm_rollout_spmd.py": [
+      "contextlib",
+      "vllm",
+      "typing",
+      "numpy",
+      "logging",
+      "tensordict",
+      "os",
+      "verl",
+      "copy",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/third_party/vllm/__init__.py": [
+      "vllm_v_0_6_3",
+      "vllm",
+      "packaging",
+      "vllm_v_0_5_4",
+      "verl",
+      "importlib"
+    ],
+    "verl/third_party/sglang/parallel_state.py": [
+      "os",
+      "sglang",
+      "torch",
+      "typing"
+    ],
+    "verl/third_party/sglang/__init__.py": [],
+    "verl/third_party/vllm/vllm_v_0_6_3/model_runner.py": [
+      "config",
+      "vllm",
+      "typing",
+      "model_loader",
+      "warnings",
+      "torch",
+      "enum"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/worker.py": [
+      "dtensor_weight_loaders",
+      "config",
+      "gc",
+      "vllm",
+      "parallel_state",
+      "typing",
+      "hf_weight_loader",
+      "megatron_weight_loaders",
+      "model_runner",
+      "os",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/megatron_weight_loaders.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/config.py": [
+      "json",
+      "dataclasses",
+      "vllm",
+      "typing",
+      "transformers",
+      "enum"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/parallel_state.py": [
+      "os",
+      "torch",
+      "typing",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/hf_weight_loader.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/__init__.py": [],
+    "verl/third_party/vllm/vllm_v_0_6_3/llm.py": [
+      "arg_utils",
+      "vllm",
+      "typing",
+      "transformers",
+      "llm_engine_sp",
+      "verl",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/tokenizer.py": [
+      "typing",
+      "transformers",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/arg_utils.py": [
+      "config",
+      "dataclasses",
+      "vllm",
+      "transformers",
+      "os"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/llm_engine_sp.py": [
+      "spmd_gpu_executor",
+      "config",
+      "arg_utils",
+      "vllm",
+      "typing",
+      "tokenizer",
+      "torch",
+      "functools"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/model_loader.py": [
+      "dtensor_weight_loaders",
+      "config",
+      "vllm",
+      "typing",
+      "transformers",
+      "hf_weight_loader",
+      "megatron_weight_loaders",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/spmd_gpu_executor.py": [
+      "config",
+      "vllm",
+      "worker",
+      "typing",
+      "os",
+      "socket",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_6_3/dtensor_weight_loaders.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/model_runner.py": [
+      "config",
+      "vllm",
+      "typing",
+      "model_loader",
+      "warnings",
+      "torch",
+      "enum"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/worker.py": [
+      "dtensor_weight_loaders",
+      "config",
+      "gc",
+      "vllm",
+      "parallel_state",
+      "typing",
+      "hf_weight_loader",
+      "megatron_weight_loaders",
+      "model_runner",
+      "os",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/megatron_weight_loaders.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/config.py": [
+      "json",
+      "dataclasses",
+      "vllm",
+      "typing",
+      "transformers",
+      "torch",
+      "enum"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/parallel_state.py": [
+      "os",
+      "torch",
+      "typing",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/hf_weight_loader.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/__init__.py": [],
+    "verl/third_party/vllm/vllm_v_0_5_4/llm.py": [
+      "arg_utils",
+      "vllm",
+      "typing",
+      "transformers",
+      "tqdm",
+      "llm_engine_sp",
+      "verl",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/tokenizer.py": [
+      "typing",
+      "transformers",
+      "vllm"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/arg_utils.py": [
+      "config",
+      "dataclasses",
+      "vllm",
+      "transformers",
+      "typing",
+      "argparse",
+      "os"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/llm_engine_sp.py": [
+      "spmd_gpu_executor",
+      "config",
+      "arg_utils",
+      "vllm",
+      "typing",
+      "tokenizer",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/model_loader.py": [
+      "dtensor_weight_loaders",
+      "config",
+      "vllm",
+      "typing",
+      "transformers",
+      "hf_weight_loader",
+      "megatron_weight_loaders",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/spmd_gpu_executor.py": [
+      "config",
+      "vllm",
+      "worker",
+      "typing",
+      "os",
+      "socket",
+      "torch"
+    ],
+    "verl/third_party/vllm/vllm_v_0_5_4/dtensor_weight_loaders.py": [
+      "typing",
+      "torch",
+      "vllm"
+    ],
+    "verl/models/qwen2/__init__.py": [],
+    "verl/models/mcore/patch_v012.py": [
+      "torch",
+      "megatron"
+    ],
+    "verl/models/mcore/model_initializer.py": [
+      "inspect",
+      "abc",
+      "qwen2_5_vl",
+      "config_converter",
+      "verl",
+      "copy",
+      "megatron"
+    ],
+    "verl/models/mcore/config_converter.py": [
+      "typing",
+      "transformers",
+      "patch_v012",
+      "warnings",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/mcore/model_forward.py": [
+      "verl",
+      "util"
+    ],
+    "verl/models/mcore/registry.py": [
+      "weight_converter",
+      "typing",
+      "model_forward_fused",
+      "model_forward",
+      "config_converter",
+      "torch",
+      "enum",
+      "model_initializer"
+    ],
+    "verl/models/mcore/util.py": [
+      "torch",
+      "megatron"
+    ],
+    "verl/models/mcore/weight_converter.py": [
+      "transformers",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/mcore/__init__.py": [
+      "registry"
+    ],
+    "verl/models/mcore/saver.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/mcore/loader.py": [
+      "time",
+      "saver",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/transformers/qwen2_vl.py": [
+      "flash_attn",
+      "dataclasses",
+      "inspect",
+      "typing",
+      "transformers",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/models/transformers/qwen2_5_vl.py": [
+      "dataclasses",
+      "typing",
+      "transformers",
+      "verl",
+      "torch"
+    ],
+    "verl/models/transformers/qwen3_vl.py": [
+      "dataclasses",
+      "typing",
+      "transformers",
+      "logging",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/models/transformers/__init__.py": [],
+    "verl/models/transformers/monkey_patch.py": [
+      "typing",
+      "transformers",
+      "trl",
+      "sys",
+      "verl",
+      "types",
+      "torch"
+    ],
+    "verl/models/transformers/llama.py": [
+      "dataclasses",
+      "typing",
+      "transformers",
+      "sys",
+      "verl",
+      "torch"
+    ],
+    "verl/models/transformers/qwen2.py": [
+      "verl",
+      "typing",
+      "transformers",
+      "torch"
+    ],
+    "verl/models/transformers/kimi_vl.py": [
+      "verl",
+      "typing",
+      "transformers",
+      "torch"
+    ],
+    "verl/models/llama/__init__.py": [],
+    "verl/models/llama/megatron/__init__.py": [
+      "modeling_llama_megatron"
+    ],
+    "verl/models/llama/megatron/modeling_llama_megatron.py": [
+      "flash_attn",
+      "typing",
+      "transformers",
+      "layers",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/layers/parallel_mlp.py": [
+      "transformers",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/layers/parallel_attention.py": [
+      "flash_attn",
+      "typing",
+      "transformers",
+      "math",
+      "einops",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/layers/__init__.py": [
+      "parallel_linear",
+      "parallel_attention",
+      "parallel_rmsnorm",
+      "parallel_decoder",
+      "parallel_mlp"
+    ],
+    "verl/models/llama/megatron/layers/parallel_linear.py": [
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/layers/parallel_rmsnorm.py": [
+      "transformers",
+      "verl",
+      "apex",
+      "numbers",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/layers/parallel_decoder.py": [
+      "parallel_attention",
+      "parallel_rmsnorm",
+      "typing",
+      "transformers",
+      "parallel_mlp",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/checkpoint_utils/llama_loader_depracated.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/checkpoint_utils/__init__.py": [],
+    "verl/models/llama/megatron/checkpoint_utils/llama_loader.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/llama/megatron/checkpoint_utils/llama_saver.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/modeling_qwen2_megatron.py": [
+      "flash_attn",
+      "typing",
+      "transformers",
+      "layers",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/__init__.py": [
+      "modeling_qwen2_megatron"
+    ],
+    "verl/models/qwen2/megatron/layers/parallel_mlp.py": [
+      "transformers",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/layers/parallel_attention.py": [
+      "flash_attn",
+      "typing",
+      "transformers",
+      "math",
+      "einops",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/layers/__init__.py": [
+      "parallel_mlp",
+      "parallel_rmsnorm",
+      "parallel_attention",
+      "parallel_decoder"
+    ],
+    "verl/models/qwen2/megatron/layers/parallel_linear.py": [
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/layers/parallel_rmsnorm.py": [
+      "transformers",
+      "verl",
+      "apex",
+      "numbers",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/layers/parallel_decoder.py": [
+      "parallel_attention",
+      "parallel_rmsnorm",
+      "typing",
+      "transformers",
+      "parallel_mlp",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/checkpoint_utils/qwen2_loader.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/checkpoint_utils/__init__.py": [],
+    "verl/models/qwen2/megatron/checkpoint_utils/qwen2_loader_depracated.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/models/qwen2/megatron/checkpoint_utils/qwen2_saver.py": [
+      "verl",
+      "torch",
+      "time",
+      "megatron"
+    ],
+    "verl/utils/experimental/torch_functional.py": [
+      "typing",
+      "torch"
+    ],
+    "verl/utils/experimental/__init__.py": [],
+    "verl/utils/checkpoint/megatron_checkpoint_manager.py": [
+      "accelerate",
+      "typing",
+      "numpy",
+      "transformers",
+      "checkpoint_manager",
+      "random",
+      "warnings",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "verl/utils/checkpoint/fsdp_checkpoint_manager.py": [
+      "accelerate",
+      "typing",
+      "transformers",
+      "checkpoint_manager",
+      "warnings",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/checkpoint/__init__.py": [],
+    "verl/utils/checkpoint/checkpoint_manager.py": [
+      "typing",
+      "numpy",
+      "transformers",
+      "filelock",
+      "shutil",
+      "random",
+      "verl",
+      "os",
+      "tempfile",
+      "torch"
+    ],
+    "verl/utils/logger/__init__.py": [],
+    "verl/utils/logger/aggregate_logger.py": [
+      "typing",
+      "numbers",
+      "logging"
+    ],
+    "verl/utils/rendezvous/__init__.py": [],
+    "verl/utils/rendezvous/ray_backend.py": [
+      "cupy",
+      "ray",
+      "logging",
+      "time"
+    ],
+    "verl/utils/dataset/sft_dataset.py": [
+      "typing",
+      "transformers",
+      "numpy",
+      "pandas",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/dataset/rm_dataset.py": [
+      "typing",
+      "pandas",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/dataset/multiturn_sft_dataset.py": [
+      "typing",
+      "transformers",
+      "numpy",
+      "pandas",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/dataset/__init__.py": [
+      "rm_dataset",
+      "rl_dataset",
+      "sft_dataset"
+    ],
+    "verl/utils/dataset/rl_dataset.py": [
+      "re",
+      "datasets",
+      "typing",
+      "numpy",
+      "transformers",
+      "collections",
+      "logging",
+      "os",
+      "verl",
+      "copy",
+      "torch",
+      "omegaconf"
+    ],
+    "verl/utils/dataset/vision_utils.py": [
+      "PIL",
+      "typing",
+      "qwen_vl_utils",
+      "io",
+      "torch"
+    ],
+    "verl/utils/metric/__init__.py": [
+      "utils"
+    ],
+    "verl/utils/metric/utils.py": [
+      "typing",
+      "numpy"
+    ],
+    "verl/utils/megatron/memory.py": [
+      "torch"
+    ],
+    "verl/utils/megatron/__init__.py": [],
+    "verl/utils/megatron/tensor_parallel.py": [
+      "typing",
+      "flash_attn",
+      "torch",
+      "megatron"
+    ],
+    "verl/utils/megatron/optimizer.py": [
+      "megatron"
+    ],
+    "verl/utils/megatron/pipeline_parallel.py": [
+      "flash_attn",
+      "torch",
+      "sequence_parallel",
+      "megatron"
+    ],
+    "verl/utils/megatron/sequence_parallel.py": [
+      "torch",
+      "megatron"
+    ],
+    "verl/utils/debug/profile.py": [
+      "os",
+      "torch"
+    ],
+    "verl/utils/debug/__init__.py": [
+      "performance"
+    ],
+    "verl/utils/debug/trajectory_tracker.py": [
+      "ray",
+      "io",
+      "collections",
+      "verl",
+      "os",
+      "tempfile",
+      "torch"
+    ],
+    "verl/utils/debug/performance.py": [
+      "inspect",
+      "typing",
+      "logging",
+      "datetime",
+      "verl",
+      "torch"
+    ],
+    "verl/utils/reward_score/math_dapo.py": [
+      "typing",
+      "re"
+    ],
+    "verl/utils/reward_score/gsm8k.py": [
+      "re"
+    ],
+    "verl/utils/reward_score/math_verify.py": [
+      "math_verify"
+    ],
+    "verl/utils/reward_score/__init__.py": [
+      "verl"
+    ],
+    "verl/utils/reward_score/search_r1_like_qa_em.py": [
+      "string",
+      "random",
+      "re"
+    ],
+    "verl/utils/reward_score/geo3k.py": [
+      "mathruler",
+      "re"
+    ],
+    "verl/utils/reward_score/math.py": [],
+    "verl/utils/reward_score/math_batch.py": [
+      "math"
+    ],
+    "verl/utils/reward_score/sandbox_fusion/__init__.py": [
+      "logging",
+      "traceback",
+      "json",
+      "utils"
+    ],
+    "verl/utils/reward_score/sandbox_fusion/utils.py": [
+      "concurrent",
+      "json",
+      "time",
+      "typing",
+      "uuid",
+      "requests",
+      "logging",
+      "threading",
+      "os",
+      "traceback"
+    ],
+    "verl/utils/reward_score/prime_code/__init__.py": [
+      "traceback",
+      "json",
+      "utils"
+    ],
+    "verl/utils/reward_score/prime_code/testing_util.py": [
+      "builtins",
+      "json",
+      "numpy",
+      "pyext",
+      "subprocess",
+      "faulthandler",
+      "io",
+      "shutil",
+      "platform",
+      "sys",
+      "resource",
+      "datetime",
+      "os",
+      "ast",
+      "traceback",
+      "unittest",
+      "enum",
+      "signal"
+    ],
+    "verl/utils/reward_score/prime_code/utils.py": [
+      "typing",
+      "multiprocessing",
+      "testing_util",
+      "sys",
+      "os",
+      "traceback"
+    ],
+    "verl/utils/reward_score/prime_math/grader.py": [
+      "re",
+      "contextlib",
+      "typing",
+      "sympy",
+      "math",
+      "verl"
+    ],
+    "verl/utils/reward_score/prime_math/__init__.py": [
+      "pylatexenc",
+      "re",
+      "contextlib",
+      "sympy",
+      "math",
+      "grader",
+      "os",
+      "verl"
+    ],
+    "verl/utils/reward_score/prime_math/math_normalize.py": [
+      "typing",
+      "re"
+    ],
+    "verl/tools/utils/__init__.py": [],
+    "verl/tools/utils/search_r1_like_utils.py": [
+      "json",
+      "time",
+      "typing",
+      "uuid",
+      "requests",
+      "logging",
+      "threading",
+      "traceback"
+    ],
+    "tests/ray_cpu/test_fused_workers.py": [
+      "verl",
+      "ray"
+    ],
+    "tests/ray_cpu/test_ray_utils.py": [
+      "verl",
+      "pytest",
+      "ray"
+    ],
+    "tests/ray_cpu/test_auto_padding.py": [
+      "verl",
+      "numpy",
+      "ray",
+      "torch"
+    ],
+    "tests/ray_cpu/test_check_worker_alive.py": [
+      "os",
+      "subprocess",
+      "time"
+    ],
+    "tests/ray_cpu/test_ray_local_envs.py": [
+      "os",
+      "verl",
+      "ray"
+    ],
+    "tests/ray_cpu/test_decorator.py": [
+      "ray",
+      "asyncio",
+      "time",
+      "pytest",
+      "tensordict",
+      "verl",
+      "torch"
+    ],
+    "tests/kernels/test_linear_cross_entropy.py": [
+      "typing",
+      "verl",
+      "torch",
+      "gc"
+    ],
+    "tests/ray_gpu/test_colocated_workers_fused.py": [
+      "verl",
+      "ray",
+      "torch"
+    ],
+    "tests/ray_gpu/test_worker_group_basics.py": [
+      "verl",
+      "ray",
+      "torch"
+    ],
+    "tests/ray_gpu/test_driverfunc_to_worker.py": [
+      "ray",
+      "tensordict",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/ray_gpu/test_high_level_scheduling_api.py": [
+      "verl",
+      "ray",
+      "time"
+    ],
+    "tests/ray_gpu/test_data_transfer.py": [
+      "codetiming",
+      "ray",
+      "pickle",
+      "tensordict",
+      "verl",
+      "torch"
+    ],
+    "tests/ray_gpu/test_rvdz.py": [
+      "verl",
+      "ray"
+    ],
+    "tests/ray_gpu/test_colocated_workers.py": [
+      "verl",
+      "ray",
+      "torch"
+    ],
+    "tests/ray_gpu/test_worker_group_torch.py": [
+      "os",
+      "verl",
+      "ray",
+      "torch"
+    ],
+    "tests/distributed/test_tensor_dict.py": [
+      "numpy",
+      "os",
+      "verl",
+      "torch",
+      "megatron"
+    ],
+    "tests/gpu_utility/test_torch_functional.py": [
+      "verl",
+      "pytest",
+      "flash_attn",
+      "torch"
+    ],
+    "tests/gpu_utility/test_ops.py": [
+      "verl",
+      "flash_attn",
+      "torch"
+    ],
+    "tests/gpu_utility/test_memory_buffers.py": [
+      "transformers",
+      "torch",
+      "gc"
+    ],
+    "tests/models/test_transformers_ulysses.py": [
+      "flash_attn",
+      "contextlib",
+      "dataclasses",
+      "transformers",
+      "pytest",
+      "verl",
+      "copy",
+      "torch"
+    ],
+    "tests/models/test_transformer.py": [
+      "transformers",
+      "verl",
+      "flash_attn",
+      "torch"
+    ],
+    "tests/sanity/check_license.py": [
+      "pathlib",
+      "argparse"
+    ],
+    "tests/sanity/test_import.py": [
+      "verl"
+    ],
+    "tests/sandbox/test_sandbox.py": [
+      "asyncio",
+      "json",
+      "pytest",
+      "os",
+      "verl"
+    ],
+    "tests/e2e/check_custom_rwd_fn.py": [
+      "argparse"
+    ],
+    "tests/e2e/__init__.py": [],
+    "tests/e2e/check_results.py": [
+      "numpy",
+      "argparse"
+    ],
+    "tests/trainer/__init__.py": [],
+    "tests/reward_score/test_sandbox_fusion.py": [
+      "concurrent",
+      "time",
+      "multiprocessing",
+      "pytest",
+      "os",
+      "verl",
+      "unittest"
+    ],
+    "tests/trainer/ppo/__init__.py": [],
+    "tests/trainer/ppo/test_metric_utils.py": [
+      "verl",
+      "numpy",
+      "torch",
+      "unittest"
+    ],
+    "tests/e2e/sft/test_sp_loss_match.py": [
+      "hydra",
+      "tensordict",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "tests/e2e/envs/__init__.py": [
+      "digit_completion"
+    ],
+    "tests/e2e/envs/digit_completion/task.py": [
+      "numpy"
+    ],
+    "tests/e2e/envs/digit_completion/__init__.py": [
+      "tokenizer",
+      "transformers",
+      "task"
+    ],
+    "tests/e2e/envs/digit_completion/tokenizer.py": [
+      "json",
+      "transformers",
+      "typing",
+      "pathlib",
+      "os"
+    ],
+    "tests/e2e/arithmetic_sequence/model/create_model_tokenizer.py": [
+      "os",
+      "transformers",
+      "tests",
+      "torch"
+    ],
+    "tests/e2e/arithmetic_sequence/data/create_dataset.py": [
+      "os",
+      "tests",
+      "torch",
+      "pandas"
+    ],
+    "tests/e2e/arithmetic_sequence/rl/main_trainer.py": [
+      "ray",
+      "transformers",
+      "hydra",
+      "tests",
+      "omegaconf",
+      "os",
+      "verl",
+      "torch",
+      "pprint"
+    ],
+    "tests/single_controller/base/test_decorator.py": [
+      "verl",
+      "pytest"
+    ],
+    "tests/workers/rollout/run_fsdp_vllm.py": [
+      "time",
+      "vllm",
+      "transformers",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/workers/rollout/utils_sglang.py": [
+      "transformers",
+      "datetime",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "tests/workers/rollout/test_sglang_async_rollout_sf_tools.py": [
+      "ray",
+      "asyncio",
+      "time",
+      "transformers",
+      "numpy",
+      "utils_sglang",
+      "pytest",
+      "tensordict",
+      "torch",
+      "verl",
+      "copy",
+      "functools",
+      "unittest"
+    ],
+    "tests/workers/rollout/test_vllm_tool_calling.py": [
+      "uvicorn",
+      "ray",
+      "re",
+      "examples",
+      "openai",
+      "datasets",
+      "fastapi",
+      "socket",
+      "verl",
+      "contextlib",
+      "numpy",
+      "tests",
+      "sys",
+      "tempfile",
+      "omegaconf",
+      "asyncio",
+      "starlette",
+      "typing",
+      "aiohttp",
+      "os"
+    ],
+    "tests/workers/rollout/test_hf_rollout.py": [
+      "transformers",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "tests/workers/rollout/test_sglang_async_rollout_search_tools.py": [
+      "asyncio",
+      "transformers",
+      "numpy",
+      "utils_sglang",
+      "pytest",
+      "tensordict",
+      "verl",
+      "copy",
+      "unittest"
+    ],
+    "tests/workers/rollout/async_rollout_utils.py": [
+      "ray",
+      "typing",
+      "os",
+      "verl",
+      "omegaconf"
+    ],
+    "tests/workers/rollout/test_async_sglang_server.py": [
+      "omegaconf",
+      "verl",
+      "pytest",
+      "unittest"
+    ],
+    "tests/workers/rollout/test_vllm_multi_turn.py": [
+      "ray",
+      "asyncio",
+      "json",
+      "openai",
+      "vllm",
+      "typing",
+      "numpy",
+      "tests",
+      "verl",
+      "omegaconf"
+    ],
+    "tests/workers/rollout/test_sglang_async_rollout_w_tools.py": [
+      "numpy",
+      "tensordict",
+      "verl",
+      "utils_sglang",
+      "torch"
+    ],
+    "tests/workers/rollout/test_vllm_hf_loader.py": [
+      "gc",
+      "vllm",
+      "transformers",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/workers/rollout/test_sglang_spmd.py": [
+      "sglang",
+      "utils_sglang",
+      "asyncio",
+      "torch"
+    ],
+    "tests/workers/rollout/test_vllm_spmd.py": [
+      "vllm",
+      "transformers",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/utils/gpu_tests/test_activation_offload.py": [
+      "transformers",
+      "pytest",
+      "shutil",
+      "verl",
+      "os",
+      "tempfile",
+      "torch"
+    ],
+    "tests/utils/gpu_tests/test_flops_counter.py": [
+      "verl",
+      "pytest",
+      "math"
+    ],
+    "tests/utils/gpu_tests/test_torch_functional.py": [
+      "verl",
+      "os",
+      "pytest",
+      "torch"
+    ],
+    "tests/utils/gpu_tests/test_seqlen_balancing.py": [
+      "verl",
+      "torch"
+    ],
+    "tests/utils/cpu_tests/test_import_utils.py": [
+      "verl",
+      "os",
+      "pytest",
+      "tempfile"
+    ],
+    "tests/utils/cpu_tests/test_model.py": [
+      "verl",
+      "pytest",
+      "types"
+    ],
+    "tests/utils/cpu_tests/test_module.py": [],
+    "tests/utils/cpu_tests/test_fs.py": [
+      "pathlib",
+      "os",
+      "verl"
+    ],
+    "tests/utils/cpu_tests/test_timeout_decorator.py": [
+      "time",
+      "multiprocessing",
+      "pytest",
+      "sys",
+      "threading",
+      "verl"
+    ],
+    "tests/utils/gpu_tests/checkpoint/test_fsdp_ckpt.py": [
+      "transformers",
+      "shutil",
+      "verl",
+      "os",
+      "tempfile",
+      "torch"
+    ],
+    "tests/utils/gpu_tests/dataset/test_rl_dataset.py": [
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "tests/utils/gpu_tests/dataset/test_sft_dataset.py": [
+      "os",
+      "verl",
+      "omegaconf"
+    ],
+    "tests/utils/gpu_tests/dataset/test_multiturn_sft_dataset.py": [
+      "transformers",
+      "pandas",
+      "os",
+      "verl",
+      "torch"
+    ],
+    "tests/utils/gpu_tests/dataset/test_rm_dataset.py": [
+      "os",
+      "verl"
+    ],
+    "tests/utils/gpu_tests/megatron/test_pipeline_parallel.py": [
+      "verl"
+    ],
+    "tests/ray_gpu/detached_worker/server.py": [
+      "ray",
+      "transformers",
+      "tensordict",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf",
+      "megatron"
+    ],
+    "tests/ray_gpu/detached_worker/client.py": [
+      "ray",
+      "server",
+      "tensordict",
+      "verl",
+      "torch"
+    ],
+    "tests/ray_cpu/check_worker_alive/main.py": [
+      "ray",
+      "time",
+      "sys",
+      "os",
+      "verl"
+    ],
+    "recipe/r1/__init__.py": [],
+    "recipe/r1/main_eval.py": [
+      "ray",
+      "numpy",
+      "hydra",
+      "tqdm",
+      "collections",
+      "pandas",
+      "verl"
+    ],
+    "recipe/r1/data_process.py": [
+      "json",
+      "datasets",
+      "zlib",
+      "random",
+      "argparse",
+      "pickle",
+      "base64",
+      "os",
+      "verl",
+      "functools"
+    ],
+    "recipe/r1/reward_score.py": [
+      "recipe"
+    ],
+    "recipe/spin/spin_trainer.py": [
+      "ray",
+      "codetiming",
+      "contextlib",
+      "dataclasses",
+      "typing",
+      "uuid",
+      "numpy",
+      "recipe",
+      "tqdm",
+      "omegaconf",
+      "collections",
+      "torchdata",
+      "torch",
+      "os",
+      "verl",
+      "traceback",
+      "pprint",
+      "enum"
+    ],
+    "recipe/spin/fsdp_workers.py": [
+      "codetiming",
+      "flash_attn",
+      "itertools",
+      "transformers",
+      "recipe",
+      "psutil",
+      "warnings",
+      "logging",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "recipe/spin/main_spin.py": [
+      "ray",
+      "recipe",
+      "hydra",
+      "omegaconf",
+      "os",
+      "verl",
+      "pprint"
+    ],
+    "recipe/spin/dp_actor.py": [
+      "itertools",
+      "numpy",
+      "recipe",
+      "math",
+      "collections",
+      "verl",
+      "torch"
+    ],
+    "recipe/spin/core_algos.py": [
+      "numpy",
+      "torch"
+    ],
+    "recipe/sppo/main_sppo.py": [
+      "sppo_ray_trainer",
+      "ray",
+      "hydra",
+      "omegaconf",
+      "sppo_worker",
+      "os",
+      "verl",
+      "pprint"
+    ],
+    "recipe/sppo/__init__.py": [],
+    "recipe/sppo/sppo_ray_trainer.py": [
+      "ray",
+      "typing",
+      "uuid",
+      "numpy",
+      "tqdm",
+      "omegaconf",
+      "verl",
+      "copy",
+      "torch",
+      "pprint"
+    ],
+    "recipe/sppo/dp_actor.py": [
+      "os",
+      "verl",
+      "torch",
+      "logging"
+    ],
+    "recipe/sppo/sppo_worker.py": [
+      "logging",
+      "os",
+      "verl",
+      "dp_actor",
+      "omegaconf"
+    ],
+    "recipe/dapo/dapo_ray_trainer.py": [
+      "numpy",
+      "uuid",
+      "tqdm",
+      "omegaconf",
+      "collections",
+      "verl",
+      "copy",
+      "torch",
+      "pprint"
+    ],
+    "recipe/dapo/main_dapo.py": [
+      "ray",
+      "dapo_ray_trainer",
+      "hydra",
+      "omegaconf",
+      "os",
+      "verl",
+      "pprint"
+    ],
+    "recipe/prime/prime_fsdp_workers.py": [
+      "transformers",
+      "prime_dp_rm",
+      "warnings",
+      "logging",
+      "prime_core_algos",
+      "os",
+      "verl",
+      "torch",
+      "omegaconf"
+    ],
+    "recipe/prime/main_prime.py": [
+      "ray",
+      "pprint",
+      "prime_ray_trainer",
+      "hydra",
+      "prime_fsdp_workers",
+      "verl",
+      "omegaconf"
+    ],
+    "recipe/prime/prime_ray_trainer.py": [
+      "uuid",
+      "numpy",
+      "statistics",
+      "omegaconf",
+      "os",
+      "verl",
+      "copy",
+      "torch",
+      "pprint",
+      "dill"
+    ],
+    "recipe/prime/__init__.py": [],
+    "recipe/prime/prime_dp_rm.py": [
+      "flash_attn",
+      "itertools",
+      "prime_core_algos",
+      "verl",
+      "torch"
+    ],
+    "recipe/prime/prime_core_algos.py": [
+      "verl",
+      "torch"
+    ],
+    "recipe/r1/tasks/gpqa.py": [
+      "re"
+    ],
+    "recipe/r1/tasks/__init__.py": [],
+    "recipe/r1/tasks/livecodebench.py": [
+      "json",
+      "multiprocessing",
+      "zlib",
+      "pickle",
+      "base64",
+      "verl"
+    ],
+    "recipe/r1/tasks/math.py": [
+      "contextlib",
+      "math_verify"
+    ]
+  }
+}

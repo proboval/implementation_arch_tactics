@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "infra_error": false,
+  "timeout": false,
+  "failures": 0,
+  "failed_names": [],
+  "stdout": "",
+  "stderr": "ImportError while loading conftest '/Users/saveliy/PycharmProjects/implementation_arch_tactics/experiment_5/repos/whoogle-search/test/conftest.py'.\ntest/conftest.py:1: in <module>\n    from app import app\napp/__init__.py:294: in <module>\n    from app import routes  # noqa\napp/routes.py:30: in <module>\n    from app.utils.search import Search, needs_https, has_captcha\napp/utils/search.py:15: in <module>\n    from app.strategies.scrape_strategy import ScrapeSearchStrategy\nE   ModuleNotFoundError: No module named 'app.strategies.scrape_strategy'\n",
+  "regression": false
+}

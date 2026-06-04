@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "infra_error": false,
+  "timeout": false,
+  "failures": 0,
+  "failed_names": [],
+  "stdout": "\nWARNING: Failed to generate report: No data to report.\n\n\n=============================== warnings summary ===============================\n../../../.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1500\n  /Users/saveliy/PycharmProjects/implementation_arch_tactics/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py:1500: PytestConfigWarning: No files were found in testpaths; consider removing or adjusting your testpaths configuration. Searching recursively from the current directory instead.\n    self.args, self.args_source = self._decide_args(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n",
+  "stderr": "/Users/saveliy/PycharmProjects/implementation_arch_tactics/.venv/lib/python3.13/site-packages/coverage/inorout.py:561: CoverageWarning: Module cev3 was never imported. (module-not-imported); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-imported\n  self.warn(f\"Module {pkg} was never imported.\", slug=\"module-not-imported\")\n/Users/saveliy/PycharmProjects/implementation_arch_tactics/.venv/lib/python3.13/site-packages/coverage/control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n/Users/saveliy/PycharmProjects/implementation_arch_tactics/.venv/lib/python3.13/site-packages/pytest_cov/plugin.py:366: CovReportWarning: Failed to generate report: No data to report.\n\n  warnings.warn(CovReportWarning(message), stacklevel=1)\n",
+  "regression": false
+}

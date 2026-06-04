@@ -1,0 +1,130 @@
+{
+  "python_files": 25,
+  "packages": 7,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 3.5714285714285716,
+  "imports_graph": {
+    "server.py": [
+      "threading",
+      "socket",
+      "app",
+      "os"
+    ],
+    "app/__init__.py": [],
+    "tests/test_vision_client.py": [
+      "http",
+      "threading",
+      "numpy",
+      "app",
+      "pytest",
+      "json"
+    ],
+    "tests/test_web_model_info.py": [
+      "threading",
+      "logging",
+      "app"
+    ],
+    "app/net/__init__.py": [],
+    "app/net/net_discovery.py": [
+      "threading",
+      "socket"
+    ],
+    "app/core/__init__.py": [],
+    "app/core/logger.py": [
+      "logging"
+    ],
+    "app/core/frame_buffer.py": [
+      "threading",
+      "numpy",
+      "dataclasses",
+      "typing",
+      "time"
+    ],
+    "app/core/runtime.py": [
+      "threading",
+      "typing",
+      "dataclasses"
+    ],
+    "app/core/upload_stats.py": [
+      "threading",
+      "collections",
+      "time",
+      "dataclasses"
+    ],
+    "app/config/__init__.py": [],
+    "app/config/config_store.py": [
+      "threading",
+      "os",
+      "typing",
+      "json"
+    ],
+    "app/web/webapp.py": [
+      "threading",
+      "numpy",
+      "cv2",
+      "app",
+      "datetime",
+      "logging",
+      "os",
+      "flask",
+      "time"
+    ],
+    "app/web/__init__.py": [],
+    "app/ai/vision_client.py": [
+      "urllib",
+      "typing",
+      "json",
+      "ai_ark",
+      "os"
+    ],
+    "app/ai/__init__.py": [],
+    "app/ai/motion_trigger.py": [
+      "numpy",
+      "dataclasses",
+      "cv2",
+      "typing",
+      "time"
+    ],
+    "app/ai/ai_monitor_worker.py": [
+      "threading",
+      "ai_event_controller",
+      "typing",
+      "datetime",
+      "motion_trigger",
+      "time",
+      "vision_client",
+      "ai_store"
+    ],
+    "app/ai/ai_store.py": [
+      "threading",
+      "dataclasses",
+      "typing",
+      "json",
+      "os",
+      "uuid",
+      "time"
+    ],
+    "app/ai/ai_ark.py": [
+      "base64",
+      "cv2",
+      "typing",
+      "json",
+      "volcenginesdkarkruntime",
+      "os",
+      "re"
+    ],
+    "app/recorder/recorder.py": [
+      "cv2",
+      "datetime",
+      "time",
+      "os"
+    ],
+    "app/recorder/__init__.py": [],
+    "app/recorder/recorder_worker.py": [
+      "threading",
+      "recorder",
+      "time",
+      "os"
+    ]
+  }
+}

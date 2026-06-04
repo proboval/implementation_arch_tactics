@@ -1,0 +1,24 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe inter-module coupling, especially in the client trader implementations. Multiple client-specific trader modules (e.g., yh_clienttrader.py, ht_clienttrader.py, gj_clienttrader.py, gf_clienttrader.py, htzq_clienttrader.py, wk_clienttrader.py, universal_clienttrader.py) directly inherit from BaseLoginClientTrader but also import and instantiate each other's logic indirectly via api.py's use() function. The api.py module acts as a monolithic dispatcher, importing all client modules at startup and using string-based broker name dispatch, which creates tight coupling between all trader implementations and the central API. This coupling makes it difficult to add new brokers without modifying api.py, and changes to one client module risk cascading into others due to shared dependencies on clienttrader.py and overlapping responsibilities. Static analysis confirms high fan-out (avg_fan_out: 3.87) and deep import chains (e.g., easytrader/api.py imports 10+ modules directly), indicating poor decoupling. The reduced coupling tactic directly addresses this by introducing an abstraction layer (e.g., factory pattern or registry) to decouple broker registration from usage.",
+  "target_components": [
+    "easytrader/api.py",
+    "easytrader/clienttrader.py",
+    "easytrader/ht_clienttrader.py",
+    "easytrader/yh_clienttrader.py",
+    "easytrader/gj_clienttrader.py",
+    "easytrader/gf_clienttrader.py",
+    "easytrader/htzq_clienttrader.py",
+    "easytrader/wk_clienttrader.py",
+    "easytrader/universal_clienttrader.py"
+  ],
+  "expected_architectural_change": "Introduce a broker registry pattern: define a BrokerRegistry class in api.py that maintains a mapping of broker names to trader classes. Each client trader module registers itself via a class decorator (e.g., @register_broker('yh_client')). This removes the need for api.py to import all client modules explicitly, decouples broker discovery from the central API, and allows new brokers to be added as standalone modules without touching api.py. The current use() function would be refactored to query the registry instead of hardcoding imports and conditionals.",
+  "implementation_strategy": "1. Create a BrokerRegistry singleton class in api.py with register() and get() methods. 2. Add a @register_broker decorator to clienttrader.py that registers subclasses automatically. 3. Remove all explicit imports and if-branches for broker types from api.py's use() function. 4. Update use() to look up the broker class via the registry. 5. Ensure backward compatibility by keeping the same use() signature. 6. Add unit tests to verify registration and lookup. 7. Refactor follower.py similarly if needed.",
+  "risks": "Low risk: The change is backward-compatible and can be implemented incrementally. Existing tests (tests/test_easytrader.py, tests/test_xqtrader.py, tests/test_xq_follower.py) can validate the refactoring. The main risk is temporary duplication of logic during migration, but this is mitigated by the small scope of each broker module."
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in the pipeline module: 32 Python files exist in a single flat directory (pipeline/) with an average fan-out of 5.3125 imports per file and 100% of files importing from the same pipeline module, indicating tight interdependencies and blurred separation of concerns. Files like web.py, meshtastic_main.py, and cli.py all directly import and depend on the entire pipeline.generate and pipeline.retrieve modules, forcing changes in one area to ripple across multiple entry points. Localized Modification addresses this by increasing cohesion within narrowly-scoped modules, reducing the scope of changes and preventing ripple effects across the system.",
+  "target_components": [
+    "pipeline/",
+    "web.py",
+    "meshtastic_main.py",
+    "cli.py"
+  ],
+  "expected_architectural_change": "The flat pipeline/ directory will be reorganized into cohesive submodules (e.g., pipeline/retrieval/, pipeline/generation/, pipeline/ingestion/) with well-defined interfaces. Entry points (web.py, cli.py, meshtastic_main.py) will depend on abstractions (interfaces) rather than concrete implementations, reducing coupling and enabling independent evolution of retrieval, generation, and ingestion concerns.",
+  "implementation_strategy": "1. Identify cohesive groups of files (e.g., retrieval: retrieve.py, embed.py, chunk.py, classify.py; generation: generate.py, prompt.py, rewrite.py; ingestion: ingest.py, extract.py, split.py). 2. Create new subdirectories under pipeline/ for each concern and move related files into them. 3. Introduce module-level interfaces (e.g., pipeline/retrieval/interface.py) that define contracts for retrieval operations. 4. Refactor entry points (web.py, cli.py, meshtastic_main.py) to depend on interfaces rather than concrete modules. 5. Update imports across the codebase to use the new module structure.",
+  "risks": "Risk of temporary duplication during migration and potential for broken imports during refactoring. Mitigation: perform changes incrementally, maintain backward compatibility with aliases where needed, and ensure comprehensive test coverage before and after each refactoring step."
+}

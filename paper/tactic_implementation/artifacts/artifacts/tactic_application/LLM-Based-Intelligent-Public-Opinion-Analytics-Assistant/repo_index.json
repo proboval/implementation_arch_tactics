@@ -1,0 +1,1292 @@
+{
+  "run_spiders.py": {
+    "path": "run_spiders.py",
+    "imports": [
+      "time",
+      "subprocess",
+      "sys",
+      "os",
+      "logging",
+      "signal",
+      "threading",
+      "json",
+      "datetime.datetime",
+      "psutil"
+    ],
+    "classes": [
+      "SimpleSpiderState"
+    ],
+    "functions": [
+      "setup_logging",
+      "run_spider_simple",
+      "main",
+      "__init__",
+      "save",
+      "load",
+      "next",
+      "get_current_spider",
+      "signal_handler"
+    ],
+    "size": 8695
+  },
+  "app.py": {
+    "path": "app.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "test_push_task.py": {
+    "path": "test_push_task.py",
+    "imports": [
+      "requests",
+      "json",
+      "time",
+      "sys",
+      "os",
+      "argparse",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.datetime",
+      "datetime.timedelta"
+    ],
+    "classes": [
+      "PushTaskTester"
+    ],
+    "functions": [
+      "main",
+      "__init__",
+      "test_crawler_status",
+      "start_crawler",
+      "create_push_task",
+      "get_all_tasks",
+      "delete_task",
+      "test_chat_interface",
+      "run_quick_test",
+      "cleanup_test_tasks"
+    ],
+    "size": 8926
+  },
+  "hotsearchcrawler/douyinmiddlewares.py": {
+    "path": "hotsearchcrawler/douyinmiddlewares.py",
+    "imports": [
+      "random",
+      "logging",
+      "scrapy.signals",
+      "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware"
+    ],
+    "classes": [
+      "RotateUserAgentMiddleware",
+      "DouyinAntiScrapMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "process_response",
+      "process_exception"
+    ],
+    "size": 2108
+  },
+  "hotsearchcrawler/uc1middlewares.py": {
+    "path": "hotsearchcrawler/uc1middlewares.py",
+    "imports": [
+      "random",
+      "scrapy.signals"
+    ],
+    "classes": [
+      "RotateUserAgentMiddleware",
+      "UCRefererMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "from_crawler",
+      "spider_opened",
+      "process_request",
+      "process_request"
+    ],
+    "size": 1675
+  },
+  "hotsearchcrawler/wangyimiddlewares.py": {
+    "path": "hotsearchcrawler/wangyimiddlewares.py",
+    "imports": [
+      "scrapy.signals",
+      "fake_useragent.UserAgent"
+    ],
+    "classes": [
+      "RotateUserAgentMiddleware",
+      "NetEaseCookieMiddleware",
+      "ErrorHandleMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "process_request",
+      "process_request",
+      "process_response"
+    ],
+    "size": 996
+  },
+  "hotsearchcrawler/middlewares.py": {
+    "path": "hotsearchcrawler/middlewares.py",
+    "imports": [
+      "random",
+      "scrapy.signals",
+      "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware"
+    ],
+    "classes": [
+      "RandomUserAgentMiddleware",
+      "ProxyMiddleware",
+      "RetryMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "__init__",
+      "from_crawler",
+      "process_response"
+    ],
+    "size": 2077
+  },
+  "hotsearchcrawler/ipmiddlewares.py": {
+    "path": "hotsearchcrawler/ipmiddlewares.py",
+    "imports": [
+      "scrapy.http.HtmlResponse",
+      "selenium.webdriver",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.edge.service.Service",
+      "selenium.webdriver.common.by.By",
+      "time",
+      "random",
+      "logging",
+      "urllib.parse",
+      "re"
+    ],
+    "classes": [
+      "SeleniumMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "from_crawler",
+      "_get_proxy_config",
+      "_get_proxy_url",
+      "_set_dynamic_proxy",
+      "_get_current_ip",
+      "_is_blocked",
+      "_rotate_proxy",
+      "_random_delay",
+      "_random_user_agent",
+      "_edge_fingerprint_spoofing",
+      "process_request",
+      "spider_closed"
+    ],
+    "size": 10866
+  },
+  "hotsearchcrawler/ucmiddlewares.py": {
+    "path": "hotsearchcrawler/ucmiddlewares.py",
+    "imports": [
+      "scrapy.signals",
+      "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware",
+      "random"
+    ],
+    "classes": [
+      "RotateUserAgentMiddleware",
+      "ProxyMiddleware",
+      "RetryMiddleware"
+    ],
+    "functions": [
+      "process_request",
+      "process_response",
+      "_retry"
+    ],
+    "size": 1858
+  },
+  "hotsearchcrawler/fakemiddlewares.py": {
+    "path": "hotsearchcrawler/fakemiddlewares.py",
+    "imports": [
+      "scrapy.http.HtmlResponse",
+      "selenium.webdriver",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.edge.service.Service",
+      "selenium.webdriver.chrome.options.Options",
+      "selenium.webdriver.chrome.service.Service",
+      "time",
+      "selenium.webdriver.common.by.By",
+      "logging",
+      "selenium.webdriver"
+    ],
+    "classes": [
+      "SeleniumMiddleware",
+      "SeleniumMiddleware1"
+    ],
+    "functions": [
+      "create_driver_with_fallback",
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "spider_closed",
+      "__init__",
+      "from_crawler",
+      "process_request",
+      "spider_closed"
+    ],
+    "size": 5343
+  },
+  "hotsearchcrawler/settings.py": {
+    "path": "hotsearchcrawler/settings.py",
+    "imports": [
+      "os",
+      "datetime.datetime"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 3222
+  },
+  "hotsearchcrawler/runspider-test.py": {
+    "path": "hotsearchcrawler/runspider-test.py",
+    "imports": [
+      "sys",
+      "os",
+      "argparse",
+      "subprocess",
+      "scrapy.crawler.CrawlerProcess",
+      "scrapy.utils.project.get_project_settings"
+    ],
+    "classes": [
+      "SpiderRunner"
+    ],
+    "functions": [
+      "main",
+      "__init__",
+      "run_single_spider",
+      "run_multiple_spiders",
+      "run_by_alias",
+      "run_by_group"
+    ],
+    "size": 6132
+  },
+  "hotsearchcrawler/items.py": {
+    "path": "hotsearchcrawler/items.py",
+    "imports": [
+      "scrapy",
+      "w3lib.html.remove_tags"
+    ],
+    "classes": [
+      "HotItem"
+    ],
+    "functions": [
+      "clean_text",
+      "process_item"
+    ],
+    "size": 662
+  },
+  "hotsearchcrawler/pipelines.py": {
+    "path": "hotsearchcrawler/pipelines.py",
+    "imports": [
+      "pymysql",
+      "datetime",
+      "logging",
+      "settings.MYSQL_CONFIG"
+    ],
+    "classes": [
+      "MySQLPipeline"
+    ],
+    "functions": [
+      "__init__",
+      "from_crawler",
+      "open_spider",
+      "_create_table",
+      "process_item",
+      "close_spider"
+    ],
+    "size": 3448
+  },
+  "hotsearch_analysis_agent/main.py": {
+    "path": "hotsearch_analysis_agent/main.py",
+    "imports": [
+      "os",
+      "sys",
+      "signal",
+      "atexit",
+      "multiprocessing",
+      "logging",
+      "hotsearch_analysis_agent.core.agent.HotSearchAgent",
+      "hotsearch_analysis_agent.vector_db.manager.VectorDBManager",
+      "hotsearch_analysis_agent.vector_db.title_vector_manager.TitleVectorDBManager",
+      "hotsearch_analysis_agent.config.validator.ConfigValidator"
+    ],
+    "classes": [
+      "HotSearchAnalysisSystem"
+    ],
+    "functions": [
+      "__init__",
+      "signal_handler",
+      "startup",
+      "cleanup",
+      "process_query",
+      "run"
+    ],
+    "size": 3519
+  },
+  "hotsearch_analysis_agent/core/memory.py": {
+    "path": "hotsearch_analysis_agent/core/memory.py",
+    "imports": [
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "langchain.schema.BaseMessage",
+      "hotsearch_analysis_agent.config.settings.MEMORY_CONFIG",
+      "re"
+    ],
+    "classes": [
+      "ConversationMemory"
+    ],
+    "functions": [
+      "__init__",
+      "add_message",
+      "get_recent_history",
+      "clear_old_memory",
+      "get_context",
+      "extract_recent_news_references"
+    ],
+    "size": 4664
+  },
+  "hotsearch_analysis_agent/core/tools.py": {
+    "path": "hotsearch_analysis_agent/core/tools.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "hotsearch_analysis_agent/core/agent.py": {
+    "path": "hotsearch_analysis_agent/core/agent.py",
+    "imports": [
+      "langchain.agents.AgentType",
+      "langchain.agents.initialize_agent",
+      "langchain.llms.OpenAI",
+      "langchain.chat_models.ChatOpenAI",
+      "langchain.memory.ConversationBufferWindowMemory",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "re",
+      "os",
+      "sys",
+      "logging",
+      "hotsearch_analysis_agent.config.settings.LLM_CONFIG",
+      "hotsearch_analysis_agent.config.settings.MEMORY_CONFIG",
+      "hotsearch_analysis_agent.config.prompts.SYSTEM_PROMPT",
+      "hotsearch_analysis_agent.config.prompts.TOOL_SELECTION_PROMPT",
+      "hotsearch_analysis_agent.core.tools.*",
+      "hotsearch_analysis_agent.utils.platform_mapper.platform_mapper",
+      "langchain.prompts.SystemMessagePromptTemplate",
+      "langchain.prompts.HumanMessagePromptTemplate",
+      "langchain.prompts.ChatPromptTemplate",
+      "json"
+    ],
+    "classes": [
+      "HotSearchAgent"
+    ],
+    "functions": [
+      "__init__",
+      "process_query",
+      "_extract_response_from_error",
+      "filter_response",
+      "_create_tools"
+    ],
+    "size": 11384
+  },
+  "hotsearch_analysis_agent/vector_db/title_vector_manager.py": {
+    "path": "hotsearch_analysis_agent/vector_db/title_vector_manager.py",
+    "imports": [
+      "chromadb",
+      "chromadb.config.Settings",
+      "hotsearch_analysis_agent.config.settings.VECTOR_DB_CONFIG",
+      "hotsearch_analysis_agent.config.settings.MYSQL_CONFIG",
+      "pymysql",
+      "logging",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "jieba",
+      "jieba.analyse",
+      "time",
+      "hashlib",
+      "hotsearch_analysis_agent.config.settings.PLATFORM_MAPPING",
+      "hotsearch_analysis_agent.utils.platform_mapper.platform_mapper"
+    ],
+    "classes": [
+      "TitleVectorDBManager"
+    ],
+    "functions": [
+      "__init__",
+      "initialize",
+      "_get_platform_name",
+      "_extract_keywords",
+      "_get_platform_context",
+      "load_recent_titles",
+      "_calculate_data_hash",
+      "_should_force_reload",
+      "_enhance_search_query",
+      "_filter_and_format_results",
+      "semantic_title_search"
+    ],
+    "size": 9783
+  },
+  "hotsearch_analysis_agent/vector_db/manager.py": {
+    "path": "hotsearch_analysis_agent/vector_db/manager.py",
+    "imports": [
+      "chromadb",
+      "chromadb.config.Settings",
+      "hotsearch_analysis_agent.config.settings.VECTOR_DB_CONFIG",
+      "hotsearch_analysis_agent.config.settings.MYSQL_CONFIG",
+      "pymysql",
+      "hotsearch_analysis_agent.utils.content_extractor.ContentExtractor",
+      "logging"
+    ],
+    "classes": [
+      "VectorDBManager"
+    ],
+    "functions": [
+      "__init__",
+      "initialize",
+      "_load_articles_to_vector_db",
+      "ensure_data_loaded",
+      "similarity_search",
+      "refresh_vector_data"
+    ],
+    "size": 6986
+  },
+  "hotsearch_analysis_agent/vector_db/sentiment_vector_manager.py": {
+    "path": "hotsearch_analysis_agent/vector_db/sentiment_vector_manager.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "hotsearch_analysis_agent/config/validator.py": {
+    "path": "hotsearch_analysis_agent/config/validator.py",
+    "imports": [
+      "os",
+      "typing.Dict",
+      "typing.Any",
+      "hotsearch_analysis_agent.config.settings.SPIDER_CONFIG",
+      "hotsearch_analysis_agent.config.settings.LLM_CONFIG",
+      "hotsearch_analysis_agent.config.settings.MYSQL_CONFIG"
+    ],
+    "classes": [
+      "ConfigValidator"
+    ],
+    "functions": [
+      "validate_required_config",
+      "print_config_status"
+    ],
+    "size": 1700
+  },
+  "hotsearch_analysis_agent/config/prompts.py": {
+    "path": "hotsearch_analysis_agent/config/prompts.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 1468
+  },
+  "hotsearch_analysis_agent/config/settings.py": {
+    "path": "hotsearch_analysis_agent/config/settings.py",
+    "imports": [
+      "json",
+      "os",
+      "pathlib.Path",
+      "dotenv.load_dotenv"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 4489
+  },
+  "hotsearch_analysis_agent/utils/content_extractor.py": {
+    "path": "hotsearch_analysis_agent/utils/content_extractor.py",
+    "imports": [
+      "requests",
+      "bs4.BeautifulSoup",
+      "re",
+      "typing.Optional",
+      "typing.Tuple",
+      "typing.List",
+      "json",
+      "logging",
+      "urllib.parse.urljoin",
+      "urllib.parse.urlparse",
+      "os",
+      "tempfile",
+      "selenium.webdriver",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.edge.service.Service",
+      "selenium.webdriver.support.ui.WebDriverWait",
+      "selenium.webdriver.support.expected_conditions",
+      "selenium.webdriver.common.by.By",
+      "time",
+      "hotsearch_analysis_agent.config.settings.COOKIES_CONFIG",
+      "hotsearch_analysis_agent.config.settings.PLATFORM_URL_PATTERNS",
+      "json",
+      "selenium.common.exceptions.UnableToSetCookieException",
+      "selenium.common.exceptions.InvalidCookieDomainException",
+      "selenium.common.exceptions.WebDriverException",
+      "selenium.common.exceptions.InvalidArgumentException",
+      "selenium.common.exceptions.TimeoutException",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.chrome.options.Options"
+    ],
+    "classes": [
+      "ContentExtractor"
+    ],
+    "functions": [
+      "__init__",
+      "_detect_platform_by_url",
+      "_get_cookies_for_platform",
+      "_load_cookies_to_driver",
+      "_access_with_cookies",
+      "_init_selenium_driver",
+      "_close_selenium_driver",
+      "_is_video_page",
+      "_is_non_content_page",
+      "_is_captcha_page"
+    ],
+    "size": 15038
+  },
+  "hotsearch_analysis_agent/utils/clustering.py": {
+    "path": "hotsearch_analysis_agent/utils/clustering.py",
+    "imports": [
+      "sklearn.feature_extraction.text.TfidfVectorizer",
+      "sklearn.cluster.KMeans",
+      "numpy",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "jieba",
+      "jieba.analyse"
+    ],
+    "classes": [
+      "TopicClustering"
+    ],
+    "functions": [
+      "__init__",
+      "_extract_keywords",
+      "cluster_titles"
+    ],
+    "size": 2479
+  },
+  "hotsearch_analysis_agent/utils/platform_mapper.py": {
+    "path": "hotsearch_analysis_agent/utils/platform_mapper.py",
+    "imports": [
+      "re",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "hotsearch_analysis_agent.config.settings.PLATFORM_MAPPING"
+    ],
+    "classes": [
+      "PlatformMapper"
+    ],
+    "functions": [
+      "__init__",
+      "_create_name_mapping",
+      "_create_keyword_mapping",
+      "extract_platforms_from_text",
+      "get_platform_name",
+      "format_platform_list"
+    ],
+    "size": 5058
+  },
+  "hotsearch_analysis_agent/utils/advanced_sentiment.py": {
+    "path": "hotsearch_analysis_agent/utils/advanced_sentiment.py",
+    "imports": [
+      "jieba",
+      "jieba.analyse",
+      "re",
+      "typing.Dict",
+      "typing.List",
+      "typing.Tuple",
+      "collections.Counter",
+      "math"
+    ],
+    "classes": [
+      "AdvancedSentimentAnalyzer"
+    ],
+    "functions": [
+      "__init__",
+      "_load_sentiment_words",
+      "_load_intensifiers",
+      "_load_negators",
+      "_load_aspect_keywords",
+      "enhanced_analyze",
+      "_calculate_base_sentiment",
+      "_calculate_intensity",
+      "_extract_aspects",
+      "_normalize_score",
+      "_get_sentiment_label",
+      "_calculate_confidence"
+    ],
+    "size": 4626
+  },
+  "hotsearch_analysis_agent/utils/sentiment_analyzer.py": {
+    "path": "hotsearch_analysis_agent/utils/sentiment_analyzer.py",
+    "imports": [
+      "jieba",
+      "jieba.analyse",
+      "typing.Dict",
+      "typing.List",
+      "hotsearch_analysis_agent.config.settings.SENTIMENT_CONFIG"
+    ],
+    "classes": [
+      "SentimentAnalyzer"
+    ],
+    "functions": [
+      "__init__",
+      "analyze"
+    ],
+    "size": 738
+  },
+  "hotsearchcrawler/spiders/ifeng_spider.py": {
+    "path": "hotsearchcrawler/spiders/ifeng_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "re",
+      "datetime.datetime",
+      "items.HotItem"
+    ],
+    "classes": [
+      "IfengSpider"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 2509
+  },
+  "hotsearchcrawler/spiders/toutiao_car_spider.py": {
+    "path": "hotsearchcrawler/spiders/toutiao_car_spider.py",
+    "imports": [
+      "urllib.parse.urljoin",
+      "datetime.time",
+      "base_spider.BaseHotSpider"
+    ],
+    "classes": [
+      "ToutiaoHotSpider2"
+    ],
+    "functions": [
+      "parse_topic"
+    ],
+    "size": 1172
+  },
+  "hotsearchcrawler/spiders/bilibili_spider.py": {
+    "path": "hotsearchcrawler/spiders/bilibili_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "datetime.datetime",
+      "items.HotItem"
+    ],
+    "classes": [
+      "BilibiliSpider"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 1784
+  },
+  "hotsearchcrawler/spiders/douyin_fun_spider.py": {
+    "path": "hotsearchcrawler/spiders/douyin_fun_spider.py",
+    "imports": [
+      "json",
+      "urllib.parse",
+      "base2_spider.DouyinHotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "DouyinGeneralHotSpider1"
+    ],
+    "functions": [
+      "platform_id",
+      "hotlist_url",
+      "parse_hotlist",
+      "construct_detail_url",
+      "parse_detail"
+    ],
+    "size": 3585
+  },
+  "hotsearchcrawler/spiders/base5_spder.py": {
+    "path": "hotsearchcrawler/spiders/base5_spder.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "urllib.parse.urljoin",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "BaseHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse_ranking",
+      "parse_topic"
+    ],
+    "size": 2244
+  },
+  "hotsearchcrawler/spiders/base1_spider.py": {
+    "path": "hotsearchcrawler/spiders/base1_spider.py",
+    "imports": [
+      "scrapy",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "HotSearchBaseSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse",
+      "create_item"
+    ],
+    "size": 587
+  },
+  "hotsearchcrawler/spiders/sll_spider.py": {
+    "path": "hotsearchcrawler/spiders/sll_spider.py",
+    "imports": [
+      "datetime.time",
+      "urllib.parse.urljoin",
+      "scrapy",
+      "base5_spder.BaseHotSpider"
+    ],
+    "classes": [
+      "SllHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse_ranking"
+    ],
+    "size": 3028
+  },
+  "hotsearchcrawler/spiders/__init__.py": {
+    "path": "hotsearchcrawler/spiders/__init__.py",
+    "imports": [
+      "uc_hotnew_spider.UCHotSpider",
+      "baidu_spider.BaiduHotSpider",
+      "toutiao_spider.ToutiaoHotSpider",
+      "wangyi_hottalk_spider.NetEaseSpider",
+      "wangyi_hotnew_spider.NetEaseSpider1",
+      "wangyi_hotsearch_spider.NetEaseSpider2",
+      "wangyi_hottopic_spider.NetEaseSpider3",
+      "douyin_hot_spider.DouyinGeneralHotSpider",
+      "douyin_fun_spider.DouyinGeneralHotSpider1",
+      "douyin_society_spider.DouyinGeneralHotSpider2",
+      "toutiao_fun_spider.ToutiaoHotSpider1",
+      "toutiao_car_spider.ToutiaoHotSpider2",
+      "toutiao_education_spider.ToutiaoHotSpider3",
+      "uc_interact_spider.UCHotSpider1",
+      "uc_video_spider.UCVideoSpider",
+      "bilibili_spider.BilibiliSpider",
+      "ifeng_spider.IfengSpider",
+      "sll_spider.SllHotSpider",
+      "tencent_spider.TencentSpider",
+      "zhihu_hot_spider.ZhihuHotSpider",
+      "zhihu_search_spider.ZhihuSearchSpider",
+      "kuaishou_spider.KuaishouHotSpider",
+      "weibo.Weibo",
+      "pengpai.Pengpai",
+      "xiaohongshu.Xiaohongshu",
+      "sougou.Sougou"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1305
+  },
+  "hotsearchcrawler/spiders/uc_spider.py": {
+    "path": "hotsearchcrawler/spiders/uc_spider.py",
+    "imports": [
+      "datetime.time",
+      "urllib.parse",
+      "urllib.parse.unquote",
+      "urllib.parse.urlparse",
+      "urllib.parse.parse_qs",
+      "base_spider.BaseHotSpider"
+    ],
+    "classes": [
+      "UcHotSpider_R"
+    ],
+    "functions": [],
+    "size": 997
+  },
+  "hotsearchcrawler/spiders/zhihu_hot_spider.py": {
+    "path": "hotsearchcrawler/spiders/zhihu_hot_spider.py",
+    "imports": [
+      "scrapy",
+      "datetime.datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "ZhihuHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 1747
+  },
+  "hotsearchcrawler/spiders/sougou.py": {
+    "path": "hotsearchcrawler/spiders/sougou.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "Sougou"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 1590
+  },
+  "hotsearchcrawler/spiders/weibo.py": {
+    "path": "hotsearchcrawler/spiders/weibo.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "Weibo"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 1734
+  },
+  "hotsearchcrawler/spiders/uc_hotnew_spider.py": {
+    "path": "hotsearchcrawler/spiders/uc_hotnew_spider.py",
+    "imports": [
+      "hotsearchcrawler.spiders.base3_spider.BaseHotSpider",
+      "time",
+      "random",
+      "scrapy"
+    ],
+    "classes": [
+      "UCHotSpider"
+    ],
+    "functions": [
+      "__init__",
+      "start_requests",
+      "init_session",
+      "parse",
+      "parse_detail_page",
+      "is_verification_page",
+      "extract_final_url",
+      "extract_author"
+    ],
+    "size": 4297
+  },
+  "hotsearchcrawler/spiders/pengpai.py": {
+    "path": "hotsearchcrawler/spiders/pengpai.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "urllib.parse.quote",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "Pengpai"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 1811
+  },
+  "hotsearchcrawler/spiders/uc_video_spider.py": {
+    "path": "hotsearchcrawler/spiders/uc_video_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "datetime.datetime",
+      "items.HotItem"
+    ],
+    "classes": [
+      "UCVideoSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 2407
+  },
+  "hotsearchcrawler/spiders/wangyi_hotnew_spider.py": {
+    "path": "hotsearchcrawler/spiders/wangyi_hotnew_spider.py",
+    "imports": [
+      "json",
+      "base1_spider.HotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "NetEaseSpider1"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 1903
+  },
+  "hotsearchcrawler/spiders/baidu_spider.py": {
+    "path": "hotsearchcrawler/spiders/baidu_spider.py",
+    "imports": [
+      "datetime.time",
+      "base5_spder.BaseHotSpider",
+      "urllib.parse.urljoin"
+    ],
+    "classes": [
+      "BaiduHotSpider"
+    ],
+    "functions": [
+      "selenium_actions"
+    ],
+    "size": 947
+  },
+  "hotsearchcrawler/spiders/base3_spider.py": {
+    "path": "hotsearchcrawler/spiders/base3_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "hotsearchcrawler.items.HotItem",
+      "time"
+    ],
+    "classes": [
+      "BaseHotSpider"
+    ],
+    "functions": [
+      "parse",
+      "parse_detail_page",
+      "extract_final_url",
+      "extract_author"
+    ],
+    "size": 2431
+  },
+  "hotsearchcrawler/spiders/kuaishou_spider.py": {
+    "path": "hotsearchcrawler/spiders/kuaishou_spider.py",
+    "imports": [
+      "scrapy",
+      "re",
+      "time",
+      "hotsearchcrawler.items.HotItem",
+      "datetime.datetime",
+      "selenium.webdriver",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.edge.service.Service",
+      "selenium.webdriver.common.by.By",
+      "selenium.webdriver.support.ui.WebDriverWait",
+      "selenium.webdriver.support.expected_conditions",
+      "scrapy.http.HtmlResponse",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.edge.service.Service",
+      "selenium.webdriver.chrome.options.Options",
+      "selenium.webdriver.chrome.service.Service"
+    ],
+    "classes": [
+      "KuaishouHotSpider"
+    ],
+    "functions": [
+      "__init__",
+      "closed",
+      "start_requests",
+      "parse",
+      "parse_hot_list"
+    ],
+    "size": 9145
+  },
+  "hotsearchcrawler/spiders/zhihu_search_spider.py": {
+    "path": "hotsearchcrawler/spiders/zhihu_search_spider.py",
+    "imports": [
+      "scrapy",
+      "datetime.datetime",
+      "urllib.parse.quote",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "ZhihuSearchSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 2083
+  },
+  "hotsearchcrawler/spiders/douyin_hot_spider.py": {
+    "path": "hotsearchcrawler/spiders/douyin_hot_spider.py",
+    "imports": [
+      "json",
+      "urllib.parse",
+      "base2_spider.DouyinHotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "DouyinGeneralHotSpider"
+    ],
+    "functions": [
+      "platform_id",
+      "hotlist_url",
+      "parse_hotlist",
+      "construct_detail_url",
+      "parse_detail"
+    ],
+    "size": 3582
+  },
+  "hotsearchcrawler/spiders/xiaohongshu.py": {
+    "path": "hotsearchcrawler/spiders/xiaohongshu.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "Xiaohongshu"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 2418
+  },
+  "hotsearchcrawler/spiders/tencent_spider.py": {
+    "path": "hotsearchcrawler/spiders/tencent_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "TencentSpider"
+    ],
+    "functions": [
+      "parse"
+    ],
+    "size": 1687
+  },
+  "hotsearchcrawler/spiders/toutiao_education_spider.py": {
+    "path": "hotsearchcrawler/spiders/toutiao_education_spider.py",
+    "imports": [
+      "urllib.parse.urljoin",
+      "datetime.time",
+      "base_spider.BaseHotSpider"
+    ],
+    "classes": [
+      "ToutiaoHotSpider3"
+    ],
+    "functions": [
+      "parse_topic"
+    ],
+    "size": 1178
+  },
+  "hotsearchcrawler/spiders/wangyi_hottalk_spider.py": {
+    "path": "hotsearchcrawler/spiders/wangyi_hottalk_spider.py",
+    "imports": [
+      "json",
+      "base1_spider.HotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "NetEaseSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 1968
+  },
+  "hotsearchcrawler/spiders/base4_spider.py": {
+    "path": "hotsearchcrawler/spiders/base4_spider.py",
+    "imports": [
+      "scrapy",
+      "json",
+      "logging",
+      "time",
+      "re",
+      "items.HotItem"
+    ],
+    "classes": [
+      "BaseHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse_hot_list",
+      "parse_article_content"
+    ],
+    "size": 4088
+  },
+  "hotsearchcrawler/spiders/base_ip_spider.py": {
+    "path": "hotsearchcrawler/spiders/base_ip_spider.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "BaseHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse_ranking",
+      "parse_topic"
+    ],
+    "size": 1381
+  },
+  "hotsearchcrawler/spiders/uc_interact_spider.py": {
+    "path": "hotsearchcrawler/spiders/uc_interact_spider.py",
+    "imports": [
+      "base4_spider.BaseHotSpider"
+    ],
+    "classes": [
+      "UCHotSpider1"
+    ],
+    "functions": [],
+    "size": 1259
+  },
+  "hotsearchcrawler/spiders/toutiao_fun_spider.py": {
+    "path": "hotsearchcrawler/spiders/toutiao_fun_spider.py",
+    "imports": [
+      "urllib.parse.urljoin",
+      "datetime.time",
+      "base_spider.BaseHotSpider"
+    ],
+    "classes": [
+      "ToutiaoHotSpider1"
+    ],
+    "functions": [
+      "parse_topic"
+    ],
+    "size": 1172
+  },
+  "hotsearchcrawler/spiders/douyin_society_spider.py": {
+    "path": "hotsearchcrawler/spiders/douyin_society_spider.py",
+    "imports": [
+      "json",
+      "urllib.parse",
+      "base2_spider.DouyinHotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "DouyinGeneralHotSpider2"
+    ],
+    "functions": [
+      "platform_id",
+      "hotlist_url",
+      "parse_hotlist",
+      "construct_detail_url",
+      "parse_detail"
+    ],
+    "size": 3590
+  },
+  "hotsearchcrawler/spiders/base_spider.py": {
+    "path": "hotsearchcrawler/spiders/base_spider.py",
+    "imports": [
+      "scrapy",
+      "datetime",
+      "hotsearchcrawler.items.HotItem"
+    ],
+    "classes": [
+      "BaseHotSpider"
+    ],
+    "functions": [
+      "start_requests",
+      "parse_ranking",
+      "parse_topic"
+    ],
+    "size": 1477
+  },
+  "hotsearchcrawler/spiders/wangyi_hotsearch_spider.py": {
+    "path": "hotsearchcrawler/spiders/wangyi_hotsearch_spider.py",
+    "imports": [
+      "json",
+      "time",
+      "re",
+      "datetime.datetime",
+      "urllib.parse.quote",
+      "selenium.webdriver",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.common.by.By",
+      "selenium.webdriver.support.ui.WebDriverWait",
+      "selenium.webdriver.support.expected_conditions",
+      "base1_spider.HotSearchBaseSpider",
+      "hotsearchcrawler.items.HotItem",
+      "scrapy",
+      "selenium.webdriver.edge.options.Options",
+      "selenium.webdriver.chrome.options.Options"
+    ],
+    "classes": [
+      "NetEaseSpider2"
+    ],
+    "functions": [
+      "__init__",
+      "closed",
+      "extract_clean_title",
+      "get_detail_url_from_card",
+      "get_first_news_detail_url",
+      "start_requests",
+      "parse"
+    ],
+    "size": 10695
+  },
+  "hotsearchcrawler/spiders/wangyi_hottopic_spider.py": {
+    "path": "hotsearchcrawler/spiders/wangyi_hottopic_spider.py",
+    "imports": [
+      "json",
+      "base1_spider.HotSearchBaseSpider",
+      "scrapy"
+    ],
+    "classes": [
+      "NetEaseSpider3"
+    ],
+    "functions": [
+      "start_requests",
+      "parse"
+    ],
+    "size": 1762
+  },
+  "hotsearchcrawler/spiders/base2_spider.py": {
+    "path": "hotsearchcrawler/spiders/base2_spider.py",
+    "imports": [
+      "abc",
+      "scrapy",
+      "items.HotItem"
+    ],
+    "classes": [
+      "DouyinHotSearchBaseSpider"
+    ],
+    "functions": [
+      "platform_id",
+      "hotlist_url",
+      "parse_hotlist",
+      "construct_detail_url",
+      "parse_detail",
+      "start_requests",
+      "create_hot_item"
+    ],
+    "size": 1009
+  },
+  "hotsearchcrawler/spiders/toutiao_spider.py": {
+    "path": "hotsearchcrawler/spiders/toutiao_spider.py",
+    "imports": [
+      "urllib.parse.urljoin",
+      "datetime.time",
+      "base5_spder.BaseHotSpider"
+    ],
+    "classes": [
+      "ToutiaoHotSpider"
+    ],
+    "functions": [
+      "selenium_actions"
+    ],
+    "size": 1033
+  }
+}

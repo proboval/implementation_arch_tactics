@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits tight coupling and low modularity across multiple components. Static analysis shows high fan-out (avg 4.41 imports per module), deep directory nesting (max depth 7), and packages with low cohesion (avg 3.85 files per package). Critical modules like 'quantaalpha/pipeline/factor_mining.py' import 24+ modules, and 'quantaalpha/llm/client.py' imports 30+ modules, violating separation of concerns. The 'quantaalpha' package has 35 sub-packages with unclear boundaries, causing ripple effects when changes occur. Decomposability addresses this by introducing clear module boundaries, isolating concerns, and enabling targeted testing and analysis.",
+  "target_components": [
+    "quantaalpha/pipeline/factor_mining.py",
+    "quantaalpha/llm/client.py",
+    "quantaalpha/pipeline/loop.py",
+    "quantaalpha/factors/runner.py",
+    "quantaalpha/backtest/runner.py"
+  ],
+  "expected_architectural_change": "Introduce well-defined module boundaries with clear interfaces. Split monolithic modules into cohesive submodules (e.g., separate LLM client, data loading, and execution logic). Establish layering: presentation (CLI/API), orchestration (pipeline), domain (factors/backtest), and infrastructure (LLM/data). Each module will expose minimal public APIs and hide implementation details.",
+  "implementation_strategy": "1. Extract LLM client from 'quantaalpha/llm/client.py' into a dedicated 'quantaalpha/llm' module with clear interfaces. 2. Split 'quantaalpha/pipeline/factor_mining.py' into 'planning', 'evolution', and 'execution' submodules. 3. Create dedicated data loading modules for factor and backtest pipelines. 4. Introduce dependency inversion via interfaces for core components. 5. Establish module-level configuration to reduce hard-coded dependencies.",
+  "risks": "Refactoring may temporarily break existing integrations during migration. Requires careful versioning and testing. Risk of over-engineering if boundaries are too granular. Mitigation: incremental refactoring with backward compatibility layers, comprehensive test coverage, and clear migration guides."
+}

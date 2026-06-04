@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: the server package (61 Python files) lacks clear module boundaries, with routers, services, and utilities heavily interdependent. Static analysis shows avg_fan_out of 8.23 and high import complexity (e.g., server/services/terminal_manager.py imports 27 modules). This creates ripple effects where changes propagate across unrelated modules, increasing maintenance cost and reducing testability. Decomposability directly addresses this by isolating modules, narrowing modification scope, and enabling independent testing.",
+  "target_components": [
+    "server/services/terminal_manager.py",
+    "server/services/dev_server_manager.py",
+    "server/services/process_manager.py",
+    "server/routers/terminal.py",
+    "server/routers/devserver.py",
+    "server/utils/process_utils.py"
+  ],
+  "expected_architectural_change": "Introduce a 'terminal' subpackage under server/services/ containing TerminalManager, TerminalSession, and PTYProcess abstractions. Decouple PTY handling from business logic by extracting platform-specific code (winpty vs pty) into separate modules. Create clear interfaces between router (terminal.py), service (terminal_manager.py), and utility (process_utils.py) layers.",
+  "implementation_strategy": "1. Create server/services/terminal/ directory with __init__.py, session.py, manager.py, and platform.py. 2. Extract PTY process handling into platform.py (WinPtyProcess/UnixPtyProcess classes implementing a common interface). 3. Refactor TerminalSession to depend on the PTY interface, not platform-specific modules. 4. Update imports in terminal.py router to use the new service interface. 5. Add unit tests for PTY platform abstractions. 6. Gradually migrate existing code while maintaining backward compatibility.",
+  "risks": "Risk of temporary duplication during migration and potential breaking changes to external consumers of terminal_manager.py. Mitigation: Use adapter pattern for backward compatibility, implement in stages with feature flags, and provide comprehensive test coverage before and after refactoring."
+}

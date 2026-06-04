@@ -1,0 +1,197 @@
+{
+  "python_files": 28,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.333333333333334,
+  "imports_graph": {
+    "backtest.py": [
+      "binance_trade_bot",
+      "datetime"
+    ],
+    ".pre-commit-hooks/sort-coins-file.py": [
+      "pathlib"
+    ],
+    "binance_trade_bot/binance_stream_manager.py": [
+      "logger",
+      "sys",
+      "time",
+      "unicorn_binance_websocket_api",
+      "threading",
+      "contextlib",
+      "binance",
+      "config",
+      "typing"
+    ],
+    "binance_trade_bot/config.py": [
+      "configparser",
+      "models",
+      "os"
+    ],
+    "binance_trade_bot/database.py": [
+      "socketio",
+      "logger",
+      "sqlalchemy",
+      "time",
+      "contextlib",
+      "os",
+      "typing",
+      "config",
+      "models",
+      "json",
+      "datetime"
+    ],
+    "binance_trade_bot/__init__.py": [
+      "crypto_trading",
+      "backtest",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot/scout_engine.py": [
+      "logger",
+      "database",
+      "config",
+      "models",
+      "typing",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot/logger.py": [
+      "notifications",
+      "logging"
+    ],
+    "binance_trade_bot/auto_trader.py": [
+      "logger",
+      "sqlalchemy",
+      "database",
+      "config",
+      "models",
+      "typing",
+      "datetime",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot/api_server.py": [
+      "logger",
+      "itertools",
+      "sqlalchemy",
+      "flask_socketio",
+      "database",
+      "flask_cors",
+      "datetime",
+      "config",
+      "flask",
+      "models",
+      "typing",
+      "re"
+    ],
+    "binance_trade_bot/binance_api_manager.py": [
+      "logger",
+      "cachetools",
+      "time",
+      "database",
+      "binance",
+      "traceback",
+      "binance_stream_manager",
+      "math",
+      "config",
+      "models",
+      "typing"
+    ],
+    "binance_trade_bot/notifications.py": [
+      "apprise",
+      "threading",
+      "os",
+      "queue"
+    ],
+    "binance_trade_bot/scheduler.py": [
+      "schedule",
+      "logging",
+      "datetime",
+      "traceback"
+    ],
+    "binance_trade_bot/backtest.py": [
+      "collections",
+      "logger",
+      "database",
+      "strategies",
+      "traceback",
+      "binance_stream_manager",
+      "sqlitedict",
+      "config",
+      "models",
+      "typing",
+      "datetime",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot/__main__.py": [
+      "crypto_trading"
+    ],
+    "binance_trade_bot/crypto_trading.py": [
+      "logger",
+      "database",
+      "time",
+      "strategies",
+      "config",
+      "scheduler",
+      "binance_api_manager"
+    ],
+    "binance_trade_bot/strategies/multiple_coins_strategy.py": [
+      "binance_trade_bot",
+      "datetime"
+    ],
+    "binance_trade_bot/strategies/default_strategy.py": [
+      "binance_trade_bot",
+      "random",
+      "sys",
+      "datetime"
+    ],
+    "binance_trade_bot/strategies/__init__.py": [
+      "importlib",
+      "os"
+    ],
+    "binance_trade_bot/models/trade.py": [
+      "base",
+      "sqlalchemy",
+      "coin",
+      "enum",
+      "datetime"
+    ],
+    "binance_trade_bot/models/__init__.py": [
+      "base",
+      "current_coin",
+      "trade",
+      "scout_history",
+      "coin",
+      "pair",
+      "coin_value"
+    ],
+    "binance_trade_bot/models/scout_history.py": [
+      "base",
+      "pair",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "binance_trade_bot/models/current_coin.py": [
+      "base",
+      "coin",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "binance_trade_bot/models/coin.py": [
+      "base",
+      "sqlalchemy"
+    ],
+    "binance_trade_bot/models/base.py": [
+      "sqlalchemy"
+    ],
+    "binance_trade_bot/models/pair.py": [
+      "base",
+      "coin",
+      "sqlalchemy"
+    ],
+    "binance_trade_bot/models/coin_value.py": [
+      "base",
+      "sqlalchemy",
+      "coin",
+      "enum",
+      "datetime"
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "python_files": 26,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 8.666666666666666,
+  "imports_graph": {
+    "backtest.py": [
+      "datetime",
+      "binance_trade_bot"
+    ],
+    ".pre-commit-hooks/sort-coins-file.py": [
+      "pathlib"
+    ],
+    "binance_trade_bot/binance_stream_manager.py": [
+      "binance",
+      "typing",
+      "unicorn_binance_websocket_api",
+      "contextlib",
+      "config",
+      "sys",
+      "threading",
+      "logger",
+      "time"
+    ],
+    "binance_trade_bot/config.py": [
+      "models",
+      "configparser",
+      "os"
+    ],
+    "binance_trade_bot/database.py": [
+      "models",
+      "os",
+      "typing",
+      "contextlib",
+      "config",
+      "socketio",
+      "datetime",
+      "sqlalchemy",
+      "json",
+      "logger",
+      "time"
+    ],
+    "binance_trade_bot/__init__.py": [
+      "crypto_trading",
+      "binance_api_manager",
+      "backtest"
+    ],
+    "binance_trade_bot/logger.py": [
+      "notifications",
+      "logging"
+    ],
+    "binance_trade_bot/auto_trader.py": [
+      "models",
+      "database",
+      "typing",
+      "binance_api_manager",
+      "config",
+      "sqlalchemy",
+      "datetime",
+      "logger"
+    ],
+    "binance_trade_bot/api_server.py": [
+      "re",
+      "models",
+      "database",
+      "typing",
+      "flask_cors",
+      "config",
+      "itertools",
+      "flask_socketio",
+      "datetime",
+      "sqlalchemy",
+      "logger",
+      "flask"
+    ],
+    "binance_trade_bot/binance_api_manager.py": [
+      "models",
+      "binance",
+      "database",
+      "typing",
+      "math",
+      "traceback",
+      "binance_stream_manager",
+      "config",
+      "logger",
+      "time",
+      "cachetools"
+    ],
+    "binance_trade_bot/notifications.py": [
+      "apprise",
+      "queue",
+      "threading",
+      "os"
+    ],
+    "binance_trade_bot/scheduler.py": [
+      "logging",
+      "traceback",
+      "datetime",
+      "schedule"
+    ],
+    "binance_trade_bot/backtest.py": [
+      "models",
+      "sqlitedict",
+      "database",
+      "typing",
+      "traceback",
+      "binance_api_manager",
+      "binance_stream_manager",
+      "collections",
+      "config",
+      "datetime",
+      "strategies",
+      "logger"
+    ],
+    "binance_trade_bot/__main__.py": [
+      "crypto_trading"
+    ],
+    "binance_trade_bot/crypto_trading.py": [
+      "database",
+      "binance_api_manager",
+      "config",
+      "scheduler",
+      "strategies",
+      "logger",
+      "time"
+    ],
+    "binance_trade_bot/strategies/multiple_coins_strategy.py": [
+      "datetime",
+      "binance_trade_bot"
+    ],
+    "binance_trade_bot/strategies/default_strategy.py": [
+      "binance_trade_bot",
+      "random",
+      "datetime",
+      "sys"
+    ],
+    "binance_trade_bot/strategies/__init__.py": [
+      "importlib",
+      "os"
+    ],
+    "binance_trade_bot/models/trade.py": [
+      "base",
+      "coin",
+      "enum",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "binance_trade_bot/models/__init__.py": [
+      "base",
+      "current_coin",
+      "coin",
+      "coin_value",
+      "trade",
+      "scout_history",
+      "pair"
+    ],
+    "binance_trade_bot/models/scout_history.py": [
+      "base",
+      "pair",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "binance_trade_bot/models/current_coin.py": [
+      "base",
+      "sqlalchemy",
+      "datetime",
+      "coin"
+    ],
+    "binance_trade_bot/models/coin.py": [
+      "base",
+      "sqlalchemy"
+    ],
+    "binance_trade_bot/models/base.py": [
+      "sqlalchemy"
+    ],
+    "binance_trade_bot/models/pair.py": [
+      "base",
+      "sqlalchemy",
+      "coin"
+    ],
+    "binance_trade_bot/models/coin_value.py": [
+      "base",
+      "coin",
+      "enum",
+      "sqlalchemy",
+      "datetime"
+    ]
+  }
+}

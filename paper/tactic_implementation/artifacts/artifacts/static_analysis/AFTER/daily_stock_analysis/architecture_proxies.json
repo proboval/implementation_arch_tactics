@@ -1,0 +1,3151 @@
+{
+  "python_files": 394,
+  "packages": 24,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 16.416666666666668,
+  "imports_graph": {
+    "server.py": [
+      "api",
+      "logging",
+      "src",
+      "uvicorn"
+    ],
+    "webui.py": [
+      "src",
+      "logging",
+      "uvicorn",
+      "__future__",
+      "os"
+    ],
+    "main.py": [
+      "multiprocessing",
+      "dotenv",
+      "data_provider",
+      "src",
+      "typing",
+      "argparse",
+      "bot",
+      "logging",
+      "uvicorn",
+      "datetime",
+      "pathlib",
+      "sys",
+      "time",
+      "uuid",
+      "threading",
+      "__future__",
+      "os"
+    ],
+    "tests/test_backtest_service.py": [
+      "src",
+      "datetime",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_notification_sender.py": [
+      "src",
+      "os",
+      "typing",
+      "hashlib",
+      "email",
+      "base64",
+      "sys",
+      "hmac",
+      "unittest",
+      "requests",
+      "json"
+    ],
+    "tests/test_autocomplete_pr0.py": [
+      "api",
+      "concurrent",
+      "src"
+    ],
+    "tests/test_portfolio_service.py": [
+      "pandas",
+      "src",
+      "typing",
+      "types",
+      "sqlalchemy",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "sqlite3",
+      "threading",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_search_performance.py": [
+      "unittest",
+      "pytest",
+      "src",
+      "time"
+    ],
+    "tests/test_analysis_context_pack_prompt.py": [
+      "src",
+      "__future__"
+    ],
+    "tests/test_generate_index_from_csv.py": [
+      "typing",
+      "pytest",
+      "csv",
+      "pathlib",
+      "sys",
+      "json",
+      "generate_index_from_csv"
+    ],
+    "tests/test_analysis_context_builder.py": [
+      "builtins",
+      "dataclasses",
+      "importlib",
+      "data_provider",
+      "src",
+      "pytest",
+      "__future__"
+    ],
+    "tests/test_analysis_context_pack_overview.py": [
+      "src",
+      "typing",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "tests/test_webui_frontend.py": [
+      "logging",
+      "src"
+    ],
+    "tests/test_market_light_service.py": [
+      "src",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "json",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_discord_platform.py": [
+      "nacl",
+      "bot",
+      "types",
+      "json",
+      "unittest",
+      "time"
+    ],
+    "tests/test_fetch_tushare_stock_list.py": [
+      "importlib",
+      "pandas",
+      "types",
+      "pathlib",
+      "sys",
+      "unittest",
+      "__future__"
+    ],
+    "tests/test_pipeline_prefetch_dry_run.py": [
+      "src",
+      "tests",
+      "types",
+      "datetime",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_bot_status_command.py": [
+      "src",
+      "bot"
+    ],
+    "tests/test_pipeline_related_boards.py": [
+      "unittest",
+      "src"
+    ],
+    "tests/test_multi_agent.py": [
+      "src",
+      "bot",
+      "api",
+      "litellm",
+      "types",
+      "sys",
+      "time",
+      "json",
+      "unittest",
+      "os"
+    ],
+    "tests/test_notification_diagnostics.py": [
+      "unittest",
+      "src"
+    ],
+    "tests/conftest.py": [
+      "warnings",
+      "typing",
+      "functools",
+      "concurrent",
+      "anyio",
+      "httpx",
+      "starlette",
+      "asyncio",
+      "collections",
+      "fastapi",
+      "contextvars",
+      "threading",
+      "__future__",
+      "time"
+    ],
+    "tests/test_daily_analysis_workflow_notification_env.py": [
+      "scripts",
+      "src",
+      "yaml",
+      "pathlib"
+    ],
+    "tests/test_alerts_docs.py": [
+      "pathlib"
+    ],
+    "tests/test_image_stock_extractor_litellm.py": [
+      "unittest",
+      "pytest",
+      "src",
+      "sys"
+    ],
+    "tests/test_config_env_compat.py": [
+      "src",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_market_strategy.py": [
+      "types",
+      "unittest",
+      "src"
+    ],
+    "tests/test_search_searxng.py": [
+      "src",
+      "datetime",
+      "sys",
+      "unittest",
+      "requests"
+    ],
+    "tests/test_news_strategy_config.py": [
+      "unittest",
+      "src"
+    ],
+    "tests/test_pipeline_fetch_error.py": [
+      "src",
+      "unittest",
+      "datetime"
+    ],
+    "tests/test_market_phase_prompt.py": [
+      "unittest",
+      "src"
+    ],
+    "tests/test_system_config_api.py": [
+      "src",
+      "tests",
+      "api",
+      "httpx",
+      "asyncio",
+      "types",
+      "fastapi",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_run_diagnostics_p2.py": [
+      "src",
+      "api",
+      "types",
+      "fastapi",
+      "datetime",
+      "sys",
+      "json",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_notification_report_fixtures.py": [
+      "src",
+      "pathlib",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_agent_pipeline.py": [
+      "importlib",
+      "dataclasses",
+      "src",
+      "os",
+      "typing",
+      "tests",
+      "types",
+      "sys",
+      "pathlib",
+      "unittest",
+      "json"
+    ],
+    "tests/test_report_integrity.py": [
+      "src",
+      "litellm",
+      "sys",
+      "unittest",
+      "json"
+    ],
+    "tests/test_agent_chat_api.py": [
+      "src",
+      "api",
+      "fastapi",
+      "pathlib",
+      "unittest"
+    ],
+    "tests/test_scheduler_background.py": [
+      "src",
+      "unittest",
+      "datetime",
+      "sys"
+    ],
+    "tests/longbridge_live_smoke.py": [
+      "dotenv",
+      "data_provider",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "tests/test_anspire_search.py": [
+      "dotenv",
+      "src",
+      "logging",
+      "pytest",
+      "types",
+      "datetime",
+      "pathlib",
+      "sys",
+      "unittest",
+      "requests",
+      "os"
+    ],
+    "tests/test_stock_analyzer_rsi.py": [
+      "unittest",
+      "src",
+      "pandas"
+    ],
+    "tests/test_analysis_context_pack_schema.py": [
+      "src",
+      "pytest",
+      "pydantic",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "tests/test_daily_analysis_workflow_llm_env.py": [
+      "re",
+      "yaml",
+      "__future__",
+      "pathlib"
+    ],
+    "tests/test_auth.py": [
+      "src",
+      "os",
+      "secrets",
+      "hashlib",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "time"
+    ],
+    "tests/test_alert_api.py": [
+      "pandas",
+      "src",
+      "api",
+      "litellm",
+      "asyncio",
+      "types",
+      "fastapi",
+      "datetime",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_stock_index_remote_service.py": [
+      "src",
+      "os",
+      "logging",
+      "pytest",
+      "types",
+      "pathlib",
+      "json",
+      "unittest",
+      "__future__",
+      "time"
+    ],
+    "tests/test_feishu_stream.py": [
+      "src",
+      "bot"
+    ],
+    "tests/test_analysis_integration.py": [
+      "src",
+      "api",
+      "pytest",
+      "fastapi",
+      "unittest"
+    ],
+    "tests/test_social_sentiment_service.py": [
+      "data_provider",
+      "src",
+      "threading",
+      "unittest",
+      "requests",
+      "time"
+    ],
+    "tests/test_history_loader.py": [
+      "pandas",
+      "src",
+      "datetime",
+      "unittest",
+      "__future__"
+    ],
+    "tests/test_market_light_alerts.py": [
+      "unittest",
+      "src",
+      "__future__",
+      "json"
+    ],
+    "tests/test_data_tools_get_capital_flow.py": [
+      "unittest",
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_api_app_cors.py": [
+      "api",
+      "fastapi",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_llm_channel_config.py": [
+      "tests",
+      "unittest",
+      "src",
+      "os"
+    ],
+    "tests/test_history_news_fallback.py": [
+      "types",
+      "unittest",
+      "datetime",
+      "src"
+    ],
+    "tests/test_agent_orchestrator_sniper_fallback.py": [
+      "src",
+      "tests",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_chat_context.py": [
+      "src",
+      "math",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_etf_daily_routing.py": [
+      "data_provider",
+      "pandas",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_notification_routing.py": [
+      "src"
+    ],
+    "tests/test_agent_frozen_context.py": [
+      "src",
+      "datetime",
+      "pathlib",
+      "threading",
+      "unittest",
+      "__future__",
+      "json"
+    ],
+    "tests/test_llm_usage.py": [
+      "src",
+      "datetime",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_realtime_quote_fallback_logging.py": [
+      "importlib",
+      "data_provider",
+      "src",
+      "tests",
+      "logging",
+      "pytest",
+      "asyncio",
+      "types",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_pipeline_market_phase_context.py": [
+      "src",
+      "tests",
+      "types",
+      "datetime",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_akshare_history_timeout.py": [
+      "multiprocessing",
+      "pandas",
+      "data_provider",
+      "tests",
+      "pytest",
+      "types",
+      "sys",
+      "time"
+    ],
+    "tests/test_ask_command.py": [
+      "src",
+      "bot",
+      "tests",
+      "litellm",
+      "types",
+      "unittest",
+      "time"
+    ],
+    "tests/test_pipeline_augment_realtime.py": [
+      "pandas",
+      "src",
+      "types",
+      "datetime",
+      "unittest"
+    ],
+    "tests/test_yfinance_us_indices.py": [
+      "data_provider",
+      "pandas",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_market_analyzer_generate_text.py": [
+      "src",
+      "ast",
+      "pytest",
+      "types",
+      "sys",
+      "pathlib",
+      "unittest",
+      "json"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_chip_distribution_manager.py": [
+      "types",
+      "data_provider",
+      "unittest"
+    ],
+    "tests/test_pipeline_optional_service_resilience.py": [
+      "types",
+      "logging",
+      "unittest",
+      "src"
+    ],
+    "tests/test_fundamental_adapter.py": [
+      "data_provider",
+      "pandas",
+      "datetime",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_desktop_installer_config.py": [
+      "pathlib",
+      "json"
+    ],
+    "tests/test_stock_analyzer_bias.py": [
+      "unittest",
+      "src",
+      "math"
+    ],
+    "tests/test_feishu_stream_ordering.py": [
+      "bot",
+      "datetime",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_stock_index_loader.py": [
+      "src",
+      "tempfile",
+      "pathlib",
+      "json",
+      "unittest",
+      "os"
+    ],
+    "tests/test_market_review_runtime.py": [
+      "types",
+      "unittest",
+      "tests",
+      "src"
+    ],
+    "tests/test_a_share_fetcher_code_conversion.py": [
+      "data_provider",
+      "unittest",
+      "pandas"
+    ],
+    "tests/test_report_renderer.py": [
+      "unittest",
+      "src",
+      "litellm",
+      "sys"
+    ],
+    "tests/test_conversation_manager.py": [
+      "src",
+      "threading",
+      "unittest"
+    ],
+    "tests/test_market_review.py": [
+      "importlib",
+      "src",
+      "tests",
+      "types",
+      "sys",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_market_phase_summary.py": [
+      "src",
+      "json"
+    ],
+    "tests/test_search_service_concurrency.py": [
+      "src",
+      "types",
+      "datetime",
+      "sys",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_agent_executor.py": [
+      "dataclasses",
+      "src",
+      "os",
+      "litellm",
+      "types",
+      "sys",
+      "json",
+      "unittest",
+      "time"
+    ],
+    "tests/test_decision_stability.py": [
+      "types",
+      "src"
+    ],
+    "tests/test_efinance_main_indices.py": [
+      "data_provider",
+      "pandas",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_yfinance_hk_indices.py": [
+      "data_provider",
+      "pandas",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_pipeline_single_stock_notify.py": [
+      "src",
+      "os",
+      "tests",
+      "types",
+      "sys",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_backtest_summary.py": [
+      "dataclasses",
+      "unittest",
+      "src"
+    ],
+    "tests/test_yfinance_fundamental_adapter.py": [
+      "data_provider",
+      "unittest",
+      "__future__",
+      "pandas"
+    ],
+    "tests/test_agent_models_api.py": [
+      "src",
+      "api",
+      "asyncio",
+      "types",
+      "unittest",
+      "os"
+    ],
+    "tests/test_fetcher_logging.py": [
+      "data_provider",
+      "pandas",
+      "logging",
+      "types",
+      "sys",
+      "unittest",
+      "requests",
+      "os"
+    ],
+    "tests/test_alert_worker.py": [
+      "pandas",
+      "src",
+      "types",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_akshare_realtime_logging.py": [
+      "data_provider",
+      "pandas",
+      "logging",
+      "pytest",
+      "types",
+      "sys",
+      "requests"
+    ],
+    "tests/test_data_tools_daily_history_cache.py": [
+      "pandas",
+      "src",
+      "typing",
+      "types",
+      "datetime",
+      "unittest"
+    ],
+    "tests/litellm_stub.py": [
+      "types",
+      "sys"
+    ],
+    "tests/test_auth_api.py": [
+      "dotenv",
+      "src",
+      "api",
+      "litellm",
+      "starlette",
+      "asyncio",
+      "types",
+      "fastapi",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "os"
+    ],
+    "tests/test_storage.py": [
+      "pandas",
+      "src",
+      "threading",
+      "sqlalchemy",
+      "datetime",
+      "tempfile",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_analyzer_news_prompt.py": [
+      "src",
+      "tests",
+      "litellm",
+      "types",
+      "unittest"
+    ],
+    "tests/test_data_fetcher_prefetch_stock_names.py": [
+      "data_provider",
+      "pandas",
+      "src",
+      "os",
+      "types",
+      "sys",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_skill_load_warning.py": [
+      "src",
+      "bot",
+      "tests",
+      "logging",
+      "litellm",
+      "unittest"
+    ],
+    "tests/test_hk_stock_name_fallback.py": [
+      "data_provider",
+      "pandas",
+      "tests",
+      "json_repair",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_get_latest_data.py": [
+      "pandas",
+      "src",
+      "datetime",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_longbridge_fetcher.py": [
+      "dataclasses",
+      "data_provider",
+      "os",
+      "types",
+      "datetime",
+      "sys",
+      "tempfile",
+      "base64",
+      "pathlib",
+      "unittest",
+      "time"
+    ],
+    "tests/test_task_service.py": [
+      "src",
+      "tests",
+      "threading",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_tushare_fetcher_get_stock_list.py": [
+      "importlib",
+      "data_provider",
+      "pandas",
+      "dotenv",
+      "tests",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_data_tools_get_stock_info.py": [
+      "unittest",
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_report_language.py": [
+      "unittest",
+      "src"
+    ],
+    "tests/test_import_parser.py": [
+      "src",
+      "pytest",
+      "openpyxl",
+      "io",
+      "unittest"
+    ],
+    "tests/test_stock_code_utils.py": [
+      "src",
+      "pytest"
+    ],
+    "tests/test_search_news_freshness.py": [
+      "src",
+      "types",
+      "datetime",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_refresh_stock_index.py": [
+      "importlib",
+      "pathlib",
+      "sys",
+      "unittest",
+      "__future__"
+    ],
+    "tests/test_notification.py": [
+      "src",
+      "typing",
+      "bot",
+      "sys",
+      "unittest",
+      "requests",
+      "os"
+    ],
+    "tests/test_agent_sse_cleanup.py": [
+      "tests",
+      "api",
+      "asyncio",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_main_schedule_mode.py": [
+      "src",
+      "tests",
+      "logging",
+      "main",
+      "types",
+      "io",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "os"
+    ],
+    "tests/test_threadless_test_client.py": [
+      "anyio",
+      "fastapi",
+      "contextvars"
+    ],
+    "tests/test_cwe345_xff_bypass.py": [
+      "types",
+      "unittest",
+      "src",
+      "os"
+    ],
+    "tests/test_litellm_fallback_pricing.py": [
+      "src",
+      "tests",
+      "litellm",
+      "types",
+      "unittest"
+    ],
+    "tests/test_fundamental_context.py": [
+      "data_provider",
+      "os",
+      "threading",
+      "numpy",
+      "types",
+      "sys",
+      "unittest",
+      "time"
+    ],
+    "tests/test_data_tools_portfolio_snapshot.py": [
+      "unittest",
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_report_schema.py": [
+      "src",
+      "litellm",
+      "types",
+      "sys",
+      "unittest",
+      "json"
+    ],
+    "tests/test_alphavantage_fetcher.py": [
+      "data_provider",
+      "pandas",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_bot_market_command.py": [
+      "src",
+      "bot",
+      "tests",
+      "litellm",
+      "types",
+      "datetime",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_notification_capabilities.py": [
+      "unittest",
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_docker_entrypoint.py": [
+      "re",
+      "subprocess",
+      "pathlib",
+      "yaml",
+      "os"
+    ],
+    "tests/test_system_config_service.py": [
+      "src",
+      "typing",
+      "tests",
+      "types",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "requests",
+      "os"
+    ],
+    "tests/test_task_queue_config_sync.py": [
+      "src",
+      "types",
+      "sys",
+      "unittest",
+      "__future__"
+    ],
+    "tests/test_news_intel.py": [
+      "src",
+      "sqlalchemy",
+      "datetime",
+      "tempfile",
+      "sqlite3",
+      "unittest",
+      "os"
+    ],
+    "tests/test_chip_structure_fallback.py": [
+      "data_provider",
+      "src",
+      "litellm",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_auth_status_setup_state.py": [
+      "src",
+      "api",
+      "starlette",
+      "asyncio",
+      "tempfile",
+      "pathlib",
+      "json",
+      "unittest",
+      "os"
+    ],
+    "tests/test_pipeline_notification_image_routing.py": [
+      "src",
+      "tests",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_llm_adapter_provider_trace.py": [
+      "src",
+      "litellm",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_tickflow_market_review_fallback.py": [
+      "data_provider",
+      "types",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_alphasift_api.py": [
+      "src",
+      "api",
+      "litellm",
+      "types",
+      "fastapi",
+      "sys",
+      "unittest",
+      "__future__"
+    ],
+    "tests/test_pipeline_single_notify_thread_safety.py": [
+      "src",
+      "os",
+      "tests",
+      "sys",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_search_serpapi_provider.py": [
+      "types",
+      "unittest",
+      "src",
+      "sys"
+    ],
+    "tests/test_yfinance_normalize.py": [
+      "data_provider",
+      "pandas"
+    ],
+    "tests/test_backtest_engine.py": [
+      "src",
+      "dataclasses",
+      "unittest",
+      "datetime"
+    ],
+    "tests/test_bot_dispatcher_async.py": [
+      "bot",
+      "tests",
+      "litellm",
+      "types",
+      "datetime",
+      "sys",
+      "unittest",
+      "inspect"
+    ],
+    "tests/test_run_diagnostics_p1.py": [
+      "data_provider",
+      "pandas",
+      "src",
+      "concurrent",
+      "types",
+      "sys",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_agent_registry.py": [
+      "src",
+      "typing",
+      "tests",
+      "pathlib",
+      "sys",
+      "tempfile",
+      "shutil",
+      "unittest",
+      "os"
+    ],
+    "tests/test_trading_calendar.py": [
+      "pandas",
+      "src",
+      "zoneinfo",
+      "typing",
+      "types",
+      "datetime",
+      "unittest",
+      "json"
+    ],
+    "tests/test_portfolio_alerts.py": [
+      "src",
+      "datetime",
+      "unittest",
+      "__future__",
+      "json"
+    ],
+    "tests/test_pipeline_realtime_indicators.py": [
+      "data_provider",
+      "pandas",
+      "src",
+      "datetime",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_analysis_context_pack_docs.py": [
+      "pathlib"
+    ],
+    "tests/test_config_registry.py": [
+      "re",
+      "unittest",
+      "src",
+      "pathlib"
+    ],
+    "tests/test_analysis_api_contract.py": [
+      "src",
+      "tests",
+      "api",
+      "concurrent",
+      "asyncio",
+      "types",
+      "fastapi",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "json"
+    ],
+    "tests/test_analysis_history.py": [
+      "src",
+      "api",
+      "litellm",
+      "fastapi",
+      "tempfile",
+      "sys",
+      "json",
+      "pathlib",
+      "unittest",
+      "os"
+    ],
+    "tests/test_llm_param_recovery.py": [
+      "src"
+    ],
+    "tests/test_stooq_fallback.py": [
+      "data_provider",
+      "unittest",
+      "yfinance"
+    ],
+    "tests/test_analysis_metadata.py": [
+      "re",
+      "src",
+      "typing",
+      "pytest",
+      "pydantic",
+      "time"
+    ],
+    "tests/test_realtime_types.py": [
+      "data_provider",
+      "threading",
+      "unittest",
+      "time"
+    ],
+    "tests/test_tushare_fetcher_http_client.py": [
+      "importlib",
+      "data_provider",
+      "tests",
+      "types",
+      "sys",
+      "unittest",
+      "json"
+    ],
+    "tests/test_search_tools_persistence.py": [
+      "types",
+      "unittest",
+      "src"
+    ],
+    "tests/test_api_schema_pydantic.py": [
+      "api"
+    ],
+    "tests/test_search_tavily_provider.py": [
+      "src",
+      "types",
+      "datetime",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_tushare_fetcher_followups.py": [
+      "importlib",
+      "data_provider",
+      "pandas",
+      "tests",
+      "datetime",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_formatters.py": [
+      "unittest",
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_us_index_mapping.py": [
+      "unittest",
+      "os",
+      "us_index_mapping",
+      "sys"
+    ],
+    "tests/test_notification_noise.py": [
+      "types",
+      "src",
+      "datetime"
+    ],
+    "tests/test_tickflow_fetcher.py": [
+      "data_provider",
+      "unittest",
+      "sys",
+      "os"
+    ],
+    "tests/test_hk_realtime_routing.py": [
+      "types",
+      "data_provider",
+      "unittest",
+      "sys"
+    ],
+    "tests/test_stock_code_bse.py": [
+      "data_provider",
+      "unittest",
+      "sys"
+    ],
+    "tests/test_name_to_code_resolver.py": [
+      "unittest",
+      "src",
+      "pytest"
+    ],
+    "tests/test_static_assets_consistency.py": [
+      "importlib",
+      "src",
+      "logging",
+      "api",
+      "pytest",
+      "fastapi",
+      "sys",
+      "pathlib",
+      "json",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_logging_config.py": [
+      "logging",
+      "src",
+      "pytest"
+    ],
+    "tests/test_provider_trace.py": [
+      "sys",
+      "src",
+      "os"
+    ],
+    "tests/test_portfolio_api.py": [
+      "pandas",
+      "src",
+      "api",
+      "litellm",
+      "fastapi",
+      "datetime",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "tests/test_fetcher_source_optimization.py": [
+      "data_provider",
+      "pandas",
+      "types",
+      "sys",
+      "unittest"
+    ],
+    "tests/test_market_review_lock.py": [
+      "src",
+      "types",
+      "datetime",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_config_validate_structured.py": [
+      "unittest",
+      "os",
+      "src",
+      "pytest"
+    ],
+    "tests/test_config_manager.py": [
+      "src",
+      "errno",
+      "pathlib",
+      "tempfile",
+      "unittest",
+      "os"
+    ],
+    "tests/test_finnhub_fetcher.py": [
+      "data_provider",
+      "pandas",
+      "sys",
+      "unittest",
+      "os"
+    ],
+    "tests/test_portfolio_pr2.py": [
+      "pandas",
+      "src",
+      "api",
+      "litellm",
+      "types",
+      "fastapi",
+      "datetime",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "__future__",
+      "os"
+    ],
+    "data_provider/realtime_types.py": [
+      "dataclasses",
+      "typing",
+      "math",
+      "logging",
+      "enum",
+      "threading",
+      "time"
+    ],
+    "data_provider/alphavantage_fetcher.py": [
+      "base",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "realtime_types",
+      "us_index_mapping",
+      "datetime",
+      "requests",
+      "os"
+    ],
+    "data_provider/yfinance_fetcher.py": [
+      "base",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "realtime_types",
+      "us_index_mapping",
+      "yfinance",
+      "csv",
+      "datetime",
+      "tenacity",
+      "urllib",
+      "io",
+      "os"
+    ],
+    "data_provider/us_index_mapping.py": [
+      "re"
+    ],
+    "data_provider/fundamental_adapter.py": [
+      "re",
+      "pandas",
+      "typing",
+      "logging",
+      "datetime",
+      "akshare",
+      "__future__"
+    ],
+    "data_provider/tickflow_fetcher.py": [
+      "base",
+      "pandas",
+      "typing",
+      "math",
+      "logging",
+      "tickflow",
+      "threading",
+      "time"
+    ],
+    "data_provider/yfinance_fundamental_adapter.py": [
+      "pandas",
+      "typing",
+      "logging",
+      "yfinance",
+      "datetime",
+      "__future__"
+    ],
+    "data_provider/akshare_fetcher.py": [
+      "base",
+      "multiprocessing",
+      "dataclasses",
+      "pandas",
+      "src",
+      "os",
+      "typing",
+      "logging",
+      "realtime_types",
+      "random",
+      "us_index_mapping",
+      "numpy",
+      "datetime",
+      "tenacity",
+      "akshare",
+      "requests",
+      "time"
+    ],
+    "data_provider/efinance_fetcher.py": [
+      "re",
+      "dataclasses",
+      "pandas",
+      "base",
+      "src",
+      "typing",
+      "logging",
+      "concurrent",
+      "realtime_types",
+      "random",
+      "efinance",
+      "numpy",
+      "datetime",
+      "tenacity",
+      "time",
+      "requests",
+      "os"
+    ],
+    "data_provider/longbridge_fetcher.py": [
+      "base",
+      "pandas",
+      "src",
+      "os",
+      "typing",
+      "logging",
+      "realtime_types",
+      "inspect",
+      "us_index_mapping",
+      "binascii",
+      "longbridge",
+      "datetime",
+      "base64",
+      "pathlib",
+      "time",
+      "threading",
+      "json"
+    ],
+    "data_provider/finnhub_fetcher.py": [
+      "base",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "realtime_types",
+      "us_index_mapping",
+      "datetime",
+      "requests",
+      "os"
+    ],
+    "data_provider/__init__.py": [
+      "base",
+      "efinance_fetcher",
+      "finnhub_fetcher",
+      "alphavantage_fetcher",
+      "pytdx_fetcher",
+      "tushare_fetcher",
+      "longbridge_fetcher",
+      "us_index_mapping",
+      "yfinance_fetcher",
+      "akshare_fetcher",
+      "baostock_fetcher"
+    ],
+    "data_provider/tushare_fetcher.py": [
+      "re",
+      "base",
+      "pandas",
+      "src",
+      "zoneinfo",
+      "typing",
+      "os",
+      "logging",
+      "realtime_types",
+      "numpy",
+      "datetime",
+      "tenacity",
+      "time",
+      "requests",
+      "json",
+      "tushare"
+    ],
+    "data_provider/baostock_fetcher.py": [
+      "re",
+      "base",
+      "pandas",
+      "typing",
+      "logging",
+      "contextlib",
+      "datetime",
+      "tenacity",
+      "baostock",
+      "os"
+    ],
+    "data_provider/pytdx_fetcher.py": [
+      "re",
+      "base",
+      "pandas",
+      "typing",
+      "os",
+      "pytdx",
+      "logging",
+      "contextlib",
+      "tenacity",
+      "datetime",
+      "time"
+    ],
+    "data_provider/base.py": [
+      "pandas",
+      "finnhub_fetcher",
+      "alphavantage_fetcher",
+      "typing",
+      "us_index_mapping",
+      "yfinance_fundamental_adapter",
+      "fundamental_adapter",
+      "random",
+      "longbridge_fetcher",
+      "datetime",
+      "baostock_fetcher",
+      "threading",
+      "time",
+      "pytdx_fetcher",
+      "numpy",
+      "efinance_fetcher",
+      "src",
+      "logging",
+      "realtime_types",
+      "tushare_fetcher",
+      "tickflow_fetcher",
+      "yfinance_fetcher",
+      "akshare_fetcher",
+      "abc"
+    ],
+    "scripts/check_ai_assets.py": [
+      "pathlib",
+      "subprocess",
+      "__future__",
+      "sys"
+    ],
+    "scripts/check_static_assets.py": [
+      "re",
+      "typing",
+      "pathlib",
+      "sys",
+      "__future__"
+    ],
+    "scripts/generate_index_from_csv.py": [
+      "re",
+      "argparse",
+      "unicodedata",
+      "typing",
+      "pypinyin",
+      "csv",
+      "sys",
+      "pathlib",
+      "json"
+    ],
+    "scripts/generate_longbridge_oauth_token.py": [
+      "argparse",
+      "pathlib",
+      "longbridge",
+      "__future__",
+      "os"
+    ],
+    "scripts/generate_notification_actions_env_table.py": [
+      "re",
+      "dataclasses",
+      "yaml",
+      "src",
+      "argparse",
+      "typing",
+      "sys",
+      "pathlib",
+      "__future__"
+    ],
+    "scripts/generate_stock_index.py": [
+      "re",
+      "src",
+      "unicodedata",
+      "argparse",
+      "typing",
+      "pypinyin",
+      "sys",
+      "pathlib",
+      "json"
+    ],
+    "scripts/check_env.py": [
+      "socket",
+      "data_provider",
+      "src",
+      "argparse",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "datetime",
+      "sys",
+      "pathlib",
+      "time",
+      "os"
+    ],
+    "scripts/refresh_stock_index.py": [
+      "dotenv",
+      "subprocess",
+      "argparse",
+      "typing",
+      "sys",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "os"
+    ],
+    "scripts/fetch_tushare_stock_list.py": [
+      "re",
+      "dotenv",
+      "pandas",
+      "os",
+      "argparse",
+      "typing",
+      "traceback",
+      "random",
+      "datetime",
+      "sys",
+      "pathlib",
+      "time",
+      "tushare"
+    ],
+    "api/deps.py": [
+      "fastapi",
+      "sqlalchemy",
+      "src",
+      "typing"
+    ],
+    "api/__init__.py": [],
+    "api/app.py": [
+      "re",
+      "src",
+      "typing",
+      "logging",
+      "api",
+      "contextlib",
+      "starlette",
+      "asyncio",
+      "fastapi",
+      "datetime",
+      "pathlib",
+      "urllib",
+      "os",
+      "mimetypes"
+    ],
+    "bot/dispatcher.py": [
+      "re",
+      "data_provider",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "asyncio",
+      "collections",
+      "json",
+      "threading",
+      "time"
+    ],
+    "bot/handler.py": [
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "asyncio",
+      "threading",
+      "json"
+    ],
+    "bot/models.py": [
+      "dataclasses",
+      "enum",
+      "datetime",
+      "typing"
+    ],
+    "bot/__init__.py": [
+      "bot"
+    ],
+    "src/auth.py": [
+      "dotenv",
+      "src",
+      "typing",
+      "logging",
+      "threading",
+      "secrets",
+      "getpass",
+      "hashlib",
+      "base64",
+      "sys",
+      "time",
+      "pathlib",
+      "hmac",
+      "__future__",
+      "os"
+    ],
+    "src/market_context.py": [
+      "re",
+      "typing"
+    ],
+    "src/notification_capabilities.py": [
+      "dataclasses",
+      "__future__",
+      "typing"
+    ],
+    "src/enums.py": [
+      "enum"
+    ],
+    "src/config.py": [
+      "re",
+      "dotenv",
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "pathlib",
+      "urllib",
+      "json",
+      "yaml",
+      "os"
+    ],
+    "src/logging_config.py": [
+      "typing",
+      "logging",
+      "datetime",
+      "sys",
+      "pathlib",
+      "os"
+    ],
+    "src/notification_noise.py": [
+      "re",
+      "dataclasses",
+      "zoneinfo",
+      "typing",
+      "logging",
+      "hashlib",
+      "datetime",
+      "uuid",
+      "threading",
+      "__future__"
+    ],
+    "src/formatters.py": [
+      "re",
+      "markdown2",
+      "typing"
+    ],
+    "src/report_language.py": [
+      "re",
+      "__future__",
+      "typing"
+    ],
+    "src/notification.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "enum",
+      "datetime",
+      "pathlib",
+      "__future__",
+      "time"
+    ],
+    "src/analyzer.py": [
+      "re",
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "math",
+      "logging",
+      "litellm",
+      "json_repair",
+      "json",
+      "time"
+    ],
+    "src/__init__.py": [],
+    "src/market_phase_prompt.py": [
+      "__future__",
+      "typing"
+    ],
+    "src/storage.py": [
+      "re",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "contextlib",
+      "atexit",
+      "hashlib",
+      "sqlalchemy",
+      "datetime",
+      "time",
+      "threading",
+      "json"
+    ],
+    "src/market_analyzer.py": [
+      "re",
+      "dataclasses",
+      "pandas",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "sys",
+      "time"
+    ],
+    "src/search_service.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "email",
+      "tenacity",
+      "dateutil",
+      "requests",
+      "data_provider",
+      "serpapi",
+      "datetime",
+      "threading",
+      "time",
+      "itertools",
+      "tavily",
+      "urllib",
+      "src",
+      "logging",
+      "newspaper",
+      "abc"
+    ],
+    "src/webui_frontend.py": [
+      "subprocess",
+      "typing",
+      "logging",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "os"
+    ],
+    "src/scheduler.py": [
+      "re",
+      "typing",
+      "signal",
+      "logging",
+      "schedule",
+      "datetime",
+      "threading",
+      "time"
+    ],
+    "src/analysis_context_pack_prompt.py": [
+      "__future__",
+      "typing",
+      "collections"
+    ],
+    "src/market_phase_summary.py": [
+      "src",
+      "typing",
+      "collections",
+      "__future__",
+      "json"
+    ],
+    "src/stock_analyzer.py": [
+      "dataclasses",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "numpy",
+      "enum"
+    ],
+    "src/analysis_context_pack_overview.py": [
+      "src",
+      "typing",
+      "logging",
+      "collections",
+      "__future__",
+      "json"
+    ],
+    "src/feishu_doc.py": [
+      "src",
+      "typing",
+      "lark_oapi",
+      "logging",
+      "traceback",
+      "json"
+    ],
+    "src/notification_routing.py": [
+      "__future__",
+      "typing"
+    ],
+    "src/md2img.py": [
+      "subprocess",
+      "src",
+      "typing",
+      "logging",
+      "imgkit",
+      "tempfile",
+      "shutil",
+      "os"
+    ],
+    "src/llm/generation_params.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "__future__",
+      "json"
+    ],
+    "src/llm/__init__.py": [],
+    "src/llm/errors.py": [
+      "re",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/core/trading_calendar.py": [
+      "dataclasses",
+      "pandas",
+      "data_provider",
+      "zoneinfo",
+      "typing",
+      "logging",
+      "exchange_calendars",
+      "enum",
+      "datetime"
+    ],
+    "src/core/market_review_lock.py": [
+      "fcntl",
+      "dataclasses",
+      "ctypes",
+      "src",
+      "typing",
+      "logging",
+      "errno",
+      "datetime",
+      "pathlib",
+      "threading",
+      "os"
+    ],
+    "src/core/config_manager.py": [
+      "re",
+      "dataclasses",
+      "dotenv",
+      "typing",
+      "logging",
+      "errno",
+      "hashlib",
+      "datetime",
+      "pathlib",
+      "threading",
+      "__future__",
+      "os"
+    ],
+    "src/core/market_review.py": [
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "uuid"
+    ],
+    "src/core/backtest_engine.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "datetime",
+      "__future__"
+    ],
+    "src/core/config_registry.py": [
+      "src",
+      "__future__",
+      "typing",
+      "copy"
+    ],
+    "src/core/market_strategy.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "src/core/pipeline.py": [
+      "re",
+      "data_provider",
+      "pandas",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "concurrent",
+      "traceback",
+      "collections",
+      "datetime",
+      "uuid",
+      "threading",
+      "time"
+    ],
+    "src/core/market_review_runtime.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/core/market_profile.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "src/patches/__init__.py": [],
+    "src/patches/eastmoney_patch.py": [
+      "logging",
+      "random",
+      "secrets",
+      "hashlib",
+      "json",
+      "uuid",
+      "threading",
+      "requests",
+      "time",
+      "fake_useragent"
+    ],
+    "src/notification_sender/feishu_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "hashlib",
+      "base64",
+      "hmac",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/gotify_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "requests",
+      "urllib",
+      "__future__"
+    ],
+    "src/notification_sender/serverchan3_sender.py": [
+      "re",
+      "src",
+      "typing",
+      "logging",
+      "traceback",
+      "datetime",
+      "requests"
+    ],
+    "src/notification_sender/custom_webhook_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "string",
+      "json",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/ntfy_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "requests",
+      "urllib",
+      "__future__"
+    ],
+    "src/notification_sender/pushover_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/__init__.py": [
+      "custom_webhook_sender",
+      "telegram_sender",
+      "astrbot_sender",
+      "discord_sender",
+      "pushover_sender",
+      "slack_sender",
+      "serverchan3_sender",
+      "gotify_sender",
+      "feishu_sender",
+      "ntfy_sender",
+      "email_sender",
+      "pushplus_sender",
+      "wechat_sender"
+    ],
+    "src/notification_sender/telegram_sender.py": [
+      "re",
+      "src",
+      "typing",
+      "logging",
+      "traceback",
+      "uuid",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/wechat_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "hashlib",
+      "base64",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/pushplus_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "requests",
+      "time"
+    ],
+    "src/notification_sender/email_sender.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "email",
+      "datetime",
+      "smtplib"
+    ],
+    "src/notification_sender/astrbot_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "hashlib",
+      "time",
+      "hmac",
+      "requests",
+      "json"
+    ],
+    "src/notification_sender/slack_sender.py": [
+      "src",
+      "typing",
+      "logging",
+      "requests",
+      "json"
+    ],
+    "src/notification_sender/discord_sender.py": [
+      "logging",
+      "src",
+      "requests",
+      "typing"
+    ],
+    "src/utils/analysis_metadata.py": [
+      "__future__"
+    ],
+    "src/utils/__init__.py": [],
+    "src/utils/data_processing.py": [
+      "json",
+      "typing"
+    ],
+    "src/utils/sanitize.py": [
+      "re",
+      "__future__",
+      "typing"
+    ],
+    "src/repositories/alert_repo.py": [
+      "src",
+      "typing",
+      "sqlalchemy",
+      "datetime",
+      "__future__"
+    ],
+    "src/repositories/portfolio_repo.py": [
+      "src",
+      "typing",
+      "logging",
+      "contextlib",
+      "sqlalchemy",
+      "datetime",
+      "__future__"
+    ],
+    "src/repositories/__init__.py": [
+      "src"
+    ],
+    "src/repositories/analysis_repo.py": [
+      "src",
+      "logging",
+      "datetime",
+      "typing"
+    ],
+    "src/repositories/stock_repo.py": [
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "src/repositories/backtest_repo.py": [
+      "src",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/agent/runner.py": [
+      "re",
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "concurrent",
+      "json_repair",
+      "contextvars",
+      "time",
+      "__future__",
+      "json"
+    ],
+    "src/agent/provider_trace.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "math",
+      "__future__",
+      "json"
+    ],
+    "src/agent/memory.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "__future__",
+      "json"
+    ],
+    "src/agent/research.py": [
+      "re",
+      "dataclasses",
+      "src",
+      "typing",
+      "math",
+      "logging",
+      "time",
+      "__future__",
+      "json"
+    ],
+    "src/agent/protocols.py": [
+      "dataclasses",
+      "typing",
+      "enum",
+      "__future__",
+      "time"
+    ],
+    "src/agent/conversation.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "threading"
+    ],
+    "src/agent/events.py": [
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "asyncio",
+      "enum",
+      "json",
+      "__future__",
+      "time"
+    ],
+    "src/agent/__init__.py": [
+      "src"
+    ],
+    "src/agent/factory.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "copy"
+    ],
+    "src/agent/chat_context.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "math",
+      "logging",
+      "litellm",
+      "__future__"
+    ],
+    "src/agent/orchestrator.py": [
+      "re",
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "time",
+      "json",
+      "__future__",
+      "inspect"
+    ],
+    "src/agent/llm_adapter.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "litellm",
+      "json",
+      "uuid",
+      "time"
+    ],
+    "src/agent/executor.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "uuid",
+      "json"
+    ],
+    "src/schemas/__init__.py": [
+      "src"
+    ],
+    "src/schemas/report_schema.py": [
+      "pydantic",
+      "typing"
+    ],
+    "src/schemas/market_light.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "src/schemas/analysis_context_pack.py": [
+      "src",
+      "typing",
+      "enum",
+      "pydantic",
+      "datetime",
+      "__future__"
+    ],
+    "src/data/__init__.py": [
+      "src"
+    ],
+    "src/data/stock_index_loader.py": [
+      "src",
+      "typing",
+      "logging",
+      "pathlib",
+      "threading",
+      "__future__",
+      "json"
+    ],
+    "src/data/stock_mapping.py": [
+      "__future__"
+    ],
+    "src/services/run_diagnostics.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "datetime",
+      "contextvars",
+      "uuid",
+      "__future__"
+    ],
+    "src/services/portfolio_alerts.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/stock_service.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "datetime"
+    ],
+    "src/services/portfolio_risk_service.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "datetime",
+      "__future__"
+    ],
+    "src/services/market_light_alerts.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/task_queue.py": [
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "concurrent",
+      "asyncio",
+      "enum",
+      "datetime",
+      "uuid",
+      "threading",
+      "__future__"
+    ],
+    "src/services/name_to_code_resolver.py": [
+      "src",
+      "typing",
+      "pypinyin",
+      "logging",
+      "akshare",
+      "difflib",
+      "__future__",
+      "time"
+    ],
+    "src/services/history_comparison_service.py": [
+      "logging",
+      "src",
+      "typing"
+    ],
+    "src/services/image_stock_extractor.py": [
+      "re",
+      "src",
+      "typing",
+      "logging",
+      "random",
+      "litellm",
+      "json_repair",
+      "base64",
+      "sys",
+      "time",
+      "__future__",
+      "json"
+    ],
+    "src/services/history_service.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/task_service.py": [
+      "src",
+      "typing",
+      "bot",
+      "main",
+      "logging",
+      "concurrent",
+      "datetime",
+      "threading",
+      "__future__"
+    ],
+    "src/services/stock_code_utils.py": [
+      "re",
+      "data_provider",
+      "__future__",
+      "typing"
+    ],
+    "src/services/alert_worker.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "asyncio",
+      "datetime",
+      "json",
+      "__future__",
+      "time"
+    ],
+    "src/services/__init__.py": [
+      "importlib"
+    ],
+    "src/services/system_config_service.py": [
+      "re",
+      "dataclasses",
+      "urllib",
+      "dotenv",
+      "src",
+      "socket",
+      "typing",
+      "unicodedata",
+      "ipaddress",
+      "logging",
+      "litellm",
+      "pathlib",
+      "time",
+      "json",
+      "requests",
+      "io",
+      "__future__",
+      "os"
+    ],
+    "src/services/portfolio_service.py": [
+      "dataclasses",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "yfinance",
+      "collections",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/history_loader.py": [
+      "data_provider",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "contextvars",
+      "threading",
+      "__future__"
+    ],
+    "src/services/alert_indicators.py": [
+      "dataclasses",
+      "pandas",
+      "typing",
+      "math",
+      "datetime",
+      "__future__"
+    ],
+    "src/services/import_parser.py": [
+      "re",
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "io",
+      "__future__"
+    ],
+    "src/services/social_sentiment_service.py": [
+      "typing",
+      "logging",
+      "tenacity",
+      "threading",
+      "requests",
+      "time"
+    ],
+    "src/services/market_light_service.py": [
+      "src",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "__future__",
+      "json"
+    ],
+    "src/services/alert_service.py": [
+      "re",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "asyncio",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/stock_index_remote_service.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "math",
+      "logging",
+      "pathlib",
+      "time",
+      "json",
+      "requests",
+      "threading",
+      "__future__",
+      "os"
+    ],
+    "src/services/backtest_service.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "sqlalchemy",
+      "datetime",
+      "__future__",
+      "json"
+    ],
+    "src/services/analyzer_service.py": [
+      "uuid",
+      "src",
+      "typing"
+    ],
+    "src/services/portfolio_import_service.py": [
+      "dataclasses",
+      "pandas",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "hashlib",
+      "datetime",
+      "io",
+      "__future__"
+    ],
+    "src/services/report_renderer.py": [
+      "src",
+      "typing",
+      "logging",
+      "jinja2",
+      "datetime",
+      "pathlib"
+    ],
+    "src/services/notification_diagnostics.py": [
+      "dataclasses",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/services/agent_model_service.py": [
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/services/analysis_service.py": [
+      "src",
+      "logging",
+      "uuid",
+      "typing"
+    ],
+    "src/services/analysis_context_builder.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "collections",
+      "datetime",
+      "__future__"
+    ],
+    "src/agent/tools/analysis_tools.py": [
+      "pandas",
+      "src",
+      "typing",
+      "logging",
+      "numpy"
+    ],
+    "src/agent/tools/search_tools.py": [
+      "logging",
+      "data_provider",
+      "src"
+    ],
+    "src/agent/tools/backtest_tools.py": [
+      "logging",
+      "src"
+    ],
+    "src/agent/tools/registry.py": [
+      "dataclasses",
+      "typing",
+      "logging",
+      "json",
+      "inspect"
+    ],
+    "src/agent/tools/data_tools.py": [
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "datetime",
+      "threading"
+    ],
+    "src/agent/tools/__init__.py": [
+      "src"
+    ],
+    "src/agent/tools/market_tools.py": [
+      "logging",
+      "data_provider",
+      "src"
+    ],
+    "src/agent/strategies/aggregator.py": [
+      "src"
+    ],
+    "src/agent/strategies/__init__.py": [
+      "src"
+    ],
+    "src/agent/strategies/router.py": [
+      "src"
+    ],
+    "src/agent/strategies/strategy_agent.py": [
+      "src"
+    ],
+    "src/agent/agents/decision_agent.py": [
+      "src",
+      "typing",
+      "logging",
+      "__future__",
+      "json"
+    ],
+    "src/agent/agents/technical_agent.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/agent/agents/base_agent.py": [
+      "src",
+      "typing",
+      "logging",
+      "json",
+      "abc",
+      "__future__",
+      "time"
+    ],
+    "src/agent/agents/__init__.py": [
+      "src"
+    ],
+    "src/agent/agents/intel_agent.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/agent/agents/risk_agent.py": [
+      "src",
+      "typing",
+      "logging",
+      "__future__",
+      "json"
+    ],
+    "src/agent/agents/portfolio_agent.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/agent/skills/skill_agent.py": [
+      "src",
+      "typing",
+      "logging",
+      "__future__",
+      "json"
+    ],
+    "src/agent/skills/aggregator.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/agent/skills/__init__.py": [
+      "src"
+    ],
+    "src/agent/skills/defaults.py": [
+      "src",
+      "typing",
+      "functools",
+      "pathlib",
+      "__future__"
+    ],
+    "src/agent/skills/router.py": [
+      "logging",
+      "src",
+      "__future__",
+      "typing"
+    ],
+    "src/agent/skills/base.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "pathlib",
+      "yaml",
+      "os"
+    ],
+    "bot/platforms/dingtalk.py": [
+      "re",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "hashlib",
+      "datetime",
+      "base64",
+      "urllib",
+      "hmac",
+      "requests",
+      "time"
+    ],
+    "bot/platforms/discord.py": [
+      "nacl",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "datetime",
+      "requests",
+      "time"
+    ],
+    "bot/platforms/__init__.py": [
+      "bot"
+    ],
+    "bot/platforms/feishu_stream.py": [
+      "re",
+      "src",
+      "typing",
+      "bot",
+      "lark_oapi",
+      "logging",
+      "concurrent",
+      "collections",
+      "datetime",
+      "time",
+      "threading",
+      "json"
+    ],
+    "bot/platforms/dingtalk_stream.py": [
+      "re",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "datetime",
+      "time",
+      "dingtalk_stream",
+      "threading",
+      "inspect"
+    ],
+    "bot/platforms/base.py": [
+      "abc",
+      "typing",
+      "bot"
+    ],
+    "bot/commands/strategies.py": [
+      "logging",
+      "src",
+      "typing",
+      "bot"
+    ],
+    "bot/commands/research.py": [
+      "re",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "time"
+    ],
+    "bot/commands/market.py": [
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "threading"
+    ],
+    "bot/commands/ask.py": [
+      "re",
+      "data_provider",
+      "src",
+      "typing",
+      "bot",
+      "logging",
+      "concurrent",
+      "uuid",
+      "time"
+    ],
+    "bot/commands/batch.py": [
+      "src",
+      "typing",
+      "bot",
+      "main",
+      "logging",
+      "uuid",
+      "threading"
+    ],
+    "bot/commands/__init__.py": [
+      "bot"
+    ],
+    "bot/commands/chat.py": [
+      "logging",
+      "src",
+      "typing",
+      "bot"
+    ],
+    "bot/commands/help.py": [
+      "typing",
+      "bot"
+    ],
+    "bot/commands/base.py": [
+      "abc",
+      "bot",
+      "typing",
+      "asyncio"
+    ],
+    "bot/commands/analyze.py": [
+      "re",
+      "data_provider",
+      "src",
+      "typing",
+      "bot",
+      "logging"
+    ],
+    "bot/commands/status.py": [
+      "platform",
+      "src",
+      "typing",
+      "bot",
+      "datetime",
+      "sys"
+    ],
+    "bot/commands/history.py": [
+      "logging",
+      "src",
+      "typing",
+      "bot"
+    ],
+    "api/v1/__init__.py": [
+      "api"
+    ],
+    "api/v1/router.py": [
+      "api",
+      "fastapi"
+    ],
+    "api/middlewares/auth.py": [
+      "src",
+      "typing",
+      "logging",
+      "starlette",
+      "fastapi",
+      "__future__"
+    ],
+    "api/middlewares/__init__.py": [
+      "api"
+    ],
+    "api/middlewares/error_handler.py": [
+      "typing",
+      "logging",
+      "traceback",
+      "starlette",
+      "fastapi"
+    ],
+    "api/v1/endpoints/alerts.py": [
+      "src",
+      "typing",
+      "api",
+      "logging",
+      "fastapi",
+      "__future__"
+    ],
+    "api/v1/endpoints/auth.py": [
+      "src",
+      "logging",
+      "api",
+      "fastapi",
+      "pydantic",
+      "__future__",
+      "os"
+    ],
+    "api/v1/endpoints/stocks.py": [
+      "src",
+      "typing",
+      "api",
+      "logging",
+      "fastapi"
+    ],
+    "api/v1/endpoints/analysis.py": [
+      "re",
+      "data_provider",
+      "src",
+      "typing",
+      "logging",
+      "api",
+      "asyncio",
+      "fastapi",
+      "datetime",
+      "pathlib",
+      "uuid",
+      "json"
+    ],
+    "api/v1/endpoints/health.py": [
+      "api",
+      "fastapi",
+      "datetime"
+    ],
+    "api/v1/endpoints/__init__.py": [
+      "api"
+    ],
+    "api/v1/endpoints/agent.py": [
+      "src",
+      "typing",
+      "logging",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "uuid",
+      "json"
+    ],
+    "api/v1/endpoints/system_config.py": [
+      "src",
+      "api",
+      "logging",
+      "fastapi",
+      "__future__",
+      "os"
+    ],
+    "api/v1/endpoints/alphasift.py": [
+      "importlib",
+      "dataclasses",
+      "subprocess",
+      "src",
+      "os",
+      "math",
+      "typing",
+      "logging",
+      "api",
+      "fastapi",
+      "pydantic",
+      "sys",
+      "pathlib",
+      "__future__",
+      "inspect"
+    ],
+    "api/v1/endpoints/backtest.py": [
+      "src",
+      "typing",
+      "logging",
+      "api",
+      "fastapi",
+      "datetime",
+      "__future__"
+    ],
+    "api/v1/endpoints/portfolio.py": [
+      "src",
+      "typing",
+      "logging",
+      "api",
+      "fastapi",
+      "datetime",
+      "__future__"
+    ],
+    "api/v1/endpoints/usage.py": [
+      "src",
+      "api",
+      "logging",
+      "fastapi",
+      "datetime",
+      "__future__"
+    ],
+    "api/v1/endpoints/history.py": [
+      "src",
+      "typing",
+      "api",
+      "logging",
+      "fastapi"
+    ],
+    "api/v1/schemas/alerts.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "api/v1/schemas/stocks.py": [
+      "pydantic",
+      "typing"
+    ],
+    "api/v1/schemas/analysis.py": [
+      "enum",
+      "src",
+      "typing",
+      "pydantic"
+    ],
+    "api/v1/schemas/__init__.py": [
+      "api"
+    ],
+    "api/v1/schemas/common.py": [
+      "pydantic",
+      "typing"
+    ],
+    "api/v1/schemas/system_config.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "api/v1/schemas/market_phase.py": [
+      "pydantic",
+      "typing"
+    ],
+    "api/v1/schemas/backtest.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "api/v1/schemas/portfolio.py": [
+      "pydantic",
+      "datetime",
+      "__future__",
+      "typing"
+    ],
+    "api/v1/schemas/usage.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "api/v1/schemas/history.py": [
+      "api",
+      "pydantic",
+      "typing"
+    ],
+    ".github/scripts/ai_review.py": [
+      "subprocess",
+      "traceback",
+      "google",
+      "json",
+      "os",
+      "openai"
+    ],
+    "docs/assets/dsa_vi/gen_icons.py": [
+      "PIL",
+      "pathlib"
+    ]
+  }
+}

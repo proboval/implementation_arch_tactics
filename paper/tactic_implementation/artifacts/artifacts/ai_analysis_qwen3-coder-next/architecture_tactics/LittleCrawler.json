@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and poor separation of concerns across platform-specific storage implementations. Static analysis shows files like src/storage/xhs/_store_impl.py (mi=51.8) and src/storage/zhihu/_store_impl.py (mi=66.4) contain duplicated logic for CRUD operations across platforms (Xiaohongshu and Zhihu), with identical patterns for content/comment/creator storage in both JSON, CSV, DB, and MongoDB implementations. This duplication violates the DRY principle and creates ripple effects when adding new platforms or storage types. Localized Modification addresses this by consolidating platform-agnostic storage logic into shared base classes while keeping platform-specific logic in isolated modules, reducing modification scope to individual platform implementations.",
+  "target_components": [
+    "src/storage/xhs/_store_impl.py",
+    "src/storage/zhihu/_store_impl.py",
+    "src/storage/base/excel_store_base.py",
+    "src/storage/base/mongodb_store_base.py",
+    "src/storage/base/db_session.py",
+    "src/storage/base/models.py"
+  ],
+  "expected_architectural_change": "Consolidate duplicated storage implementations into a unified base class hierarchy: (1) Extract common storage logic into src/storage/base/store_base.py with platform-agnostic CRUD methods, (2) Create platform-specific subclasses (XhsStore, ZhihuStore) that override only platform-specific methods, (3) Introduce factory pattern to replace XhsStoreFactory/ZhihuStoreFactory with a single StoreFactory, (4) Reduce coupling between storage implementations and platform clients by introducing AbstractStore interface.",
+  "implementation_strategy": "1. Create src/storage/base/store_base.py with AbstractStore base class containing common methods (store_content, store_comment, store_creator) and platform-agnostic logic (e.g., database session handling). 2. Refactor XhsStore and ZhihuStore to inherit from base class, overriding only platform-specific methods (e.g., field mappings, table names). 3. Replace duplicated factory patterns with a single StoreFactory that uses platform-specific subclasses. 4. Update platform clients (src/platforms/xhs/core.py, src/platforms/zhihu/core.py) to use the unified factory interface.",
+  "risks": "Refactoring storage implementations may temporarily break existing data persistence logic during transition. Platform-specific edge cases (e.g., Zhihu's comment hierarchy vs Xiaohongshu's flat comments) require careful migration testing. Database schema changes must be backward compatible to avoid data loss."
+}

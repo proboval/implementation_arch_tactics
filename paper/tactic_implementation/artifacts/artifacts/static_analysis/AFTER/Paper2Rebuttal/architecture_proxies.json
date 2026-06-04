@@ -1,0 +1,108 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "arxiv.py": [
+      "re",
+      "tarfile",
+      "subprocess",
+      "os",
+      "typing",
+      "xml",
+      "glob",
+      "pathlib",
+      "urllib",
+      "sys",
+      "shutil",
+      "time"
+    ],
+    "arxiv_client.py": [
+      "typing",
+      "xml",
+      "sys",
+      "urllib",
+      "time"
+    ],
+    "tools.py": [
+      "re",
+      "shutil",
+      "os",
+      "arxiv",
+      "concurrent",
+      "traceback",
+      "random",
+      "pdf_converter",
+      "sys",
+      "urllib",
+      "json",
+      "pathlib",
+      "threading",
+      "yaml",
+      "time"
+    ],
+    "rebuttal_service.py": [
+      "re",
+      "dataclasses",
+      "llm",
+      "os",
+      "typing",
+      "llm_orchestrator",
+      "tools",
+      "concurrent",
+      "arxiv_client",
+      "enum",
+      "pdf_converter",
+      "sys",
+      "json",
+      "threading",
+      "time"
+    ],
+    "llm.py": [
+      "typing",
+      "os",
+      "httpx",
+      "google",
+      "datetime",
+      "time",
+      "json",
+      "openai"
+    ],
+    "llm_orchestrator.py": [
+      "dataclasses",
+      "llm",
+      "os",
+      "typing",
+      "tools",
+      "time"
+    ],
+    "app.py": [
+      "dotenv",
+      "shutil",
+      "rebuttal_service",
+      "os",
+      "typing",
+      "argparse",
+      "traceback",
+      "fastapi",
+      "sys",
+      "tempfile",
+      "uuid",
+      "threading",
+      "gradio",
+      "time"
+    ],
+    "pdf_converter.py": [
+      "re",
+      "arxiv",
+      "traceback",
+      "random",
+      "docling",
+      "pathlib",
+      "time",
+      "threading",
+      "os"
+    ]
+  }
+}

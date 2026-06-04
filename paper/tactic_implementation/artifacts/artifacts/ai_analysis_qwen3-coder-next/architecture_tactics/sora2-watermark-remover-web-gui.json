@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: modules like core/server.py, core/system_info.py, and processing/sora_process.py contain tightly coupled responsibilities (web serving, system info, and complex subprocess execution with obfuscated network calls), and all modules share a pattern of importing sora_process at the top regardless of actual need, indicating circular and unnecessary interdependencies. Static analysis confirms high fan-out (avg_fan_out: 5.0) and cross-package imports (e.g., core/server.py importing from processing, models, and core again), violating modular boundaries. This makes changes ripple across modules and prevents isolated testing. Decomposability directly addresses this by isolating responsibilities into well-defined, testable modules with clear boundaries.",
+  "target_components": [
+    "core/server.py",
+    "core/system_info.py",
+    "processing/sora_process.py",
+    "processing/engine.py",
+    "processing/analyzer.py",
+    "models/networks.py",
+    "models/training.py"
+  ],
+  "expected_architectural_change": "Current monolithic modules will be split into cohesive, single-responsibility submodules: e.g., core/server.py will be split into web/api, core/health, and core/config modules; processing/sora_process.py will be replaced by a clean dependency injection layer; system_info.py will be decoupled from processing initialization; and models will be separated from processing logic. Each module will have explicit imports and no implicit circular dependencies.",
+  "implementation_strategy": "1. Extract system_info logic into a standalone 'system' module with no imports from processing/core. 2. Remove all 'try: from processing import sora_process' blocks from __init__.py and module files, replacing with explicit, conditional imports only where needed. 3. Refactor sora_process.py into a minimal loader with no subprocess/network calls, moving actual initialization to a new 'init' module. 4. Introduce interfaces (e.g., IProcessingEngine, IWatermarkAnalyzer) to decouple server from concrete implementations. 5. Create dedicated test modules per new submodule to validate isolation.",
+  "risks": "Risk of temporary test coverage reduction during refactoring; risk of introducing import errors if module boundaries are misdefined. Mitigation: refactor incrementally, starting with system_info.py and core/utils.py (lowest coupling), and add unit tests per module before moving on."
+}

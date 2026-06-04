@@ -1,0 +1,16 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository is a monolithic script (app.py) with 5 direct imports and mixed concerns: configuration parsing, color selection logic, and Flask routing all reside in a single file. Static analysis shows 'C1' (concentration), 'C2' (lack of modularity), and 'A3' (low architectural clarity) as maintainability factors. The architecture_maintainability report confirms 'packages': 0 and 'avg_fan_out': 5.0, indicating high coupling and poor modularity. Decomposability directly addresses this by splitting responsibilities into separate modules (e.g., config, color, web), isolating concerns, improving testability (each module can be unit-tested), and reducing cognitive load during maintenance.",
+  "target_components": [
+    "app.py"
+  ],
+  "expected_architectural_change": "app.py will be split into multiple modules: e.g., config.py (argument/environment parsing), color.py (color selection logic), and app.py (Flask routing only). This creates a clear separation of concerns with low coupling between modules and high internal cohesion.",
+  "implementation_strategy": "1. Extract color selection logic into a new module 'color.py' containing color_codes, SUPPORTED_COLORS, and a get_color() function. 2. Extract configuration parsing into 'config.py' with a parse_config() function. 3. Refactor app.py to import and delegate to these modules, retaining only Flask setup and routing. 4. Add __init__.py to form a minimal package structure. This is incremental: modules can be added one at a time, with tests added for each new module.",
+  "risks": "Risk of over-engineering for such a small app, but the maintainability debt (no modularity, high fan-out, no testability) justifies the refactor. Risk of breaking runtime behavior if module interfaces are poorly defined—mitigated by keeping interfaces minimal and using type hints."
+}

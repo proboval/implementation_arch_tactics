@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe maintainability issues due to excessive coupling and lack of encapsulation in critical modules. Static analysis shows high fan-out (avg 5.68), deep directory nesting (max depth 3), and modules with excessive responsibilities (e.g., core/base_mailbox.py contains 6+ different mailbox implementations, smstome_tool.py is 1000+ lines with mixed concerns). The 'Localized Modification' tactic directly addresses this by increasing cohesion within modules and narrowing the scope of changes, reducing ripple effects when modifications are needed. This is particularly critical in the core/platforms/services directories where changes propagate across multiple files.",
+  "target_components": [
+    "core/base_mailbox.py",
+    "smstome_tool.py",
+    "core/base_platform.py",
+    "api/tasks.py",
+    "services/external_sync.py"
+  ],
+  "expected_architectural_change": "Core modules will be split into smaller, focused components with high cohesion. For example, core/base_mailbox.py will be decomposed into separate provider-specific modules (tempmail_lol.py, cloudmail.py, duckmail.py, etc.) with a common interface, reducing the modification scope when adding new email providers from modifying a single 1000+ line file to adding a new small module.",
+  "implementation_strategy": "1. Identify high-coupling modules (base_mailbox.py, smstome_tool.py) 2. Extract responsibilities into separate modules with single responsibilities 3. Introduce clear interfaces/abstractions between modules 4. Use dependency injection to reduce coupling 5. Group related functionality into cohesive units (e.g., move all SMTP-related logic into smtp_utils.py). This can be implemented incrementally, starting with the largest modules.",
+  "risks": "Risk of over-engineering if taken to extremes, but the current state (133 files, 14 packages, avg 9.5 files/package) indicates under-modularization is the bigger problem. Minimal risk as changes are local and can be tested independently."
+}

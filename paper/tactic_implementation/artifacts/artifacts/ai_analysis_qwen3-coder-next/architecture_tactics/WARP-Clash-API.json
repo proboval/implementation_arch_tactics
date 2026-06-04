@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high inter-module coupling, especially in services/subscription.py, services/web_service.py, and services/account.py, where business logic directly imports and instantiates concrete implementations (e.g., GeoIP, NodeNameGenerator, config files, models) without abstractions. Static analysis shows avg_fan_out = 3.95 and high import density (e.g., services/subscription.py imports 15+ modules including GeoIP, config, models, utils, services). This tight coupling causes ripple effects: changing the GeoIP interface or subscription format requires edits across multiple services. For example, services/subscription.py directly instantiates GeoIP at module level (GEOIP = GeoIP(...)), and services/web_service.py imports services/account.py and services/subscription.py directly, creating circular dependencies (services/account.py → services/common.py → services/cloudflare.py → models → services/account.py via getCurrentAccount). This violates separation of concerns and makes testing difficult (e.g., tests/test_utils.py must change working directory to mock config paths). Reduced Coupling directly addresses this by introducing interfaces (e.g., IGeoIP, INodeNameGenerator, ISubscriptionGenerator) and dependency injection, isolating changes and reducing ripple effects.",
+  "target_components": [
+    "services/subscription.py",
+    "services/web_service.py",
+    "services/account.py",
+    "utils/geoip.py",
+    "utils/node_name.py",
+    "services/common.py"
+  ],
+  "expected_architectural_change": "Introduce interfaces (e.g., IGeoIP, INodeNameGenerator) in utils/, refactor services/subscription.py and services/web_service.py to depend on interfaces instead of concrete classes, inject dependencies via constructor or factory, and move global state (e.g., GEOIP, CF_CONFIG) into injectable services. This decouples services from concrete implementations and configuration loading, enabling easier testing and future changes (e.g., swapping GeoIP for another geolocation service).",
+  "implementation_strategy": "1. Extract interfaces from utils/geoip.py (IGeoIP) and utils/node_name.py (INodeNameGenerator). 2. Refactor services/subscription.py to accept IGeoIP and INodeNameGenerator as parameters instead of instantiating them globally. 3. Refactor services/web_service.py to inject dependencies via createApp() or attachEndpoints(). 4. Move configuration loading (e.g., CF_CONFIG, CLASH) into a dedicated ConfigService with lazy loading. 5. Update services/account.py and services/common.py to use dependency injection for account-related services. 6. Update tests to mock interfaces instead of concrete classes.",
+  "risks": "Initial refactoring may increase code verbosity (more interfaces/factories), but this is offset by improved testability and reduced ripple effects. Risk of over-engineering is low given the current tight coupling; incremental adoption (e.g., start with GeoIP abstraction) mitigates this. No runtime performance impact expected."
+}

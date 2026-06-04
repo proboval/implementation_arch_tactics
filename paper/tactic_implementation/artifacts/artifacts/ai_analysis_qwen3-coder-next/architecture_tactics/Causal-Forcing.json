@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic coupling across training, inference, and pipeline logic. Static analysis reveals low maintainability indices (mi_avg=61.19, mi_min=14.05) and high fan-out (avg_fan_out=5.57), indicating tight coupling. The pipeline directory contains 7 different training/inference pipelines (e.g., bidirectional_training, teacher_forcing_training, self_forcing_training) with duplicated logic and inconsistent interfaces. The trainer directory mirrors this duplication with separate trainer classes for diffusion, gan, ode, and distillation that share substantial code. This duplication makes testing, debugging, and extending the system extremely difficult. Decomposability addresses this by introducing clear separation of concerns through well-defined interfaces and reducing the scope of changes needed for modifications.",
+  "target_components": [
+    "pipeline/",
+    "trainer/",
+    "model/"
+  ],
+  "expected_architectural_change": "Introduce a unified Pipeline base class with standardized interfaces (train, inference, evaluate) that all specific pipelines inherit from. Similarly, introduce a unified Trainer base class that abstracts training loop logic, allowing different training strategies (diffusion, gan, ode) to be composed via dependency injection rather than duplicated. This will replace the current flat structure of 7+ pipeline files and 4+ trainer files with a hierarchical, composable architecture. Model classes will remain but their integration with pipelines/trainers will be decoupled via interfaces.",
+  "implementation_strategy": "1. Create pipeline/base.py with Pipeline base class defining abstract methods and common utilities. 2. Refactor each existing pipeline file to inherit from Pipeline base, removing duplicated initialization and utility code. 3. Create trainer/base.py with Trainer base class abstracting distributed setup, logging, and checkpointing. 4. Refactor trainer files to inherit from Trainer base, injecting model/pipeline components via constructor. 5. Introduce pipeline/trainer_adapter.py to decouple pipeline execution from trainer lifecycle. 6. Update imports in train.py, inference.py, demo.py to use new interfaces.",
+  "risks": "Refactoring pipeline and trainer logic may temporarily break existing training/inference scripts during migration. However, the risk is mitigated by the fact that the codebase already uses consistent patterns (e.g., all trainers use FSDP, all pipelines follow similar denoising loops) and the changes are additive (new base classes) rather than destructive. The static analysis confirms high duplication, making incremental refactoring safe and low-risk compared to the current maintainability debt."
+}

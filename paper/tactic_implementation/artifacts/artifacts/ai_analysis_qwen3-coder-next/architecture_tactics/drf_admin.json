@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between modules, especially in settings and utility modules. For example, drf_admin/settings/dev.py directly imports psutil and embeds Redis configuration logic inline, while drf_admin/utils/permissions.py and drf_admin/utils/middleware.py import both system models and Redis connections directly, creating tight coupling between cross-cutting concerns (e.g., RBAC, Redis, middleware). This coupling increases the cost of changes: modifying Redis configuration requires touching multiple files, and changing permission logic requires touching both permissions.py and middleware.py. The static analysis shows 'C1' (high coupling) and 'C2' (low cohesion) as factors, confirming structural coupling issues. Reducing coupling via dependency inversion and abstraction will isolate these concerns, making future changes safer and more localized.",
+  "target_components": [
+    "drf_admin/settings/dev.py",
+    "drf_admin/settings/pro.py",
+    "drf_admin/utils/permissions.py",
+    "drf_admin/utils/middleware.py",
+    "drf_admin/common/permissions.py",
+    "drf_admin/common/redis.py"
+  ],
+  "expected_architectural_change": "Introduce explicit abstraction layers: (1) a Redis configuration service to decouple Redis connection setup from business logic, (2) a permissions service interface to abstract Redis-based permission lookups, and (3) middleware configuration via dependency injection instead of hard-coded imports. This will reduce direct dependencies between modules and centralize cross-cutting concerns.",
+  "implementation_strategy": "1. Extract Redis configuration into a dedicated service (e.g., drf_admin/common/redis_service.py) with a clear interface for acquiring connections. 2. Refactor drf_admin/utils/permissions.py and drf_admin/common/permissions.py to depend on an abstract Redis interface (e.g., via dependency injection or factory), removing direct get_redis_connection calls. 3. Refactor drf_admin/utils/middleware.py to accept Redis connection dependencies via constructor or context, rather than importing Redis directly. 4. Update drf_admin/settings/dev.py to delegate Redis configuration to the new service, removing inline connection logic. 5. Introduce a permissions service interface (e.g., PermissionsRepository) to abstract Redis storage, enabling future migration to DB or cache without affecting middleware.",
+  "risks": "Refactoring Redis and permissions coupling may require updating many call sites and could temporarily increase complexity during migration. However, the modular monolith structure and clear separation of apps (e.g., system/, monitor/) allow incremental adoption. Risk is mitigated by existing test coverage in system/tests.py and monitor/tests.py, which can validate behavior post-refactoring."
+}

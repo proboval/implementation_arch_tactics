@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "app/filter/ads.py",
+  "content": "from bs4.element import Tag\nfrom typing import TYPE_CHECKING\n\nif TYPE_CHECKING:\n    from app.filter.main import Filter\n\n\nclass AdsFilter:\n    \"\"\"Filters out ad content from search results.\"\"\"\n\n    def __init__(self, filter_instance: 'Filter'):\n        self.filter = filter_instance\n\n    def remove_ads(self) -> None:\n        \"\"\"Removes ads found in the list of search result divs\n\n        Returns:\n            None (The soup object is modified directly)\n        \"\"\"\n        if not self.filter.main_divs:\n            return\n\n        for div in [_ for _ in self.filter.main_divs.find_all('div', recursive=True)]:\n            div_ads = [_ for _ in div.find_all('span', recursive=True)\n                       if self.filter.has_ad_content(_.text)]\n            _ = div.decompose() if len(div_ads) else None\n"
+}

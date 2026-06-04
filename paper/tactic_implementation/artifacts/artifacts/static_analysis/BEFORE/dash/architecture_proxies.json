@@ -1,0 +1,152 @@
+{
+  "python_files": 36,
+  "packages": 9,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 4.0,
+  "imports_graph": {
+    "evals/run.py": [
+      "time",
+      "dash",
+      "typing",
+      "agno",
+      "__future__",
+      "evals",
+      "importlib"
+    ],
+    "evals/__init__.py": [
+      "agno"
+    ],
+    "evals/improve.py": [
+      "json",
+      "time",
+      "dataclasses",
+      "dash",
+      "openai",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "evals",
+      "importlib"
+    ],
+    "evals/__main__.py": [
+      "dotenv",
+      "evals",
+      "argparse",
+      "sys"
+    ],
+    "evals/smoke.py": [
+      "re",
+      "time",
+      "dataclasses",
+      "dash",
+      "argparse",
+      "sys",
+      "__future__",
+      "os"
+    ],
+    "app/__init__.py": [],
+    "app/main.py": [
+      "contextlib",
+      "dash",
+      "scripts",
+      "agno",
+      "pathlib",
+      "db",
+      "os"
+    ],
+    "scripts/load_knowledge.py": [
+      "argparse",
+      "dash"
+    ],
+    "scripts/__init__.py": [],
+    "scripts/generate_data.py": [
+      "typing",
+      "sqlalchemy",
+      "db",
+      "random",
+      "argparse",
+      "pandas",
+      "datetime"
+    ],
+    "db/session.py": [
+      "agno",
+      "re",
+      "sqlalchemy",
+      "db"
+    ],
+    "db/__init__.py": [
+      "db"
+    ],
+    "db/url.py": [
+      "os",
+      "urllib"
+    ],
+    "dash/paths.py": [
+      "pathlib"
+    ],
+    "dash/instructions.py": [
+      "dash"
+    ],
+    "dash/__init__.py": [],
+    "dash/team.py": [
+      "agno",
+      "dash"
+    ],
+    "dash/settings.py": [
+      "agno",
+      "os",
+      "db"
+    ],
+    "dash/__main__.py": [
+      "dash"
+    ],
+    "dash/tools/build.py": [
+      "agno",
+      "db",
+      "dash"
+    ],
+    "dash/tools/__init__.py": [],
+    "dash/tools/introspect.py": [
+      "agno",
+      "sqlalchemy",
+      "db"
+    ],
+    "dash/tools/save_query.py": [
+      "agno",
+      "json"
+    ],
+    "dash/tools/update_knowledge.py": [
+      "agno"
+    ],
+    "dash/context/semantic_model.py": [
+      "json",
+      "dash",
+      "typing",
+      "agno",
+      "pathlib"
+    ],
+    "dash/context/__init__.py": [],
+    "dash/context/business_rules.py": [
+      "json",
+      "dash",
+      "typing",
+      "agno",
+      "pathlib"
+    ],
+    "dash/agents/engineer.py": [
+      "agno",
+      "dash"
+    ],
+    "dash/agents/__init__.py": [],
+    "dash/agents/analyst.py": [
+      "agno",
+      "dash"
+    ],
+    "evals/cases/boundaries.py": [],
+    "evals/cases/security.py": [],
+    "evals/cases/__init__.py": [],
+    "evals/cases/routing.py": [],
+    "evals/cases/accuracy.py": [],
+    "evals/cases/governance.py": []
+  }
+}

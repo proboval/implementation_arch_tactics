@@ -1,0 +1,226 @@
+{
+  "python_files": 38,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.6,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "tests/test_xqtrader.py": [
+      "unittest",
+      "easytrader"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_easytrader.py": [
+      "os",
+      "easytrader",
+      "sys",
+      "unittest",
+      "time"
+    ],
+    "tests/test_xq_follower.py": [
+      "os",
+      "easytrader",
+      "datetime",
+      "unittest",
+      "time"
+    ],
+    "easytrader/wk_clienttrader.py": [
+      "easytrader",
+      "pywinauto"
+    ],
+    "easytrader/server.py": [
+      "functools",
+      "flask",
+      "log"
+    ],
+    "easytrader/htzq_clienttrader.py": [
+      "easytrader",
+      "pywinauto"
+    ],
+    "easytrader/log.py": [
+      "logging"
+    ],
+    "easytrader/joinquant_follower.py": [
+      "threading",
+      "datetime",
+      "easytrader"
+    ],
+    "easytrader/xqtrader.py": [
+      "numbers",
+      "re",
+      "math",
+      "easytrader",
+      "time",
+      "json",
+      "requests",
+      "os"
+    ],
+    "easytrader/gj_clienttrader.py": [
+      "re",
+      "easytrader",
+      "pywinauto",
+      "tempfile",
+      "time"
+    ],
+    "easytrader/__init__.py": [
+      "urllib3",
+      "easytrader"
+    ],
+    "easytrader/follower.py": [
+      "re",
+      "typing",
+      "easytrader",
+      "threading",
+      "datetime",
+      "pickle",
+      "time",
+      "abc",
+      "queue",
+      "requests",
+      "os"
+    ],
+    "easytrader/clienttrader.py": [
+      "re",
+      "typing",
+      "easyutils",
+      "functools",
+      "logging",
+      "easytrader",
+      "binascii",
+      "pywinauto",
+      "hashlib",
+      "sys",
+      "time",
+      "abc",
+      "os"
+    ],
+    "easytrader/refresh_strategies.py": [
+      "pandas",
+      "typing",
+      "easytrader",
+      "pywinauto",
+      "tempfile",
+      "abc",
+      "io"
+    ],
+    "easytrader/xq_follower.py": [
+      "re",
+      "numbers",
+      "easytrader",
+      "datetime",
+      "threading",
+      "__future__",
+      "json"
+    ],
+    "easytrader/api.py": [
+      "xtquant",
+      "clienttrader",
+      "logging",
+      "easytrader",
+      "gj_clienttrader",
+      "gf_clienttrader",
+      "six",
+      "sys",
+      "ht_clienttrader",
+      "yh_clienttrader"
+    ],
+    "easytrader/remoteclient.py": [
+      "easytrader",
+      "requests"
+    ],
+    "easytrader/webtrader.py": [
+      "re",
+      "logging",
+      "easytrader",
+      "time",
+      "abc",
+      "threading",
+      "requests",
+      "os"
+    ],
+    "easytrader/pop_dialog_handler.py": [
+      "re",
+      "easytrader",
+      "time",
+      "typing"
+    ],
+    "easytrader/exceptions.py": [],
+    "easytrader/yh_clienttrader.py": [
+      "re",
+      "easytrader",
+      "pywinauto",
+      "tempfile"
+    ],
+    "easytrader/universal_clienttrader.py": [
+      "easytrader",
+      "pywinauto"
+    ],
+    "easytrader/ricequant_follower.py": [
+      "rqopen_client",
+      "threading",
+      "datetime",
+      "easytrader"
+    ],
+    "easytrader/gf_clienttrader.py": [
+      "re",
+      "easytrader",
+      "pywinauto",
+      "tempfile",
+      "time",
+      "os"
+    ],
+    "easytrader/grid_strategies.py": [
+      "pandas",
+      "typing",
+      "easytrader",
+      "pywinauto",
+      "tempfile",
+      "abc",
+      "io"
+    ],
+    "easytrader/ht_clienttrader.py": [
+      "easytrader",
+      "pywinauto"
+    ],
+    "easytrader/config/client.py": [],
+    "easytrader/config/__init__.py": [],
+    "easytrader/miniqmt/miniqmt_trader.py": [
+      "easytrader",
+      "xtquant",
+      "random"
+    ],
+    "easytrader/miniqmt/__init__.py": [
+      "easytrader"
+    ],
+    "easytrader/utils/perf.py": [
+      "functools",
+      "easytrader",
+      "logging",
+      "timeit",
+      "time",
+      "inspect"
+    ],
+    "easytrader/utils/misc.py": [
+      "json"
+    ],
+    "easytrader/utils/__init__.py": [],
+    "easytrader/utils/stock.py": [
+      "random",
+      "datetime",
+      "requests",
+      "json"
+    ],
+    "easytrader/utils/captcha.py": [
+      "re",
+      "pytesseract",
+      "easytrader",
+      "PIL",
+      "requests"
+    ],
+    "easytrader/utils/win_gui.py": [
+      "pywinauto"
+    ]
+  }
+}

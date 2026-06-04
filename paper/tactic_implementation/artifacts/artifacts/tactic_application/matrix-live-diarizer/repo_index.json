@@ -1,0 +1,953 @@
+{
+  "main.py": {
+    "path": "main.py",
+    "imports": [
+      "uvicorn",
+      "app.create_app",
+      "app.config.config"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 290
+  },
+  "app/config.py": {
+    "path": "app/config.py",
+    "imports": [
+      "os",
+      "logging",
+      "pathlib.Path",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "dotenv.load_dotenv"
+    ],
+    "classes": [
+      "ServerConfig",
+      "AudioConfig",
+      "SpeakerConfig",
+      "RateLimitConfig",
+      "AppConfig"
+    ],
+    "functions": [
+      "get_env_str",
+      "get_env_int",
+      "get_env_float",
+      "get_env_bool",
+      "from_env",
+      "from_env",
+      "from_env",
+      "from_env",
+      "load"
+    ],
+    "size": 4920
+  },
+  "app/constants.py": {
+    "path": "app/constants.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 442
+  },
+  "app/__init__.py": {
+    "path": "app/__init__.py",
+    "imports": [
+      "asyncio",
+      "logging",
+      "fastapi.FastAPI",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "transformers.logging",
+      "app.config.config",
+      "app.constants.APP_TITLE",
+      "app.api.api_router",
+      "app.api.websocket.init_engines",
+      "app.api.upload.init_engines",
+      "app.middleware.rate_limit.RateLimitMiddleware",
+      "engine.asr_engine.ASREngine",
+      "engine.speaker.get_speaker_engine",
+      "engine.speaker.get_engine_info",
+      "os",
+      "app.api.health.init_health_check"
+    ],
+    "classes": [],
+    "functions": [
+      "create_app",
+      "_init_engines"
+    ],
+    "size": 2078
+  },
+  "app/exceptions.py": {
+    "path": "app/exceptions.py",
+    "imports": [],
+    "classes": [
+      "AudioProcessingError",
+      "EngineNotInitializedError",
+      "InvalidAudioFormatError",
+      "SpeakerNotFoundError",
+      "SessionNotFoundError",
+      "RateLimitExceededError"
+    ],
+    "functions": [
+      "__init__",
+      "__str__",
+      "__init__",
+      "__init__",
+      "__init__",
+      "__init__",
+      "__init__"
+    ],
+    "size": 2459
+  },
+  "tests/test_rate_limit_integration.py": {
+    "path": "tests/test_rate_limit_integration.py",
+    "imports": [
+      "pytest",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "os",
+      "os",
+      "fastapi.testclient.TestClient",
+      "fastapi.FastAPI",
+      "app.middleware.rate_limit.RateLimitMiddleware"
+    ],
+    "classes": [
+      "TestRateLimitIntegration",
+      "TestRateLimitMiddlewareFunctional"
+    ],
+    "functions": [
+      "test_rate_limit_middleware_registered",
+      "test_rate_limit_config_used",
+      "test_middleware_blocks_excessive_requests",
+      "test_endpoint"
+    ],
+    "size": 2075
+  },
+  "tests/test_audio_chunking.py": {
+    "path": "tests/test_audio_chunking.py",
+    "imports": [
+      "pytest",
+      "numpy",
+      "typing.List",
+      "typing.Tuple",
+      "sys",
+      "os",
+      "app.api.upload.split_audio_into_chunks",
+      "app.api.upload.merge_text_with_overlap",
+      "app.api.upload.process_audio_chunk_with_diarization",
+      "app.api.upload.process_audio_chunk_asr_only",
+      "fastapi.Query",
+      "app.api.upload.upload_audio"
+    ],
+    "classes": [
+      "TestSplitAudioIntoChunks",
+      "TestMergeTextWithOverlap",
+      "TestChunkTimeCalculation",
+      "TestEdgeCases",
+      "TestOverlapTextMerging",
+      "TestDiarizationToggle"
+    ],
+    "functions": [
+      "test_short_audio_no_split",
+      "test_long_audio_multiple_chunks",
+      "test_chunk_overlap",
+      "test_very_long_audio",
+      "test_exact_chunk_boundary",
+      "test_audio_shorter_than_step",
+      "test_empty_prev_text",
+      "test_empty_new_text",
+      "test_exact_overlap",
+      "test_partial_overlap",
+      "test_no_overlap",
+      "test_with_punctuation",
+      "test_whitespace_handling",
+      "test_start_time_sequence",
+      "test_no_gaps_in_coverage",
+      "test_minimum_duration",
+      "test_below_minimum_duration",
+      "test_large_overlap",
+      "test_simulate_chunked_transcription",
+      "test_multiple_chunks_merging",
+      "test_speaker_change_scenario",
+      "test_real_world_overlap_case",
+      "test_process_chunk_with_diarization",
+      "test_diarization_disabled_text_merge",
+      "test_diarization_enabled_text_merge",
+      "test_diarization_flag_default"
+    ],
+    "size": 12979
+  },
+  "tests/test_engine_switch.py": {
+    "path": "tests/test_engine_switch.py",
+    "imports": [
+      "pytest",
+      "os",
+      "sys",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "unittest.mock.MagicMock",
+      "unittest.mock.AsyncMock",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "fastapi.FastAPI",
+      "app.api.speakers.router",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "app.schemas.response.EngineSwitchRequest",
+      "pydantic.ValidationError",
+      "engine.speaker.speaker_factory.get_speaker_engine",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "inspect",
+      "app.create_app",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "asyncio",
+      "engine.speaker.speaker_factory.SpeakerEngineManager",
+      "app.schemas.response.EngineSwitchRequest",
+      "app.schemas.response.EngineSwitchResponse"
+    ],
+    "classes": [
+      "MockSpeakerEngine",
+      "TestSpeakerEngineManager",
+      "TestEngineSwitchAPI",
+      "TestEngineSwitchRequestModel",
+      "TestEngineSwitchResponseModel",
+      "TestIntegrationWithExistingCode",
+      "TestThreadSafety"
+    ],
+    "functions": [
+      "__init__",
+      "get_embedding_dim",
+      "list_speakers",
+      "get_speaker",
+      "rename_speaker",
+      "delete_speaker",
+      "test_manager_class_exists",
+      "test_manager_is_singleton",
+      "test_manager_has_current_engine",
+      "test_manager_get_engine",
+      "test_manager_switch_engine",
+      "test_manager_switch_to_invalid_engine",
+      "test_manager_switch_same_engine",
+      "test_manager_returns_embedding_dim_warning",
+      "test_manager_get_all_engines_info",
+      "test_manager_engine_caching",
+      "mock_app",
+      "mock_manager",
+      "test_put_engine_endpoint_exists",
+      "test_put_engine_success",
+      "test_put_engine_invalid_type",
+      "test_get_engines_endpoint",
+      "test_put_engine_empty_type",
+      "test_embedding_dim_warning_in_response",
+      "test_engine_switch_request_model",
+      "test_engine_switch_request_invalid_type",
+      "test_engine_switch_response_model",
+      "test_get_speaker_engine_uses_manager",
+      "test_app_state_uses_manager",
+      "test_manager_has_lock",
+      "test_concurrent_switch",
+      "switch_to"
+    ],
+    "size": 12873
+  },
+  "tests/test_logging.py": {
+    "path": "tests/test_logging.py",
+    "imports": [
+      "pytest",
+      "logging",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "io",
+      "os",
+      "engine.speaker.base_engine.logger",
+      "engine.speaker.base_engine.logger",
+      "app.exceptions.AudioProcessingError",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "inspect"
+    ],
+    "classes": [
+      "TestLoggingStandard",
+      "TestLoggingOutput"
+    ],
+    "functions": [
+      "test_engines_import_logging_module",
+      "test_logger_instance_exists",
+      "test_logger_name_format",
+      "test_log_level_can_be_configured",
+      "test_error_logging_includes_context",
+      "test_base_engine_logging_methods"
+    ],
+    "size": 2444
+  },
+  "tests/test_exceptions.py": {
+    "path": "tests/test_exceptions.py",
+    "imports": [
+      "pytest",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "unittest.mock.MagicMock",
+      "fastapi.testclient.TestClient",
+      "fastapi.HTTPException",
+      "fastapi.FastAPI",
+      "app.api.upload.router",
+      "app.exceptions.AudioProcessingError",
+      "app.exceptions.EngineNotInitializedError",
+      "app.exceptions.InvalidAudioFormatError",
+      "app.exceptions.AudioProcessingError",
+      "app.exceptions.EngineNotInitializedError",
+      "fastapi.FastAPI",
+      "app.api.upload.router",
+      "sys"
+    ],
+    "classes": [
+      "TestExceptionHandling",
+      "TestSpecificExceptionHandling"
+    ],
+    "functions": [
+      "test_upload_handles_http_exception_correctly",
+      "test_custom_exception_classes_exist",
+      "test_audio_processing_error_with_context",
+      "test_engine_not_initialized_error",
+      "test_upload_rejects_invalid_audio_format"
+    ],
+    "size": 3927
+  },
+  "tests/__init__.py": {
+    "path": "tests/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 16
+  },
+  "tests/test_rate_limit.py": {
+    "path": "tests/test_rate_limit.py",
+    "imports": [
+      "pytest",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "fastapi.testclient.TestClient",
+      "time",
+      "fastapi.FastAPI",
+      "app.api.speakers.router",
+      "app.config.config",
+      "fastapi.FastAPI",
+      "app.api.speakers.router",
+      "app.middleware.RateLimitMiddleware"
+    ],
+    "classes": [
+      "TestRateLimit",
+      "TestRateLimitExceeded"
+    ],
+    "functions": [
+      "mock_app",
+      "test_rate_limit_config_exists",
+      "test_rate_limit_allows_normal_requests",
+      "test_rate_limit_headers_present",
+      "test_rate_limit_returns_429_on_exceed"
+    ],
+    "size": 2673
+  },
+  "tests/test_upload_security.py": {
+    "path": "tests/test_upload_security.py",
+    "imports": [
+      "pytest",
+      "io",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "unittest.mock.MagicMock",
+      "fastapi.FastAPI",
+      "fastapi.testclient.TestClient",
+      "fastapi.FastAPI",
+      "app.api.upload.router",
+      "asyncio",
+      "app.api.upload.ALLOWED_EXTENSIONS",
+      "app.api.upload.MAX_FILE_SIZE"
+    ],
+    "classes": [
+      "TestFileUploadSecurity"
+    ],
+    "functions": [
+      "mock_app",
+      "mock_engines",
+      "test_reject_invalid_file_extension_exe",
+      "test_reject_invalid_extension_txt",
+      "test_reject_oversized_file",
+      "test_valid_extensions_list",
+      "test_max_file_size_constant"
+    ],
+    "size": 4102
+  },
+  "tests/test_health.py": {
+    "path": "tests/test_health.py",
+    "imports": [
+      "pytest",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "fastapi.testclient.TestClient",
+      "fastapi.FastAPI",
+      "app.api.health.router",
+      "fastapi.APIRouter"
+    ],
+    "classes": [
+      "TestHealthEndpoints"
+    ],
+    "functions": [
+      "mock_app",
+      "test_health_endpoint_exists",
+      "test_health_returns_healthy_status",
+      "test_health_returns_timestamp",
+      "test_ready_endpoint_exists",
+      "test_ready_returns_engine_status",
+      "test_ready_checks_asr_engine",
+      "test_ready_checks_speaker_engine"
+    ],
+    "size": 2550
+  },
+  "tests/test_base_engine.py": {
+    "path": "tests/test_base_engine.py",
+    "imports": [
+      "pytest",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "numpy",
+      "os",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "inspect",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "inspect"
+    ],
+    "classes": [
+      "TestSpeakerEngineBaseClass",
+      "TestBaseEngineSharedMethods"
+    ],
+    "functions": [
+      "test_base_class_exists",
+      "test_base_class_has_abstract_methods",
+      "test_base_class_has_shared_methods",
+      "test_campplus_inherits_base",
+      "test_eres2net_inherits_base",
+      "test_wespeaker_inherits_base",
+      "test_list_speakers_signature",
+      "test_get_speaker_signature"
+    ],
+    "size": 3293
+  },
+  "tests/test_speaker_management.py": {
+    "path": "tests/test_speaker_management.py",
+    "imports": [
+      "pytest",
+      "os",
+      "sys",
+      "unittest.mock.Mock",
+      "unittest.mock.patch",
+      "unittest.mock.MagicMock",
+      "fastapi.FastAPI",
+      "app.api.speakers.router",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "fastapi.testclient.TestClient",
+      "app.schemas.response.SpeakerInfo",
+      "app.schemas.response.SpeakerResponse",
+      "app.schemas.response.SpeakerI"
+    ],
+    "classes": [
+      "MockCollection",
+      "TestSpeakerManagementMethods",
+      "TestSpeakerAPIRoutes",
+      "TestSpeakerResponseModels",
+      "MockSpeakerEngine"
+    ],
+    "functions": [
+      "_create_mock_engine_class",
+      "__init__",
+      "add",
+      "get",
+      "_match_where",
+      "update",
+      "delete",
+      "query",
+      "mock_engine",
+      "test_list_speakers_all",
+      "test_list_speakers_by_session",
+      "test_list_speakers_empty_session",
+      "test_get_speaker_exists",
+      "test_get_speaker_not_exists",
+      "test_rename_speaker_success",
+      "test_rename_speaker_not_exists",
+      "test_rename_speaker_empty_name",
+      "test_delete_speaker_success",
+      "test_delete_speaker_not_exists",
+      "test_speaker_response_format",
+      "mock_app",
+      "mock_speaker_engine",
+      "test_list_speakers_endpoint",
+      "test_list_speakers_with_session",
+      "test_get_speaker_endpoint",
+      "test_get_speaker_not_found",
+      "test_rename_speaker_endpoint",
+      "test_rename_speaker_empty_name",
+      "test_delete_speaker_endpoint",
+      "test_delete_speaker_not_found",
+      "test_speaker_info_model",
+      "test_speaker_response_model",
+      "__init__",
+      "list_speakers",
+      "get_speaker",
+      "rename_speaker",
+      "delete_speaker"
+    ],
+    "size": 15038
+  },
+  "engine/asr_engine.py": {
+    "path": "engine/asr_engine.py",
+    "imports": [
+      "torch",
+      "numpy",
+      "asyncio",
+      "logging",
+      "scipy.signal",
+      "modelscope.snapshot_download",
+      "qwen_asr.Qwen3ASRModel",
+      "re"
+    ],
+    "classes": [
+      "ASREngine"
+    ],
+    "functions": [
+      "__new__",
+      "__init__",
+      "is_silent",
+      "preprocess_audio",
+      "_spectral_subtraction",
+      "extract_speech_segments",
+      "filter_hallucinations",
+      "evaluate_audio_quality",
+      "run_asr",
+      "__del__"
+    ],
+    "size": 9365
+  },
+  "engine/speaker/campplus_engine.py": {
+    "path": "engine/speaker/campplus_engine.py",
+    "imports": [
+      "numpy",
+      "torch",
+      "chromadb",
+      "modelscope.models.Model",
+      "time",
+      "os",
+      "logging",
+      "collections.defaultdict",
+      "typing.List",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Tuple",
+      "engine.speaker.base_engine.BaseSpeakerEngine"
+    ],
+    "classes": [
+      "CamPlusEngine"
+    ],
+    "functions": [
+      "__new__",
+      "_model_name",
+      "extract_feat",
+      "get_smoothed_embedding",
+      "reset_buffer",
+      "cleanup_client",
+      "_check_pending_speakers",
+      "compare_and_identify"
+    ],
+    "size": 11531
+  },
+  "engine/speaker/__init__.py": {
+    "path": "engine/speaker/__init__.py",
+    "imports": [
+      "speaker_factory.get_speaker_engine",
+      "speaker_factory.get_engine_info",
+      "speaker_factory.get_all_engines",
+      "speaker_factory.get_engine_type",
+      "speaker_factory.ENGINE_CONFIG",
+      "speaker_factory.ASR_CONFIG"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 317
+  },
+  "engine/speaker/eres2net_engine.py": {
+    "path": "engine/speaker/eres2net_engine.py",
+    "imports": [
+      "numpy",
+      "torch",
+      "chromadb",
+      "modelscope.models.Model",
+      "time",
+      "os",
+      "logging",
+      "collections.defaultdict",
+      "typing.List",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Tuple",
+      "engine.speaker.base_engine.BaseSpeakerEngine"
+    ],
+    "classes": [
+      "ERes2NetEngine"
+    ],
+    "functions": [
+      "__new__",
+      "_model_name",
+      "extract_feat",
+      "get_smoothed_embedding",
+      "reset_buffer",
+      "cleanup_client",
+      "_get_dynamic_threshold",
+      "compare_and_identify"
+    ],
+    "size": 7768
+  },
+  "engine/speaker/base_engine.py": {
+    "path": "engine/speaker/base_engine.py",
+    "imports": [
+      "logging",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "numpy"
+    ],
+    "classes": [
+      "BaseSpeakerEngine"
+    ],
+    "functions": [
+      "extract_feat",
+      "compare_and_identify",
+      "_model_name",
+      "list_speakers",
+      "get_speaker",
+      "rename_speaker",
+      "delete_speaker",
+      "get_smoothed_embedding",
+      "reset_buffer",
+      "cleanup_client"
+    ],
+    "size": 5337
+  },
+  "engine/speaker/speaker_factory.py": {
+    "path": "engine/speaker/speaker_factory.py",
+    "imports": [
+      "os",
+      "threading",
+      "logging",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Any",
+      "eres2net_engine.ERes2NetEngine",
+      "wespeaker_engine.WespeakerEngine",
+      "campplus_engine.CamPlusEngine"
+    ],
+    "classes": [
+      "SpeakerEngineManager"
+    ],
+    "functions": [
+      "get_engine_type",
+      "get_speaker_engine",
+      "get_engine_info",
+      "get_all_engines",
+      "get_engine_manager",
+      "__new__",
+      "__init__",
+      "get_engine",
+      "_load_engine",
+      "switch_engine",
+      "_get_engine_info",
+      "current_type",
+      "current_engine",
+      "get_all_engines_info",
+      "get_engine_info",
+      "reset"
+    ],
+    "size": 7571
+  },
+  "engine/speaker/wespeaker_engine.py": {
+    "path": "engine/speaker/wespeaker_engine.py",
+    "imports": [
+      "numpy",
+      "torch",
+      "chromadb",
+      "time",
+      "os",
+      "logging",
+      "collections.defaultdict",
+      "typing.List",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Tuple",
+      "engine.speaker.base_engine.BaseSpeakerEngine",
+      "modelscope.models.Model"
+    ],
+    "classes": [
+      "WespeakerEngine"
+    ],
+    "functions": [
+      "__new__",
+      "_init_model",
+      "_model_name",
+      "extract_feat",
+      "get_smoothed_embedding",
+      "reset_buffer",
+      "cleanup_client",
+      "_get_dynamic_threshold",
+      "compare_and_identify"
+    ],
+    "size": 7882
+  },
+  "app/middleware/__init__.py": {
+    "path": "app/middleware/__init__.py",
+    "imports": [
+      "app.middleware.rate_limit.RateLimitMiddleware"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 105
+  },
+  "app/middleware/rate_limit.py": {
+    "path": "app/middleware/rate_limit.py",
+    "imports": [
+      "time",
+      "collections.defaultdict",
+      "typing.Dict",
+      "typing.List",
+      "typing.Tuple",
+      "fastapi.Request",
+      "fastapi.HTTPException",
+      "starlette.middleware.base.BaseHTTPMiddleware",
+      "starlette.responses.JSONResponse",
+      "logging"
+    ],
+    "classes": [
+      "RateLimitMiddleware"
+    ],
+    "functions": [
+      "__init__",
+      "dispatch",
+      "_get_client_ip"
+    ],
+    "size": 2740
+  },
+  "app/schemas/__init__.py": {
+    "path": "app/schemas/__init__.py",
+    "imports": [
+      "app.schemas.response.UploadResponse",
+      "app.schemas.response.ModelsResponse",
+      "app.schemas.response.EngineInfo",
+      "app.schemas.response.ASRInfo",
+      "app.schemas.response.SegmentResult",
+      "app.schemas.response.SpeakerInfo",
+      "app.schemas.response.SpeakerResponse",
+      "app.schemas.response.SpeakerListResponse",
+      "app.schemas.response.SpeakerUpdateRequest",
+      "app.schemas.response.SpeakerDeleteResponse"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 464
+  },
+  "app/schemas/response.py": {
+    "path": "app/schemas/response.py",
+    "imports": [
+      "typing.Optional",
+      "typing.Dict",
+      "typing.List",
+      "pydantic.BaseModel",
+      "pydantic.Field"
+    ],
+    "classes": [
+      "SegmentResult",
+      "UploadResponse",
+      "EngineInfo",
+      "ASRInfo",
+      "ModelsResponse",
+      "SpeakerInfo",
+      "SpeakerResponse",
+      "SpeakerListResponse",
+      "SpeakerUpdateRequest",
+      "SpeakerDeleteResponse",
+      "EngineSwitchRequest",
+      "EngineInfoExtended",
+      "EngineSwitchResponse",
+      "EnginesListResponse"
+    ],
+    "functions": [],
+    "size": 2402
+  },
+  "app/api/upload.py": {
+    "path": "app/api/upload.py",
+    "imports": [
+      "asyncio",
+      "uuid",
+      "os",
+      "logging",
+      "time",
+      "typing.List",
+      "typing.Tuple",
+      "typing.Set",
+      "numpy",
+      "fastapi.APIRouter",
+      "fastapi.UploadFile",
+      "fastapi.File",
+      "fastapi.HTTPException",
+      "fastapi.Query",
+      "app.config.config",
+      "app.constants.FILE_UPLOAD_SESSION",
+      "app.schemas.UploadResponse",
+      "app.schemas.ModelsResponse",
+      "app.schemas.SegmentResult",
+      "engine.speaker.speaker_factory.get_speaker_engine",
+      "engine.speaker.get_all_engines",
+      "shutil",
+      "librosa"
+    ],
+    "classes": [],
+    "functions": [
+      "init_engines",
+      "split_audio_into_chunks",
+      "merge_text_with_overlap",
+      "process_audio_chunk_with_diarization",
+      "process_audio_chunk_asr_only",
+      "upload_audio",
+      "get_models"
+    ],
+    "size": 9513
+  },
+  "app/api/health.py": {
+    "path": "app/api/health.py",
+    "imports": [
+      "time",
+      "logging",
+      "fastapi.APIRouter"
+    ],
+    "classes": [],
+    "functions": [
+      "init_health_check",
+      "health_check",
+      "readiness_check"
+    ],
+    "size": 788
+  },
+  "app/api/__init__.py": {
+    "path": "app/api/__init__.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "app.api.websocket.router",
+      "app.api.upload.router",
+      "app.api.speakers.router",
+      "app.api.health.router"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 437
+  },
+  "app/api/speakers.py": {
+    "path": "app/api/speakers.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Query",
+      "fastapi.Path",
+      "typing.Optional",
+      "engine.speaker.speaker_factory.get_speaker_engine",
+      "engine.speaker.speaker_factory.get_engine_manager",
+      "app.schemas.response.SpeakerListResponse",
+      "app.schemas.response.SpeakerResponse",
+      "app.schemas.response.SpeakerUpdateRequest",
+      "app.schemas.response.SpeakerDeleteResponse",
+      "app.schemas.response.EngineSwitchRequest",
+      "app.schemas.response.EngineSwitchResponse",
+      "app.schemas.response.EnginesListResponse"
+    ],
+    "classes": [],
+    "functions": [
+      "list_speakers",
+      "get_speaker",
+      "rename_speaker",
+      "delete_speaker",
+      "list_engines",
+      "switch_engine"
+    ],
+    "size": 3199
+  },
+  "app/api/websocket.py": {
+    "path": "app/api/websocket.py",
+    "imports": [
+      "asyncio",
+      "time",
+      "re",
+      "numpy",
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.WebSocket",
+      "starlette.websockets.WebSocketState",
+      "app.config.config",
+      "app.constants.SYSTEM_SPEAKER",
+      "app.services.SessionContext",
+      "engine.speaker.speaker_factory.get_speaker_engine"
+    ],
+    "classes": [],
+    "functions": [
+      "validate_client_id",
+      "check_engines",
+      "init_engines",
+      "queue_monitor",
+      "audio_processor",
+      "_process_speech_segment",
+      "websocket_endpoint"
+    ],
+    "size": 12241
+  },
+  "app/services/session.py": {
+    "path": "app/services/session.py",
+    "imports": [
+      "numpy",
+      "difflib.SequenceMatcher",
+      "app.constants.PUNCTUATION_CHARS"
+    ],
+    "classes": [
+      "SessionContext"
+    ],
+    "functions": [
+      "__init__",
+      "get_incremental_text",
+      "_extract_after_position",
+      "normalize"
+    ],
+    "size": 3604
+  },
+  "app/services/__init__.py": {
+    "path": "app/services/__init__.py",
+    "imports": [
+      "app.services.session.SessionContext"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 87
+  }
+}

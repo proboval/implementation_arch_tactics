@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in configuration handling and runtime state management. Static analysis shows files like server.py (mi=72.07), app/web/webapp.py (mi=42.06), app/ai/ai_monitor_worker.py (mi=43.99), and app/config/config_store.py (mi=53.48) have low maintainability index scores. These files contain mixed responsibilities: server.py directly instantiates and wires together configuration, frame buffer, AI runtime, recorder runtime, and webapp — violating separation of concerns. Similarly, ai_monitor_worker.py directly manipulates ai_rt.state and event_store while also parsing config and managing client lifecycle. This forces changes to configuration or AI behavior to ripple across multiple modules (e.g., adding a new AI state requires touching ai_monitor_worker.py, ai_store.py, and potentially webapp.py). Localized Modification narrows the scope of change by grouping related behavior into cohesive units (e.g., AI state machine logic into a dedicated controller), reducing the number of files affected by a single change and improving maintainability.",
+  "target_components": [
+    "server.py",
+    "app/ai/ai_monitor_worker.py",
+    "app/config/config_store.py",
+    "app/ai/ai_store.py"
+  ],
+  "expected_architectural_change": "Introduce a dedicated AIEventController module that encapsulates AI state transitions, event lifecycle, and configuration-driven behavior. This controller would own ai_rt and event_store, replacing inline state machine logic in ai_monitor_worker.py. server.py would instantiate and inject the controller instead of manually wiring each runtime component. config_store.py would be refactored to expose typed configuration accessors, reducing ad-hoc dict lookups and validation logic duplication.",
+  "implementation_strategy": "1. Extract AI state machine logic from ai_monitor_worker.py into app/ai/ai_event_controller.py, implementing a clear state machine with methods like transition_to(), should_call_ai(), and process_ai_result(). 2. Move AI-specific config parsing and validation from ai_monitor_worker.py and config_store.py into the controller, using a typed config interface. 3. Refactor server.py to instantiate and inject the controller into the AI worker thread, removing direct manipulation of ai_rt and event_store. 4. Introduce a ConfigAccessor interface in config_store.py to replace raw dict.get() calls, improving readability and testability. 5. Keep ai_monitor_worker.py as a thin adapter that delegates to the controller, reducing its cyclomatic complexity and coupling to runtime state.",
+  "risks": "Risk of temporary duplication during refactoring if the controller is not cleanly decoupled. However, since the system is a modular monolith with clear module boundaries and existing tests (test_vision_client.py, test_web_model_info.py), the change can be implemented incrementally: first extract the controller with minimal dependencies, then refactor server.py and ai_monitor_worker.py in small commits, preserving test coverage throughout."
+}

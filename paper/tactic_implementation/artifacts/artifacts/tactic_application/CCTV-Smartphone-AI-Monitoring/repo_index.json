@@ -1,0 +1,417 @@
+{
+  "server.py": {
+    "path": "server.py",
+    "imports": [
+      "os",
+      "socket",
+      "threading",
+      "app.core.logger.setup_logger",
+      "app.core.frame_buffer.FrameBuffer",
+      "app.core.upload_stats.UploadStats",
+      "app.core.runtime.RecorderRuntime",
+      "app.config.config_store.ConfigStore",
+      "app.config.config_store.DEFAULT_CONFIG",
+      "app.recorder.recorder_worker.start_record_thread",
+      "app.ai.ai_store.AiRuntime",
+      "app.ai.ai_store.EventStore",
+      "app.ai.ai_monitor_worker.start_ai_monitor_thread",
+      "app.web.webapp.create_app"
+    ],
+    "classes": [],
+    "functions": [
+      "get_local_ip",
+      "main"
+    ],
+    "size": 3306
+  },
+  "tests/test_vision_client.py": {
+    "path": "tests/test_vision_client.py",
+    "imports": [
+      "json",
+      "threading",
+      "http.server.BaseHTTPRequestHandler",
+      "http.server.HTTPServer",
+      "numpy",
+      "pytest",
+      "app.ai.vision_client.OpenAICompatibleVisionClient",
+      "app.ai.vision_client._extract_message_content",
+      "app.ai.vision_client._join_chat_url",
+      "app.ai.vision_client._normalize_ai_json",
+      "app.ai.vision_client.resolve_provider_settings",
+      "app.ai.vision_client.safe_provider_info"
+    ],
+    "classes": [
+      "_FakeVisionHandler"
+    ],
+    "functions": [
+      "_serve_fake_vision",
+      "test_openai_provider_uses_preset_base_url",
+      "test_ark_keeps_legacy_model_and_key",
+      "test_join_chat_url",
+      "test_extract_message_content_supports_string_and_parts",
+      "test_normalize_ai_json_clamps_confidence",
+      "test_openai_compatible_client_requires_base_url",
+      "test_safe_provider_info_hides_api_key",
+      "test_openai_compatible_client_can_analyze_frame_against_fake_server",
+      "log_message",
+      "do_POST"
+    ],
+    "size": 5842
+  },
+  "tests/test_web_model_info.py": {
+    "path": "tests/test_web_model_info.py",
+    "imports": [
+      "logging",
+      "threading",
+      "app.ai.ai_store.AiRuntime",
+      "app.ai.ai_store.EventStore",
+      "app.config.config_store.ConfigStore",
+      "app.config.config_store.DEFAULT_CONFIG",
+      "app.core.frame_buffer.FrameBuffer",
+      "app.core.runtime.RecorderRuntime",
+      "app.core.upload_stats.UploadStats",
+      "app.web.webapp.create_app"
+    ],
+    "classes": [],
+    "functions": [
+      "_make_test_client",
+      "test_ai_status_includes_safe_model_info",
+      "test_dashboard_has_model_info_container"
+    ],
+    "size": 1797
+  },
+  "app/net/net_discovery.py": {
+    "path": "app/net/net_discovery.py",
+    "imports": [
+      "socket",
+      "threading"
+    ],
+    "classes": [],
+    "functions": [
+      "_get_local_ip_for_peer",
+      "start_discovery_responder",
+      "run"
+    ],
+    "size": 1239
+  },
+  "app/core/logger.py": {
+    "path": "app/core/logger.py",
+    "imports": [
+      "logging",
+      "logging.handlers.RotatingFileHandler"
+    ],
+    "classes": [],
+    "functions": [
+      "setup_logger"
+    ],
+    "size": 719
+  },
+  "app/core/frame_buffer.py": {
+    "path": "app/core/frame_buffer.py",
+    "imports": [
+      "threading",
+      "time",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "typing.Optional",
+      "numpy"
+    ],
+    "classes": [
+      "FrameBuffer"
+    ],
+    "functions": [
+      "clear",
+      "set",
+      "get_copy",
+      "age_sec"
+    ],
+    "size": 953
+  },
+  "app/core/runtime.py": {
+    "path": "app/core/runtime.py",
+    "imports": [
+      "threading",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "typing.Optional"
+    ],
+    "classes": [
+      "RecorderRuntime"
+    ],
+    "functions": [
+      "is_opened"
+    ],
+    "size": 534
+  },
+  "app/core/upload_stats.py": {
+    "path": "app/core/upload_stats.py",
+    "imports": [
+      "threading",
+      "time",
+      "collections.deque",
+      "dataclasses.dataclass",
+      "dataclasses.field"
+    ],
+    "classes": [
+      "UploadStats"
+    ],
+    "functions": [
+      "mark_ok",
+      "mark_missing",
+      "mark_decode_failed",
+      "mark_rejected",
+      "snapshot_counts",
+      "upload_fps"
+    ],
+    "size": 1828
+  },
+  "app/config/config_store.py": {
+    "path": "app/config/config_store.py",
+    "imports": [
+      "json",
+      "os",
+      "threading",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Tuple"
+    ],
+    "classes": [
+      "ConfigStore"
+    ],
+    "functions": [
+      "merge_known_keys",
+      "validate_and_normalize",
+      "_int",
+      "_float",
+      "_bool",
+      "_str",
+      "__init__",
+      "get_copy",
+      "set_many",
+      "set_key",
+      "load_from_disk",
+      "save_to_disk"
+    ],
+    "size": 6504
+  },
+  "app/web/webapp.py": {
+    "path": "app/web/webapp.py",
+    "imports": [
+      "os",
+      "time",
+      "threading",
+      "datetime.datetime",
+      "cv2",
+      "numpy",
+      "flask.Flask",
+      "flask.request",
+      "flask.Response",
+      "flask.jsonify",
+      "flask.render_template",
+      "app.config.config_store.validate_and_normalize",
+      "app.ai.vision_client.safe_provider_info",
+      "app.recorder.recorder_worker.stop_recorder",
+      "logging"
+    ],
+    "classes": [],
+    "functions": [
+      "create_app",
+      "ping",
+      "upload",
+      "mjpeg_generator",
+      "stream",
+      "dashboard",
+      "api_get_config",
+      "api_put_config",
+      "api_save_config",
+      "api_load_config",
+      "api_ingest_enable",
+      "api_ingest_disable",
+      "api_record_start",
+      "api_record_stop",
+      "_snapshot_path",
+      "api_system_shutdown",
+      "api_snapshot",
+      "api_status",
+      "api_ai_status",
+      "api_ai_events",
+      "api_log_tail",
+      "_killer"
+    ],
+    "size": 12876
+  },
+  "app/ai/vision_client.py": {
+    "path": "app/ai/vision_client.py",
+    "imports": [
+      "json",
+      "os",
+      "urllib.error",
+      "urllib.request",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "ai_ark.ArkVisionClient",
+      "ai_ark._extract_json",
+      "ai_ark._frame_to_data_url_jpeg",
+      "ai_ark._resize_for_ai",
+      "ai_ark.resolve_api_key"
+    ],
+    "classes": [
+      "OpenAICompatibleVisionClient"
+    ],
+    "functions": [
+      "_clean_provider",
+      "_first_env",
+      "_join_chat_url",
+      "resolve_provider_settings",
+      "safe_provider_info",
+      "_extract_message_content",
+      "_normalize_ai_json",
+      "create_vision_client",
+      "client_signature",
+      "__init__",
+      "build_prompt_contract",
+      "analyze_frame"
+    ],
+    "size": 9017
+  },
+  "app/ai/motion_trigger.py": {
+    "path": "app/ai/motion_trigger.py",
+    "imports": [
+      "time",
+      "dataclasses.dataclass",
+      "typing.Optional",
+      "typing.Tuple",
+      "cv2",
+      "numpy"
+    ],
+    "classes": [
+      "MotionTrigger"
+    ],
+    "functions": [
+      "reset",
+      "_preprocess",
+      "check"
+    ],
+    "size": 1987
+  },
+  "app/ai/ai_monitor_worker.py": {
+    "path": "app/ai/ai_monitor_worker.py",
+    "imports": [
+      "time",
+      "datetime.datetime",
+      "typing.Optional",
+      "ai_store.AiRuntime",
+      "ai_store.EventStore",
+      "motion_trigger.MotionTrigger",
+      "vision_client.client_signature",
+      "vision_client.create_vision_client",
+      "vision_client.resolve_provider_settings",
+      "threading"
+    ],
+    "classes": [],
+    "functions": [
+      "_now_text",
+      "_safe_bool",
+      "_clamp_int",
+      "_clamp_float",
+      "_should_call",
+      "ai_monitor_loop",
+      "start_ai_monitor_thread"
+    ],
+    "size": 10049
+  },
+  "app/ai/ai_store.py": {
+    "path": "app/ai/ai_store.py",
+    "imports": [
+      "json",
+      "os",
+      "threading",
+      "time",
+      "uuid",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional"
+    ],
+    "classes": [
+      "AiRuntime",
+      "EventStore"
+    ],
+    "functions": [
+      "snapshot",
+      "__init__",
+      "_load_tail",
+      "_append_mem",
+      "add_event",
+      "latest"
+    ],
+    "size": 3614
+  },
+  "app/ai/ai_ark.py": {
+    "path": "app/ai/ai_ark.py",
+    "imports": [
+      "base64",
+      "json",
+      "os",
+      "re",
+      "typing.Any",
+      "typing.Dict",
+      "cv2",
+      "volcenginesdkarkruntime.Ark"
+    ],
+    "classes": [
+      "ArkVisionClient"
+    ],
+    "functions": [
+      "_resize_for_ai",
+      "_frame_to_data_url_jpeg",
+      "_extract_json",
+      "resolve_api_key",
+      "__init__",
+      "build_prompt_contract",
+      "analyze_frame"
+    ],
+    "size": 6606
+  },
+  "app/recorder/recorder.py": {
+    "path": "app/recorder/recorder.py",
+    "imports": [
+      "os",
+      "time",
+      "datetime.datetime",
+      "cv2"
+    ],
+    "classes": [
+      "SegmentRecorder"
+    ],
+    "functions": [
+      "__init__",
+      "_make_path",
+      "_open_writer",
+      "_close_writer",
+      "write",
+      "stop"
+    ],
+    "size": 2472
+  },
+  "app/recorder/recorder_worker.py": {
+    "path": "app/recorder/recorder_worker.py",
+    "imports": [
+      "os",
+      "threading",
+      "time",
+      "recorder.SegmentRecorder"
+    ],
+    "classes": [],
+    "functions": [
+      "stop_recorder",
+      "record_loop",
+      "start_record_thread"
+    ],
+    "size": 3003
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a monolithic 'script-based' architecture where app.py (200+ lines) directly orchestrates business logic, HTTP handling, encryption, database access, and external API calls. Static analysis confirms 'avg_fan_out': 5.0 and 'max_directory_depth': 1, indicating no modularity. Files like app.py import 15+ modules and contain tightly coupled responsibilities (e.g., TokenManager, send_requests, detect_player_info, encode_uid, encrypt_aes all in one file). This violates separation of concerns, making changes risky and testing difficult (docstring_coverage: 0.5, mi_avg: 0). Decomposability directly addresses this by isolating concerns into distinct modules (e.g., encryption, API client, data access), reducing ripple effects and enabling focused testing.",
+  "target_components": [
+    "app.py",
+    "byte.py",
+    "like_count_pb2.py",
+    "uid_generator_pb2.py"
+  ],
+  "expected_architectural_change": "Split app.py into cohesive modules: (1) a dedicated API client module (replacing inline requests/aiohttp logic), (2) an encryption module (extracting AES and custom encoding from byte.py), (3) a data access module (encapsulating TokenManager and DB operations), and (4) a domain service layer (coordinating components). This creates a layered structure with clear boundaries, replacing the flat script with decoupled, testable units.",
+  "implementation_strategy": "1. Extract encryption logic (Encrypt_ID, encrypt_api, decrypt_api) into a new 'crypto/' module with clear interfaces. 2. Move API request logic (send_friend_request, async_post_request) into 'api_client/' module. 3. Isolate database operations (TokenManager) into 'data_access/' module. 4. Create 'services/' module to orchestrate components without direct dependencies on Flask or low-level details. 5. Refactor app.py to depend only on high-level service interfaces. 6. Add unit tests per module using mock dependencies.",
+  "risks": "Risk of over-engineering for a small script-based system; incremental refactoring is essential to avoid breaking existing functionality. Initial refactoring may temporarily increase complexity until modules stabilize. Requires careful dependency management to avoid circular imports between new modules."
+}

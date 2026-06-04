@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor localization of change due to tightly coupled PII detection and masking logic across many modules. Static analysis shows high fan-out (avg 3.27) and deep directory depth (4), indicating scattered responsibilities. The core masking engine (masker.py) directly instantiates recognizers, and individual recognizers (e.g., tn/national_id.py, fr/nir.py, ma/cin.py) duplicate similar pattern-matching logic without shared abstractions. This causes ripple effects: adding a new recognizer requires modifying registry.py, and changes to masking logic require updates across multiple files. Localized Modification addresses this by consolidating related functionality into cohesive units, reducing the scope of change and preventing ripple effects.",
+  "target_components": [
+    "sovereignguard/engine/masker.py",
+    "sovereignguard/recognizers/registry.py",
+    "sovereignguard/recognizers/base.py",
+    "sovereignguard/recognizers/universal/person_name.py",
+    "sovereignguard/recognizers/universal/date_of_birth.py",
+    "sovereignguard/recognizers/tn/national_id.py",
+    "sovereignguard/recognizers/fr/nir.py",
+    "sovereignguard/recognizers/ma/cin.py"
+  ],
+  "expected_architectural_change": "Introduce a dedicated 'RecognizerFactory' module that encapsulates recognizer instantiation and configuration, decoupling registry management from engine logic. Create a 'DetectionStrategy' interface that abstracts pattern execution, allowing recognizers to share common preprocessing/postprocessing logic. Consolidate overlapping regex patterns (e.g., in tn/phone.py, fr/phone.py, ma/phone.py) into a shared 'PhonePatternBuilder' utility. This reduces fan-out from 3.27 to <2.0 and increases cohesion within modules by grouping related responsibilities.",
+  "implementation_strategy": "1. Extract common regex pattern logic into a new 'sovereignguard/utils/patterns.py' module with classes like 'PhonePatternBuilder' and 'NameContextPatternBuilder'. 2. Refactor 'RecognizerRegistry' to use a 'RecognizerFactory' instead of direct imports, enabling dynamic registration without modifying registry.py. 3. Introduce a 'DetectionPipeline' class in masker.py that orchestrates recognizers, replacing inline loops with a strategy-based pipeline. 4. Refactor each recognizer to inherit from a 'PatternBasedRecognizer' base class that uses shared utilities, reducing code duplication. 5. Update tests to mock the new factory/pipeline layers, improving testability.",
+  "risks": "Refactoring recognizer base classes may temporarily break existing recognizers during migration. The new factory pattern adds indirection, which could increase complexity for new contributors until documented. However, risks are mitigated by the existing test suite (11 test files) and incremental implementation—each change can be validated independently."
+}

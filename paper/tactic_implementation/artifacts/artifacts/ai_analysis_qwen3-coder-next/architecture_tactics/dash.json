@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling in the self-improvement loop: evals/improve.py directly reads and writes to dash/instructions.py, knowledge/business/metrics.json, and knowledge/queries/common_queries.sql, while also reloading internal modules (dash.instructions, dash.team, etc.) and performing file I/O with hardcoded paths. This creates a fragile, monolithic improvement loop where any change to instruction format, knowledge structure, or reload logic requires touching multiple files and risks breaking the loop. The static analysis shows low maintainability indices for scripts/generate_data.py (39.56) and evals/improve.py (44.58), and the architecture proxy analysis confirms high fan-out (2.33) and deep import chains. Localized Modification addresses this by encapsulating the modification scope within a single, well-defined interface—specifically, by introducing a dedicated ImprovementStrategy abstraction that isolates how the improvement loop reads, analyzes, modifies, and validates instruction/knowledge files. This reduces ripple effects and keeps all change-related logic co-located, directly improving changeability and maintainability.",
+  "target_components": [
+    "evals/improve.py",
+    "dash/instructions.py",
+    "dash/paths.py"
+  ],
+  "expected_architectural_change": "Introduce a new module, e.g., dash/improvement/strategy.py, containing a Strategy interface (e.g., AbstractImprovementStrategy) with concrete implementations (e.g., InstructionsImprovementStrategy, KnowledgeImprovementStrategy). The improve.py module will depend on this abstraction instead of directly manipulating file paths and content. The current hard-coded ALLOWED_FILES dict and apply_changes() logic will be replaced by strategy objects that encapsulate file-specific modification rules, validation, and rollback behavior. dash/paths.py will be extended to expose structured paths for improvement assets.",
+  "implementation_strategy": "1. Create dash/improvement/ directory with strategy.py and implementations.py. 2. Define AbstractImprovementStrategy with methods: read(), analyze(), apply(), validate(), rollback(). 3. Implement InstructionsImprovementStrategy (handles instructions.py) and KnowledgeImprovementStrategy (handles metrics.json and queries.sql). 4. Refactor improve.py to inject strategies instead of hard-coded file paths and string replacements. 5. Update apply_changes() to delegate to strategies, and _restore() to use rollback() on strategies. 6. Update run_improvement_loop() to use strategy composition instead of manual file I/O. This keeps all modification logic localized per asset type, reduces coupling between the loop and file formats, and increases cohesion within each strategy.",
+  "risks": "Risk of over-engineering if the improvement loop is infrequently used. However, given the loop's critical role in system self-improvement and the current fragility (evidenced by evals/improve.py's low MI of 44.58), the risk is justified. Mitigation: implement incrementally—start with InstructionsImprovementStrategy alone, refactor improve.py to use it, then extend to knowledge strategies. This ensures backward compatibility and allows testing at each step."
+}

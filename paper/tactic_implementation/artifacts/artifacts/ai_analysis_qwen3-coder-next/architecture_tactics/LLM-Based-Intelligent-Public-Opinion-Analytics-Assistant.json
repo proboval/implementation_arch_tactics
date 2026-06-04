@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe violation of the localized modification principle: multiple middlewares (douyinmiddlewares.py, uc1middlewares.py, wangyimiddlewares.py, middlewares.py, ipmiddlewares.py, ucmiddlewares.py, fakemiddlewares.py) contain near-identical code for user-agent rotation, proxy handling, and retry logic. This duplication creates high coupling and low cohesion, causing ripple effects when changes are needed (e.g., updating a user-agent list requires edits in 7+ files). The static analysis confirms 'T4' (redundant code) and 'A1' (low modularity) as factors. The layered architecture shows excessive cross-module duplication in the hotsearchcrawler/middlewares layer, where each platform-specific middleware duplicates Scrapy middleware interfaces without abstraction.",
+  "target_components": [
+    "hotsearchcrawler/douyinmiddlewares.py",
+    "hotsearchcrawler/uc1middlewares.py",
+    "hotsearchcrawler/wangyimiddlewares.py",
+    "hotsearchcrawler/middlewares.py",
+    "hotsearchcrawler/ipmiddlewares.py",
+    "hotsearchcrawler/ucmiddlewares.py",
+    "hotsearchcrawler/fakemiddlewares.py"
+  ],
+  "expected_architectural_change": "Consolidate duplicated middleware logic into a single base middleware module (e.g., hotsearchcrawler/base_middlewares.py) with platform-specific subclasses. Introduce a unified UserAgentManager and RetryPolicy abstraction to eliminate redundant code. This increases cohesion within each middleware (single responsibility per class) and reduces modification scope to one file when common logic changes.",
+  "implementation_strategy": "1. Extract common Scrapy middleware patterns (user-agent rotation, retry logic, proxy handling) into BaseScrapyMiddleware. 2. Create platform-specific subclasses (e.g., DouyinMiddleware, UC1Middleware) that override only platform-specific behavior. 3. Refactor settings.py to use the new unified middleware paths. 4. Remove duplicated code from individual middleware files. 5. Add unit tests for the base middleware to ensure platform subclasses inherit correctly.",
+  "risks": "Low risk: The change is backward-compatible if middleware class names are preserved in settings.py. Scrapy's from_crawler pattern ensures existing spider configurations continue to work. Testing can be done incrementally per platform before full deployment."
+}

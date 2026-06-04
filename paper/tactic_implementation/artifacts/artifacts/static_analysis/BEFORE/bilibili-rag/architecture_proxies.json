@@ -1,0 +1,181 @@
+{
+  "python_files": 22,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.333333333333333,
+  "imports_graph": {
+    "app/config.py": [
+      "pydantic_settings",
+      "typing",
+      "pydantic",
+      "os"
+    ],
+    "app/models.py": [
+      "enum",
+      "typing",
+      "pydantic",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/database.py": [
+      "contextlib",
+      "os",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/__init__.py": [],
+    "app/main.py": [
+      "fastapi",
+      "contextlib",
+      "uvicorn",
+      "sys",
+      "app",
+      "loguru"
+    ],
+    "test/sync_cache_vectors.py": [
+      "asyncio",
+      "typing",
+      "app",
+      "loguru",
+      "sqlalchemy",
+      "argparse"
+    ],
+    "test/test_retrieval.py": [
+      "unittest",
+      "app"
+    ],
+    "test/debug_asr_single.py": [
+      "asyncio",
+      "subprocess",
+      "http",
+      "time",
+      "os",
+      "app",
+      "dashscope",
+      "loguru",
+      "json",
+      "shutil",
+      "argparse",
+      "httpx",
+      "urllib"
+    ],
+    "test/test_chat_routing.py": [
+      "unittest",
+      "app"
+    ],
+    "test/diagnose_rag.py": [
+      "asyncio",
+      "os",
+      "app",
+      "sys",
+      "sqlalchemy",
+      "dotenv",
+      "langchain_chroma"
+    ],
+    "app/routers/auth.py": [
+      "uuid",
+      "fastapi",
+      "app",
+      "loguru",
+      "sqlalchemy"
+    ],
+    "app/routers/__init__.py": [
+      "app"
+    ],
+    "app/routers/chat.py": [
+      "asyncio",
+      "openai",
+      "time",
+      "langchain",
+      "fastapi",
+      "re",
+      "typing",
+      "app",
+      "loguru",
+      "json",
+      "sqlalchemy"
+    ],
+    "app/routers/favorites.py": [
+      "fastapi",
+      "typing",
+      "pydantic",
+      "app",
+      "loguru"
+    ],
+    "app/routers/knowledge.py": [
+      "uuid",
+      "fastapi",
+      "typing",
+      "pydantic",
+      "app",
+      "loguru",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/content_fetcher.py": [
+      "asyncio",
+      "math",
+      "subprocess",
+      "time",
+      "typing",
+      "os",
+      "app",
+      "loguru",
+      "shutil",
+      "httpx",
+      "urllib"
+    ],
+    "app/services/wbi.py": [
+      "functools",
+      "time",
+      "hashlib",
+      "typing",
+      "httpx",
+      "urllib"
+    ],
+    "app/services/__init__.py": [
+      "app"
+    ],
+    "app/services/asr.py": [
+      "asyncio",
+      "subprocess",
+      "http",
+      "time",
+      "typing",
+      "os",
+      "app",
+      "dashscope",
+      "loguru",
+      "json",
+      "shutil",
+      "httpx",
+      "urllib"
+    ],
+    "app/services/rag.py": [
+      "langchain",
+      "typing",
+      "langchain_openai",
+      "app",
+      "loguru",
+      "langchain_community",
+      "langchain_chroma"
+    ],
+    "app/services/bilibili.py": [
+      "asyncio",
+      "qrcode",
+      "typing",
+      "urllib",
+      "app",
+      "loguru",
+      "io",
+      "httpx",
+      "base64"
+    ],
+    "app/services/retrieval.py": [
+      "re",
+      "collections",
+      "__future__",
+      "typing"
+    ]
+  }
+}

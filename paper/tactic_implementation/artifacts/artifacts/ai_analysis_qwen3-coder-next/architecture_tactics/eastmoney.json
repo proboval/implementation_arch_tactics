@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic coupling, particularly in the data sources layer. Static analysis shows avg_fan_out=4.56 and files like api_server.py importing 40+ modules directly, while src/data_sources/tushare_client.py and akshare_api.py contain 1000+ lines each with mixed concerns (API calls, data normalization, caching, business logic). The layered architecture is violated by circular imports (e.g., src/services importing from src/analysis which imports from src/data_sources which imports from src/services). This makes testing difficult (no isolation), analysis hard (large modules), and maintenance expensive (ripple effects). Decomposability directly addresses this by isolating concerns into smaller, testable modules.",
+  "target_components": [
+    "src/data_sources/tushare_client.py",
+    "src/data_sources/akshare_api.py",
+    "src/data_sources/data_source_manager.py",
+    "src/services/news_service.py",
+    "src/analysis/recommendation/engine.py",
+    "app/routers/recommendations.py"
+  ],
+  "expected_architectural_change": "The monolithic data_sources module will be split into dedicated submodules: src/data_sources/api_clients/ (TuShare/AkShare/YFinance clients), src/data_sources/fetchers/ (data retrieval), src/data_sources/transformers/ (normalization), src/data_sources/caching/ (caching logic). Services will depend on abstractions (interfaces) rather than concrete implementations. The recommendation engine will be decoupled from data fetching via dependency injection.",
+  "implementation_strategy": "1. Extract TuShare/AkShare/YFinance clients into src/data_sources/api_clients/ with shared interface. 2. Create src/data_sources/fetchers/ for data retrieval logic, using clients. 3. Introduce src/data_sources/transformers/ for data normalization. 4. Refactor src/data_sources/data_source_manager.py to route through fetchers. 5. Update src/services/news_service.py to depend on fetcher interfaces. 6. Refactor src/analysis/recommendation/engine.py to accept data sources via constructor. 7. Add integration tests for each new module.",
+  "risks": "Risk of temporary duplication during refactoring. Mitigation: Use feature branches and incremental PRs. Risk of breaking existing tests. Mitigation: Add tests before refactoring each module. Risk of performance overhead from additional layers. Mitigation: Profile after refactoring and optimize hot paths."
+}

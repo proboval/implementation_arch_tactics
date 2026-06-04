@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in service modules, especially in shuo/services/tts_pool.py and shuo/services/tts.py. The TTSPool directly instantiates TTSService with hardcoded callbacks and manages its lifecycle (start/cancel), violating separation of concerns. This forces changes to TTS connection logic when pool behavior evolves (e.g., adding retry or health checks), increasing modification scope beyond the service itself. Static analysis confirms high average fan-out (5.38) and C1/C2 factors (tight coupling, cyclic dependencies). Localized Modification narrows this scope by encapsulating TTS connection lifecycle within TTSService itself, reducing ripple effects to a single module.",
+  "target_components": [
+    "shuo/services/tts.py",
+    "shuo/services/tts_pool.py"
+  ],
+  "expected_architectural_change": "TTSService will own its own connection lifecycle (start/cancel) and internal state management, removing the need for TTSPool to directly instantiate and manage TTSService instances. TTSPool will become a pure connection cache that only dispatches ready instances, decoupling pool logic from service initialization details.",
+  "implementation_strategy": "1. Move connection establishment, retry, and cancellation logic from TTSPool into TTSService (e.g., add _connect() and _reconnect() methods). 2. Introduce a 'warm' state in TTSService to distinguish idle vs. active connections. 3. Refactor TTSPool.get() to request a warm TTSService instance and only rebind callbacks, removing direct instantiation. 4. Remove TTSPool's _fill_loop and _evict_stale logic, delegating warm-up and eviction to TTSService's internal state machine. 5. Add a clean interface: TTSService.warm() → bool, TTSService.is_warm → bool.",
+  "risks": "Low risk: The change is localized to two files and preserves external interfaces (TTSService API remains unchanged for Agent/conversation.py). Risk of temporary duplication during refactoring is mitigated by the small scope and existing test coverage in tests/test_update.py for state machine correctness."
+}

@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor modularity and high interdependence: all business logic (gdrive, streams, meta, routes) is tightly coupled to Flask and external services (Google Drive API, IMDb scraping), with no clear separation between concerns. Static analysis confirms 'C1' (high coupling) and 'C2' (low cohesion) factors in architecture_maintainability, and the single-package structure (8 files in one 'sgd' package) with avg_files_per_package=8.0 and max_directory_depth=2 shows no logical decomposition. For example, sgd/routes.py imports and directly instantiates sgd/gdrive.py and sgd/streams.py, while sgd/meta.py handles both HTTP requests and parsing logic, and sgd/utils.py contains both caching and scraping utilities. This makes changes to one concern (e.g., metadata source) ripple across unrelated modules. Decomposability addresses this by introducing clear module boundaries—separating data access (Google Drive, IMDb), business orchestration (stream processing), and transport (Flask routes)—to isolate failures, improve testability, and reduce ripple effects.",
+  "target_components": [
+    "sgd/routes.py",
+    "sgd/gdrive.py",
+    "sgd/meta.py",
+    "sgd/streams.py",
+    "sgd/utils.py"
+  ],
+  "expected_architectural_change": "The monolithic 'sgd' package will be restructured into layered subpackages: e.g., 'sgd/api/' (Flask routes), 'sgd/data/' (GoogleDrive, IMDb clients), 'sgd/domain/' (Streams, Meta, StreamResult), and 'sgd/shared/' (utils, cache). Each layer will depend only on abstractions (interfaces) rather than concrete implementations, reducing direct coupling between components like routes→gdrive→meta→utils. For instance, routes.py will depend on a StreamService interface instead of concrete GoogleDrive and Streams classes.",
+  "implementation_strategy": "1. Introduce interfaces (e.g., DriveClient, MetadataProvider, StreamService) in a new 'sgd/interfaces.py' or 'sgd/domain/protocols.py'. 2. Refactor GoogleDrive and Meta to implement these interfaces, injecting dependencies via constructor. 3. Extract a StreamService class that orchestrates GoogleDrive and Streams, decoupling it from Flask. 4. Move routes.py to depend only on StreamService, not concrete implementations. 5. Group related utilities (e.g., caching, sanitization) into 'sgd/shared/' and move domain-specific helpers (e.g., parse_title) into 'sgd/domain/'. 6. Add package __init__.py files to enforce layer boundaries. This enables incremental migration—e.g., first extract interfaces, then refactor one route handler at a time.",
+  "risks": "Risk of over-engineering: the current codebase is small (8 files), so excessive layering could add complexity. Mitigation: start with minimal decomposition (e.g., just separate data access from orchestration) and evolve iteratively. Another risk is breaking existing functionality during refactoring; mitigated by keeping backward-compatible interfaces and testing each layer in isolation before integration."
+}

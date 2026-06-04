@@ -1,0 +1,756 @@
+{
+  "python_files": 98,
+  "packages": 12,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 8.166666666666666,
+  "imports_graph": {
+    "webui.py": [
+      "src",
+      "argparse",
+      "logging",
+      "uvicorn",
+      "pathlib",
+      "sys",
+      "os"
+    ],
+    "tests/test_mail_code_reuse_guard.py": [
+      "src"
+    ],
+    "tests/test_duck_mail_service.py": [
+      "src"
+    ],
+    "tests/test_codex_auth_flow.py": [
+      "types",
+      "src",
+      "core"
+    ],
+    "tests/test_registration_otp_phase.py": [
+      "src"
+    ],
+    "tests/test_login_engine_otp_retry.py": [
+      "src"
+    ],
+    "tests/test_task_manager_status_broadcast.py": [
+      "src",
+      "asyncio"
+    ],
+    "tests/test_static_asset_versioning.py": [
+      "importlib",
+      "pathlib"
+    ],
+    "tests/check_otp_timing.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "logging",
+      "__future__"
+    ],
+    "tests/test_task_recovery.py": [
+      "fastapi",
+      "src",
+      "contextlib",
+      "asyncio"
+    ],
+    "tests/test_cpa_upload.py": [
+      "types",
+      "src"
+    ],
+    "tests/test_cloud_mail_service.py": [
+      "src",
+      "datetime"
+    ],
+    "tests/test_account_token_sync_status.py": [
+      "src"
+    ],
+    "tests/test_tempmail_timestamp_filter.py": [
+      "src",
+      "datetime"
+    ],
+    "tests/probe_tempmail.py": [
+      "typing",
+      "argparse",
+      "httpx",
+      "sys",
+      "time",
+      "json"
+    ],
+    "tests/test_batch_task_manager.py": [
+      "types",
+      "src",
+      "contextlib",
+      "asyncio"
+    ],
+    "tests/test_account_inbox_code_state.py": [
+      "src",
+      "contextlib",
+      "pathlib",
+      "asyncio"
+    ],
+    "tests/test_cloudflare_worker_mail_services.py": [
+      "src"
+    ],
+    "tests/test_mail_latest_code_preference.py": [
+      "src"
+    ],
+    "tests/test_default_webui_port_config.py": [
+      "src"
+    ],
+    "tests/test_codex_auth_export_route.py": [
+      "src",
+      "contextlib",
+      "pytest",
+      "asyncio",
+      "fastapi",
+      "zipfile",
+      "io",
+      "json"
+    ],
+    "tests/test_registration_task_cancellation.py": [
+      "src",
+      "contextlib",
+      "asyncio",
+      "types",
+      "pathlib",
+      "threading",
+      "time"
+    ],
+    "tests/test_register_protocol_baseline.py": [
+      "types",
+      "src",
+      "json"
+    ],
+    "tests/test_email_service_cloudmail_routes.py": [
+      "src",
+      "contextlib",
+      "pathlib",
+      "asyncio"
+    ],
+    "tests/test_email_service_backoff.py": [
+      "src"
+    ],
+    "tests/test_registration_proxy_failover.py": [
+      "types",
+      "src"
+    ],
+    "tests/test_newapi_upload.py": [
+      "types",
+      "src"
+    ],
+    "tests/test_proxy_batch_delete.py": [
+      "src",
+      "contextlib",
+      "pytest",
+      "asyncio",
+      "fastapi"
+    ],
+    "tests/test_email_service_duckmail_routes.py": [
+      "src",
+      "contextlib",
+      "pathlib",
+      "asyncio"
+    ],
+    "tests/test_mail_openai_detection.py": [
+      "src"
+    ],
+    "tests/test_tempmail_service.py": [
+      "src"
+    ],
+    "tests/test_newapi_service_routes.py": [
+      "src",
+      "contextlib",
+      "pytest",
+      "asyncio",
+      "fastapi"
+    ],
+    "tests/test_register_otp_integration.py": [
+      "types",
+      "src",
+      "json"
+    ],
+    "tests/test_settings_email_code.py": [
+      "types",
+      "fastapi",
+      "src",
+      "asyncio"
+    ],
+    "tests/test_outlook_service_config_and_health.py": [
+      "src"
+    ],
+    "tests/test_registration_email_service_failover.py": [
+      "src",
+      "contextlib",
+      "types",
+      "pathlib",
+      "threading"
+    ],
+    "src/__init__.py": [
+      "config",
+      "database",
+      "core",
+      "services"
+    ],
+    "src/database/models.py": [
+      "json",
+      "sqlalchemy",
+      "datetime",
+      "typing"
+    ],
+    "src/database/session.py": [
+      "models",
+      "typing",
+      "logging",
+      "contextlib",
+      "sqlalchemy",
+      "os"
+    ],
+    "src/database/__init__.py": [
+      "session",
+      "models"
+    ],
+    "src/database/crud.py": [
+      "models",
+      "typing",
+      "random",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "src/database/init_db.py": [
+      "session",
+      "models",
+      "config",
+      "argparse"
+    ],
+    "src/core/register.py": [
+      "re",
+      "dataclasses",
+      "database",
+      "typing",
+      "math",
+      "logging",
+      "curl_cffi",
+      "secrets",
+      "http_client",
+      "services",
+      "config",
+      "datetime",
+      "base64",
+      "urllib",
+      "time",
+      "json",
+      "openai"
+    ],
+    "src/core/http_client.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "config",
+      "time",
+      "json"
+    ],
+    "src/core/__init__.py": [
+      "register",
+      "utils",
+      "http_client",
+      "openai"
+    ],
+    "src/core/utils.py": [
+      "re",
+      "os",
+      "typing",
+      "logging",
+      "random",
+      "secrets",
+      "config",
+      "hashlib",
+      "string",
+      "datetime",
+      "sys",
+      "base64",
+      "time",
+      "uuid",
+      "pathlib",
+      "json"
+    ],
+    "src/core/login.py": [
+      "typing",
+      "register",
+      "config",
+      "datetime",
+      "base64",
+      "urllib",
+      "time",
+      "json"
+    ],
+    "src/core/dynamic_proxy.py": [
+      "re",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "config",
+      "json"
+    ],
+    "src/config/constants.py": [
+      "enum",
+      "random",
+      "datetime",
+      "typing"
+    ],
+    "src/config/__init__.py": [
+      "settings",
+      "constants"
+    ],
+    "src/config/settings.py": [
+      "dataclasses",
+      "constants",
+      "src",
+      "database",
+      "typing",
+      "ast",
+      "enum",
+      "pydantic",
+      "json",
+      "os"
+    ],
+    "src/web/__init__.py": [
+      "app"
+    ],
+    "src/web/task_manager.py": [
+      "typing",
+      "logging",
+      "concurrent",
+      "asyncio",
+      "collections",
+      "datetime",
+      "threading"
+    ],
+    "src/web/app.py": [
+      "database",
+      "typing",
+      "webui",
+      "logging",
+      "uvicorn",
+      "routes",
+      "secrets",
+      "asyncio",
+      "config",
+      "fastapi",
+      "hashlib",
+      "sys",
+      "pathlib",
+      "hmac",
+      "task_manager"
+    ],
+    "src/services/moe_mail.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "config",
+      "urllib",
+      "json",
+      "core",
+      "time"
+    ],
+    "src/services/__init__.py": [
+      "base",
+      "imap_mail",
+      "moe_mail",
+      "tempmail",
+      "outlook",
+      "temp_mail",
+      "cloud_mail",
+      "duck_mail",
+      "freemail"
+    ],
+    "src/services/cloud_mail.py": [
+      "base",
+      "typing",
+      "logging",
+      "random",
+      "config",
+      "string",
+      "datetime",
+      "core",
+      "time"
+    ],
+    "src/services/duck_mail.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "random",
+      "config",
+      "html",
+      "string",
+      "datetime",
+      "core",
+      "time"
+    ],
+    "src/services/tempmail.py": [
+      "re",
+      "base",
+      "database",
+      "typing",
+      "logging",
+      "config",
+      "datetime",
+      "core",
+      "time"
+    ],
+    "src/services/imap_mail.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "imaplib",
+      "config",
+      "email",
+      "time"
+    ],
+    "src/services/temp_mail.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "random",
+      "config",
+      "html",
+      "email",
+      "string",
+      "json",
+      "core",
+      "time"
+    ],
+    "src/services/freemail.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "config",
+      "core",
+      "time"
+    ],
+    "src/services/base.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "logging",
+      "config",
+      "enum",
+      "datetime",
+      "abc",
+      "time"
+    ],
+    "src/services/outlook/service.py": [
+      "base",
+      "typing",
+      "account",
+      "logging",
+      "health_checker",
+      "config",
+      "email_parser",
+      "providers",
+      "threading",
+      "time"
+    ],
+    "src/services/outlook/token_manager.py": [
+      "base",
+      "typing",
+      "account",
+      "logging",
+      "curl_cffi",
+      "json",
+      "threading",
+      "time"
+    ],
+    "src/services/outlook/email_parser.py": [
+      "re",
+      "base",
+      "typing",
+      "logging",
+      "config"
+    ],
+    "src/services/outlook/__init__.py": [
+      "service"
+    ],
+    "src/services/outlook/health_checker.py": [
+      "base",
+      "typing",
+      "logging",
+      "datetime",
+      "threading"
+    ],
+    "src/services/outlook/base.py": [
+      "dataclasses",
+      "typing",
+      "enum",
+      "datetime",
+      "time"
+    ],
+    "src/services/outlook/account.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "src/services/outlook/providers/imap_new.py": [
+      "base",
+      "token_manager",
+      "typing",
+      "account",
+      "logging",
+      "imaplib",
+      "email",
+      "imap_old"
+    ],
+    "src/services/outlook/providers/__init__.py": [
+      "base",
+      "graph_api",
+      "imap_new",
+      "imap_old"
+    ],
+    "src/services/outlook/providers/graph_api.py": [
+      "base",
+      "token_manager",
+      "typing",
+      "account",
+      "logging",
+      "curl_cffi",
+      "datetime",
+      "json"
+    ],
+    "src/services/outlook/providers/imap_old.py": [
+      "base",
+      "re",
+      "token_manager",
+      "typing",
+      "account",
+      "logging",
+      "imaplib",
+      "html",
+      "email"
+    ],
+    "src/services/outlook/providers/base.py": [
+      "base",
+      "dataclasses",
+      "typing",
+      "account",
+      "logging",
+      "abc"
+    ],
+    "src/web/routes/registration.py": [
+      "re",
+      "database",
+      "typing",
+      "logging",
+      "random",
+      "asyncio",
+      "config",
+      "fastapi",
+      "pydantic",
+      "sqlalchemy",
+      "datetime",
+      "uuid",
+      "threading",
+      "task_manager",
+      "core",
+      "time",
+      "services"
+    ],
+    "src/web/routes/accounts.py": [
+      "database",
+      "typing",
+      "logging",
+      "queue",
+      "threading",
+      "asyncio",
+      "config",
+      "fastapi",
+      "pydantic",
+      "csv",
+      "datetime",
+      "sqlalchemy",
+      "zipfile",
+      "io",
+      "core",
+      "json",
+      "services"
+    ],
+    "src/web/routes/__init__.py": [
+      "registration",
+      "upload",
+      "settings",
+      "payment",
+      "accounts",
+      "fastapi",
+      "email"
+    ],
+    "src/web/routes/email.py": [
+      "database",
+      "typing",
+      "logging",
+      "config",
+      "fastapi",
+      "pydantic",
+      "sqlalchemy",
+      "services"
+    ],
+    "src/web/routes/settings.py": [
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "config",
+      "fastapi",
+      "pydantic",
+      "sqlalchemy",
+      "datetime",
+      "pathlib",
+      "urllib",
+      "time",
+      "shutil",
+      "core",
+      "os"
+    ],
+    "src/web/routes/payment.py": [
+      "database",
+      "typing",
+      "logging",
+      "concurrent",
+      "curl_cffi",
+      "accounts",
+      "config",
+      "fastapi",
+      "pydantic",
+      "datetime",
+      "json",
+      "core",
+      "time"
+    ],
+    "src/web/routes/websocket.py": [
+      "database",
+      "logging",
+      "asyncio",
+      "fastapi",
+      "task_manager"
+    ],
+    "src/web/routes/upload/newapi_services.py": [
+      "database",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "core"
+    ],
+    "src/web/routes/upload/__init__.py": [],
+    "src/web/routes/upload/sub2api_services.py": [
+      "database",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "core"
+    ],
+    "src/web/routes/upload/cpa_services.py": [
+      "database",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "core"
+    ],
+    "src/web/routes/upload/tm_services.py": [
+      "database",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "core"
+    ],
+    "src/core/upload/sub2api_upload.py": [
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "datetime",
+      "json"
+    ],
+    "src/core/upload/__init__.py": [],
+    "src/core/upload/cpa_upload.py": [
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "config",
+      "datetime",
+      "urllib",
+      "json"
+    ],
+    "src/core/upload/newapi_upload.py": [
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "datetime",
+      "json"
+    ],
+    "src/core/upload/team_manager_upload.py": [
+      "logging",
+      "curl_cffi",
+      "database",
+      "typing"
+    ],
+    "src/core/openai/__init__.py": [],
+    "src/core/openai/token_refresh.py": [
+      "dataclasses",
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "config",
+      "datetime",
+      "json",
+      "time"
+    ],
+    "src/core/openai/codex_auth.py": [
+      "dataclasses",
+      "typing",
+      "config",
+      "core",
+      "time",
+      "services"
+    ],
+    "src/core/openai/payment.py": [
+      "playwright",
+      "subprocess",
+      "database",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "sys",
+      "uuid",
+      "threading"
+    ],
+    "src/core/openai/oauth.py": [
+      "dataclasses",
+      "typing",
+      "curl_cffi",
+      "secrets",
+      "config",
+      "hashlib",
+      "base64",
+      "urllib",
+      "time",
+      "json"
+    ],
+    "tests/e2e/runtime_functionality_check.py": [
+      "src",
+      "argparse",
+      "typing",
+      "httpx",
+      "sqlite3",
+      "asyncio",
+      "pathlib",
+      "time",
+      "uuid",
+      "websockets",
+      "json"
+    ]
+  }
+}

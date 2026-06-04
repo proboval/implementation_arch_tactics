@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "Static analysis reveals critical maintainability issues: 1) ce3.py and Claude-Eng-v2/main.py are extremely large monolithic files (MI=0.0 and 17.6 respectively), 2) 10+ tool modules have high coupling to external dependencies (e.g., e2bcodetool.py imports e2b_code_interpreter directly without abstraction), 3) ce3.py contains duplicated tool execution logic that appears in both _load_tools() and _execute_tool(), 4) File editing tools (fileedittool.py, diffeditortool.py) duplicate file I/O patterns. Localized Modification reduces modification scope by grouping related responsibilities into cohesive modules, directly addressing the high cyclomatic complexity and low cohesion observed in the static analysis. This tactic targets the most problematic files where changes currently ripple across the entire system.",
+  "target_components": [
+    "ce3.py",
+    "Claude-Eng-v2/main.py",
+    "tools/e2bcodetool.py",
+    "tools/fileedittool.py",
+    "tools/diffeditortool.py"
+  ],
+  "expected_architectural_change": "1) ce3.py will be split into: (a) ToolLoader (responsible for dynamic loading), (b) ToolExecutor (responsible for execution), (c) ConversationManager (handles history/token tracking). 2) Claude-Eng-v2/main.py will be decomposed into: (a) VoiceService, (b) TextToSpeech, (c) CodeExecutionOrchestrator. 3) File editing tools will be unified under a single FileOperation abstraction with concrete strategies (FullReplace, DiffBased, LineRange). 4) Tool modules will gain dependency injection points for external services (e.g., SandboxClient for e2b_code_interpreter).",
+  "implementation_strategy": "Step 1: Extract ToolExecutor from ce3._execute_tool() into its own class with clear input/output contracts. Step 2: Create FileOperation base class with strategies for different edit patterns, consolidating fileedittool.py and diffeditortool.py. Step 3: Introduce dependency injection in tool modules (e.g., pass SandboxClient instead of importing directly). Step 4: Apply Extract Class to ce3.py's Assistant, starting with token management. Each step targets specific files identified in static analysis, maintaining backward compatibility through adapter patterns during transition.",
+  "risks": "Risk of temporary duplication during refactoring; mitigated by implementing changes in small, testable increments with clear boundaries. Risk of over-engineering; mitigated by focusing only on files with MI < 40 (static analysis shows 5 files below threshold). Risk of breaking dynamic tool loading; mitigated by preserving existing import mechanism while adding abstraction layer underneath."
+}

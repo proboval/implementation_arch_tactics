@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: the monolithic main.py (1000+ lines) directly orchestrates all pipeline stages (OCR, SAM3, shape/icon processing, XML merge) and contains tightly coupled business logic, model loading, and CLI handling. The sam3_service/server.py and sam3_service/rmbg_server.py duplicate model loading and inference logic instead of reusing core modules. The modules/__init__.py exposes internal components without clear boundaries, and the Pipeline class in main.py directly instantiates and manages all processors, making it hard to test individual stages or swap implementations. This violates separation of concerns and increases ripple effects during changes. Decomposability addresses this by isolating concerns into well-defined modules with clear interfaces.",
+  "target_components": [
+    "main.py",
+    "sam3_service/server.py",
+    "sam3_service/rmbg_server.py",
+    "modules/__init__.py",
+    "modules/base.py"
+  ],
+  "expected_architectural_change": "Introduce a service layer (e.g., pipeline_service.py) that encapsulates the full pipeline orchestration, separating CLI entry points (main.py, scripts/merge_xml.py) and HTTP services (sam3_service/*.py) from core logic. Extract shared inference logic into a unified InferenceService class to eliminate duplication between sam3_service/server.py and sam3_service/rmbg_server.py. Refactor modules/__init__.py to expose only stable public APIs, hiding internal implementation details. This creates clear boundaries: CLI/HTTP layers depend on service interfaces, not internal modules.",
+  "implementation_strategy": "1. Create pipeline_service.py with a PipelineService class that encapsulates Pipeline initialization and process_image logic, exposing a clean interface (e.g., process_image(image_path, options)). 2. Create inference_service.py to centralize SAM3/RMBG model loading and inference, used by both PipelineService and HTTP handlers. 3. Refactor main.py to delegate to PipelineService, removing direct processor instantiation. 4. Update sam3_service/server.py and rmbg_server.py to use InferenceService instead of duplicating model loading. 5. Update modules/__init__.py to re-export only stable interfaces (e.g., PipelineService, InferenceService).",
+  "risks": "Risk of temporary duplication during refactoring; mitigated by incremental approach: implement PipelineService first, then refactor main.py, then sam3_service. HTTP services may require backward compatibility layers if external clients depend on current endpoints."
+}

@@ -1,0 +1,23 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and poor separation of concerns across pipeline modules, especially in the ML and pipeline layers. Static analysis shows avg_fan_out=3.97 and high import complexity (e.g., backend/pipeline/layer1.py imports 7+ modules including anthropic, json, backend, time, sys, datetime, typing). Files like backend/batch_submit.py and backend/batch_collect.py directly call internal pipeline functions without abstraction, creating ripple effects when API contracts change. The pipeline layer (layer0/layer1/layer2/similarity/alignment) mixes data access, business logic, and external API calls (Anthropic, Polygon) in the same modules, violating separation of concerns. This makes testing difficult (no clear test seams) and changes to one component (e.g., switching from batch to streaming API) require modifications across multiple files. Decomposability addresses this by isolating concerns into well-defined modules with clear interfaces, reducing modification scope and improving testability.",
+  "target_components": [
+    "backend/pipeline/layer0.py",
+    "backend/pipeline/layer1.py",
+    "backend/pipeline/layer2.py",
+    "backend/pipeline/alignment.py",
+    "backend/pipeline/similarity.py",
+    "backend/polygon/client.py",
+    "backend/ml/model.py",
+    "backend/ml/inference.py"
+  ],
+  "expected_architectural_change": "Introduce clear abstraction layers: (1) a pipeline interface layer defining contracts for news processing steps, (2) a data access layer abstracting database operations, (3) a service layer decoupling external API clients (Anthropic, Polygon) from business logic, and (4) a domain model layer for news/article entities. This creates a layered architecture where each module has a single responsibility and dependencies flow inward, reducing coupling between components.",
+  "implementation_strategy": "1. Extract pipeline interfaces (e.g., NewsProcessor, ArticleAnalyzer) defining method signatures without implementation. 2. Move database access into a dedicated data layer (backend/data/). 3. Wrap external API clients (Anthropic, Polygon) in service adapters (backend/services/). 4. Refactor pipeline modules to depend on interfaces, not concrete implementations. 5. Introduce domain models (Article, NewsEvent) to encapsulate data and behavior. 6. Add test seams by injecting dependencies via constructors. This can be done incrementally, starting with layer1.py as the most critical module, then layer0 and alignment.",
+  "risks": "Risk of over-engineering for a small monolith. However, given the 34 Python files and complex pipeline logic, the risk of uncontrolled coupling growth is higher than the cost of incremental decomposition. Starting with interface extraction and service adapters minimizes disruption while providing immediate maintainability gains."
+}

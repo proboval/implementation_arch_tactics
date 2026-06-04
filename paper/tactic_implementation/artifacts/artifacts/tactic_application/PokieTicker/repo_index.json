@@ -1,0 +1,613 @@
+{
+  "backend/batch_submit.py": {
+    "path": "backend/batch_submit.py",
+    "imports": [
+      "json",
+      "sys",
+      "time",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "anthropic",
+      "backend.config.settings",
+      "backend.database.get_conn",
+      "backend.pipeline.layer1.get_pending_articles",
+      "backend.pipeline.layer1._build_batch_prompt",
+      "backend.pipeline.layer1.BATCH_SIZE",
+      "backend.pipeline.layer1.MODEL",
+      "backend.pipeline.layer1.MAX_OUTPUT_TOKENS"
+    ],
+    "classes": [],
+    "functions": [
+      "get_top_tickers",
+      "build_batch_requests",
+      "submit_batch",
+      "main"
+    ],
+    "size": 4983
+  },
+  "backend/config.py": {
+    "path": "backend/config.py",
+    "imports": [
+      "pydantic_settings.BaseSettings",
+      "pathlib.Path"
+    ],
+    "classes": [
+      "Settings"
+    ],
+    "functions": [],
+    "size": 394
+  },
+  "backend/bulk_fetch.py": {
+    "path": "backend/bulk_fetch.py",
+    "imports": [
+      "json",
+      "time",
+      "sys",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone",
+      "backend.config.settings",
+      "backend.database.get_conn",
+      "backend.polygon.client.fetch_ohlc",
+      "backend.polygon.client.fetch_news",
+      "backend.polygon.client.http_get",
+      "backend.polygon.client.BASE",
+      "backend.pipeline.alignment.align_news_for_symbol",
+      "backend.pipeline.layer0.run_layer0"
+    ],
+    "classes": [],
+    "functions": [
+      "rate_limit",
+      "fetch_ticker_name",
+      "fetch_and_store_ohlc",
+      "fetch_and_store_news",
+      "main"
+    ],
+    "size": 7656
+  },
+  "backend/database.py": {
+    "path": "backend/database.py",
+    "imports": [
+      "sqlite3",
+      "backend.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "get_conn",
+      "init_db"
+    ],
+    "size": 3150
+  },
+  "backend/batch_collect.py": {
+    "path": "backend/batch_collect.py",
+    "imports": [
+      "json",
+      "sys",
+      "time",
+      "anthropic",
+      "backend.config.settings",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "check_status",
+      "collect_results",
+      "main"
+    ],
+    "size": 5372
+  },
+  "backend/migration.py": {
+    "path": "backend/migration.py",
+    "imports": [
+      "csv",
+      "json",
+      "re",
+      "pathlib.Path",
+      "backend.database.get_conn",
+      "backend.database.init_db",
+      "backend.config.PROJECT_ROOT"
+    ],
+    "classes": [],
+    "functions": [
+      "migrate_tickers",
+      "migrate_ohlc",
+      "migrate_news",
+      "migrate_parsed_output",
+      "_float",
+      "_int",
+      "run_migration"
+    ],
+    "size": 6785
+  },
+  "backend/weekly_update.py": {
+    "path": "backend/weekly_update.py",
+    "imports": [
+      "json",
+      "time",
+      "sys",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone",
+      "backend.config.settings",
+      "backend.database.get_conn",
+      "backend.polygon.client.fetch_ohlc",
+      "backend.polygon.client.fetch_news",
+      "backend.polygon.client.http_get",
+      "backend.polygon.client.BASE",
+      "backend.pipeline.alignment.align_news_for_symbol",
+      "backend.pipeline.layer0.run_layer0"
+    ],
+    "classes": [],
+    "functions": [
+      "rate_limit",
+      "update_ohlc",
+      "update_news",
+      "main"
+    ],
+    "size": 6569
+  },
+  "backend/pipeline/similarity.py": {
+    "path": "backend/pipeline/similarity.py",
+    "imports": [
+      "os",
+      "time",
+      "pickle",
+      "typing.Dict",
+      "typing.Any",
+      "typing.List",
+      "typing.Optional",
+      "numpy",
+      "sklearn.feature_extraction.text.TfidfVectorizer",
+      "sklearn.metrics.pairwise.cosine_similarity",
+      "backend.config.settings",
+      "backend.config.PROJECT_ROOT",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "_needs_rebuild",
+      "_build_index",
+      "_load_index",
+      "find_similar"
+    ],
+    "size": 8174
+  },
+  "backend/pipeline/alignment.py": {
+    "path": "backend/pipeline/alignment.py",
+    "imports": [
+      "datetime.datetime",
+      "datetime.timedelta",
+      "typing.Optional",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "align_news_for_symbol",
+      "_to_iso_date",
+      "_shift_to_trade_day",
+      "_pct"
+    ],
+    "size": 3367
+  },
+  "backend/pipeline/layer0.py": {
+    "path": "backend/pipeline/layer0.py",
+    "imports": [
+      "json",
+      "re",
+      "typing.List",
+      "typing.Tuple",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "_check_article",
+      "run_layer0"
+    ],
+    "size": 2548
+  },
+  "backend/pipeline/layer1.py": {
+    "path": "backend/pipeline/layer1.py",
+    "imports": [
+      "json",
+      "re",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "anthropic",
+      "backend.config.settings",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "_get_keywords",
+      "_extract_relevant_text",
+      "_build_batch_prompt",
+      "get_pending_articles",
+      "process_batch_group",
+      "run_layer1",
+      "submit_batch_api",
+      "check_batch_status",
+      "collect_batch_results"
+    ],
+    "size": 13278
+  },
+  "backend/pipeline/layer2.py": {
+    "path": "backend/pipeline/layer2.py",
+    "imports": [
+      "json",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Optional",
+      "typing.List",
+      "datetime.datetime",
+      "datetime.timezone",
+      "anthropic",
+      "backend.config.settings",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "get_cached",
+      "analyze_article",
+      "generate_story",
+      "analyze_range"
+    ],
+    "size": 8600
+  },
+  "backend/polygon/client.py": {
+    "path": "backend/polygon/client.py",
+    "imports": [
+      "time",
+      "json",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "requests",
+      "backend.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "_headers",
+      "http_get",
+      "fetch_ohlc",
+      "fetch_news",
+      "search_tickers"
+    ],
+    "size": 4510
+  },
+  "backend/ml/features.py": {
+    "path": "backend/ml/features.py",
+    "imports": [
+      "pandas",
+      "numpy",
+      "backend.database.get_conn",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "_load_news_features",
+      "_load_ohlc",
+      "build_features",
+      "build_features_multi"
+    ],
+    "size": 6532
+  },
+  "backend/ml/features_v2.py": {
+    "path": "backend/ml/features_v2.py",
+    "imports": [
+      "pandas",
+      "numpy",
+      "sklearn.feature_extraction.text.TfidfVectorizer",
+      "sklearn.decomposition.TruncatedSVD",
+      "backend.database.get_conn",
+      "backend.ml.features.build_features",
+      "backend.ml.features.FEATURE_COLS"
+    ],
+    "classes": [],
+    "functions": [
+      "_load_market_sentiment",
+      "_add_candle_patterns",
+      "_build_text_features",
+      "build_features_v2",
+      "get_feature_cols_v2_full"
+    ],
+    "size": 7918
+  },
+  "backend/ml/model.py": {
+    "path": "backend/ml/model.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "datetime.datetime",
+      "numpy",
+      "joblib",
+      "xgboost.XGBClassifier",
+      "backend.ml.features.build_features",
+      "backend.ml.features.build_features_multi",
+      "backend.ml.features.FEATURE_COLS",
+      "sklearn.metrics.accuracy_score",
+      "sklearn.metrics.precision_score",
+      "sklearn.metrics.recall_score",
+      "sklearn.metrics.f1_score",
+      "sklearn.metrics.accuracy_score",
+      "sklearn.metrics.precision_score",
+      "sklearn.metrics.recall_score",
+      "sklearn.metrics.f1_score"
+    ],
+    "classes": [],
+    "functions": [
+      "train",
+      "train_unified",
+      "predict"
+    ],
+    "size": 7083
+  },
+  "backend/ml/experiment.py": {
+    "path": "backend/ml/experiment.py",
+    "imports": [
+      "numpy",
+      "xgboost.XGBClassifier",
+      "sklearn.linear_model.LogisticRegression",
+      "sklearn.ensemble.RandomForestClassifier",
+      "sklearn.metrics.accuracy_score",
+      "sklearn.metrics.precision_score",
+      "sklearn.metrics.recall_score",
+      "sklearn.metrics.f1_score",
+      "backend.ml.features_v2.build_features_v2",
+      "backend.ml.features_v2.FEATURE_COLS",
+      "backend.ml.features_v2.FEATURE_COLS_V2_MARKET",
+      "backend.ml.features_v2.FEATURE_COLS_V2_CANDLE",
+      "backend.ml.features_v2.get_feature_cols_v2_full",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "_expanding_cv",
+      "run_experiment"
+    ],
+    "size": 5304
+  },
+  "backend/ml/train.py": {
+    "path": "backend/ml/train.py",
+    "imports": [
+      "argparse",
+      "time",
+      "backend.database.get_conn",
+      "backend.ml.model.train",
+      "backend.ml.backtest.run_backtest",
+      "backend.ml.lstm_model.train_and_save_lstm"
+    ],
+    "classes": [],
+    "functions": [
+      "get_symbols",
+      "main"
+    ],
+    "size": 2654
+  },
+  "backend/ml/inference.py": {
+    "path": "backend/ml/inference.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "numpy",
+      "pandas",
+      "joblib",
+      "backend.database.get_conn",
+      "backend.ml.features.build_features",
+      "backend.ml.features.FEATURE_COLS",
+      "backend.ml.lstm_model.predict_lstm"
+    ],
+    "classes": [],
+    "functions": [
+      "_load_recent_news",
+      "_compute_window_features",
+      "_find_similar_periods",
+      "generate_forecast",
+      "_build_conclusion",
+      "_impact_score"
+    ],
+    "size": 15038
+  },
+  "backend/ml/backtest.py": {
+    "path": "backend/ml/backtest.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "numpy",
+      "xgboost.XGBClassifier",
+      "sklearn.metrics.accuracy_score",
+      "sklearn.metrics.precision_score",
+      "sklearn.metrics.recall_score",
+      "sklearn.metrics.f1_score",
+      "backend.ml.features.build_features",
+      "backend.ml.features.build_features_multi",
+      "backend.ml.features.FEATURE_COLS"
+    ],
+    "classes": [],
+    "functions": [
+      "_run_cv",
+      "run_backtest",
+      "run_backtest_unified"
+    ],
+    "size": 6952
+  },
+  "backend/ml/similar.py": {
+    "path": "backend/ml/similar.py",
+    "imports": [
+      "numpy",
+      "pandas",
+      "backend.ml.features.build_features",
+      "backend.ml.features.FEATURE_COLS",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "find_similar_days",
+      "get_forward_return"
+    ],
+    "size": 5667
+  },
+  "backend/ml/lstm_model.py": {
+    "path": "backend/ml/lstm_model.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "backend/api/main.py": {
+    "path": "backend/api/main.py",
+    "imports": [
+      "fastapi.FastAPI",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "backend.database.init_db",
+      "backend.api.routers.stocks",
+      "backend.api.routers.news",
+      "backend.api.routers.analysis",
+      "backend.api.routers.predict"
+    ],
+    "classes": [],
+    "functions": [
+      "startup",
+      "health"
+    ],
+    "size": 942
+  },
+  "backend/api/routers/stocks.py": {
+    "path": "backend/api/routers/stocks.py",
+    "imports": [
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.Query",
+      "fastapi.HTTPException",
+      "fastapi.BackgroundTasks",
+      "pydantic.BaseModel",
+      "typing.Optional",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone",
+      "backend.database.get_conn",
+      "backend.polygon.client.fetch_ohlc",
+      "backend.polygon.client.fetch_news",
+      "backend.polygon.client.search_tickers",
+      "json"
+    ],
+    "classes": [
+      "AddTickerRequest"
+    ],
+    "functions": [
+      "list_tickers",
+      "search",
+      "get_ohlc",
+      "add_ticker",
+      "_fetch_ticker_data"
+    ],
+    "size": 5272
+  },
+  "backend/api/routers/analysis.py": {
+    "path": "backend/api/routers/analysis.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "pydantic.BaseModel",
+      "typing.Optional",
+      "backend.pipeline.layer2.analyze_article",
+      "backend.pipeline.layer2.generate_story",
+      "backend.pipeline.layer2.analyze_range",
+      "backend.pipeline.similarity.find_similar",
+      "backend.database.get_conn"
+    ],
+    "classes": [
+      "DeepAnalysisRequest",
+      "RangeAnalysisRequest",
+      "SimilarRequest",
+      "StoryRequest"
+    ],
+    "functions": [
+      "deep_analysis",
+      "create_story",
+      "range_analysis",
+      "range_analysis_local",
+      "similar_news"
+    ],
+    "size": 6597
+  },
+  "backend/api/routers/predict.py": {
+    "path": "backend/api/routers/predict.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Query",
+      "backend.ml.model.predict",
+      "backend.ml.inference.generate_forecast",
+      "backend.ml.similar.find_similar_days"
+    ],
+    "classes": [],
+    "functions": [
+      "get_prediction",
+      "get_backtest",
+      "get_forecast",
+      "get_similar_days"
+    ],
+    "size": 1833
+  },
+  "backend/api/routers/pipeline.py": {
+    "path": "backend/api/routers/pipeline.py",
+    "imports": [
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.BackgroundTasks",
+      "pydantic.BaseModel",
+      "typing.Optional",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone",
+      "backend.database.get_conn",
+      "backend.polygon.client.fetch_ohlc",
+      "backend.polygon.client.fetch_news",
+      "backend.pipeline.layer0.run_layer0",
+      "backend.pipeline.layer1.get_pending_articles",
+      "backend.pipeline.layer1.run_layer1",
+      "backend.pipeline.layer1.check_batch_status",
+      "backend.pipeline.layer1.collect_batch_results",
+      "backend.pipeline.alignment.align_news_for_symbol",
+      "json"
+    ],
+    "classes": [
+      "FetchRequest",
+      "ProcessRequest"
+    ],
+    "functions": [
+      "trigger_fetch",
+      "_do_fetch",
+      "trigger_process",
+      "get_batch_status"
+    ],
+    "size": 4300
+  },
+  "backend/api/routers/news.py": {
+    "path": "backend/api/routers/news.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.Query",
+      "typing.Optional",
+      "backend.database.get_conn"
+    ],
+    "classes": [],
+    "functions": [
+      "get_news_for_date",
+      "get_news_for_range",
+      "get_news_particles",
+      "get_news_categories",
+      "get_news_timeline"
+    ],
+    "size": 8571
+  }
+}

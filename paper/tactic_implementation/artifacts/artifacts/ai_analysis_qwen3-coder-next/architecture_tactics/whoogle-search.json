@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low modularity, especially in the core search processing pipeline. The Search class in app/utils/search.py directly orchestrates both CSE API calls and HTML scraping, while routes.py contains complex search result processing logic that mixes concerns (e.g., HTML parsing, widget injection, error handling). The filter.py module has 1,000+ lines handling HTML transformation, ad removal, and result formatting in a single class. This tight coupling makes it difficult to test individual components, understand data flow, and isolate failures. Decomposability (AT41) directly addresses this by separating responsibilities into focused modules, enabling isolated testing and reducing the scope of modifications.",
+  "target_components": [
+    "app/utils/search.py",
+    "app/routes.py",
+    "app/filter.py"
+  ],
+  "expected_architectural_change": "The Search class will be split into dedicated strategy classes (CSESearchStrategy, ScrapeSearchStrategy) implementing a common interface. routes.py search endpoint logic will be extracted into a SearchOrchestrator that delegates to strategies. The monolithic Filter class will be decomposed into focused processors (AdsFilter, ContentFilter, LinkProcessor, WidgetInjector) each handling a single responsibility. This creates clear boundaries between concerns and enables independent testing.",
+  "implementation_strategy": "1. Define SearchStrategy interface with generate_response() method. 2. Implement CSESearchStrategy and ScrapeSearchStrategy classes. 3. Refactor Search class to delegate to strategy based on config. 4. Extract widget injection logic from routes.py into WidgetInjector class. 5. Decompose Filter class into separate processors (AdsFilter, ContentFilter, etc.) with clear interfaces. 6. Update tests to target individual processors instead of integration tests.",
+  "risks": "Refactoring the Filter class may temporarily break existing tests until new processor interfaces are stabilized. The decomposition requires careful handling of shared state (e.g., user_key, config) across new modules. There is risk of over-engineering if decomposition goes too granular; must balance modularity with practical maintainability gains."
+}

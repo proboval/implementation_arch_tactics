@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic coupling: 81 Python files in the fastcode package have an average fan-out of 6.1, with critical modules like main.py, retriever.py, and graph_builder.py importing over 30 internal modules each. Static analysis shows 'C1' (high coupling) and 'C2' (low cohesion) as top maintainability factors. Files like fastcode/main.py (2000+ lines) and fastcode/retriever.py act as central hubs, creating ripple effects when modified. The layered architecture description masks a de facto 'big ball of mud' pattern where modules like parser.py, embedder.py, and vector_store.py are tightly interwoven. Decomposability directly addresses this by isolating modules into cohesive units with clear interfaces, reducing modification scope and enabling independent testing.",
+  "target_components": [
+    "fastcode/main.py",
+    "fastcode/retriever.py",
+    "fastcode/graph_builder.py",
+    "fastcode/indexer.py",
+    "fastcode/parser.py",
+    "fastcode/vector_store.py",
+    "fastcode/embedder.py"
+  ],
+  "expected_architectural_change": "Current monolithic modules will be split into cohesive, single-responsibility components. For example, fastcode/retriever.py (currently handling semantic search, BM25, graph traversal, and agency mode) will be refactored into separate retrieval strategy classes (SemanticRetriever, KeywordRetriever, GraphRetriever) orchestrated by a high-level RetrieverCoordinator. Similarly, fastcode/main.py will be reduced to an orchestration layer, delegating to dedicated domain services. New abstractions like RetrievalPipeline and IndexManager will emerge to decouple responsibilities.",
+  "implementation_strategy": "1. Identify cohesive subdomains within monolithic modules (e.g., separate retrieval strategies in retriever.py). 2. Extract each subdomain into its own module with explicit interfaces (e.g., RetrieverStrategy interface). 3. Introduce a coordinator pattern to manage interactions between new modules. 4. Replace direct imports with dependency injection via a service locator or factory. 5. Add integration tests for each new module to verify isolation. 6. Gradually refactor main.py to delegate to domain services instead of containing business logic.",
+  "risks": "Temporary performance degradation during transition, risk of introducing circular dependencies if module boundaries are poorly defined, and potential for increased memory usage due to additional abstraction layers. Mitigation: implement changes incrementally, use profiling to monitor performance, and enforce module boundary checks via CI."
+}

@@ -1,0 +1,54 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "utils.py": [
+      "re",
+      "playwright",
+      "os",
+      "unicodedata",
+      "typing",
+      "logging",
+      "asyncio",
+      "datetime",
+      "bs4",
+      "time"
+    ],
+    "main.py": [
+      "dataclasses",
+      "dotenv",
+      "playwright",
+      "utils",
+      "os",
+      "typing",
+      "logging",
+      "secrets",
+      "contextlib",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "datetime",
+      "time",
+      "cachetools"
+    ],
+    "tests/test_utils.py": [
+      "pytest",
+      "utils",
+      "os",
+      "asyncio"
+    ],
+    "tests/test_main.py": [
+      "playwright",
+      "main",
+      "secrets",
+      "pytest",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "json",
+      "cachetools"
+    ]
+  }
+}

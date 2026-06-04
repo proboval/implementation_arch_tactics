@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits a critical maintainability issue: a monolithic subgen.py file (over 1000 lines implied by truncation and imports) that handles server integrations, Whisper transcription, queue management, subtitle logic, and environment variable parsing all in one file. Static analysis confirms high average fan-out (6.6) and poor modularity (avg_files_per_package=13.0, only 1 package). Tests reveal tight coupling: conftest.py must mock entire ML stacks at import time because subgen.py starts worker threads on import, and test_bug_fixes.py explicitly identifies scoping bugs caused by shared global state and lack of encapsulation. The 'script_based' architecture type (confidence=1.0) confirms this is a procedural script, not a modular system. Decomposability directly addresses this by isolating responsibilities into separate modules (e.g., queue, subtitle, environment, server hooks), reducing cognitive load and enabling targeted testing.",
+  "target_components": [
+    "subgen.py",
+    "tests/conftest.py",
+    "tests/test_*.py"
+  ],
+  "expected_architectural_change": "Split subgen.py into cohesive, loosely-coupled modules: (1) subgen/queue.py for DeduplicatedQueue and worker, (2) subgen/subtitle.py for subtitle generation logic, (3) subgen/environment.py for get_env_with_fallback and config parsing, (4) subgen/server/plex.py, subgen/server/jellyfin.py, etc., (5) subgen/transcribe.py for Whisper integration. Each module will have clear interfaces and minimal dependencies. The main entry point (subgen.py) becomes a thin orchestrator. Tests will import only required modules, eliminating the need for conftest.py to mock entire ML stacks.",
+  "implementation_strategy": "1. Extract environment variable handling into subgen/environment.py: move get_env_with_fallback and convert_to_bool, encapsulate config loading. 2. Extract queue logic into subgen/queue.py: move DeduplicatedQueue and transcription_worker, remove global task_queue from subgen.py. 3. Extract subtitle generation into subgen/subtitle.py: move gen_subtitles_queue, should_skip_file, get_subtitle_languages. 4. Extract server integrations into subgen/server/*.py: move /plex, /jellyfin, /tautulli handlers into separate files with dedicated FastAPI routers. 5. Refactor subgen.py to import and wire modules. 6. Update tests to import from new modules, removing conftest.py's heavy mocking. 7. Add module-level docstrings and explicit __init__.py exports.",
+  "risks": "Risk of temporary test flakiness during refactoring due to import path changes. Risk of circular dependencies if module boundaries are poorly defined (e.g., subtitle.py depending on environment.py which depends on queue.py). Mitigation: Use dependency injection for shared state (e.g., pass config object instead of globals), and refactor incrementally with backward-compatible imports."
+}

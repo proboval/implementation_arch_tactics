@@ -1,0 +1,26 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of localized modification support due to rampant cross-module duplication and scattered logic. Key evidence: (1) db_manager.py and chanlun_ai.py both contain duplicate database initialization and connection logic, with chanlun_ai.py falling back to manual sqlite3.connect() when db_manager is unavailable; (2) stats_enhanced.py, stats_by_symbol.py, stats_by_interval.py, and stats_report.py all duplicate identical database queries and JSON parsing logic; (3) prompt_builder.py, history_context.py, and learning_feedback.py all independently implement SQL queries to fetch analysis_snapshot records; (4) evaluate_outcome.py and backtest_validator.py duplicate outcome evaluation logic. This forces changes to span multiple files, increasing modification scope and risk. Localized Modification will consolidate these responsibilities into cohesive modules with high cohesion, reducing ripple effects.",
+  "target_components": [
+    "db_manager.py",
+    "chanlun_ai.py",
+    "stats_enhanced.py",
+    "stats_by_symbol.py",
+    "stats_by_interval.py",
+    "stats_report.py",
+    "prompt_builder.py",
+    "history_context.py",
+    "learning_feedback.py",
+    "evaluate_outcome.py",
+    "backtest_validator.py"
+  ],
+  "expected_architectural_change": "Consolidate duplicated database access, JSON parsing, and evaluation logic into dedicated service modules. Create a unified data access layer (e.g., analysis_repository.py) that encapsulates all SQLite operations, and a unified evaluation service (evaluation_service.py) that centralizes outcome computation. This will reduce the number of files requiring modification for common operations from 5-7 to 1-2.",
+  "implementation_strategy": "1. Extract common database query patterns into AnalysisRepository class in a new analysis_repository.py module. 2. Extract outcome evaluation logic into EvaluationService class in evaluation_service.py. 3. Refactor chanlun_ai.py to use AnalysisRepository instead of duplicating init_db/get_db_conn. 4. Refactor stats modules to use AnalysisRepository instead of duplicating fetch_evaluated_records. 5. Refactor evaluate_outcome.py and backtest_validator.py to use EvaluationService instead of duplicating evaluate_outcome logic. 6. Introduce clear interfaces (e.g., AbstractAnalysisRepository, AbstractEvaluationService) to support future testability.",
+  "risks": "Low risk: Changes are additive and backward-compatible. Existing modules can be refactored incrementally. Database schema remains unchanged. The main risk is temporary duplication during migration, which can be mitigated by keeping both old and new implementations side-by-side until all consumers are migrated."
+}

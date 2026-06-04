@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in service modules, especially in app/services/team.py and app/services/redeem_flow.py. Static analysis shows avg_fan_out=4.36 and high import complexity (e.g., redeem_flow.py imports 12+ services). The team.py service directly handles business logic, API calls, state transitions, and error recovery in monolithic methods (e.g., ensure_access_token, import_team_single, _handle_api_error), making changes risky and broad. The _handle_api_error method alone spans ~100 lines with nested conditionals and side effects across multiple models (Team, RedemptionCode). This violates localized modification: changes to error handling, state transitions, or business rules ripple across unrelated code paths. Localized Modification will narrow scope by extracting cohesive units (e.g., TeamStatusManager, ErrorClassifier) and isolating change triggers.",
+  "target_components": [
+    "app/services/team.py",
+    "app/services/redeem_flow.py",
+    "app/services/warranty.py"
+  ],
+  "expected_architectural_change": "Decompose monolithic service classes into focused, cohesive modules: (1) Extract TeamStatusManager to handle state transitions and error classification; (2) Extract RedemptionFlowValidator to encapsulate code validation and reuse rules; (3) Extract TeamCapacityEnforcer to manage seat calculations and pending invite logic. This reduces fan-out and isolates responsibilities, ensuring modifications to one concern (e.g., quota logic) do not affect unrelated logic (e.g., token refresh).",
+  "implementation_strategy": "Step 1: Identify cohesive clusters via import graph and method dependencies (e.g., _occupied_slots, _remaining_slots, _handle_api_error form a cluster). Step 2: Create new modules (e.g., app/services/team_status.py, app/services/capacity.py) and move related methods with minimal refactoring. Step 3: Update callers to use new abstractions via dependency injection (e.g., inject TeamStatusManager into TeamService). Step 4: Gradually remove duplicated logic and consolidate error handling. This incremental approach preserves existing behavior while improving modularity.",
+  "risks": "Risk of temporary duplication during migration and potential circular dependencies if extraction boundaries are poorly chosen. Mitigation: Use static analysis to validate fan-out reduction and cohesion increase post-refactoring; ensure each extracted module has a single, clear responsibility (e.g., only state transitions, no API calls)."
+}

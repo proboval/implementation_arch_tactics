@@ -1,0 +1,123 @@
+{
+  "python_files": 31,
+  "packages": 5,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 6.2,
+  "imports_graph": {
+    "setup.py": [
+      "setuptools"
+    ],
+    "tests/test_registry.py": [
+      "dj_control_room",
+      "django"
+    ],
+    "tests/test_admin.py": [
+      "base",
+      "django"
+    ],
+    "tests/test_utils.py": [
+      "dj_control_room",
+      "unittest",
+      "django"
+    ],
+    "tests/conftest.py": [
+      "os",
+      "sys",
+      "django"
+    ],
+    "tests/__init__.py": [],
+    "tests/base.py": [
+      "django"
+    ],
+    "dj_control_room/admin_integration.py": [
+      "featured_panels",
+      "panel_admin_registrar",
+      "registry",
+      "logging",
+      "utils",
+      "django"
+    ],
+    "dj_control_room/panel_validator.py": [],
+    "dj_control_room/panel_admin_registrar.py": [
+      "featured_panels",
+      "registry",
+      "logging",
+      "utils",
+      "django"
+    ],
+    "dj_control_room/models.py": [
+      "django"
+    ],
+    "dj_control_room/registry.py": [
+      "panel_validator",
+      "featured_panels",
+      "sys",
+      "logging",
+      "importlib"
+    ],
+    "dj_control_room/conf.py": [
+      "django"
+    ],
+    "dj_control_room/__init__.py": [
+      "logging"
+    ],
+    "dj_control_room/apps.py": [
+      "admin_integration",
+      "registry",
+      "django"
+    ],
+    "dj_control_room/admin.py": [
+      "admin_integration",
+      "models",
+      "django"
+    ],
+    "dj_control_room/utils.py": [
+      "conf",
+      "featured_panels",
+      "registry",
+      "logging",
+      "django"
+    ],
+    "dj_control_room/urls.py": [
+      "django"
+    ],
+    "dj_control_room/views.py": [
+      "conf",
+      "featured_panels",
+      "registry",
+      "utils",
+      "django"
+    ],
+    "dj_control_room/featured_panels.py": [],
+    "dj_control_room/panels.py": [],
+    "example_project/manage.py": [
+      "os",
+      "sys",
+      "django"
+    ],
+    "example_project/example_project/example_panels.py": [],
+    "example_project/example_project/asgi.py": [
+      "os",
+      "django"
+    ],
+    "example_project/example_project/__init__.py": [],
+    "example_project/example_project/apps.py": [
+      "dj_control_room",
+      "example_panels",
+      "django"
+    ],
+    "example_project/example_project/settings.py": [
+      "pathlib",
+      "os"
+    ],
+    "example_project/example_project/urls.py": [
+      "django"
+    ],
+    "example_project/example_project/wsgi.py": [
+      "os",
+      "django"
+    ],
+    "example_project/example_project/management/__init__.py": [],
+    "example_project/example_project/management/commands/__init__.py": []
+  }
+}

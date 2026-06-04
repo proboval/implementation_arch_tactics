@@ -1,0 +1,133 @@
+{
+  ".agent/skills/superpowers-workflow/scripts/record_activation.py": {
+    "path": ".agent/skills/superpowers-workflow/scripts/record_activation.py",
+    "imports": [
+      "__future__.annotations",
+      "argparse",
+      "datetime.datetime",
+      "datetime.timezone",
+      "pathlib.Path"
+    ],
+    "classes": [],
+    "functions": [
+      "find_repo_root",
+      "main"
+    ],
+    "size": 1035
+  },
+  ".agent/skills/superpowers-workflow/scripts/write_artifact.py": {
+    "path": ".agent/skills/superpowers-workflow/scripts/write_artifact.py",
+    "imports": [
+      "__future__.annotations",
+      "argparse",
+      "sys",
+      "pathlib.Path"
+    ],
+    "classes": [],
+    "functions": [
+      "find_repo_root",
+      "main"
+    ],
+    "size": 809
+  },
+  ".agent/skills/superpowers-workflow/scripts/spawn_subagent.py": {
+    "path": ".agent/skills/superpowers-workflow/scripts/spawn_subagent.py",
+    "imports": [
+      "argparse",
+      "json",
+      "subprocess",
+      "sys",
+      "time",
+      "uuid",
+      "pathlib.Path",
+      "typing.Any"
+    ],
+    "classes": [],
+    "functions": [
+      "find_repo_root",
+      "load_skill_instructions",
+      "spawn_subagent",
+      "main"
+    ],
+    "size": 7212
+  },
+  "e2e_demo/tests/test_e2e.py": {
+    "path": "e2e_demo/tests/test_e2e.py",
+    "imports": [
+      "__future__.annotations",
+      "os",
+      "json",
+      "socket",
+      "subprocess",
+      "sys",
+      "time",
+      "pathlib.Path",
+      "httpx"
+    ],
+    "classes": [],
+    "functions": [
+      "free_port",
+      "wait_until_up",
+      "start_api",
+      "run_sync",
+      "reset_api",
+      "sink_state",
+      "test_e2e_sync_is_idempotent_and_handles_retries",
+      "test_e2e_sync_limit",
+      "test_e2e_dry_run_report"
+    ],
+    "size": 4205
+  },
+  "e2e_demo/sync_tool/sync.py": {
+    "path": "e2e_demo/sync_tool/sync.py",
+    "imports": [
+      "__future__.annotations",
+      "argparse",
+      "os",
+      "random",
+      "time",
+      "uuid",
+      "logging",
+      "json",
+      "dataclasses.dataclass",
+      "typing.Any",
+      "pathlib.Path",
+      "httpx"
+    ],
+    "classes": [
+      "RetryPolicy"
+    ],
+    "functions": [
+      "find_repo_root",
+      "backoff",
+      "should_retry",
+      "request_with_retries",
+      "fetch_all_source_items",
+      "upsert_sink_items",
+      "main"
+    ],
+    "size": 7256
+  },
+  "e2e_demo/api/app.py": {
+    "path": "e2e_demo/api/app.py",
+    "imports": [
+      "__future__.annotations",
+      "fastapi.FastAPI",
+      "fastapi.Header",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "typing.Any"
+    ],
+    "classes": [
+      "SinkUpsert"
+    ],
+    "functions": [
+      "seed_source",
+      "source_items",
+      "sink_upsert",
+      "sink_list",
+      "admin_reset"
+    ],
+    "size": 2476
+  }
+}

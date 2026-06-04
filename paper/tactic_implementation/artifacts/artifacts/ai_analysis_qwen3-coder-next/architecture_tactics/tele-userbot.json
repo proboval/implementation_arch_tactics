@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: main.py (1,000+ lines) bundles command definitions, data persistence, configuration loading, state management, and business logic into a single monolithic module. Static analysis confirms 'avg_fan_out': 13.33 and 'factors': ['C1', 'C2', 'A3'] indicating high coupling and poor modularity. The 3-file structure (config.py, app.py, main.py) with 0 packages shows no module boundaries. This violates decomposition principles: commands are hardcoded in HELP_CATEGORIES dicts, handlers are scattered inline, and state variables are global. Decomposability directly addresses this by isolating concerns into separate modules (e.g., commands/, persistence/, utils/), reducing cognitive load and limiting change scope.",
+  "target_components": [
+    "main.py",
+    "config.py"
+  ],
+  "expected_architectural_change": "main.py will be split into multiple focused modules: commands/ (command handlers), persistence/ (data loading/saving), utils/ (helpers), models/ (data structures), and a minimal main.py orchestrator. config.py will be refactored into a dedicated config/ module with typed settings. This creates clear module boundaries and reduces fan-out.",
+  "implementation_strategy": "1. Extract command handlers into commands/admin.py, commands/media.py, etc., each with dedicated handlers and minimal imports. 2. Move data persistence logic (load_data/save_data) into persistence/storage.py. 3. Create models/state.py for global state encapsulation. 4. Refactor config.py into config/settings.py with validation. 5. Update main.py to import and register modules. 6. Introduce a command dispatcher pattern to reduce direct if/elif chains.",
+  "risks": "Risk of temporary duplication during migration; requires careful import graph management to avoid circular dependencies. Mitigation: migrate one category at a time, use integration tests to verify behavior, and maintain backward compatibility during transition."
+}

@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic coupling: 26 Python files in the root directory with no packages (packages: 0), average fan-out of 7.5, and deep interdependencies (e.g., app.py imports 30+ modules including router, jobs, rules, registry, session_engine, store, etc.). Static analysis confirms 'C1' (high coupling) and 'C2' (low cohesion) factors. Files like app.py, wrapper.py, and mcp_bridge.py act as god-objects handling multiple responsibilities (HTTP, MCP, session, agent management, registry, rules, jobs, summaries). This violates separation of concerns, making changes risky and testing difficult. Decomposability directly addresses this by introducing clear module boundaries and reducing ripple effects.",
+  "target_components": [
+    "app.py",
+    "wrapper.py",
+    "mcp_bridge.py",
+    "config_loader.py",
+    "registry.py"
+  ],
+  "expected_architectural_change": "Introduce a package structure (e.g., api/, mcp/, session/, registry/) to separate concerns: move agent identity management (registry.py) into a dedicated registry/ package, isolate MCP server logic (mcp_bridge.py) into mcp/, extract web API concerns (app.py) into api/, and group session-related modules (session_engine.py, session_store.py) into session/. This reduces coupling between high-level entry points and domain logic, increases cohesion within modules, and enables independent testing.",
+  "implementation_strategy": "1. Create new packages: registry/, mcp/, session/, api/. 2. Move registry.py → registry/registry.py and refactor to expose only identity APIs (register, deregister, claim). 3. Move mcp_bridge.py → mcp/server.py and mcp_proxy.py → mcp/proxy.py, exposing only MCP tool forwarding logic. 4. Extract app.py HTTP endpoints into api/endpoints.py, keeping only FastAPI setup and middleware. 5. Group session modules into session/ directory. 6. Update all imports to use package paths (e.g., from registry import RuntimeRegistry → from registry.registry import RuntimeRegistry). 7. Introduce minimal interfaces (e.g., SessionStore interface) to decouple session engine from concrete implementations.",
+  "risks": "Risk of temporary import breakage during refactoring; requires careful staging and testing. However, the monolithic structure already makes changes risky, so incremental decomposition (one package at a time) mitigates this. No new risks beyond standard refactoring."
+}

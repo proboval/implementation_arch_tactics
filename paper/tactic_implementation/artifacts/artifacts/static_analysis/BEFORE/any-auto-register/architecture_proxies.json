@@ -1,0 +1,1017 @@
+{
+  "python_files": 133,
+  "packages": 14,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 9.5,
+  "imports_graph": {
+    "check_config.py": [
+      "sqlmodel",
+      "os",
+      "core",
+      "sys"
+    ],
+    "smstome_tool.py": [
+      "re",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "argparse",
+      "core",
+      "random",
+      "httpx",
+      "runtime_support",
+      "pathlib",
+      "urllib",
+      "time",
+      "selectolax",
+      "__future__",
+      "os"
+    ],
+    "main.py": [
+      "api",
+      "contextlib",
+      "fastapi",
+      "sys",
+      "uvicorn",
+      "core",
+      "os",
+      "services"
+    ],
+    "platforms/__init__.py": [],
+    "core/base_captcha.py": [
+      "subprocess",
+      "os",
+      "urllib3",
+      "sys",
+      "abc",
+      "requests",
+      "time"
+    ],
+    "core/db.py": [
+      "sqlmodel",
+      "os",
+      "typing",
+      "datetime",
+      "json"
+    ],
+    "core/email_domain_policy.py": [
+      "re",
+      "__future__",
+      "typing"
+    ],
+    "core/base_mailbox.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "sqlmodel",
+      "curl_cffi",
+      "email",
+      "requests",
+      "core",
+      "platforms",
+      "random",
+      "datetime",
+      "luckmail",
+      "threading",
+      "names",
+      "__future__",
+      "json",
+      "time",
+      "quopri",
+      "proxy_utils",
+      "html",
+      "urllib",
+      "imaplib",
+      "hashlib",
+      "applemail_pool",
+      "string",
+      "abc"
+    ],
+    "core/proxy_utils.py": [
+      "urllib",
+      "__future__",
+      "json",
+      "typing"
+    ],
+    "core/proxy_pool.py": [
+      "proxy_utils",
+      "sqlmodel",
+      "typing",
+      "threading",
+      "random",
+      "datetime",
+      "db",
+      "requests",
+      "time"
+    ],
+    "core/http_client.py": [
+      "dataclasses",
+      "proxy_utils",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "time",
+      "json"
+    ],
+    "core/task_runtime.py": [
+      "dataclasses",
+      "typing",
+      "enum",
+      "threading",
+      "__future__",
+      "time"
+    ],
+    "core/registry.py": [
+      "importlib",
+      "base_platform",
+      "platforms",
+      "typing",
+      "pkgutil"
+    ],
+    "core/__init__.py": [],
+    "core/browser_runtime.py": [
+      "typing",
+      "logging",
+      "sys",
+      "__future__",
+      "os"
+    ],
+    "core/config_store.py": [
+      "re",
+      "typing",
+      "sqlmodel",
+      "pathlib",
+      "db",
+      "__future__",
+      "os"
+    ],
+    "core/base_platform.py": [
+      "dataclasses",
+      "executors",
+      "base_captcha",
+      "typing",
+      "enum",
+      "time",
+      "abc",
+      "os"
+    ],
+    "core/applemail_pool.py": [
+      "re",
+      "typing",
+      "datetime",
+      "pathlib",
+      "threading",
+      "__future__",
+      "json"
+    ],
+    "core/scheduler.py": [
+      "base_platform",
+      "registry",
+      "sqlmodel",
+      "threading",
+      "datetime",
+      "json",
+      "db",
+      "time",
+      "services"
+    ],
+    "core/base_executor.py": [
+      "json",
+      "abc",
+      "dataclasses",
+      "typing"
+    ],
+    "tests/test_chatgpt_birthdate_range.py": [
+      "platforms",
+      "unittest",
+      "datetime"
+    ],
+    "tests/test_chatgpt_register.py": [
+      "types",
+      "platforms",
+      "unittest",
+      "sys"
+    ],
+    "tests/test_chatgpt_plugin.py": [
+      "platforms",
+      "unittest",
+      "core"
+    ],
+    "tests/test_duckmail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_external_sync_contribution_mode.py": [
+      "unittest",
+      "services"
+    ],
+    "tests/test_cliproxyapi_sync.py": [
+      "unittest",
+      "services"
+    ],
+    "tests/test_chatgpt_sync.py": [
+      "unittest",
+      "core",
+      "services"
+    ],
+    "tests/test_opentrashmail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_qwen_registration.py": [
+      "platforms",
+      "unittest",
+      "core",
+      "base64"
+    ],
+    "tests/test_email_domain_policy.py": [
+      "core",
+      "pytest"
+    ],
+    "tests/test_base_mailbox_cfworker.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_mailbox_task_control.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_chatgpt_registration_mode_adapter.py": [
+      "platforms",
+      "unittest"
+    ],
+    "tests/test_gptmail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_luckmail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_freemail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_config_store_env_fallback.py": [
+      "pathlib",
+      "unittest",
+      "core",
+      "tempfile"
+    ],
+    "tests/test_mail_imports_service.py": [
+      "importlib",
+      "sqlmodel",
+      "sys",
+      "tempfile",
+      "pathlib",
+      "unittest",
+      "os",
+      "services"
+    ],
+    "tests/test_register_task_controls.py": [
+      "api",
+      "unittest",
+      "core"
+    ],
+    "tests/test_chatgpt_status_probe.py": [
+      "platforms",
+      "unittest"
+    ],
+    "tests/test_cloudmail_mailbox.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_chatgpt_account_state.py": [
+      "unittest",
+      "services"
+    ],
+    "tests/test_chatgpt_phone_flow.py": [
+      "platforms",
+      "smstome_tool",
+      "pathlib",
+      "tempfile",
+      "base64",
+      "unittest",
+      "json"
+    ],
+    "tests/test_chatgpt_sentinel_batch.py": [
+      "platforms",
+      "pathlib",
+      "unittest",
+      "tempfile"
+    ],
+    "tests/test_luckmail_proxy_chain.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_task_runtime.py": [
+      "unittest",
+      "core"
+    ],
+    "tests/test_outlook_mailbox_oauth.py": [
+      "unittest",
+      "core"
+    ],
+    "scripts/generate_chatgpt_payment_links.py": [
+      "sqlmodel",
+      "pathlib",
+      "__future__",
+      "sys",
+      "core"
+    ],
+    "scripts/install_camoufox.py": [
+      "zipfile",
+      "platformdirs",
+      "tempfile",
+      "urllib",
+      "json",
+      "shutil",
+      "pathlib",
+      "os"
+    ],
+    "scripts/sentinel_multi_helper.py": [
+      "pathlib",
+      "platforms",
+      "__future__",
+      "sys"
+    ],
+    "api/auth.py": [
+      "os",
+      "typing",
+      "core",
+      "secrets",
+      "fastapi",
+      "hashlib",
+      "struct",
+      "pydantic",
+      "base64",
+      "urllib",
+      "time",
+      "hmac",
+      "__future__",
+      "json"
+    ],
+    "api/tasks.py": [
+      "sqlmodel",
+      "typing",
+      "logging",
+      "concurrent",
+      "random",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "datetime",
+      "copy",
+      "json",
+      "threading",
+      "core",
+      "time",
+      "services"
+    ],
+    "api/config.py": [
+      "fastapi",
+      "pydantic",
+      "core",
+      "services"
+    ],
+    "api/platforms.py": [
+      "fastapi",
+      "core"
+    ],
+    "api/accounts.py": [
+      "sqlmodel",
+      "typing",
+      "logging",
+      "fastapi",
+      "pydantic",
+      "csv",
+      "datetime",
+      "io",
+      "core",
+      "json"
+    ],
+    "api/actions.py": [
+      "sqlmodel",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "datetime",
+      "core",
+      "json",
+      "services"
+    ],
+    "api/__init__.py": [],
+    "api/outlook.py": [
+      "fastapi",
+      "pydantic",
+      "typing",
+      "services"
+    ],
+    "api/contribution.py": [
+      "urllib",
+      "typing",
+      "core",
+      "fastapi",
+      "pydantic",
+      "__future__",
+      "requests",
+      "json"
+    ],
+    "api/proxies.py": [
+      "sqlmodel",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "core"
+    ],
+    "api/chatgpt.py": [
+      "platforms",
+      "sqlmodel",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "datetime",
+      "sys",
+      "core",
+      "json",
+      "services"
+    ],
+    "api/mail_imports.py": [
+      "fastapi",
+      "services"
+    ],
+    "api/integrations.py": [
+      "platforms",
+      "sqlmodel",
+      "typing",
+      "core",
+      "fastapi",
+      "pydantic",
+      "__future__",
+      "services"
+    ],
+    "services/cpa_manager.py": [
+      "dataclasses",
+      "core",
+      "typing",
+      "api",
+      "__future__",
+      "requests"
+    ],
+    "services/grok2api_runtime.py": [
+      "core",
+      "typing",
+      "__future__",
+      "requests",
+      "services"
+    ],
+    "services/chatgpt_account_state.py": [
+      "__future__",
+      "typing"
+    ],
+    "services/solver_manager.py": [
+      "subprocess",
+      "os",
+      "sys",
+      "threading",
+      "requests",
+      "time"
+    ],
+    "services/__init__.py": [],
+    "services/external_apps.py": [
+      "re",
+      "subprocess",
+      "typing",
+      "core",
+      "json",
+      "sys",
+      "stat",
+      "time",
+      "shutil",
+      "threading",
+      "pathlib",
+      "requests",
+      "__future__",
+      "os"
+    ],
+    "services/cliproxyapi_sync.py": [
+      "platforms",
+      "typing",
+      "core",
+      "logging",
+      "urllib3",
+      "datetime",
+      "base64",
+      "requests",
+      "time",
+      "__future__",
+      "json",
+      "services"
+    ],
+    "services/chatgpt_sync.py": [
+      "platforms",
+      "sqlmodel",
+      "typing",
+      "core",
+      "datetime",
+      "__future__",
+      "services"
+    ],
+    "services/external_sync.py": [
+      "platforms",
+      "typing",
+      "requests",
+      "__future__",
+      "core",
+      "services"
+    ],
+    "services/mail_imports/registry.py": [
+      "base",
+      "providers",
+      "schemas"
+    ],
+    "services/mail_imports/__init__.py": [
+      "registry",
+      "schemas"
+    ],
+    "services/mail_imports/providers.py": [
+      "base",
+      "sqlmodel",
+      "concurrent",
+      "random",
+      "microsoft_import_rules",
+      "string",
+      "datetime",
+      "schemas",
+      "json",
+      "core",
+      "os"
+    ],
+    "services/mail_imports/schemas.py": [
+      "pydantic",
+      "__future__",
+      "typing"
+    ],
+    "services/mail_imports/microsoft_import_rules.py": [
+      "dataclasses",
+      "typing",
+      "urllib"
+    ],
+    "services/mail_imports/base.py": [
+      "abc",
+      "schemas"
+    ],
+    "services/turnstile_solver/browser_configs.py": [
+      "random"
+    ],
+    "services/turnstile_solver/__init__.py": [],
+    "services/turnstile_solver/start.py": [
+      "api_solver",
+      "platformdirs",
+      "asyncio",
+      "pathlib",
+      "sys",
+      "os"
+    ],
+    "services/turnstile_solver/api_solver.py": [
+      "patchright",
+      "os",
+      "typing",
+      "argparse",
+      "logging",
+      "browser_configs",
+      "random",
+      "asyncio",
+      "db_results",
+      "rich",
+      "sys",
+      "quart",
+      "uuid",
+      "camoufox",
+      "time"
+    ],
+    "services/turnstile_solver/db_results.py": [
+      "time",
+      "asyncio"
+    ],
+    "core/luckmail/user.py": [
+      "models",
+      "typing",
+      "http_client",
+      "asyncio",
+      "time"
+    ],
+    "core/luckmail/models.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "core/luckmail/http_client.py": [
+      "proxy_utils",
+      "typing",
+      "exceptions",
+      "curl_cffi",
+      "threading",
+      "secrets",
+      "asyncio",
+      "hashlib",
+      "urllib",
+      "time",
+      "hmac",
+      "json"
+    ],
+    "core/luckmail/client.py": [
+      "http_client",
+      "supplier",
+      "typing",
+      "user"
+    ],
+    "core/luckmail/__init__.py": [
+      "models",
+      "user",
+      "exceptions",
+      "client",
+      "supplier"
+    ],
+    "core/luckmail/exceptions.py": [],
+    "core/luckmail/supplier.py": [
+      "http_client",
+      "models",
+      "typing"
+    ],
+    "core/executors/playwright.py": [
+      "playwright",
+      "proxy_utils",
+      "typing",
+      "logging",
+      "browser_runtime",
+      "base_executor",
+      "urllib",
+      "json"
+    ],
+    "core/executors/protocol.py": [
+      "proxy_utils",
+      "curl_cffi",
+      "base_executor"
+    ],
+    "core/executors/__init__.py": [],
+    "platforms/cursor/__init__.py": [],
+    "platforms/cursor/core.py": [
+      "re",
+      "typing",
+      "curl_cffi",
+      "random",
+      "string",
+      "urllib",
+      "uuid",
+      "core",
+      "json"
+    ],
+    "platforms/cursor/switch.py": [
+      "platform",
+      "subprocess",
+      "os",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "tempfile",
+      "time",
+      "json"
+    ],
+    "platforms/cursor/plugin.py": [
+      "platforms",
+      "curl_cffi",
+      "core"
+    ],
+    "platforms/openblocklabs/__init__.py": [],
+    "platforms/openblocklabs/core.py": [
+      "re",
+      "os",
+      "core",
+      "curl_cffi",
+      "random",
+      "string",
+      "base64",
+      "urllib",
+      "time",
+      "requests",
+      "json"
+    ],
+    "platforms/openblocklabs/plugin.py": [
+      "platforms",
+      "string",
+      "random",
+      "core"
+    ],
+    "platforms/grok/__init__.py": [],
+    "platforms/grok/core.py": [
+      "ctypes",
+      "patchright",
+      "typing",
+      "random",
+      "string",
+      "core",
+      "time"
+    ],
+    "platforms/grok/plugin.py": [
+      "platforms",
+      "core",
+      "typing"
+    ],
+    "platforms/grok/grok2api_upload.py": [
+      "typing",
+      "logging",
+      "curl_cffi",
+      "__future__",
+      "core"
+    ],
+    "platforms/kiro/__init__.py": [],
+    "platforms/kiro/core.py": [
+      "re",
+      "importlib",
+      "playwright",
+      "os",
+      "typing",
+      "core",
+      "logging",
+      "curl_cffi",
+      "random",
+      "hashlib",
+      "base64",
+      "urllib",
+      "time",
+      "uuid",
+      "threading",
+      "http",
+      "json"
+    ],
+    "platforms/kiro/account_manager_upload.py": [
+      "typing",
+      "core",
+      "logging",
+      "hashlib",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "json",
+      "uuid",
+      "__future__",
+      "os"
+    ],
+    "platforms/kiro/switch.py": [
+      "platform",
+      "subprocess",
+      "os",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "hashlib",
+      "datetime",
+      "tempfile",
+      "time",
+      "json"
+    ],
+    "platforms/kiro/plugin.py": [
+      "platforms",
+      "core",
+      "typing"
+    ],
+    "platforms/chatgpt/sub2api_upload.py": [
+      "platforms",
+      "typing",
+      "core",
+      "logging",
+      "curl_cffi",
+      "base64",
+      "time",
+      "__future__",
+      "json"
+    ],
+    "platforms/chatgpt/chatgpt_client.py": [
+      "utils",
+      "curl_cffi",
+      "random",
+      "sentinel_browser",
+      "sys",
+      "urllib",
+      "uuid",
+      "core",
+      "time",
+      "sentinel_token"
+    ],
+    "platforms/chatgpt/sentinel_batch.py": [
+      "dataclasses",
+      "playwright",
+      "typing",
+      "core",
+      "abc",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "json",
+      "uuid",
+      "__future__",
+      "os"
+    ],
+    "platforms/chatgpt/refresh_token_registration_engine.py": [
+      "dataclasses",
+      "oauth_client",
+      "typing",
+      "core",
+      "utils",
+      "logging",
+      "concurrent",
+      "oauth",
+      "datetime",
+      "chatgpt_client",
+      "__future__",
+      "time"
+    ],
+    "platforms/chatgpt/oauth_client.py": [
+      "re",
+      "utils",
+      "curl_cffi",
+      "random",
+      "secrets",
+      "sentinel_browser",
+      "phone_service",
+      "requests",
+      "urllib",
+      "time",
+      "uuid",
+      "base64",
+      "core",
+      "json",
+      "sentinel_token"
+    ],
+    "platforms/chatgpt/http_client.py": [
+      "re",
+      "constants",
+      "typing",
+      "logging",
+      "core"
+    ],
+    "platforms/chatgpt/sentinel_token.py": [
+      "random",
+      "datetime",
+      "base64",
+      "time",
+      "uuid",
+      "json"
+    ],
+    "platforms/chatgpt/constants.py": [
+      "enum",
+      "random",
+      "datetime",
+      "typing"
+    ],
+    "platforms/chatgpt/__init__.py": [],
+    "platforms/chatgpt/phone_service.py": [
+      "smstome_tool",
+      "__future__",
+      "pathlib",
+      "typing"
+    ],
+    "platforms/chatgpt/token_refresh.py": [
+      "dataclasses",
+      "constants",
+      "typing",
+      "logging",
+      "curl_cffi",
+      "datetime",
+      "json",
+      "__future__",
+      "time"
+    ],
+    "platforms/chatgpt/status_probe.py": [
+      "dataclasses",
+      "typing",
+      "curl_cffi",
+      "datetime",
+      "base64",
+      "__future__",
+      "json",
+      "services"
+    ],
+    "platforms/chatgpt/cpa_upload.py": [
+      "typing",
+      "logging",
+      "curl_cffi",
+      "hashlib",
+      "datetime",
+      "base64",
+      "core",
+      "json"
+    ],
+    "platforms/chatgpt/utils.py": [
+      "re",
+      "dataclasses",
+      "constants",
+      "typing",
+      "random",
+      "secrets",
+      "hashlib",
+      "string",
+      "datetime",
+      "base64",
+      "urllib",
+      "json",
+      "uuid",
+      "time"
+    ],
+    "platforms/chatgpt/sentinel_browser.py": [
+      "playwright",
+      "subprocess",
+      "typing",
+      "core",
+      "curl_cffi",
+      "tempfile",
+      "pathlib",
+      "json",
+      "uuid",
+      "__future__",
+      "os"
+    ],
+    "platforms/chatgpt/plugin.py": [
+      "platforms",
+      "random",
+      "string",
+      "core",
+      "services"
+    ],
+    "platforms/chatgpt/access_token_only_registration_engine.py": [
+      "platforms",
+      "utils",
+      "typing",
+      "logging",
+      "traceback",
+      "datetime",
+      "chatgpt_client",
+      "core",
+      "time"
+    ],
+    "platforms/chatgpt/payment.py": [
+      "playwright",
+      "subprocess",
+      "typing",
+      "core",
+      "logging",
+      "curl_cffi",
+      "sys",
+      "threading",
+      "__future__"
+    ],
+    "platforms/chatgpt/chatgpt_registration_mode_adapter.py": [
+      "dataclasses",
+      "platforms",
+      "typing",
+      "__future__",
+      "abc",
+      "core"
+    ],
+    "platforms/chatgpt/oauth_pkce_client.py": [
+      "re",
+      "typing",
+      "curl_cffi",
+      "oauth",
+      "urllib",
+      "time",
+      "core",
+      "json"
+    ],
+    "platforms/chatgpt/oauth.py": [
+      "dataclasses",
+      "constants",
+      "typing",
+      "curl_cffi",
+      "secrets",
+      "hashlib",
+      "base64",
+      "urllib",
+      "time",
+      "core",
+      "json"
+    ],
+    "platforms/tavily/__init__.py": [],
+    "platforms/tavily/core.py": [
+      "re",
+      "typing",
+      "secrets",
+      "hashlib",
+      "base64",
+      "urllib",
+      "json"
+    ],
+    "platforms/tavily/plugin.py": [
+      "importlib",
+      "platforms",
+      "typing",
+      "random",
+      "string",
+      "pathlib",
+      "sys",
+      "requests",
+      "core",
+      "os"
+    ]
+  }
+}

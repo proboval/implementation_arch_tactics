@@ -1,0 +1,22 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: the services layer (src/services/) contains tightly coupled, monolithic solver classes (e.g., RecaptchaV2Solver, HCaptchaSolver, TurnstileSolver) that each embed Playwright browser lifecycle, retry logic, and task-specific logic in a single class. This leads to high cyclomatic complexity, difficulty in isolating failures during testing, and inability to test individual components in isolation. The static analysis confirms high fan-out (avg_fan_out: 4.67) and lack of clear separation between orchestration, browser automation, and business logic. Decomposability (AT41) directly addresses this by splitting these responsibilities into smaller, focused modules—e.g., extracting browser session management, challenge-specific interaction logic, and result extraction into separate components—thereby improving testability, analyzability, and maintainability.",
+  "target_components": [
+    "src/services/recaptcha_v2.py",
+    "src/services/recaptcha_v3.py",
+    "src/services/hcaptcha.py",
+    "src/services/turnstile.py",
+    "src/services/recognition.py",
+    "src/services/classification.py",
+    "src/services/task_manager.py"
+  ],
+  "expected_architectural_change": "Introduce a layered decomposition: (1) a shared browser session manager (e.g., src/browser/session.py), (2) task-type-specific interaction strategies (e.g., src/strategy/recaptcha_v2.py, src/strategy/turnstile.py), and (3) result extraction utilities (e.g., src/browser/extract.py). Each solver will delegate to strategy components instead of implementing logic inline. The task_manager will depend on abstractions (e.g., Solver interface) rather than concrete implementations, reducing ripple effects when adding new captcha types.",
+  "implementation_strategy": "Step 1: Extract browser session management into a reusable SessionManager class to avoid duplicating Playwright context setup/teardown across solvers. Step 2: Define strategy interfaces (e.g., BrowserChallengeStrategy) and implement concrete strategies per captcha type (RecaptchaV2Strategy, TurnstileStrategy, etc.). Step 3: Refactor each solver to compose with strategies instead of implementing challenge logic directly. Step 4: Introduce a ResultExtractor module to centralize token extraction logic. This preserves existing behavior while improving modularity, testability (each component can be unit-tested in isolation), and maintainability (changes to one captcha type no longer affect others).",
+  "risks": "Risk of over-engineering if strategies are too granular; must balance decomposition with practicality. However, given the 18 service files and high fan-out, incremental decomposition (e.g., refactor one solver first, validate, then propagate) mitigates risk. No breaking changes to public API; backward compatibility is preserved."
+}

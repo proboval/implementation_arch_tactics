@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "e2e_demo/_infra/repo.py",
+  "content": "from pathlib import Path\n\n\ndef find_repo_root(start: Path) -> Path:\n    \"\"\"Traverse upwards to find the repository root (containing .agent/).\"\"\"\n    curr = start.resolve()\n    for _ in range(10):\n        if (curr / \".agent\").exists():\n            return curr\n        if curr.parent == curr:\n            break\n        curr = curr.parent\n    return Path.cwd()\n"
+}

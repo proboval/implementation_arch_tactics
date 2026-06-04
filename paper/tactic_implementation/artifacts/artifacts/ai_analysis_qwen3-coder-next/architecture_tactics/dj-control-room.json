@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling and low cohesion in the admin integration logic. Specifically, the admin_integration.py module contains both dynamic proxy model generation and admin registration logic, while views.py and utils.py contain intertwined panel configuration status checks and URL resolution logic. Static analysis shows high fan-out (avg 1.86) and deep directory depth (5), indicating scattered responsibilities. The test_registry.py file reveals that registry logic is tightly coupled with validation, discovery, and featured panel identity verification — all in one class. This makes changes risky: modifying panel registration behavior requires understanding and touching multiple interdependent concerns. Localized Modification will isolate these concerns into cohesive units (e.g., separate registry, admin registration, and panel status modules), reducing ripple effects and narrowing the scope of change.",
+  "target_components": [
+    "dj_control_room/admin_integration.py",
+    "dj_control_room/registry.py",
+    "dj_control_room/utils.py",
+    "dj_control_room/views.py"
+  ],
+  "expected_architectural_change": "Decompose the monolithic PanelRegistry class into focused modules: (1) a Registry class handling only discovery and lookup, (2) a PanelValidator class for validation logic, (3) a FeaturedPanelGuard class for identity verification, and (4) a PanelAdminRegistrar class for admin registration. Similarly, split utils.py into PanelConfigStatusChecker and PanelDataExtractor, and views.py into DashboardRenderer and InstallPageRenderer. This increases cohesion within modules and reduces cross-module dependencies.",
+  "implementation_strategy": "Step 1: Extract validation logic from PanelRegistry._validate_panel into a new PanelValidator class. Step 2: Extract featured panel identity verification into a new FeaturedPanelGuard class. Step 3: Refactor PanelRegistry to delegate to these new classes. Step 4: Split utils.py into PanelConfigStatusChecker (pure logic) and PanelDataExtractor (data transformation). Step 5: Split views.py into DashboardRenderer and InstallPageRenderer, each handling one responsibility. Step 6: Update admin_integration.py to delegate admin registration to a new PanelAdminRegistrar class. All changes are backward-compatible and can be done incrementally without altering public APIs.",
+  "risks": "Low risk — all changes are internal refactoring with no API changes. Tests already cover core behaviors (e.g., test_registry.py has 100% coverage of registration, validation, and collision behavior), enabling safe incremental refactoring. Risk of temporary test flakiness is mitigated by the existing robust test suite and clear separation of concerns in tests."
+}

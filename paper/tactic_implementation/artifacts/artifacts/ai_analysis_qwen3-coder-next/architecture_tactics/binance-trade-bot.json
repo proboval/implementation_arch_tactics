@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor localization of modification scope due to cross-cutting concerns and high coupling between modules. For example, the AutoTrader class in auto_trader.py directly depends on BinanceAPIManager, Database, Logger, and Config, while also containing trading logic, state management, and price calculation in a single class. Similarly, database.py contains both ORM session management and business logic (e.g., prune_scout_history, prune_value_history), mixing persistence with scheduling concerns. The strategies module (default_strategy.py, multiple_coins_strategy.py) inherits from AutoTrader and overrides scout() but inherits unrelated methods like transaction_through_bridge and bridge_scout, violating the Single Responsibility Principle. This leads to high ripple effects: changing one aspect (e.g., scout logic) risks unintended side effects in unrelated methods. Localized Modification (AT38) directly addresses this by increasing cohesion—grouping related responsibilities into smaller, focused modules—thereby narrowing the scope of change and reducing maintainability risk.",
+  "target_components": [
+    "binance_trade_bot/auto_trader.py",
+    "binance_trade_bot/strategies/default_strategy.py",
+    "binance_trade_bot/strategies/multiple_coins_strategy.py",
+    "binance_trade_bot/database.py"
+  ],
+  "expected_architectural_change": "Decompose AutoTrader into cohesive, single-purpose components: (1) a ScoutEngine (responsible only for scout logic), (2) a TradeExecutor (responsible for transaction_through_bridge), and (3) a BridgeScoutHandler (responsible for bridge_scout). Strategies will compose these components instead of inheriting a monolithic AutoTrader. Database will be split into separate modules: PersistenceLayer (session management, CRUD), Pruner (prune_scout_history, prune_value_history), and HistoryAggregator (value history queries). This increases cohesion within modules and reduces coupling between concerns.",
+  "implementation_strategy": "1. Extract ScoutEngine from AutoTrader: move _get_ratios, _jump_to_best_coin, and scout() logic into a new ScoutEngine class, with dependencies injected via constructor. 2. Extract TradeExecutor: move transaction_through_bridge and related order logic into a new TradeExecutor class. 3. Extract BridgeScoutHandler: move bridge_scout logic into a dedicated handler. 4. Refactor strategies to depend on these new components (composition over inheritance). 5. Split database.py: move prune_* methods into a Pruner class, and move value-history queries into a HistoryAggregator class. 6. Update imports and dependencies incrementally, starting with strategies to avoid breaking existing functionality. 7. Add unit tests for each new component to validate cohesion.",
+  "risks": "Risk of temporary duplication during refactoring and potential breaking changes if component boundaries are misdefined. However, since the changes are localized and can be done incrementally (e.g., extract one handler at a time), the risk is manageable. No architectural rewrite is required—only refactoring within the existing layered structure."
+}

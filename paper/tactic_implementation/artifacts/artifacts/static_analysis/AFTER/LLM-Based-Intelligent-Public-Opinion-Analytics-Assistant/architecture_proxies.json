@@ -1,0 +1,458 @@
+{
+  "python_files": 70,
+  "packages": 6,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 11.666666666666666,
+  "imports_graph": {
+    "run_spiders.py": [
+      "subprocess",
+      "signal",
+      "logging",
+      "psutil",
+      "json",
+      "datetime",
+      "sys",
+      "time",
+      "threading",
+      "os"
+    ],
+    "app.py": [
+      "re",
+      "collections",
+      "email",
+      "sys",
+      "requests",
+      "signal",
+      "psutil",
+      "flask_cors",
+      "hotsearch_analysis_agent",
+      "datetime",
+      "threading",
+      "apscheduler",
+      "json",
+      "time",
+      "subprocess",
+      "pymysql",
+      "atexit",
+      "urllib",
+      "uuid",
+      "smtplib",
+      "traceback",
+      "flask",
+      "os"
+    ],
+    "test_push_task.py": [
+      "os",
+      "argparse",
+      "datetime",
+      "sys",
+      "json",
+      "requests",
+      "time"
+    ],
+    "hotsearchcrawler/douyinmiddlewares.py": [
+      "logging",
+      "scrapy",
+      "random"
+    ],
+    "hotsearchcrawler/uc1middlewares.py": [
+      "scrapy",
+      "random"
+    ],
+    "hotsearchcrawler/wangyimiddlewares.py": [
+      "scrapy",
+      "fake_useragent"
+    ],
+    "hotsearchcrawler/__init__.py": [],
+    "hotsearchcrawler/middlewares.py": [
+      "scrapy",
+      "random"
+    ],
+    "hotsearchcrawler/ipmiddlewares.py": [
+      "re",
+      "selenium",
+      "logging",
+      "random",
+      "scrapy",
+      "urllib",
+      "time"
+    ],
+    "hotsearchcrawler/ucmiddlewares.py": [
+      "scrapy",
+      "random"
+    ],
+    "hotsearchcrawler/fakemiddlewares.py": [
+      "scrapy",
+      "selenium",
+      "time",
+      "logging"
+    ],
+    "hotsearchcrawler/settings.py": [
+      "datetime",
+      "os"
+    ],
+    "hotsearchcrawler/runspider-test.py": [
+      "subprocess",
+      "argparse",
+      "scrapy",
+      "sys",
+      "os"
+    ],
+    "hotsearchcrawler/base_middlewares.py": [
+      "scrapy",
+      "random"
+    ],
+    "hotsearchcrawler/items.py": [
+      "scrapy",
+      "w3lib"
+    ],
+    "hotsearchcrawler/pipelines.py": [
+      "logging",
+      "settings",
+      "pymysql",
+      "datetime"
+    ],
+    "hotsearch_analysis_agent/main.py": [
+      "os",
+      "signal",
+      "logging",
+      "atexit",
+      "hotsearch_analysis_agent",
+      "sys",
+      "multiprocessing"
+    ],
+    "hotsearch_analysis_agent/core/memory.py": [
+      "re",
+      "hotsearch_analysis_agent",
+      "langchain",
+      "typing"
+    ],
+    "hotsearch_analysis_agent/core/tools.py": [
+      "re",
+      "langchain",
+      "typing",
+      "logging",
+      "pymysql",
+      "hotsearch_analysis_agent",
+      "time"
+    ],
+    "hotsearch_analysis_agent/core/__init__.py": [],
+    "hotsearch_analysis_agent/core/agent.py": [
+      "re",
+      "langchain",
+      "typing",
+      "logging",
+      "hotsearch_analysis_agent",
+      "sys",
+      "json",
+      "os"
+    ],
+    "hotsearch_analysis_agent/vector_db/__init__.py": [],
+    "hotsearch_analysis_agent/vector_db/title_vector_manager.py": [
+      "typing",
+      "logging",
+      "chromadb",
+      "pymysql",
+      "jieba",
+      "hotsearch_analysis_agent",
+      "hashlib",
+      "time"
+    ],
+    "hotsearch_analysis_agent/vector_db/manager.py": [
+      "hotsearch_analysis_agent",
+      "chromadb",
+      "pymysql",
+      "logging"
+    ],
+    "hotsearch_analysis_agent/vector_db/sentiment_vector_manager.py": [
+      "typing",
+      "logging",
+      "chromadb",
+      "pymysql",
+      "jieba",
+      "numpy",
+      "hotsearch_analysis_agent",
+      "hashlib",
+      "datetime",
+      "time"
+    ],
+    "hotsearch_analysis_agent/config/validator.py": [
+      "hotsearch_analysis_agent",
+      "os",
+      "typing"
+    ],
+    "hotsearch_analysis_agent/config/__init__.py": [],
+    "hotsearch_analysis_agent/config/prompts.py": [],
+    "hotsearch_analysis_agent/config/settings.py": [
+      "pathlib",
+      "dotenv",
+      "os",
+      "json"
+    ],
+    "hotsearch_analysis_agent/utils/content_extractor.py": [
+      "re",
+      "sklearn",
+      "subprocess",
+      "selenium",
+      "typing",
+      "os",
+      "logging",
+      "numpy",
+      "speech_recognition",
+      "hotsearch_analysis_agent",
+      "easyocr",
+      "cv2",
+      "tempfile",
+      "urllib",
+      "time",
+      "bs4",
+      "requests",
+      "json"
+    ],
+    "hotsearch_analysis_agent/utils/clustering.py": [
+      "sklearn",
+      "jieba",
+      "numpy",
+      "typing"
+    ],
+    "hotsearch_analysis_agent/utils/platform_mapper.py": [
+      "re",
+      "hotsearch_analysis_agent",
+      "typing"
+    ],
+    "hotsearch_analysis_agent/utils/__init__.py": [],
+    "hotsearch_analysis_agent/utils/advanced_sentiment.py": [
+      "re",
+      "typing",
+      "math",
+      "jieba",
+      "collections"
+    ],
+    "hotsearch_analysis_agent/utils/sentiment_analyzer.py": [
+      "hotsearch_analysis_agent",
+      "jieba",
+      "typing"
+    ],
+    "hotsearchcrawler/spiders/ifeng_spider.py": [
+      "re",
+      "items",
+      "scrapy",
+      "datetime",
+      "json"
+    ],
+    "hotsearchcrawler/spiders/toutiao_car_spider.py": [
+      "base_spider",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/bilibili_spider.py": [
+      "scrapy",
+      "items",
+      "datetime",
+      "json"
+    ],
+    "hotsearchcrawler/spiders/douyin_fun_spider.py": [
+      "scrapy",
+      "base2_spider",
+      "json",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/base5_spder.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/base1_spider.py": [
+      "hotsearchcrawler",
+      "scrapy"
+    ],
+    "hotsearchcrawler/spiders/sll_spider.py": [
+      "scrapy",
+      "base5_spder",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/__init__.py": [
+      "kuaishou_spider",
+      "toutiao_spider",
+      "uc_video_spider",
+      "tencent_spider",
+      "wangyi_hottopic_spider",
+      "pengpai",
+      "xiaohongshu",
+      "uc_interact_spider",
+      "ifeng_spider",
+      "douyin_hot_spider",
+      "toutiao_car_spider",
+      "weibo",
+      "sougou",
+      "douyin_society_spider",
+      "zhihu_hot_spider",
+      "baidu_spider",
+      "bilibili_spider",
+      "zhihu_search_spider",
+      "sll_spider",
+      "uc_hotnew_spider",
+      "douyin_fun_spider",
+      "wangyi_hotnew_spider",
+      "toutiao_fun_spider",
+      "wangyi_hotsearch_spider",
+      "toutiao_education_spider",
+      "wangyi_hottalk_spider"
+    ],
+    "hotsearchcrawler/spiders/uc_spider.py": [
+      "base_spider",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/zhihu_hot_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/sougou.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/weibo.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/uc_hotnew_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "random",
+      "time"
+    ],
+    "hotsearchcrawler/spiders/pengpai.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/uc_video_spider.py": [
+      "scrapy",
+      "items",
+      "datetime",
+      "json"
+    ],
+    "hotsearchcrawler/spiders/wangyi_hotnew_spider.py": [
+      "scrapy",
+      "json",
+      "base1_spider"
+    ],
+    "hotsearchcrawler/spiders/baidu_spider.py": [
+      "base5_spder",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/base3_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "json",
+      "time"
+    ],
+    "hotsearchcrawler/spiders/kuaishou_spider.py": [
+      "re",
+      "hotsearchcrawler",
+      "selenium",
+      "scrapy",
+      "datetime",
+      "time"
+    ],
+    "hotsearchcrawler/spiders/zhihu_search_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/douyin_hot_spider.py": [
+      "scrapy",
+      "base2_spider",
+      "json",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/xiaohongshu.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/tencent_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime",
+      "json"
+    ],
+    "hotsearchcrawler/spiders/toutiao_education_spider.py": [
+      "base_spider",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/wangyi_hottalk_spider.py": [
+      "scrapy",
+      "json",
+      "base1_spider"
+    ],
+    "hotsearchcrawler/spiders/base4_spider.py": [
+      "re",
+      "logging",
+      "items",
+      "scrapy",
+      "json",
+      "time"
+    ],
+    "hotsearchcrawler/spiders/base_ip_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/uc_interact_spider.py": [
+      "base4_spider"
+    ],
+    "hotsearchcrawler/spiders/toutiao_fun_spider.py": [
+      "base_spider",
+      "datetime",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/douyin_society_spider.py": [
+      "scrapy",
+      "base2_spider",
+      "json",
+      "urllib"
+    ],
+    "hotsearchcrawler/spiders/base_spider.py": [
+      "hotsearchcrawler",
+      "scrapy",
+      "datetime"
+    ],
+    "hotsearchcrawler/spiders/wangyi_hotsearch_spider.py": [
+      "re",
+      "hotsearchcrawler",
+      "selenium",
+      "scrapy",
+      "datetime",
+      "urllib",
+      "json",
+      "time",
+      "base1_spider"
+    ],
+    "hotsearchcrawler/spiders/wangyi_hottopic_spider.py": [
+      "scrapy",
+      "json",
+      "base1_spider"
+    ],
+    "hotsearchcrawler/spiders/base2_spider.py": [
+      "abc",
+      "items",
+      "scrapy"
+    ],
+    "hotsearchcrawler/spiders/toutiao_spider.py": [
+      "base5_spder",
+      "datetime",
+      "urllib"
+    ]
+  }
+}

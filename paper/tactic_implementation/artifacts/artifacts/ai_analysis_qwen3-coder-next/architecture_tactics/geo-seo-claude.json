@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: scripts in /scripts/ (e.g., fetch_page.py, brand_scanner.py, citability_scorer.py, llmstxt_generator.py) share identical boilerplate (requests/bs4 imports, header setup, error handling) and overlapping logic (HTML fetching, text extraction, SSR detection), yet are tightly coupled to concrete implementations and lack shared abstractions. The tests/test_fetch_page_ssr.py file contains extensive HTML fixtures and duplicated mocking logic, indicating low cohesion and high duplication. The static analysis confirms 'avg_fan_out': 5.625 and 'max_directory_depth': 3, with no packages (packages: 0), revealing flat, interdependent modules. Decomposability (AT41) directly addresses this by extracting common concerns (HTTP client, SSR detection, content extraction) into reusable modules, isolating testable units, and reducing ripple effects across scripts.",
+  "target_components": [
+    "scripts/fetch_page.py",
+    "scripts/brand_scanner.py",
+    "scripts/citability_scorer.py",
+    "scripts/llmstxt_generator.py",
+    "tests/test_fetch_page_ssr.py"
+  ],
+  "expected_architectural_change": "Introduction of a shared 'core' or 'utils' module containing: (1) a unified HTTP client wrapper with retry/error handling, (2) a content extraction abstraction (e.g., PageContent) that encapsulates SSR detection, text extraction, and structured data parsing, (3) a test fixture manager to centralize HTML fixtures and reduce duplication. Scripts will depend on these abstractions instead of duplicating logic, and tests will import shared utilities instead of duplicating mocking patterns.",
+  "implementation_strategy": "Step 1: Extract common patterns from fetch_page.py (fetch_page, fetch_robots_txt, fetch_llms_txt) into a new 'core/http_client.py' module with a unified fetch() method. Step 2: Create 'core/content_extractor.py' to encapsulate SSR detection, text extraction, and heading/structure parsing, replacing duplicated logic in brand_scanner.py and citability_scorer.py. Step 3: Refactor scripts to use these abstractions, reducing code duplication and coupling. Step 4: Move HTML fixtures from test_fetch_page_ssr.py into 'tests/fixtures/ssr_pages.py' and create a shared _fetch_with_html() helper, improving test maintainability and reducing redundancy.",
+  "risks": "Risk of over-engineering if abstractions are too generic. Mitigation: Start with concrete patterns observed in existing scripts (e.g., identical SSR checks, HTML parsing logic) and evolve abstractions iteratively based on actual duplication. Ensure backward compatibility by keeping original functions as thin wrappers during transition."
+}

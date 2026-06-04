@@ -1,0 +1,475 @@
+{
+  "python_files": 130,
+  "packages": 35,
+  "max_directory_depth": 6,
+  "avg_files_per_package": 3.7142857142857144,
+  "imports_graph": {
+    "manage.py": [
+      "os",
+      "django",
+      "sys"
+    ],
+    "celery_tasks/config.py": [],
+    "celery_tasks/__init__.py": [],
+    "celery_tasks/main.py": [
+      "os",
+      "celery"
+    ],
+    "drf_admin/__init__.py": [],
+    "drf_admin/routing.py": [
+      "os",
+      "django",
+      "drf_admin",
+      "monitor",
+      "channels"
+    ],
+    "drf_admin/urls.py": [
+      "drf_yasg",
+      "django",
+      "rest_framework"
+    ],
+    "drf_admin/wsgi.py": [
+      "os",
+      "django"
+    ],
+    "drf_admin/settings/__init__.py": [],
+    "drf_admin/settings/pro.py": [
+      "os"
+    ],
+    "drf_admin/settings/dev.py": [
+      "os",
+      "sys",
+      "datetime"
+    ],
+    "drf_admin/utils/models.py": [
+      "Crypto",
+      "django",
+      "base64"
+    ],
+    "drf_admin/utils/swagger_schema.py": [
+      "drf_yasg"
+    ],
+    "drf_admin/utils/__init__.py": [],
+    "drf_admin/utils/permissions.py": [
+      "re",
+      "json",
+      "django",
+      "drf_admin",
+      "rest_framework"
+    ],
+    "drf_admin/utils/exceptions.py": [
+      "redis",
+      "django",
+      "monitor",
+      "oauth",
+      "rest_framework",
+      "logging",
+      "traceback"
+    ],
+    "drf_admin/utils/pagination.py": [
+      "rest_framework"
+    ],
+    "drf_admin/utils/routers.py": [
+      "rest_framework"
+    ],
+    "drf_admin/utils/middleware.py": [
+      "time",
+      "json",
+      "django",
+      "monitor",
+      "oauth",
+      "rest_framework",
+      "logging",
+      "django_redis"
+    ],
+    "drf_admin/utils/views.py": [
+      "rest_framework",
+      "drf_yasg",
+      "drf_admin"
+    ],
+    "drf_admin/utils/websocket.py": [
+      "rest_framework_jwt",
+      "django",
+      "urllib"
+    ],
+    "drf_admin/common/models.py": [],
+    "drf_admin/common/__init__.py": [],
+    "drf_admin/common/redis.py": [
+      "uuid",
+      "drf_admin"
+    ],
+    "drf_admin/common/permissions.py": [
+      "json"
+    ],
+    "drf_admin/common/redis_service.py": [
+      "uuid",
+      "abc",
+      "django",
+      "django_redis",
+      "typing"
+    ],
+    "drf_admin/apps/__init__.py": [],
+    "drf_admin/apps/information/models.py": [
+      "django"
+    ],
+    "drf_admin/apps/information/__init__.py": [],
+    "drf_admin/apps/information/apps.py": [
+      "django"
+    ],
+    "drf_admin/apps/information/admin.py": [
+      "django"
+    ],
+    "drf_admin/apps/information/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/information/urls.py": [
+      "information",
+      "django"
+    ],
+    "drf_admin/apps/monitor/signals.py": [
+      "models",
+      "django",
+      "django_redis"
+    ],
+    "drf_admin/apps/monitor/models.py": [
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/monitor/notification.py": [
+      "threading",
+      "time",
+      "redis",
+      "django",
+      "monitor"
+    ],
+    "drf_admin/apps/monitor/__init__.py": [],
+    "drf_admin/apps/monitor/apps.py": [
+      "monitor",
+      "django"
+    ],
+    "drf_admin/apps/monitor/admin.py": [
+      "django"
+    ],
+    "drf_admin/apps/monitor/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/monitor/urls.py": [
+      "monitor",
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/oauth/models.py": [
+      "django"
+    ],
+    "drf_admin/apps/oauth/__init__.py": [],
+    "drf_admin/apps/oauth/apps.py": [
+      "django"
+    ],
+    "drf_admin/apps/oauth/admin.py": [
+      "django"
+    ],
+    "drf_admin/apps/oauth/utils.py": [
+      "re",
+      "json",
+      "django",
+      "requests"
+    ],
+    "drf_admin/apps/oauth/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/oauth/urls.py": [
+      "django",
+      "oauth",
+      "rest_framework_jwt"
+    ],
+    "drf_admin/apps/system/signals.py": [
+      "system",
+      "json",
+      "django",
+      "logging",
+      "django_redis"
+    ],
+    "drf_admin/apps/system/models.py": [
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/__init__.py": [],
+    "drf_admin/apps/system/apps.py": [
+      "system",
+      "django"
+    ],
+    "drf_admin/apps/system/admin.py": [
+      "system",
+      "django"
+    ],
+    "drf_admin/apps/system/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/system/urls.py": [
+      "system",
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/work/models.py": [
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/work/__init__.py": [],
+    "drf_admin/apps/work/apps.py": [
+      "django"
+    ],
+    "drf_admin/apps/work/admin.py": [
+      "django"
+    ],
+    "drf_admin/apps/work/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/cmdb/signals.py": [
+      "django",
+      "cmdb"
+    ],
+    "drf_admin/apps/cmdb/models.py": [
+      "django",
+      "drf_admin"
+    ],
+    "drf_admin/apps/cmdb/__init__.py": [],
+    "drf_admin/apps/cmdb/apps.py": [
+      "django",
+      "cmdb"
+    ],
+    "drf_admin/apps/cmdb/admin.py": [
+      "django",
+      "cmdb"
+    ],
+    "drf_admin/apps/cmdb/tests.py": [
+      "django"
+    ],
+    "drf_admin/apps/cmdb/urls.py": [
+      "django",
+      "cmdb",
+      "drf_admin"
+    ],
+    "drf_admin/apps/cmdb/migrations/0002_auto_20210306_1416.py": [
+      "django"
+    ],
+    "drf_admin/apps/cmdb/migrations/__init__.py": [],
+    "drf_admin/apps/cmdb/migrations/0001_initial.py": [
+      "django"
+    ],
+    "drf_admin/apps/cmdb/serializers/__init__.py": [],
+    "drf_admin/apps/cmdb/serializers/servers.py": [
+      "rest_framework",
+      "cmdb",
+      "drf_writable_nested"
+    ],
+    "drf_admin/apps/cmdb/serializers/assets.py": [
+      "rest_framework",
+      "cmdb",
+      "django",
+      "drf_writable_nested"
+    ],
+    "drf_admin/apps/cmdb/views/__init__.py": [],
+    "drf_admin/apps/cmdb/views/servers.py": [
+      "rest_framework",
+      "django_filters",
+      "cmdb",
+      "drf_admin"
+    ],
+    "drf_admin/apps/cmdb/views/assets.py": [
+      "system",
+      "django",
+      "cmdb",
+      "drf_admin",
+      "rest_framework"
+    ],
+    "drf_admin/apps/work/migrations/__init__.py": [],
+    "drf_admin/apps/work/serializers/__init__.py": [],
+    "drf_admin/apps/work/views/__init__.py": [],
+    "drf_admin/apps/system/filters/users.py": [
+      "system",
+      "django",
+      "django_filters",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/filters/__init__.py": [],
+    "drf_admin/apps/system/migrations/__init__.py": [],
+    "drf_admin/apps/system/migrations/0001_initial.py": [
+      "django"
+    ],
+    "drf_admin/apps/system/serializers/users.py": [
+      "rest_framework",
+      "re",
+      "django"
+    ],
+    "drf_admin/apps/system/serializers/roles.py": [
+      "rest_framework",
+      "system"
+    ],
+    "drf_admin/apps/system/serializers/__init__.py": [],
+    "drf_admin/apps/system/serializers/jobs.py": [
+      "uuid",
+      "inspect",
+      "django_apscheduler",
+      "system",
+      "rest_framework",
+      "apscheduler"
+    ],
+    "drf_admin/apps/system/serializers/permissions.py": [
+      "rest_framework",
+      "system",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/serializers/departments.py": [
+      "rest_framework",
+      "system",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/jobs/run.py": [
+      "apscheduler",
+      "django",
+      "django_apscheduler"
+    ],
+    "drf_admin/apps/system/jobs/tasks.py": [
+      "system"
+    ],
+    "drf_admin/apps/system/jobs/__init__.py": [],
+    "drf_admin/apps/system/jobs/decorators.py": [
+      "time",
+      "drf_admin",
+      "logging",
+      "functools",
+      "traceback"
+    ],
+    "drf_admin/apps/system/views/users.py": [
+      "system",
+      "django",
+      "drf_admin",
+      "django_filters",
+      "rest_framework"
+    ],
+    "drf_admin/apps/system/views/roles.py": [
+      "rest_framework",
+      "system",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/views/__init__.py": [],
+    "drf_admin/apps/system/views/jobs.py": [
+      "apscheduler",
+      "inspect",
+      "django_apscheduler",
+      "system",
+      "django_filters",
+      "rest_framework",
+      "drf_yasg"
+    ],
+    "drf_admin/apps/system/views/permissions.py": [
+      "rest_framework",
+      "system",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/views/departments.py": [
+      "rest_framework",
+      "system",
+      "drf_admin"
+    ],
+    "drf_admin/apps/system/jobs/warehouse/backup.py": [
+      "os",
+      "time",
+      "django"
+    ],
+    "drf_admin/apps/system/jobs/warehouse/__init__.py": [],
+    "drf_admin/apps/oauth/migrations/__init__.py": [],
+    "drf_admin/apps/oauth/migrations/0001_initial.py": [
+      "django"
+    ],
+    "drf_admin/apps/oauth/serializers/__init__.py": [],
+    "drf_admin/apps/oauth/views/home.py": [
+      "django",
+      "cmdb",
+      "monitor",
+      "rest_framework",
+      "django_redis"
+    ],
+    "drf_admin/apps/oauth/views/__init__.py": [],
+    "drf_admin/apps/oauth/views/oauth.py": [
+      "rest_framework",
+      "json",
+      "django_redis",
+      "rest_framework_jwt"
+    ],
+    "drf_admin/apps/monitor/migrations/__init__.py": [],
+    "drf_admin/apps/monitor/migrations/0002_onlineusers_user.py": [
+      "django"
+    ],
+    "drf_admin/apps/monitor/migrations/0001_initial.py": [
+      "django"
+    ],
+    "drf_admin/apps/monitor/consumers/service.py": [
+      "uuid",
+      "datetime",
+      "json",
+      "django",
+      "psutil",
+      "channels"
+    ],
+    "drf_admin/apps/monitor/consumers/__init__.py": [],
+    "drf_admin/apps/monitor/serializers/error.py": [
+      "rest_framework",
+      "monitor"
+    ],
+    "drf_admin/apps/monitor/serializers/users.py": [
+      "rest_framework",
+      "monitor",
+      "django_redis"
+    ],
+    "drf_admin/apps/monitor/serializers/__init__.py": [],
+    "drf_admin/apps/monitor/serializers/ip.py": [
+      "rest_framework",
+      "monitor"
+    ],
+    "drf_admin/apps/monitor/serializers/crud.py": [
+      "rest_framework",
+      "django",
+      "easyaudit"
+    ],
+    "drf_admin/apps/monitor/views/service.py": [
+      "rest_framework",
+      "platform",
+      "socket"
+    ],
+    "drf_admin/apps/monitor/views/error.py": [
+      "rest_framework",
+      "monitor"
+    ],
+    "drf_admin/apps/monitor/views/users.py": [
+      "rest_framework",
+      "monitor"
+    ],
+    "drf_admin/apps/monitor/views/__init__.py": [],
+    "drf_admin/apps/monitor/views/ip.py": [
+      "rest_framework",
+      "monitor",
+      "drf_admin"
+    ],
+    "drf_admin/apps/monitor/views/crud.py": [
+      "rest_framework",
+      "monitor",
+      "easyaudit"
+    ],
+    "drf_admin/apps/information/migrations/__init__.py": [],
+    "drf_admin/apps/information/serializers/centre.py": [
+      "rest_framework",
+      "django"
+    ],
+    "drf_admin/apps/information/serializers/__init__.py": [],
+    "drf_admin/apps/information/views/centre.py": [
+      "rest_framework",
+      "information"
+    ],
+    "drf_admin/apps/information/views/__init__.py": [],
+    "celery_tasks/sms/tasks.py": [
+      "celery_tasks"
+    ],
+    "celery_tasks/sms/__init__.py": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe violation of the Single Responsibility Principle (SRP) and low cohesion across core modules. Static analysis shows avg_fan_out=12.6 and max_directory_depth=1, indicating flat, tightly coupled modules. Files like 'rebuttal_service.py' (500+ lines), 'tools.py' (400+ lines), and 'arxiv.py' (300+ lines) contain multiple unrelated responsibilities: PDF parsing, arXiv API calls, LLM orchestration, and session management are all interwoven in monolithic classes. This forces changes to one concern (e.g., PDF conversion) to risk breaking unrelated logic (e.g., rebuttal strategy generation), increasing maintenance cost and error risk. Localized Modification directly addresses this by grouping related responsibilities into cohesive units, narrowing the scope of change and reducing ripple effects.",
+  "target_components": [
+    "rebuttal_service.py",
+    "tools.py",
+    "arxiv.py"
+  ],
+  "expected_architectural_change": "Decompose monolithic classes into focused, single-responsibility modules. For example: extract PDF conversion logic from tools.py into a dedicated 'pdf_converter.py' module; separate arXiv API interaction from paper processing in arxiv.py into 'arxiv_client.py'; isolate LLM orchestration from session management in rebuttal_service.py into 'llm_orchestrator.py'. This creates clearly bounded modules where each change affects only one module.",
+  "implementation_strategy": "1. Identify cohesive clusters within each large file using import patterns and method groupings (e.g., all PDF-related methods in tools.py). 2. Extract each cluster into new modules with clear interfaces (e.g., PDFConverter, ArxivClient, LLMOrchestrator). 3. Replace direct imports with abstraction layers (e.g., inject converter interfaces). 4. Refactor existing callers to use new modules while preserving behavior. 5. Gradually reduce duplication by consolidating shared utilities (e.g., retry logic) into helper modules.",
+  "risks": "Risk of temporary duplication during refactoring and potential breaking changes if interfaces are poorly defined. Mitigation: Use feature branches, write unit tests for extracted modules first, and apply incremental refactoring with small, reviewable commits."
+}

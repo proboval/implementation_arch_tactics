@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor decomposability: both main.py and utils.py are monolithic (~500+ lines each), with tightly coupled responsibilities spanning authentication, browser orchestration, business logic, and I/O. Static analysis confirms high average fan-out (9.5) and zero packages, indicating a single-module structure. This leads to low testability (tests must mock complex global state), poor analyzability (no clear module boundaries), and high risk of ripple changes. Decomposability directly addresses this by introducing clear module boundaries to isolate concerns.",
+  "target_components": [
+    "utils.py",
+    "main.py"
+  ],
+  "expected_architectural_change": "Split utils.py into focused modules: auth.py (SPID login flows), scraping.py (SISTER navigation and extraction), and infrastructure.py (PageLogger, resource blocking). main.py will be refactored to define only FastAPI endpoints and service orchestration, delegating to domain modules. A new top-level package 'visura' will emerge with clear layering: infrastructure → domain → api.",
+  "implementation_strategy": "1) Extract auth logic from utils.py into visura/auth.py (login, logout, provider selection). 2) Extract scraping logic (parse_table, find_best_option_match, extract_sezioni) into visura/scraping.py. 3) Move PageLogger and resource-blocking logic into visura/infrastructure.py. 4) Refactor main.py to import only from visura modules and define endpoints. 5) Introduce visura/service.py to encapsulate VisuraService, request queueing, and response handling. 6) Update imports and tests to use new module paths. 7) Add __init__.py to visura/ to expose clean public API.",
+  "risks": "Risk of circular imports if module boundaries are poorly defined; mitigated by enforcing layering (infrastructure < domain < api). Risk of temporary test breakage during refactoring; mitigated by incremental migration and keeping tests alongside modules. Risk of over-engineering; mitigated by keeping modules small and focused on single responsibility."
+}

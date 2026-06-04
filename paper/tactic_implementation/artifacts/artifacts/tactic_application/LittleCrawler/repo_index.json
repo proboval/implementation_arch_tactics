@@ -1,0 +1,1832 @@
+{
+  "main.py": {
+    "path": "main.py",
+    "imports": [
+      "sys",
+      "io",
+      "asyncio",
+      "typing.Optional",
+      "typing.Type",
+      "src.core.arg",
+      "config",
+      "src.storage.base.db",
+      "src.core.base_crawler.AbstractCrawler",
+      "src.platforms.xhs.XiaoHongShuCrawler",
+      "src.platforms.zhihu.ZhihuCrawler",
+      "src.utils.async_file_writer.AsyncFileWriter",
+      "src.core.var.crawler_type_var",
+      "src.utils.app_runner.run",
+      "src.storage.base.excel_store_base.ExcelStoreBase"
+    ],
+    "classes": [
+      "CrawlerFactory"
+    ],
+    "functions": [
+      "_flush_excel_if_needed",
+      "_generate_wordcloud_if_needed",
+      "main",
+      "async_cleanup",
+      "create_crawler",
+      "_force_stop"
+    ],
+    "size": 4126
+  },
+  "config/zhihu_config.py": {
+    "path": "config/zhihu_config.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 263
+  },
+  "config/base_config.py": {
+    "path": "config/base_config.py",
+    "imports": [
+      "xhs_config.*",
+      "zhihu_config.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 2449
+  },
+  "config/__init__.py": {
+    "path": "config/__init__.py",
+    "imports": [
+      "base_config.*",
+      "db_config.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 53
+  },
+  "config/xhs_config.py": {
+    "path": "config/xhs_config.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 533
+  },
+  "config/db_config.py": {
+    "path": "config/db_config.py",
+    "imports": [
+      "os"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1414
+  },
+  "tests/__init__.py": {
+    "path": "tests/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 25
+  },
+  "api/__init__.py": {
+    "path": "api/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 220
+  },
+  "api/main.py": {
+    "path": "api/main.py",
+    "imports": [
+      "asyncio",
+      "os",
+      "subprocess",
+      "uvicorn",
+      "fastapi.FastAPI",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "fastapi.staticfiles.StaticFiles",
+      "fastapi.responses.FileResponse",
+      "routers.auth_router",
+      "routers.crawler_router",
+      "routers.data_router",
+      "routers.websocket_router",
+      "routers.publisher_router",
+      "services.auth_service.init_user_db",
+      "datetime.datetime"
+    ],
+    "classes": [],
+    "functions": [
+      "serve_frontend",
+      "health_check",
+      "check_environment",
+      "get_platforms",
+      "get_config_options",
+      "serve_spa"
+    ],
+    "size": 7067
+  },
+  "src/__init__.py": {
+    "path": "src/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 31
+  },
+  "src/platforms/__init__.py": {
+    "path": "src/platforms/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 23
+  },
+  "src/core/__init__.py": {
+    "path": "src/core/__init__.py",
+    "imports": [
+      "arg.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 20
+  },
+  "src/core/base_crawler.py": {
+    "path": "src/core/base_crawler.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.TYPE_CHECKING",
+      "typing.Dict",
+      "typing.Optional",
+      "playwright.async_api.BrowserContext",
+      "playwright.async_api.BrowserType",
+      "playwright.async_api.Playwright",
+      "src.utils.cdp_browser.CDPBrowserManager"
+    ],
+    "classes": [
+      "AbstractCrawler",
+      "AbstractLogin",
+      "AbstractStore",
+      "AbstractStoreImage",
+      "AbstractStoreVideo",
+      "AbstractApiClient"
+    ],
+    "functions": [
+      "start",
+      "search",
+      "launch_browser",
+      "launch_browser_with_cdp",
+      "begin",
+      "login_by_qrcode",
+      "login_by_mobile",
+      "login_by_cookies",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "store_image",
+      "store_video",
+      "request",
+      "update_cookies"
+    ],
+    "size": 3116
+  },
+  "src/core/var.py": {
+    "path": "src/core/var.py",
+    "imports": [
+      "asyncio.tasks.Task",
+      "contextvars.ContextVar",
+      "typing.List",
+      "aiomysql"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 748
+  },
+  "src/core/arg.py": {
+    "path": "src/core/arg.py",
+    "imports": [
+      "__future__.annotations",
+      "sys",
+      "enum.Enum",
+      "types.SimpleNamespace",
+      "typing.Iterable",
+      "typing.Optional",
+      "typing.Sequence",
+      "typing.Type",
+      "typing.TypeVar",
+      "typer",
+      "typing_extensions.Annotated",
+      "config",
+      "src.utils.utils.str2bool"
+    ],
+    "classes": [
+      "PlatformEnum",
+      "LoginTypeEnum",
+      "CrawlerTypeEnum",
+      "SaveDataOptionEnum",
+      "InitDbOptionEnum"
+    ],
+    "functions": [
+      "_to_bool",
+      "_coerce_enum",
+      "_normalize_argv",
+      "_inject_init_db_default",
+      "parse_cmd",
+      "main"
+    ],
+    "size": 9366
+  },
+  "src/utils/zhihu_const.py": {
+    "path": "src/utils/zhihu_const.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 207
+  },
+  "src/utils/crawler_util.py": {
+    "path": "src/utils/crawler_util.py",
+    "imports": [
+      "base64",
+      "json",
+      "random",
+      "re",
+      "urllib",
+      "urllib.parse",
+      "io.BytesIO",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "typing.cast",
+      "httpx",
+      "PIL.Image",
+      "PIL.ImageDraw",
+      "PIL.ImageShow",
+      "playwright.async_api.Cookie",
+      "playwright.async_api.Page",
+      "utils",
+      "src.services.proxy.proxy_ip_pool.IpInfoModel"
+    ],
+    "classes": [],
+    "functions": [
+      "find_login_qrcode",
+      "find_qrcode_img_from_canvas",
+      "show_qrcode",
+      "get_user_agent",
+      "get_mobile_user_agent",
+      "convert_cookies",
+      "convert_str_cookie_to_dict",
+      "match_interact_info_count",
+      "format_proxy_info",
+      "extract_text_from_html",
+      "extract_url_params_to_dict"
+    ],
+    "size": 8072
+  },
+  "src/utils/async_file_writer.py": {
+    "path": "src/utils/async_file_writer.py",
+    "imports": [
+      "asyncio",
+      "csv",
+      "json",
+      "os",
+      "pathlib",
+      "typing.Dict",
+      "typing.List",
+      "aiofiles",
+      "config",
+      "src.utils.utils.utils",
+      "src.utils.words.AsyncWordCloudGenerator"
+    ],
+    "classes": [
+      "AsyncFileWriter"
+    ],
+    "functions": [
+      "__init__",
+      "_get_file_path",
+      "write_to_csv",
+      "write_single_item_to_json",
+      "generate_wordcloud_from_comments"
+    ],
+    "size": 5888
+  },
+  "src/utils/easing.py": {
+    "path": "src/utils/easing.py",
+    "imports": [
+      "math",
+      "typing.List",
+      "typing.Tuple",
+      "numpy"
+    ],
+    "classes": [],
+    "functions": [
+      "ease_in_quad",
+      "ease_out_quad",
+      "ease_out_quart",
+      "ease_out_expo",
+      "ease_out_bounce",
+      "ease_out_elastic",
+      "get_tracks"
+    ],
+    "size": 1537
+  },
+  "src/utils/__init__.py": {
+    "path": "src/utils/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 27
+  },
+  "src/utils/utils.py": {
+    "path": "src/utils/utils.py",
+    "imports": [
+      "argparse",
+      "logging",
+      "crawler_util.*",
+      "slider_util.*",
+      "time_util.*"
+    ],
+    "classes": [],
+    "functions": [
+      "init_loging_config",
+      "str2bool"
+    ],
+    "size": 1203
+  },
+  "src/utils/slider_util.py": {
+    "path": "src/utils/slider_util.py",
+    "imports": [
+      "os",
+      "typing.List",
+      "urllib.parse.urlparse",
+      "cv2",
+      "httpx",
+      "numpy",
+      "easing"
+    ],
+    "classes": [
+      "Slide"
+    ],
+    "functions": [
+      "get_track_simple",
+      "get_tracks",
+      "__init__",
+      "check_is_img_path",
+      "clear_white",
+      "template_match",
+      "image_edge_detection",
+      "discern"
+    ],
+    "size": 5564
+  },
+  "src/utils/words.py": {
+    "path": "src/utils/words.py",
+    "imports": [
+      "asyncio",
+      "json",
+      "logging",
+      "collections.Counter",
+      "aiofiles",
+      "jieba",
+      "matplotlib.pyplot",
+      "wordcloud.WordCloud",
+      "config",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "AsyncWordCloudGenerator"
+    ],
+    "functions": [
+      "__init__",
+      "load_stop_words",
+      "generate_word_frequency_and_cloud",
+      "generate_word_cloud"
+    ],
+    "size": 2561
+  },
+  "src/utils/browser_launcher.py": {
+    "path": "src/utils/browser_launcher.py",
+    "imports": [
+      "os",
+      "platform",
+      "subprocess",
+      "time",
+      "socket",
+      "signal",
+      "typing.Optional",
+      "typing.List",
+      "typing.Tuple",
+      "asyncio",
+      "pathlib.Path",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "BrowserLauncher"
+    ],
+    "functions": [
+      "__init__",
+      "detect_browser_paths",
+      "find_available_port",
+      "launch_browser",
+      "wait_for_browser_ready",
+      "get_browser_info",
+      "cleanup"
+    ],
+    "size": 10859
+  },
+  "src/utils/cdp_browser.py": {
+    "path": "src/utils/cdp_browser.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/utils/app_runner.py": {
+    "path": "src/utils/app_runner.py",
+    "imports": [
+      "__future__.annotations",
+      "asyncio",
+      "os",
+      "signal",
+      "collections.abc.Awaitable",
+      "collections.abc.Callable",
+      "typing.Optional"
+    ],
+    "classes": [],
+    "functions": [
+      "run",
+      "_cleanup_with_timeout",
+      "_cancel_remaining_tasks",
+      "_runner",
+      "_on_signal"
+    ],
+    "size": 2894
+  },
+  "src/utils/time_util.py": {
+    "path": "src/utils/time_util.py",
+    "imports": [
+      "time",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "datetime.timezone"
+    ],
+    "classes": [],
+    "functions": [
+      "get_current_timestamp",
+      "get_current_time",
+      "get_current_time_hour",
+      "get_current_date",
+      "get_time_str_from_unix_time",
+      "get_date_str_from_unix_time",
+      "get_unix_time_from_time_str",
+      "get_unix_timestamp",
+      "rfc2822_to_china_datetime",
+      "rfc2822_to_timestamp"
+    ],
+    "size": 2687
+  },
+  "src/utils/file_header_manager.py": {
+    "path": "src/utils/file_header_manager.py",
+    "imports": [
+      "os",
+      "re",
+      "sys",
+      "typing.List",
+      "typing.Tuple",
+      "argparse"
+    ],
+    "classes": [],
+    "functions": [
+      "get_file_relative_path",
+      "generate_copyright_header",
+      "has_copyright_header",
+      "has_disclaimer",
+      "find_insert_position",
+      "process_file",
+      "find_python_files",
+      "main"
+    ],
+    "size": 8482
+  },
+  "src/models/m_zhihu.py": {
+    "path": "src/models/m_zhihu.py",
+    "imports": [
+      "typing.Optional",
+      "pydantic.BaseModel",
+      "pydantic.Field"
+    ],
+    "classes": [
+      "ZhihuContent",
+      "ZhihuComment",
+      "ZhihuCreator"
+    ],
+    "functions": [],
+    "size": 3651
+  },
+  "src/models/__init__.py": {
+    "path": "src/models/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 25
+  },
+  "src/models/m_xiaohongshu.py": {
+    "path": "src/models/m_xiaohongshu.py",
+    "imports": [
+      "pydantic.BaseModel",
+      "pydantic.Field"
+    ],
+    "classes": [
+      "NoteUrlInfo",
+      "CreatorUrlInfo"
+    ],
+    "functions": [],
+    "size": 495
+  },
+  "src/storage/__init__.py": {
+    "path": "src/storage/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 18
+  },
+  "src/services/__init__.py": {
+    "path": "src/services/__init__.py",
+    "imports": [
+      "src.services.cache.*",
+      "src.services.proxy.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 103
+  },
+  "src/services/proxy/__init__.py": {
+    "path": "src/services/proxy/__init__.py",
+    "imports": [
+      "base_proxy.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 90
+  },
+  "src/services/proxy/types.py": {
+    "path": "src/services/proxy/types.py",
+    "imports": [
+      "time",
+      "enum.Enum",
+      "typing.Optional",
+      "pydantic.BaseModel",
+      "pydantic.Field"
+    ],
+    "classes": [
+      "ProviderNameEnum",
+      "IpInfoModel"
+    ],
+    "functions": [
+      "is_expired"
+    ],
+    "size": 1199
+  },
+  "src/services/proxy/proxy_mixin.py": {
+    "path": "src/services/proxy/proxy_mixin.py",
+    "imports": [
+      "typing.TYPE_CHECKING",
+      "typing.Optional",
+      "src.utils.utils",
+      "src.services.proxy.proxy_ip_pool.ProxyIpPool"
+    ],
+    "classes": [
+      "ProxyRefreshMixin"
+    ],
+    "functions": [
+      "init_proxy_pool",
+      "_refresh_proxy_if_expired"
+    ],
+    "size": 1650
+  },
+  "src/services/proxy/proxy_ip_pool.py": {
+    "path": "src/services/proxy/proxy_ip_pool.py",
+    "imports": [
+      "random",
+      "typing.Dict",
+      "typing.List",
+      "httpx",
+      "tenacity.retry",
+      "tenacity.stop_after_attempt",
+      "tenacity.wait_fixed",
+      "config",
+      "src.services.proxy.providers.new_kuai_daili_proxy",
+      "src.services.proxy.providers.new_wandou_http_proxy",
+      "src.utils.utils",
+      "base_proxy.ProxyProvider",
+      "types.IpInfoModel",
+      "types.ProviderNameEnum"
+    ],
+    "classes": [
+      "ProxyIpPool"
+    ],
+    "functions": [
+      "create_ip_pool",
+      "__init__",
+      "load_proxies",
+      "_is_valid_proxy",
+      "get_proxy",
+      "is_current_proxy_expired",
+      "get_or_refresh_proxy",
+      "_reload_proxies"
+    ],
+    "size": 4473
+  },
+  "src/services/proxy/base_proxy.py": {
+    "path": "src/services/proxy/base_proxy.py",
+    "imports": [
+      "json",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.List",
+      "config",
+      "src.services.cache.abs_cache.AbstractCache",
+      "src.services.cache.cache_factory.CacheFactory",
+      "src.utils.utils.utils",
+      "types.IpInfoModel"
+    ],
+    "classes": [
+      "IpGetError",
+      "ProxyProvider",
+      "IpCache"
+    ],
+    "functions": [
+      "get_proxy",
+      "__init__",
+      "set_ip",
+      "load_all_ip"
+    ],
+    "size": 1989
+  },
+  "src/services/cache/local_cache.py": {
+    "path": "src/services/cache/local_cache.py",
+    "imports": [
+      "asyncio",
+      "time",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "src.services.cache.abs_cache.AbstractCache"
+    ],
+    "classes": [
+      "ExpiringLocalCache"
+    ],
+    "functions": [
+      "__init__",
+      "__del__",
+      "get",
+      "set",
+      "keys",
+      "_schedule_clear",
+      "_clear",
+      "_start_clear_cron"
+    ],
+    "size": 3199
+  },
+  "src/services/cache/__init__.py": {
+    "path": "src/services/cache/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 24
+  },
+  "src/services/cache/abs_cache.py": {
+    "path": "src/services/cache/abs_cache.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.Any",
+      "typing.List",
+      "typing.Optional"
+    ],
+    "classes": [
+      "AbstractCache"
+    ],
+    "functions": [
+      "get",
+      "set",
+      "keys"
+    ],
+    "size": 1062
+  },
+  "src/services/cache/cache_factory.py": {
+    "path": "src/services/cache/cache_factory.py",
+    "imports": [
+      "local_cache.ExpiringLocalCache",
+      "redis_cache.RedisCache"
+    ],
+    "classes": [
+      "CacheFactory"
+    ],
+    "functions": [
+      "create_cache"
+    ],
+    "size": 683
+  },
+  "src/services/cache/redis_cache.py": {
+    "path": "src/services/cache/redis_cache.py",
+    "imports": [
+      "pickle",
+      "time",
+      "typing.Any",
+      "typing.List",
+      "redis.Redis",
+      "src.services.cache.abs_cache.AbstractCache",
+      "config.db_config"
+    ],
+    "classes": [
+      "RedisCache"
+    ],
+    "functions": [
+      "__init__",
+      "_connet_redis",
+      "get",
+      "set",
+      "keys"
+    ],
+    "size": 1996
+  },
+  "src/services/proxy/providers/__init__.py": {
+    "path": "src/services/proxy/providers/__init__.py",
+    "imports": [
+      "jishu_http_proxy.new_jisu_http_proxy",
+      "kuaidl_proxy.new_kuai_daili_proxy",
+      "wandou_http_proxy.new_wandou_http_proxy"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 175
+  },
+  "src/services/proxy/providers/kuaidl_proxy.py": {
+    "path": "src/services/proxy/providers/kuaidl_proxy.py",
+    "imports": [
+      "os",
+      "re",
+      "typing.Dict",
+      "typing.List",
+      "httpx",
+      "pydantic.BaseModel",
+      "pydantic.Field",
+      "src.services.proxy.IpCache",
+      "src.services.proxy.IpInfoModel",
+      "src.services.proxy.ProxyProvider",
+      "src.services.proxy.types.ProviderNameEnum",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "KuaidailiProxyModel",
+      "KuaiDaiLiProxy"
+    ],
+    "functions": [
+      "parse_kuaidaili_proxy",
+      "new_kuai_daili_proxy",
+      "__init__",
+      "get_proxy"
+    ],
+    "size": 5752
+  },
+  "src/services/proxy/providers/jishu_http_proxy.py": {
+    "path": "src/services/proxy/providers/jishu_http_proxy.py",
+    "imports": [
+      "os",
+      "typing.Dict",
+      "typing.List",
+      "urllib.parse.urlencode",
+      "httpx",
+      "src.services.proxy.IpCache",
+      "src.services.proxy.IpGetError",
+      "src.services.proxy.ProxyProvider",
+      "src.services.proxy.types.IpInfoModel",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "JiSuHttpProxy"
+    ],
+    "functions": [
+      "new_jisu_http_proxy",
+      "__init__",
+      "get_proxy"
+    ],
+    "size": 3773
+  },
+  "src/services/proxy/providers/wandou_http_proxy.py": {
+    "path": "src/services/proxy/providers/wandou_http_proxy.py",
+    "imports": [
+      "os",
+      "typing.Dict",
+      "typing.List",
+      "urllib.parse.urlencode",
+      "httpx",
+      "src.services.proxy.IpCache",
+      "src.services.proxy.IpGetError",
+      "src.services.proxy.ProxyProvider",
+      "src.services.proxy.types.IpInfoModel",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "WanDouHttpProxy"
+    ],
+    "functions": [
+      "new_wandou_http_proxy",
+      "__init__",
+      "get_proxy"
+    ],
+    "size": 3990
+  },
+  "src/storage/xhs/xhs_store_media.py": {
+    "path": "src/storage/xhs/xhs_store_media.py",
+    "imports": [
+      "pathlib",
+      "typing.Dict",
+      "aiofiles",
+      "src.core.base_crawler.AbstractStoreImage",
+      "src.core.base_crawler.AbstractStoreVideo",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "XiaoHongShuImage",
+      "XiaoHongShuVideo"
+    ],
+    "functions": [
+      "store_image",
+      "make_save_file_name",
+      "save_image",
+      "store_video",
+      "make_save_file_name",
+      "save_video"
+    ],
+    "size": 3189
+  },
+  "src/storage/xhs/__init__.py": {
+    "path": "src/storage/xhs/__init__.py",
+    "imports": [
+      "typing.List",
+      "config",
+      "src.core.var.source_keyword_var",
+      "xhs_store_media.*",
+      "_store_impl.*"
+    ],
+    "classes": [
+      "XhsStoreFactory"
+    ],
+    "functions": [
+      "get_video_url_arr",
+      "update_xhs_note",
+      "batch_update_xhs_note_comments",
+      "update_xhs_note_comment",
+      "save_creator",
+      "update_xhs_note_image",
+      "update_xhs_note_video",
+      "create_store",
+      "get_gender"
+    ],
+    "size": 8431
+  },
+  "src/storage/xhs/_store_impl.py": {
+    "path": "src/storage/xhs/_store_impl.py",
+    "imports": [
+      "json",
+      "os",
+      "datetime.datetime",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "sqlalchemy.select",
+      "sqlalchemy.update",
+      "sqlalchemy.delete",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.orm.Session",
+      "src.core.base_crawler.AbstractStore",
+      "src.storage.base.db_session.get_session",
+      "src.storage.base.models.XhsNote",
+      "src.storage.base.models.XhsNoteComment",
+      "src.storage.base.models.XhsCreator",
+      "src.utils.async_file_writer.AsyncFileWriter",
+      "src.utils.time_util.get_current_timestamp",
+      "src.core.var.crawler_type_var",
+      "src.storage.base.mongodb_store_base.MongoDBStoreBase",
+      "src.utils.utils",
+      "src.storage.base.excel_store_base.ExcelStoreBase",
+      "src.storage.base.excel_store_base.ExcelStoreBase"
+    ],
+    "classes": [
+      "XhsCsvStoreImplement",
+      "XhsJsonStoreImplement",
+      "XhsDbStoreImplement",
+      "XhsSqliteStoreImplement",
+      "XhsMongoStoreImplement",
+      "XhsExcelStoreImplement"
+    ],
+    "functions": [
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "flush",
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "flush",
+      "__init__",
+      "store_content",
+      "add_content",
+      "update_content",
+      "content_is_exist",
+      "store_comment",
+      "add_comment",
+      "update_comment",
+      "comment_is_exist",
+      "store_creator",
+      "add_creator",
+      "update_creator",
+      "creator_is_exist",
+      "get_all_content",
+      "get_all_comments",
+      "__init__",
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "__new__"
+    ],
+    "size": 12756
+  },
+  "src/storage/base/db.py": {
+    "path": "src/storage/base/db.py",
+    "imports": [
+      "asyncio",
+      "sys",
+      "pathlib.Path",
+      "src.utils.utils",
+      "src.storage.base.db_session.create_tables"
+    ],
+    "classes": [],
+    "functions": [
+      "init_table_schema",
+      "init_db",
+      "close"
+    ],
+    "size": 1090
+  },
+  "src/storage/base/models.py": {
+    "path": "src/storage/base/models.py",
+    "imports": [
+      "sqlalchemy.create_engine",
+      "sqlalchemy.Column",
+      "sqlalchemy.Integer",
+      "sqlalchemy.Text",
+      "sqlalchemy.String",
+      "sqlalchemy.BigInteger",
+      "sqlalchemy.ext.declarative.declarative_base",
+      "sqlalchemy.orm.sessionmaker"
+    ],
+    "classes": [
+      "BilibiliVideo",
+      "BilibiliVideoComment",
+      "BilibiliUpInfo",
+      "BilibiliContactInfo",
+      "BilibiliUpDynamic",
+      "DouyinAweme",
+      "DouyinAwemeComment",
+      "DyCreator",
+      "KuaishouVideo",
+      "KuaishouVideoComment",
+      "WeiboNote",
+      "WeiboNoteComment",
+      "WeiboCreator",
+      "XhsCreator",
+      "XhsNote",
+      "XhsNoteComment",
+      "TiebaNote",
+      "TiebaComment",
+      "TiebaCreator",
+      "ZhihuContent",
+      "ZhihuComment",
+      "ZhihuCreator"
+    ],
+    "functions": [],
+    "size": 14601
+  },
+  "src/storage/base/mongodb_store_base.py": {
+    "path": "src/storage/base/mongodb_store_base.py",
+    "imports": [
+      "asyncio",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "motor.motor_asyncio.AsyncIOMotorClient",
+      "motor.motor_asyncio.AsyncIOMotorDatabase",
+      "motor.motor_asyncio.AsyncIOMotorCollection",
+      "config.db_config",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "MongoDBConnection",
+      "MongoDBStoreBase"
+    ],
+    "functions": [
+      "__new__",
+      "get_client",
+      "get_db",
+      "_connect",
+      "close",
+      "__init__",
+      "get_collection",
+      "save_or_update",
+      "find_one",
+      "find_many",
+      "create_index"
+    ],
+    "size": 5188
+  },
+  "src/storage/base/__init__.py": {
+    "path": "src/storage/base/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 25
+  },
+  "src/storage/base/db_session.py": {
+    "path": "src/storage/base/db_session.py",
+    "imports": [
+      "sqlalchemy.text",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.orm.sessionmaker",
+      "contextlib.asynccontextmanager",
+      "models.Base",
+      "config",
+      "config.db_config.mysql_db_config",
+      "config.db_config.sqlite_db_config"
+    ],
+    "classes": [],
+    "functions": [
+      "create_database_if_not_exists",
+      "get_async_engine",
+      "create_tables",
+      "get_session"
+    ],
+    "size": 2389
+  },
+  "src/storage/base/excel_store_base.py": {
+    "path": "src/storage/base/excel_store_base.py",
+    "imports": [
+      "threading",
+      "datetime.datetime",
+      "typing.Dict",
+      "typing.List",
+      "typing.Any",
+      "pathlib.Path",
+      "src.core.base_crawler.AbstractStore",
+      "src.utils.utils",
+      "openpyxl",
+      "openpyxl.styles.Font",
+      "openpyxl.styles.PatternFill",
+      "openpyxl.styles.Alignment",
+      "openpyxl.styles.Border",
+      "openpyxl.styles.Side",
+      "openpyxl.utils.get_column_letter"
+    ],
+    "classes": [
+      "ExcelStoreBase"
+    ],
+    "functions": [
+      "get_instance",
+      "flush_all",
+      "__init__",
+      "_apply_header_style",
+      "_auto_adjust_column_width",
+      "_write_headers",
+      "_write_row",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "store_contact",
+      "store_dynamic",
+      "flush"
+    ],
+    "size": 12430
+  },
+  "src/storage/zhihu/__init__.py": {
+    "path": "src/storage/zhihu/__init__.py",
+    "imports": [
+      "typing.List",
+      "config",
+      "src.core.base_crawler.AbstractStore",
+      "src.models.m_zhihu.ZhihuComment",
+      "src.models.m_zhihu.ZhihuContent",
+      "src.models.m_zhihu.ZhihuCreator",
+      "_store_impl.ZhihuCsvStoreImplement",
+      "_store_impl.ZhihuDbStoreImplement",
+      "_store_impl.ZhihuJsonStoreImplement",
+      "_store_impl.ZhihuSqliteStoreImplement",
+      "_store_impl.ZhihuMongoStoreImplement",
+      "_store_impl.ZhihuExcelStoreImplement",
+      "src.utils.utils",
+      "src.core.var.source_keyword_var"
+    ],
+    "classes": [
+      "ZhihuStoreFactory"
+    ],
+    "functions": [
+      "batch_update_zhihu_contents",
+      "update_zhihu_content",
+      "batch_update_zhihu_note_comments",
+      "update_zhihu_content_comment",
+      "save_creator",
+      "create_store"
+    ],
+    "size": 3195
+  },
+  "src/storage/zhihu/_store_impl.py": {
+    "path": "src/storage/zhihu/_store_impl.py",
+    "imports": [
+      "asyncio",
+      "csv",
+      "json",
+      "os",
+      "pathlib",
+      "typing.Dict",
+      "aiofiles",
+      "sqlalchemy.select",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "config",
+      "src.core.base_crawler.AbstractStore",
+      "src.storage.base.db_session.get_session",
+      "src.storage.base.models.ZhihuContent",
+      "src.storage.base.models.ZhihuComment",
+      "src.storage.base.models.ZhihuCreator",
+      "src.utils.utils",
+      "src.utils.words",
+      "src.core.var.crawler_type_var",
+      "src.utils.async_file_writer.AsyncFileWriter",
+      "src.storage.base.mongodb_store_base.MongoDBStoreBase",
+      "src.storage.base.excel_store_base.ExcelStoreBase"
+    ],
+    "classes": [
+      "ZhihuCsvStoreImplement",
+      "ZhihuDbStoreImplement",
+      "ZhihuJsonStoreImplement",
+      "ZhihuSqliteStoreImplement",
+      "ZhihuMongoStoreImplement",
+      "ZhihuExcelStoreImplement"
+    ],
+    "functions": [
+      "calculate_number_of_files",
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "__init__",
+      "store_content",
+      "store_comment",
+      "store_creator",
+      "__new__"
+    ],
+    "size": 7853
+  },
+  "src/platforms/xhs/playwright_sign.py": {
+    "path": "src/platforms/xhs/playwright_sign.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "time",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Union",
+      "urllib.parse.urlparse",
+      "urllib.parse.quote",
+      "playwright.async_api.Page",
+      "xhs_sign.b64_encode",
+      "xhs_sign.encode_utf8",
+      "xhs_sign.get_trace_id",
+      "xhs_sign.mrc"
+    ],
+    "classes": [],
+    "functions": [
+      "_build_sign_string",
+      "_md5_hex",
+      "_build_xs_payload",
+      "_build_xs_common",
+      "get_b1_from_localstorage",
+      "call_mnsv2",
+      "sign_xs_with_playwright",
+      "sign_with_playwright",
+      "pre_headers_with_playwright"
+    ],
+    "size": 6603
+  },
+  "src/platforms/xhs/field.py": {
+    "path": "src/platforms/xhs/field.py",
+    "imports": [
+      "enum.Enum",
+      "typing.NamedTuple"
+    ],
+    "classes": [
+      "FeedType",
+      "NoteType",
+      "SearchSortType",
+      "SearchNoteType",
+      "Note"
+    ],
+    "functions": [],
+    "size": 1370
+  },
+  "src/platforms/xhs/exception.py": {
+    "path": "src/platforms/xhs/exception.py",
+    "imports": [
+      "httpx.RequestError"
+    ],
+    "classes": [
+      "DataFetchError",
+      "IPBlockError"
+    ],
+    "functions": [],
+    "size": 195
+  },
+  "src/platforms/xhs/client.py": {
+    "path": "src/platforms/xhs/client.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/platforms/xhs/__init__.py": {
+    "path": "src/platforms/xhs/__init__.py",
+    "imports": [
+      "core.XiaoHongShuCrawler",
+      "field.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 59
+  },
+  "src/platforms/xhs/core.py": {
+    "path": "src/platforms/xhs/core.py",
+    "imports": [
+      "asyncio",
+      "os",
+      "random",
+      "asyncio.Task",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "playwright.async_api.BrowserContext",
+      "playwright.async_api.BrowserType",
+      "playwright.async_api.Page",
+      "playwright.async_api.Playwright",
+      "playwright.async_api.async_playwright",
+      "tenacity.RetryError",
+      "config",
+      "src.core.base_crawler.AbstractCrawler",
+      "config.CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES",
+      "src.models.m_xiaohongshu.NoteUrlInfo",
+      "src.models.m_xiaohongshu.CreatorUrlInfo",
+      "src.services.proxy.proxy_ip_pool.IpInfoModel",
+      "src.services.proxy.proxy_ip_pool.create_ip_pool",
+      "src.storage.xhs",
+      "src.utils.utils",
+      "src.utils.cdp_browser.CDPBrowserManager",
+      "src.core.var.crawler_type_var",
+      "src.core.var.source_keyword_var",
+      "client.XiaoHongShuClient",
+      "exception.DataFetchError",
+      "field.SearchSortType",
+      "help.parse_note_info_from_note_url",
+      "help.parse_creator_info_from_url",
+      "help.get_search_id",
+      "login.XiaoHongShuLogin"
+    ],
+    "classes": [
+      "XiaoHongShuCrawler"
+    ],
+    "functions": [
+      "__init__",
+      "start",
+      "search",
+      "get_creators_and_notes",
+      "fetch_creator_notes_detail",
+      "get_specified_notes",
+      "get_note_detail_async_task",
+      "batch_get_note_comments"
+    ],
+    "size": 15038
+  },
+  "src/platforms/xhs/extractor.py": {
+    "path": "src/platforms/xhs/extractor.py",
+    "imports": [
+      "json",
+      "re",
+      "typing.Dict",
+      "typing.Optional",
+      "humps"
+    ],
+    "classes": [
+      "XiaoHongShuExtractor"
+    ],
+    "functions": [
+      "__init__",
+      "extract_note_detail_from_html",
+      "extract_creator_info_from_html"
+    ],
+    "size": 1430
+  },
+  "src/platforms/xhs/login.py": {
+    "path": "src/platforms/xhs/login.py",
+    "imports": [
+      "asyncio",
+      "functools",
+      "sys",
+      "typing.Optional",
+      "playwright.async_api.BrowserContext",
+      "playwright.async_api.Page",
+      "tenacity.RetryError",
+      "tenacity.retry",
+      "tenacity.retry_if_result",
+      "tenacity.stop_after_attempt",
+      "tenacity.wait_fixed",
+      "config",
+      "src.core.base_crawler.AbstractLogin",
+      "src.services.cache.cache_factory.CacheFactory",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "XiaoHongShuLogin"
+    ],
+    "functions": [
+      "__init__",
+      "check_login_state",
+      "begin",
+      "login_by_mobile",
+      "login_by_qrcode",
+      "login_by_cookies"
+    ],
+    "size": 9050
+  },
+  "src/platforms/xhs/publisher.py": {
+    "path": "src/platforms/xhs/publisher.py",
+    "imports": [
+      "json",
+      "os",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "httpx",
+      "PIL.Image",
+      "tenacity.retry",
+      "tenacity.stop_after_attempt",
+      "tenacity.wait_fixed",
+      "src.utils.utils",
+      "playwright_sign.sign_with_playwright"
+    ],
+    "classes": [
+      "TopicInfo",
+      "ImageInfo",
+      "NoteContent",
+      "XiaoHongShuPublisher"
+    ],
+    "functions": [
+      "create_publisher_from_client",
+      "__init__",
+      "_sign_headers",
+      "_request",
+      "search_topic",
+      "get_upload_permit",
+      "upload_image",
+      "upload_images",
+      "_build_desc_with_topics",
+      "_build_note_payload",
+      "publish_note",
+      "sign_func"
+    ],
+    "size": 13250
+  },
+  "src/platforms/xhs/xhs_sign.py": {
+    "path": "src/platforms/xhs/xhs_sign.py",
+    "imports": [
+      "ctypes",
+      "random",
+      "urllib.parse.quote"
+    ],
+    "classes": [],
+    "functions": [
+      "_right_shift_unsigned",
+      "mrc",
+      "_triplet_to_base64",
+      "_encode_chunk",
+      "encode_utf8",
+      "b64_encode",
+      "get_trace_id"
+    ],
+    "size": 5898
+  },
+  "src/platforms/xhs/help.py": {
+    "path": "src/platforms/xhs/help.py",
+    "imports": [
+      "ctypes",
+      "json",
+      "random",
+      "time",
+      "urllib.parse",
+      "src.models.m_xiaohongshu.NoteUrlInfo",
+      "src.models.m_xiaohongshu.CreatorUrlInfo",
+      "src.utils.crawler_util.extract_url_params_to_dict",
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "sign",
+      "get_b3_trace_id",
+      "mrc",
+      "tripletToBase64",
+      "encodeChunk",
+      "b64Encode",
+      "encodeUtf8",
+      "base36encode",
+      "base36decode",
+      "get_search_id",
+      "get_img_url_by_trace_id",
+      "get_img_urls_by_trace_id",
+      "get_trace_id",
+      "parse_note_info_from_note_url",
+      "parse_creator_info_from_url",
+      "right_without_sign"
+    ],
+    "size": 11089
+  },
+  "src/platforms/zhihu/field.py": {
+    "path": "src/platforms/zhihu/field.py",
+    "imports": [
+      "enum.Enum",
+      "typing.NamedTuple",
+      "src.utils.zhihu_const"
+    ],
+    "classes": [
+      "SearchTime",
+      "SearchType",
+      "SearchSort"
+    ],
+    "functions": [],
+    "size": 960
+  },
+  "src/platforms/zhihu/exception.py": {
+    "path": "src/platforms/zhihu/exception.py",
+    "imports": [
+      "httpx.RequestError"
+    ],
+    "classes": [
+      "DataFetchError",
+      "IPBlockError",
+      "ForbiddenError"
+    ],
+    "functions": [],
+    "size": 252
+  },
+  "src/platforms/zhihu/client.py": {
+    "path": "src/platforms/zhihu/client.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/platforms/zhihu/__init__.py": {
+    "path": "src/platforms/zhihu/__init__.py",
+    "imports": [
+      "core.ZhihuCrawler"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 56
+  },
+  "src/platforms/zhihu/core.py": {
+    "path": "src/platforms/zhihu/core.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/platforms/zhihu/login.py": {
+    "path": "src/platforms/zhihu/login.py",
+    "imports": [
+      "asyncio",
+      "functools",
+      "sys",
+      "typing.Optional",
+      "playwright.async_api.BrowserContext",
+      "playwright.async_api.Page",
+      "tenacity.RetryError",
+      "tenacity.retry",
+      "tenacity.retry_if_result",
+      "tenacity.stop_after_attempt",
+      "tenacity.wait_fixed",
+      "config",
+      "src.core.base_crawler.AbstractLogin",
+      "src.utils.utils"
+    ],
+    "classes": [
+      "ZhiHuLogin"
+    ],
+    "functions": [
+      "__init__",
+      "check_login_state",
+      "begin",
+      "login_by_mobile",
+      "login_by_qrcode",
+      "login_by_cookies"
+    ],
+    "size": 4050
+  },
+  "src/platforms/zhihu/help.py": {
+    "path": "src/platforms/zhihu/help.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "api/routers/auth.py": {
+    "path": "api/routers/auth.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Depends",
+      "fastapi.security.HTTPBearer",
+      "fastapi.security.HTTPAuthorizationCredentials",
+      "schemas.auth.UserLogin",
+      "schemas.auth.Token",
+      "schemas.auth.UserInfo",
+      "services.auth_service.authenticate_user",
+      "services.auth_service.create_access_token",
+      "services.auth_service.verify_token",
+      "services.auth_service.get_user_by_id"
+    ],
+    "classes": [],
+    "functions": [
+      "get_current_user",
+      "get_optional_user",
+      "login",
+      "get_me",
+      "logout"
+    ],
+    "size": 2824
+  },
+  "api/routers/__init__.py": {
+    "path": "api/routers/__init__.py",
+    "imports": [
+      "auth.router",
+      "crawler.router",
+      "data.router",
+      "websocket.router",
+      "publisher.router"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 540
+  },
+  "api/routers/publisher.py": {
+    "path": "api/routers/publisher.py",
+    "imports": [
+      "base64",
+      "os",
+      "tempfile",
+      "typing.List",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Depends",
+      "fastapi.UploadFile",
+      "fastapi.File",
+      "pydantic.BaseModel",
+      "auth.get_current_user",
+      "src.utils.utils",
+      "src.platforms.xhs.publisher.ImageInfo",
+      "src.platforms.xhs.publisher.TopicInfo"
+    ],
+    "classes": [
+      "TopicSearchRequest",
+      "TopicInfo",
+      "TopicSearchResponse",
+      "ImageUploadResponse",
+      "PublishNoteRequest",
+      "PublishNoteResponse",
+      "PublisherStatusResponse"
+    ],
+    "functions": [
+      "get_publisher",
+      "set_publisher",
+      "get_publisher_status",
+      "search_topic",
+      "upload_image",
+      "publish_note",
+      "delete_uploaded_image"
+    ],
+    "size": 8531
+  },
+  "api/routers/data.py": {
+    "path": "api/routers/data.py",
+    "imports": [
+      "os",
+      "json",
+      "pathlib.Path",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Depends",
+      "fastapi.responses.FileResponse",
+      "auth.get_current_user",
+      "csv",
+      "pandas"
+    ],
+    "classes": [],
+    "functions": [
+      "get_file_info",
+      "list_data_files",
+      "get_file_content",
+      "download_file",
+      "get_data_stats"
+    ],
+    "size": 7832
+  },
+  "api/routers/crawler.py": {
+    "path": "api/routers/crawler.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Depends",
+      "schemas.CrawlerStartRequest",
+      "schemas.CrawlerStatusResponse",
+      "services.crawler_manager",
+      "auth.get_current_user"
+    ],
+    "classes": [],
+    "functions": [
+      "start_crawler",
+      "stop_crawler",
+      "get_crawler_status",
+      "get_logs"
+    ],
+    "size": 2268
+  },
+  "api/routers/websocket.py": {
+    "path": "api/routers/websocket.py",
+    "imports": [
+      "asyncio",
+      "typing.Set",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.WebSocket",
+      "fastapi.WebSocketDisconnect",
+      "services.crawler_manager"
+    ],
+    "classes": [
+      "ConnectionManager"
+    ],
+    "functions": [
+      "log_broadcaster",
+      "start_broadcaster",
+      "websocket_logs",
+      "websocket_status",
+      "__init__",
+      "connect",
+      "disconnect",
+      "broadcast"
+    ],
+    "size": 4050
+  },
+  "api/schemas/auth.py": {
+    "path": "api/schemas/auth.py",
+    "imports": [
+      "typing.Optional",
+      "pydantic.BaseModel"
+    ],
+    "classes": [
+      "UserLogin",
+      "Token",
+      "UserInfo",
+      "UserCreate"
+    ],
+    "functions": [],
+    "size": 574
+  },
+  "api/schemas/__init__.py": {
+    "path": "api/schemas/__init__.py",
+    "imports": [
+      "crawler.PlatformEnum",
+      "crawler.LoginTypeEnum",
+      "crawler.CrawlerTypeEnum",
+      "crawler.SaveDataOptionEnum",
+      "crawler.CrawlerStartRequest",
+      "crawler.CrawlerStatusResponse",
+      "crawler.LogEntry",
+      "auth.UserLogin",
+      "auth.Token",
+      "auth.UserInfo"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 579
+  },
+  "api/schemas/crawler.py": {
+    "path": "api/schemas/crawler.py",
+    "imports": [
+      "enum.Enum",
+      "typing.Optional",
+      "typing.Literal",
+      "pydantic.BaseModel"
+    ],
+    "classes": [
+      "PlatformEnum",
+      "LoginTypeEnum",
+      "CrawlerTypeEnum",
+      "SaveDataOptionEnum",
+      "CrawlerStartRequest",
+      "CrawlerStatusResponse",
+      "LogEntry",
+      "DataFileInfo"
+    ],
+    "functions": [],
+    "size": 2205
+  },
+  "api/services/auth_service.py": {
+    "path": "api/services/auth_service.py",
+    "imports": [
+      "os",
+      "sqlite3",
+      "hashlib",
+      "secrets",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "typing.Optional",
+      "pathlib.Path",
+      "base64",
+      "json",
+      "hmac",
+      "base64",
+      "json",
+      "hmac"
+    ],
+    "classes": [],
+    "functions": [
+      "_get_db_connection",
+      "init_user_db",
+      "hash_password",
+      "verify_password",
+      "authenticate_user",
+      "create_access_token",
+      "verify_token",
+      "get_user_by_id",
+      "create_user"
+    ],
+    "size": 5693
+  },
+  "api/services/__init__.py": {
+    "path": "api/services/__init__.py",
+    "imports": [
+      "crawler_manager.CrawlerManager",
+      "crawler_manager.crawler_manager"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 208
+  },
+  "api/services/crawler_manager.py": {
+    "path": "api/services/crawler_manager.py",
+    "imports": [
+      "asyncio",
+      "subprocess",
+      "signal",
+      "os",
+      "typing.Optional",
+      "typing.List",
+      "datetime.datetime",
+      "pathlib.Path",
+      "schemas.CrawlerStartRequest",
+      "schemas.LogEntry"
+    ],
+    "classes": [
+      "CrawlerManager"
+    ],
+    "functions": [
+      "__init__",
+      "logs",
+      "get_log_queue",
+      "_create_log_entry",
+      "_push_log",
+      "_parse_log_level",
+      "start",
+      "stop",
+      "get_status",
+      "_build_command",
+      "_read_output"
+    ],
+    "size": 10178
+  }
+}

@@ -1,0 +1,672 @@
+{
+  "misc/update-translations.py": {
+    "path": "misc/update-translations.py",
+    "imports": [
+      "json",
+      "pathlib",
+      "httpx"
+    ],
+    "classes": [],
+    "functions": [
+      "format_lang",
+      "translate"
+    ],
+    "size": 2090
+  },
+  "misc/check_google_user_agents.py": {
+    "path": "misc/check_google_user_agents.py",
+    "imports": [
+      "argparse",
+      "random",
+      "sys",
+      "time",
+      "typing.List",
+      "typing.Tuple",
+      "requests"
+    ],
+    "classes": [],
+    "functions": [
+      "read_user_agents",
+      "test_user_agent",
+      "main"
+    ],
+    "size": 14168
+  },
+  "misc/replit.py": {
+    "path": "misc/replit.py",
+    "imports": [
+      "subprocess"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 200
+  },
+  "misc/generate_uas.py": {
+    "path": "misc/generate_uas.py",
+    "imports": [
+      "sys",
+      "os",
+      "app.utils.ua_generator.generate_ua_pool",
+      "random"
+    ],
+    "classes": [],
+    "functions": [
+      "main",
+      "generate_safari_ua",
+      "load_blacklist",
+      "check_blacklist",
+      "generate_ua_pool"
+    ],
+    "size": 4768
+  },
+  "app/version.py": {
+    "path": "app/version.py",
+    "imports": [
+      "os"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 158
+  },
+  "app/request.py": {
+    "path": "app/request.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/__init__.py": {
+    "path": "app/__init__.py",
+    "imports": [
+      "app.filter.clean_query",
+      "app.request.send_tor_signal",
+      "app.utils.session.generate_key",
+      "app.utils.bangs.gen_bangs_json",
+      "app.utils.bangs.load_all_bangs",
+      "app.utils.misc.gen_file_hash",
+      "app.utils.misc.read_config_bool",
+      "app.utils.ua_generator.load_ua_pool",
+      "base64.b64encode",
+      "bs4.MarkupResemblesLocatorWarning",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "dotenv.load_dotenv",
+      "flask.Flask",
+      "json",
+      "logging.config",
+      "os",
+      "sys",
+      "stem.Signal",
+      "threading",
+      "warnings",
+      "werkzeug.middleware.proxy_fix.ProxyFix",
+      "app.services.http_client.HttpxClient",
+      "app.services.provider.close_all_clients",
+      "app.version.__version__",
+      "app.routes"
+    ],
+    "classes": [],
+    "functions": [
+      "_teardown_clients",
+      "get_secret_key"
+    ],
+    "size": 11873
+  },
+  "app/filter.py": {
+    "path": "app/filter.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/__main__.py": {
+    "path": "app/__main__.py",
+    "imports": [
+      "routes.run_app"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 39
+  },
+  "app/routes.py": {
+    "path": "app/routes.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "test/test_autocomplete.py": {
+    "path": "test/test_autocomplete.py",
+    "imports": [
+      "app.models.endpoint.Endpoint"
+    ],
+    "classes": [],
+    "functions": [
+      "test_autocomplete_get",
+      "test_autocomplete_post"
+    ],
+    "size": 498
+  },
+  "test/conftest.py": {
+    "path": "test/conftest.py",
+    "imports": [
+      "app.app",
+      "app.request.Request",
+      "app.utils.session.generate_key",
+      "test.mock_google.build_mock_response",
+      "httpx",
+      "pytest",
+      "random"
+    ],
+    "classes": [],
+    "functions": [
+      "mock_google",
+      "client",
+      "fake_send",
+      "fake_autocomplete"
+    ],
+    "size": 2076
+  },
+  "test/test_results.py": {
+    "path": "test/test_results.py",
+    "imports": [
+      "bs4.BeautifulSoup",
+      "app.filter.Filter",
+      "app.models.config.Config",
+      "app.models.endpoint.Endpoint",
+      "app.utils.results",
+      "app.utils.search",
+      "app.utils.session.generate_key",
+      "datetime.datetime",
+      "dateutil.parser.ParserError",
+      "dateutil.parser.parse",
+      "urllib.parse.urlparse",
+      "test.conftest.demo_config"
+    ],
+    "classes": [],
+    "functions": [
+      "get_search_results",
+      "test_get_results",
+      "test_post_results",
+      "test_translate_search",
+      "test_block_results",
+      "test_view_my_ip",
+      "test_recent_results",
+      "test_leading_slash_search",
+      "test_site_alt_prefix_skip",
+      "fake_generate",
+      "fake_generate",
+      "fake_generate"
+    ],
+    "size": 6307
+  },
+  "test/test_misc.py": {
+    "path": "test/test_misc.py",
+    "imports": [
+      "cryptography.fernet.Fernet",
+      "app.app",
+      "app.models.endpoint.Endpoint",
+      "app.utils.session.generate_key",
+      "app.utils.session.valid_user_session"
+    ],
+    "classes": [],
+    "functions": [
+      "test_generate_user_keys",
+      "test_valid_session",
+      "test_valid_translation_keys",
+      "test_query_decryption",
+      "test_prefs_url"
+    ],
+    "size": 2537
+  },
+  "test/test_autocomplete_xml.py": {
+    "path": "test/test_autocomplete_xml.py",
+    "imports": [
+      "app.app",
+      "app.request.Request",
+      "app.models.config.Config"
+    ],
+    "classes": [
+      "FakeHttpClient",
+      "R"
+    ],
+    "functions": [
+      "test_autocomplete_parsing",
+      "get",
+      "close"
+    ],
+    "size": 983
+  },
+  "test/mock_google.py": {
+    "path": "test/mock_google.py",
+    "imports": [
+      "urllib.parse.parse_qs",
+      "urllib.parse.unquote",
+      "urllib.parse.quote",
+      "app.models.config.Config"
+    ],
+    "classes": [],
+    "functions": [
+      "_result_block",
+      "_main_results",
+      "build_mock_response"
+    ],
+    "size": 4433
+  },
+  "test/test_routes.py": {
+    "path": "test/test_routes.py",
+    "imports": [
+      "app.app",
+      "app.models.endpoint.Endpoint",
+      "json",
+      "test.conftest.demo_config"
+    ],
+    "classes": [],
+    "functions": [
+      "test_main",
+      "test_search",
+      "test_feeling_lucky",
+      "test_ddg_bang",
+      "test_custom_bang",
+      "test_config",
+      "test_opensearch"
+    ],
+    "size": 2899
+  },
+  "test/test_http_client.py": {
+    "path": "test/test_http_client.py",
+    "imports": [
+      "types",
+      "httpx",
+      "pytest",
+      "app.services.http_client.HttpxClient"
+    ],
+    "classes": [
+      "FakeClient",
+      "R"
+    ],
+    "functions": [
+      "test_httpxclient_follow_redirects_and_proxy",
+      "__init__",
+      "get",
+      "close"
+    ],
+    "size": 909
+  },
+  "test/test_routes_json.py": {
+    "path": "test/test_routes_json.py",
+    "imports": [
+      "json",
+      "pytest",
+      "app.models.endpoint.Endpoint",
+      "app.utils.search"
+    ],
+    "classes": [],
+    "functions": [
+      "test_captcha_json_block",
+      "fake_new_query",
+      "fake_generate"
+    ],
+    "size": 758
+  },
+  "test/test_alts.py": {
+    "path": "test/test_alts.py",
+    "imports": [
+      "copy",
+      "os",
+      "bs4.BeautifulSoup",
+      "app.app",
+      "app.filter.Filter",
+      "app.models.config.Config",
+      "app.utils.session.generate_key",
+      "app.utils.results"
+    ],
+    "classes": [],
+    "functions": [
+      "build_soup",
+      "make_filter",
+      "test_no_duplicate_alt_prefix_reddit",
+      "test_wikipedia_simple_no_lang_param",
+      "test_single_pass_description_replacement"
+    ],
+    "size": 3738
+  },
+  "test/test_json.py": {
+    "path": "test/test_json.py",
+    "imports": [
+      "json",
+      "types",
+      "pytest",
+      "app.models.endpoint.Endpoint",
+      "app.utils.search"
+    ],
+    "classes": [],
+    "functions": [
+      "stubbed_search_response",
+      "test_search_json_accept",
+      "test_search_json_format_param",
+      "test_search_json_feeling_lucky",
+      "fake_new_query",
+      "fake_generate",
+      "fake_new_query",
+      "fake_generate"
+    ],
+    "size": 2758
+  },
+  "test/test_tor.py": {
+    "path": "test/test_tor.py",
+    "imports": [
+      "pytest",
+      "app.app",
+      "app.request.Request",
+      "app.request.TorError",
+      "app.models.config.Config"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHttpClient"
+    ],
+    "functions": [
+      "build_config",
+      "test_tor_validation_success",
+      "test_tor_validation_failure",
+      "__init__",
+      "__init__",
+      "get",
+      "close"
+    ],
+    "size": 1857
+  },
+  "app/utils/misc.py": {
+    "path": "app/utils/misc.py",
+    "imports": [
+      "base64",
+      "hashlib",
+      "contextlib",
+      "io",
+      "os",
+      "re",
+      "httpx",
+      "urllib.parse.urlparse",
+      "bs4.BeautifulSoup",
+      "cryptography.fernet.Fernet",
+      "flask.Request"
+    ],
+    "classes": [],
+    "functions": [
+      "fetch_favicon",
+      "gen_file_hash",
+      "read_config_bool",
+      "get_client_ip",
+      "get_request_url",
+      "get_proxy_host_url",
+      "check_for_update",
+      "get_abs_url",
+      "list_to_dict",
+      "encrypt_string",
+      "decrypt_string"
+    ],
+    "size": 4379
+  },
+  "app/utils/results.py": {
+    "path": "app/utils/results.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/utils/session.py": {
+    "path": "app/utils/session.py",
+    "imports": [
+      "cryptography.fernet.Fernet",
+      "flask.current_app"
+    ],
+    "classes": [],
+    "functions": [
+      "generate_key",
+      "valid_user_session"
+    ],
+    "size": 1031
+  },
+  "app/utils/bangs.py": {
+    "path": "app/utils/bangs.py",
+    "imports": [
+      "json",
+      "httpx",
+      "urllib.parse",
+      "os",
+      "glob"
+    ],
+    "classes": [],
+    "functions": [
+      "load_all_bangs",
+      "gen_bangs_json",
+      "suggest_bang",
+      "resolve_bang"
+    ],
+    "size": 4097
+  },
+  "app/utils/widgets.py": {
+    "path": "app/utils/widgets.py",
+    "imports": [
+      "pathlib.Path",
+      "bs4.BeautifulSoup"
+    ],
+    "classes": [],
+    "functions": [
+      "add_ip_card",
+      "add_calculator_card"
+    ],
+    "size": 2337
+  },
+  "app/utils/ua_generator.py": {
+    "path": "app/utils/ua_generator.py",
+    "imports": [
+      "json",
+      "os",
+      "random",
+      "datetime.datetime",
+      "typing.List"
+    ],
+    "classes": [],
+    "functions": [
+      "load_blacklist",
+      "check_blacklist",
+      "generate_safari_ua",
+      "generate_ua_pool",
+      "save_ua_pool",
+      "load_custom_ua_list",
+      "load_ua_pool",
+      "get_random_ua"
+    ],
+    "size": 6624
+  },
+  "app/utils/search.py": {
+    "path": "app/utils/search.py",
+    "imports": [
+      "os",
+      "re",
+      "typing.Any",
+      "app.filter.Filter",
+      "app.request.gen_query",
+      "app.utils.misc.get_proxy_host_url",
+      "app.utils.results.get_first_link",
+      "app.services.cse_client.CSEClient",
+      "app.services.cse_client.cse_results_to_html",
+      "bs4.BeautifulSoup",
+      "cryptography.fernet.Fernet",
+      "cryptography.fernet.InvalidToken",
+      "flask.g"
+    ],
+    "classes": [
+      "Search"
+    ],
+    "functions": [
+      "needs_https",
+      "has_captcha",
+      "__init__",
+      "__getitem__",
+      "__setitem__",
+      "__delitem__",
+      "__contains__",
+      "new_search_query",
+      "generate_response",
+      "_generate_cse_response",
+      "_generate_scrape_response"
+    ],
+    "size": 10279
+  },
+  "app/models/config.py": {
+    "path": "app/models/config.py",
+    "imports": [
+      "inspect.Attribute",
+      "typing.Optional",
+      "app.utils.misc.read_config_bool",
+      "flask.current_app",
+      "os",
+      "base64.urlsafe_b64encode",
+      "base64.urlsafe_b64decode",
+      "cryptography.fernet.Fernet",
+      "hashlib",
+      "brotli",
+      "logging",
+      "json",
+      "cssutils",
+      "cssutils.css.cssstylesheet.CSSStyleSheet",
+      "cssutils.css.cssstylerule.CSSStyleRule"
+    ],
+    "classes": [
+      "Config"
+    ],
+    "functions": [
+      "get_rule_for_selector",
+      "__init__",
+      "__getitem__",
+      "__setitem__",
+      "__delitem__",
+      "__contains__",
+      "get_mutable_attrs",
+      "get_attrs",
+      "style",
+      "preferences",
+      "is_safe_key",
+      "get_localization_lang",
+      "from_params",
+      "to_params",
+      "_get_fernet_key",
+      "_encode_preferences",
+      "_decode_preferences"
+    ],
+    "size": 11931
+  },
+  "app/models/g_classes.py": {
+    "path": "app/models/g_classes.py",
+    "imports": [
+      "bs4.BeautifulSoup"
+    ],
+    "classes": [
+      "GClasses"
+    ],
+    "functions": [
+      "replace_css_classes",
+      "__str__"
+    ],
+    "size": 1507
+  },
+  "app/models/endpoint.py": {
+    "path": "app/models/endpoint.py",
+    "imports": [
+      "enum.Enum"
+    ],
+    "classes": [
+      "Endpoint"
+    ],
+    "functions": [
+      "__str__",
+      "in_path"
+    ],
+    "size": 506
+  },
+  "app/services/provider.py": {
+    "path": "app/services/provider.py",
+    "imports": [
+      "os",
+      "typing.Dict",
+      "typing.Tuple",
+      "app.services.http_client.HttpxClient"
+    ],
+    "classes": [],
+    "functions": [
+      "_proxies_key",
+      "get_http_client",
+      "close_all_clients"
+    ],
+    "size": 1076
+  },
+  "app/services/http_client.py": {
+    "path": "app/services/http_client.py",
+    "imports": [
+      "threading",
+      "time",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Tuple",
+      "httpx",
+      "cachetools.TTLCache",
+      "ssl",
+      "os",
+      "h2.exceptions.ProtocolError"
+    ],
+    "classes": [
+      "HttpxClient"
+    ],
+    "functions": [
+      "__init__",
+      "_determine_verify_setting",
+      "_build_client",
+      "proxies",
+      "_cache_key",
+      "get",
+      "_recreate_client",
+      "close"
+    ],
+    "size": 8834
+  },
+  "app/services/cse_client.py": {
+    "path": "app/services/cse_client.py",
+    "imports": [
+      "httpx",
+      "typing.Optional",
+      "dataclasses.dataclass",
+      "urllib.parse.urlparse",
+      "flask.render_template"
+    ],
+    "classes": [
+      "CSEException",
+      "CSEError",
+      "CSEResult",
+      "CSEResponse",
+      "CSEClient"
+    ],
+    "functions": [
+      "cse_results_to_html",
+      "_escape_html",
+      "_error_html",
+      "_no_results_html",
+      "_image_results_html",
+      "_pagination_html",
+      "__init__",
+      "is_quota_exceeded",
+      "is_invalid_key",
+      "has_error",
+      "has_results",
+      "__init__",
+      "search",
+      "close",
+      "__enter__",
+      "__exit__"
+    ],
+    "size": 14427
+  }
+}

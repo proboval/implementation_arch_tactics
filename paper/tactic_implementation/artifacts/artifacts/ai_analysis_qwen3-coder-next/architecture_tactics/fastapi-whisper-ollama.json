@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits poor modularity and lack of decomposition: the static analysis reports 'packages': 0 despite having a 'src/transcription' directory, indicating flat module organization with no Python packages. Files like src/transcription/service.py directly import concrete implementations (e.g., 'ollama', 'faster_whisper') and hardcode paths ('input.mp3'), violating separation of concerns. The service layer handles both transcription (faster_whisper) and LLM correction (ollama) in one monolithic class, reducing cohesion and making testing difficult (docstring_coverage: 0.0, avg_fan_out: 2.0). Decomposability addresses this by splitting responsibilities into distinct, testable modules—e.g., separating transcription logic from correction logic—while isolating external dependencies (Whisper, Ollama) behind abstractions. This directly targets the 'C1' (complexity), 'C2' (coupling), and 'A3' (architecture) factors flagged in architecture_maintainability.",
+  "target_components": [
+    "src/transcription/service.py",
+    "src/transcription/router.py",
+    "src/config.py"
+  ],
+  "expected_architectural_change": "The monolithic TranscriptionService will be decomposed into focused, single-responsibility components: a TranscriptionStrategy interface + concrete WhisperTranscriber, and a TextCorrectionStrategy interface + concrete OllamaCorrector. A new composition service (e.g., TranscriptionProcessor) will orchestrate them. This creates a layered structure: router → service → strategy interfaces → concrete implementations, enabling isolated testing and reducing ripple effects from changes.",
+  "implementation_strategy": "1. Extract two strategy interfaces (TranscriptionStrategy, TextCorrectionStrategy) in src/transcription/strategies.py. 2. Implement concrete classes (WhisperTranscriber, OllamaCorrector) that depend on abstractions, not concrete libraries. 3. Refactor TranscriptionService to depend on strategies (dependency injection), removing direct imports of faster_whisper/ollama. 4. Move hardcoded 'input.mp3' path to configuration or strategy context. 5. Add unit tests per component. This preserves the modular monolith structure while improving modularity and testability incrementally.",
+  "risks": "Risk of over-engineering if strategies are over-abstracted; however, given the current tight coupling and lack of testability, this is low-risk and aligns with the existing two-strategy domain (transcription + correction). Minimal risk due to incremental refactoring and backward-compatible router interface."
+}

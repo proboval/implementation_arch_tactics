@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe lack of decomposability: (1) Core inference logic is duplicated across three entry points (gradio_app.py, gradio_app_streaming.py, generate_video.py), each implementing identical audio encoding, pipeline execution, and video saving logic with only minor variations; (2) The flash_head package contains 36 Python files across 6 packages with high fan-out (avg 4.69 imports/file) and deep nesting (max depth 5), but no clear separation between inference orchestration and core model execution; (3) The static analysis confirms 'C1' (high coupling), 'C2' (low cohesion), and 'A3' (poor modularity) as critical factors. This duplication makes changes risky (e.g., fixing a bug requires patching three files) and testing difficult (no isolated unit test targets). Decomposability directly addresses this by extracting shared logic into a single, well-defined inference service module, enabling independent testing and localized modifications.",
+  "target_components": [
+    "gradio_app.py",
+    "gradio_app_streaming.py",
+    "generate_video.py",
+    "flash_head/inference.py"
+  ],
+  "expected_architectural_change": "Introduce a new 'core' package (e.g., flash_head/core/inference_service.py) that encapsulates all shared inference orchestration logic: audio chunking, pipeline execution loop, and video encoding/saving. The existing entry points (gradio_app.py, etc.) will be refactored to delegate to this service, removing duplicated code. The flash_head/inference.py module will be simplified to focus solely on low-level pipeline initialization and configuration.",
+  "implementation_strategy": "1. Extract common inference orchestration logic from generate_video.py (stream mode) into flash_head/core/inference_service.py, parameterized by execution mode (stream/once) and output target (file/stream). 2. Refactor generate_video.py to instantiate and call InferenceService. 3. Refactor gradio_app.py and gradio_app_streaming.py to use InferenceService instead of duplicating loops and video saving. 4. Introduce a clean interface (e.g., InferenceService.run() with inputs: pipeline, audio_path, config) to abstract orchestration details. 5. Add unit tests for InferenceService with mocked pipeline to validate chunking and video assembly logic.",
+  "risks": "Risk of temporary regression during refactoring due to complex state management (e.g., audio deque state, motion frame caching). Mitigation: Preserve all existing behavior in the new service, use feature flags, and implement with comprehensive unit tests before replacing callers. The deep integration with torch/cuda state requires careful handling of device synchronization and memory cleanup."
+}

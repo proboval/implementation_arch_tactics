@@ -1,0 +1,18 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic structure: all core logic (server, config, PDF generation) resides in flat, tightly coupled modules (server.py, config_manager.py, pdf_generator.py) with no packages or clear separation of concerns. Static analysis confirms 'packages': 0, 'max_directory_depth': 1, and 'avg_fan_out': 8.5 — indicating high interdependence. This causes poor testability (e.g., pdf_generator.py has 1000+ lines with embedded XML generation), makes analysis difficult (no module boundaries), and increases maintainability risk (any change risks ripple effects). Decomposability directly addresses this by introducing modular boundaries (e.g., separating API, business logic, and persistence layers) to isolate concerns, improve testability, and reduce ripple effects.",
+  "target_components": [
+    "server.py",
+    "config_manager.py",
+    "pdf_generator.py"
+  ],
+  "expected_architectural_change": "The flat file structure will evolve into a package-based hierarchy: e.g., 'api/', 'business/', 'persistence/', 'pdf/' — with server.py becoming a thin API adapter, config_manager.py becoming a persistence module, and pdf_generator.py becoming a dedicated rendering module. Cross-module dependencies will be reduced via explicit interfaces (e.g., interfaces.py defining contracts between layers).",
+  "implementation_strategy": "1. Create package structure: 'api/', 'business/', 'persistence/', 'pdf/'. 2. Extract business logic from server.py into 'business/invoice_service.py' (e.g., PDF generation orchestration). 3. Move config_manager.py into 'persistence/config_store.py' and define a clean interface (e.g., ConfigStore). 4. Refactor pdf_generator.py into 'pdf/renderer.py' with a clean interface (e.g., InvoiceRenderer). 5. Introduce interfaces.py to define abstractions between layers. 6. Update imports to use package paths. 7. Add unit tests per module.",
+  "risks": "Risk of temporary duplication during refactoring; risk of over-engineering if layers are over-abstrated. Mitigation: incremental refactoring (one module at a time), strict adherence to interface contracts, and avoiding premature abstraction beyond immediate needs."
+}

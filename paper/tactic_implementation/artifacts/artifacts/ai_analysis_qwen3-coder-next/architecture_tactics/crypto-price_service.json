@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between layers, especially in app/celery_app.py and app/main.py, which directly instantiate or depend on concrete implementations (e.g., PriceRepository, PriceService) instead of abstractions. For example, app/celery_app.py imports and uses PriceRepository directly in _fetch_and_store(), and app/main.py's get_price_service() instantiates PriceService(PriceRepository(db)) inline. This tight coupling increases ripple effects: changes to repository or service constructors require updates in multiple places (e.g., test setup, worker code), and testability suffers because dependencies cannot be easily mocked. Static analysis confirms high fan-out (avg_fan_out: 3.54) and factors C1/C2 (coupling, complexity) as maintainability concerns. Reducing coupling via dependency inversion will isolate changes to configuration points and improve modularity.",
+  "target_components": [
+    "app/celery_app.py",
+    "app/main.py",
+    "app/services/__init__.py",
+    "app/repositories/__init__.py"
+  ],
+  "expected_architectural_change": "Introduce factory abstractions or dependency injection containers to decouple service/repository instantiation from usage. Specifically: (1) Move service/repository construction logic into factory functions or DI providers (e.g., get_price_service(), get_price_repository()); (2) Replace direct imports like 'from .repositories import PriceRepository' in celery_app.py with a factory pattern or DI container; (3) Add service/repository provider interfaces or factory signatures to abstract concrete classes. This will reduce direct dependencies between layers and localize changes to factory/provider modules.",
+  "implementation_strategy": "1. Refactor app/services/__init__.py and app/repositories/__init__.py to expose factory functions (e.g., create_price_service(session), create_price_repository(session)) instead of only exporting classes. 2. Update app/main.py to use get_price_service() as a factory, not inline instantiation. 3. In app/celery_app.py, replace direct PriceRepository(session) with a factory call (e.g., create_price_repository(session)). 4. Optionally introduce a minimal DI container (e.g., using dependency-injector or manual providers) to centralize bindings. This incremental approach preserves existing structure while reducing coupling without rewriting core logic.",
+  "risks": "Low risk: changes are localized to factory/provider layers and do not alter business logic. Potential risk is over-engineering if DI framework is introduced prematurely; however, even simple factory functions (e.g., create_price_service(session)) suffice and avoid external dependencies. Backward compatibility is maintained as long as factory signatures remain stable."
+}

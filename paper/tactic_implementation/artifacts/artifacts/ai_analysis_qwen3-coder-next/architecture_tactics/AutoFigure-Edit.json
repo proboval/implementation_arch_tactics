@@ -1,0 +1,17 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe monolithic structure: static analysis shows avg_fan_out=22.5 (extremely high), zero packages (packages: 0), max_directory_depth=1, and both autofigure2.py and server.py contain 40+ imports with no clear module boundaries. autofigure2.py is a 1000+ line script handling image generation, segmentation, LLM calls, SVG generation, and orchestration — violating separation of concerns. server.py bundles FastAPI endpoints, job monitoring, file I/O, and subprocess management. This monolith causes high cognitive load, poor testability (no testable units), and makes change risky (any modification risks breaking unrelated workflows). Decomposability directly addresses this by isolating responsibilities into independent modules (e.g., segmentation, LLM client, SVG generation, orchestration), enabling focused testing, localized changes, and reduced ripple effects.",
+  "target_components": [
+    "autofigure2.py",
+    "server.py"
+  ],
+  "expected_architectural_change": "Split autofigure2.py into domain-specific modules: sam3_client.py (segmentation), llm_client.py (unified LLM abstraction), image_generation.py, svg_generation.py, and orchestration.py. server.py should be refactored into api_routes.py (FastAPI endpoints), job_manager.py (job lifecycle), and worker.py (subprocess monitoring). Introduce a top-level package (e.g., autofigure/) with clear boundaries and minimal interdependencies.",
+  "implementation_strategy": "1. Extract LLM call logic (call_llm_text, call_llm_multimodal, etc.) into llm_client.py with provider-specific implementations. 2. Isolate SAM3 API calls into sam3_client.py. 3. Move SVG generation/optimization logic into svg_generation.py. 4. Create orchestration.py to coordinate steps 1–5, replacing inline logic in autofigure2.py. 5. Refactor server.py: move job monitoring into worker.py, endpoints into api_routes.py. 6. Introduce __init__.py and package structure. 7. Add unit tests per module. This preserves functionality while enabling incremental adoption.",
+  "risks": "Risk of temporary regression in functionality during refactoring; requires careful staging and testing. May temporarily increase import complexity if modules are poorly defined. However, risks are mitigated by incremental approach and existing test coverage (docstring coverage=0.5 suggests partial coverage)."
+}

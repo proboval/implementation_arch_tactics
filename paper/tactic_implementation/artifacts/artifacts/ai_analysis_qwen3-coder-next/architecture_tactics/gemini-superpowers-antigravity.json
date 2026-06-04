@@ -1,0 +1,20 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between core workflow orchestration and infrastructure concerns. Specifically, spawn_subagent.py directly hardcodes skill paths (e.g., `repo_root / f\".agent/skills/superpowers-{skill}/SKILL.md\"`) and assumes fixed directory structure, while write_artifact.py and record_activation.py duplicate the `find_repo_root` logic with minor variations. The test file test_e2e.py directly instantiates subprocess calls to 'gemini' and 'uvicorn' without abstraction, and sync.py couples business logic (synchronization) with infrastructure (retry policy, logging, HTTP client setup). This tight coupling increases change risk: modifying skill naming, logging format, or test infrastructure requires touching multiple unrelated modules. Reduced coupling isolates these concerns via abstractions, preventing ripple effects across the modular monolith.",
+  "target_components": [
+    ".agent/skills/superpowers-workflow/scripts/spawn_subagent.py",
+    ".agent/skills/superpowers-workflow/scripts/write_artifact.py",
+    ".agent/skills/superpowers-workflow/scripts/record_activation.py",
+    "e2e_demo/tests/test_e2e.py",
+    "e2e_demo/sync_tool/sync.py"
+  ],
+  "expected_architectural_change": "Introduce dedicated abstraction modules: (1) a 'SkillLocator' interface to decouple skill discovery from spawning logic, (2) a 'RepositoryRootFinder' singleton or service to eliminate duplicated path traversal, (3) a 'SubprocessOrchestrator' interface to abstract external tool execution in tests, and (4) a 'RetryStrategy' abstraction to decouple retry behavior from sync logic. This shifts from direct file system assumptions to contract-based dependencies, reducing coupling between workflow scripts and directory structure, and between tests and external tool implementations.",
+  "implementation_strategy": "Step 1: Extract `find_repo_root` into a shared module (e.g., `e2e_demo/_infra/repo.py`) and refactor all three workflow scripts to import it. Step 2: Define a `SkillLocator` protocol in `e2e_demo/_infra/skills.py` with implementations for `.agent/skills/` and future extensibility. Step 3: Refactor `spawn_subagent.py` to use `SkillLocator` instead of hardcoded paths. Step 4: Create `e2e_demo/_infra/execution.py` with a `SubprocessOrchestrator` interface to abstract subprocess calls in tests, enabling test mocking without shell dependencies. Step 5: Extract retry policy logic from `sync.py` into a `RetryStrategy` class with pluggable backoff strategies. Each step is incremental, preserves existing behavior, and reduces coupling without architectural overhaul.",
+  "risks": "Risk of over-engineering: Since the codebase is small, introducing too many abstraction layers could increase complexity. Mitigation: Start with minimal abstractions (e.g., single shared `find_repo_root` module first), validate with one refactor cycle, and avoid premature generalization. Another risk is test brittleness if `SubprocessOrchestrator` abstraction is too rigid; mitigate by keeping it focused on test infrastructure needs only."
+}

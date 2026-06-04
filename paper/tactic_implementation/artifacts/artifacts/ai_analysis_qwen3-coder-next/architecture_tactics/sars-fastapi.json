@@ -1,0 +1,19 @@
+{
+  "selected_tactic": {
+    "id": "AT39",
+    "name": "Reduced Coupling",
+    "primary_qa_impact": "Maintainability, Changeability",
+    "positive_impact": "Maintainability(+), Changeability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits high coupling between modules: app/models.py directly imports from app.database (via from .database import Base), creating a circular dependency risk and tight binding between persistence and domain layers. Similarly, app/main.py imports and directly manipulates models.Base.metadata.create_all() at startup, mixing application startup logic with database schema management. load.py imports and uses SessionLocal and models directly without abstraction, making it impossible to test data loading in isolation or swap persistence mechanisms. Static analysis flags 'C1' (high coupling) and 'A3' (lack of architectural clarity) as maintainability factors. Reduced Coupling directly addresses this by decoupling modules via interfaces (e.g., dependency injection, abstract base classes), preventing ripple effects when database or model changes occur.",
+  "target_components": [
+    "app/models.py",
+    "app/database.py",
+    "app/main.py",
+    "load.py"
+  ],
+  "expected_architectural_change": "Introduce a repository or data access abstraction layer (e.g., a generic Repository interface or protocol) that decouples models from database implementation. Move SessionLocal and engine instantiation behind a factory or dependency injection container. Replace direct imports like from .database import Base with dependency injection (e.g., via FastAPI Depends or a DI container). app/main.py will no longer call models.Base.metadata.create_all() directly; instead, schema initialization will be deferred to migrations or a separate migration tool. load.py will depend on an abstract data loader interface, not concrete SessionLocal or models.",
+  "implementation_strategy": "1. Create app/repositories/base.py with an abstract base class (e.g., Repository[T]) defining CRUD operations. 2. Move database engine/session creation into app/config.py or app/database.py as a factory, and inject dependencies via FastAPI Depends. 3. Refactor app/models.py to remove direct dependency on .database.Base by using dependency injection or a registry pattern. 4. Refactor app/main.py to remove direct engine binding and schema creation; use Alembic for migrations instead. 5. Refactor load.py to accept a Session dependency and use a Repository interface instead of direct db.add(db_record). 6. Introduce a dependency injection container (e.g., using fastapi-utils or custom provider) to wire components. This preserves layered architecture while reducing coupling between layers.",
+  "risks": "Risk of over-engineering if not scoped carefully; however, incremental refactoring (e.g., start with load.py → introduce Repository interface → inject Session) mitigates this. Temporary performance overhead from extra indirection is negligible. Requires discipline to avoid reintroducing coupling during future changes."
+}

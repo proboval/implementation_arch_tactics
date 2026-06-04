@@ -1,0 +1,243 @@
+{
+  "python_files": 36,
+  "packages": 6,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 6.0,
+  "imports_graph": {
+    "gradio_app_streaming.py": [
+      "wave",
+      "subprocess",
+      "os",
+      "librosa",
+      "torch",
+      "queue",
+      "threading",
+      "numpy",
+      "loguru",
+      "collections",
+      "imageio",
+      "flash_head",
+      "datetime",
+      "gradio",
+      "time"
+    ],
+    "generate_video.py": [
+      "subprocess",
+      "os",
+      "argparse",
+      "librosa",
+      "torch",
+      "numpy",
+      "loguru",
+      "collections",
+      "imageio",
+      "flash_head",
+      "datetime",
+      "time"
+    ],
+    "gradio_app.py": [
+      "subprocess",
+      "os",
+      "librosa",
+      "torch",
+      "numpy",
+      "loguru",
+      "collections",
+      "imageio",
+      "flash_head",
+      "datetime",
+      "gradio",
+      "time"
+    ],
+    "flash_head/inference.py": [
+      "torch",
+      "loguru",
+      "flash_head",
+      "copy",
+      "yaml"
+    ],
+    "flash_head/audio_analysis/wav2vec2.py": [
+      "torch_utils",
+      "transformers"
+    ],
+    "flash_head/audio_analysis/torch_utils.py": [
+      "torch"
+    ],
+    "flash_head/utils/cpu_face_handler.py": [
+      "mediapipe",
+      "numpy",
+      "typing"
+    ],
+    "flash_head/utils/utils.py": [
+      "math",
+      "torch",
+      "torchvision",
+      "pyloudnorm",
+      "numpy",
+      "PIL"
+    ],
+    "flash_head/utils/facecrop.py": [
+      "flash_head",
+      "numpy",
+      "PIL",
+      "os"
+    ],
+    "flash_head/ltx_video/ltx_vae.py": [
+      "torch",
+      "flash_head"
+    ],
+    "flash_head/ltx_video/__init__.py": [],
+    "flash_head/src/pipeline/flash_head_pipeline.py": [
+      "os",
+      "transformers",
+      "torch",
+      "einops",
+      "loguru",
+      "numpy",
+      "flash_head",
+      "glob",
+      "xfuser",
+      "PIL",
+      "time"
+    ],
+    "flash_head/src/distributed/usp_device.py": [
+      "math",
+      "torch",
+      "loguru",
+      "xfuser",
+      "datetime"
+    ],
+    "flash_head/src/modules/flash_head_model.py": [
+      "typing",
+      "math",
+      "torch",
+      "einops",
+      "sageattention",
+      "xfuser",
+      "flash_attn",
+      "yunchang",
+      "diffusers",
+      "flash_attn_interface"
+    ],
+    "flash_head/ltx_video/utils/prompt_enhance_utils.py": [
+      "logging",
+      "torch",
+      "PIL",
+      "typing"
+    ],
+    "flash_head/ltx_video/utils/__init__.py": [],
+    "flash_head/ltx_video/utils/skip_layer_strategy.py": [
+      "enum"
+    ],
+    "flash_head/ltx_video/utils/diffusers_config_mapping.py": [],
+    "flash_head/ltx_video/utils/torch_utils.py": [
+      "torch"
+    ],
+    "flash_head/ltx_video/models/__init__.py": [],
+    "flash_head/ltx_video/models/transformers/attention.py": [
+      "importlib",
+      "typing",
+      "torch",
+      "inspect",
+      "einops",
+      "flash_head",
+      "torch_xla",
+      "diffusers"
+    ],
+    "flash_head/ltx_video/models/transformers/symmetric_patchifier.py": [
+      "typing",
+      "torch",
+      "einops",
+      "abc",
+      "diffusers"
+    ],
+    "flash_head/ltx_video/models/transformers/__init__.py": [],
+    "flash_head/ltx_video/models/transformers/transformer3d.py": [
+      "dataclasses",
+      "os",
+      "typing",
+      "math",
+      "torch",
+      "diffusers",
+      "flash_head",
+      "glob",
+      "pathlib",
+      "safetensors",
+      "json"
+    ],
+    "flash_head/ltx_video/models/transformers/embeddings.py": [
+      "torch",
+      "einops",
+      "numpy",
+      "math"
+    ],
+    "flash_head/ltx_video/models/autoencoders/vae_encode.py": [
+      "typing",
+      "torch",
+      "einops",
+      "flash_head",
+      "torch_xla",
+      "diffusers"
+    ],
+    "flash_head/ltx_video/models/autoencoders/__init__.py": [],
+    "flash_head/ltx_video/models/autoencoders/dual_conv3d.py": [
+      "torch",
+      "einops",
+      "typing",
+      "math"
+    ],
+    "flash_head/ltx_video/models/autoencoders/causal_video_autoencoder.py": [
+      "typing",
+      "functools",
+      "torch",
+      "einops",
+      "numpy",
+      "types",
+      "diffusers",
+      "flash_head",
+      "pathlib",
+      "json",
+      "os",
+      "safetensors"
+    ],
+    "flash_head/ltx_video/models/autoencoders/pixel_norm.py": [
+      "torch"
+    ],
+    "flash_head/ltx_video/models/autoencoders/conv_nd_factory.py": [
+      "torch",
+      "flash_head",
+      "typing"
+    ],
+    "flash_head/ltx_video/models/autoencoders/video_autoencoder.py": [
+      "typing",
+      "functools",
+      "torch",
+      "einops",
+      "types",
+      "diffusers",
+      "flash_head",
+      "json",
+      "os"
+    ],
+    "flash_head/ltx_video/models/autoencoders/vae.py": [
+      "typing",
+      "math",
+      "torch",
+      "inspect",
+      "flash_head",
+      "diffusers"
+    ],
+    "flash_head/ltx_video/models/autoencoders/causal_conv3d.py": [
+      "torch",
+      "typing"
+    ],
+    "flash_head/wan/modules/__init__.py": [
+      "vae"
+    ],
+    "flash_head/wan/modules/vae.py": [
+      "torch",
+      "einops",
+      "loguru"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "herokufreeproxy/database.py",
+  "content": "import os\nimport dj_database_url\n\nfrom . import BASE_DIR\n\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),\n    }\n}\n\n# Parse database configuration from $DATABASE_URL\nDATABASES['default'] = dj_database_url.config()\n\n# Enable Connection Pooling (if desired)\nDATABASES['default']['ENGINE'] = 'django_postgrespool'\n"
+}

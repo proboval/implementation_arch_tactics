@@ -1,0 +1,21 @@
+{
+  "selected_tactic": {
+    "id": "AT41",
+    "name": "Decomposability",
+    "primary_qa_impact": "Testability, Analyzability, Maintainability",
+    "positive_impact": "Testability(+), Analyzability(+), Maintainability(+)",
+    "negative_impact": "None identified"
+  },
+  "justification": "The repository exhibits severe maintainability issues due to monolithic and highly coupled modules. Static analysis shows multiple files with MI=0.0 (critical complexity), including src/core/register.py, src/web/routes/registration.py, src/web/routes/accounts.py, and src/web/routes/settings.py. These files contain thousands of lines with mixed concerns: business logic, HTTP handling, database CRUD, email service orchestration, and upload logic are all interwoven. The imports graph reveals excessive fan-out (avg 5.66) and deep dependency chains (max depth 5), making modules hard to test, analyze, and modify. Decomposability (AT41) directly addresses this by enforcing separation of concerns through modularization and layering, isolating problems and enabling focused refactoring.",
+  "target_components": [
+    "src/core/register.py",
+    "src/web/routes/registration.py",
+    "src/web/routes/accounts.py",
+    "src/web/routes/settings.py",
+    "src/services/duck_mail.py",
+    "src/services/tempmail.py"
+  ],
+  "expected_architectural_change": "Monolithic modules will be split into cohesive, single-responsibility components. For example, src/core/register.py will be decomposed into dedicated OTP handling, OAuth orchestration, and email coordination modules. Route handlers will delegate to service orchestrators instead of containing business logic. Email service implementations will be separated from polling and state management logic.",
+  "implementation_strategy": "1. Extract high-coupling modules into smaller, focused modules (e.g., split registration.py into otp_engine.py, oauth_engine.py, email_coordinator.py). 2. Introduce clear interfaces between layers (HTTP → orchestration → service → API clients). 3. Group related functionality by domain (e.g., email_verification, oauth_flow, account_management) rather than technical layers. 4. Reduce fan-out by encapsulating cross-cutting concerns (backoff, state persistence) into dedicated utilities.",
+  "risks": "Incremental decomposition may temporarily increase complexity during refactoring. Requires careful backward compatibility management. Testing strategy must be updated to validate new module boundaries."
+}

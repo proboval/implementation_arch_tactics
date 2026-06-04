@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "infra_error": false,
+  "timeout": false,
+  "failures": 0,
+  "failed_names": [],
+  "stdout": "\n==================================== ERRORS ====================================\n_____________________ ERROR collecting tests/test_utils.py _____________________\nImportError while importing test module '/Users/saveliy/PycharmProjects/implementation_arch_tactics/experiment_5/repos/WARP-Clash-API/tests/test_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntests/test_utils.py:19: in <module>\n    from utils.entrypoints import *\nE   ModuleNotFoundError: No module named 'utils'\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.03s\n",
+  "stderr": "",
+  "regression": false
+}
