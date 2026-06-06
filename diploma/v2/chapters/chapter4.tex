@@ -1,0 +1,490 @@
+\chapter{Implementation}
+\label{chap:impl}
+
+This chapter describes the implementation of the experimental framework used in this thesis. The framework was designed to support two related evaluation modes. The first mode evaluates LLM-based repository architecture detection. The second mode executes the full architecture-aware maintainability improvement pipeline, including architecture detection, tactic selection, tactic implementation, and maintainability re-evaluation.
+
+The implementation follows a modular pipeline architecture. Each processing stage is implemented as an independent component that consumes structured input artifacts and produces structured output artifacts. This design supports reproducibility, makes intermediate results inspectable, and allows individual stages to be replaced or reconfigured independently.
+
+\section{System Architecture}
+
+The framework follows the \textit{Pipes and Filters} architectural pattern. Each filter performs one clearly defined task, such as repository artifact extraction, static analysis, LLM invocation, tactic selection, or result aggregation. The output of each filter is stored as a file-based artifact and passed to the next stage.
+
+The system consists of the following main subsystems:
+
+\begin{itemize}
+    \item \textbf{Dataset preparation:} collects, filters, normalizes, and stores repository metadata.
+    \item \textbf{Repository artifact extraction:} extracts file trees, import graphs, code signatures, and structural metrics.
+    \item \textbf{Architecture detection:} builds prompts and invokes LLMs for architectural classification.
+    \item \textbf{Static analysis:} computes maintainability-related metrics before and after modifications.
+    \item \textbf{Tactic selection:} selects an architectural tactic based on detected architecture and repository metrics.
+    \item \textbf{Tactic implementation:} applies LLM-generated code modifications incrementally.
+    \item \textbf{Evaluation and artifact management:} stores raw outputs, intermediate artifacts, final datasets, and evaluation summaries.
+\end{itemize}
+
+The same implementation infrastructure is used in both evaluation modes. In the architecture detection evaluation, only the repository artifact extraction and architecture detection subsystems are used. In the pipeline-level maintainability evaluation, all subsystems are executed sequentially.
+
+\section{Technology Stack}
+
+The framework was implemented in Python because of its suitability for automation, availability of static analysis libraries, and compatibility with the selected target repositories. The core technology stack is summarized below:
+
+\begin{itemize}
+    \item \textbf{Programming language:} Python 3.12;
+    \item \textbf{Version control interaction:} Git;
+    \item \textbf{Repository hosting platform:} GitHub;
+    \item \textbf{Static analysis tool:} Radon;
+    \item \textbf{LLM access layer:} Ollama API;
+    \item \textbf{Data formats:} CSV, JSON, and plain-text artifacts.
+\end{itemize}
+
+CSV files are used for tabular datasets and aggregated results. JSON files are used for structured intermediate data, such as import graphs, LLM responses, and metric snapshots. Plain-text files are used for prompts, repository trees, and extracted signatures.
+
+\section{Repository Dataset Preparation}
+
+The dataset preparation subsystem is responsible for collecting candidate repositories, retrieving metadata, filtering repositories, and normalizing the resulting dataset.
+
+Candidate repositories were obtained from GitHub using predefined search criteria. For each repository, metadata such as repository name, owner, primary language, star count, fork count, watcher count, update timestamp, and size were retrieved using the GitHub REST API. Repository identity was represented by the full GitHub name in the form: \verb|owner/repository|
+
+Duplicate repositories were removed based on this full name.
+
+For each candidate repository, the system performed a shallow clone: \\
+\verb|git clone --depth 1 <repository_url>|
+
+Shallow cloning was used to reduce network traffic, processing time, and storage overhead. In later processing stages, repositories were deleted after artifact extraction or pipeline execution to ensure isolation and minimize local storage usage.
+
+The filtering process retained repositories that satisfied the following conditions:
+
+\begin{itemize}
+    \item presence of a \texttt{requirements.txt} file;
+    \item presence of Python source files;
+    \item backend-oriented project structure;
+    \item absence of dominant machine learning dependencies;
+    \item absence of notebook-oriented or experimental project structure.
+\end{itemize}
+
+Machine learning-heavy repositories were excluded by checking for dependencies and project artifacts associated with ML workflows, including packages such as \texttt{torch}, \texttt{tensorflow}, \texttt{scikit-learn}, \texttt{keras}, and \texttt{transformers}, as well as Jupyter Notebook files.
+
+The normalized dataset contains repository metadata, structural metrics, architecture labels where available, and links to extracted artifacts.
+
+\section{Repository Artifact Extraction}
+
+Repository artifact extraction is a central part of the implementation because both architecture detection and tactic selection depend on repository-level context. The system extracts four categories of artifacts.
+
+\subsection{File Tree Extraction}
+
+The file tree extractor builds an ASCII representation of the repository directory structure. Common non-source directories are excluded, including:
+
+\begin{itemize}
+    \item \texttt{.git};
+    \item \texttt{\_\_pycache\_\_};
+    \item virtual environment directories;
+    \item build and distribution directories;
+    \item IDE configuration directories;
+    \item cache directories.
+\end{itemize}
+
+The file tree is depth-limited to avoid excessively large prompts. The resulting artifact is stored as:
+
+\begin{verbatim}
+artifacts/<owner>/<repository>/repo_tree.txt
+\end{verbatim}
+
+This artifact captures project organization, top-level packages, framework-specific directories, and naming conventions.
+
+\subsection{Import Graph Extraction}
+
+The import graph extractor analyzes Python files using the Python AST module. For each Python module, the extractor identifies import statements and resolves internal dependencies between modules within the same repository.
+
+The graph is represented as directed edges:
+
+\begin{verbatim}
+source_module -> target_module
+\end{verbatim}
+
+External dependencies are excluded, since the goal is to capture internal architectural structure rather than library usage.
+
+The import graph is stored in two formats:
+
+\begin{verbatim}
+artifacts/<owner>/<repository>/import_graph.txt
+artifacts/<owner>/<repository>/import_graph.json
+\end{verbatim}
+
+The text version is used in prompts, while the JSON version supports further analysis and reproducibility.
+
+\subsection{Code Signature Extraction}
+
+The code signature extractor reduces Python source files to architecture-relevant interface information. For each Python file, the extractor parses the file using AST and keeps:
+
+\begin{itemize}
+    \item import statements;
+    \item class definitions;
+    \item base classes;
+    \item function signatures;
+    \item method signatures.
+\end{itemize}
+
+Function bodies are removed to reduce context size. The resulting artifact is stored as:
+
+\begin{verbatim}
+artifacts/<owner>/<repository>/repo_signatures.txt
+\end{verbatim}
+
+This representation was used in the architecture detection evaluation to test whether code-level interface information improves classification accuracy.
+
+\subsection{Structural Metrics Extraction}
+
+In addition to textual artifacts, the system computes structural metrics from the repository, including:
+
+\begin{itemize}
+    \item number of Python modules;
+    \item average fan-out;
+    \item maximum fan-in;
+    \item number of import dependency edges;
+    \item presence of dependency cycles;
+    \item number of backend-related files.
+\end{itemize}
+
+These metrics are stored in the normalized dataset and can be included in LLM prompts or used during evaluation.
+
+\section{Architecture Detection Implementation}
+
+The architecture detection subsystem is responsible for constructing prompts, invoking LLMs, parsing responses, and storing predictions.
+
+\subsection{Prompt Construction}
+
+Architecture detection prompts are built from the extracted repository artifacts. Four prompt variants are supported:
+
+\begin{itemize}
+    \item \textbf{P1:} file tree only;
+    \item \textbf{P2:} file tree and import graph;
+    \item \textbf{P3:} file tree, import graph, and code signatures;
+    \item \textbf{P4:} file tree, import graph, code signatures, and structural metrics.
+\end{itemize}
+
+All prompt variants share the same system instruction. The instruction defines the task, allowed labels, architecture taxonomy, and required JSON response format.
+
+The expected JSON response contains:
+
+\begin{itemize}
+    \item \texttt{architecture\_label};
+    \item \texttt{confidence};
+    \item \texttt{evidence};
+    \item \texttt{reasoning}.
+\end{itemize}
+
+A structured response format is required to enable automated parsing and metric computation.
+
+\subsection{LLM Invocation Layer}
+
+LLM access is implemented through a unified invocation layer built on top of the Ollama API. The invocation layer supports both local and cloud models. It implements:
+
+\begin{itemize}
+    \item model selection;
+    \item temperature configuration;
+    \item timeout handling;
+    \item retry logic;
+    \item multi-key fallback for cloud models;
+    \item response normalization.
+\end{itemize}
+
+For the architecture detection evaluation, the following cloud models were used:
+
+\begin{itemize}
+    \item \texttt{qwen3-coder-next:cloud};
+    \item \texttt{deepseek-v3.2:cloud};
+    \item \texttt{gemini-3-flash-preview:cloud};
+    \item \texttt{gemma4:31b-cloud};
+    \item \texttt{minimax-m2.7:cloud}.
+\end{itemize}
+
+All calls were executed with:
+
+\begin{itemize}
+    \item temperature = 0.2;
+    \item timeout = 300 seconds;
+    \item retries = 2.
+\end{itemize}
+
+The raw LLM responses and parsed predictions are stored in CSV files for later evaluation.
+
+\subsection{Response Parsing}
+
+Because LLM outputs may contain formatting deviations, the parser first attempts to parse the full response as JSON. If this fails, it extracts the first JSON-like substring from the response and parses it. If parsing still fails, the output is marked as invalid and the raw response is preserved for inspection.
+
+Parsed architecture detection results are stored with the following fields:
+
+\begin{itemize}
+    \item predicted label for each prompt variant;
+    \item confidence value;
+    \item parse status;
+    \item raw response.
+\end{itemize}
+
+\section{Static Analysis Implementation}
+
+The static analysis subsystem computes maintainability-related metrics before and after tactic implementation. The Radon tool is used to compute Maintainability Index values:
+
+\begin{verbatim}
+radon mi --json <repository_path>
+\end{verbatim}
+
+The JSON output is parsed and aggregated at repository level. The primary aggregate metric is the average Maintainability Index across analyzed Python files.
+
+In addition to MI, the system computes:
+
+\begin{itemize}
+    \item package count;
+    \item average fan-out;
+    \item docstring coverage;
+    \item README presence.
+\end{itemize}
+
+Static analysis results are stored separately for the original and modified repository states:
+
+\begin{verbatim}
+artifacts/static_analysis/BEFORE/<repository_name>/
+artifacts/static_analysis/AFTER/<repository_name>/
+\end{verbatim}
+
+This separation enables direct before/after comparison and preserves metric snapshots for reproducibility.
+
+\section{Tactic Selection Implementation}
+
+The tactic selection subsystem uses the LLM to choose an architectural tactic based on:
+
+\begin{itemize}
+    \item detected architecture;
+    \item repository file tree;
+    \item import graph;
+    \item baseline maintainability metrics;
+    \item structural deficiencies identified by the model.
+\end{itemize}
+
+The tactic catalog includes maintainability-oriented tactics such as:
+
+\begin{itemize}
+    \item \textbf{Decomposability};
+    \item \textbf{Reduced Coupling};
+    \item \textbf{Localized Modification};
+    \item \textbf{Deferred Binding Time}.
+\end{itemize}
+
+The LLM is instructed to return a structured JSON response containing:
+
+\begin{itemize}
+    \item selected tactic;
+    \item rationale;
+    \item expected impact;
+    \item risk assessment;
+    \item suggested implementation plan.
+\end{itemize}
+
+The selected tactic and justification are stored as intermediate artifacts. These artifacts allow later analysis of whether tactic selection aligns with repository structure and detected architecture.
+
+\section{Tactic Implementation Subsystem}
+\label{sec:impl_tactic_implementation}
+
+The tactic implementation subsystem translates the selected architectural tactic into concrete repository changes through an iterative agentic loop \cite{yao2022react}. The design departs from naive single-prompt approaches, in which the entire repository is sent to the LLM in one request and the model is expected to produce a complete rewrite. Such approaches are fragile: large context causes the model to lose structural focus, generated changes are difficult to validate atomically, and there is no mechanism for detecting or recovering from regressions.
+
+The loop interleaves retrieval, generation, application, and automated testing, allowing the agent to make targeted, verifiable changes one step at a time. The overall flow is as follows:
+
+\begin{enumerate}[nosep]
+    \item Build a structural index of the repository;
+    \item retrieve the most relevant files using BM25 ranking;
+    \item invoke a \textit{Planner Agent} to select the next file to modify;
+    \item invoke a \textit{Patch Agent} to generate a replacement for that file;
+    \item apply the patch to the repository on disk;
+    \item run the test suite to detect regressions;
+    \item if a regression is detected, restore the previous file state and attempt self-healing;
+    \item commit the step if no regression occurs, and iterate.
+\end{enumerate}
+
+This loop continues until the maximum number of iterations is reached, the agent issues an explicit \textbf{Stop} signal, or an unrecoverable failure occurs.
+
+\subsection{Repository Indexing}
+\label{subsec:impl_indexing}
+
+Before any modification is attempted, the subsystem builds a lightweight structural index of the repository \cite{zhang2023repocoder}. For each Python file, the index stores the file path, the list of imported module names, the names of all defined classes, the names of all defined functions and methods, and the file size in characters. The index is constructed using the Python AST module without executing any code. Files that cannot be parsed due to syntax errors are indexed with metadata only \cite{zhang2023repocoder}.
+
+The index serves two purposes. First, it provides a compact, queryable representation of repository structure that can be included in LLM prompts without transmitting full source code. Second, it is used as the document corpus for retrieval-based file ranking.
+
+\subsection{BM25-Based File Retrieval}
+\label{subsec:impl_retrieval}
+
+To direct the agent's attention toward files most relevant to the selected tactic, the subsystem ranks all indexed files using BM25, a standard term-frequency-based ranking algorithm widely used in information retrieval. The query is constructed from the tactic's name, category, and description. Each file's document is formed by concatenating its path, class names, function names, and import list \cite{robertson2009probabilistic}.
+
+BM25 scores are computed for all files, and the top-$k$ files (with $k = 5$ by default) with positive scores are passed to the Planner Agent as a ranked candidate list. This retrieval step ensures that the agent starts from contextually relevant files rather than selecting blindly from the full repository, which is particularly important for large repositories where the tactic may only be applicable to a small subset of files \cite{robertson2009probabilistic}.
+
+\subsection{Planner Agent: File Selection}
+\label{subsec:impl_planner}
+
+The Planner Agent is responsible for selecting the next file to modify. It receives the repository file tree, the full structural index, the BM25-ranked candidate list, the tactic description, and a history of steps already applied. Based on this context, the agent selects one file for inspection and modification, or issues a \textbf{Stop} signal if the tactic has been fully applied or no suitable candidate remains.
+
+The agent's response is a structured JSON object containing exactly two fields: the action (\texttt{inspect\_file} or \texttt{STOP}) and the selected file path. This constrained output format enables deterministic parsing and validation without relying on free-form text extraction. If the response cannot be parsed as valid JSON, or if the action or path fields are missing, the response is treated as a planning failure, and the iteration is retried up to a configurable maximum number of times before the pipeline aborts for that repository.
+
+The planner is instructed to prefer files not yet modified in previous iterations, unless a prior change must be extended, and to avoid modifying \texttt{\_\_init\_\_.py} files to prevent inadvertent changes to package interfaces.
+
+\subsection{Patch Agent: Patch Generation}
+\label{subsec:impl_patch}
+
+Once a target file has been selected, the Patch Agent is invoked to generate a replacement for that file. The agent receives the tactic description, the full current content of the target file, the history of applied steps, and optionally feedback from a failed test run if a previous patch attempt caused a regression.
+
+The agent returns a structured JSON object specifying the action (\texttt{modify\_file} or \texttt{create\_file}), the target file path, and the complete replacement file content. The requirement to return the full file content, rather than a diff or a partial edit, simplifies application and validation. A file is rejected if it exceeds a configurable line limit (400 lines by default) or if the path targets \texttt{\_\_init\_\_.py}.
+
+The agent is instructed to make one focused change per step, to prefer small local refactors over large structural rewrites, and to preserve the original file's external interface wherever possible.
+
+\subsection{Patch Application and File State Management}
+\label{subsec:impl_apply}
+
+After a patch has been validated structurally, the subsystem takes a snapshot of the current file state before applying any change. The snapshot is written to a per-iteration backup directory, keyed by iteration index and attempt number, so that rollback can be performed precisely for the affected file without reverting unrelated changes made in earlier iterations.
+
+The patch is then applied by overwriting the target file with the content returned by the Patch Agent, or by creating a new file at the specified path if the action is \texttt{create\_file}. After application, the in-memory repository state is updated to reflect the new file content, ensuring that subsequent iterations and prompts reference the current state of the repository rather than stale cached content.
+
+\subsection{Test Execution and Regression Detection}
+\label{subsec:impl_tests}
+
+A key distinguishing feature of the implementation is automated test-based regression detection. After each patch is applied, the subsystem executes the repository's test suite using \texttt{pytest} with a configurable timeout (default: 300 seconds). The test output is parsed to extract the names of failed tests and the total failure count.
+
+Before the first modification is applied, a \textit{test baseline} is captured by running the test suite on the original repository. The baseline records which tests were already failing before any LLM intervention, allowing the regression detector to distinguish between pre-existing failures and new failures introduced by a patch. A patch is considered to have caused a regression only if it introduces new test failures not present in the baseline; pre-existing failures are ignored.
+
+Repositories without a detectable test infrastructure (no \texttt{pytest.ini}, \texttt{pyproject.toml}, \texttt{setup.cfg}, \texttt{tests/} directory, or \texttt{test\_*.py} files) are processed with regression gating disabled. In such cases, patches are applied without test-based validation.
+
+\subsection{Self-Healing Loop}
+\label{subsec:impl_selfheal}
+
+If a patch causes a regression, the subsystem does not immediately abort the iteration. Instead, it executes a self-healing procedure: the affected file is restored from the pre-patch snapshot, and the Patch Agent is re-invoked with the test failure output appended to the prompt as explicit feedback. The agent is instructed to propose a minimal fix that preserves the original tactic intent while avoiding the failing code path.
+
+This self-healing loop runs for up to a configurable number of repair attempts per iteration (default: two). If all repair attempts cause regressions, the iteration is abandoned, the file is left in its pre-patch state, and the agent proceeds to the next iteration. The abandonment of an iteration is logged but does not terminate the overall pipeline; subsequent iterations may target different files.
+
+\subsection{Iteration Control and Termination}
+\label{subsec:impl_control}
+
+The agent loop continues until one of the following conditions is met:
+
+\begin{itemize}[nosep]
+    \item the maximum number of iterations is reached (default: five);
+    \item the Planner Agent issues a \textsc{Stop} signal;
+    \item the planner exceeds the maximum number of consecutive parse or validation failures.
+\end{itemize}
+
+Each completed iteration is recorded as an applied step, annotated with the action taken, the target file path, a short summary, and the test outcome. The history of applied steps is included in all subsequent prompts, providing the agent with a trace of prior modifications and enabling coherent multi-step refactoring sequences.
+
+\subsection{Artifact Preservation}
+\label{subsec:impl_artifacts}
+
+All intermediate outputs are stored for reproducibility and post-hoc analysis. For each repository, the subsystem writes the structural index, the captured test baseline, one step artifact per completed iteration (containing the JSON patch), and one test result artifact per iteration (containing pytest output, failure names, regression flag, and success status). File-level backups are retained in the per-repository backup directory for the duration of the pipeline run.
+
+
+\subsection{Validation}
+
+After each modification step, the system validates syntactic correctness of the affected Python files. Validation includes parsing modified files and checking for syntax errors.
+
+If validation fails, the repository is marked as failed unless the pipeline can recover through retry. Failures are retained in the final dataset as null outcomes.
+
+The current implementation does not guarantee semantic behavior preservation. It does not systematically execute repository test suites before and after transformation. Therefore, the implementation should be interpreted as an experimental tactic-application mechanism rather than a production-ready refactoring tool.
+
+A full test-based validation loop is considered future work.
+
+\section{Maintainability Re-evaluation}
+
+After tactic implementation, the static analysis subsystem is executed again on the modified repository. The same metric suite used during baseline analysis is recomputed. This ensures that pre- and post-intervention values are comparable.
+
+The most important value computed at this stage is:
+
+\begin{equation}
+\Delta MI = MI_{after} - MI_{before}
+\end{equation}
+
+The system stores:
+
+\begin{itemize}
+    \item MI before;
+    \item MI after;
+    \item $\Delta MI$;
+    \item fan-out before and after;
+    \item docstring coverage before and after;
+    \item package count before and after;
+    \item execution status.
+\end{itemize}
+
+Repositories are classified as:
+
+\begin{itemize}
+    \item \textbf{improved}, if $\Delta MI > 0$;
+    \item \textbf{stable}, if $\Delta MI = 0$;
+    \item \textbf{degraded}, if $\Delta MI < 0$;
+    \item \textbf{failed/null}, if post-intervention analysis is unavailable.
+\end{itemize}
+
+\section{Data Storage and Artifact Management}
+
+All experimental artifacts are stored in a structured directory hierarchy. The artifact management subsystem preserves both raw and processed data.
+
+The stored artifacts include:
+
+\begin{itemize}
+    \item repository metadata;
+    \item normalized datasets;
+    \item file trees;
+    \item import graphs;
+    \item code signatures;
+    \item prompt templates;
+    \item raw LLM responses;
+    \item parsed LLM predictions;
+    \item selected tactics;
+    \item implementation logs;
+    \item static analysis results;
+    \item final evaluation datasets.
+\end{itemize}
+
+A typical repository artifact directory has the following structure:
+
+\begin{verbatim}
+artifacts/
+  owner/
+    repository/
+      repo_tree.txt
+      import_graph.txt
+      import_graph.json
+      repo_signatures.txt
+\end{verbatim}
+
+Aggregated results are stored in CSV files. These files are used to compute evaluation metrics, confusion matrices, and statistical summaries.
+
+\section{Automation and Execution Workflow}
+
+The full pipeline is executed sequentially for repositories in the dataset. Sequential execution was chosen to simplify isolation and avoid interference between repository states.
+
+For each repository, the system performs the following operations:
+
+\begin{enumerate}
+    \item clone repository;
+    \item extract repository artifacts;
+    \item compute baseline static metrics;
+    \item run architecture detection;
+    \item run tactic selection;
+    \item apply LLM-generated modifications;
+    \item validate modified files;
+    \item recompute static metrics;
+    \item store results and logs;
+    \item delete local repository clone.
+\end{enumerate}
+
+This workflow makes each repository run independent. Failures in one repository do not affect subsequent repositories.
+
+\section{Reproducibility Considerations}
+
+Several implementation decisions were made to improve reproducibility:
+
+\begin{itemize}
+    \item repositories are identified by full name and commit hash where available;
+    \item extracted artifacts are stored separately from transient cloned repositories;
+    \item prompts are versioned as text templates;
+    \item raw LLM outputs are stored before parsing;
+    \item parsed results are stored in CSV format;
+    \item static analysis outputs are preserved in JSON format;
+    \item the pipeline can be re-run from intermediate artifacts without re-cloning repositories.
+\end{itemize}
+
+However, exact reproducibility is limited by the use of cloud LLMs. Model providers may update model implementations behind the same API tag. To mitigate this, the study stores raw outputs produced during the experimental run.
+

@@ -1,0 +1,211 @@
+\chapter{Methodology}
+\label{chap:met}
+
+This chapter describes the research methodology used to evaluate an architecture-aware LLM-based workflow for software maintainability improvement. The workflow integrates repository-level architecture detection, architectural tactic selection, and tactic implementation through LLM-generated code modifications, and is evaluated both as an end-to-end pipeline and at the level of individual components.
+
+\section{Research Design}
+
+This thesis follows a quantitative empirical research design grounded in the principles of evidence-based software engineering~\cite{bass2021software}. The primary objective is to evaluate whether LLMs can be used to improve software maintainability through architecture-aware tactic implementation.
+
+The independent variable is the application of an architectural tactic selected and implemented by an LLM-based pipeline. The dependent variable is software maintainability, measured primarily through the Maintainability Index (MI) and supplemented by structural and documentation-related metrics. Each repository serves as its own control: metrics are measured on the original codebase before the intervention and compared with metrics computed after the intervention.
+
+The null hypothesis is:
+
+\begin{equation}
+H_0: MI_{after} - MI_{before} = 0
+\end{equation}
+
+That is, the application of LLM-implemented architectural tactics does not produce a statistically significant change in the Maintainability Index. Since maintainability changes are not assumed to be normally distributed, non-parametric statistical methods are used for hypothesis testing.
+
+\section{Architectural Taxonomy}
+\label{sec:met_taxonomy}
+
+The pipeline operates over a taxonomy of three architectural styles applicable to Python backend repositories:
+
+\begin{itemize}
+    \item \textbf{Script-based:} repositories centered around a small number of scripts, typically with a flat structure and limited modular decomposition.
+    \item \textbf{Layered:} repositories organized around explicit technical layers, such as API/controllers, services, data access, models, and configuration, with dependencies flowing predominantly in one direction.
+    \item \textbf{Modular monolith:} single deployable applications organized into feature- or domain-oriented modules without a strict technical layer hierarchy.
+\end{itemize}
+
+Microservice and event-driven styles are excluded from this taxonomy because they are distinguishable primarily through deployment-level evidence rather than single-repository static structure. The distinction between layered and modular monolith is maintained because these styles imply different tactic-selection strategies and carry different implications for decomposition scope.
+
+\section{Dataset}
+\label{sec:met_dataset}
+
+Repositories were sourced from public Python backend projects on GitHub via the GitHub Search API. A multi-stage automated filtering process was applied to ensure dataset quality and relevance. The inclusion criteria required:
+
+\begin{itemize}
+    \item a valid \texttt{requirements.txt} file confirming a Python dependency-managed project;
+    \item presence of substantive Python source files (\texttt{.py});
+    \item backend-oriented project structure with evidence of active development.
+\end{itemize}
+
+The exclusion criteria removed repositories dominated by machine learning or data science artifacts, identified by the presence of Jupyter Notebooks or dominant dependencies such as \texttt{torch}, \texttt{tensorflow}, \texttt{scikit-learn}, \texttt{keras}, and \texttt{transformers}. This exclusion focuses the dataset on general-purpose backend systems rather than ML workflows or experimental code.
+
+\section{Pipeline Architecture}
+\label{sec:met_pipeline}
+
+The architecture-aware maintainability improvement workflow is implemented as an automated \textit{Pipes and Filters} pipeline. Each phase operates as an independent filter that consumes structured input artifacts and produces structured output artifacts. This design supports intermediate artifact inspection, simplifies failure analysis, and allows individual stages to be reconfigured without affecting the rest of the pipeline.
+
+The pipeline consists of the following sequential phases, illustrated in Figure~\ref{fig:pipeline}:
+
+\begin{enumerate}
+    \item \textbf{Repository cloning:} each candidate repository is shallow-cloned into an isolated temporary environment. This provides a clean, reproducible working state for subsequent analysis and modification.
+
+    \item \textbf{Baseline static analysis:} maintainability metrics are computed on the original, unmodified repository. This establishes the pre-intervention baseline used for comparison after tactic implementation.
+
+    \item \textbf{Repository artifact extraction:} structural evidence is extracted from the repository for use in LLM prompts. This includes the file tree, internal import dependency graph, code signatures, and aggregated structural metrics. These artifacts provide the LLM with a global view of the repository's organization and dependencies.
+
+    \item \textbf{Architecture detection:} the LLM classifies the repository into one of the three architectural styles defined in Section~\ref{sec:met_taxonomy}, using the extracted artifacts. The classification is accompanied by a confidence score, a list of supporting evidence observations, and a brief reasoning explanation, all returned in structured JSON format.
+
+    \item \textbf{Tactic selection:} given the detected architectural style and identified structural deficiencies, the LLM selects a maintainability-oriented architectural tactic from a predefined catalog. The model provides a justification linking the chosen tactic to the expected quality improvement and an assessment of implementation risk.
+
+    \item \textbf{Tactic implementation:} the LLM applies the selected tactic through an iterative incremental modification process. In each iteration, the model proposes a small, self-contained code change in structured JSON format, specifying the target file and the intended modification. Each change is applied and validated for syntactic correctness before the next iteration begins. If validation fails, the step is retried or the pipeline is terminated for that repository.
+
+    \item \textbf{Post-intervention static analysis:} the same metric suite applied at baseline is recomputed on the modified repository, producing the post-intervention values used for comparison.
+
+    \item \textbf{Statistical analysis:} pre- and post-intervention metrics are compared for all repositories that completed the pipeline with paired measurements.
+\end{enumerate}
+
+Repositories that fail at any stage — for example due to syntax errors introduced during implementation, unresolvable import errors, or LLM planning failures — are recorded as null outcomes and retained in the dataset to accurately report failure rates and robustness.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.5cm,
+    every node/.style={
+        draw,
+        rectangle,
+        rounded corners,
+        minimum width=4.5cm,
+        minimum height=1.05cm,
+        align=center,
+        fill=white,
+        font=\small
+    },
+    arrow/.style={
+        ->,
+        thick
+    }
+]
+
+\node (selection)     {\textbf{1. Repository Cloning}\\ \small Shallow Clone \& Isolation};
+\node (before)        [below=of selection]     {\textbf{2. Baseline Analysis}\\ \small MI, Fan-out, Documentation};
+\node (artifacts)     [below=of before]        {\textbf{3. Artifact Extraction}\\ \small File Tree, Import Graph, Signatures};
+\node (architecture)  [below=of artifacts]     {\textbf{4. Architecture Detection}\\ \small LLM-based Style Classification};
+\node (tactic)        [below=of architecture]  {\textbf{5. Tactic Selection}\\ \small Catalog-based Reasoning};
+\node (implementation)[below=of tactic]        {\textbf{6. Tactic Implementation}\\ \small Incremental Code Modifications};
+\node (after)         [below=of implementation]{\textbf{7. Post-Intervention Analysis}\\ \small Metric Recalculation};
+
+\draw[arrow] (selection)      -- (before);
+\draw[arrow] (before)         -- (artifacts);
+\draw[arrow] (artifacts)      -- (architecture);
+\draw[arrow] (architecture)   -- (tactic);
+\draw[arrow] (tactic)         -- (implementation);
+\draw[arrow] (implementation) -- (after);
+
+\end{tikzpicture}
+\caption{Architecture-aware LLM-based maintainability improvement pipeline.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Repository Evidence Extraction}
+\label{sec:met_evidence}
+
+For each repository, four types of structural evidence are extracted and stored as artifacts:
+
+\begin{enumerate}
+    \item \textbf{File tree.} An ASCII representation of the repository directory structure, excluding common non-source directories. This captures naming conventions, top-level organization, and framework-specific layout patterns.
+    \\
+    \item \textbf{Import dependency graph.} Internal Python module dependencies extracted via AST parsing. Only imports between modules within the repository are retained; external library imports are excluded. The graph is stored as both a human-readable edge list and a structured JSON file.
+
+    \item \textbf{Code signatures.} Python class definitions with base classes, function signatures, and method signatures extracted using AST, without function bodies. This reduces context size while preserving interface-level information.
+
+    \item \textbf{Structural metrics.} Module count, average fan-out, maximum fan-in, dependency cycle detection flag, and total import edge count.
+\end{enumerate}
+
+These four artifact types represent increasing levels of detail. The file tree captures static organization; the import graph captures dynamic structural relationships; signatures expose interface structure; metrics provide a compressed numerical summary. Depending on the pipeline stage and evaluation, different subsets of these artifacts are used.
+
+\section{Maintainability Measurement}
+\label{sec:met_measurement}
+
+Software maintainability is evaluated using a metric suite aligned with the ISO/IEC 25010 quality model~\cite{ISO25010}.
+
+\subsection{Maintainability Index}
+
+The primary metric is the Maintainability Index (MI), computed using the \texttt{Radon} static analysis tool~\cite{oman1992maintainability}. MI is a weighted composite of three components:
+
+\begin{itemize}
+    \item \textbf{Halstead Volume}, which estimates program size and vocabulary complexity~\cite{halstead1977elements};
+    \item \textbf{Cyclomatic Complexity}, which measures the number of independent execution paths through the code~\cite{mccabe1976complexity};
+    \item \textbf{Lines of Code}, which captures the physical size of the module.
+\end{itemize}
+
+MI is reported on a scale from 0 to 100, where higher values indicate better maintainability. For each repository, the mean MI across all analyzed Python files is used as the aggregate repository-level value.
+
+The maintainability change is computed as:
+
+\begin{equation}
+\Delta MI = MI_{after} - MI_{before}
+\end{equation}
+
+A positive value indicates improvement, a negative value indicates degradation, and zero indicates no measurable change.
+
+\subsection{Supplementary Metrics}
+
+Because MI captures file-level complexity but is less sensitive to structural and coupling changes, additional metrics are collected to triangulate maintainability effects:
+
+\begin{itemize}
+    \item \textbf{Average fan-out:} mean number of imports per module, used as a proxy for inter-module coupling.
+    \item \textbf{Package count:} number of detected top-level packages, used as a coarse indicator of modular structure.
+    \item \textbf{Docstring coverage:} proportion of functions and classes with docstrings, used as a documentation quality indicator.
+\end{itemize}
+
+These supplementary metrics are not treated as primary outcome variables but provide additional context for interpreting whether LLM-generated changes affected dimensions beyond code-level complexity.
+
+\section{Architectural Tactic Catalog}
+\label{sec:met_tactics}
+
+Tactic selection is grounded in the architectural tactic literature, particularly the catalog established by Bass et al.~\cite{bass2021software} and the systematic mapping by M\'arquez et al.~\cite{marquez2022architectural}. The pipeline focuses on four maintainability-oriented tactics applicable to Python repositories:
+
+\begin{itemize}
+    \item \textbf{Decomposability:} splitting monolithic files or modules into smaller cohesive units to improve analysability and modularity.
+    \item \textbf{Reduced Coupling:} reducing inter-module dependencies through abstraction, mediation, or dependency inversion, targeting modifiability.
+    \item \textbf{Localized Modification:} encapsulating change-prone logic to reduce the ripple effect of future modifications.
+    \item \textbf{Deferred Binding Time:} externalizing configuration or deferring concrete implementation binding to improve flexibility.
+\end{itemize}
+
+The LLM selects the most appropriate tactic based on the detected architectural style, baseline structural metrics, and identified deficiencies such as high fan-out or monolithic files with low MI scores. The model provides a rationale linking the chosen tactic to the expected maintainability improvement.
+
+\section{LLM Configuration}
+\label{sec:met_llm}
+
+All LLM calls in the pipeline use \texttt{qwen3-coder-next:cloud} through the Ollama API. This model was selected for its large 256k token context window, which allows the full repository context — including file tree, import graph, and code signatures — to be provided in a single prompt without truncation. A large context window is necessary for repository-level architectural reasoning, where cross-module dependencies must be visible simultaneously~\cite{piao2025refactoring}.
+
+All LLM calls use the following parameters:
+
+\begin{itemize}
+    \item temperature: 0.2, to reduce output variance and improve reproducibility;
+    \item timeout: 300 seconds;
+    \item retries: 2.
+\end{itemize}
+
+All prompts require structured JSON responses to enable automated parsing and downstream processing. Prompts for architecture detection include the allowed labels, taxonomy definitions, and a required output schema. Prompts for tactic selection and implementation include repository artifacts, baseline metrics, and task-specific instructions.
+
+\section{Evaluation Method}
+\label{sec:met_eval}
+
+Completed repositories are categorized based on the sign of $\Delta MI$:
+
+\begin{itemize}
+    \item \textbf{Improved:} $\Delta MI > 0$;
+    \item \textbf{Stable:} $\Delta MI = 0$;
+    \item \textbf{Degraded:} $\Delta MI < 0$.
+\end{itemize}
+
+Repositories without valid post-intervention metrics are categorized as \textbf{failed} and excluded from paired statistical tests, but included in failure rate analysis.
+
+The primary statistical test is the \textbf{Wilcoxon signed-rank test}, appropriate for paired non-normally distributed samples. The effect size is reported using the \textbf{matched-pairs rank-biserial correlation} ($r$), which distinguishes between statistical significance and practical importance.
+
+Supplementary metrics are analyzed descriptively because the number of non-zero changes is typically too small for meaningful hypothesis testing.
