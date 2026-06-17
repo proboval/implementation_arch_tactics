@@ -1,65 +1,79 @@
-# Paper Reviewer Skill — ECSA 2026 Industry Track
+# Thesis Reviewer Skill — Innopolis MS Thesis 2026
 
-Simulates ECSA 2026 peer reviewers. Produces structured feedback against the actual ECSA evaluation criteria and tracks the specific gaps from the EASE 2026 rejection.
+Simulates an expert review committee for the Master's thesis *"Automated Implementation of Architectural Tactics for Software Quality Improvement"*. Produces a multi-reviewer panel assessment, an editorial decision, and a prioritized revision roadmap — the same workflow whose output lives in `diploma/v3/review/`.
 
 ## Quick start
 
 From the repo root:
 
-    Review paper/v2-ecsa-industry/main.tex using profile se-researcher in post-draft mode.
+    Run a full panel review of diploma/v3.
 
-    Review paper/v2-ecsa-industry/main.tex using profile industry-practitioner in post-draft mode.
+Or a single targeted pass:
 
-    Review paper/v2-ecsa-industry/main.tex using profile consistency-checker in post-draft mode.
+    Review diploma/v3/chapters/chapter5.tex using profile methodology-examiner in post-draft mode.
+
+    Review diploma/v3 (full thesis) using profile devils-advocate in post-draft mode.
+
+    Review diploma/v3 using profile consistency-checker in post-draft mode.
 
 ## Profiles
 
-| Profile | Perspective | Focus | Primary rejection gap |
-|---|---|---|---|
-| `se-researcher` | SA/empirical methods researcher | Methodology soundness, related work, evaluation validity, ground truth | PREV-R2-GAP-1, 2, 3 |
-| `industry-practitioner` | Senior software architect in industry | Practical guidance clarity, ECSA industry track fit, discussion quality | PREV-R3-GAP-1, industry framing |
-| `consistency-checker` | QA pass (not evaluator) | ECSA policy compliance, formatting, cross-section coherence | Formatting, policy gaps |
+| Profile | Persona archetype | Focus |
+|---|---|---|
+| `eic` | Editor / defense-committee chair | Significance, originality, defense readiness, publishability |
+| `methodology-examiner` | Empirical-SE methods professor | Research design, statistics, validity threats, reproducibility |
+| `domain-examiner` | Software-architecture specialist | Literature, tactic/architecture theory, domain contribution |
+| `perspective-examiner` | SE-measurement & industry relevance | Construct/measurement validity, practical impact |
+| `devils-advocate` | Rigorous critical empiricist | Strongest counter-argument, confounds, overgeneralization |
+| `consistency-checker` | QA pass (not an evaluator) | Innopolis template, formatting, numeric/internal consistency, citations |
 
-**Start with `se-researcher` and `industry-practitioner`** — these address the two dimensions ECSA scores: soundness and practical relevance.
+**Single pass → start with `methodology-examiner`.** **Complete assessment → run the full panel.**
 
 ## Modes
 
 **post-draft** — You have a draft. The reviewer evaluates it.
 
-    Review paper/v2-ecsa-industry/main.tex using profile se-researcher in post-draft mode.
+    Review diploma/v3/chapters/chapter3.tex using profile methodology-examiner in post-draft mode.
 
-Output: gap table with priorities (MUST/SHOULD/NICE/DEFER) + rejection gap tracking.
+Output: structural-completeness + persuasive-effectiveness tables (MUST/SHOULD/NICE/DEFER) + CRIT-* coverage.
 
-**pre-draft** — You're about to write a section. The reviewer produces a spec.
+**pre-draft** — You're about to write a chapter. The reviewer produces a spec.
 
-    Produce a spec for §Discussion using profile industry-practitioner in pre-draft mode.
+    Produce a spec for chapter 5 (Evaluation) using profile domain-examiner in pre-draft mode.
 
-Output: required dimensions checklist + decisions for human.
+Output: required-content checklist + structural guidance + decisions for the author.
+
+**full-panel** — All examiners + devil's advocate + editorial synthesis + roadmap.
+
+    Run a full panel review of diploma/v3.
+
+## Editorial decision
+
+ACCEPT / MINOR REVISION / MAJOR REVISION / REJECT, mapped to defense readiness.
+**Checkpoint:** an upheld devil's-advocate CRITICAL issue blocks ACCEPT (MAJOR REVISION at best).
 
 ## Output location
 
-Reviews → `paper/v2-ecsa-industry/reviews/`
+Reviews → `diploma/<version>/review/`.
 
-Naming: `{section}-{mode}-{profile}-{date}.md`
+- Full panel: numbered phases `01_reviewer_configuration.md` … `08_revision_roadmap.md` (as in `diploma/v3/review/`).
+- Single profile / spec: `{chapter}-{mode}-{profile}-{date}.md`.
 
-Examples:
-- `full-postdraft-se-researcher-2026-05-05.md`
-- `discussion-predraft-industry-practitioner-2026-05-06.md`
-- `full-postdraft-consistency-checker-2026-05-07.md`
+## Standing critical issues (always tracked)
 
-## The EASE 2026 rejection gaps (always tracked)
+These are carried in `call-context/thesis-profile.md` and checked by every review. As of thesis v3:
 
-Every review checks whether v2 closes these:
-
-| Gap | Description | v2 Status |
+| ID | Issue | v3 status |
 |---|---|---|
-| PREV-R2-GAP-1 | No ground truth for architecture classification | Partially fixed — 57 manually labeled repos |
-| PREV-R2-GAP-2 | No repository size info despite context-window constraint | Open |
-| PREV-R2-GAP-3 | No description of how tactics manifest in Python | Fixed — detection-only paper, no tactics applied |
-| PREV-R2-GAP-4 | Semantic correctness / behaviour preservation not addressed | Fixed — detection-only paper |
-| PREV-R3-GAP-1 | Paper tries to do too much (Detection + Selection + Implementation) | Fixed — detection only |
+| CRIT-1 | MI does not measure architecture-level maintainability (construct validity) | Open — drives MAJOR REVISION |
+| CRIT-2 | File splitting trivially inflates MI; no non-architectural baseline | Open |
+| CRIT-3 | Single-annotator ground truth (no inter-rater reliability) | Open |
+| CRIT-4 | No baseline comparison (random split / static-analysis-only) | Open |
+| CRIT-5 | Overgeneralization from small script-based repos | Open |
 
-## Important dates
+## Rules
 
-- Paper submission: May 8, 2026
-- Notification: June 12, 2026
+1. Never modify thesis source files — read only.
+2. Never read `thesis.pdf` — review the `.tex` chapter sources.
+3. Every review assesses CRIT-* coverage.
+4. Calibrate to MS-thesis scope; flag journal-publishability separately.

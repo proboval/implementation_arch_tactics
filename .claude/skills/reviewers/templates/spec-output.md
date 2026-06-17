@@ -1,54 +1,52 @@
 # Spec Output Template (pre-draft mode)
 
-**Reviewer profile:** [profile name]
-**Section:** [section name]
+**Reviewer profile:** [eic | methodology-examiner | domain-examiner | perspective-examiner]
+**Chapter / section:** [name]
 **Date:** [YYYY-MM-DD]
 **Mode:** pre-draft
-**Call context:** ECSA 2026 Industry Track — Short Papers and Presentations
+**Frame:** Innopolis MS thesis defense (+ publishability where relevant)
 
 ---
 
 ## Required content checklist
 
-What this section MUST contain to satisfy the ECSA evaluation criteria and close relevant rejection gaps.
+What this chapter MUST contain to satisfy the MS-thesis evaluation criteria and close the relevant standing critical issues.
 
 | # | Required element | Why it is required | Priority |
 |---|---|---|---|
-| R1 | ... | Addresses [criterion / gap ID] | MUST / SHOULD / NICE |
+| R1 | ... | Addresses [criterion C1–C7 / CRIT-* ID] | MUST / SHOULD / NICE |
 | R2 | ... | ... | ... |
 
 ## Structural guidance
 
-How this section should be organized to read well for both the `se-researcher` and `industry-practitioner` profiles.
+How this chapter should be organized to read well for the panel.
 
 - **Opening:** ...
 - **Core content:** ...
 - **Closing / transition:** ...
-- **Target length:** ... (~X pages)
+- **Target length / proportion:** ... (avoid letting mechanics crowd out analysis)
 
-## Rejection gaps this section must address
+## Standing critical issues this chapter must address
 
-| Gap ID | What this section must show |
+| ID | What this chapter must show |
 |---|---|
-| PREV-R2-GAP-1 | ... |
-| NEW-RISK-1 | ... |
+| CRIT-1 | ... |
+| CRIT-2 | ... |
 | ... | ... |
 
 ## Decisions required before drafting
 
-Items that need a human decision before this section can be written.
-
-1. **[Decision topic]:** [Explicit question for Andrey to answer]
+1. **[Topic]:** [explicit question for the author]
 2. ...
 
 ## What to avoid
 
-- [Anti-pattern specific to this profile and section]
+- [Anti-pattern specific to this profile and chapter]
 - ...
 
 ---
 
 _Priority definitions:_
-- **MUST:** Section will fail evaluation without this element.
-- **SHOULD:** Section will be weaker without this — include if page budget allows.
-- **NICE:** Strengthens the section; add only after MUST/SHOULD resolved.
+- **MUST:** chapter will not pass this reviewer's bar without it.
+- **SHOULD:** chapter is weaker without it — include if feasible.
+- **NICE:** strengthens the chapter; add after MUST/SHOULD.
