@@ -1,0 +1,70 @@
+\chapter{Implementation}
+\label{chap:impl}
+
+This chapter describes the implementation of the experimental framework. The framework supports two evaluation modes: standalone LLM-based repository architecture detection and the full pipeline including architecture detection, tactic selection, tactic implementation, and maintainability re-evaluation. Each processing stage is implemented as an independent component that consumes structured input artifacts and produces structured output artifacts, supporting reproducibility and independent reconfiguration.
+
+The implementation follows the \textit{Pipes and Filters} architectural pattern. The main subsystems are: dataset preparation, repository artifact extraction, architecture detection, static analysis, tactic selection, tactic implementation, and evaluation management.
+
+\section{Technology Stack}
+
+The framework was implemented in Python 3.12. Static analysis uses Radon for MI computation and includes custom AST-based extraction for import graphs, code signatures, and structural metrics. LLM access is provided through the Ollama API. Data is stored as CSV (tabular results), JSON (structured artifacts), and plain text (prompts, trees, signatures).
+
+\section{Dataset Preparation}
+
+Candidate repositories were collected from GitHub using the REST API with predefined search criteria. Each repository was shallow-cloned (\texttt{git clone --depth 1}) to minimize storage overhead. Inclusion required a valid \texttt{requirements.txt}, substantive Python source files, and a backend-oriented structure. Repositories dominated by machine learning dependencies (\texttt{torch}, \texttt{tensorflow}, \texttt{scikit-learn}, \texttt{keras}, \texttt{transformers}) or containing Jupyter Notebooks were excluded to focus on general-purpose backend systems.
+
+\section{Repository Artifact Extraction}
+
+The system extracts four types of structural evidence for each repository:
+
+\begin{enumerate}
+    \item \textbf{File tree:} an ASCII directory representation excluding \texttt{.git}, \texttt{\_\_pycache\_\_}, virtual environment, build, and IDE directories.
+    \item \textbf{Import dependency graph:} internal Python module dependencies extracted via AST parsing. External imports are excluded. The graph is stored as a human-readable edge list and a structured JSON file.
+    \item \textbf{Code signatures:} class definitions with base classes, function signatures, and method signatures extracted via AST without function bodies.
+    \item \textbf{Structural metrics:} module count, average fan-out, maximum fan-in, dependency cycle detection, and total import edge count.
+\end{enumerate}
+
+These artifacts provide the LLM with the repository-level context needed for architecture detection and tactic selection.
+
+\section{Static Analysis}
+
+Maintainability metrics are computed using \texttt{radon mi --json} on both the original and modified repository states. The primary aggregate is the mean MI across all analyzed Python files. Supplementary metrics (package count, average fan-out, docstring coverage) provide additional context. Results are stored separately for before and after states under \texttt{artifacts/static\_analysis/BEFORE/} and \texttt{artifacts/static\_analysis/AFTER/}.
+
+\section{Architecture Detection}
+
+Architecture detection prompts are constructed from the extracted artifacts. Four prompt variants are supported: P1 (file tree only), P2 (file tree + import graph), P3 (P2 + code signatures), and P4 (P3 + structural metrics). All variants share the same system instruction defining the architectural taxonomy and required JSON output format (\texttt{architecture\_label}, \texttt{confidence}, \texttt{evidence}, \texttt{reasoning}).
+
+LLM access is provided through a unified invocation layer supporting model selection, temperature configuration, timeout handling, retry logic, and response normalization. For the architecture detection evaluation, five cloud models were used: Qwen3-coder-next, DeepSeek-v3.2, Gemini-3-flash-preview, Gemma4, and MiniMax-M2.7. All calls used temperature 0.2 and timeout 300 seconds. Responses are parsed with fallback extraction for non-standard JSON formatting.
+
+\section{Tactic Selection}
+
+The tactic selection subsystem uses the LLM to choose among four tactics (Decomposability, Reduced Coupling, Localized Modification, Deferred Binding Time) based on the detected architecture, file tree, import graph, baseline metrics, and identified structural deficiencies. The LLM returns a structured JSON response containing the selected tactic, rationale, expected impact, risk assessment, and implementation plan.
+
+\section{Tactic Implementation}
+\label{sec:impl_tactic_implementation}
+
+The tactic implementation subsystem translates the selected tactic into concrete code changes through an iterative agentic loop~\cite{yao2022react}. The design avoids naive single-prompt approaches by interleaving retrieval, generation, application, and regression detection, allowing targeted verifiable changes one step at a time.
+
+\subsection{Agentic Loop}
+
+The loop proceeds as follows:
+
+\begin{enumerate}
+    \item Build a structural index of the repository (file path, imports, class names, function names, file size) using AST~\cite{zhang2023repocoder}.
+    \item Rank files by relevance to the selected tactic using BM25~\cite{robertson2009probabilistic}; the top-$k$ candidates are passed to the planner.
+    \item A \textbf{Planner Agent} selects the next file to modify or issues a Stop signal. The response is a structured JSON action and file path.
+    \item A \textbf{Patch Agent} generates the complete replacement file content, specifying modify or create action, target path, and full file content.
+    \item The patch is applied after syntactic validation; file state is backed up for rollback before each modification.
+    \item If a test suite is detected, it is executed to detect regressions against the pre-modification baseline.
+    \item If a regression is detected, the file is restored and the Patch Agent retries with test failure feedback (self-healing, up to 2 attempts per iteration).
+    \item The step is committed and the loop continues (up to 5 iterations) or terminates.
+\end{enumerate}
+
+\subsection{Validation and Limitations}
+
+Syntactic correctness is verified after each modification step. Semantic behavior preservation is not guaranteed — test suite execution is performed where available but is not a mandatory pipeline gate for repositories without test infrastructure. Implementation parameters (BM25 $k$, iteration limits, backup directory structure) are detailed in Appendix~\ref{app:impl_params}.
+
+\section{Data Storage and Artifact Management}
+
+All experimental artifacts are stored in a structured directory hierarchy. For each repository, artifacts include the file tree, import graph (text and JSON), code signatures, prompt templates, raw and parsed LLM responses, implementation logs, and static analysis results for both before and after states. Aggregated results are stored in CSV files. The raw outputs from cloud LLM calls are preserved to mitigate reproducibility limitations from model updates behind API tags.
+

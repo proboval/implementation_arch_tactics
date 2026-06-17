@@ -1,0 +1,88 @@
+\chapter{Conclusion}
+\label{chap:conclusion}
+
+This thesis investigated whether Large Language Models can support software maintainability improvement through code-level tactic implementation guided by architectural context. The investigation consisted of three empirical studies and an architectural analysis covering the full workflow from architecture detection to tactic implementation and maintainability measurement. This chapter summarizes the findings with respect to the research objectives, identifies the main limitations, and proposes directions for future research.
+
+\section{Summary of Contributions}
+
+The thesis makes three primary contributions.
+
+\textbf{An empirical evaluation of LLM-based architecture detection.} The study provides the first systematic multi-model evaluation of repository-level architectural style classification using LLMs. Five models were evaluated across four context configurations on a manually labeled dataset of 57 Python backend repositories. The evaluation yields clear design recommendations: import dependency graphs are the most valuable evidence type, code signatures should be omitted, and LLM confidence scores are insufficiently calibrated to be used as reliability indicators. A multiple-comparisons analysis bounds the statistical significance of individual model comparisons.
+
+\textbf{An empirical evaluation of LLM-implemented architectural tactics with critical construct validity analysis.} The thesis evaluates an LLM-based tactic implementation pipeline across 162 repositories and subsequently with validated architecture labels across 57 repositories. The results quantify the relationship between architecture label quality and implementation outcomes, and identify repository size as the dominant moderating factor. The architectural analysis (Section~\ref{sec:eval_arch_analysis}) demonstrates that MI does not distinguish genuine architectural restructuring from mechanical file splitting — the most significant construct validity finding — and that all pipeline changes operate at the code level rather than the architectural level. The thesis reframes its central claim accordingly.
+
+\textbf{A reusable pipeline architecture and artifact dataset.} The pipeline implementation, labeled dataset, extracted repository artifacts, prompt templates, and raw model outputs are made publicly available, enabling replication and extension of the reported experiments.
+
+\section{Findings with Respect to Research Objectives}
+
+\textbf{Objective 1: Identify architectural tactics that influence maintainability.}
+The thesis grounds tactic selection in four tactics applicable to Python backend repositories: Decomposability, Localized Modification, Reduced Coupling, and Deferred Binding Time. Tactics requiring runtime infrastructure, organizational processes, or deployment-level restructuring are deliberately excluded. Empirical results confirm that Decomposability and Localized Modification produce measurable MI improvements in receptive repositories, while Reduced Coupling is consistently ineffective — the only tactic with a negative mean $\Delta MI$ across both studies.
+
+\textbf{Objective 2: Implement selected tactics using LLMs.}
+The pipeline successfully selects and implements tactics in 74.7\% of attempted repositories through an agentic loop with BM25-based file retrieval, planner-based step selection, patch generation, and syntactic validation. The implementation reliably produces code-level changes (file splits, extractions) but does not produce architecture-level changes (no package count changes, negligible directory depth or fan-out improvements).
+
+\textbf{Objective 3: Evaluate the impact using metrics.}
+MI is sensitive to file-level complexity changes but does not distinguish architectural improvement from mechanical file splitting (webapp-color vs. Paper2Rebuttal: $\Delta MI$ of +21.98 vs. +18.14 with fundamentally different architectural value). Package count remained unchanged across all repositories. Fan-out changed significantly in only 4 of 42 repositories. The sensitivity analysis confirms that the statistical significance is driven by a small number of extreme file-splitting cases.
+
+\textbf{Objective 4: Compare maintainability before and after transformations.}
+The pipeline produces a statistically significant but fragile MI shift ($W = 360.0$, $p = 0.001$, $r = 0.28$; mean $+0.48$, 95\% CI [+0.18, +0.82]) on 162 repositories. Significance is lost when the top three extreme improvements are excluded. Using validated architecture labels increases the improvement rate from 18.2\% to 42.9\% and the mean gain from $+0.48$ to $+1.484$, confirming that detection quality propagates into implementation outcomes.
+
+\textbf{Objective 5: Evaluate advantages and limitations of LLMs for code-level tactic implementation.}
+
+On the advantage side, LLMs can reason about repository-level structure, select contextually appropriate tactics, and generate code modifications that produce measurable (if localized) maintainability improvements without predefined transformation rules.
+
+On the limitation side, five issues are consistently observed. First, architecture detection errors — particularly the systematic confusion of modular monolith with layered — propagate into tactic selection. Second, the implementation operates at the code level, producing file splits rather than module boundary restructuring. Third, the 25.3\% failure rate reflects brittleness in multi-step LLM code generation. Fourth, LLM confidence scores are uncalibrated. Fifth, MI as the primary dependent variable cannot distinguish architectural from non-architectural changes, requiring a reframing of the thesis contribution.
+
+\textbf{Objective 6: Formulate recommendations.}
+The empirical results support the following recommendations:
+
+\begin{itemize}
+    \item Use file tree combined with import dependency graph as the default evidence configuration for architecture detection. Code signatures should be omitted.
+    \item Do not rely on LLM confidence scores to identify unreliable architecture predictions. Human review is necessary where the modular monolith/layered boundary is relevant downstream.
+    \item Prioritize small, script-based repositories with files scoring near-zero MI as primary targets. At approximately \$0.32 per repository, the investment is justified for potential +5--20 point gains.
+    \item Apply Localized Modification in preference to Decomposability when degradation risk must be minimized. Avoid Reduced Coupling — it is consistently ineffective.
+    \item Integrate test-based regression detection in any production deployment. Supplement MI with architecture-level metrics (cyclic dependency ratio, coupling intensity) for meaningful evaluation of structural changes.
+    \item Frame LLM-based tactic implementation as \textit{code-level improvement guided by architectural context}, not as autonomous architectural refactoring. The gap between code-level execution and architecture-level restructuring is the central limitation.
+\end{itemize}
+
+\section{Limitations}
+
+The conclusions of this thesis are bounded by several limitations that should be considered when interpreting the results.
+
+\textbf{Single annotator.} Architecture ground truth labels were assigned by one annotator. The modular monolith/layered boundary is the hardest annotation decision, and inter-annotator agreement (Cohen's $\kappa$) was not measured. Some repositories may genuinely exhibit hybrid characteristics. This limitation is recognized by all five reviewers as a critical threat requiring a second annotator before publication-quality claims can be made.
+
+\textbf{Dataset scope.} All three studies are restricted to Python backend repositories from GitHub with \texttt{requirements.txt} as a hard inclusion criterion. This excludes modern Python projects using \texttt{poetry}, \texttt{pipenv}, or \texttt{pyproject.toml} alone, potentially biasing the dataset toward older or less modern projects. The taxonomy covers three architectural styles; microservice, event-driven, and hexagonal architectures are not represented. Results may not generalize to other languages, enterprise systems, or non-backend domains.
+
+\textbf{MI construct validity (CRITICAL).} The Maintainability Index is sensitive to file-level complexity but insensitive to module boundary quality, architectural conformance, and inter-module coupling changes. The architectural analysis demonstrates that MI cannot distinguish mechanical file splitting from genuine architectural decomposition. This is the most significant validity threat, recognized as CRITICAL by the Devil's Advocate review and acknowledged by all other reviewers. The thesis reframes its contributions to align with what MI actually measures.
+
+\textbf{No baseline comparison.} The pipeline is never compared against alternatives: random file splitting, static-analysis-only refactoring, or manual implementation by a developer. Without baselines, the results demonstrate absolute capability but not relative effectiveness. This is a major limitation that prevents stronger causal claims about LLM-specific benefits.
+
+\textbf{Absence of behavioral verification.} The pipeline validates syntactic correctness but does not guarantee semantic behavior preservation. MI improvements may coexist with undetected behavioral regressions.
+
+\textbf{Single LLM for implementation.} The implementation pipeline uses Qwen3-coder-next exclusively. The claim ``LLMs can support maintainability improvement'' conflates with ``this specific LLM in this specific configuration,'' though this limitation is prominently noted.
+
+\textbf{Preliminary nature.} All three studies produce early feasibility evidence. Effect sizes are small to moderate, datasets are limited in size and diversity, and statistical power is constrained. The sensitivity analysis shows that statistical significance in Study 1 is driven by a small number of extreme values.
+
+\textbf{Automation bias.} LLMs encode training-data preferences that may systematically favor layered MVC architectures. The systematic modular-monolith-to-layered misclassification across all five models is consistent with this bias, which may affect the generalizability of architecture detection results to non-web-dominated codebases.
+
+\section{Future Work}
+
+The findings of this thesis point to several directions for future investigation.
+
+\textbf{Multi-annotator ground truth.} Expanding the architecture detection dataset with multiple annotators and measuring inter-rater agreement (Cohen's~$\kappa$) would establish a more reliable benchmark, particularly for the modular monolith/layered boundary.
+
+\textbf{Baseline comparison.} Adding comparison conditions — random file splitting, static-analysis-only tools, or manual developer implementation — would transform the evaluation from absolute capability assessment to relative effectiveness comparison.
+
+\textbf{Behavioral preservation verification.} Integrating automated test suite execution as a mandatory pipeline stage would transform the pipeline from an experimental mechanism into a behaviorally safe transformation tool.
+
+\textbf{Architecture-level metrics.} Computing cyclic dependency ratio, inter-module coupling intensity, and package tangle percentage from the existing import dependency graph data would provide more discriminating evaluation of architectural tactic effects.
+
+\textbf{Broader taxonomy and languages.} Extending to microservice, event-driven, and hexagonal styles, and evaluating on Java, TypeScript, or Go repositories, would establish generalizability.
+
+\textbf{Cost-benefit with richer baselines.} Estimating the person-minutes saved per MI point gained, and comparing against human refactoring effort, would ground the practical contribution.
+
+\textbf{Debiasing architecture detection.} Counterexample prompting, architectural conformance rule injection, or hybrid LLM+static approaches could reduce the systematic layered bias in modular monolith detection.
+
+\textbf{Adaptive context selection.} Varying the evidence configuration based on repository size or detected structural characteristics could improve both classification accuracy and implementation coherence.
+
+\textbf{Multi-model implementation comparison.} Evaluating multiple LLMs on the full implementation pipeline would clarify whether the code-level limitation is model-specific or reflects a general capability gap.

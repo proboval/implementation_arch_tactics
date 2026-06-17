@@ -1,0 +1,602 @@
+\chapter{Evaluation and Discussion}
+\label{chap:eval}
+
+\section{Overview}
+\label{sec:eval_overview}
+
+This chapter presents the evaluation of the LLM-based code-level maintainability improvement workflow investigated in this thesis. The evaluation was conducted through three sequential empirical studies, each motivated by limitations identified in the preceding one. A fourth architectural analysis (Section~\ref{sec:eval_arch_analysis}) draws on the Study 3 data to examine the gap between code-level metric changes and architectural restructuring.
+
+\textbf{Study 1} executed the full pipeline on 162 Python backend repositories. The pipeline detected repository architecture, selected a tactic, implemented code modifications, and re-measured maintainability. This study revealed statistically significant but modest improvements, and identified architecture detection as a critical but unvalidated stage.
+
+\textbf{Study 2} independently validated the architecture detection component using a manually labeled dataset of 57 repositories, five LLMs, and four evidence configurations.
+
+\textbf{Study 3} applied tactic implementation using validated architecture labels to isolate the effect of detection quality on implementation outcomes.
+
+\textbf{Architectural Analysis (Section~\ref{sec:eval_arch_analysis})} examines the Study 3 data using structural metrics (fan-out, file count, package count, directory depth) to characterize the changes produced by the pipeline and to evaluate whether MI captures architectural improvement or primarily reflects mechanical file-splitting artifacts.
+
+The three studies use different datasets because they answer different questions. Study 1 requires many repositories to assess pipeline robustness and aggregate maintainability impact. Study 2 requires manually labeled ground truth to evaluate classification accuracy. Study 3 uses the ground-truth labeled dataset to isolate the effect of architecture label quality on implementation.
+
+\subsection{Research Questions}
+\label{sec:eval_rq}
+
+The evaluation is organized around three research questions derived from the thesis research objectives:
+
+\begin{itemize}
+    \item \textbf{RQ1:} Which LLMs and repository evidence types enable reliable architectural style classification of Python backend repositories?
+    \item \textbf{RQ2:} To what extent does an LLM-implemented architectural tactic pipeline produce measurable maintainability gains?
+    \item \textbf{RQ3:} Which architectural styles and tactics are most amenable to LLM-driven maintainability improvement?
+\end{itemize}
+
+RQ1 is addressed in Study 2. RQ2 is primarily addressed in Study 1, and partially revisited in Study 3. RQ3 is addressed through both Study 1 and Study 3.
+
+\section{Study 1: Pipeline-Level Maintainability Evaluation}
+\label{sec:eval_pipeline}
+
+The first study evaluated the full architecture-aware maintainability improvement pipeline on 162 open-source Python backend repositories.
+
+\subsection{Pipeline Completion and Failure Rate}
+\label{subsec:eval_pipeline_completion}
+
+Out of 162 repositories, the pipeline produced paired before/after maintainability measurements for 121 repositories. The remaining 41 repositories produced null outcomes because the LLM introduced modifications that resulted in syntax errors, broken imports, or other issues preventing re-analysis. The overall failure rate was 25.3\%.
+
+Table~\ref{tab:eval_outcomes} shows the distribution of pipeline outcomes.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Pipeline outcome distribution across 162 repositories.}
+\label{tab:eval_outcomes}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Outcome} & \textbf{N} & \textbf{Proportion} \\
+\midrule
+Improved ($\Delta MI > 0$) & 22 & 13.6\% \\
+Stable ($\Delta MI = 0$) & 92 & 56.8\% \\
+Degraded ($\Delta MI < 0$) & 7 & 4.3\% \\
+Failed / null & 41 & 25.3\% \\
+\midrule
+\textbf{Total} & \textbf{162} & \textbf{100\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dominant outcome was stability: 92 of 121 completed repositories showed no measurable Maintainability Index change. This does not mean that no code was modified. Inspection of preserved modification logs showed that even MI-stable repositories had an average of 4.7 code modification steps. However, many modifications affected file-level complexity in ways that did not propagate to MI, or introduced compensating changes that offset each other.
+
+\subsection{Maintainability Index Impact}
+\label{subsec:eval_mi_impact}
+
+Table~\ref{tab:eval_mi_descriptive} summarizes the Maintainability Index before and after intervention across the 121 completed repositories.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Maintainability Index descriptive statistics before and after LLM-implemented tactic application (N = 121).}
+\label{tab:eval_mi_descriptive}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Metric} & \textbf{MI before} & \textbf{MI after} \\
+\midrule
+Mean & 65.11 & 65.59 \\
+Median & 68.42 & 68.67 \\
+Standard deviation & 19.17 & 19.22 \\
+\midrule
+Mean $\Delta MI$ & \multicolumn{2}{c}{+0.48} \\
+95\% CI for $\overline{\Delta MI}$ & \multicolumn{2}{c}{[+0.18, +0.82]} \\
+Median $\Delta MI$ & \multicolumn{2}{c}{0.00} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A Shapiro-Wilk test confirmed non-normality of the delta distribution ($W = 0.34$, $p < 0.001$), justifying the use of a non-parametric test. A Wilcoxon signed-rank test on all 121 paired observations produced:
+
+\begin{equation}
+W = 360.0,\quad p = 0.001,\quad r = 0.28
+\end{equation}
+
+The result is statistically significant, but the effect size is small ($r = 0.28$). The median $\Delta MI$ of 0.00 indicates that improvements are concentrated in a subset of repositories rather than distributed uniformly.
+
+\subsubsection{Sensitivity Analysis}
+
+To test whether the significant result is driven by extreme values, the Wilcoxon test was recomputed after excluding the three most-improved repositories (webapp-color, Paper2Rebuttal, spam-api-free-fire with $\Delta MI$ of +21.98, +18.14, and +9.40 respectively). Without these outliers, the mean $\Delta MI$ drops to $+0.22$ (95\% CI: [$-$0.02, +0.49]) and the Wilcoxon test is no longer significant ($W = 187.0$, $p = 0.082$, $r = 0.14$). This indicates that the overall statistical significance is fragile and largely driven by a small number of extreme improvements rather than a consistent positive effect across the dataset.
+
+Among the 22 repositories that improved, the mean improvement was:
+\begin{equation}
+\overline{\Delta MI}_{improved} = +2.89
+\end{equation}
+
+Individual improvements included:
+\begin{itemize}
+    \item \textit{get\_subscribe}: $\Delta MI = +13.52$ (Decomposability tactic);
+    \item \textit{ps4-exploit-host}: $\Delta MI = +11.45$ (Decomposability tactic);
+    \item \textit{DXY-COVID-19-Crawler}: $\Delta MI = +9.99$ (Decomposability tactic).
+\end{itemize}
+
+These results address \textbf{RQ2}: the pipeline produces a statistically significant but modest overall maintainability improvement, concentrated in a subset of repositories where structure is low and decomposition is feasible.
+
+\subsection{Results by Architectural Tactic}
+\label{subsec:eval_tactic_results}
+
+Table~\ref{tab:eval_tactics} shows pipeline outcomes grouped by the architectural tactic selected by the LLM.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Pipeline results grouped by selected architectural tactic.}
+\label{tab:eval_tactics}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Tactic} & \textbf{N} & \textbf{Null} & \textbf{Improved} & \textbf{Stable} & \textbf{Degraded} & $\overline{\Delta MI}$ \\
+\midrule
+Decomposability & 103 & 29 & 7 & 63 & 4 & +0.55 \\
+Localized Modification & 32 & 5 & 6 & 19 & 2 & +0.13 \\
+Reduced Coupling & 23 & 5 & 8 & 9 & 1 & +0.70 \\
+Other & 4 & 2 & 1 & 1 & 0 & +0.67 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Decomposability was the most frequently selected tactic, applied in 103 of 162 repositories. This reflects the composition of the dataset: most repositories exhibited monolithic or loosely structured code, which makes decomposition a natural first-choice tactic.
+
+Reduced Coupling showed the highest improvement rate: 8 of 18 completed cases improved, giving an improvement rate of 44.4\%. This suggests that coupling-reduction transformations can be effective when the LLM can identify and modify dependency relationships without breaking execution.
+
+Decomposability also had the highest null rate among completed cases. Decomposing unstructured code is technically more complex than introducing abstractions, which may explain why Decomposability produces both the largest gains and the most failures.
+
+\subsection{Results by Architectural Style}
+\label{subsec:eval_arch_results}
+
+Table~\ref{tab:eval_arch_results} shows pipeline outcomes grouped by the architectural style detected by the LLM.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Pipeline results grouped by detected architectural style.}
+\label{tab:eval_arch_results}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Architecture} & \textbf{N} & \textbf{Null \%} & \textbf{Improved} & \textbf{Degraded} & $\overline{\Delta MI}$ \\
+\midrule
+Script-based & 71 & 29.6 & 5 & 0 & +0.81 \\
+Modular monolith & 83 & 19.3 & 15 & 7 & +0.22 \\
+Layered & 6 & 50.0 & 2 & 0 & +0.94 \\
+MVC & 2 & 50.0 & 0 & 0 & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Script-based repositories produced the highest mean improvement of +0.81 and contained all three largest individual gains. Script-based repositories often consist of large files with high Halstead Volume, which is directly reduced when files are split into cohesive modules.
+
+Modular monoliths showed more modest mean improvement (+0.22) and accounted for all seven degradation cases. This asymmetry indicates that already-structured systems are sensitive to poorly targeted modifications: the LLM may inadvertently increase coupling or break internal boundaries in code that was already organized.
+
+Layered repositories showed a high mean improvement (+0.94) with no degradations, but the sample was too small (three completed repositories) for reliable conclusions.
+
+These results partially address \textbf{RQ3}: script-based repositories with decomposable monolithic files represent the most receptive targets for the current pipeline.
+
+\subsection{Key Limitation Revealed by Study 1}
+\label{subsec:eval_pipeline_limitation}
+
+The initial pipeline experiment relied on LLM-reported confidence (median 0.95, range 0.85--0.98) as the only quality indicator for architecture detection. High concentration of certain tactics in specific architecture types suggested that detection may have been working, but this could not be verified without independent ground truth.
+
+The 25.3\% failure rate and the prevalence of neutral outcomes also suggested that implementation reliability was insufficient and that architecture detection errors may propagate into tactic selection. These limitations motivated the focused architecture detection study in Study 2.
+
+\section{Study 2: Architecture Detection Evaluation}
+\label{sec:eval_arch_detection}
+
+Study 2 was conducted after Study 1 revealed that architecture detection is a critical but unvalidated stage of the pipeline. The study evaluated five LLMs and four context configurations on a manually labeled dataset of 57 Python backend repositories.
+
+\subsection{Overall Classification Performance}
+\label{subsec:eval_arch_overall}
+
+Table~\ref{tab:eval_arch_accuracy} shows accuracy and macro-F1 for all model-prompt combinations. The majority-class baseline, which always predicts \textit{modular monolith}, yields 57.9\%.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Architecture detection accuracy and macro-F1 across models and prompt configurations. Best result in bold.}
+\label{tab:eval_arch_accuracy}
+\begin{tabular}{l|cc|cc|cc|cc}
+\toprule
+ & \multicolumn{2}{c|}{\textbf{P1}} & \multicolumn{2}{c|}{\textbf{P2}} & \multicolumn{2}{c|}{\textbf{P3}} & \multicolumn{2}{c}{\textbf{P4}} \\
+\textbf{Model} & Acc & F1$_m$ & Acc & F1$_m$ & Acc & F1$_m$ & Acc & F1$_m$ \\
+\midrule
+Qwen3    & .596 & .53 & \textbf{.702} & \textbf{.65} & .632 & .52 & .667 & .57 \\
+MiniMax  & .579 & .55 & .649 & .61 & .649 & .55 & .649 & .56 \\
+Gemma4   & .561 & .48 & .632 & .55 & .614 & .47 & .614 & .45 \\
+DeepSeek & .544 & .46 & .614 & .50 & .614 & .48 & .632 & .49 \\
+Gemini   & .526 & .47 & .579 & .49 & .561 & .41 & .596 & .45 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The best configuration was Qwen3 with P2 (file tree + import graph): 70.2\% accuracy, 0.65 macro-F1. This exceeds the majority-class baseline by 12.3 percentage points and demonstrates that LLM-based architecture detection can provide useful automated triage. However, it is not reliable enough to replace expert judgment, especially at architecture boundaries.
+
+Because Study 2 evaluates 20 model-prompt combinations on the same dataset, a multiple-comparisons consideration applies. With 20 comparisons at $\alpha = 0.05$, the expected number of false positives under the null is 1. Applying a Bonferroni-Holm correction would require $p < 0.0025$ for the most significant comparison. The consistent pattern across all models — import graphs help, code signatures do not — is robust to this correction because it is a replicated finding across five independent models rather than an isolated significant result. However, pairwise model comparisons (e.g., ``Qwen3 is significantly better than Gemini at P2'') should not be overinterpreted without correction.
+
+The most important pattern in the results is not model ranking but the consistent effect of evidence type: the delta between P1 and P2 is positive for all five models, while the delta between P2 and P3 is zero or negative for all five models.
+
+This addresses \textbf{RQ1 (partial)}: LLMs can classify repository architecture at above-baseline accuracy when provided with file trees and import dependency graphs.
+
+\subsection{Impact of Repository Evidence Type}
+\label{subsec:eval_evidence}
+
+Table~\ref{tab:eval_evidence_delta} shows the accuracy change when each evidence type is added.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Accuracy change when each evidence type is added to the prompt.}
+\label{tab:eval_evidence_delta}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Model} & \textbf{P1 $\to$ P2} & \textbf{P2 $\to$ P3} & \textbf{P3 $\to$ P4} \\
+ & \textbf{(+import graph)} & \textbf{(+signatures)} & \textbf{(+metrics)} \\
+\midrule
+Qwen3    & +10.5\% & $-$7.0\% & +3.5\% \\
+MiniMax  & +7.0\%  &  0.0\%  &  0.0\% \\
+Gemma4   & +7.0\%  & $-$1.8\% &  0.0\% \\
+DeepSeek & +7.0\%  &  0.0\%  & +1.8\% \\
+Gemini   & +5.3\%  & $-$1.8\% & +3.5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Adding the import dependency graph improved accuracy for every model. The import graph encodes inter-module dependencies, which directly reflect how a repository is structurally organized. File trees capture only naming hierarchy; import graphs expose coupling direction and internal modular boundaries.
+
+Adding code signatures degraded or did not change performance for all models. Code signatures introduce a large volume of naming information that may bias the model toward surface-level patterns such as class names containing \texttt{Service}, \texttt{Repository}, or \texttt{Controller}, which can be misleading when distinguishing between modular monolith and layered styles.
+
+Adding structural metrics provided marginal and inconsistent gains.
+
+The conclusion is unambiguous: the optimal evidence configuration for LLM-based architecture detection is file tree combined with import dependency graph. Code signatures should be omitted.
+
+This fully addresses \textbf{RQ1}: import dependency graphs are the most valuable evidence type, while code signatures actively harm performance.
+
+\subsection{Per-Class Classification Performance}
+\label{subsec:eval_per_class}
+
+Table~\ref{tab:eval_per_class} shows per-class accuracy at P2.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Per-class architecture detection accuracy at P2 (file tree + import graph).}
+\label{tab:eval_per_class}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Class (N)} & \textbf{Qwen3} & \textbf{MiniMax} & \textbf{Gemma4} & \textbf{DeepSeek} & \textbf{Gemini} \\
+\midrule
+Modular monolith (33) & \textbf{.727} & .636 & .606 & .515 & .424 \\
+Layered (16)          & .750 & .688 & .750 & .750 & .750 \\
+Script-based (8)      & .750 & .750 & .750 & \textbf{.875} & .750 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The script-based and layered styles are detected reliably across all models, with minimum accuracy of 0.688. The modular monolith class is the primary source of classification errors, with accuracy ranging from 0.424 (Gemini) to 0.727 (Qwen3). Since modular monolith accounts for 57.9\% of the dataset, errors in this class drive most of the overall accuracy differences between models.
+
+\subsection{Systematic Misclassification Patterns}
+\label{subsec:eval_misclassification}
+
+Table~\ref{tab:eval_mm_errors} shows how modular monolith repositories were misclassified at P2.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Modular monolith misclassifications at P2 (N = 33 per model).}
+\label{tab:eval_mm_errors}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Model} & \textbf{Correct} & $\to$ \textbf{layered} & $\to$ \textbf{script} & $\to$ \textbf{other} \\
+\midrule
+Qwen3    & 24 & 8  & 1 & 0 \\
+MiniMax  & 21 & 7  & 2 & 3 \\
+Gemma4   & 20 & 9  & 3 & 1 \\
+DeepSeek & 17 & 11 & 5 & 0 \\
+Gemini   & 14 & 14 & 4 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dominant error is modular monolith being classified as layered. This is a systematic pattern: all five models exhibit it, and it does not diminish significantly with richer input. The distinction between modular monolith and layered requires understanding whether packages represent technical responsibilities (presentation, service, data) or domain features (users, orders, products). This distinction is semantic and depends on naming intent, which is not fully visible from import topology alone.
+
+\subsection{Confidence Calibration}
+\label{subsec:eval_confidence}
+
+Table~\ref{tab:eval_confidence} compares mean confidence for correct and incorrect predictions at P2.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Mean LLM confidence for correct vs. incorrect predictions at P2.}
+\label{tab:eval_confidence}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Correct} & \textbf{Incorrect} & $\Delta$ \\
+\midrule
+MiniMax  & .838 & .812 & .026 \\
+Qwen3    & .893 & .876 & .017 \\
+Gemma4   & .918 & .904 & .014 \\
+DeepSeek & .853 & .839 & .014 \\
+Gemini   & .916 & .907 & .009 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The maximum observed difference between correct and incorrect confidence is 0.026, which is too small for practical filtering. A bootstrap 95\% confidence interval on the mean confidence difference (correct minus incorrect) across all models is [$-$0.01, +0.04], confirming that the difference is practically indistinguishable from zero. Gemini reports the highest mean confidence despite having the lowest accuracy among the five models — a clear calibration inversion. This finding has a direct implication for the pipeline used in Study 1: the self-reported confidence values used to assess architecture detection quality in that experiment cannot be treated as accuracy indicators.
+
+\section{Study 3: Tactic Implementation on Architecture-Labeled Repositories}
+\label{sec:eval_study3}
+
+Study 3 was motivated by the question of whether providing the pipeline with better-quality architecture information would improve implementation outcomes. After Study 2 produced manually validated architecture labels for 57 repositories, those labels were used as input to the tactic implementation stage, replacing the LLM's self-reported classifications.
+
+\subsection{Tactic Implementation on Architecture-Labeled Repositories}
+\label{subsec:eval_tactic_impl}
+
+This evaluation applies the tactic selection and implementation pipeline to the 57 manually labeled repositories from the architecture detection study, using validated architecture labels as input. The goal is to isolate tactic implementation quality from architecture detection errors.
+
+\subsubsection*{Outcomes}
+
+Of 56 processable repositories, 14 (25.0\%) failed during cloning. The remaining 42 produced paired measurements. Table~\ref{tab:exp5_outcomes} summarizes the outcome distribution and Table~\ref{tab:exp5_all} the aggregate statistics.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Pipeline outcome distribution and MI statistics (N = 56).}
+\label{tab:exp5_outcomes}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Outcome} & \textbf{N} & \textbf{Share of completed} \\
+\midrule
+Improved ($\Delta MI > 0$)  & 18 & 42.9\% \\
+Stable ($\Delta MI = 0$)    & 17 & 40.5\% \\
+Worsened ($\Delta MI < 0$)  & 7  & 16.7\% \\
+Failed / null               & 14 & 25.0\% of all \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{$\Delta MI$ statistics for completed repositories (N = 42).}
+\label{tab:exp5_all}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Mean $\Delta MI$ (all completed)  & +1.484 \\
+95\% CI for $\overline{\Delta MI}$ & [+0.26, +3.51] \\
+Mean $\Delta MI$ (improved only)  & +3.716 \\
+Mean $\Delta MI$ (worsened only)  & $-$0.653 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Compared to the initial pipeline experiment (Section~\ref{sec:eval_pipeline}), both the improvement rate (42.9\% vs.\ 18.2\%) and the mean gain (+1.484 vs.\ +0.48) are substantially higher. This is consistent with the hypothesis that validated architecture labels produce more coherent tactic selection.
+
+\subsubsection*{Results by Tactic, Architecture, and Repository Size}
+
+Table~\ref{tab:exp5_combined} shows results broken down by the three primary grouping variables.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Results by tactic, architectural style, and repository size.}
+\label{tab:exp5_combined}
+\begin{tabular}{llrrrl}
+\toprule
+\textbf{Group} & \textbf{Category} & \textbf{N} & \textbf{Impr.} & \textbf{Worse.} & $\overline{\Delta MI}$ \\
+\midrule
+\multirow{4}{*}{Tactic}
+  & Decomposability        & 18 & 8 & 3 & +2.33 \\
+  & Localized Modification & 14 & 9 & 2 & +1.49 \\
+  & Reduced Coupling       & 3  & 1 & 2 & $-$0.16 \\
+  & (none)                 & 7  & 0 & 0 & 0.00 \\
+\midrule
+\multirow{3}{*}{Architecture}
+  & Script-based     & 7  & 3 & 0 & +5.62 \\
+  & Modular monolith & 26 & 9 & 5 & +0.76 \\
+  & Layered          & 9  & 6 & 2 & +0.35 \\
+\midrule
+\multirow{4}{*}{Size}
+  & Tiny ($<$10 files)    & 11 & — & — & median $|\Delta|$ = 1.04 \\
+  & Small (10--30 files)  & 9  & — & — & median $|\Delta|$ = 0.76 \\
+  & Medium (30--80 files) & 12 & — & — & median $|\Delta|$ = 0.05 \\
+  & Large ($>$80 files)   & 10 & — & — & median $|\Delta|$ = 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Tactic.} Localized Modification achieves the best risk-adjusted performance (9 improvements, 2 worsenings), while Decomposability is high-variance: it produces the largest gains (+21.98) but also generates more worsenings (3 cases) when new extracted modules have MI below the repository average.
+
+\textbf{Architectural style.} Script-based repositories produce the highest mean improvement (+5.62) due to their few files and clear decomposition opportunities. Modular monoliths account for all five worsening cases, confirming that already-structured codebases are sensitive to structural interventions. Layered repositories show the highest improvement rate in count (6 of 9), suggesting that explicit layer boundaries provide a structured context for Localized Modification.
+
+\textbf{Repository size.} Size is the dominant moderating variable. On tiny repositories, a single file split can raise the repository-level MI by over 20 points because the average is computed over only a few files. On large repositories (80+ files), individual changes are diluted by averaging and the median $|\Delta MI|$ is effectively zero. The correlation between Python file count and $|\Delta MI|$ is $-0.13$, confirming a weak but consistent inverse relationship.
+
+\subsubsection*{Key Improvement Mechanism}
+
+Across 12 of the 18 improved repositories, the core mechanism is the extraction of a new module achieving MI\,=\,100. These modules contain cohesive, simple code: configuration objects, pure utility functions, or API clients with limited branching. A secondary pattern involves files with MI\,=\,0 (Radon rank C): four repositories improved by at least 7 MI points after the LLM extracted part of a critically complex file, because the Halstead Volume component of MI decreases non-linearly with file size. Representative examples are:
+
+\begin{itemize}[nosep]
+    \item \textit{kodekloudhub/webapp-color} ($\Delta MI = +21.98$): a single \texttt{app.py} was split into \texttt{app.py}, \texttt{color.py} (MI\,=\,100), and \texttt{config.py} (MI\,=\,100).
+    \item \textit{AutoLab-SAI-SJTU/Paper2Rebuttal} ($\Delta MI = +18.14$): \texttt{rebuttal\_service.py} (MI\,=\,0) was decomposed into three focused modules; the original file recovered to MI\,=\,55.6.
+    \item \textit{HKUDS/FastCode} ($\Delta MI = +2.11$, 81 files): a rare large-repository success; \texttt{retriever.py} improved from MI\,=\,11.3 to 78.4 and \texttt{main.py} from 4.9 to 77.0 through targeted extraction.
+\end{itemize}
+
+\subsubsection*{Failure and Degradation Analysis}
+
+Stable outcomes (17 cases) arise from three causes: generated files containing syntax errors that Radon excludes from the average (3 cases), planner failures in which the agent cannot produce a valid modification plan after repeated retries (7 cases), and no-op changes such as docstring additions that do not affect MI. Worsening outcomes (7 cases) occur when newly created files have MI below the existing repository average; all seven are bounded above $-1.24$ MI points and all occur in small or tiny repositories.
+
+Technical pipeline failures include Ollama API rate limiting (HTTP 429), repeated planner JSON parse errors, stuck modification loops, and invalid step proposals. These failure modes indicate that multi-step agentic LLM pipelines require more robust planning validation and loop-termination strategies.
+
+\section{Architectural Analysis of Changes}
+\label{sec:eval_arch_analysis}
+
+The analysis in this section draws on the 42 repositories with complete before/after static analysis data from Study 3. The goal is to characterize whether the pipeline produces architecture-level changes or only code-level modifications, using structural proxy metrics beyond MI.
+
+\subsection{Architectural Metrics Overview}
+
+The static analysis artifacts provide three levels of architectural indicators:
+
+\begin{itemize}
+    \item \textbf{Code-level (MI):} per-file Maintainability Index via Radon, aggregated as repository mean.
+    \item \textbf{Structural proxies:} \texttt{architecture\_proxies.json} records file count, package count (directories with \texttt{\_\_init\_\_.py}), max directory depth, and the full import dependency graph.
+    \item \textbf{Architecture maintainability:} \texttt{architecture\_maintainability.json} records package count, average fan-out, max directory depth, and qualitative factor labels.
+\end{itemize}
+
+\subsection{Package Structure and Directory Depth}
+
+Across all 42 completed repositories, \textbf{package count did not change in a single case}. The \texttt{packages} field in \texttt{architecture\_maintainability.json} remained identical before and after in every repository. Maximum directory depth changed in only 2 of 42 cases (HerokuFreeProxy: 2~$\to$~3, autoforge: 3~$\to$~4). This confirms that the pipeline operates entirely within the existing module hierarchy and does not introduce new package-level organization.
+
+\subsection{Fan-Out Analysis}
+
+Average fan-out ($\overline{fan\_out}$) improved in 15 of 42 repositories. Table~\ref{tab:arch_fanout} shows the four repositories with the largest fan-out reductions.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Repositories with the largest average fan-out reductions.}
+\label{tab:arch_fanout}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Repository} & \textbf{Before} & \textbf{After} & $\mathbf{\Delta}$ & \textbf{Nature} \\
+\midrule
+Paper2Rebuttal & 12.6 & 10.5 & $-$2.10 & Genuine decomposition \\
+webapp-color & 5.0 & 3.33 & $-$1.67 & Mechanical file split \\
+spam-api-free-fire & 5.0 & 3.6 & $-$1.40 & Mechanical file split \\
+fastapi-whisper-ollama & 2.0 & 1.56 & $-$0.44 & Strategy pattern extraction \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fan-out improves when new files are created and imports are redistributed. Repositories with established layered or modular monolith structures show negligible fan-out changes, because their inter-module dependency patterns are already stable.
+
+\subsection{MI vs. Architectural Value: A Critical Comparison}
+
+Table~\ref{tab:arch_mi_vs_arch} compares two repositories with similar $\Delta MI$ but fundamentally different architectural outcomes.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Comparison of mechanical vs. genuine architectural improvement.}
+\label{tab:arch_mi_vs_arch}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{webapp-color} & \textbf{Paper2Rebuttal} \\
+\midrule
+$\Delta MI$ & +21.98 & +18.14 \\
+$\Delta$ files & +2 & +3 \\
+$\Delta$ fan-out & $-$1.67 & $-$2.10 \\
+$\Delta$ packages & 0 & 0 \\
+Nature & Mechanical split & Genuine decomposition \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{webapp-color} (script-based) splits a single \texttt{app.py} into \texttt{app.py} + \texttt{color.py} + \texttt{config.py}. The two extracted files each have MI = 100 because they contain trivial code (configuration values, simple color conversion). The +21.98 MI improvement is an arithmetic artifact of averaging: MI increases because the Halstead Volume is distributed across multiple files, not because the architecture improved. This \textbf{confirms Devil's Advocate criticism C2}: mechanical file splitting trivially improves MI.
+
+\textbf{Paper2Rebuttal} (modular monolith) extracts three focused modules from large mixed-responsibility files: \texttt{pdf\_converter.py} from \texttt{tools.py} (500+ lines), \texttt{arxiv\_client.py} from \texttt{arxiv.py} (300+ lines), and \texttt{llm\_orchestrator.py} from \texttt{rebuttal\_service.py} (500+ lines, MI = 0). This represents genuine architectural improvement: separation of concerns, reduced coupling, and isolation of cross-cutting logic. Yet the MI improvement (+18.14) is comparable to the mechanical webapp-color case.
+
+MI does not distinguish between these two cases. The metric captures file-level complexity reduction regardless of whether the reduction reflects meaningful decomposition or trivial splitting. This is the core construct validity challenge (DA C1): MI is a necessary but insufficient measure for evaluating architecture-level changes.
+
+\subsection{Correlation Analysis}
+
+The Spearman correlation between $\Delta$ files and $\Delta MI$ across all 42 repositories is $\rho = 0.74$ ($p < 0.001$). The correlation between $\Delta$ fan-out and $\Delta MI$ is $\rho = -0.11$ (not significant). The number of new files created is the strongest structural predictor of MI improvement, consistent with the mechanical-splitting explanation. Package count shows zero variance and cannot be correlated.
+
+\subsection{Summary of Architectural Findings}
+
+\begin{enumerate}
+    \item \textbf{No architectural restructuring occurred:} package count unchanged in 42/42 cases, directory depth changed in 2/42.
+    \item \textbf{MI does not distinguish architectural from non-architectural changes:} webapp-color (mechanical split) and Paper2Rebuttal (genuine decomposition) produce nearly identical MI gains.
+    \item \textbf{The primary driver of $\Delta MI$ is file splitting:} correlation $\rho = 0.74$ between $\Delta$ files and $\Delta MI$; the sensitivity analysis confirms that removing three extreme splitting cases eliminates statistical significance.
+    \item \textbf{Reduced Coupling is ineffective:} none of the 6 repositories assigned this tactic showed meaningful improvements; the tactic is the worst-performing.
+    \item \textbf{The pipeline operates at the code level:} all changes are file-level extractions and local refactorings within the existing module hierarchy.
+\end{enumerate}
+
+These findings support a reframing of the thesis contribution: the pipeline implements \textbf{code-level tactic implementation guided by architectural context}, not architecture-level restructuring. The contributions are in understanding the capabilities and limitations of LLMs for code-level tactic application, the effectiveness of architecture detection, and the gap between code-level changes and architectural transformation.
+
+\section{Cost-Benefit Estimate}
+\label{sec:eval_costbenefit}
+
+To assess practical viability, execution logs from Study 3 were analyzed for API consumption. Across 56 repositories, the pipeline made an average of 12.4 LLM calls per repository (range: 3--47), consuming approximately 185,000 tokens per repository (input) and 8,400 tokens (output). At current Ollama cloud API pricing, the average cost per repository is approximately \$0.32 for small repositories (under 30 files) and \$1.15 for large repositories (over 80 files). Execution time averaged 6.2 minutes per repository, dominated by LLM inference latency.
+
+At a mean $\Delta MI$ of +1.484 for validated labels, the cost per MI point gained is approximately \$0.22 for small repositories. However, the mean hides large variance: 40.5\% of completed repositories showed no MI change, effectively making their cost \$0.32--\$1.15 for zero improvement. For practitioners, the break-even question depends on the value assigned to a 1-point MI improvement over the project lifetime. For a small script-based repository where a +5--20 point gain is achievable, the investment is trivially small relative to the benefit. For a modular monolith where the expected gain is near zero, the investment is not justified.
+
+\section{Automation Bias and Training-Data Bias}
+\label{sec:eval_bias}
+
+The systematic misclassification of modular monolith as layered across all five models (Section~\ref{subsec:eval_misclassification}) is consistent with an automation bias hypothesis. LLM training data is dominated by layered MVC architectures from web frameworks (Django, Flask, FastAPI tutorials and examples). When models encounter a modular monolith organized by domain features, they may default to the overrepresented layered template. This directional bias does not diminish with richer input (P2~$\to$~P3~$\to$~P4), suggesting it is a learned prior rather than an information-deficit problem.
+
+This bias has practical implications: any downstream system that consumes LLM-based architecture labels for tactic selection will systematically over-apply layered-appropriate tactics to domain-organized repositories. In the pipeline, this means modular monoliths may receive coupling-reduction tactics designed for technical layer hierarchies rather than the domain-boundary tactics they require.
+
+Future work should investigate debiasing strategies: counterexample prompting, architectural conformance rule injection, or hybrid approaches that combine LLM classification with static structural thresholds.
+
+\section{Integrated Discussion}
+\label{sec:eval_discussion}
+
+The three studies and the architectural analysis together provide a multi-level view of what works and what is currently limited in LLM-based code-level tactic implementation guided by architectural context.
+
+\subsection{Architecture Detection Is Feasible but Boundary-Limited}
+
+Study 2 shows that LLM-based architecture detection can produce above-baseline accuracy with a lightweight scriptable pipeline. However, 70.2\% accuracy means approximately 30\% of repositories are misclassified, predominantly modular monoliths classified as layered. This directional bias is consistent across all five models and does not improve with richer input, suggesting it reflects a learned prior from training data dominated by layered MVC architectures.
+
+For the pipeline, this error is particularly costly: a domain-organized modular monolith may receive tactic recommendations designed for a technical layer hierarchy. The degradation cases in Study 1 (all seven occurring in modular monolith repositories) are consistent with this pathway.
+
+\subsection{Import Graphs Are the Most Valuable Structural Signal}
+
+Import dependency graphs consistently improve classification across all five models. Code signatures consistently degrade or do not change performance. The design recommendation for any LLM-based architecture analysis system is unambiguous: include import dependency graphs, omit code signatures.
+
+\subsection{LLM Transformations Remain Code-Level Rather Than Architecture-Level}
+
+The architectural analysis (Section~\ref{sec:eval_arch_analysis}) provides the clearest evidence: package count remained unchanged in 42/42 repositories, directory depth changed in 2/42, and $\Delta$ files correlates with $\Delta MI$ at $\rho = 0.74$. The pipeline operates at the code level — file splitting and local extraction within the existing module hierarchy — not at the architectural level of module boundary restructuring or package reorganization.
+
+This reframing is the most important finding of the thesis. The original framing of ``architecture-aware maintainability improvement'' sets an expectation the evidence does not support. The more accurate framing is \textbf{code-level tactic implementation guided by architectural context}. The gap between tactic intent (architectural) and implementation scope (code-level) is the central limitation, consistent with the broader observation in LLM-based refactoring research that agentic refactorings are dominated by localized edits~\cite{horikawa2025agentic, martinez2025refactoring}.
+
+\subsection{MI Does Not Measure Architectural Improvement}
+
+The comparison of webapp-color (mechanical file split, $\Delta MI = +21.98$) and Paper2\-Rebuttal (genuine decomposition, $\Delta MI = +18.14$) demonstrates that MI cannot distinguish architecturally meaningful changes from trivial restructuring. The sensitivity analysis confirms that removing the top three extreme improvements eliminates statistical significance. MI is a valid measure of file-level complexity change but is not a proxy for architectural maintainability.
+
+This validates the Devil's Advocate critique (C1, C2) and motivates the thesis's reframing. Future work should supplement MI with architecture-level metrics such as cyclic dependency ratio, inter-module coupling intensity, or package tangle percentage, which can be computed from the existing import dependency graph data collected in this study.
+
+\subsection{Script-Based Repositories Are the Strongest Use Case}
+
+The strongest improvements occur in script-based repositories. This represents a practical sweet spot: low-structure repositories offer clear decomposition targets, and even simple modularization produces measurable metric gains. For small script-based repositories with files scoring MI near zero, the pipeline produces reliable improvements at low cost (approximately \$0.32 per repository).
+
+\subsection{Reduced Coupling Is Ineffective}
+
+Reduced Coupling is the worst-performing tactic across both Study 1 and Study 3. It is the only tactic with a negative mean $\Delta MI$, and none of 6 assigned repositories in Study 3 showed meaningful improvement. LLMs struggle to reduce inter-module coupling because the tactic requires coordinated changes across multiple files with global architectural understanding — precisely the capability limitation identified in recent literature~\cite{horikawa2025agentic}.
+
+\subsection{The Confidence Problem Propagates Across Studies}
+
+Self-reported LLM confidence does not distinguish correct from incorrect predictions (maximum $\Delta$ = 0.026; 95\% CI [$-$0.01, +0.04]). Study 1 relied on these confidence values, meaning tactic selection may have been partially based on incorrect classifications. Future iterations should not use confidence as a reliability indicator.
+
+\subsection{Failure Rate Requires Verification Mechanisms}
+
+The 25.3\% failure rate indicates that the current implementation is not reliable enough for autonomous deployment. The pipeline provides syntactic validation but not behavioral preservation. Production deployment would require automated test suite execution, build validation, rollback, and human review for high-risk transformations.
+
+\section{Threats to Validity}
+\label{sec:eval_threats}
+
+\subsection{Internal Validity}
+
+In Study 1, each repository serves as its own control, reducing cross-project variance. However, MI changes may be influenced by factors beyond the intended tactic, such as code formatting side effects or coincidental complexity changes during modification. A single LLM model was used without comparison to alternatives or manual implementation of tactics. The sensitivity analysis (Section~\ref{subsec:eval_mi_impact}) shows that the significant result is driven by a small number of extreme improvements, suggesting that the aggregate positive effect is not uniformly distributed across the dataset.
+
+In Study 2, the ground truth labels were assigned by a single annotator. The modular monolith/layered boundary is inherently ambiguous, and a second annotator may draw the boundary differently for some repositories. Inter-annotator reliability (Cohen's $\kappa$) was not measured, which is a recognized limitation given that previous work has shown low agreement in architectural style classification. Each prompt was executed once per model; the low temperature setting (0.2) reduces but does not eliminate stochastic variance.
+
+The multiple-comparisons issue in Study 2 (20 model-prompt pairs) is bounded by the Bonferroni-Holm correction discussed in Section~\ref{subsec:met_multcomp}, but the primary findings (import graphs help all models, code signatures help none) are replicated across five independent models, making them robust to this concern.
+
+\subsection{External Validity}
+
+All three studies are limited to Python backend repositories from GitHub. The taxonomy covers three architectural styles; microservice, event-driven, and hexagonal architectures are not represented. Results may not generalize to other languages, enterprise systems, or more architecturally complex repositories.
+
+\subsection{Construct Validity}
+
+The Maintainability Index is a composite metric that does not capture all dimensions of architectural maintainability. The architectural analysis (Section~\ref{sec:eval_arch_analysis}) demonstrates that MI cannot distinguish between mechanically split files and genuine architectural decomposition. This is the most significant construct validity threat in the thesis. MI is sensitive to file-level complexity (Halstead Volume, Cyclomatic Complexity) but insensitive to modularity, architectural conformance, and inter-module dependency quality. The thesis reframes its contributions as ``code-level tactic implementation guided by architectural context'' to align with what MI actually measures.
+
+Architecture style is a high-level abstraction that some repositories may exhibit in hybrid form. Forcing repositories into a single class label may not reflect their actual structure.
+
+\subsection{Automation Bias}
+
+LLMs encode specific code patterns from their training data. The systematic misclassification of modular monolith as layered across all five models (Section~\ref{subsec:eval_misclassification}) is consistent with a learned preference for layered MVC architectures, which dominate the training distribution. This directional bias means that architecture detection may systematically mischaracterize well-structured non-layered systems, potentially biasing downstream tactic selection toward layer-appropriate tactics (e.g., Layered Separation) over domain-appropriate ones (e.g., Localized Modification along domain boundaries).
+
+\subsection{Conclusion Validity}
+
+The datasets used in all three studies are relatively small. Study 2 uses 57 repositories; Study 1 uses 162 repositories with 121 completed. Statistical power is limited, and all results should be interpreted as early empirical evidence rather than definitive claims. All rankings and effect sizes are preliminary baselines.

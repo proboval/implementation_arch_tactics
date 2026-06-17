@@ -1,0 +1,67 @@
+\appendix
+\chapter{Implementation Parameters}
+\label{app:impl_params}
+
+This appendix documents the detailed implementation parameters of the tactic implementation subsystem, which were condensed from the main text for readability.
+
+\section{BM25 Retrieval}
+\label{sec:app_bm25}
+
+File retrieval uses the BM25 ranking algorithm with $k_1 = 1.5$ and $b = 0.75$, following standard information retrieval defaults~\cite{robertson2009probabilistic}. The query is constructed from the tactic name, category, and description. Each file's document is formed by concatenating its path, class names, function names, and import list. The top $k = 5$ files with positive BM25 scores are passed to the Planner Agent.
+
+\section{Iteration Control}
+
+The agentic loop terminates when any of the following conditions is met:
+
+\begin{itemize}
+    \item Maximum iterations reached (default: 5);
+    \item Planner Agent issues a \texttt{STOP} signal;
+    \item Planner exceeds 3 consecutive parse or validation failures.
+\end{itemize}
+
+\section{Patch Generation Constraints}
+
+The Patch Agent returns the full replacement file content (not a diff). Generated files are rejected if they exceed 400 lines or target \texttt{\_\_init\_\_.py}. The agent is instructed to make one focused change per step and to preserve existing external interfaces.
+
+\section{Self-Healing}
+
+When a regression is detected, the affected file is restored from the pre-patch backup and the Patch Agent is re-invoked with test failure output as feedback. Up to 2 repair attempts are permitted per iteration. If all attempts fail, the iteration is abandoned and the pipeline continues to the next iteration.
+
+\section{Backup Directory Structure}
+
+File-level backups are organized per iteration and attempt:
+
+\begin{verbatim}
+backups/<repository>/step_<N>/attempt_<M>/<file_path>
+\end{verbatim}
+
+This structure enables precise rollback of individual files without reverting unrelated changes from other iterations.
+
+\section{Artifact Storage}
+
+For each repository, the following artifacts are preserved:
+
+\begin{itemize}
+    \item \textbf{Structural index:} JSON file with per-file path, imports, class names, function names, and size.
+    \item \textbf{Test baseline:} pre-modification pytest output with failure list.
+    \item \textbf{Step artifacts:} one JSON patch per completed iteration.
+    \item \textbf{Test results:} pytest output, failure names, regression flag, and success status per iteration.
+    \item \textbf{Artifact extraction:} file tree, import graph (text and JSON), code signatures.
+\end{itemize}
+
+\section{Pipeline Execution Workflow}
+
+Per repository, the system executes sequentially:
+
+\begin{enumerate}
+    \item Shallow clone repository;
+    \item Extract file tree, import graph, code signatures, structural metrics;
+    \item Compute baseline MI, fan-out, package count, docstring coverage;
+    \item Run LLM-based architecture detection;
+    \item Run LLM-based tactic selection;
+    \item Apply LLM-generated modifications via agentic loop;
+    \item Validate syntactic correctness of modified files;
+    \item Recompute all metrics on modified repository;
+    \item Store results and logs;
+    \item Delete local repository clone.
+\end{enumerate}
