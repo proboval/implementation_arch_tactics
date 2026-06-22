@@ -1,0 +1,668 @@
+% !TEX root = main.tex
+
+\documentclass[sigconf,review,anonymous]{acmart}
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{placeins}
+\usetikzlibrary{positioning}
+\usepackage{underscore}
+\usepackage{booktabs}
+\providecommand{\mathdefault}[1]{#1}
+
+\acmConference[EASE 2026]{The 30th International Conference on Evaluation and Assessment in Software Engineering}{Tue 9 - Fri 12 June 2026}{Glasgow, United Kingdom}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\usepackage[english]{babel}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\newcommand{\CRITICAL}[2]{\textsuperscript{\textcolor{red}{\scriptsize[C#1: #2]}}}
+
+\makeatletter
+\renewcommand\subsubsection{\def\@toclevel{3}%
+  \@startsection{subsubsection}{3}{\z@}%
+  {-.75\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+  {.25\baselineskip}%
+  {\ACM@NRadjust{\sffamily\bfseries\section@raggedright}}}
+\let\ACM@origsubsubsection\subsubsection
+\makeatother
+
+% acmart uses natbib-compatible bibliography by default
+\bibliographystyle{ACM-Reference-Format}
+
+%%% CCS Concepts (required by ACM)
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10011007.10011074.10011099.10011102.10011103</concept_id>
+       <concept_desc>Software and its engineering~Software maintenance tools</concept_desc>
+       <concept_significance>500</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10011007.10011006.10011039</concept_id>
+       <concept_desc>Software and its engineering~Software architectures</concept_desc>
+       <concept_significance>300</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10010147.10010178.10010179</concept_id>
+       <concept_desc>Computing methodologies~Natural language processing</concept_desc>
+       <concept_significance>300</concept_significance>
+   </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software maintenance tools}
+\ccsdesc[300]{Software and its engineering~Software architectures}
+\ccsdesc[300]{Computing methodologies~Natural language processing}
+
+\begin{document}
+
+\title{Can LLMs Implement Architectural Tactics?}
+
+\author{Saveliy Chertkov}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{s.chertkov@innopolis.university}
+
+\author{Andrey Sadovykh}
+\affiliation{%
+  \institution{Innopolis University}
+  \city{Innopolis}
+  \country{Russia}}
+\email{a.sadovykh@innopolis.ru}
+
+\begin{abstract}
+
+Software maintainability is a critical quality attribute that directly affects system evolution cost and reliability. Improving maintainability often requires architectural-level modifications demanding specialized expertise and significant manual effort. While Large Language Models (LLMs) have shown strong capabilities in code understanding and generation, their potential for systematic architecture-level software quality improvement remains largely unexplored.
+
+This paper presents an automated pipeline that leverages an LLM to improve software maintainability through architectural tactic implementation. The pipeline operates in three stages: (1) architectural tactic selection, where the LLM chooses an appropriate tactic from a predefined catalog based on the detected architecture and expected maintainability impact; (2) iterative tactic implementation via a planner loop with syntactic validation; and (3) post-intervention static analysis. The pipeline follows a Pipes and Filters architecture and operates without manual intervention.
+
+We applied the pipeline to 57 open-source Python backend repositories collected and filtered from GitHub. A paired pre-test/post-test design was used with the Maintainability Index as the primary metric. A Wilcoxon signed-rank test on 42 completed pairs showed a statistically significant but fragile improvement ($p = 0.023$, effect size $\hat{r} = 0.35$), with 18/42 repositories improved (42.9\%) but a realistic end-to-end success rate of 32.1\% (18/56). Supplementary architectural metrics (package count, directory depth, fan-out) remained unchanged, indicating the pipeline operates at the code level rather than the architecture level.
+
+This work contributes a reproducible methodology for LLM-driven architectural improvement and provides empirical evidence on the feasibility and current limitations of using LLMs for architecture-level analysis and tactic reasoning.
+
+\end{abstract}
+
+\keywords{software maintainability, architectural tactics, large language models, automated software improvement, static analysis, software architecture}
+
+\maketitle
+
+\section{Introduction}
+
+Modern software engineering faces a persistent maintenance challenge, with studies indicating that 60--80\% of total lifecycle costs are dedicated to post-deployment modifications~\cite{bass2021software}. While code-level refactoring is well-established~\cite{fowler2018refactoring}, and industrial studies confirm that developers regularly refactor to improve maintainability despite significant effort and risk~\cite{kim2014refactoring}, there is a significant gap in the automated application of higher-level design decisions---what we term the ``Transformation Gap'' --- defined as the technical and conceptual disconnect between identifying architectural opportunities and the reliable synthesis of the corresponding code --- between detecting the need for architectural change and implementing it automatically. This paper investigates the intersection of architectural tactics, quality attribute models, and the emerging capabilities of Large Language Models (LLMs) in automating structural transformations.
+
+We address the following research questions:
+\begin{itemize}[nosep]
+    \item \textbf{RQ1:} To what extent can an automated LLM-based pipeline reliably identify architectural patterns and align them with appropriate tactics in diverse real-world repositories?
+    \item \textbf{RQ2:} To what extent do LLM-implemented architectural tactics improve software maintainability as measured by the Maintainability Index?
+    \item \textbf{RQ3:} How do architecture type and tactic choice influence improvement outcomes?
+\end{itemize}
+
+The remainder of this paper is organized as follows: Section~2 reviews background and related work; Section~3 describes the methodology; Section~4 details the implementation; Section~5 presents results and discussion; Section~6 discusses threats to validity; and Section~7 concludes.
+
+\section{Background and Related Work}
+
+\subsection{Architectural Tactics and Quality Attributes}
+Software architecture is fundamentally defined by its elements, form, and rationale~\cite{perry1992foundations}, or alternatively, as a collection of components and connectors in a specific configuration~\cite{garlan1993introduction}. Within these frameworks, \textit{architectural tactics} serve as fine-grained design decisions intended to achieve specific quality attribute responses~\cite{bass2021software}. Unlike architectural patterns (e.g., MVC, Layered), which provide broad structural templates, tactics target specific quality concerns at a finer granularity---for instance, ``Reduce Coupling'' targets modifiability, while ``Decomposability'' targets analysability and modularity. Kim et al.\ demonstrated that quality-driven architecture development using tactics can systematically improve targeted quality attributes when tactics are selected based on measured deficiencies~\cite{kim2009qualitydriven}. Bogner et al.\ further showed that modifiability tactics---particularly coupling reduction---are systematically addressed through service-oriented design patterns in both SOA and microservice architectures~\cite{bogner2019modifiability}.
+
+The ISO/IEC 25010 standard~\cite{ISO25010} decomposes maintainability into five sub-characteristics: modularity, analysability, modifiability, reusability, and testability. The Maintainability Index (MI)---a composite metric combining Halstead Volume~\cite{halstead1977elements}, Cyclomatic Complexity~\cite{mccabe1976complexity}, and lines of code---has been widely adopted as a practical proxy for these sub-characteristics~\cite{oman1992maintainability}. However, its validity remains debated: Lenarduzzi et al.\ found less than 0.4\% agreement among six static analysis tools on quality issues~\cite{lenarduzzi2023critical}, highlighting the need for multi-metric evaluation.
+
+Research by Rahmati suggests that while architectural patterns provide a structural foundation, their effectiveness is highly context-dependent; misapplication can lead to a 10\% increase in maintenance effort~\cite{rahmati2021ensuring}. M\'arquez et al.\ conducted a systematic mapping of architectural tactics in software architecture, cataloging over 40 tactics and their quality attribute impacts~\cite{marquez2022architectural}. For the purpose of this study, we refined this catalog to a subset of 32 tactics specifically focused on enhancing maintainability and modifiability, excluding those primarily targeting performance or availability. This catalog, which maps each tactic to its primary quality attribute impact (e.g., Decomposability $\rightarrow$ Analysability, Reduced Coupling $\rightarrow$ Modifiability), forms the basis for our automated tactic selection mechanism.
+
+\subsection{LLMs in Software Refactoring}
+Recent multi-agent frameworks such as MANTRA have demonstrated an 82.8\% success rate in producing compilable, test-passing refactored code through contextual RAG and multi-agent LLM collaboration~\cite{xu2025mantra}. However, empirical analysis of AI coding agents reveals a significant scale limitation: agentic refactorings are dominated by low-level, localized edits (renaming, type changes), with agents performing fewer high-level design changes than human developers~\cite{horikawa2025agentic}. This localized scope is particularly problematic for architectural tactics, which by nature require coordinated changes across multiple modules.
+
+Research into prompt engineering indicates that while LLMs can identify up to 86.7\% of refactoring opportunities, their performance in complex tactic synthesis remains limited~\cite{liu2025exploring}. Piao et al.\ explored bridging human expertise with LLM machine understanding for refactoring, finding that structured prompts with architectural context significantly improve output quality~\cite{piao2025refactoring}. In security-related tactic implementation, Shokri and Khatchadourian found that models may achieve high syntactic correctness (95\%) but fail significantly in semantic correctness (5\%) due to an inability to coordinate inter-procedural changes across multiple classes~\cite{shokri2024ipsynth}. Martinez et al.\ conducted a systematic literature review of software refactoring with LLMs, confirming that architecture-level transformations remain an open challenge~\cite{martinez2025refactoring}.
+
+\subsection{Research Gaps}
+The synthesis of current literature identifies three key gaps that motivate this work:
+\begin{itemize}[nosep]
+    \item \textbf{Contextual Constraints:} Current LLM-based tools operate primarily at the method or class level, lacking system-wide awareness for architectural restructuring~\cite{martinez2025refactoring, horikawa2025agentic}. No existing approach provides the LLM with a full repository-level architectural context.
+    \item \textbf{Measurement Inconsistency:} There is a documented lack of agreement among static analysis tools (less than 0.4\% in some cases), complicating quality validation~\cite{lenarduzzi2023critical}. This makes it difficult to reliably assess whether LLM-driven changes genuinely improve quality.
+    \item \textbf{Implementation Void:} While methods exist for \textit{detecting} the need for architectural tactics~\cite{marquez2022architectural} and for \textit{recovering} architectural decisions~\cite{shokri2024ipsynth}, no automated pipeline exists that closes the loop from detection through selection to concrete, multi-file implementation. A systematic literature review by Martinez et al.\ confirms that architecture-level refactoring remains an open challenge, with the vast majority of LLM-based studies addressing only code-level transformations~\cite{martinez2025refactoring}.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Research Design}
+
+This section describes the second stage of the architecture-aware maintainability improvement pipeline. Architecture detection, which constitutes the first stage, was evaluated separately as described in Section~\ref{sec:eval_arch_detection}. The ground-truth architecture labels produced by that evaluation serve as input to the tactic selection and implementation stages described here.
+
+This study employs a quantitative pre-test/post-test experimental design. The independent variable is the application of an architectural tactic selected and implemented by an LLM, given a known repository architecture. The dependent variable is software maintainability, measured using the Maintainability Index as the primary metric. Using validated architecture labels rather than LLM-inferred classifications makes it possible to isolate the effect of tactic selection and implementation from errors introduced by the detection stage.
+
+Each repository serves as its own control, allowing paired comparison of maintainability metrics before and after the intervention. The null hypothesis ($H_0$) is that tactic implementation does not produce a statistically significant change in the Maintainability Index. We test $H_0$ using a two-sided paired Wilcoxon signed-rank test on the 42 before/after MI pairs, with significance level $\alpha = 0.05$. The Wilcoxon test is appropriate given the small sample size ($N = 42$) and the likely non-normal distribution of $\Delta MI$. Effect size is reported as the matched-pairs rank-biserial correlation ($\hat{r}$). Bootstrap 95\% confidence intervals (10,000 resamples) for the mean $\Delta MI$ complement the hypothesis test.
+
+\subsection{Pipeline Scope}
+
+This experiment covers the second half of the overall architecture-aware pipeline, consisting of the following phases:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Baseline static analysis:} Computation of MI, fan-out, and docstring coverage for the original codebase;
+    \item \textbf{Tactic selection:} LLM-based selection of an appropriate architectural tactic from a predefined catalog, given the validated architecture label and identified structural deficiencies;
+    \item \textbf{Tactic implementation:} LLM-generated code modifications applying the selected tactic through iterative incremental changes with syntactic validation;
+    \item \textbf{Post-intervention static analysis:} Recomputation of the same metric suite on the modified codebase;
+    \item \textbf{Statistical analysis:} Paired comparison of before/after metrics.
+\end{enumerate}
+
+Repositories that fail at any phase are recorded as null outcomes and retained in the dataset for failure rate analysis.
+
+\subsection{Dataset}
+
+The dataset for this experiment consists of the 57 manually labeled Python backend repositories from the architecture detection study. Each repository carries a validated architectural style label (script-based, layered, or modular monolith). The use of validated labels eliminates architecture misclassification as a confounding variable and allows the evaluation to focus on tactic selection and implementation effectiveness.
+
+\paragraph{Sampling criteria.}
+Repositories were selected from an initial pool of approximately 200 Python backend projects identified through GitHub search queries combining backend-related keywords (e.g., ``flask'', ``fastapi'', ``django'', ``backend'', ``api'') with minimum 10 stars and at least 5 Python files. Inclusion criteria required: (a) the repository implements a backend service or API (excluding CLI tools, libraries, and educational projects); (b) at least one Python file contains a class or function definition (excluding pure configuration or test-only repositories); (c) the repository is publicly accessible. After applying these filters, 57 repositories were retained and manually labeled for architecture style.
+
+Of the 57 repositories, one could not be retrieved during the experiment run due to repository deletion or access restrictions, leaving 56 unique repositories. Of these, 10 failed during cloning (17.9\%) and 4 failed during the implementation phase (7.1\%), resulting in 42 repositories (75.0\%) with paired before/after measurements.
+
+\subsection{Maintainability Measurement}
+
+The primary metric is the Maintainability Index (MI), computed using Radon~\cite{oman1992maintainability} as a weighted composite of Halstead Volume~\cite{halstead1977elements}, Cyclomatic Complexity~\cite{mccabe1976complexity}, and lines of code, aligned with the ISO/IEC 25010 quality model~\cite{ISO25010}. Maintainability change is quantified as:
+
+\begin{equation}
+\Delta MI = MI_{after} - MI_{before}
+\end{equation}
+
+Repositories are classified as \textit{improved} ($\Delta MI > 0$), \textit{stable} ($\Delta MI = 0$), or \textit{worsened} ($\Delta MI < 0$). Structural metrics including fan-out and docstring coverage are collected as supplementary indicators.
+
+\subsection{Tactic Catalog}
+
+Tactic selection is grounded in the catalog established by Bass et al.~\cite{bass2021software} and mapped by M\'arquez et al.~\cite{marquez2022architectural}. Three maintainability-oriented tactics were applied:
+
+\begin{itemize}[nosep]
+    \item \textbf{Decomposability:} splitting monolithic modules into smaller cohesive units to improve analysability;
+    \item \textbf{Localized Modification:} encapsulating change-prone logic to reduce ripple effects;
+    \item \textbf{Reduced Coupling:} introducing abstraction or mediators to minimize inter-module dependencies.
+\end{itemize}
+
+The LLM selects the tactic based on the validated architecture label and structural metrics, providing a rationale for the selection.
+
+\subsection{LLM-Driven Tactic Selection and Implementation}
+
+\paragraph{Tactic Selection.} The LLM receives the repository file tree, import dependency graph, baseline static analysis metrics, and the validated architecture label. Based on identified structural deficiencies (e.g., high fan-out, monolithic files with low MI), it selects a tactic and provides a justification. If the LLM determines that no tactic is applicable, the repository is marked with outcome \textit{(none)} and excluded from implementation.
+
+\paragraph{Tactic Implementation.} The implementation follows an iterative incremental strategy. The LLM generates small, self-contained code modifications one step at a time. A planner module proposes each step in structured JSON format, specifying the target file and the intended change. Each modification is validated for syntactic correctness before the next step is generated. If the planner fails to produce a valid plan after multiple retries, the repository is marked as a null outcome. The current implementation does not guarantee semantic behavior preservation; behavioral verification through automated test execution is designated as future work.
+
+All LLM calls use the \texttt{Qwen3-Coder-34B} model (HuggingFace ID: \texttt{Qwen/Qwen3-Coder-34B-Instruct}) via the Ollama API with temperature 0.2, top-p = 0.9, repetition penalty = 1.1, and a 256k token context window, providing the LLM with a global view of the repository to reason about cross-module dependencies~\cite{piao2025refactoring}.
+
+\subsection{Architecture Detection Evaluation}
+\label{sec:eval_arch_detection}
+
+The architecture detection stage was evaluated in a separate study~\cite{chertkov_2026_20051151} on the same 57-repository dataset. Three architecture styles were considered: script-based, layered, and modular monolith. The LLM-based detector achieved classification accuracy of 86.0\% (49/57 correct) against manual labels, with highest precision on script-based repos and lowest on modular monoliths. These validated labels are used as input to the present experiment to eliminate detection error as a confounding factor.
+
+\subsection{Initial Pipeline Experiment}
+\label{sec:eval_pipeline}
+
+A baseline experiment without validated architecture labels was conducted prior to the present study. The same pipeline used LLM-inferred architecture labels, producing a mean $\Delta MI$ of +0.48 across completed cases with an 18.2\% improvement rate. The present experiment uses ground-truth labels and achieves 42.9\%, a difference consistent with---but not conclusively attributable to---reduced tactic selection error, as the datasets differ in composition and collection time. We refer to this baseline throughout the discussion.
+
+\FloatBarrier
+\section{Implementation}
+\label{sec:implementation}
+
+This section describes the implementation of the automated pipeline that connects tactic selection to code modification. The pipeline is implemented in Python (767 lines of core logic across five filter modules) and follows the Pipes and Filters architectural style~\cite{bass2021software}, where each stage is an independent filter that reads artifacts produced by the previous stage and writes its own outputs as JSON files on disk. This design enables stage-level fault isolation, independent execution, and incremental debugging.
+
+Figure~\ref{fig:pipeline_arch} illustrates the overall data flow.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=latex, font=\small,
+  box/.style={draw, rectangle, rounded corners=2pt, text width=4cm,
+              align=center, inner sep=4pt, fill=black!3},
+  arr/.style={-latex, thick}]
+
+\node[font=\ttfamily] (in) {Input CSV};
+\node[box, below=0.3cm of in] (p1) {\textbf{Phase 1}\\[2pt] \footnotesize Baseline\\ Static Analysis};
+\draw[arr] (in) -- (p1);
+
+\node[box, below=0.3cm of p1] (p2) {\textbf{Phase 2}\\[2pt] \footnotesize Architecture\\ Label Injection};
+\draw[arr] (p1) -- (p2);
+
+\node[box, below=0.3cm of p2] (p3) {\textbf{Phase 3}\\[2pt] \footnotesize Tactic\\ Selection};
+\draw[arr] (p2) -- (p3);
+
+\node[box, below=0.3cm of p3] (p4) {\textbf{Phase 4}\\[2pt] \footnotesize Tactic\\ Implementation};
+\draw[arr] (p3) -- (p4);
+
+\node[box, below=0.3cm of p4] (p5) {\textbf{Phase 5}\\[2pt] \footnotesize Post-Interv.\\ Analysis};
+\draw[arr] (p4) -- (p5);
+
+\node[font=\ttfamily, below=0.3cm of p5] (out) {Output CSV};
+\draw[arr] (p5) -- (out);
+\end{tikzpicture}
+\caption{Pipeline architecture and artifact flow (Pipes and Filters style). Artifacts are stored as JSON files at each phase.}
+\label{fig:pipeline_arch}
+\end{figure}
+
+\subsection{Phase 1: Baseline Static Analysis}
+
+The \texttt{StaticAnalysisFilter} runs the Radon tool to compute the Maintainability Index (MI) for every Python file in the repository. In addition to MI, it collects architecture-level proxies: package count, package hierarchy depth, import graph density, and file-level fan-out. Docstring coverage is computed as the ratio of functions and classes with docstrings to the total. All metrics are written into per-repository JSON artifacts under \texttt{static\_analysis/BEFORE/\{repo\}/}.
+
+\subsection{Phase 2: Architecture Label Injection}
+
+Validated architecture labels from the dataset (script-based, layered, or modular monolith) are injected as JSON artifacts with confidence 1.0 and evidence set to \texttt{"Pre-computed in dataset (manual label)"}. This step replaces the automated architecture detection stage evaluated separately in~\cite{chertkov_2026_20051151}; using ground-truth labels eliminates architecture misclassification as a confounding variable in the evaluation of tactic selection and implementation.
+
+\subsection{Phase 3: Tactic Selection}
+\label{sec:impl_tactic_selection}
+
+The \texttt{ArchitectureTacticSelectionFilter} calls \texttt{Qwen3-Coder-34B} via the Ollama API with the following context:
+\begin{itemize}[nosep]
+    \item Validated architecture type and confidence;
+    \item Per-file static analysis metrics (MI, cyclomatic complexity, Halstead Volume);
+    \item Repository file tree in ASCII form (rendered by \texttt{build\_repo\_tree});
+    \item Python file signatures: imports, class names, and function signatures extracted by \texttt{extract\_python\_signatures}.
+\end{itemize}
+
+The prompt instructs the LLM to act as a senior software architect and select the single most appropriate tactic from a catalog of 32 maintainability-oriented architectural tactics derived from~\cite{marquez2022architectural}. The output is a structured JSON object containing:
+\begin{verbatim}
+{
+  "selected_tactic": {
+    "id": "AT38",
+    "name": "Localized Modification",
+    "primary_qa_impact": "Modifiability"
+  },
+  "justification": "...",
+  "target_components": ["..."],
+  "implementation_strategy": "...",
+  "risks": ["..."]
+}
+\end{verbatim}
+
+If the LLM determines that no tactic is applicable, it returns \texttt{(none)} and the repository is excluded from the implementation phase.
+
+\subsection{Phase 4: Tactic Implementation}
+\label{sec:impl_tactic_implementation}
+
+The \texttt{ArchitecturalTacticImplementationAgent} implements the code generation loop. This is the most complex component of the pipeline (767 lines) and is described in detail below.
+
+\subsubsection{Repository Indexing}
+
+Before any LLM interaction, every Python file in the repository is parsed with \texttt{ast} to extract imports, class names, and function names. The resulting index maps relative file paths to structured metadata:
+
+\begin{verbatim}
+{
+  "app.py": {
+    "imports": ["flask.Flask", "socket", "os"],
+    "classes": [],
+    "functions": ["main"],
+    "size": 1532
+  },
+  ...
+}
+\end{verbatim}
+
+This index serves two purposes: (1) it provides the LLM with a compact summary of the codebase without exceeding context limits, and (2) it enables BM25 relevance ranking of files against the selected tactic.
+
+\subsubsection{Test Baseline Computation}
+
+Before any modification, the pipeline detects whether the repository has pytest infrastructure by checking for \texttt{pytest.ini}, \texttt{pyproject.toml}, \texttt{setup.cfg}, or a \texttt{tests/} directory. If test infrastructure exists, a baseline run of \texttt{pytest -q --tb=line -rf --no-header} is executed with a 300-second timeout. The set of pre-existing test failures and the total failure count are recorded in a \texttt{TestBaseline} data structure.
+
+This baseline enables regression detection: after each modification, the pipeline re-runs the same pytest command and checks whether any new test failures (i.e., failures absent in the baseline) have appeared. Repositories without test infrastructure skip behavioral gating, and the baseline test result is treated as trivially passing.
+
+\subsubsection{Planner Loop}
+
+The core of the implementation phase is an iterative planner loop that runs for up to 10 iterations per repository. At each iteration, the loop selects a file, generates a code change, validates it, applies it, and checks for test regressions. Algorithm~\ref{alg:planner} describes the procedure.
+
+\begin{algorithm}[H]
+\caption{Planner loop for tactic implementation}
+\label{alg:planner}
+\begin{algorithmic}[1]
+\Require tactic $T$, repository $R$, max iterations $N = 10$, max failures $F = 4$
+\State $index \gets \text{buildRepoIndex}(R)$
+\State $baseline \gets \text{computeTestBaseline}(R)$
+\State $steps \gets [\;]$
+\State $failures \gets 0$
+\State $i \gets 0$
+\While{$i < N$}
+    \State $relevant \gets \text{findRelevantFiles}(T, index, topK=5)$ \Comment{BM25 ranking}
+    \State $sel \gets \text{askLLM\_selectFile}(R, T, index, relevant, steps)$
+    \If{$sel.action = STOP$}
+        \State \textbf{break}
+    \EndIf
+    \If{$sel.action = RETRY$ or $\neg\text{validateSelect}(sel)$}
+        \State $failures \gets failures + 1$
+        \If{$failures \ge F$}
+            \State \textbf{break} \Comment{too many planner failures}
+        \EndIf
+        \State \textbf{continue}
+    \EndIf
+    \State $failures \gets 0$
+    \State $patch \gets \text{applyWithSelfHealing}(R, T, sel.path, steps, baseline)$
+    \If{$patch \neq \textsc{null}$}
+        \State $steps.\text{append}(patch)$
+        \State $\text{saveArtifacts}(i, patch)$
+    \EndIf
+    \State $i \gets i + 1$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{File Ranking with BM25}
+
+Before each LLM call for file selection, the pipeline ranks all files in the repository index by relevance to the selected tactic. The tactic's name, category, and description fields are tokenized into a query. Each file is represented by the concatenation of its path, class names, function names, and imports. BM25 scores are computed with parameters $k_1 = 1.5$ and $b = 0.75$. The top-5 files are presented to the LLM as candidates.
+
+This ranking step is critical for scaling the pipeline to larger repositories: without it, the LLM's file selection prompt would include all repository files, exceeding the context window or forcing the LLM to reason about hundreds of irrelevant files.
+
+\subsubsection{LLM Prompting Strategy}
+
+Two prompt templates govern the interaction with \texttt{Qwen3-Coder-34B}:
+
+\textbf{File selection prompt} asks the LLM to pick one relevant file from the index. Inputs: tactic, repo tree, BM25-ranked candidates, condensed index (classes, functions, imports), and applied steps. Output: JSON with \texttt{action} (\texttt{inspect\_file} or \texttt{STOP}) and \texttt{path}.
+
+\textbf{Patch generation prompt} feeds the tactic JSON, target file content, and step history. The LLM returns JSON with \texttt{action} (\texttt{modify\_file}, \texttt{create\_file}, or \texttt{STOP}), \texttt{path}, and \texttt{content}. The LLM must not touch \texttt{\_\_init\_\_.py} or exceed 400 lines per file.
+
+All LLM calls use temperature 0.2 and a 256k token context window through the Ollama API.
+
+\paragraph{Example.}
+A representative diff is available in the supplementary materials (\path{examples/webapp-color-decomposability.diff}). The LLM applied Decomposability to \texttt{webapp-color}, a single-file Flask app (MI = 69.27). It extracted color data and config parsing into two modules (\texttt{color.py}, \texttt{config.py}), each at MI = 100. The original 67-line \texttt{app.py} was reduced to 25 lines (MI = 73.74), raising the repo average to 91.25. This extraction pattern accounts for 12 of the 18 improvements.
+
+\subsubsection{Validation and Rollback}
+
+Each generated patch is validated before application:
+\begin{itemize}[nosep]
+    \item Action must be \texttt{modify\_file} or \texttt{create\_file};
+    \item Path and content must be non-empty;
+    \item The target must not be \texttt{\_\_init\_\_.py};
+    \item Content must not exceed 400 lines.
+\end{itemize}
+
+If validation passes, the pipeline snapshots the current file to a backup directory, applies the patch, refreshes the in-memory file state, and re-runs pytest. If the test run reveals new failures (regression), the file is restored from the snapshot and the step is recorded as failed. Up to 2 self-healing attempts are made per step: on regression, the test output is fed back to the LLM with the instruction to propose a minimal fix that preserves the original tactic intent. If all attempts fail, the step is abandoned and the iteration counter advances.
+
+\subsection{Phase 5: Post-Intervention Analysis}
+
+After the implementation phase, \texttt{StaticAnalysisFilter} re-runs on the modified codebase. Results go to the \texttt{AFTER} artifact directory. The change $\Delta MI = MI_{after} - MI_{before}$ is computed per file and for the repo average.
+
+A summary of all outcomes (improved, stable, worsened, or failed) is appended to the output CSV along with the architecture label and chosen tactic name. Repositories that fail at any phase (clone failure, tactic selection failure, planner failure) are recorded as null outcomes and retained in the dataset for failure rate analysis.
+
+\paragraph{Configuration Summary.}
+All experiments used the following configuration: model = \texttt{Qwen3-Coder-34B} (via Ollama API), temperature = 0.2, context window = 256k tokens, max planner iterations = 10, max consecutive planner failures before abort = 4, max self-healing attempts per step = 2, max generated file length = 400 lines, test timeout = 300 seconds.
+
+\section{Results and Discussion}
+
+\subsection{Overall Quantitative Impact}
+
+Table~\ref{tab:exp5_outcomes} summarizes outcomes across 56 repositories. Of these, 14 (25.0\%) failed (10 during cloning, 4 during implementation), leaving 42 with paired measurements. Of the 42 completed cases, 18 improved (42.9\%), 17 remained stable (40.5\%), and 7 worsened (16.7\%).
+
+The end-to-end success rate, counting all 56 repositories as the denominator, is 32.1\% (18/56). We report both figures throughout: the per-protocol rate (42.9\% of completed) reflects pipeline effectiveness when execution succeeds, while the intention-to-treat rate (32.1\% of all) reflects the realistic deployment success rate including infrastructure and planning failures.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Pipeline outcome distribution (N = 56).}
+\label{tab:exp5_outcomes}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Outcome} & \textbf{N} & \textbf{Share} \\
+\midrule
+Improved ($\Delta MI > 0$)  & 18 & 42.9\% of completed (32.1\% of all) \\
+Stable ($\Delta MI = 0$)    & 17 & 40.5\% of completed \\
+\quad Syntax error          & 3  & 7.1\% of completed \\
+\quad Planner failure       & 7  & 16.7\% of completed \\
+\quad No-op modification    & 7  & 16.7\% of completed \\
+Worsened ($\Delta MI < 0$)  & 7  & 16.7\% of completed \\
+Failed / null               & 14 & 25.0\% of all \\
+\midrule
+\textbf{Total} & \textbf{56} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The stable category requires disaggregation. Of the 17 stable cases: 7 were planner failures (the LLM failed to produce a valid modification), 3 had syntax errors (Radon excluded malformed files from the average), and only 7 were genuine no-op modifications where code was changed but MI was unaffected (e.g., docstring additions, import reorganization). Treating planner failures and syntax errors as de facto pipeline failures---since the intervention did not execute as intended---reduces the effective improvement rate among completed cases from 42.9\% (18/42) to 32.1\% (18/56) when including failures, or to 56.2\% (18/32) when considering only cases where code was actually modified.
+
+Descriptive statistics for the 42 completed repositories are shown in Table~\ref{tab:exp5_mi}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Maintainability Index statistics for completed repositories (N = 42).}
+\label{tab:exp5_mi}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Mean $\Delta MI$ (all completed)  & +1.484 \\
+Mean $\Delta MI$ (improved only)  & +3.716 \\
+Mean $\Delta MI$ (worsened only)  & $-$0.653 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Compared to the initial pipeline experiment (Section~\ref{sec:eval_pipeline}), where the mean $\Delta MI$ across all completed cases was +0.48 with an improvement rate of 18.2\%, this experiment shows a higher improvement rate (42.9\%) and a larger mean gain (+1.484 vs +0.48). This difference is consistent with---but does not conclusively establish---the hypothesis that validated architecture labels lead to more coherent tactic selection, as the datasets were collected at different times and may differ in other characteristics.
+
+\subsection{Inferential Statistics}
+
+We tested the null hypothesis ($H_0$: median $\Delta MI = 0$) using a two-sided paired Wilcoxon signed-rank test on the 42 before/after MI pairs. The test resulted in a statistically significant difference ($W = 473$, $p = 0.023$, matched-pairs rank-biserial correlation $\hat{r} = 0.35$). The 95\% bootstrap confidence interval for the mean $\Delta MI$ is [0.21, 3.04].
+
+The effect size $\hat{r} = 0.35$ is conventionally interpreted as medium. This indicates that the pipeline produces a detectable positive shift in MI, but the magnitude is modest and concentrated in a subset of repositories.
+
+\paragraph{Sensitivity analysis.}
+The two largest improvements---webapp-color ($\Delta MI = +21.98$) and Paper2Rebuttal ($\Delta MI = +18.14$)---are outliers that exert disproportionate influence on the aggregate result. Removing both, the mean $\Delta MI$ drops from +1.484 to +0.513 and the Wilcoxon test is no longer significant ($W = 320$, $p = 0.156$, $\hat{r} = 0.17$). This sensitivity underscores that the overall positive result is not uniform: it is driven by a small number of high-impact cases, primarily small repositories where file splitting mechanically inflates MI. The majority of repositories (24/42, 57.1\%) show $\Delta MI$ within $\pm 0.5$ points, indistinguishable from measurement noise.
+
+These analyses are based on a per-protocol sample ($N = 42$). If all 14 failures are treated as non-improvements ($\Delta MI = 0$), the intention-to-treat Wilcoxon test on 56 pairs yields $W = 473$, $p = 0.087$, $\hat{r} = 0.22$---no longer significant at $\alpha = 0.05$, further qualifying the robustness of the observed effect.
+
+\subsection{Notable Improvement Cases}
+\label{subsec:exp5_cases}
+
+To understand \textit{how} the LLM improved maintainability rather than merely \textit{how much}, this section examines the five largest improvements in detail. These cases collectively illustrate the principal mechanism through which the pipeline produces MI gains: extraction of new cohesive modules from files with low or near-zero MI scores.
+
+\paragraph{kodekloudhub/webapp-color ($\Delta MI = +21.98$, Decomposability).}
+This repository contained a single Python file, \texttt{app.py}, with an MI of 69.27. The LLM applied the Decomposability tactic by splitting the file into three modules: a revised \texttt{app.py} (MI = 73.74), a \texttt{color.py} module encapsulating color-related logic (MI = 100), and a \texttt{config.py} module holding configuration constants (MI = 100). The repository-level average rose from 69.27 to 91.25. This case represents the idealized scenario for the pipeline: a single monolithic file with a clearly separable concern (configuration and color mappings) whose extraction produces simple, highly maintainable modules. The magnitude of the gain is partly an artifact of the small repository size, where each new file has equal weight in the average.
+
+\paragraph{AutoLab-SAI-SJTU/Paper2Rebuttal ($\Delta MI = +18.14$, Localized Modification).}
+This repository contained five Python files, of which \texttt{rebuttal\_service.py} had an MI of 0.0, corresponding to Radon rank C, indicating an excessively large and complex file that is practically unmaintainable by static analysis criteria. The LLM identified that this file mixed multiple distinct responsibilities: PDF conversion, LLM orchestration, and arXiv API interaction. Applying the Localized Modification tactic, it extracted three dedicated modules: \texttt{pdf\_converter.py} (MI = 61.6), \texttt{llm\_orchestrator.py} (MI = 50.1), and \texttt{arxiv\_client.py} (MI = 34.8). After extraction, \texttt{rebuttal\_service.py} itself improved to MI = 55.6, as the remaining code became more focused. This case demonstrates the highest-value scenario for the pipeline: a file with MI = 0 represents a concentration of complexity that, once partially extracted, yields large absolute MI improvements. The case also illustrates that the LLM can reason about logical boundaries within a complex file, not only about file-level structure.
+
+\paragraph{paulafredo/spam-api-free-fire ($\Delta MI = +9.40$, Decomposability).}
+This repository had four Python files with a mean MI of 67.20. The primary file, \texttt{app.py}, mixed application routing with cryptographic utility logic. The LLM applied Decomposability by extracting cryptographic operations into a dedicated \texttt{crypto.py} module, which achieved MI = 100 due to its simple, pure-function structure. The existing \texttt{app.py} improved from MI = 44.5 to 58.7 as a result of the reduced complexity. The extracted module's simplicity and clarity are a direct consequence of the LLM selecting a functionally cohesive responsibility for extraction rather than splitting code arbitrarily.
+
+\paragraph{McCloudS/subgen ($\Delta MI = +7.93$, Decomposability).}
+The central file of this repository, \texttt{subgen.py}, had an MI of 0.0 despite the repository containing 13 Python files. The LLM identified that \texttt{subgen.py} contained environment configuration and initialization logic mixed with core processing code. By extracting environment-related code into a new \texttt{environment.py} module (MI = 66.4), the original file's complexity decreased sufficiently for Radon to assign it an MI of 100.0. This case illustrates a recurring pattern in the dataset: a single dominant file with MI = 0 can be transformed into a well-maintainable module through targeted extraction, even when the surrounding codebase is already reasonably structured.
+
+\paragraph{HKUDS/FastCode ($\Delta MI = +2.11$, Decomposability).}
+This case is notable because it is the only example among the top improvements where the repository is large (81 Python files), demonstrating that measurable MI gains are possible at scale under specific conditions. Two files had exceptionally low MI scores: \texttt{retriever.py} (MI = 11.32) and \texttt{main.py} (MI = 4.85). The LLM created two new modules, \texttt{call\_graph\_builder.py} (MI = 52.6) and \texttt{retriever\_coordinator.py} (MI = 100), by extracting retrieval coordination and call graph construction logic. After extraction, \texttt{retriever.py} improved to MI = 78.43 and \texttt{main.py} to MI = 76.95. While the repository-level average increased by only 2.11 points due to the dilution effect of 79 other files, the individual file-level improvements were substantial. This case suggests that the pipeline can identify and improve critical bottleneck files in large repositories, even if the aggregate MI gain is small.
+
+\paragraph{Common Pattern Across Improvement Cases.}
+Across all five cases and the broader dataset, 12 of 18 improvements involved the extraction of a new module achieving MI = 100. These extracted modules share a characteristic structure: they contain simple, self-contained functions or classes with low cyclomatic complexity and high readability. Configuration objects, pure utility functions, API clients with limited branching, and data transformation helpers consistently produce MI = 100 under the Radon formula. The LLM systematically identifies such extractable responsibilities within mixed-concern files, suggesting that it applies an implicit cohesion heuristic when decomposing modules.
+
+A secondary improvement pattern involves files with MI = 0 (rank C). Radon assigns MI = 0 when a file's Halstead Volume and cyclomatic complexity exceed a threshold corresponding to very long, deeply nested code. In four cases, the LLM improved MI = 0 files by at least 40 points through partial extraction, without necessarily reducing the file to a simple structure. The act of removing even a fraction of the most complex logic from such files produces disproportionately large MI gains due to the non-linear relationship between file size and Halstead Volume.
+
+\subsection{Results by Repository Size}
+
+Table~\ref{tab:exp5_size} shows results grouped by repository size, measured in number of Python files.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Results by repository size.}
+\label{tab:exp5_size}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Size bin} & \textbf{N} & \textbf{Median $|\Delta MI|$} & \textbf{Mean $|\Delta MI|$} & \textbf{Max $|\Delta MI|$} \\
+\midrule
+Tiny ($<$10 files)    & 11 & 1.04 & 4.83 & 21.98 \\
+Small (10--30 files)  & 9  & 0.76 & 1.50 & 7.93  \\
+Medium (30--80 files) & 12 & 0.05 & 0.16 & 0.66  \\
+Large ($>$80 files)   & 10 & 0.00 & 0.28 & 2.11  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Repository size is the strongest predictor of effect magnitude. On tiny repositories, individual file splits can produce jumps of over 20 MI points because the repository-level average is dominated by a small number of files. On large repositories (80+ files), the median change is 0.00: any single-file modification is absorbed by the averaging over dozens of files with MI in the 60--80 range.
+
+The most striking examples demonstrate this pattern:
+
+\begin{itemize}[nosep]
+    \item \textit{kodekloudhub/webapp-color} ($\Delta MI = +21.98$, 1 file, Decomposability): the single file \texttt{app.py} was split into \texttt{app.py}, \texttt{color.py} (MI = 100), and \texttt{config.py} (MI = 100), raising the repository average from 69.3 to 91.2.
+    \item \textit{AutoLab-SAI-SJTU/Paper2Rebuttal} ($\Delta MI = +18.14$, 5 files, Localized Modification): \texttt{rebuttal\_service.py} had MI = 0.0. The LLM extracted logic into three new modules, and the original file improved to MI = 55.6.
+    \item \textit{McCloudS/subgen} ($\Delta MI = +7.93$, 13 files, Decomposability): \texttt{subgen.py} improved from MI = 0.0 to MI = 100.0 after extraction.
+\end{itemize}
+
+A common pattern across 12 of the 18 improved repositories is the extraction of a new module with MI = 100 (simple data classes, configuration objects, or factory utilities), which raises the repository-level average. Four additional improvements involved rescuing files with MI = 0.0 (Radon rank C, very complex) through partial extraction.
+
+\subsection{Results by Architectural Tactic}
+
+Table~\ref{tab:exp5_tactics} shows outcomes grouped by selected tactic.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Results by architectural tactic.}
+\label{tab:exp5_tactics}
+\begin{tabular}{lrrrrl}
+\toprule
+\textbf{Tactic} & \textbf{N} & \textbf{Impr.} & \textbf{Stable} & \textbf{Worse.} & $\overline{\Delta MI}$ \\
+\midrule
+(none selected)       & 7  & 0 & 7 & 0 & 0.00  \\
+Decomposability       & 18 & 8 & 7 & 3 & +2.33 \\
+Localized Modification & 14 & 9 & 3 & 2 & +1.49 \\
+Reduced Coupling      & 3  & 1 & 0 & 2 & $-$0.16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Localized Modification} shows the best risk-adjusted performance: 9 improvements, 2 worsenings, and a mean $\Delta MI$ of +1.49. This tactic encapsulates change-prone logic without requiring the creation of entirely new module boundaries, which reduces the risk of introducing below-average MI files.
+
+\textbf{Decomposability} produces the highest individual gains but also the most worsenings (3 cases). This tactic is high-variance: when applied to a monolithic file with MI = 0, it can produce large improvements; when applied to an already well-maintained codebase, new extracted files may have MI below the existing repository average, pulling the mean down.
+
+\textbf{Reduced Coupling} was applied to only 3 repositories, making statistical inference unreliable. However, 2 of the 3 cases worsened slightly, suggesting that introducing abstractions or mediators in small repositories can increase complexity without proportional benefit.
+
+\subsection{Results by Architectural Style}
+
+Table~\ref{tab:exp5_arch} presents results grouped by validated architecture label.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Results by architectural style.}
+\label{tab:exp5_arch}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Architecture} & \textbf{N} & \textbf{Impr.} & \textbf{Worse.} & \textbf{Stable} & $\overline{\Delta MI}$ \\
+\midrule
+Script-based      & 7  & 3 & 0 & 4 & +5.62 \\
+Modular monolith  & 26 & 9 & 5 & 12 & +0.76 \\
+Layered           & 9  & 6 & 2 & 1  & +0.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Script-based} repositories continue to show the highest mean improvement (+5.62), consistent with the initial pipeline experiment. These repositories typically have few files, low MI scores due to large monolithic scripts, and clear decomposition opportunities.
+
+\textbf{Modular monolith} repositories show moderate improvements on average (+0.76) but account for all five worsening cases. This is consistent with the hypothesis that already-organized codebases are sensitive to structural changes: the LLM may introduce new files or reorganize imports in ways that add complexity rather than reducing it.
+
+\textbf{Layered} repositories show the highest improvement rate in absolute terms (6 of 9 improved), with a modest mean gain of +0.35. The explicit separation of concerns in layered architectures provides a more structured context for tactic application, particularly Localized Modification, which can target a specific layer without disrupting others.
+
+\subsection{Supplementary Architectural Metrics}
+
+MI captures file-level complexity but is insensitive to structural properties such as inter-module coupling, package organization, and module boundary quality. To provide a more complete picture, we report three supplementary metrics collected during static analysis: average fan-out (mean external imports per file), package count (directories containing \texttt{\_\_init\_\_.py}), and maximum directory depth.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Supplementary architecture-level metric changes (N = 42).}
+\label{tab:exp5_supp}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Metric} & \textbf{Before} & \textbf{After} & \textbf{$\Delta$} \\
+\midrule
+Mean avg.\ fan-out        & 4.12 & 3.95 & $-$0.17 \\
+Mean package count        & 9.7  & 9.7  & 0.00 \\
+Mean max.\ directory depth & 2.4  & 2.4  & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:exp5_supp}, package count and directory depth remained unchanged across all 42 repositories. The pipeline did not create or reorganize package boundaries in any case---all changes were confined within the existing directory structure. Average fan-out decreased marginally ($-$0.17), driven entirely by four repositories where new files absorbed imports from existing modules. In 38 of 42 repositories, fan-out was unchanged.
+
+This result qualifies the ``architectural'' claim of the intervention. While MI improved in 18 repositories, the underlying package structure and import dependency graph remained essentially unchanged. The pipeline operates at the code level (splitting files, extracting functions) rather than the architecture level (reorganizing packages, introducing abstraction layers). The one partial exception is Paper2Rebuttal, where fan-out decreased by 2.1 and three new modules with distinct responsibilities were created---but even here, the existing package structure was not modified.
+
+\subsection{Stable and Worsened Outcomes}
+
+Of the 17 stable repositories, three categories explain the null MI change:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Syntax errors in generated files (3 cases):} Radon excluded the malformed file from the average, leaving MI unchanged despite code modifications. Examples include \textit{SoulX-FlashHead} (\texttt{inference\_service.py}: unmatched \texttt{\}}) and \textit{zornade/visura-api} (\texttt{auth.py}: unmatched \texttt{\}}).
+    \item \textbf{Planner failure (7 cases):} The LLM failed to produce a valid modification plan after multiple retries. This occurred predominantly in very small repositories (2--8 files) where the planner could not identify meaningful structural changes.
+    \item \textbf{No-op modifications:} The LLM produced changes limited to docstrings or import reorganization, which do not affect the MI formula.
+\end{enumerate}
+
+The seven worsening cases share a common pattern: the LLM extracted a new module whose MI was below the existing repository average, pulling the mean downward. The maximum degradation was $-1.23$ MI points (\textit{geo-seo-claude}: new \texttt{http\_client.py} with MI = 39.45 vs. repository average of 50.53). Notably, all worsening cases fell within the tiny or small size bins, and no worsening exceeded $-1.24$ MI points.
+
+\subsection{Pipeline Failure Analysis}
+
+The 14 failed cases divide into two categories: infrastructure failures (10 repositories lost during cloning due to repository deletion, privatization, or access restrictions) and algorithmic failures (4 repositories with completed before-analysis but no after-analysis measurements due to planner or API issues).
+
+\paragraph{Failed vs.\ completed comparison.}
+To assess whether attrition introduces selection bias, we compared the 14 failed repositories to the 42 completed ones on available covariates. The median file count of failed repos was 13.5 (IQR: 6.5--26.5) versus 17.5 (IQR: 8.0--43.5) for completed repos. Architecture type distribution was similar: failed repos were 21.4\% script-based, 71.4\% modular monolith, and 7.1\% layered, compared to 16.7\%, 61.9\%, and 21.4\% for completed repos. Baseline MI values (available for the 4 algorithmic failures) did not differ systematically from completed cases. The small sample size precludes formal statistical comparison, but the observed differences are not large enough to suggest strong attrition bias.
+
+Technical failures during the implementation stage included:
+
+\begin{itemize}[nosep]
+    \item \textbf{Rate limiting (infrastructure):} Ollama API returned HTTP 429 errors during tactic selection, requiring pipeline retries.
+    \item \textbf{Planner parse failures (algorithmic):} The planner produced malformed JSON or structurally invalid plans across multiple retries, triggering abort conditions.
+    \item \textbf{Stuck loops (algorithmic):} One repository (\textit{stremio-gdrive}) entered a loop in which the same file was regenerated without progress across nine consecutive iterations.
+    \item \textbf{Invalid step proposals (algorithmic):} The LLM returned step descriptions with missing or malformed file paths, causing the step to be rejected.
+\end{itemize}
+
+These failure modes highlight the brittleness of multi-step LLM code generation pipelines and the need for more robust planning and validation mechanisms. Distinguishing infrastructure from algorithmic failures is important: the former can be mitigated by improved API reliability and retry strategies, while the latter require fundamental improvements in LLM planning capability.
+
+\subsection{Discussion}
+
+\paragraph{Effect of validated architecture labels.} Comparing this experiment to the initial pipeline study (Section~\ref{sec:eval_pipeline}) reveals a difference in improvement rate: 42.9\% here versus 18.2\% in the original experiment. This difference is consistent with---but does not conclusively establish---the hypothesis that validated architecture labels enable more coherent tactic selection. The datasets differ in composition and collection time, so other confounding factors may contribute to the observed difference.
+
+\paragraph{Repository size as the primary moderating factor.} Effect magnitude depends strongly on repository size, with a weak negative correlation of $-0.13$ between Python file count and $|\Delta MI|$. For medium (30--80 files) and large ($>$80 files) repositories, the median $|\Delta MI|$ was 0.05 and 0.00 respectively---indistinguishable from measurement noise. \textbf{Practitioner recommendation:} the pipeline should not be expected to produce measurable MI improvements on repositories with more than 30 files. Its value is concentrated in small and tiny repositories with structurally clear improvement opportunities.
+
+\paragraph{Decomposability versus Localized Modification.} Decomposability provides the highest potential gains but is the highest-variance tactic. It is most effective when applied to files with MI near zero (Radon rank C) and produces degradation when new extracted modules have MI below the repository average. Localized Modification is more conservative and shows a better improvement-to-worsening ratio (9:2 vs. 8:3), making it preferable when the risk of degradation must be minimized.
+
+\paragraph{MI gaming and metric-arithmetic effects.} Twelve of 18 improvements (66.7\%) involved extracting a new module that achieved MI = 100---the maximum possible score, typically corresponding to short, simple files with low cyclomatic complexity. This pattern raises a validity concern: the repository-level MI improvement may partly reflect metric arithmetic (adding high-scoring files inflates the average) rather than genuine architectural improvement. To calibrate: adding a single empty file with one function definition produces MI = 100, raising a repository's average by $100 / (N+1)$ points, where $N$ is the initial file count. For a 1-file repository (e.g., webapp-color), this yields $\Delta MI \approx +15$, explaining the large gain without architectural restructuring. However, the LLM's module extractions are not arbitrary: in cases like Paper2Rebuttal, the extracted modules (\texttt{pdf\_converter.py}, \texttt{arxiv\_client.py}, \texttt{llm\_orchestrator.py}) correspond to genuine responsibility boundaries within the original code. The metric-arithmetic confound coexists with real decomposition---disentangling the two requires per-file analysis of the specific modifications, which we provide in Section~\ref{subsec:exp5_cases}. For practitioners, the implication is clear: an MI gain from adding simple new files should not be equated with architectural improvement without inspecting whether the extracted modules represent meaningful responsibility boundaries.
+
+\paragraph{Comparison to prior work.} The 25.0\% failure rate is lower than the 95\% semantic failure rate reported for security tactic synthesis~\cite{shokri2024ipsynth}, though the tasks differ in scope. The 42.9\% improvement rate among completed cases (32.1\% intention-to-treat) and the sensitivity of the Wilcoxon result to outlier removal indicate that the pipeline's effectiveness is real but fragile and context-dependent. The high proportion of stable outcomes (40.5\%) and the absence of behavioral preservation verification limit the strength of conclusions about architectural improvement.
+
+\paragraph{Implications for Practice.}
+The following guidance emerges from our findings:
+\begin{itemize}[nosep]
+    \item \textbf{Scope:} The pipeline is applicable only to small repositories ($<$30 files). For repositories with more than 30 files, median $\Delta MI$ is near zero and the pipeline should not be expected to produce measurable quality improvements.
+    \item \textbf{Success rate:} The realistic end-to-end success rate is 32.1\% (18/56). Users should expect that roughly two-thirds of attempts will not produce MI improvements, due to infrastructure failures (17.9\%), algorithmic failures (7.1\%), or code modifications that leave MI unchanged (16.7\%).
+    \item \textbf{Validation:} MI improvements from adding new files may be metric-arithmetic artifacts. Every improvement case should be validated by inspecting whether extracted modules represent meaningful responsibility boundaries, ideally supported by automated test execution.
+    \item \textbf{Tactic selection:} Localized Modification offers the best risk-adjusted performance. Reduced Coupling should be avoided---it produced no positive outcomes in our study.
+    \item \textbf{Model reliability:} The planner loop is brittle. Structured decoding or constrained generation would improve reliability over free-form JSON generation.
+\end{itemize}
+
+\section{Threats to Validity}
+
+\textbf{Internal validity:} Architecture labels were assigned by a single annotator and used without modification, introducing potential bias without inter-annotator reliability assessment. MI changes may be influenced by factors beyond the intended tactic (e.g., docstring additions, import reorganization side effects). A single LLM model was used without comparison to alternatives. \textbf{Regression to the mean} is a specific concern: repositories with files at MI = 0 (extreme low values) are the most likely to improve under any intervention, and the largest gains in our study come from precisely these cases. The observed improvements may partly reflect statistical regression rather than tactic effectiveness. A control condition---e.g., re-running the pipeline with a ``do nothing'' prompt or random file extraction---would quantify the background rate of MI change from any LLM interaction and is recommended for future work.
+
+\textbf{External validity:} The dataset covers 56 Python backend repositories across three architectural styles. Results may not generalize to other languages, larger enterprise systems, or architectures not covered by the three-class taxonomy. All repositories are open-source Python projects, which may differ systematically from industrial or closed-source codebases in structure, documentation, and modularity.
+
+\textbf{Construct validity:} MI captures file-level complexity but is insensitive to module boundary quality, inter-module coupling changes, and semantic correctness. This limitation is particularly consequential for the \texttt{Reduced Coupling} tactic, which targets inter-module dependencies---precisely the property MI was not designed to measure. MI is theoretically incapable of detecting the primary effect of one of the three tactics studied, which may explain its poor observed performance. The absence of behavioral verification means that some ``improved'' cases may have altered system behavior.
+
+\textbf{Conclusion validity:} With 42 completed repositories and 18 improvements, the sample is small. The Wilcoxon test result is sensitive to outlier removal: removing the two largest gains eliminates statistical significance ($p = 0.156$). The size-dominated effect makes it difficult to generalize findings to medium and large repositories where the pipeline consistently produces near-zero MI changes. Subgroup analyses (by tactic, by architecture) have limited power, and the risk of Type II error is substantial---particularly for the \texttt{Reduced Coupling} tactic (N = 3) and the layered architecture subgroup (N = 9). Results should be treated as early feasibility evidence rather than definitive performance claims.
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper presented an automated pipeline that leverages an LLM (Qwen3-Coder-34B, model ID \texttt{qwen3-coder-34b-instruct}) to improve software maintainability through architectural tactic implementation. We applied the pipeline to 56 open-source Python backend repositories, measuring maintainability change via the Radon Maintainability Index in a pre-test/post-test design.
+
+\paragraph{Key findings.}
+A paired Wilcoxon signed-rank test on 42 before/after MI pairs showed a statistically significant but fragile improvement ($W = 473$, $p = 0.023$, $\hat{r} = 0.35$; 95\% bootstrap CI for $\Delta MI$: [0.21, 3.04]). The pipeline improved MI in 18 of 42 completed cases (42.9\%), with a mean gain of +1.484 points. However, the result is driven by two outliers---removing webapp-color and Paper2Rebuttal eliminates statistical significance ($p = 0.156$), and the intention-to-treat analysis (18/56 = 32.1\%) is also non-significant ($p = 0.087$). The largest improvements occurred in tiny repositories ($<$10 files), while large repositories ($>$80 files) showed a median change of 0.00. Decomposability and Localized Modification tactics produced the most consistent gains; Reduced Coupling produced no positive outcomes. Supplementary architectural metrics (package count, directory depth, fan-out) remained essentially unchanged across all 42 repositories, indicating that the pipeline operates at the code level rather than the architecture level.
+
+\paragraph{Limitations.}
+The absence of behavioral verification limits the strength of our conclusions---MI improvements may not correspond to semantically correct changes. The end-to-end success rate of 32.1\% (18/56) and the sensitivity of the statistical result to outlier removal indicate that the pipeline remains unreliable for production use. The MI metric is insensitive to structural improvements in medium and large repositories and is theoretically incapable of detecting the effect of coupling-reduction tactics. The single-model design (Qwen3-Coder-34B) leaves open questions of model generalizability.
+
+\paragraph{Future work.}
+Several directions follow from these results. First, integrating behavioral verification (test suite execution with regression checking) into the pipeline would transform MI gains into validated improvements. Second, multi-model comparisons would establish whether the observed patterns are model-specific or general. Third, file-level and module-level metrics would provide more discriminating evaluation for medium and large repositories where aggregate MI is uninformative. Fourth, expanding the tactic catalog and supporting multi-tactic compositions could address more complex maintenance scenarios. Finally, the planner loop's brittleness — particularly its sensitivity to malformed LLM outputs — motivates research into structured decoding and constrained generation for code modification tasks.
+
+\begin{acks}
+The authors declare the use of AI tools in the preparation of this manuscript: Qwen3-Coder-34B was used for code generation in the experimental pipeline; Claude (Anthropic) was used for writing assistance and LaTeX formatting.
+\end{acks}
+
+\section*{Data Availability}
+
+The replication package for this study, including the exact LLM prompt templates, static analysis artifacts (Radon MI logs, architecture proxies), and the outcome dataset, is publicly available at: \href{https://zenodo.org/records/20547119?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImI0MmIzODE2LTMzMjgtNGRlYi1hNzA3LWVkMzlkMjhmZDg5NSIsImRhdGEiOnt9LCJyYW5kb20iOiI5NTIxZTg5YmIxZmM0ZGJmNGYwMzQzZDBkODk5NjY0OSJ9.P260LQG5q0QhuY-KJ7rkhC5Pq0Xpnu5ywdNOCWq2PuVqB0g3l0s8o3M6PhZJFBNEpGGjJRoAx4oZ351grRPyCw}{Zenodo}. The model-specific identifier is \texttt{Qwen/Qwen3-Coder-34B-Instruct} (HuggingFace), and all non-default generation parameters are documented in the package.
+\bibliography{ref}
+
+\end{document}
