@@ -1,0 +1,562 @@
+{
+  "python_files": 88,
+  "packages": 21,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 4.190476190476191,
+  "imports_graph": {
+    "main.py": [
+      "src",
+      "typing",
+      "asyncio",
+      "config",
+      "sys",
+      "io"
+    ],
+    "config/zhihu_config.py": [],
+    "config/base_config.py": [
+      "zhihu_config",
+      "xhs_config"
+    ],
+    "config/__init__.py": [
+      "db_config",
+      "base_config"
+    ],
+    "config/xhs_config.py": [],
+    "config/db_config.py": [
+      "os"
+    ],
+    "tests/__init__.py": [],
+    "api/__init__.py": [],
+    "api/main.py": [
+      "subprocess",
+      "routers",
+      "asyncio",
+      "fastapi",
+      "datetime",
+      "uvicorn",
+      "os",
+      "services"
+    ],
+    "src/__init__.py": [],
+    "src/platforms/__init__.py": [],
+    "src/core/__init__.py": [
+      "arg"
+    ],
+    "src/core/base_crawler.py": [
+      "abc",
+      "playwright",
+      "src",
+      "typing"
+    ],
+    "src/core/var.py": [
+      "aiomysql",
+      "contextvars",
+      "typing",
+      "asyncio"
+    ],
+    "src/core/arg.py": [
+      "src",
+      "typing",
+      "typing_extensions",
+      "types",
+      "typer",
+      "enum",
+      "config",
+      "sys",
+      "__future__"
+    ],
+    "src/utils/zhihu_const.py": [],
+    "src/utils/crawler_util.py": [
+      "re",
+      "playwright",
+      "src",
+      "typing",
+      "random",
+      "httpx",
+      "PIL",
+      "base64",
+      "urllib",
+      "io",
+      "json"
+    ],
+    "src/utils/async_file_writer.py": [
+      "src",
+      "typing",
+      "asyncio",
+      "config",
+      "csv",
+      "aiofiles",
+      "pathlib",
+      "json",
+      "os"
+    ],
+    "src/utils/easing.py": [
+      "numpy",
+      "typing",
+      "math"
+    ],
+    "src/utils/__init__.py": [],
+    "src/utils/utils.py": [
+      "argparse",
+      "crawler_util",
+      "logging",
+      "slider_util",
+      "time_util"
+    ],
+    "src/utils/slider_util.py": [
+      "typing",
+      "httpx",
+      "numpy",
+      "cv2",
+      "urllib",
+      "os"
+    ],
+    "src/utils/words.py": [
+      "src",
+      "matplotlib",
+      "logging",
+      "jieba",
+      "collections",
+      "asyncio",
+      "wordcloud",
+      "config",
+      "aiofiles",
+      "json"
+    ],
+    "src/utils/browser_launcher.py": [
+      "socket",
+      "platform",
+      "subprocess",
+      "src",
+      "os",
+      "typing",
+      "signal",
+      "asyncio",
+      "pathlib",
+      "time"
+    ],
+    "src/utils/cdp_browser.py": [
+      "socket",
+      "playwright",
+      "src",
+      "typing",
+      "signal",
+      "httpx",
+      "asyncio",
+      "config",
+      "atexit",
+      "os"
+    ],
+    "src/utils/app_runner.py": [
+      "typing",
+      "signal",
+      "collections",
+      "asyncio",
+      "__future__",
+      "os"
+    ],
+    "src/utils/time_util.py": [
+      "datetime",
+      "time"
+    ],
+    "src/utils/file_header_manager.py": [
+      "re",
+      "argparse",
+      "typing",
+      "sys",
+      "os"
+    ],
+    "src/models/m_zhihu.py": [
+      "pydantic",
+      "typing"
+    ],
+    "src/models/__init__.py": [],
+    "src/models/m_xiaohongshu.py": [
+      "pydantic"
+    ],
+    "src/storage/__init__.py": [],
+    "src/services/__init__.py": [
+      "src"
+    ],
+    "src/services/proxy/__init__.py": [
+      "base_proxy"
+    ],
+    "src/services/proxy/types.py": [
+      "enum",
+      "pydantic",
+      "time",
+      "typing"
+    ],
+    "src/services/proxy/proxy_mixin.py": [
+      "src",
+      "typing"
+    ],
+    "src/services/proxy/proxy_ip_pool.py": [
+      "src",
+      "typing",
+      "random",
+      "httpx",
+      "base_proxy",
+      "config",
+      "types",
+      "tenacity"
+    ],
+    "src/services/proxy/base_proxy.py": [
+      "src",
+      "typing",
+      "config",
+      "types",
+      "abc",
+      "json"
+    ],
+    "src/services/cache/local_cache.py": [
+      "typing",
+      "src",
+      "time",
+      "asyncio"
+    ],
+    "src/services/cache/__init__.py": [],
+    "src/services/cache/abs_cache.py": [
+      "abc",
+      "typing"
+    ],
+    "src/services/cache/cache_factory.py": [
+      "local_cache",
+      "redis_cache"
+    ],
+    "src/services/cache/redis_cache.py": [
+      "src",
+      "typing",
+      "redis",
+      "config",
+      "pickle",
+      "time"
+    ],
+    "src/services/proxy/providers/__init__.py": [
+      "kuaidl_proxy",
+      "jishu_http_proxy",
+      "wandou_http_proxy"
+    ],
+    "src/services/proxy/providers/kuaidl_proxy.py": [
+      "re",
+      "src",
+      "typing",
+      "httpx",
+      "pydantic",
+      "os"
+    ],
+    "src/services/proxy/providers/jishu_http_proxy.py": [
+      "src",
+      "typing",
+      "httpx",
+      "urllib",
+      "os"
+    ],
+    "src/services/proxy/providers/wandou_http_proxy.py": [
+      "src",
+      "typing",
+      "httpx",
+      "urllib",
+      "os"
+    ],
+    "src/storage/xhs/xhs_store_media.py": [
+      "src",
+      "aiofiles",
+      "pathlib",
+      "typing"
+    ],
+    "src/storage/xhs/__init__.py": [
+      "src",
+      "_store_impl",
+      "typing",
+      "xhs_store_media",
+      "config"
+    ],
+    "src/storage/xhs/_store_impl.py": [
+      "src",
+      "typing",
+      "sqlalchemy",
+      "datetime",
+      "json",
+      "os"
+    ],
+    "src/storage/base/db.py": [
+      "pathlib",
+      "src",
+      "sys",
+      "asyncio"
+    ],
+    "src/storage/base/models.py": [
+      "sqlalchemy"
+    ],
+    "src/storage/base/mongodb_store_base.py": [
+      "src",
+      "typing",
+      "motor",
+      "asyncio",
+      "config"
+    ],
+    "src/storage/base/__init__.py": [],
+    "src/storage/base/db_session.py": [
+      "config",
+      "models",
+      "sqlalchemy",
+      "contextlib"
+    ],
+    "src/storage/base/excel_store_base.py": [
+      "src",
+      "typing",
+      "openpyxl",
+      "datetime",
+      "pathlib",
+      "threading"
+    ],
+    "src/storage/zhihu/__init__.py": [
+      "config",
+      "src",
+      "_store_impl",
+      "typing"
+    ],
+    "src/storage/zhihu/_store_impl.py": [
+      "src",
+      "typing",
+      "asyncio",
+      "config",
+      "csv",
+      "sqlalchemy",
+      "aiofiles",
+      "pathlib",
+      "json",
+      "os"
+    ],
+    "src/platforms/xhs/playwright_sign.py": [
+      "playwright",
+      "typing",
+      "xhs_sign",
+      "hashlib",
+      "urllib",
+      "json",
+      "time"
+    ],
+    "src/platforms/xhs/field.py": [
+      "enum",
+      "typing"
+    ],
+    "src/platforms/xhs/exception.py": [
+      "httpx"
+    ],
+    "src/platforms/xhs/client.py": [
+      "playwright",
+      "src",
+      "exception",
+      "typing",
+      "field",
+      "help",
+      "httpx",
+      "asyncio",
+      "config",
+      "tenacity",
+      "urllib",
+      "extractor",
+      "playwright_sign",
+      "json"
+    ],
+    "src/platforms/xhs/__init__.py": [
+      "field",
+      "core"
+    ],
+    "src/platforms/xhs/core.py": [
+      "playwright",
+      "src",
+      "exception",
+      "typing",
+      "field",
+      "help",
+      "random",
+      "asyncio",
+      "config",
+      "tenacity",
+      "client",
+      "login",
+      "os"
+    ],
+    "src/platforms/xhs/extractor.py": [
+      "re",
+      "humps",
+      "json",
+      "typing"
+    ],
+    "src/platforms/xhs/login.py": [
+      "playwright",
+      "src",
+      "typing",
+      "functools",
+      "asyncio",
+      "config",
+      "tenacity",
+      "sys"
+    ],
+    "src/platforms/xhs/publisher.py": [
+      "dataclasses",
+      "src",
+      "typing",
+      "httpx",
+      "tenacity",
+      "PIL",
+      "json",
+      "playwright_sign",
+      "os"
+    ],
+    "src/platforms/xhs/xhs_sign.py": [
+      "random",
+      "ctypes",
+      "urllib"
+    ],
+    "src/platforms/xhs/help.py": [
+      "ctypes",
+      "re",
+      "src",
+      "random",
+      "urllib",
+      "time",
+      "json"
+    ],
+    "src/platforms/zhihu/field.py": [
+      "enum",
+      "src",
+      "typing"
+    ],
+    "src/platforms/zhihu/exception.py": [
+      "httpx"
+    ],
+    "src/platforms/zhihu/client.py": [
+      "playwright",
+      "src",
+      "exception",
+      "typing",
+      "field",
+      "help",
+      "httpx",
+      "asyncio",
+      "config",
+      "tenacity",
+      "urllib",
+      "json"
+    ],
+    "src/platforms/zhihu/__init__.py": [
+      "core"
+    ],
+    "src/platforms/zhihu/core.py": [
+      "playwright",
+      "src",
+      "exception",
+      "typing",
+      "help",
+      "asyncio",
+      "config",
+      "client",
+      "login",
+      "os"
+    ],
+    "src/platforms/zhihu/login.py": [
+      "playwright",
+      "src",
+      "typing",
+      "functools",
+      "asyncio",
+      "config",
+      "tenacity",
+      "sys"
+    ],
+    "src/platforms/zhihu/help.py": [
+      "execjs",
+      "src",
+      "typing",
+      "parsel",
+      "urllib",
+      "json"
+    ],
+    "api/routers/auth.py": [
+      "fastapi",
+      "schemas",
+      "services"
+    ],
+    "api/routers/__init__.py": [
+      "data",
+      "crawler",
+      "publisher",
+      "auth",
+      "websocket"
+    ],
+    "api/routers/publisher.py": [
+      "src",
+      "typing",
+      "fastapi",
+      "pydantic",
+      "tempfile",
+      "base64",
+      "auth",
+      "os"
+    ],
+    "api/routers/data.py": [
+      "pandas",
+      "os",
+      "typing",
+      "fastapi",
+      "csv",
+      "pathlib",
+      "auth",
+      "json"
+    ],
+    "api/routers/crawler.py": [
+      "auth",
+      "fastapi",
+      "schemas",
+      "services"
+    ],
+    "api/routers/websocket.py": [
+      "fastapi",
+      "services",
+      "typing",
+      "asyncio"
+    ],
+    "api/schemas/auth.py": [
+      "pydantic",
+      "typing"
+    ],
+    "api/schemas/__init__.py": [
+      "auth",
+      "crawler"
+    ],
+    "api/schemas/crawler.py": [
+      "enum",
+      "typing",
+      "pydantic"
+    ],
+    "api/services/auth_service.py": [
+      "typing",
+      "secrets",
+      "json",
+      "hashlib",
+      "datetime",
+      "pathlib",
+      "base64",
+      "sqlite3",
+      "hmac",
+      "os"
+    ],
+    "api/services/__init__.py": [
+      "crawler_manager"
+    ],
+    "api/services/crawler_manager.py": [
+      "subprocess",
+      "typing",
+      "signal",
+      "asyncio",
+      "datetime",
+      "schemas",
+      "pathlib",
+      "os"
+    ]
+  }
+}

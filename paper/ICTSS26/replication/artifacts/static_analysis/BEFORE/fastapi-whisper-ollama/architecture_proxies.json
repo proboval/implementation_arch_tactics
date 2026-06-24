@@ -1,0 +1,39 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "src/config.py": [
+      "pydantic_settings"
+    ],
+    "src/exceptions.py": [
+      "fastapi"
+    ],
+    "src/main.py": [
+      "fastapi",
+      "src"
+    ],
+    "src/transcription/service.py": [
+      "faster_whisper",
+      "typing",
+      "ollama",
+      "src",
+      "pathlib",
+      "os"
+    ],
+    "src/transcription/constants.py": [],
+    "src/transcription/exceptions.py": [
+      "fastapi"
+    ],
+    "src/transcription/router.py": [
+      "fastapi",
+      "src"
+    ],
+    "src/transcription/dependencies.py": [
+      "fastapi",
+      "pathlib",
+      "src"
+    ]
+  }
+}

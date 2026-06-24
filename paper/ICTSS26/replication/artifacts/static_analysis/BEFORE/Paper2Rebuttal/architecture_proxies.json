@@ -1,0 +1,81 @@
+{
+  "python_files": 5,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "arxiv.py": [
+      "re",
+      "tarfile",
+      "subprocess",
+      "os",
+      "typing",
+      "xml",
+      "glob",
+      "pathlib",
+      "urllib",
+      "sys",
+      "shutil",
+      "time"
+    ],
+    "tools.py": [
+      "re",
+      "shutil",
+      "os",
+      "arxiv",
+      "concurrent",
+      "traceback",
+      "random",
+      "docling",
+      "sys",
+      "urllib",
+      "json",
+      "pathlib",
+      "threading",
+      "yaml",
+      "time"
+    ],
+    "rebuttal_service.py": [
+      "re",
+      "dataclasses",
+      "llm",
+      "os",
+      "typing",
+      "arxiv",
+      "tools",
+      "concurrent",
+      "traceback",
+      "enum",
+      "sys",
+      "json",
+      "threading",
+      "time"
+    ],
+    "llm.py": [
+      "typing",
+      "os",
+      "httpx",
+      "google",
+      "datetime",
+      "time",
+      "json",
+      "openai"
+    ],
+    "app.py": [
+      "dotenv",
+      "shutil",
+      "rebuttal_service",
+      "os",
+      "typing",
+      "argparse",
+      "traceback",
+      "fastapi",
+      "sys",
+      "tempfile",
+      "uuid",
+      "threading",
+      "gradio",
+      "time"
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "python_files": 21,
+  "packages": 3,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "main.py": [
+      "dotenv",
+      "signal",
+      "shuo",
+      "sys",
+      "uvicorn",
+      "time",
+      "threading",
+      "os"
+    ],
+    "shuo/server.py": [
+      "log",
+      "os",
+      "typing",
+      "conversation",
+      "random",
+      "services",
+      "asyncio",
+      "collections",
+      "fastapi",
+      "pathlib",
+      "json",
+      "time",
+      "openai"
+    ],
+    "shuo/log.py": [
+      "types",
+      "logging",
+      "sys",
+      "typing"
+    ],
+    "shuo/conversation.py": [
+      "log",
+      "agent",
+      "typing",
+      "state",
+      "asyncio",
+      "types",
+      "fastapi",
+      "tracer",
+      "json",
+      "services"
+    ],
+    "shuo/__init__.py": [],
+    "shuo/types.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "shuo/agent.py": [
+      "log",
+      "typing",
+      "asyncio",
+      "fastapi",
+      "tracer",
+      "time",
+      "services"
+    ],
+    "shuo/tracer.py": [
+      "log",
+      "dataclasses",
+      "typing",
+      "pathlib",
+      "json",
+      "time"
+    ],
+    "shuo/state.py": [
+      "types",
+      "dataclasses",
+      "typing"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_update.py": [
+      "dataclasses",
+      "pytest",
+      "shuo"
+    ],
+    "scripts/service_map.py": [
+      "numpy",
+      "cartopy",
+      "sys",
+      "matplotlib"
+    ],
+    "scripts/visualize.py": [
+      "urllib",
+      "typing",
+      "matplotlib",
+      "pathlib",
+      "sys",
+      "json"
+    ],
+    "scripts/bench_chart.py": [
+      "typing",
+      "matplotlib",
+      "numpy",
+      "pathlib",
+      "sys",
+      "json"
+    ],
+    "shuo/services/tts_pool.py": [
+      "log",
+      "dataclasses",
+      "typing",
+      "tts",
+      "asyncio",
+      "time"
+    ],
+    "shuo/services/tts.py": [
+      "log",
+      "typing",
+      "os",
+      "asyncio",
+      "websockets",
+      "json"
+    ],
+    "shuo/services/__init__.py": [
+      "llm",
+      "flux",
+      "twilio_client",
+      "tts",
+      "player",
+      "tts_pool"
+    ],
+    "shuo/services/llm.py": [
+      "typing",
+      "os",
+      "asyncio",
+      "log",
+      "openai"
+    ],
+    "shuo/services/twilio_client.py": [
+      "log",
+      "twilio",
+      "os",
+      "typing",
+      "types",
+      "base64",
+      "json"
+    ],
+    "shuo/services/player.py": [
+      "typing",
+      "asyncio",
+      "fastapi",
+      "json",
+      "log"
+    ],
+    "shuo/services/flux.py": [
+      "deepgram",
+      "typing",
+      "os",
+      "asyncio",
+      "log"
+    ]
+  }
+}

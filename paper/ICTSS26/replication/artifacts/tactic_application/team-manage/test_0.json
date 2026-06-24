@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "infra_error": false,
+  "timeout": false,
+  "failures": 0,
+  "failed_names": [],
+  "stdout": "s.......                                                                 [100%]\n=============================== warnings summary ===============================\ntest_webhook.py::test_webhook\n  /home/anon/PycharmProjects/implementation_arch_tactics/.venv/lib/python3.13/site-packages/_pytest/python.py:148: PytestUnhandledCoroutineWarning: async def functions are not natively supported and have been skipped.\n  You need to install a suitable plugin for your async framework, for example:\n    - anyio\n    - pytest-asyncio\n    - pytest-tornasync\n    - pytest-trio\n    - pytest-twisted\n    warnings.warn(PytestUnhandledCoroutineWarning(msg.format(nodeid)))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n7 passed, 1 skipped, 1 warning in 0.48s\n",
+  "stderr": "",
+  "regression": false
+}

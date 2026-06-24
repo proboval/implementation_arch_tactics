@@ -1,0 +1,631 @@
+{
+  "gradio_app_streaming.py": {
+    "path": "gradio_app_streaming.py",
+    "imports": [
+      "gradio",
+      "os",
+      "torch",
+      "numpy",
+      "time",
+      "wave",
+      "imageio",
+      "librosa",
+      "subprocess",
+      "queue",
+      "threading",
+      "datetime.datetime",
+      "collections.deque",
+      "loguru.logger",
+      "flash_head.inference.get_pipeline",
+      "flash_head.inference.get_base_data",
+      "flash_head.inference.get_infer_params",
+      "flash_head.inference.get_audio_embedding",
+      "flash_head.inference.run_pipeline"
+    ],
+    "classes": [],
+    "functions": [
+      "_write_frames_to_mp4",
+      "save_video_with_audio",
+      "_save_chunk_audio_to_wav",
+      "run_inference_streaming",
+      "inference_worker"
+    ],
+    "size": 12068
+  },
+  "generate_video.py": {
+    "path": "generate_video.py",
+    "imports": [
+      "argparse",
+      "os",
+      "numpy",
+      "time",
+      "torch",
+      "torch.distributed",
+      "subprocess",
+      "imageio",
+      "librosa",
+      "numpy",
+      "loguru.logger",
+      "collections.deque",
+      "datetime.datetime",
+      "flash_head.inference.get_pipeline",
+      "flash_head.inference.get_base_data",
+      "flash_head.inference.get_infer_params",
+      "flash_head.inference.get_audio_embedding",
+      "flash_head.inference.run_pipeline"
+    ],
+    "classes": [],
+    "functions": [
+      "_validate_args",
+      "_parse_args",
+      "save_video",
+      "generate"
+    ],
+    "size": 8666
+  },
+  "gradio_app.py": {
+    "path": "gradio_app.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "flash_head/inference.py": {
+    "path": "flash_head/inference.py",
+    "imports": [
+      "yaml",
+      "torch",
+      "copy",
+      "loguru.logger",
+      "flash_head.src.pipeline.flash_head_pipeline.FlashHeadPipeline",
+      "flash_head.src.distributed.usp_device.get_device",
+      "flash_head.src.distributed.usp_device.get_parallel_degree"
+    ],
+    "classes": [],
+    "functions": [
+      "get_pipeline",
+      "get_base_data",
+      "get_infer_params",
+      "get_audio_embedding",
+      "run_pipeline"
+    ],
+    "size": 3032
+  },
+  "flash_head/audio_analysis/wav2vec2.py": {
+    "path": "flash_head/audio_analysis/wav2vec2.py",
+    "imports": [
+      "transformers.Wav2Vec2Config",
+      "transformers.Wav2Vec2Model",
+      "transformers.modeling_outputs.BaseModelOutput",
+      "torch_utils.linear_interpolation"
+    ],
+    "classes": [
+      "Wav2Vec2Model"
+    ],
+    "functions": [
+      "__init__",
+      "forward",
+      "feature_extract",
+      "encode"
+    ],
+    "size": 4492
+  },
+  "flash_head/audio_analysis/torch_utils.py": {
+    "path": "flash_head/audio_analysis/torch_utils.py",
+    "imports": [
+      "torch",
+      "torch.nn.functional"
+    ],
+    "classes": [],
+    "functions": [
+      "get_mask_from_lengths",
+      "linear_interpolation"
+    ],
+    "size": 600
+  },
+  "flash_head/utils/cpu_face_handler.py": {
+    "path": "flash_head/utils/cpu_face_handler.py",
+    "imports": [
+      "mediapipe",
+      "numpy",
+      "typing.Tuple",
+      "typing.List"
+    ],
+    "classes": [
+      "CPUFaceHandler"
+    ],
+    "functions": [
+      "__init__",
+      "detect",
+      "__call__"
+    ],
+    "size": 1981
+  },
+  "flash_head/utils/utils.py": {
+    "path": "flash_head/utils/utils.py",
+    "imports": [
+      "torch",
+      "torch.nn",
+      "numpy",
+      "math",
+      "PIL.Image",
+      "torchvision.transforms",
+      "torch.nn",
+      "pyloudnorm"
+    ],
+    "classes": [],
+    "functions": [
+      "rgb_to_lab_torch",
+      "lab_to_rgb_torch",
+      "match_and_blend_colors_torch",
+      "resize_and_centercrop"
+    ],
+    "size": 7482
+  },
+  "flash_head/utils/facecrop.py": {
+    "path": "flash_head/utils/facecrop.py",
+    "imports": [
+      "os",
+      "PIL.Image",
+      "numpy",
+      "flash_head.utils.cpu_face_handler.CPUFaceHandler"
+    ],
+    "classes": [],
+    "functions": [
+      "get_scaled_bbox",
+      "process_image"
+    ],
+    "size": 2642
+  },
+  "flash_head/ltx_video/ltx_vae.py": {
+    "path": "flash_head/ltx_video/ltx_vae.py",
+    "imports": [
+      "torch",
+      "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder.CausalVideoAutoencoder"
+    ],
+    "classes": [
+      "LtxVAE"
+    ],
+    "functions": [
+      "__init__",
+      "encode",
+      "decode",
+      "normalize_latents",
+      "un_normalize_latents"
+    ],
+    "size": 1476
+  },
+  "flash_head/src/pipeline/flash_head_pipeline.py": {
+    "path": "flash_head/src/pipeline/flash_head_pipeline.py",
+    "imports": [
+      "os",
+      "PIL.Image",
+      "loguru.logger",
+      "time",
+      "numpy",
+      "torch",
+      "torch.distributed",
+      "einops.rearrange",
+      "transformers.Wav2Vec2FeatureExtractor",
+      "flash_head.src.modules.flash_head_model.WanModelAudioProject",
+      "flash_head.audio_analysis.wav2vec2.Wav2Vec2Model",
+      "flash_head.utils.utils.match_and_blend_colors_torch",
+      "flash_head.utils.utils.resize_and_centercrop",
+      "flash_head.utils.facecrop.process_image",
+      "glob",
+      "flash_head.ltx_video.ltx_vae.LtxVAE",
+      "flash_head.wan.modules.WanVAE",
+      "xfuser.core.distributed.get_sequence_parallel_world_size"
+    ],
+    "classes": [
+      "FlashHeadPipeline"
+    ],
+    "functions": [
+      "get_cond_image_dict",
+      "timestep_transform",
+      "get_image",
+      "__init__",
+      "prepare_params",
+      "reset_person_name",
+      "preprocess_audio",
+      "generate"
+    ],
+    "size": 12664
+  },
+  "flash_head/src/distributed/usp_device.py": {
+    "path": "flash_head/src/distributed/usp_device.py",
+    "imports": [
+      "math",
+      "loguru.logger",
+      "datetime",
+      "torch",
+      "torch.distributed",
+      "xfuser.core.distributed.init_distributed_environment",
+      "xfuser.core.distributed.initialize_model_parallel",
+      "xfuser.core.distributed.get_world_group"
+    ],
+    "classes": [],
+    "functions": [
+      "get_parallel_degree",
+      "get_device"
+    ],
+    "size": 1218
+  },
+  "flash_head/src/modules/flash_head_model.py": {
+    "path": "flash_head/src/modules/flash_head_model.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "flash_head/ltx_video/utils/prompt_enhance_utils.py": {
+    "path": "flash_head/ltx_video/utils/prompt_enhance_utils.py",
+    "imports": [
+      "logging",
+      "typing.Union",
+      "typing.List",
+      "typing.Optional",
+      "torch",
+      "PIL.Image"
+    ],
+    "classes": [],
+    "functions": [
+      "tensor_to_pil",
+      "generate_cinematic_prompt",
+      "_get_first_frames_from_conditioning_item",
+      "_generate_t2v_prompt",
+      "_generate_i2v_prompt",
+      "_generate_image_captions",
+      "_generate_and_decode_prompts"
+    ],
+    "size": 7651
+  },
+  "flash_head/ltx_video/utils/skip_layer_strategy.py": {
+    "path": "flash_head/ltx_video/utils/skip_layer_strategy.py",
+    "imports": [
+      "enum.Enum",
+      "enum.auto"
+    ],
+    "classes": [
+      "SkipLayerStrategy"
+    ],
+    "functions": [],
+    "size": 169
+  },
+  "flash_head/ltx_video/utils/diffusers_config_mapping.py": {
+    "path": "flash_head/ltx_video/utils/diffusers_config_mapping.py",
+    "imports": [],
+    "classes": [],
+    "functions": [
+      "make_hashable_key",
+      "convert_value"
+    ],
+    "size": 5578
+  },
+  "flash_head/ltx_video/utils/torch_utils.py": {
+    "path": "flash_head/ltx_video/utils/torch_utils.py",
+    "imports": [
+      "torch",
+      "torch.nn"
+    ],
+    "classes": [
+      "Identity"
+    ],
+    "functions": [
+      "append_dims",
+      "__init__",
+      "forward"
+    ],
+    "size": 822
+  },
+  "flash_head/ltx_video/models/transformers/attention.py": {
+    "path": "flash_head/ltx_video/models/transformers/attention.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "flash_head/ltx_video/models/transformers/symmetric_patchifier.py": {
+    "path": "flash_head/ltx_video/models/transformers/symmetric_patchifier.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.Tuple",
+      "torch",
+      "diffusers.configuration_utils.ConfigMixin",
+      "einops.rearrange",
+      "torch.Tensor"
+    ],
+    "classes": [
+      "Patchifier",
+      "SymmetricPatchifier"
+    ],
+    "functions": [
+      "__init__",
+      "patchify",
+      "unpatchify",
+      "patch_size",
+      "get_latent_coords",
+      "patchify",
+      "unpatchify"
+    ],
+    "size": 2774
+  },
+  "flash_head/ltx_video/models/transformers/transformer3d.py": {
+    "path": "flash_head/ltx_video/models/transformers/transformer3d.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "flash_head/ltx_video/models/transformers/embeddings.py": {
+    "path": "flash_head/ltx_video/models/transformers/embeddings.py",
+    "imports": [
+      "math",
+      "numpy",
+      "torch",
+      "einops.rearrange",
+      "torch.nn"
+    ],
+    "classes": [
+      "SinusoidalPositionalEmbedding"
+    ],
+    "functions": [
+      "get_timestep_embedding",
+      "get_3d_sincos_pos_embed",
+      "get_3d_sincos_pos_embed_from_grid",
+      "get_1d_sincos_pos_embed_from_grid",
+      "__init__",
+      "forward"
+    ],
+    "size": 4471
+  },
+  "flash_head/ltx_video/models/autoencoders/vae_encode.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/vae_encode.py",
+    "imports": [
+      "typing.Tuple",
+      "torch",
+      "diffusers.AutoencoderKL",
+      "einops.rearrange",
+      "torch.Tensor",
+      "flash_head.ltx_video.models.autoencoders.causal_video_autoencoder.CausalVideoAutoencoder",
+      "flash_head.ltx_video.models.autoencoders.video_autoencoder.Downsample3D",
+      "flash_head.ltx_video.models.autoencoders.video_autoencoder.VideoAutoencoder",
+      "torch_xla.core.xla_model"
+    ],
+    "classes": [],
+    "functions": [
+      "vae_encode",
+      "vae_decode",
+      "_run_decoder",
+      "get_vae_size_scale_factor",
+      "latent_to_pixel_coords",
+      "latent_to_pixel_coords_from_factors",
+      "normalize_latents",
+      "un_normalize_latents"
+    ],
+    "size": 9269
+  },
+  "flash_head/ltx_video/models/autoencoders/dual_conv3d.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/dual_conv3d.py",
+    "imports": [
+      "math",
+      "typing.Tuple",
+      "typing.Union",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "einops.rearrange"
+    ],
+    "classes": [
+      "DualConv3d"
+    ],
+    "functions": [
+      "test_dual_conv3d_consistency",
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "forward_with_3d",
+      "forward_with_2d",
+      "weight"
+    ],
+    "size": 6885
+  },
+  "flash_head/ltx_video/models/autoencoders/causal_video_autoencoder.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/causal_video_autoencoder.py",
+    "imports": [
+      "json",
+      "os",
+      "functools.partial",
+      "types.SimpleNamespace",
+      "typing.Any",
+      "typing.Mapping",
+      "typing.Optional",
+      "typing.Tuple",
+      "typing.Union",
+      "typing.List",
+      "pathlib.Path",
+      "torch",
+      "numpy",
+      "einops.rearrange",
+      "torch.nn",
+      "diffusers.utils.logging",
+      "torch.nn.functional",
+      "diffusers.models.embeddings.PixArtAlphaCombinedTimestepSizeEmbeddings",
+      "safetensors.safe_open",
+      "flash_head.ltx_video.models.autoencoders.conv_nd_factory.make_conv_nd",
+      "flash_head.ltx_video.models.autoencoders.conv_nd_factory.make_linear_nd",
+      "flash_head.ltx_video.models.autoencoders.pixel_norm.PixelNorm",
+      "flash_head.ltx_video.models.autoencoders.vae.AutoencoderKLWrapper",
+      "flash_head.ltx_video.models.transformers.attention.Attention",
+      "flash_head.ltx_video.utils.diffusers_config_mapping.diffusers_and_ours_config_mapping",
+      "flash_head.ltx_video.utils.diffusers_config_mapping.make_hashable_key",
+      "flash_head.ltx_video.utils.diffusers_config_mapping.VAE_KEYS_RENAME_DICT",
+      "json"
+    ],
+    "classes": [
+      "CausalVideoAutoencoder",
+      "Encoder"
+    ],
+    "functions": [
+      "from_pretrained",
+      "from_config",
+      "config",
+      "is_video_supported",
+      "spatial_downscale_factor",
+      "temporal_downscale_factor",
+      "to_json_string",
+      "load_state_dict",
+      "last_layer",
+      "set_use_tpu_flash_attention",
+      "__init__"
+    ],
+    "size": 15038
+  },
+  "flash_head/ltx_video/models/autoencoders/pixel_norm.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/pixel_norm.py",
+    "imports": [
+      "torch",
+      "torch.nn"
+    ],
+    "classes": [
+      "PixelNorm"
+    ],
+    "functions": [
+      "__init__",
+      "forward"
+    ],
+    "size": 307
+  },
+  "flash_head/ltx_video/models/autoencoders/conv_nd_factory.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/conv_nd_factory.py",
+    "imports": [
+      "typing.Tuple",
+      "typing.Union",
+      "torch",
+      "flash_head.ltx_video.models.autoencoders.dual_conv3d.DualConv3d",
+      "flash_head.ltx_video.models.autoencoders.causal_conv3d.CausalConv3d"
+    ],
+    "classes": [],
+    "functions": [
+      "make_conv_nd",
+      "make_linear_nd"
+    ],
+    "size": 2631
+  },
+  "flash_head/ltx_video/models/autoencoders/video_autoencoder.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/video_autoencoder.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "flash_head/ltx_video/models/autoencoders/vae.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/vae.py",
+    "imports": [
+      "typing.Optional",
+      "typing.Union",
+      "torch",
+      "inspect",
+      "math",
+      "torch.nn",
+      "diffusers.ConfigMixin",
+      "diffusers.ModelMixin",
+      "diffusers.models.autoencoders.vae.DecoderOutput",
+      "diffusers.models.autoencoders.vae.DiagonalGaussianDistribution",
+      "diffusers.models.modeling_outputs.AutoencoderKLOutput",
+      "flash_head.ltx_video.models.autoencoders.conv_nd_factory.make_conv_nd"
+    ],
+    "classes": [
+      "AutoencoderKLWrapper"
+    ],
+    "functions": [
+      "__init__",
+      "set_tiling_params",
+      "enable_z_tiling",
+      "disable_z_tiling",
+      "enable_hw_tiling",
+      "disable_hw_tiling",
+      "_hw_tiled_encode",
+      "blend_z",
+      "blend_v",
+      "blend_h",
+      "_hw_tiled_decode",
+      "encode",
+      "_normalize_latent_channels",
+      "_unnormalize_latent_channels",
+      "_encode",
+      "_decode",
+      "decode",
+      "forward"
+    ],
+    "size": 14415
+  },
+  "flash_head/ltx_video/models/autoencoders/causal_conv3d.py": {
+    "path": "flash_head/ltx_video/models/autoencoders/causal_conv3d.py",
+    "imports": [
+      "typing.Tuple",
+      "typing.Union",
+      "torch",
+      "torch.nn"
+    ],
+    "classes": [
+      "CausalConv3d"
+    ],
+    "functions": [
+      "__init__",
+      "forward",
+      "weight"
+    ],
+    "size": 1759
+  },
+  "flash_head/wan/modules/__init__.py": {
+    "path": "flash_head/wan/modules/__init__.py",
+    "imports": [
+      "vae.WanVAE"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 53
+  },
+  "flash_head/wan/modules/vae.py": {
+    "path": "flash_head/wan/modules/vae.py",
+    "imports": [
+      "torch",
+      "torch.distributed",
+      "torch.nn",
+      "torch.nn.functional",
+      "einops.rearrange",
+      "loguru.logger"
+    ],
+    "classes": [
+      "CausalConv3d",
+      "RMS_norm",
+      "Upsample",
+      "Resample",
+      "ResidualBlock",
+      "AttentionBlock",
+      "Encoder3d",
+      "Decoder3d"
+    ],
+    "functions": [
+      "__init__",
+      "forward",
+      "__init__",
+      "forward",
+      "forward",
+      "__init__",
+      "forward",
+      "init_weight",
+      "init_weight2",
+      "__init__",
+      "forward",
+      "__init__",
+      "forward",
+      "__init__",
+      "forward",
+      "__init__"
+    ],
+    "size": 15038
+  }
+}

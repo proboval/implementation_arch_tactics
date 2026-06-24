@@ -1,0 +1,1579 @@
+{
+  "python_files": 191,
+  "packages": 33,
+  "max_directory_depth": 6,
+  "avg_files_per_package": 5.787878787878788,
+  "imports_graph": {
+    "ultralytics/__init__.py": [
+      "importlib",
+      "ultralytics",
+      "os",
+      "typing"
+    ],
+    "ultralytics/nn/tasks.py": [
+      "re",
+      "importlib",
+      "thop",
+      "ast",
+      "torch",
+      "ultralytics",
+      "contextlib",
+      "types",
+      "pathlib",
+      "copy",
+      "sys",
+      "pickle"
+    ],
+    "ultralytics/nn/text_model.py": [
+      "torch",
+      "ultralytics",
+      "mobileclip",
+      "PIL",
+      "pathlib",
+      "clip",
+      "abc",
+      "__future__"
+    ],
+    "ultralytics/nn/__init__.py": [
+      "tasks"
+    ],
+    "ultralytics/nn/autobackend.py": [
+      "rknnlite",
+      "executorch",
+      "ast",
+      "typing",
+      "edgemdt_cl",
+      "collections",
+      "axelera",
+      "onnxruntime",
+      "cv2",
+      "zipfile",
+      "tensorflow",
+      "__future__",
+      "json",
+      "mct_quantizers",
+      "openvino",
+      "torch",
+      "numpy",
+      "MNN",
+      "urllib",
+      "coremltools",
+      "platform",
+      "tflite_runtime",
+      "tensorrt",
+      "ncnn",
+      "ultralytics",
+      "torchvision",
+      "paddle",
+      "PIL",
+      "pathlib",
+      "os"
+    ],
+    "ultralytics/solutions/heatmap.py": [
+      "typing",
+      "ultralytics",
+      "numpy",
+      "cv2",
+      "__future__"
+    ],
+    "ultralytics/solutions/config.py": [
+      "dataclasses",
+      "__future__",
+      "typing",
+      "cv2"
+    ],
+    "ultralytics/solutions/object_blurrer.py": [
+      "ultralytics",
+      "cv2",
+      "typing"
+    ],
+    "ultralytics/solutions/security_alarm.py": [
+      "typing",
+      "ultralytics",
+      "email",
+      "cv2",
+      "smtplib"
+    ],
+    "ultralytics/solutions/distance_calculation.py": [
+      "ultralytics",
+      "cv2",
+      "typing",
+      "math"
+    ],
+    "ultralytics/solutions/trackzone.py": [
+      "ultralytics",
+      "numpy",
+      "cv2",
+      "typing"
+    ],
+    "ultralytics/solutions/object_counter.py": [
+      "ultralytics",
+      "__future__",
+      "typing",
+      "collections"
+    ],
+    "ultralytics/solutions/instance_segmentation.py": [
+      "ultralytics",
+      "typing"
+    ],
+    "ultralytics/solutions/similarity_search.py": [
+      "typing",
+      "ultralytics",
+      "numpy",
+      "PIL",
+      "pathlib",
+      "flask",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/solutions/queue_management.py": [
+      "ultralytics",
+      "typing"
+    ],
+    "ultralytics/solutions/__init__.py": [
+      "vision_eye",
+      "streamlit_inference",
+      "security_alarm",
+      "object_counter",
+      "region_counter",
+      "parking_management",
+      "queue_management",
+      "analytics",
+      "instance_segmentation",
+      "trackzone",
+      "speed_estimation",
+      "heatmap",
+      "similarity_search",
+      "object_cropper",
+      "distance_calculation",
+      "ai_gym",
+      "object_blurrer"
+    ],
+    "ultralytics/solutions/parking_management.py": [
+      "platform",
+      "typing",
+      "ultralytics",
+      "numpy",
+      "cv2",
+      "PIL",
+      "tkinter",
+      "io",
+      "__future__",
+      "json"
+    ],
+    "ultralytics/solutions/ai_gym.py": [
+      "ultralytics",
+      "typing",
+      "collections"
+    ],
+    "ultralytics/solutions/vision_eye.py": [
+      "ultralytics",
+      "typing"
+    ],
+    "ultralytics/solutions/streamlit_inference.py": [
+      "streamlit",
+      "typing",
+      "torch",
+      "ultralytics",
+      "cv2",
+      "sys",
+      "tempfile",
+      "io",
+      "os"
+    ],
+    "ultralytics/solutions/object_cropper.py": [
+      "ultralytics",
+      "pathlib",
+      "typing"
+    ],
+    "ultralytics/solutions/solutions.py": [
+      "typing",
+      "math",
+      "functools",
+      "ultralytics",
+      "numpy",
+      "collections",
+      "shapely",
+      "cv2",
+      "__future__"
+    ],
+    "ultralytics/solutions/analytics.py": [
+      "typing",
+      "matplotlib",
+      "ultralytics",
+      "numpy",
+      "collections",
+      "itertools",
+      "cv2",
+      "__future__"
+    ],
+    "ultralytics/solutions/region_counter.py": [
+      "ultralytics",
+      "numpy",
+      "__future__",
+      "typing"
+    ],
+    "ultralytics/solutions/speed_estimation.py": [
+      "ultralytics",
+      "math",
+      "typing",
+      "collections"
+    ],
+    "ultralytics/optim/__init__.py": [
+      "muon"
+    ],
+    "ultralytics/optim/muon.py": [
+      "torch",
+      "__future__"
+    ],
+    "ultralytics/utils/instance.py": [
+      "numbers",
+      "ops",
+      "numpy",
+      "collections",
+      "itertools",
+      "__future__"
+    ],
+    "ultralytics/utils/metrics.py": [
+      "warnings",
+      "re",
+      "typing",
+      "math",
+      "matplotlib",
+      "torch",
+      "ultralytics",
+      "ops",
+      "numpy",
+      "collections",
+      "pathlib",
+      "plotting",
+      "__future__"
+    ],
+    "ultralytics/utils/files.py": [
+      "ultralytics",
+      "contextlib",
+      "glob",
+      "datetime",
+      "tempfile",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/utils/git.py": [
+      "time",
+      "functools",
+      "__future__",
+      "pathlib"
+    ],
+    "ultralytics/utils/triton.py": [
+      "ast",
+      "numpy",
+      "tritonclient",
+      "urllib",
+      "__future__"
+    ],
+    "ultralytics/utils/autobatch.py": [
+      "torch",
+      "ultralytics",
+      "numpy",
+      "copy",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/utils/events.py": [
+      "ultralytics",
+      "random",
+      "pathlib",
+      "urllib",
+      "json",
+      "threading",
+      "time"
+    ],
+    "ultralytics/utils/checks.py": [
+      "re",
+      "ast",
+      "sys",
+      "shutil",
+      "requests",
+      "math",
+      "psutil",
+      "IPython",
+      "cv2",
+      "__future__",
+      "time",
+      "importlib",
+      "subprocess",
+      "torch",
+      "numpy",
+      "types",
+      "glob",
+      "inspect",
+      "platform",
+      "matplotlib",
+      "functools",
+      "ultralytics",
+      "pathlib",
+      "os"
+    ],
+    "ultralytics/utils/plotting.py": [
+      "typing",
+      "math",
+      "matplotlib",
+      "torch",
+      "ultralytics",
+      "polars",
+      "numpy",
+      "collections",
+      "cv2",
+      "pathlib",
+      "PIL",
+      "scipy",
+      "__future__"
+    ],
+    "ultralytics/utils/cpu.py": [
+      "re",
+      "platform",
+      "subprocess",
+      "winreg",
+      "sys",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/utils/nms.py": [
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "sys",
+      "time"
+    ],
+    "ultralytics/utils/__init__.py": [
+      "re",
+      "sys",
+      "warnings",
+      "polars",
+      "cv2",
+      "threading",
+      "__future__",
+      "time",
+      "json",
+      "importlib",
+      "torch",
+      "contextlib",
+      "numpy",
+      "types",
+      "urllib",
+      "uuid",
+      "yaml",
+      "inspect",
+      "socket",
+      "platform",
+      "matplotlib",
+      "logging",
+      "functools",
+      "ultralytics",
+      "sentry_sdk",
+      "hashlib",
+      "pathlib",
+      "io",
+      "os"
+    ],
+    "ultralytics/utils/logger.py": [
+      "logging",
+      "ultralytics",
+      "psutil",
+      "torch",
+      "datetime",
+      "sys",
+      "pathlib",
+      "shutil",
+      "threading",
+      "requests",
+      "time"
+    ],
+    "ultralytics/utils/tqdm.py": [
+      "os",
+      "typing",
+      "functools",
+      "ultralytics",
+      "random",
+      "sys",
+      "__future__",
+      "time"
+    ],
+    "ultralytics/utils/downloads.py": [
+      "re",
+      "subprocess",
+      "ultralytics",
+      "zipfile",
+      "itertools",
+      "pathlib",
+      "urllib",
+      "requests",
+      "shutil",
+      "__future__",
+      "multiprocessing"
+    ],
+    "ultralytics/utils/tal.py": [
+      "torch",
+      "ops",
+      "metrics",
+      "torch_utils",
+      "__future__"
+    ],
+    "ultralytics/utils/ops.py": [
+      "re",
+      "math",
+      "torch",
+      "ultralytics",
+      "contextlib",
+      "numpy",
+      "cv2",
+      "__future__",
+      "time"
+    ],
+    "ultralytics/utils/loss.py": [
+      "typing",
+      "math",
+      "tal",
+      "ultralytics",
+      "torch",
+      "metrics",
+      "__future__"
+    ],
+    "ultralytics/utils/patches.py": [
+      "pillow_avif",
+      "typing",
+      "torch",
+      "ultralytics",
+      "contextlib",
+      "numpy",
+      "cv2",
+      "pathlib",
+      "copy",
+      "PIL",
+      "pillow_heif",
+      "__future__",
+      "time"
+    ],
+    "ultralytics/utils/autodevice.py": [
+      "ultralytics",
+      "__future__",
+      "typing"
+    ],
+    "ultralytics/utils/errors.py": [
+      "ultralytics"
+    ],
+    "ultralytics/utils/tuner.py": [
+      "ultralytics",
+      "wandb",
+      "__future__",
+      "ray"
+    ],
+    "ultralytics/utils/benchmarks.py": [
+      "re",
+      "platform",
+      "roboflow",
+      "torch",
+      "ultralytics",
+      "onnxruntime",
+      "polars",
+      "numpy",
+      "glob",
+      "pathlib",
+      "copy",
+      "time",
+      "shutil",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/utils/dist.py": [
+      "socket",
+      "torch_utils",
+      "__main__",
+      "sys",
+      "tempfile",
+      "shutil",
+      "os"
+    ],
+    "ultralytics/utils/torch_utils.py": [
+      "thop",
+      "typing",
+      "math",
+      "functools",
+      "copy",
+      "torch",
+      "random",
+      "contextlib",
+      "numpy",
+      "ultralytics",
+      "datetime",
+      "pathlib",
+      "gc",
+      "time",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/models/__init__.py": [
+      "nas",
+      "fastsam",
+      "rtdetr",
+      "yolo",
+      "sam"
+    ],
+    "ultralytics/trackers/bot_sort.py": [
+      "utils",
+      "typing",
+      "basetrack",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "collections",
+      "byte_tracker",
+      "__future__"
+    ],
+    "ultralytics/trackers/track.py": [
+      "functools",
+      "torch",
+      "ultralytics",
+      "bot_sort",
+      "byte_tracker",
+      "pathlib"
+    ],
+    "ultralytics/trackers/__init__.py": [
+      "track",
+      "bot_sort",
+      "byte_tracker"
+    ],
+    "ultralytics/trackers/byte_tracker.py": [
+      "utils",
+      "basetrack",
+      "typing",
+      "numpy",
+      "__future__"
+    ],
+    "ultralytics/trackers/basetrack.py": [
+      "numpy",
+      "typing",
+      "collections"
+    ],
+    "ultralytics/cfg/__init__.py": [
+      "subprocess",
+      "ast",
+      "typing",
+      "ultralytics",
+      "types",
+      "cv2",
+      "sys",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "difflib"
+    ],
+    "ultralytics/data/split_dota.py": [
+      "typing",
+      "math",
+      "ultralytics",
+      "numpy",
+      "glob",
+      "itertools",
+      "shapely",
+      "cv2",
+      "pathlib",
+      "PIL",
+      "__future__"
+    ],
+    "ultralytics/data/build.py": [
+      "typing",
+      "math",
+      "torch",
+      "ultralytics",
+      "random",
+      "numpy",
+      "collections",
+      "PIL",
+      "pathlib",
+      "urllib",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/data/loaders.py": [
+      "dataclasses",
+      "pytubefix",
+      "typing",
+      "pafy",
+      "math",
+      "yt_dlp",
+      "cv2",
+      "threading",
+      "__future__",
+      "time",
+      "torch",
+      "pi_heif",
+      "numpy",
+      "glob",
+      "urllib",
+      "mss",
+      "ultralytics",
+      "PIL",
+      "pathlib",
+      "os"
+    ],
+    "ultralytics/data/converter.py": [
+      "aiohttp",
+      "ultralytics",
+      "concurrent",
+      "random",
+      "numpy",
+      "asyncio",
+      "collections",
+      "cv2",
+      "pathlib",
+      "PIL",
+      "scipy",
+      "shutil",
+      "__future__",
+      "json"
+    ],
+    "ultralytics/data/__init__.py": [
+      "base",
+      "build",
+      "dataset"
+    ],
+    "ultralytics/data/annotator.py": [
+      "ultralytics",
+      "__future__",
+      "pathlib"
+    ],
+    "ultralytics/data/augment.py": [
+      "typing",
+      "math",
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "random",
+      "numpy",
+      "cv2",
+      "PIL",
+      "copy",
+      "albumentations",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/data/dataset.py": [
+      "base",
+      "converter",
+      "utils",
+      "typing",
+      "augment",
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "numpy",
+      "collections",
+      "itertools",
+      "cv2",
+      "pathlib",
+      "PIL",
+      "json",
+      "__future__",
+      "multiprocessing"
+    ],
+    "ultralytics/data/utils.py": [
+      "multiprocessing",
+      "tarfile",
+      "gc",
+      "subprocess",
+      "typing",
+      "matplotlib",
+      "zipfile",
+      "ultralytics",
+      "torchvision",
+      "random",
+      "numpy",
+      "cv2",
+      "pathlib",
+      "time",
+      "json",
+      "PIL",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/data/split.py": [
+      "ultralytics",
+      "random",
+      "pathlib",
+      "shutil",
+      "__future__"
+    ],
+    "ultralytics/data/base.py": [
+      "multiprocessing",
+      "typing",
+      "math",
+      "torch",
+      "ultralytics",
+      "random",
+      "numpy",
+      "glob",
+      "cv2",
+      "pathlib",
+      "copy",
+      "shutil",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/engine/validator.py": [
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "numpy",
+      "scipy",
+      "pathlib",
+      "json",
+      "time"
+    ],
+    "ultralytics/engine/predictor.py": [
+      "re",
+      "platform",
+      "typing",
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "numpy",
+      "cv2",
+      "pathlib",
+      "threading",
+      "__future__"
+    ],
+    "ultralytics/engine/results.py": [
+      "typing",
+      "functools",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "pathlib",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/engine/exporter.py": [
+      "re",
+      "builtins",
+      "executorch",
+      "axelera",
+      "copy",
+      "shutil",
+      "rknn",
+      "onnxruntime",
+      "nncf",
+      "x2paddle",
+      "onnxslim",
+      "datetime",
+      "tensorflow",
+      "zipfile",
+      "time",
+      "json",
+      "subprocess",
+      "onnx",
+      "openvino",
+      "torch",
+      "numpy",
+      "MNN",
+      "coremltools",
+      "ncnn",
+      "pnnx",
+      "tensorrt",
+      "ultralytics",
+      "functools",
+      "torchvision",
+      "pathlib",
+      "difflib",
+      "os"
+    ],
+    "ultralytics/engine/__init__.py": [],
+    "ultralytics/engine/model.py": [
+      "typing",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "datetime",
+      "PIL",
+      "pathlib",
+      "urllib",
+      "copy",
+      "tuner",
+      "exporter",
+      "__future__",
+      "inspect"
+    ],
+    "ultralytics/engine/trainer.py": [
+      "warnings",
+      "re",
+      "subprocess",
+      "math",
+      "functools",
+      "copy",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "polars",
+      "asyncio",
+      "datetime",
+      "pathlib",
+      "gc",
+      "time",
+      "io",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/engine/tuner.py": [
+      "subprocess",
+      "torch",
+      "ultralytics",
+      "pymongo",
+      "random",
+      "numpy",
+      "datetime",
+      "gc",
+      "shutil",
+      "__future__",
+      "time"
+    ],
+    "ultralytics/hub/auth.py": [
+      "ultralytics",
+      "requests",
+      "getpass"
+    ],
+    "ultralytics/hub/session.py": [
+      "urllib",
+      "typing",
+      "ultralytics",
+      "hub_sdk",
+      "pathlib",
+      "__future__",
+      "shutil",
+      "threading",
+      "http",
+      "time"
+    ],
+    "ultralytics/hub/__init__.py": [
+      "ultralytics",
+      "requests",
+      "__future__",
+      "hub_sdk"
+    ],
+    "ultralytics/hub/utils.py": [
+      "os",
+      "typing",
+      "ultralytics",
+      "IPython",
+      "google",
+      "threading",
+      "requests",
+      "time"
+    ],
+    "ultralytics/hub/google/__init__.py": [
+      "statistics",
+      "concurrent",
+      "__future__",
+      "requests",
+      "time"
+    ],
+    "ultralytics/trackers/utils/gmc.py": [
+      "ultralytics",
+      "numpy",
+      "cv2",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/trackers/utils/__init__.py": [],
+    "ultralytics/trackers/utils/matching.py": [
+      "ultralytics",
+      "lap",
+      "scipy",
+      "numpy"
+    ],
+    "ultralytics/trackers/utils/kalman_filter.py": [
+      "scipy",
+      "numpy"
+    ],
+    "ultralytics/models/fastsam/val.py": [
+      "ultralytics"
+    ],
+    "ultralytics/models/fastsam/predict.py": [
+      "ultralytics",
+      "torch",
+      "utils",
+      "PIL"
+    ],
+    "ultralytics/models/fastsam/__init__.py": [
+      "predict",
+      "model",
+      "val"
+    ],
+    "ultralytics/models/fastsam/model.py": [
+      "predict",
+      "typing",
+      "ultralytics",
+      "pathlib",
+      "val",
+      "__future__"
+    ],
+    "ultralytics/models/fastsam/utils.py": [],
+    "ultralytics/models/sam/build.py": [
+      "functools",
+      "torch",
+      "ultralytics",
+      "modules"
+    ],
+    "ultralytics/models/sam/amg.py": [
+      "typing",
+      "math",
+      "torch",
+      "numpy",
+      "collections",
+      "itertools",
+      "cv2",
+      "__future__"
+    ],
+    "ultralytics/models/sam/predict.py": [
+      "build_sam3",
+      "sam3",
+      "typing",
+      "amg",
+      "torch",
+      "ultralytics",
+      "torchvision",
+      "numpy",
+      "collections",
+      "cv2",
+      "scipy",
+      "copy",
+      "build",
+      "__future__"
+    ],
+    "ultralytics/models/sam/__init__.py": [
+      "predict",
+      "model"
+    ],
+    "ultralytics/models/sam/model.py": [
+      "predict",
+      "build_sam3",
+      "ultralytics",
+      "pathlib",
+      "build",
+      "__future__"
+    ],
+    "ultralytics/models/sam/build_sam3.py": [
+      "sam3",
+      "torch",
+      "ultralytics",
+      "modules",
+      "clip"
+    ],
+    "ultralytics/models/nas/val.py": [
+      "torch",
+      "ultralytics"
+    ],
+    "ultralytics/models/nas/predict.py": [
+      "torch",
+      "ultralytics"
+    ],
+    "ultralytics/models/nas/__init__.py": [
+      "predict",
+      "model",
+      "val"
+    ],
+    "ultralytics/models/nas/model.py": [
+      "predict",
+      "typing",
+      "ultralytics",
+      "torch",
+      "pathlib",
+      "val",
+      "super_gradients",
+      "__future__"
+    ],
+    "ultralytics/models/utils/__init__.py": [],
+    "ultralytics/models/utils/ops.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "scipy",
+      "__future__"
+    ],
+    "ultralytics/models/utils/loss.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "ops",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/__init__.py": [
+      "ultralytics",
+      "model"
+    ],
+    "ultralytics/models/yolo/model.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/rtdetr/val.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/rtdetr/predict.py": [
+      "torch",
+      "ultralytics"
+    ],
+    "ultralytics/models/rtdetr/__init__.py": [
+      "predict",
+      "model",
+      "val"
+    ],
+    "ultralytics/models/rtdetr/model.py": [
+      "ultralytics",
+      "train",
+      "val",
+      "predict"
+    ],
+    "ultralytics/models/rtdetr/train.py": [
+      "ultralytics",
+      "val",
+      "__future__",
+      "copy"
+    ],
+    "ultralytics/models/yolo/obb/val.py": [
+      "re",
+      "typing",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "collections",
+      "pathlib",
+      "__future__",
+      "json"
+    ],
+    "ultralytics/models/yolo/obb/predict.py": [
+      "torch",
+      "ultralytics"
+    ],
+    "ultralytics/models/yolo/obb/__init__.py": [
+      "predict",
+      "train",
+      "val"
+    ],
+    "ultralytics/models/yolo/obb/train.py": [
+      "typing",
+      "ultralytics",
+      "pathlib",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/detect/val.py": [
+      "typing",
+      "faster_coco_eval",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "pathlib",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/models/yolo/detect/predict.py": [
+      "ultralytics",
+      "torch"
+    ],
+    "ultralytics/models/yolo/detect/__init__.py": [
+      "predict",
+      "train",
+      "val"
+    ],
+    "ultralytics/models/yolo/detect/train.py": [
+      "typing",
+      "math",
+      "torch",
+      "ultralytics",
+      "random",
+      "numpy",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/classify/val.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/classify/predict.py": [
+      "ultralytics",
+      "torch",
+      "PIL",
+      "cv2"
+    ],
+    "ultralytics/models/yolo/classify/__init__.py": [
+      "ultralytics"
+    ],
+    "ultralytics/models/yolo/classify/train.py": [
+      "typing",
+      "ultralytics",
+      "torch",
+      "torchvision",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/yoloe/train_seg.py": [
+      "ultralytics",
+      "train",
+      "val",
+      "copy"
+    ],
+    "ultralytics/models/yolo/yoloe/val.py": [
+      "typing",
+      "torch",
+      "ultralytics",
+      "pathlib",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/yoloe/predict.py": [
+      "ultralytics",
+      "torch",
+      "numpy"
+    ],
+    "ultralytics/models/yolo/yoloe/__init__.py": [
+      "train_seg",
+      "predict",
+      "train",
+      "val"
+    ],
+    "ultralytics/models/yolo/yoloe/train.py": [
+      "ultralytics",
+      "torch",
+      "world",
+      "pathlib",
+      "copy",
+      "val",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/segment/val.py": [
+      "typing",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/segment/predict.py": [
+      "ultralytics"
+    ],
+    "ultralytics/models/yolo/segment/__init__.py": [
+      "predict",
+      "train",
+      "val"
+    ],
+    "ultralytics/models/yolo/segment/train.py": [
+      "ultralytics",
+      "__future__",
+      "pathlib",
+      "copy"
+    ],
+    "ultralytics/models/yolo/world/__init__.py": [
+      "train"
+    ],
+    "ultralytics/models/yolo/world/train_world.py": [
+      "ultralytics",
+      "pathlib"
+    ],
+    "ultralytics/models/yolo/world/train.py": [
+      "typing",
+      "torch",
+      "ultralytics",
+      "itertools",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/pose/val.py": [
+      "typing",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "pathlib",
+      "__future__"
+    ],
+    "ultralytics/models/yolo/pose/predict.py": [
+      "ultralytics"
+    ],
+    "ultralytics/models/yolo/pose/__init__.py": [
+      "predict",
+      "train",
+      "val"
+    ],
+    "ultralytics/models/yolo/pose/train.py": [
+      "typing",
+      "ultralytics",
+      "pathlib",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/sam/modules/decoders.py": [
+      "ultralytics",
+      "torch",
+      "__future__"
+    ],
+    "ultralytics/models/sam/modules/memory_attention.py": [
+      "torch",
+      "blocks",
+      "__future__",
+      "copy"
+    ],
+    "ultralytics/models/sam/modules/__init__.py": [],
+    "ultralytics/models/sam/modules/encoders.py": [
+      "ultralytics",
+      "torch",
+      "blocks",
+      "__future__"
+    ],
+    "ultralytics/models/sam/modules/utils.py": [
+      "torch",
+      "__future__",
+      "typing",
+      "math"
+    ],
+    "ultralytics/models/sam/modules/transformer.py": [
+      "ultralytics",
+      "torch",
+      "__future__",
+      "math"
+    ],
+    "ultralytics/models/sam/modules/blocks.py": [
+      "utils",
+      "math",
+      "functools",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "transformer",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/models/sam/modules/tiny_encoder.py": [
+      "ultralytics",
+      "torch",
+      "itertools",
+      "__future__"
+    ],
+    "ultralytics/models/sam/modules/sam.py": [
+      "blocks",
+      "encoders",
+      "decoders",
+      "utils",
+      "ultralytics",
+      "torch",
+      "__future__"
+    ],
+    "ultralytics/models/sam/sam3/decoder.py": [
+      "ultralytics",
+      "torch",
+      "torchvision",
+      "numpy",
+      "model_misc",
+      "__future__"
+    ],
+    "ultralytics/models/sam/sam3/vl_combiner.py": [
+      "torch",
+      "__future__",
+      "necks",
+      "copy"
+    ],
+    "ultralytics/models/sam/sam3/text_encoder_ve.py": [
+      "typing",
+      "torch",
+      "collections",
+      "model_misc",
+      "__future__"
+    ],
+    "ultralytics/models/sam/sam3/vitdet.py": [
+      "typing",
+      "math",
+      "functools",
+      "torch",
+      "ultralytics",
+      "timm",
+      "model_misc",
+      "__future__"
+    ],
+    "ultralytics/models/sam/sam3/maskformer_segmentation.py": [
+      "ultralytics",
+      "torch",
+      "__future__",
+      "math"
+    ],
+    "ultralytics/models/sam/sam3/__init__.py": [],
+    "ultralytics/models/sam/sam3/sam3_image.py": [
+      "ultralytics",
+      "torch",
+      "vl_combiner",
+      "modules",
+      "copy",
+      "__future__",
+      "geometry_encoders"
+    ],
+    "ultralytics/models/sam/sam3/model_misc.py": [
+      "torch",
+      "numpy",
+      "__future__",
+      "math"
+    ],
+    "ultralytics/models/sam/sam3/encoder.py": [
+      "ultralytics",
+      "torch",
+      "model_misc",
+      "__future__"
+    ],
+    "ultralytics/models/sam/sam3/necks.py": [
+      "torch",
+      "__future__",
+      "copy"
+    ],
+    "ultralytics/models/sam/sam3/geometry_encoders.py": [
+      "torch",
+      "torchvision",
+      "ultralytics"
+    ],
+    "ultralytics/utils/callbacks/comet.py": [
+      "typing",
+      "comet_ml",
+      "faster_coco_eval",
+      "ultralytics",
+      "numpy",
+      "collections",
+      "types",
+      "cv2",
+      "pathlib",
+      "__future__",
+      "os"
+    ],
+    "ultralytics/utils/callbacks/wb.py": [
+      "ultralytics",
+      "polars",
+      "numpy",
+      "wandb",
+      "datetime"
+    ],
+    "ultralytics/utils/callbacks/mlflow.py": [
+      "ultralytics",
+      "mlflow",
+      "pathlib",
+      "os"
+    ],
+    "ultralytics/utils/callbacks/clearml.py": [
+      "clearml",
+      "ultralytics",
+      "matplotlib",
+      "re"
+    ],
+    "ultralytics/utils/callbacks/raytune.py": [
+      "ultralytics",
+      "ray"
+    ],
+    "ultralytics/utils/callbacks/dvc.py": [
+      "re",
+      "ultralytics",
+      "dvclive",
+      "pathlib",
+      "os"
+    ],
+    "ultralytics/utils/callbacks/__init__.py": [
+      "base"
+    ],
+    "ultralytics/utils/callbacks/hub.py": [
+      "time",
+      "ultralytics",
+      "json"
+    ],
+    "ultralytics/utils/callbacks/platform.py": [
+      "re",
+      "socket",
+      "platform",
+      "ultralytics",
+      "concurrent",
+      "psutil",
+      "torch",
+      "numpy",
+      "sys",
+      "pathlib",
+      "time",
+      "shutil",
+      "requests",
+      "os"
+    ],
+    "ultralytics/utils/callbacks/base.py": [
+      "clearml",
+      "platform",
+      "raytune",
+      "dvc",
+      "collections",
+      "hub",
+      "mlflow",
+      "neptune",
+      "copy",
+      "comet",
+      "wb",
+      "tensorboard"
+    ],
+    "ultralytics/utils/callbacks/tensorboard.py": [
+      "ultralytics",
+      "torch",
+      "copy"
+    ],
+    "ultralytics/utils/callbacks/neptune.py": [
+      "ultralytics",
+      "neptune",
+      "matplotlib"
+    ],
+    "ultralytics/utils/export/__init__.py": [
+      "engine",
+      "imx",
+      "tensorflow"
+    ],
+    "ultralytics/utils/export/tensorflow.py": [
+      "subprocess",
+      "onnx",
+      "functools",
+      "torch",
+      "ultralytics",
+      "numpy",
+      "types",
+      "onnx2tf",
+      "struct",
+      "tensorflowjs",
+      "pathlib",
+      "tensorflow",
+      "__future__"
+    ],
+    "ultralytics/utils/export/imx.py": [
+      "subprocess",
+      "model_compression_toolkit",
+      "onnx",
+      "torch",
+      "ultralytics",
+      "edgemdt_cl",
+      "numpy",
+      "types",
+      "pathlib",
+      "sys",
+      "shutil",
+      "edgemdt_tpc",
+      "__future__"
+    ],
+    "ultralytics/utils/export/engine.py": [
+      "tensorrt",
+      "ultralytics",
+      "torch",
+      "pathlib",
+      "__future__",
+      "json"
+    ],
+    "ultralytics/nn/modules/lwf_modules.py": [
+      "block",
+      "conv",
+      "ops_dcnv3",
+      "functools",
+      "torch",
+      "numpy",
+      "__future__",
+      "head"
+    ],
+    "ultralytics/nn/modules/__init__.py": [
+      "conv",
+      "block",
+      "lwf_modules",
+      "transformer",
+      "head"
+    ],
+    "ultralytics/nn/modules/metaformer.py": [
+      "lwf_modules"
+    ],
+    "ultralytics/nn/modules/activation.py": [
+      "torch"
+    ],
+    "ultralytics/nn/modules/utils.py": [
+      "torch",
+      "numpy",
+      "math",
+      "copy"
+    ],
+    "ultralytics/nn/modules/transformer.py": [
+      "conv",
+      "utils",
+      "math",
+      "ultralytics",
+      "torch",
+      "__future__"
+    ],
+    "ultralytics/nn/modules/head.py": [
+      "block",
+      "conv",
+      "utils",
+      "math",
+      "ultralytics",
+      "torch",
+      "transformer",
+      "copy",
+      "__future__"
+    ],
+    "ultralytics/nn/modules/conv.py": [
+      "torch",
+      "numpy",
+      "__future__",
+      "math"
+    ],
+    "ultralytics/nn/modules/block.py": [
+      "conv",
+      "ultralytics",
+      "torch",
+      "torchvision",
+      "transformer",
+      "__future__"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/test.py": [
+      "math",
+      "torch",
+      "functions",
+      "__future__",
+      "time"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/setup.py": [
+      "torch",
+      "glob",
+      "os",
+      "setuptools"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/functions/__init__.py": [
+      "dcnv3_func"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/functions/dcnv3_func.py": [
+      "DCNv3",
+      "functools",
+      "torch",
+      "__future__",
+      "pkg_resources"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/modules/__init__.py": [
+      "dcnv3"
+    ],
+    "ultralytics/nn/modules/ops_dcnv3/modules/dcnv3.py": [
+      "warnings",
+      "conv",
+      "torch",
+      "functions",
+      "__future__"
+    ]
+  }
+}

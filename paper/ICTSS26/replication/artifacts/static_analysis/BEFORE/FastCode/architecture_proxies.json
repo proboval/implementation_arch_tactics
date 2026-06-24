@@ -1,0 +1,662 @@
+{
+  "python_files": 81,
+  "packages": 13,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 6.230769230769231,
+  "imports_graph": {
+    "web_app.py": [
+      "platform",
+      "uuid",
+      "os",
+      "typing",
+      "argparse",
+      "logging",
+      "zipfile",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "pathlib",
+      "uvicorn",
+      "tempfile",
+      "shutil",
+      "fastcode",
+      "json"
+    ],
+    "api.py": [
+      "platform",
+      "uuid",
+      "typing",
+      "argparse",
+      "logging",
+      "zipfile",
+      "contextlib",
+      "json",
+      "asyncio",
+      "fastapi",
+      "pydantic",
+      "pathlib",
+      "uvicorn",
+      "tempfile",
+      "shutil",
+      "fastcode",
+      "os"
+    ],
+    "main.py": [
+      "platform",
+      "click",
+      "datetime",
+      "pathlib",
+      "sys",
+      "time",
+      "uuid",
+      "fastcode",
+      "os"
+    ],
+    "mcp_server.py": [
+      "typing",
+      "argparse",
+      "logging",
+      "inspect",
+      "asyncio",
+      "mcp",
+      "sys",
+      "uuid",
+      "fastcode",
+      "os"
+    ],
+    "fastcode/global_index_builder.py": [
+      "typing",
+      "logging",
+      "indexer",
+      "path_utils",
+      "os"
+    ],
+    "fastcode/tree_sitter_parser.py": [
+      "typing",
+      "tree_sitter_cpp",
+      "logging",
+      "tree_sitter_python",
+      "tree_sitter_c",
+      "tree_sitter_rust",
+      "tree_sitter_go",
+      "tree_sitter_java",
+      "tree_sitter_typescript",
+      "tree_sitter_c_sharp",
+      "tree_sitter",
+      "tree_sitter_javascript"
+    ],
+    "fastcode/call_extractor.py": [
+      "logging",
+      "tree_sitter_parser",
+      "tree_sitter",
+      "typing"
+    ],
+    "fastcode/vector_store.py": [
+      "re",
+      "utils",
+      "typing",
+      "faiss",
+      "logging",
+      "numpy",
+      "time",
+      "pickle",
+      "os"
+    ],
+    "fastcode/retriever.py": [
+      "utils",
+      "typing",
+      "rank_bm25",
+      "query_processor",
+      "logging",
+      "traceback",
+      "embedder",
+      "numpy",
+      "graph_builder",
+      "indexer",
+      "vector_store",
+      "pickle",
+      "iterative_agent",
+      "repo_selector",
+      "os"
+    ],
+    "fastcode/cache.py": [
+      "os",
+      "typing",
+      "redis",
+      "logging",
+      "hashlib",
+      "diskcache",
+      "pathlib",
+      "time",
+      "pickle",
+      "json"
+    ],
+    "fastcode/__init__.py": [
+      "retriever",
+      "platform",
+      "loader",
+      "main",
+      "indexer",
+      "answer_generator",
+      "repo_overview",
+      "agent_tools",
+      "parser",
+      "iterative_agent",
+      "repo_selector",
+      "os"
+    ],
+    "fastcode/module_resolver.py": [
+      "fastcode",
+      "typing"
+    ],
+    "fastcode/repo_selector.py": [
+      "re",
+      "dotenv",
+      "typing",
+      "logging",
+      "llm_utils",
+      "anthropic",
+      "os",
+      "openai"
+    ],
+    "fastcode/parser.py": [
+      "re",
+      "dataclasses",
+      "ast",
+      "typing",
+      "utils",
+      "logging",
+      "tree_sitter_parser",
+      "tree_sitter",
+      "libcst"
+    ],
+    "fastcode/iterative_agent.py": [
+      "re",
+      "dotenv",
+      "ast",
+      "typing",
+      "logging",
+      "numpy",
+      "agent_tools",
+      "llm_utils",
+      "path_utils",
+      "anthropic",
+      "json",
+      "os",
+      "openai"
+    ],
+    "fastcode/llm_utils.py": [
+      "openai"
+    ],
+    "fastcode/utils.py": [
+      "typing",
+      "logging",
+      "hashlib",
+      "pathspec",
+      "pathlib",
+      "tiktoken",
+      "yaml",
+      "os"
+    ],
+    "fastcode/repo_overview.py": [
+      "dotenv",
+      "typing",
+      "logging",
+      "llm_utils",
+      "pathlib",
+      "anthropic",
+      "os",
+      "openai"
+    ],
+    "fastcode/loader.py": [
+      "utils",
+      "typing",
+      "logging",
+      "git",
+      "datetime",
+      "pathlib",
+      "zipfile",
+      "shutil",
+      "os"
+    ],
+    "fastcode/answer_generator.py": [
+      "re",
+      "dotenv",
+      "utils",
+      "typing",
+      "logging",
+      "traceback",
+      "llm_utils",
+      "anthropic",
+      "json",
+      "os",
+      "openai"
+    ],
+    "fastcode/indexer.py": [
+      "dataclasses",
+      "utils",
+      "typing",
+      "tqdm",
+      "logging",
+      "embedder",
+      "hashlib",
+      "vector_store",
+      "repo_overview",
+      "loader",
+      "parser"
+    ],
+    "fastcode/import_extractor.py": [
+      "logging",
+      "tree_sitter_parser",
+      "tree_sitter",
+      "typing"
+    ],
+    "fastcode/query_processor.py": [
+      "re",
+      "dataclasses",
+      "dotenv",
+      "typing",
+      "logging",
+      "llm_utils",
+      "anthropic",
+      "os",
+      "openai"
+    ],
+    "fastcode/definition_extractor.py": [
+      "re",
+      "typing",
+      "logging",
+      "tree_sitter_parser",
+      "tree_sitter",
+      "os"
+    ],
+    "fastcode/symbol_resolver.py": [
+      "logging",
+      "global_index_builder",
+      "module_resolver",
+      "typing"
+    ],
+    "fastcode/embedder.py": [
+      "platform",
+      "typing",
+      "logging",
+      "torch",
+      "numpy",
+      "sentence_transformers"
+    ],
+    "fastcode/graph_builder.py": [
+      "utils",
+      "typing",
+      "os",
+      "tqdm",
+      "logging",
+      "module_resolver",
+      "indexer",
+      "path_utils",
+      "pickle",
+      "symbol_resolver",
+      "call_extractor",
+      "networkx"
+    ],
+    "fastcode/main.py": [
+      "re",
+      "retriever",
+      "global_index_builder",
+      "typing",
+      "graph_builder",
+      "parser",
+      "shutil",
+      "symbol_resolver",
+      "module_resolver",
+      "embedder",
+      "datetime",
+      "json",
+      "utils",
+      "query_processor",
+      "numpy",
+      "answer_generator",
+      "vector_store",
+      "urllib",
+      "loader",
+      "rank_bm25",
+      "logging",
+      "traceback",
+      "indexer",
+      "pickle",
+      "cache",
+      "os"
+    ],
+    "fastcode/path_utils.py": [
+      "logging",
+      "os",
+      "typing"
+    ],
+    "fastcode/agent_tools.py": [
+      "re",
+      "typing",
+      "logging",
+      "path_utils",
+      "pathlib",
+      "fnmatch",
+      "os"
+    ],
+    "nanobot/nanobot/__init__.py": [],
+    "nanobot/nanobot/__main__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/config/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/config/loader.py": [
+      "pathlib",
+      "nanobot",
+      "json",
+      "typing"
+    ],
+    "nanobot/nanobot/config/schema.py": [
+      "pydantic",
+      "pydantic_settings",
+      "nanobot",
+      "pathlib"
+    ],
+    "nanobot/nanobot/providers/transcription.py": [
+      "typing",
+      "loguru",
+      "httpx",
+      "pathlib",
+      "os"
+    ],
+    "nanobot/nanobot/providers/registry.py": [
+      "dataclasses",
+      "__future__",
+      "typing"
+    ],
+    "nanobot/nanobot/providers/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/providers/litellm_provider.py": [
+      "typing",
+      "litellm",
+      "nanobot",
+      "json",
+      "os"
+    ],
+    "nanobot/nanobot/providers/base.py": [
+      "abc",
+      "dataclasses",
+      "typing"
+    ],
+    "nanobot/nanobot/bus/queue.py": [
+      "nanobot",
+      "loguru",
+      "typing",
+      "asyncio"
+    ],
+    "nanobot/nanobot/bus/events.py": [
+      "dataclasses",
+      "datetime",
+      "typing"
+    ],
+    "nanobot/nanobot/bus/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/utils/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/utils/helpers.py": [
+      "datetime",
+      "pathlib"
+    ],
+    "nanobot/nanobot/agent/subagent.py": [
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "pathlib",
+      "uuid",
+      "json"
+    ],
+    "nanobot/nanobot/agent/skills.py": [
+      "re",
+      "pathlib",
+      "json",
+      "shutil",
+      "os"
+    ],
+    "nanobot/nanobot/agent/memory.py": [
+      "datetime",
+      "nanobot",
+      "pathlib"
+    ],
+    "nanobot/nanobot/agent/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/agent/context.py": [
+      "platform",
+      "typing",
+      "datetime",
+      "nanobot",
+      "pathlib",
+      "base64",
+      "mimetypes"
+    ],
+    "nanobot/nanobot/agent/loop.py": [
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "pathlib",
+      "json",
+      "os"
+    ],
+    "nanobot/nanobot/cli/__init__.py": [],
+    "nanobot/nanobot/cli/commands.py": [
+      "select",
+      "sys",
+      "shutil",
+      "signal",
+      "rich",
+      "datetime",
+      "time",
+      "subprocess",
+      "contextlib",
+      "atexit",
+      "nanobot",
+      "termios",
+      "logging",
+      "loguru",
+      "readline",
+      "asyncio",
+      "typer",
+      "pathlib",
+      "os"
+    ],
+    "nanobot/nanobot/heartbeat/service.py": [
+      "typing",
+      "loguru",
+      "pathlib",
+      "asyncio"
+    ],
+    "nanobot/nanobot/heartbeat/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/cron/service.py": [
+      "typing",
+      "loguru",
+      "asyncio",
+      "croniter",
+      "nanobot",
+      "pathlib",
+      "json",
+      "uuid",
+      "time"
+    ],
+    "nanobot/nanobot/cron/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/cron/types.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "nanobot/nanobot/channels/dingtalk.py": [
+      "typing",
+      "loguru",
+      "httpx",
+      "asyncio",
+      "nanobot",
+      "json",
+      "dingtalk_stream",
+      "time"
+    ],
+    "nanobot/nanobot/channels/whatsapp.py": [
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "websockets",
+      "json"
+    ],
+    "nanobot/nanobot/channels/telegram.py": [
+      "re",
+      "telegram",
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "pathlib",
+      "__future__"
+    ],
+    "nanobot/nanobot/channels/discord.py": [
+      "typing",
+      "httpx",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "pathlib",
+      "websockets",
+      "json"
+    ],
+    "nanobot/nanobot/channels/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/channels/qq.py": [
+      "typing",
+      "loguru",
+      "collections",
+      "asyncio",
+      "nanobot",
+      "botpy"
+    ],
+    "nanobot/nanobot/channels/email.py": [
+      "re",
+      "typing",
+      "loguru",
+      "imaplib",
+      "asyncio",
+      "html",
+      "ssl",
+      "datetime",
+      "email",
+      "nanobot",
+      "smtplib"
+    ],
+    "nanobot/nanobot/channels/feishu.py": [
+      "re",
+      "typing",
+      "lark_oapi",
+      "loguru",
+      "collections",
+      "asyncio",
+      "nanobot",
+      "threading",
+      "json"
+    ],
+    "nanobot/nanobot/channels/manager.py": [
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "__future__"
+    ],
+    "nanobot/nanobot/channels/base.py": [
+      "abc",
+      "nanobot",
+      "loguru",
+      "typing"
+    ],
+    "nanobot/nanobot/channels/slack.py": [
+      "re",
+      "typing",
+      "loguru",
+      "asyncio",
+      "nanobot",
+      "slack_sdk"
+    ],
+    "nanobot/nanobot/session/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/session/manager.py": [
+      "dataclasses",
+      "typing",
+      "loguru",
+      "datetime",
+      "nanobot",
+      "pathlib",
+      "json"
+    ],
+    "nanobot/nanobot/agent/tools/web.py": [
+      "re",
+      "readability",
+      "typing",
+      "httpx",
+      "html",
+      "nanobot",
+      "urllib",
+      "json",
+      "os"
+    ],
+    "nanobot/nanobot/agent/tools/registry.py": [
+      "nanobot",
+      "typing"
+    ],
+    "nanobot/nanobot/agent/tools/cron.py": [
+      "nanobot",
+      "typing"
+    ],
+    "nanobot/nanobot/agent/tools/filesystem.py": [
+      "nanobot",
+      "pathlib",
+      "typing"
+    ],
+    "nanobot/nanobot/agent/tools/shell.py": [
+      "re",
+      "typing",
+      "asyncio",
+      "nanobot",
+      "pathlib",
+      "os"
+    ],
+    "nanobot/nanobot/agent/tools/fastcode.py": [
+      "typing",
+      "httpx",
+      "nanobot",
+      "json",
+      "os"
+    ],
+    "nanobot/nanobot/agent/tools/__init__.py": [
+      "nanobot"
+    ],
+    "nanobot/nanobot/agent/tools/message.py": [
+      "nanobot",
+      "typing"
+    ],
+    "nanobot/nanobot/agent/tools/spawn.py": [
+      "nanobot",
+      "typing"
+    ],
+    "nanobot/nanobot/agent/tools/base.py": [
+      "abc",
+      "typing"
+    ]
+  }
+}

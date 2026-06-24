@@ -1,0 +1,462 @@
+{
+  "python_files": 77,
+  "packages": 11,
+  "max_directory_depth": 6,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "app/config.py": [
+      "re",
+      "yaml",
+      "typing",
+      "pathlib",
+      "bcrypt",
+      "shutil",
+      "threading",
+      "os",
+      "copy",
+      "secrets"
+    ],
+    "app/database.py": [
+      "os",
+      "app",
+      "uuid",
+      "sqlalchemy"
+    ],
+    "app/__init__.py": [],
+    "app/main.py": [
+      "contextlib",
+      "fastapi",
+      "app",
+      "datetime",
+      "os",
+      "traceback"
+    ],
+    "skills/pack-skills.py": [
+      "zipfile",
+      "os",
+      "shutil"
+    ],
+    "skills/task-cli.py": [
+      "json",
+      "pathlib",
+      "argparse",
+      "sys",
+      "requests"
+    ],
+    "skills/wordpress-skill/wordpress-cli.py": [
+      "json",
+      "argparse",
+      "sys",
+      "mimetypes",
+      "base64",
+      "os",
+      "requests"
+    ],
+    "skills/grok-search-runtime/tools/__init__.py": [],
+    "skills/grok-search-runtime/projects/grok-search/internal/__init__.py": [
+      "context"
+    ],
+    "skills/grok-search-runtime/projects/grok-search/internal/context.py": [
+      "pathlib",
+      "sys",
+      "__future__",
+      "tools"
+    ],
+    "skills/grok-search-runtime/projects/grok-search/scripts/grok_search.py": [
+      "urllib",
+      "json",
+      "time",
+      "typing",
+      "subprocess",
+      "pathlib",
+      "argparse",
+      "__future__",
+      "sys",
+      "os",
+      "tools"
+    ],
+    "skills/grok-search-runtime/tools/context_router/__init__.py": [
+      "context_router"
+    ],
+    "skills/grok-search-runtime/tools/context_router/context_router.py": [
+      "pathlib",
+      "sys",
+      "__future__",
+      "tools"
+    ],
+    "skills/grok-search-runtime/tools/grok_search/__init__.py": [
+      "context"
+    ],
+    "skills/grok-search-runtime/tools/grok_search/context.py": [
+      "json",
+      "re",
+      "time",
+      "dataclasses",
+      "typing",
+      "uuid",
+      "pathlib",
+      "sqlite3",
+      "__future__"
+    ],
+    "skills/antigravity-gemini-image/scripts/generate_gemini_image.py": [
+      "urllib",
+      "json",
+      "typing",
+      "subprocess",
+      "argparse",
+      "sys",
+      "base64",
+      "os"
+    ],
+    "skills/local-web-search/scripts/local_web_search.py": [
+      "urllib",
+      "json",
+      "typing",
+      "subprocess",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "app/routers/admin_scores.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/sub_tasks.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/admin_dashboard.py": [
+      "fastapi",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/tasks.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/webui.py": [
+      "fastapi",
+      "app"
+    ],
+    "app/routers/tools.py": [
+      "fastapi",
+      "pathlib",
+      "app",
+      "re"
+    ],
+    "app/routers/admin_tasks.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/review_records.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/__init__.py": [],
+    "app/routers/rules.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/feed.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/prompts.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "pydantic"
+    ],
+    "app/routers/agents.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "pathlib",
+      "app",
+      "pydantic"
+    ],
+    "app/routers/setup.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "pydantic"
+    ],
+    "app/routers/admin.py": [
+      "fastapi",
+      "app",
+      "secrets",
+      "pydantic"
+    ],
+    "app/routers/admin_reviews.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/logs.py": [
+      "typing",
+      "uuid",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/admin_agents.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/admin_logs.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/routers/scores.py": [
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app",
+      "pydantic",
+      "datetime"
+    ],
+    "app/routers/admin_config.py": [
+      "fastapi",
+      "typing",
+      "app",
+      "pydantic"
+    ],
+    "app/middleware/request_logger.py": [
+      "starlette",
+      "json",
+      "uuid",
+      "app",
+      "datetime"
+    ],
+    "app/middleware/__init__.py": [],
+    "app/auth/__init__.py": [],
+    "app/auth/dependencies.py": [
+      "fastapi",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/models/task.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/patrol_record.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/__init__.py": [
+      "app"
+    ],
+    "app/models/sub_task.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/activity_log.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/rule.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/reward_log.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/agent.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/module.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/request_log.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/models/review_record.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/schemas/admin_dashboard.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/schemas/admin_task.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/schemas/__init__.py": [],
+    "app/schemas/admin_score.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/schemas/admin_review.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/schemas/admin_agent.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/schemas/admin_log.py": [
+      "typing",
+      "pydantic",
+      "datetime"
+    ],
+    "app/services/webui_updater.py": [
+      "asyncio",
+      "json",
+      "time",
+      "dataclasses",
+      "typing",
+      "httpx",
+      "pathlib",
+      "shutil",
+      "app",
+      "tarfile",
+      "threading",
+      "datetime",
+      "os",
+      "tempfile"
+    ],
+    "app/services/admin_agent_query_service.py": [
+      "typing",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/review_service.py": [
+      "uuid",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/rule_service.py": [
+      "uuid",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/admin_score_query_service.py": [
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/task_service.py": [
+      "uuid",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/agent_service.py": [
+      "uuid",
+      "app",
+      "secrets",
+      "sqlalchemy"
+    ],
+    "app/services/admin_review_query_service.py": [
+      "typing",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/admin_log_query_service.py": [
+      "typing",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/__init__.py": [],
+    "app/services/admin_dashboard_query_service.py": [
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/admin_task_query_service.py": [
+      "typing",
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/prompt_service.py": [
+      "frontmatter",
+      "re",
+      "typing",
+      "pathlib",
+      "app",
+      "datetime"
+    ],
+    "app/services/pagination.py": [
+      "typing",
+      "pydantic"
+    ],
+    "app/services/admin_score_service.py": [
+      "app",
+      "sqlalchemy"
+    ],
+    "app/services/sub_task_service.py": [
+      "uuid",
+      "app",
+      "sqlalchemy",
+      "datetime"
+    ],
+    "app/services/reward_service.py": [
+      "uuid",
+      "app",
+      "sqlalchemy"
+    ]
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "python_files": 40,
+  "packages": 7,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 5.714285714285714,
+  "imports_graph": {
+    "main.py": [],
+    "office_os/send_training.py": [
+      "sys",
+      "urllib",
+      "time",
+      "__future__",
+      "os",
+      "json",
+      "argparse",
+      "dotenv"
+    ],
+    "office_os/models.py": [
+      "openenv",
+      "pydantic",
+      "typing"
+    ],
+    "office_os/client.py": [
+      "openenv",
+      "models",
+      "typing"
+    ],
+    "office_os/frontend.py": [
+      "training",
+      "sys",
+      "time",
+      "agents",
+      "server",
+      "market",
+      "rich",
+      "asyncio",
+      "os",
+      "models",
+      "logging",
+      "argparse"
+    ],
+    "office_os/__init__.py": [
+      "client",
+      "models"
+    ],
+    "office_os/run_agents.py": [
+      "sys",
+      "client",
+      "logging",
+      "agents",
+      "server",
+      "market",
+      "os",
+      "models",
+      "json",
+      "argparse"
+    ],
+    "office_os/train_loop.py": [
+      "training",
+      "sys",
+      "time",
+      "json",
+      "agents",
+      "server",
+      "market",
+      "asyncio",
+      "os",
+      "models",
+      "logging",
+      "argparse"
+    ],
+    "office_os/demo_inference.py": [
+      "peft",
+      "sys",
+      "time",
+      "agents",
+      "openai",
+      "__future__",
+      "torch",
+      "transformers",
+      "os",
+      "huggingface_hub",
+      "json",
+      "argparse",
+      "dotenv"
+    ],
+    "office_os/generate_training_data.py": [
+      "sys",
+      "logging",
+      "agents",
+      "random",
+      "server",
+      "market",
+      "os",
+      "models",
+      "json",
+      "argparse"
+    ],
+    "examples/simple_agent.py": [
+      "numpy",
+      "typing",
+      "gymnasium"
+    ],
+    "examples/run_agent.py": [
+      "gymnasium"
+    ],
+    "office_os/training/train_worker.py": [
+      "trl",
+      "argparse",
+      "urllib",
+      "wandb",
+      "http",
+      "gc",
+      "anthropic",
+      "__future__",
+      "unsloth",
+      "threading",
+      "huggingface_hub",
+      "logging",
+      "json",
+      "sys",
+      "market",
+      "os",
+      "boto3",
+      "typing",
+      "torch",
+      "datasets"
+    ],
+    "office_os/training/collector.py": [
+      "logging",
+      "__future__",
+      "os",
+      "json",
+      "dataclasses"
+    ],
+    "office_os/training/__init__.py": [
+      "trainer",
+      "collector"
+    ],
+    "office_os/training/trainer.py": [
+      "collector",
+      "logging",
+      "__future__",
+      "market",
+      "httpx",
+      "json",
+      "typing",
+      "os"
+    ],
+    "office_os/tests/__init__.py": [],
+    "office_os/tests/test_env.py": [
+      "sys",
+      "server",
+      "market",
+      "os",
+      "models"
+    ],
+    "office_os/agents/memory.py": [
+      "math",
+      "__future__",
+      "dataclasses"
+    ],
+    "office_os/agents/base_agent.py": [
+      "memory",
+      "__future__",
+      "dataclasses"
+    ],
+    "office_os/agents/__init__.py": [
+      "memory",
+      "base_agent",
+      "llm_agent"
+    ],
+    "office_os/agents/prompts.py": [],
+    "office_os/agents/llm_agent.py": [
+      "prompts",
+      "time",
+      "pydantic",
+      "anthropic",
+      "logging",
+      "openai",
+      "base_agent",
+      "__future__",
+      "random",
+      "market",
+      "json",
+      "boto3",
+      "typing",
+      "os"
+    ],
+    "office_os/server/__init__.py": [
+      "office_os_environment"
+    ],
+    "office_os/server/app.py": [
+      "openenv",
+      "models",
+      "office_os_environment",
+      "uvicorn"
+    ],
+    "office_os/server/office_os_environment.py": [
+      "integrations",
+      "pathlib",
+      "market",
+      "openenv",
+      "models",
+      "uuid",
+      "dotenv"
+    ],
+    "office_os/integrations/sheets.py": [
+      "gspread",
+      "logging",
+      "__future__",
+      "market",
+      "os",
+      "typing",
+      "tempfile",
+      "json",
+      "datetime"
+    ],
+    "office_os/integrations/__init__.py": [
+      "sheets"
+    ],
+    "office_os/market/scenarios.py": [
+      "__future__",
+      "dataclasses"
+    ],
+    "office_os/market/metrics.py": [
+      "__future__",
+      "state",
+      "config"
+    ],
+    "office_os/market/config.py": [
+      "dataclasses"
+    ],
+    "office_os/market/events.py": [
+      "__future__",
+      "dataclasses",
+      "config",
+      "scenarios",
+      "uuid",
+      "state"
+    ],
+    "office_os/market/__init__.py": [
+      "metrics",
+      "simulator",
+      "events",
+      "config",
+      "state"
+    ],
+    "office_os/market/simulator.py": [
+      "__future__",
+      "state",
+      "uuid",
+      "config"
+    ],
+    "office_os/market/state.py": [
+      "__future__",
+      "random",
+      "dataclasses",
+      "config",
+      "scenarios",
+      "uuid"
+    ],
+    "demo/api/rl_bridge.py": [
+      "training",
+      "sys",
+      "importlib",
+      "types",
+      "pydantic",
+      "logging",
+      "agents",
+      "__future__",
+      "market",
+      "os",
+      "openenv",
+      "models",
+      "typing"
+    ],
+    "demo/api/server.py": [
+      "sys",
+      "uvicorn",
+      "routes",
+      "os",
+      "fastapi",
+      "argparse",
+      "dotenv"
+    ],
+    "demo/api/claude_bridge.py": [
+      "botocore",
+      "__future__",
+      "asyncio",
+      "json",
+      "boto3",
+      "typing",
+      "os"
+    ],
+    "demo/api/rl_environment.py": [
+      "pydantic",
+      "__future__",
+      "random",
+      "typing",
+      "uuid"
+    ],
+    "demo/api/routes.py": [
+      "sys",
+      "importlib",
+      "pydantic",
+      "rl_bridge",
+      "anthropic",
+      "logging",
+      "__future__",
+      "asyncio",
+      "fastapi",
+      "os",
+      "typing",
+      "json",
+      "re"
+    ]
+  }
+}

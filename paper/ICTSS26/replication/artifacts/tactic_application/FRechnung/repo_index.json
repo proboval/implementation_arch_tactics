@@ -1,0 +1,124 @@
+{
+  "server.py": {
+    "path": "server.py",
+    "imports": [
+      "flask.Flask",
+      "flask.request",
+      "flask.jsonify",
+      "flask.send_file",
+      "flask.send_from_directory",
+      "flask_cors.CORS",
+      "base64",
+      "os",
+      "sys",
+      "io",
+      "config_manager.ConfigManager",
+      "pdf_generator.create_invoice_pdf",
+      "pdf_generator.THEME_NAMES"
+    ],
+    "classes": [],
+    "functions": [
+      "resource_path",
+      "index",
+      "favicon",
+      "get_provider",
+      "save_provider",
+      "set_logo",
+      "upload_logo",
+      "get_themes",
+      "generate_pdf",
+      "save_pdf"
+    ],
+    "size": 5362
+  },
+  "config_manager.py": {
+    "path": "config_manager.py",
+    "imports": [
+      "json",
+      "os",
+      "sys",
+      "keyring",
+      "typing.Dict",
+      "typing.Any",
+      "cryptography.fernet.Fernet",
+      "copy"
+    ],
+    "classes": [
+      "ConfigManager"
+    ],
+    "functions": [
+      "_get_config_path",
+      "__init__",
+      "_get_or_create_key",
+      "_load_config",
+      "_save_config",
+      "_merge_with_defaults",
+      "get_service_provider",
+      "set_service_provider"
+    ],
+    "size": 3862
+  },
+  "pdf_generator.py": {
+    "path": "pdf_generator.py",
+    "imports": [
+      "os",
+      "sys",
+      "io",
+      "xml.etree.ElementTree",
+      "datetime.datetime",
+      "fpdf.FPDF",
+      "pypdf.PdfReader",
+      "pypdf.PdfWriter",
+      "pypdf.generic.DictionaryObject",
+      "pypdf.generic.NameObject",
+      "pypdf.generic.DecodedStreamObject",
+      "pypdf.generic.BooleanObject",
+      "pypdf.generic.ArrayObject",
+      "pypdf.generic.ByteStringObject",
+      "pypdf.generic.NumberObject"
+    ],
+    "classes": [
+      "PDFGenerator"
+    ],
+    "functions": [
+      "resource_path",
+      "_lines",
+      "_build_xmp",
+      "__init__",
+      "_apply_theme",
+      "_setup_fonts"
+    ],
+    "size": 15038
+  },
+  "main.py": {
+    "path": "main.py",
+    "imports": [
+      "threading",
+      "sys",
+      "os",
+      "time",
+      "base64",
+      "socket",
+      "tempfile",
+      "subprocess",
+      "secrets",
+      "webview",
+      "server",
+      "server.app"
+    ],
+    "classes": [
+      "Api"
+    ],
+    "functions": [
+      "resource_path",
+      "find_free_port",
+      "_cleanup_temps",
+      "start_flask",
+      "wait_for_flask",
+      "main",
+      "save_pdf_dialog",
+      "preview_pdf"
+    ],
+    "size": 5822
+  }
+}

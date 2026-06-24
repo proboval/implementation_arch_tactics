@@ -1,0 +1,50 @@
+{
+  "python_files": 4,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "server.py": [
+      "pdf_generator",
+      "sys",
+      "flask_cors",
+      "io",
+      "os",
+      "config_manager",
+      "base64",
+      "flask"
+    ],
+    "config_manager.py": [
+      "sys",
+      "keyring",
+      "cryptography",
+      "json",
+      "copy",
+      "typing",
+      "os"
+    ],
+    "pdf_generator.py": [
+      "fpdf",
+      "sys",
+      "PIL",
+      "pypdf",
+      "xml",
+      "io",
+      "os",
+      "datetime"
+    ],
+    "main.py": [
+      "sys",
+      "time",
+      "socket",
+      "webview",
+      "subprocess",
+      "server",
+      "threading",
+      "os",
+      "base64",
+      "tempfile",
+      "secrets"
+    ]
+  }
+}

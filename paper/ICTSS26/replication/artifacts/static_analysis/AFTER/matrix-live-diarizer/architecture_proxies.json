@@ -1,0 +1,243 @@
+{
+  "python_files": 34,
+  "packages": 7,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 4.857142857142857,
+  "imports_graph": {
+    "main.py": [
+      "app",
+      "uvicorn"
+    ],
+    "app/config.py": [
+      "pathlib",
+      "os",
+      "logging",
+      "dataclasses",
+      "dotenv"
+    ],
+    "app/constants.py": [],
+    "app/__init__.py": [
+      "engine",
+      "app",
+      "transformers",
+      "asyncio",
+      "fastapi",
+      "logging",
+      "os"
+    ],
+    "app/exceptions.py": [],
+    "tests/test_rate_limit_integration.py": [
+      "pytest",
+      "unittest",
+      "app",
+      "os",
+      "fastapi"
+    ],
+    "tests/test_audio_chunking.py": [
+      "numpy",
+      "sys",
+      "pytest",
+      "app",
+      "os",
+      "fastapi",
+      "typing"
+    ],
+    "tests/test_engine_switch.py": [
+      "sys",
+      "pydantic",
+      "unittest",
+      "pytest",
+      "engine",
+      "app",
+      "os",
+      "fastapi",
+      "inspect",
+      "asyncio"
+    ],
+    "tests/test_logging.py": [
+      "unittest",
+      "pytest",
+      "engine",
+      "app",
+      "io",
+      "os",
+      "inspect",
+      "logging"
+    ],
+    "tests/test_exceptions.py": [
+      "sys",
+      "pytest",
+      "unittest",
+      "app",
+      "fastapi"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_rate_limit.py": [
+      "time",
+      "pytest",
+      "unittest",
+      "app",
+      "fastapi"
+    ],
+    "tests/test_upload_security.py": [
+      "pytest",
+      "unittest",
+      "app",
+      "io",
+      "asyncio",
+      "fastapi"
+    ],
+    "tests/test_health.py": [
+      "fastapi",
+      "app",
+      "pytest",
+      "unittest"
+    ],
+    "tests/test_base_engine.py": [
+      "numpy",
+      "pytest",
+      "engine",
+      "os",
+      "abc",
+      "inspect"
+    ],
+    "tests/test_speaker_management.py": [
+      "sys",
+      "unittest",
+      "pytest",
+      "app",
+      "os",
+      "fastapi"
+    ],
+    "engine/asr_engine.py": [
+      "numpy",
+      "scipy",
+      "re",
+      "torch",
+      "asyncio",
+      "modelscope",
+      "logging",
+      "qwen_asr"
+    ],
+    "engine/speaker/campplus_engine.py": [
+      "numpy",
+      "collections",
+      "time",
+      "chromadb",
+      "engine",
+      "torch",
+      "os",
+      "typing",
+      "modelscope",
+      "logging"
+    ],
+    "engine/speaker/__init__.py": [
+      "speaker_factory"
+    ],
+    "engine/speaker/eres2net_engine.py": [
+      "numpy",
+      "collections",
+      "time",
+      "chromadb",
+      "engine",
+      "torch",
+      "os",
+      "typing",
+      "modelscope",
+      "logging"
+    ],
+    "engine/speaker/base_engine.py": [
+      "abc",
+      "typing",
+      "numpy",
+      "logging"
+    ],
+    "engine/speaker/speaker_factory.py": [
+      "campplus_engine",
+      "wespeaker_engine",
+      "eres2net_engine",
+      "logging",
+      "threading",
+      "os",
+      "typing"
+    ],
+    "engine/speaker/wespeaker_engine.py": [
+      "numpy",
+      "collections",
+      "time",
+      "chromadb",
+      "engine",
+      "torch",
+      "os",
+      "typing",
+      "modelscope",
+      "logging"
+    ],
+    "app/middleware/__init__.py": [
+      "app"
+    ],
+    "app/middleware/rate_limit.py": [
+      "collections",
+      "starlette",
+      "time",
+      "logging",
+      "fastapi",
+      "typing"
+    ],
+    "app/schemas/__init__.py": [
+      "app"
+    ],
+    "app/schemas/response.py": [
+      "pydantic",
+      "typing"
+    ],
+    "app/api/upload.py": [
+      "numpy",
+      "time",
+      "shutil",
+      "librosa",
+      "engine",
+      "app",
+      "asyncio",
+      "fastapi",
+      "os",
+      "typing",
+      "logging",
+      "uuid"
+    ],
+    "app/api/health.py": [
+      "fastapi",
+      "logging",
+      "time"
+    ],
+    "app/api/__init__.py": [
+      "fastapi",
+      "app"
+    ],
+    "app/api/speakers.py": [
+      "fastapi",
+      "app",
+      "typing",
+      "engine"
+    ],
+    "app/api/websocket.py": [
+      "numpy",
+      "starlette",
+      "time",
+      "engine",
+      "app",
+      "asyncio",
+      "fastapi",
+      "logging",
+      "re"
+    ],
+    "app/services/session.py": [
+      "numpy",
+      "app",
+      "difflib"
+    ],
+    "app/services/__init__.py": [
+      "app"
+    ]
+  }
+}

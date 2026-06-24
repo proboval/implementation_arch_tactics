@@ -1,0 +1,205 @@
+{
+  "python_files": 34,
+  "packages": 6,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 5.666666666666667,
+  "imports_graph": {
+    "backend/batch_submit.py": [
+      "backend",
+      "json",
+      "time",
+      "typing",
+      "anthropic",
+      "sys"
+    ],
+    "backend/config.py": [
+      "pathlib",
+      "pydantic_settings"
+    ],
+    "backend/bulk_fetch.py": [
+      "backend",
+      "json",
+      "time",
+      "sys",
+      "datetime"
+    ],
+    "backend/database.py": [
+      "backend",
+      "sqlite3"
+    ],
+    "backend/__init__.py": [],
+    "backend/batch_collect.py": [
+      "backend",
+      "json",
+      "time",
+      "anthropic",
+      "sys"
+    ],
+    "backend/migration.py": [
+      "backend",
+      "re",
+      "json",
+      "pathlib",
+      "csv"
+    ],
+    "backend/weekly_update.py": [
+      "backend",
+      "json",
+      "time",
+      "sys",
+      "datetime"
+    ],
+    "backend/pipeline/similarity.py": [
+      "sklearn",
+      "backend",
+      "time",
+      "typing",
+      "numpy",
+      "pickle",
+      "os"
+    ],
+    "backend/pipeline/alignment.py": [
+      "typing",
+      "backend",
+      "datetime"
+    ],
+    "backend/pipeline/layer0.py": [
+      "typing",
+      "re",
+      "backend",
+      "json"
+    ],
+    "backend/pipeline/layer1.py": [
+      "backend",
+      "re",
+      "json",
+      "typing",
+      "anthropic"
+    ],
+    "backend/pipeline/__init__.py": [],
+    "backend/pipeline/layer2.py": [
+      "backend",
+      "json",
+      "typing",
+      "anthropic",
+      "datetime"
+    ],
+    "backend/polygon/client.py": [
+      "backend",
+      "json",
+      "time",
+      "typing",
+      "datetime",
+      "requests"
+    ],
+    "backend/polygon/__init__.py": [],
+    "backend/ml/__init__.py": [],
+    "backend/ml/features.py": [
+      "numpy",
+      "backend",
+      "pandas"
+    ],
+    "backend/ml/features_v2.py": [
+      "sklearn",
+      "numpy",
+      "backend",
+      "pandas"
+    ],
+    "backend/ml/model.py": [
+      "sklearn",
+      "backend",
+      "joblib",
+      "json",
+      "numpy",
+      "pathlib",
+      "datetime",
+      "xgboost"
+    ],
+    "backend/ml/experiment.py": [
+      "sklearn",
+      "backend",
+      "numpy",
+      "sys",
+      "xgboost"
+    ],
+    "backend/ml/train.py": [
+      "backend",
+      "argparse",
+      "time"
+    ],
+    "backend/ml/inference.py": [
+      "backend",
+      "joblib",
+      "json",
+      "numpy",
+      "pathlib",
+      "pandas",
+      "datetime"
+    ],
+    "backend/ml/backtest.py": [
+      "sklearn",
+      "backend",
+      "json",
+      "numpy",
+      "pathlib",
+      "xgboost"
+    ],
+    "backend/ml/similar.py": [
+      "numpy",
+      "backend",
+      "pandas"
+    ],
+    "backend/ml/lstm_model.py": [
+      "sklearn",
+      "backend",
+      "joblib",
+      "json",
+      "numpy",
+      "pathlib",
+      "torch",
+      "pandas",
+      "datetime"
+    ],
+    "backend/api/__init__.py": [],
+    "backend/api/main.py": [
+      "fastapi",
+      "backend"
+    ],
+    "backend/api/routers/stocks.py": [
+      "backend",
+      "json",
+      "typing",
+      "fastapi",
+      "logging",
+      "pydantic",
+      "datetime"
+    ],
+    "backend/api/routers/analysis.py": [
+      "fastapi",
+      "typing",
+      "backend",
+      "pydantic"
+    ],
+    "backend/api/routers/predict.py": [
+      "fastapi",
+      "pathlib",
+      "backend",
+      "json"
+    ],
+    "backend/api/routers/__init__.py": [],
+    "backend/api/routers/pipeline.py": [
+      "backend",
+      "json",
+      "typing",
+      "fastapi",
+      "logging",
+      "pydantic",
+      "datetime"
+    ],
+    "backend/api/routers/news.py": [
+      "fastapi",
+      "typing",
+      "backend"
+    ]
+  }
+}

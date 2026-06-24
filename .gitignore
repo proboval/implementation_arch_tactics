@@ -1,13 +1,25 @@
+# Environments & secrets
 .env
 .venv
-filters/agent_filters/architectural_tactics_complete_catalog_copy.csv
-.log
+venv/
+env/
 
-# Skill virtual environments and data
-.claude/skills/*/.venv/
-.claude/skills/*/data/
-.claude/skills/pptx/scripts/node_modules/
+# Claude Code local config
+.claude/
+.mcp.json
+
+# Logs
+.log
+*.log
+
+# Misc generated/data
+filters/agent_filters/architectural_tactics_complete_catalog_copy.csv
 
 # Python cache
 __pycache__/
 *.py[cod]
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

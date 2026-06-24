@@ -1,0 +1,615 @@
+{
+  "test_webhook.py": {
+    "path": "test_webhook.py",
+    "imports": [
+      "asyncio",
+      "httpx",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.orm.sessionmaker",
+      "app.services.notification.notification_service",
+      "app.services.settings.settings_service",
+      "app.models.Setting"
+    ],
+    "classes": [],
+    "functions": [
+      "test_webhook"
+    ],
+    "size": 1319
+  },
+  "init_db.py": {
+    "path": "init_db.py",
+    "imports": [
+      "asyncio",
+      "bcrypt",
+      "sqlalchemy.select",
+      "app.database.init_db",
+      "app.database.AsyncSessionLocal",
+      "app.models.Setting",
+      "app.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "create_default_settings",
+      "main"
+    ],
+    "size": 1883
+  },
+  "app/config.py": {
+    "path": "app/config.py",
+    "imports": [
+      "pydantic_settings.BaseSettings",
+      "pydantic_settings.SettingsConfigDict",
+      "pathlib.Path"
+    ],
+    "classes": [
+      "Settings"
+    ],
+    "functions": [],
+    "size": 1063
+  },
+  "app/models.py": {
+    "path": "app/models.py",
+    "imports": [
+      "sqlalchemy.Column",
+      "sqlalchemy.Integer",
+      "sqlalchemy.String",
+      "sqlalchemy.Text",
+      "sqlalchemy.Boolean",
+      "sqlalchemy.DateTime",
+      "sqlalchemy.ForeignKey",
+      "sqlalchemy.Index",
+      "sqlalchemy.orm.relationship",
+      "sqlalchemy.sql.func",
+      "app.database.Base",
+      "app.utils.time_utils.get_now"
+    ],
+    "classes": [
+      "Team",
+      "TeamAccount",
+      "RedemptionCode",
+      "RedemptionRecord",
+      "Setting"
+    ],
+    "functions": [],
+    "size": 5183
+  },
+  "app/database.py": {
+    "path": "app/database.py",
+    "imports": [
+      "sqlalchemy.text",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.ext.asyncio.async_sessionmaker",
+      "sqlalchemy.orm.declarative_base",
+      "app.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "get_db",
+      "init_db",
+      "close_db"
+    ],
+    "size": 1314
+  },
+  "app/__init__.py": {
+    "path": "app/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 44
+  },
+  "app/db_migrations.py": {
+    "path": "app/db_migrations.py",
+    "imports": [
+      "logging",
+      "sqlite3",
+      "pathlib.Path",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "app.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "get_db_path",
+      "column_exists",
+      "repair_warranty_timestamps",
+      "run_auto_migration"
+    ],
+    "size": 6342
+  },
+  "app/main.py": {
+    "path": "app/main.py",
+    "imports": [
+      "fastapi.FastAPI",
+      "fastapi.Request",
+      "fastapi.staticfiles.StaticFiles",
+      "fastapi.templating.Jinja2Templates",
+      "fastapi.responses.HTMLResponse",
+      "fastapi.responses.JSONResponse",
+      "fastapi.responses.RedirectResponse",
+      "fastapi.responses.FileResponse",
+      "starlette.middleware.sessions.SessionMiddleware",
+      "logging",
+      "pathlib.Path",
+      "datetime.datetime",
+      "contextlib.asynccontextmanager",
+      "app.routes.redeem",
+      "app.routes.auth",
+      "app.routes.admin",
+      "app.routes.api",
+      "app.routes.user",
+      "app.routes.warranty",
+      "app.config.settings",
+      "app.database.init_db",
+      "app.database.close_db",
+      "app.database.AsyncSessionLocal",
+      "app.services.auth.auth_service",
+      "starlette.exceptions.HTTPException",
+      "pytz",
+      "app.config.settings",
+      "uvicorn",
+      "app.db_migrations.run_auto_migration"
+    ],
+    "classes": [],
+    "functions": [
+      "lifespan",
+      "http_exception_handler",
+      "format_datetime",
+      "escape_js",
+      "login_page",
+      "health_check",
+      "favicon"
+    ],
+    "size": 4698
+  },
+  "tests/test_warranty_issue20.py": {
+    "path": "tests/test_warranty_issue20.py",
+    "imports": [
+      "sqlite3",
+      "unittest",
+      "datetime.timedelta",
+      "unittest.mock.AsyncMock",
+      "unittest.mock.patch",
+      "sqlalchemy.select",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.ext.asyncio.async_sessionmaker",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio",
+      "app.database.Base",
+      "app.db_migrations.repair_warranty_timestamps",
+      "app.models.RedemptionCode",
+      "app.models.Team",
+      "app.services.redeem_flow.RedeemFlowService",
+      "app.services.warranty.WarrantyService",
+      "app.utils.time_utils.get_now",
+      "app.models.RedemptionRecord"
+    ],
+    "classes": [
+      "WarrantyIssue20Tests"
+    ],
+    "functions": [
+      "_discard_task",
+      "asyncSetUp",
+      "asyncTearDown",
+      "test_repeated_warranty_redemption_preserves_original_timestamps",
+      "test_warranty_status_falls_back_to_first_redemption_record",
+      "test_repair_warranty_timestamps_uses_first_redemption_record"
+    ],
+    "size": 8625
+  },
+  "tests/test_issue10_pending_invites.py": {
+    "path": "tests/test_issue10_pending_invites.py",
+    "imports": [
+      "unittest",
+      "unittest.mock.AsyncMock",
+      "unittest.mock.patch",
+      "sqlalchemy.select",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.ext.asyncio.async_sessionmaker",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio",
+      "app.database.Base",
+      "app.models.RedemptionCode",
+      "app.models.Team",
+      "app.services.redeem_flow.RedeemFlowService",
+      "app.services.team.TeamService"
+    ],
+    "classes": [
+      "PendingInviteCapacityTests"
+    ],
+    "functions": [
+      "_discard_task",
+      "asyncSetUp",
+      "asyncTearDown",
+      "test_total_available_seats_subtracts_pending_invites",
+      "test_select_team_auto_skips_team_filled_by_pending_invites",
+      "test_add_team_member_rejects_full_team_when_pending_invites_fill_capacity",
+      "test_redeem_flow_reserves_pending_invite_slot_after_success"
+    ],
+    "size": 7054
+  },
+  "app/dependencies/auth.py": {
+    "path": "app/dependencies/auth.py",
+    "imports": [
+      "logging",
+      "fastapi.Request",
+      "fastapi.HTTPException",
+      "fastapi.status",
+      "fastapi.responses.RedirectResponse",
+      "app.database.AsyncSessionLocal",
+      "app.services.settings.settings_service"
+    ],
+    "classes": [],
+    "functions": [
+      "get_current_user",
+      "require_admin",
+      "optional_user"
+    ],
+    "size": 1759
+  },
+  "app/dependencies/__init__.py": {
+    "path": "app/dependencies/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 20
+  },
+  "app/utils/jwt_parser.py": {
+    "path": "app/utils/jwt_parser.py",
+    "imports": [
+      "jwt",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "datetime.datetime",
+      "logging",
+      "app.utils.time_utils.get_now"
+    ],
+    "classes": [
+      "JWTParser"
+    ],
+    "functions": [
+      "create_jwt_parser",
+      "__init__",
+      "decode_token",
+      "extract_email",
+      "extract_user_id",
+      "get_expiration_time",
+      "is_token_expired",
+      "validate_token"
+    ],
+    "size": 4736
+  },
+  "app/utils/__init__.py": {
+    "path": "app/utils/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 13
+  },
+  "app/utils/time_utils.py": {
+    "path": "app/utils/time_utils.py",
+    "imports": [
+      "datetime.datetime",
+      "pytz",
+      "app.config.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "get_now"
+    ],
+    "size": 245
+  },
+  "app/utils/token_parser.py": {
+    "path": "app/utils/token_parser.py",
+    "imports": [
+      "re",
+      "typing.List",
+      "typing.Optional",
+      "typing.Dict",
+      "logging"
+    ],
+    "classes": [
+      "TokenParser"
+    ],
+    "functions": [
+      "extract_jwt_tokens",
+      "extract_emails",
+      "extract_account_ids",
+      "parse_team_import_text",
+      "validate_jwt_format",
+      "validate_email_format",
+      "validate_account_id_format"
+    ],
+    "size": 6309
+  },
+  "app/routes/auth.py": {
+    "path": "app/routes/auth.py",
+    "imports": [
+      "logging",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.Depends",
+      "fastapi.HTTPException",
+      "fastapi.status",
+      "fastapi.Request",
+      "fastapi.responses.JSONResponse",
+      "pydantic.BaseModel",
+      "pydantic.Field",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.database.get_db",
+      "app.services.auth.auth_service",
+      "app.dependencies.auth.get_current_user"
+    ],
+    "classes": [
+      "LoginRequest",
+      "ChangePasswordRequest",
+      "LoginResponse",
+      "LogoutResponse",
+      "ChangePasswordResponse"
+    ],
+    "functions": [
+      "login",
+      "logout",
+      "change_password",
+      "get_auth_status"
+    ],
+    "size": 4572
+  },
+  "app/routes/user.py": {
+    "path": "app/routes/user.py",
+    "imports": [
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.Request",
+      "fastapi.Depends",
+      "fastapi.responses.HTMLResponse",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.database.get_db",
+      "app.main.templates",
+      "app.services.team.TeamService"
+    ],
+    "classes": [],
+    "functions": [
+      "redeem_page"
+    ],
+    "size": 1178
+  },
+  "app/routes/redeem.py": {
+    "path": "app/routes/redeem.py",
+    "imports": [
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.Depends",
+      "fastapi.HTTPException",
+      "fastapi.status",
+      "pydantic.BaseModel",
+      "pydantic.EmailStr",
+      "pydantic.Field",
+      "typing.Optional",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.database.get_db",
+      "app.services.redeem_flow.redeem_flow_service"
+    ],
+    "classes": [
+      "VerifyCodeRequest",
+      "RedeemRequest",
+      "TeamInfo",
+      "VerifyCodeResponse",
+      "RedeemResponse"
+    ],
+    "functions": [
+      "verify_code",
+      "confirm_redeem"
+    ],
+    "size": 4384
+  },
+  "app/routes/__init__.py": {
+    "path": "app/routes/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 13
+  },
+  "app/routes/api.py": {
+    "path": "app/routes/api.py",
+    "imports": [
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.Depends",
+      "fastapi.HTTPException",
+      "fastapi.status",
+      "fastapi.responses.JSONResponse",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.database.get_db",
+      "app.dependencies.auth.get_current_user",
+      "app.services.team.TeamService"
+    ],
+    "classes": [],
+    "functions": [
+      "refresh_team"
+    ],
+    "size": 1506
+  },
+  "app/routes/warranty.py": {
+    "path": "app/routes/warranty.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.Depends",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "pydantic.EmailStr",
+      "typing.Optional",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.database.get_db",
+      "app.services.warranty.warranty_service",
+      "app.services.team.team_service",
+      "sqlalchemy.select",
+      "app.models.RedemptionRecord"
+    ],
+    "classes": [
+      "WarrantyCheckRequest",
+      "WarrantyCheckRecord",
+      "WarrantyCheckResponse",
+      "EnableDeviceAuthRequest"
+    ],
+    "functions": [
+      "check_warranty",
+      "enable_device_auth"
+    ],
+    "size": 4272
+  },
+  "app/routes/admin.py": {
+    "path": "app/routes/admin.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/auth.py": {
+    "path": "app/services/auth.py",
+    "imports": [
+      "logging",
+      "bcrypt",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "sqlalchemy.select",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.models.Setting",
+      "app.config.settings"
+    ],
+    "classes": [
+      "AuthService"
+    ],
+    "functions": [
+      "__init__",
+      "hash_password",
+      "verify_password",
+      "get_admin_password_hash",
+      "set_admin_password_hash",
+      "initialize_admin_password",
+      "verify_admin_login",
+      "change_admin_password"
+    ],
+    "size": 7135
+  },
+  "app/services/encryption.py": {
+    "path": "app/services/encryption.py",
+    "imports": [
+      "logging",
+      "cryptography.fernet.Fernet",
+      "app.config.settings",
+      "base64",
+      "hashlib"
+    ],
+    "classes": [
+      "EncryptionService"
+    ],
+    "functions": [
+      "__init__",
+      "_create_fernet",
+      "encrypt_token",
+      "decrypt_token"
+    ],
+    "size": 1955
+  },
+  "app/services/notification.py": {
+    "path": "app/services/notification.py",
+    "imports": [
+      "logging",
+      "httpx",
+      "asyncio",
+      "typing.Optional",
+      "typing.Any",
+      "typing.Dict",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.services.settings.settings_service",
+      "app.services.redemption.RedemptionService",
+      "app.services.team.team_service",
+      "app.database.AsyncSessionLocal"
+    ],
+    "classes": [
+      "NotificationService"
+    ],
+    "functions": [
+      "__init__",
+      "check_and_notify_low_stock",
+      "send_webhook_notification"
+    ],
+    "size": 2904
+  },
+  "app/services/__init__.py": {
+    "path": "app/services/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 13
+  },
+  "app/services/team.py": {
+    "path": "app/services/team.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/redemption.py": {
+    "path": "app/services/redemption.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/warranty.py": {
+    "path": "app/services/warranty.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/redeem_flow.py": {
+    "path": "app/services/redeem_flow.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/chatgpt.py": {
+    "path": "app/services/chatgpt.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/settings.py": {
+    "path": "app/services/settings.py",
+    "imports": [
+      "typing.Optional",
+      "typing.Dict",
+      "sqlalchemy.select",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "app.models.Setting",
+      "logging"
+    ],
+    "classes": [
+      "SettingsService"
+    ],
+    "functions": [
+      "__init__",
+      "get_setting",
+      "get_all_settings",
+      "update_setting",
+      "update_settings",
+      "clear_cache",
+      "get_proxy_config",
+      "update_proxy_config",
+      "get_log_level",
+      "update_log_level"
+    ],
+    "size": 5352
+  }
+}

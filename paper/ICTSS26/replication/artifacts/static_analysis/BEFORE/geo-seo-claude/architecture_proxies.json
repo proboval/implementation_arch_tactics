@@ -1,0 +1,68 @@
+{
+  "python_files": 8,
+  "packages": 0,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "white-label/brand_config.py": [
+      "sys",
+      "os",
+      "json",
+      "copy"
+    ],
+    "tests/test_fetch_page_ssr.py": [
+      "unittest",
+      "fetch_page",
+      "os",
+      "sys"
+    ],
+    "scripts/llmstxt_generator.py": [
+      "re",
+      "sys",
+      "urllib",
+      "bs4",
+      "requests",
+      "json"
+    ],
+    "scripts/brand_scanner.py": [
+      "re",
+      "sys",
+      "urllib",
+      "bs4",
+      "requests",
+      "json"
+    ],
+    "scripts/citability_scorer.py": [
+      "re",
+      "typing",
+      "sys",
+      "bs4",
+      "requests",
+      "json"
+    ],
+    "scripts/crm_dashboard.py": [
+      "argparse",
+      "datetime",
+      "rich",
+      "pathlib",
+      "sys",
+      "json",
+      "os"
+    ],
+    "scripts/fetch_page.py": [
+      "re",
+      "sys",
+      "urllib",
+      "bs4",
+      "requests",
+      "json"
+    ],
+    "scripts/webapp/app.py": [
+      "datetime",
+      "pathlib",
+      "json",
+      "flask",
+      "os"
+    ]
+  }
+}

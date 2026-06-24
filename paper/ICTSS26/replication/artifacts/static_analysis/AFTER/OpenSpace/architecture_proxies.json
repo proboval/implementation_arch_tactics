@@ -1,0 +1,1309 @@
+{
+  "python_files": 166,
+  "packages": 31,
+  "max_directory_depth": 7,
+  "avg_files_per_package": 5.354838709677419,
+  "imports_graph": {
+    "openspace/__init__.py": [
+      "typing",
+      "openspace",
+      "importlib"
+    ],
+    "openspace/tool_layer.py": [
+      "os",
+      "asyncio",
+      "dataclasses",
+      "typing",
+      "uuid",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "openspace",
+      "tempfile",
+      "traceback"
+    ],
+    "openspace/__main__.py": [
+      "os",
+      "asyncio",
+      "json",
+      "typing",
+      "argparse",
+      "logging",
+      "sys",
+      "openspace"
+    ],
+    "openspace/dashboard_server.py": [
+      "typing",
+      "hashlib",
+      "pathlib",
+      "argparse",
+      "__future__",
+      "datetime",
+      "flask",
+      "openspace",
+      "werkzeug"
+    ],
+    "openspace/mcp_server.py": [
+      "asyncio",
+      "json",
+      "inspect",
+      "typing",
+      "mcp",
+      "openspace",
+      "pathlib",
+      "argparse",
+      "logging",
+      "__future__",
+      "sys",
+      "os"
+    ],
+    "gdpval_bench/run_benchmark.py": [
+      "asyncio",
+      "json",
+      "time",
+      "datasets",
+      "typing",
+      "livebench",
+      "litellm",
+      "dotenv",
+      "openspace",
+      "pathlib",
+      "shutil",
+      "argparse",
+      "__future__",
+      "sys",
+      "datetime",
+      "gdpval_bench",
+      "os"
+    ],
+    "gdpval_bench/calc_subset_performance.py": [
+      "pathlib",
+      "json",
+      "__future__"
+    ],
+    "gdpval_bench/__init__.py": [],
+    "gdpval_bench/token_tracker.py": [
+      "contextlib",
+      "time",
+      "dataclasses",
+      "contextvars",
+      "typing",
+      "litellm",
+      "__future__",
+      "threading"
+    ],
+    "gdpval_bench/task_loader.py": [
+      "urllib",
+      "json",
+      "time",
+      "pandas",
+      "datasets",
+      "ssl",
+      "typing",
+      "subprocess",
+      "urllib3",
+      "pathlib",
+      "shutil",
+      "collections",
+      "logging",
+      "__future__",
+      "sys",
+      "os",
+      "requests"
+    ],
+    "gdpval_bench/__main__.py": [
+      "gdpval_bench"
+    ],
+    "openspace/platforms/config.py": [
+      "urllib",
+      "json",
+      "typing",
+      "openspace",
+      "os"
+    ],
+    "openspace/platforms/recording.py": [
+      "config",
+      "asyncio",
+      "typing",
+      "aiohttp",
+      "openspace"
+    ],
+    "openspace/platforms/system_info.py": [
+      "typing",
+      "aiohttp",
+      "config",
+      "openspace"
+    ],
+    "openspace/platforms/__init__.py": [
+      "recording",
+      "config",
+      "screenshot",
+      "system_info"
+    ],
+    "openspace/platforms/screenshot.py": [
+      "os",
+      "config",
+      "typing",
+      "aiohttp",
+      "openspace"
+    ],
+    "openspace/llm/client.py": [
+      "asyncio",
+      "json",
+      "time",
+      "openai",
+      "typing",
+      "litellm",
+      "gdpval_bench",
+      "openspace",
+      "copy"
+    ],
+    "openspace/llm/__init__.py": [
+      "client"
+    ],
+    "openspace/config/constants.py": [
+      "pathlib"
+    ],
+    "openspace/config/__init__.py": [
+      "constants",
+      "utils",
+      "loader",
+      "grounding"
+    ],
+    "openspace/config/utils.py": [
+      "typing",
+      "pathlib",
+      "json"
+    ],
+    "openspace/config/loader.py": [
+      "constants",
+      "typing",
+      "pathlib",
+      "grounding",
+      "threading",
+      "utils",
+      "openspace"
+    ],
+    "openspace/config/grounding.py": [
+      "typing",
+      "constants",
+      "pydantic",
+      "openspace"
+    ],
+    "openspace/skill_engine/patch.py": [
+      "re",
+      "dataclasses",
+      "difflib",
+      "typing",
+      "fuzzy_match",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "skill_utils",
+      "openspace",
+      "enum"
+    ],
+    "openspace/skill_engine/store.py": [
+      "asyncio",
+      "json",
+      "time",
+      "contextlib",
+      "patch",
+      "typing",
+      "pathlib",
+      "sqlite3",
+      "__future__",
+      "threading",
+      "functools",
+      "openspace",
+      "types",
+      "datetime"
+    ],
+    "openspace/skill_engine/skill_utils.py": [
+      "re",
+      "typing",
+      "pathlib",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/skill_engine/retrieve_tool.py": [
+      "typing",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/skill_engine/registry.py": [
+      "json",
+      "re",
+      "dataclasses",
+      "typing",
+      "uuid",
+      "pathlib",
+      "__future__",
+      "skill_ranker",
+      "skill_utils",
+      "gdpval_bench",
+      "openspace"
+    ],
+    "openspace/skill_engine/conversation_formatter.py": [
+      "typing",
+      "re",
+      "__future__"
+    ],
+    "openspace/skill_engine/analyzer.py": [
+      "json",
+      "re",
+      "typing",
+      "store",
+      "pathlib",
+      "types",
+      "registry",
+      "__future__",
+      "gdpval_bench",
+      "datetime",
+      "openspace",
+      "copy",
+      "conversation_formatter"
+    ],
+    "openspace/skill_engine/fuzzy_match.py": [
+      "typing",
+      "re",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/skill_engine/__init__.py": [
+      "importlib"
+    ],
+    "openspace/skill_engine/types.py": [
+      "dataclasses",
+      "typing",
+      "__future__",
+      "datetime",
+      "enum"
+    ],
+    "openspace/skill_engine/evolver.py": [
+      "asyncio",
+      "json",
+      "re",
+      "dataclasses",
+      "patch",
+      "typing",
+      "uuid",
+      "store",
+      "pathlib",
+      "shutil",
+      "types",
+      "registry",
+      "__future__",
+      "gdpval_bench",
+      "skill_utils",
+      "openspace",
+      "copy",
+      "enum"
+    ],
+    "openspace/skill_engine/skill_ranker.py": [
+      "rank_bm25",
+      "urllib",
+      "json",
+      "re",
+      "dataclasses",
+      "time",
+      "typing",
+      "hashlib",
+      "openspace",
+      "math",
+      "pathlib",
+      "pickle",
+      "__future__",
+      "threading",
+      "datetime",
+      "base64",
+      "os",
+      "tempfile"
+    ],
+    "openspace/recording/viewer.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "action_recorder",
+      "sys",
+      "utils",
+      "openspace"
+    ],
+    "openspace/recording/action_recorder.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "datetime",
+      "openspace"
+    ],
+    "openspace/recording/recorder.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "datetime",
+      "openspace"
+    ],
+    "openspace/recording/__init__.py": [
+      "importlib"
+    ],
+    "openspace/recording/utils.py": [
+      "json",
+      "typing",
+      "openspace",
+      "pathlib",
+      "os"
+    ],
+    "openspace/recording/video.py": [
+      "pathlib",
+      "typing",
+      "openspace"
+    ],
+    "openspace/recording/manager.py": [
+      "json",
+      "recorder",
+      "typing",
+      "pathlib",
+      "action_recorder",
+      "utils",
+      "datetime",
+      "openspace",
+      "ast",
+      "types"
+    ],
+    "openspace/agents/message_utils.py": [
+      "typing",
+      "json",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/agents/visual_analyzer.py": [
+      "asyncio",
+      "json",
+      "typing",
+      "litellm",
+      "__future__",
+      "base64",
+      "openspace"
+    ],
+    "openspace/agents/__init__.py": [
+      "openspace"
+    ],
+    "openspace/agents/grounding_agent.py": [
+      "os",
+      "json",
+      "time",
+      "re",
+      "typing",
+      "__future__",
+      "openspace",
+      "copy"
+    ],
+    "openspace/agents/base.py": [
+      "json",
+      "typing",
+      "abc",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/utils/logging.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "colorama",
+      "sys",
+      "logging",
+      "threading",
+      "os",
+      "datetime",
+      "__main__"
+    ],
+    "openspace/utils/ui.py": [
+      "asyncio",
+      "typing",
+      "shutil",
+      "sys",
+      "datetime",
+      "openspace",
+      "enum"
+    ],
+    "openspace/utils/display.py": [
+      "typing",
+      "re",
+      "enum"
+    ],
+    "openspace/utils/ui_integration.py": [
+      "typing",
+      "asyncio",
+      "openspace"
+    ],
+    "openspace/utils/cli_display.py": [
+      "openspace"
+    ],
+    "openspace/local_server/feature_checker.py": [
+      "PIL",
+      "typing",
+      "subprocess",
+      "platform",
+      "pyautogui",
+      "openspace",
+      "tempfile"
+    ],
+    "openspace/local_server/__init__.py": [
+      "main"
+    ],
+    "openspace/local_server/health_checker.py": [
+      "time",
+      "typing",
+      "openspace",
+      "pathlib",
+      "os",
+      "requests"
+    ],
+    "openspace/local_server/main.py": [
+      "json",
+      "time",
+      "uuid",
+      "subprocess",
+      "tempfile",
+      "openspace",
+      "io",
+      "platform",
+      "argparse",
+      "pyautogui",
+      "shlex",
+      "datetime",
+      "flask",
+      "os",
+      "threading",
+      "signal"
+    ],
+    "openspace/cloud/auth.py": [
+      "typing",
+      "openspace",
+      "logging",
+      "__future__",
+      "sys",
+      "os"
+    ],
+    "openspace/cloud/embedding.py": [
+      "urllib",
+      "json",
+      "typing",
+      "openspace",
+      "math",
+      "logging",
+      "__future__",
+      "os"
+    ],
+    "openspace/cloud/client.py": [
+      "zipfile",
+      "urllib",
+      "json",
+      "difflib",
+      "uuid",
+      "typing",
+      "openspace",
+      "io",
+      "pathlib",
+      "logging",
+      "__future__",
+      "os"
+    ],
+    "openspace/cloud/__init__.py": [
+      "openspace"
+    ],
+    "openspace/cloud/search.py": [
+      "asyncio",
+      "re",
+      "typing",
+      "logging",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/prompts/skill_engine_prompts.py": [],
+    "openspace/prompts/__init__.py": [
+      "openspace"
+    ],
+    "openspace/prompts/grounding_agent_prompts.py": [
+      "typing",
+      "os"
+    ],
+    "openspace/communication/gateway_runtime.py": [
+      "json",
+      "dataclasses",
+      "typing",
+      "hashlib",
+      "openspace",
+      "pathlib",
+      "sys",
+      "__future__",
+      "datetime",
+      "os"
+    ],
+    "openspace/communication/gateway.py": [
+      "asyncio",
+      "typing",
+      "openspace",
+      "pathlib",
+      "aiohttp",
+      "argparse",
+      "__future__",
+      "os",
+      "requests"
+    ],
+    "openspace/communication/runtime_manager.py": [
+      "config",
+      "asyncio",
+      "contextlib",
+      "time",
+      "typing",
+      "uuid",
+      "__future__",
+      "openspace",
+      "types"
+    ],
+    "openspace/communication/config.py": [
+      "json",
+      "typing",
+      "openspace",
+      "pathlib",
+      "__future__",
+      "pydantic",
+      "os"
+    ],
+    "openspace/communication/policy.py": [
+      "typing",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/communication/__init__.py": [
+      "openspace"
+    ],
+    "openspace/communication/types.py": [
+      "dataclasses",
+      "typing",
+      "__future__",
+      "datetime",
+      "enum"
+    ],
+    "openspace/communication/attachment_cache.py": [
+      "typing",
+      "uuid",
+      "pathlib",
+      "shutil",
+      "__future__",
+      "openspace",
+      "types"
+    ],
+    "openspace/communication/session_store.py": [
+      "json",
+      "re",
+      "typing",
+      "uuid",
+      "pathlib",
+      "__future__",
+      "datetime",
+      "openspace",
+      "types"
+    ],
+    "openspace/host_detection/nanobot.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "logging",
+      "__future__",
+      "os"
+    ],
+    "openspace/host_detection/__init__.py": [
+      "typing",
+      "logging",
+      "openspace"
+    ],
+    "openspace/host_detection/resolver.py": [
+      "json",
+      "typing",
+      "dotenv",
+      "openspace",
+      "pathlib",
+      "logging",
+      "__future__",
+      "os",
+      "tempfile"
+    ],
+    "openspace/host_detection/openclaw.py": [
+      "json",
+      "typing",
+      "openspace",
+      "pathlib",
+      "logging",
+      "__future__",
+      "os"
+    ],
+    "openspace/communication/adapters/whatsapp.py": [
+      "asyncio",
+      "contextlib",
+      "json",
+      "re",
+      "typing",
+      "uuid",
+      "subprocess",
+      "openspace",
+      "pathlib",
+      "shutil",
+      "aiohttp",
+      "__future__",
+      "os",
+      "secrets"
+    ],
+    "openspace/communication/adapters/__init__.py": [
+      "openspace"
+    ],
+    "openspace/communication/adapters/feishu.py": [
+      "asyncio",
+      "contextlib",
+      "json",
+      "time",
+      "lark_oapi",
+      "typing",
+      "hashlib",
+      "hmac",
+      "pathlib",
+      "collections",
+      "aiohttp",
+      "__future__",
+      "threading",
+      "openspace"
+    ],
+    "openspace/communication/adapters/base.py": [
+      "abc",
+      "typing",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/cloud/cli/download_skill.py": [
+      "json",
+      "pathlib",
+      "argparse",
+      "sys",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/cloud/cli/upload_skill.py": [
+      "json",
+      "pathlib",
+      "argparse",
+      "sys",
+      "__future__",
+      "openspace"
+    ],
+    "openspace/cloud/cli/__init__.py": [],
+    "openspace/local_server/utils/__init__.py": [
+      "accessibility",
+      "screenshot"
+    ],
+    "openspace/local_server/utils/screenshot.py": [
+      "PIL",
+      "platform_adapters",
+      "functools",
+      "typing",
+      "math",
+      "platform",
+      "logging",
+      "pyautogui",
+      "base64",
+      "os",
+      "tempfile",
+      "operator"
+    ],
+    "openspace/local_server/utils/accessibility.py": [
+      "openspace",
+      "platform_adapters",
+      "platform",
+      "typing"
+    ],
+    "openspace/local_server/platform_adapters/macos_adapter.py": [
+      "re",
+      "time",
+      "atomacos",
+      "typing",
+      "subprocess",
+      "openspace",
+      "os",
+      "AppKit",
+      "signal"
+    ],
+    "openspace/local_server/platform_adapters/__init__.py": [
+      "macos_adapter",
+      "windows_adapter",
+      "linux_adapter",
+      "typing",
+      "platform"
+    ],
+    "openspace/local_server/platform_adapters/linux_adapter.py": [
+      "PIL",
+      "pyatspi",
+      "time",
+      "pyxcursor",
+      "typing",
+      "subprocess",
+      "openspace",
+      "Xlib",
+      "psutil",
+      "pyautogui",
+      "sys",
+      "os",
+      "signal"
+    ],
+    "openspace/local_server/platform_adapters/windows_adapter.py": [
+      "win32con",
+      "PIL",
+      "time",
+      "typing",
+      "subprocess",
+      "openspace",
+      "pywinauto",
+      "win32gui",
+      "pygetwindow",
+      "win32ui",
+      "platform",
+      "psutil",
+      "os",
+      "ctypes",
+      "signal"
+    ],
+    "openspace/local_server/platform_adapters/pyxcursor.py": [
+      "array",
+      "PIL",
+      "numpy",
+      "os",
+      "ctypes",
+      "struct"
+    ],
+    "openspace/utils/telemetry/events.py": [
+      "abc",
+      "typing",
+      "dataclasses"
+    ],
+    "openspace/utils/telemetry/__init__.py": [],
+    "openspace/utils/telemetry/telemetry.py": [
+      "scarf",
+      "posthog",
+      "typing",
+      "uuid",
+      "mcp_use",
+      "pathlib",
+      "collections",
+      "platform",
+      "logging",
+      "os",
+      "functools"
+    ],
+    "openspace/utils/telemetry/utils.py": [
+      "typing",
+      "langchain_core",
+      "importlib"
+    ],
+    "openspace/grounding/core/search_tools.py": [
+      "os",
+      "rank_bm25",
+      "re",
+      "json",
+      "quality",
+      "typing",
+      "numpy",
+      "fastembed",
+      "httpx",
+      "pathlib",
+      "collections",
+      "pickle",
+      "tool",
+      "datetime",
+      "openspace",
+      "types",
+      "enum"
+    ],
+    "openspace/grounding/core/provider.py": [
+      "typing",
+      "session",
+      "security",
+      "abc",
+      "tool",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/session.py": [
+      "typing",
+      "abc",
+      "tool",
+      "transport",
+      "datetime",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/types.py": [
+      "jsonschema",
+      "typing",
+      "platform",
+      "pydantic",
+      "sys",
+      "datetime",
+      "shlex",
+      "enum"
+    ],
+    "openspace/grounding/core/grounding_client.py": [
+      "provider",
+      "asyncio",
+      "time",
+      "quality",
+      "typing",
+      "session",
+      "system",
+      "search_tools",
+      "collections",
+      "pathlib",
+      "tool",
+      "exceptions",
+      "datetime",
+      "openspace",
+      "types",
+      "importlib"
+    ],
+    "openspace/grounding/core/exceptions.py": [
+      "typing",
+      "enum"
+    ],
+    "openspace/grounding/backends/__init__.py": [
+      "gui",
+      "mcp",
+      "web",
+      "shell"
+    ],
+    "openspace/grounding/backends/shell/provider.py": [
+      "openspace",
+      "session",
+      "transport"
+    ],
+    "openspace/grounding/backends/shell/session.py": [
+      "os",
+      "re",
+      "json",
+      "typing",
+      "openspace"
+    ],
+    "openspace/grounding/backends/shell/__init__.py": [
+      "session",
+      "provider",
+      "transport"
+    ],
+    "openspace/grounding/backends/shell/productivity_tools.py": [
+      "os",
+      "asyncio",
+      "json",
+      "typing",
+      "livebench",
+      "pathlib",
+      "openspace"
+    ],
+    "openspace/grounding/backends/web/provider.py": [
+      "typing",
+      "session",
+      "openspace"
+    ],
+    "openspace/grounding/backends/web/session.py": [
+      "openai",
+      "typing",
+      "dotenv",
+      "openspace",
+      "pathlib",
+      "os"
+    ],
+    "openspace/grounding/backends/web/__init__.py": [
+      "session",
+      "provider"
+    ],
+    "openspace/grounding/backends/mcp/config.py": [
+      "installer",
+      "typing",
+      "transport",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/provider.py": [
+      "typing",
+      "asyncio",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/client.py": [
+      "config",
+      "asyncio",
+      "installer",
+      "typing",
+      "session",
+      "warnings",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/session.py": [
+      "typing",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/tool_cache.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "datetime",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/__init__.py": [
+      "provider",
+      "client",
+      "installer",
+      "session",
+      "tool_cache"
+    ],
+    "openspace/grounding/backends/mcp/installer.py": [
+      "os",
+      "asyncio",
+      "typing",
+      "pathlib",
+      "shutil",
+      "sys",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/tool_converter.py": [
+      "typing",
+      "copy",
+      "mcp",
+      "openspace"
+    ],
+    "openspace/grounding/backends/gui/config.py": [
+      "typing",
+      "platform",
+      "openspace",
+      "os"
+    ],
+    "openspace/grounding/backends/gui/provider.py": [
+      "typing",
+      "transport",
+      "session",
+      "openspace"
+    ],
+    "openspace/grounding/backends/gui/session.py": [
+      "os",
+      "config",
+      "PIL",
+      "anthropic_client",
+      "typing",
+      "io",
+      "tool",
+      "transport",
+      "openspace"
+    ],
+    "openspace/grounding/backends/gui/__init__.py": [
+      "session",
+      "provider",
+      "anthropic_client",
+      "transport"
+    ],
+    "openspace/grounding/backends/gui/anthropic_utils.py": [
+      "typing",
+      "anthropic",
+      "datetime",
+      "openspace",
+      "enum"
+    ],
+    "openspace/grounding/backends/gui/anthropic_client.py": [
+      "PIL",
+      "time",
+      "anthropic_utils",
+      "typing",
+      "openspace",
+      "io",
+      "anthropic",
+      "base64",
+      "os"
+    ],
+    "openspace/grounding/backends/gui/tool.py": [
+      "json",
+      "anthropic_client",
+      "typing",
+      "transport",
+      "base64",
+      "openspace"
+    ],
+    "openspace/grounding/backends/gui/transport/actions.py": [
+      "typing"
+    ],
+    "openspace/grounding/backends/gui/transport/local_connector.py": [
+      "asyncio",
+      "re",
+      "typing",
+      "uuid",
+      "openspace",
+      "platform",
+      "os",
+      "tempfile"
+    ],
+    "openspace/grounding/backends/gui/transport/connector.py": [
+      "asyncio",
+      "actions",
+      "re",
+      "typing",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/__init__.py": [
+      "base",
+      "sandbox",
+      "stdio",
+      "http",
+      "websocket"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/sandbox.py": [
+      "asyncio",
+      "time",
+      "mcp",
+      "aiohttp",
+      "sys",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/utils.py": [
+      "typing"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/http.py": [
+      "asyncio",
+      "typing",
+      "mcp",
+      "httpx",
+      "anyio",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/stdio.py": [
+      "task_managers",
+      "base",
+      "mcp",
+      "sys",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/base.py": [
+      "asyncio",
+      "typing",
+      "mcp",
+      "abc",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/connectors/websocket.py": [
+      "task_managers",
+      "base",
+      "asyncio",
+      "json",
+      "typing",
+      "uuid",
+      "mcp",
+      "websockets",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/task_managers/__init__.py": [
+      "stdio",
+      "sse",
+      "streamable_http",
+      "websocket"
+    ],
+    "openspace/grounding/backends/mcp/transport/task_managers/sse.py": [
+      "typing",
+      "mcp",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/task_managers/streamable_http.py": [
+      "contextlib",
+      "typing",
+      "mcp",
+      "datetime",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/task_managers/stdio.py": [
+      "asyncio",
+      "typing",
+      "mcp",
+      "io",
+      "sys",
+      "logging",
+      "openspace"
+    ],
+    "openspace/grounding/backends/mcp/transport/task_managers/websocket.py": [
+      "typing",
+      "mcp",
+      "openspace"
+    ],
+    "openspace/grounding/backends/shell/transport/local_connector.py": [
+      "asyncio",
+      "typing",
+      "uuid",
+      "subprocess",
+      "openspace",
+      "platform",
+      "os",
+      "tempfile",
+      "signal"
+    ],
+    "openspace/grounding/backends/shell/transport/connector.py": [
+      "typing",
+      "asyncio",
+      "openspace"
+    ],
+    "openspace/grounding/core/quality/store.py": [
+      "typing",
+      "pathlib",
+      "sqlite3",
+      "threading",
+      "datetime",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/quality/__init__.py": [
+      "types",
+      "store",
+      "manager"
+    ],
+    "openspace/grounding/core/quality/types.py": [
+      "typing",
+      "dataclasses",
+      "datetime"
+    ],
+    "openspace/grounding/core/quality/manager.py": [
+      "json",
+      "typing",
+      "store",
+      "hashlib",
+      "pathlib",
+      "gdpval_bench",
+      "datetime",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/security/__init__.py": [
+      "sandbox",
+      "e2b_sandbox",
+      "policies"
+    ],
+    "openspace/grounding/core/security/sandbox.py": [
+      "abc",
+      "typing",
+      "types"
+    ],
+    "openspace/grounding/core/security/e2b_sandbox.py": [
+      "sandbox",
+      "typing",
+      "openspace",
+      "e2b_code_interpreter",
+      "os",
+      "types"
+    ],
+    "openspace/grounding/core/security/policies.py": [
+      "asyncio",
+      "typing",
+      "sys",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/system/provider.py": [
+      "provider",
+      "typing",
+      "tool",
+      "exceptions",
+      "grounding_client",
+      "types"
+    ],
+    "openspace/grounding/core/system/__init__.py": [
+      "provider",
+      "tool"
+    ],
+    "openspace/grounding/core/system/tool.py": [
+      "types",
+      "tool",
+      "grounding_client"
+    ],
+    "openspace/grounding/core/tool/remote_tool.py": [
+      "base",
+      "json",
+      "typing",
+      "openspace",
+      "types"
+    ],
+    "openspace/grounding/core/tool/__init__.py": [
+      "base",
+      "remote_tool",
+      "local_tool"
+    ],
+    "openspace/grounding/core/tool/local_tool.py": [
+      "base",
+      "typing",
+      "asyncio"
+    ],
+    "openspace/grounding/core/tool/base.py": [
+      "asyncio",
+      "jsonschema",
+      "time",
+      "inspect",
+      "typing",
+      "abc",
+      "pydantic",
+      "exceptions",
+      "grounding_client",
+      "openspace",
+      "types",
+      "functools"
+    ],
+    "openspace/grounding/core/transport/connectors/__init__.py": [
+      "base",
+      "aiohttp_connector"
+    ],
+    "openspace/grounding/core/transport/connectors/aiohttp_connector.py": [
+      "task_managers",
+      "base",
+      "typing",
+      "yarl",
+      "aiohttp",
+      "pydantic",
+      "openspace"
+    ],
+    "openspace/grounding/core/transport/connectors/base.py": [
+      "task_managers",
+      "asyncio",
+      "typing",
+      "abc",
+      "pydantic"
+    ],
+    "openspace/grounding/core/transport/task_managers/placeholder.py": [
+      "base",
+      "typing"
+    ],
+    "openspace/grounding/core/transport/task_managers/aiohttp_connection_manager.py": [
+      "async_ctx",
+      "typing",
+      "aiohttp",
+      "asyncio"
+    ],
+    "openspace/grounding/core/transport/task_managers/__init__.py": [
+      "base",
+      "async_ctx",
+      "aiohttp_connection_manager",
+      "noop",
+      "placeholder"
+    ],
+    "openspace/grounding/core/transport/task_managers/async_ctx.py": [
+      "base",
+      "typing",
+      "asyncio",
+      "sys"
+    ],
+    "openspace/grounding/core/transport/task_managers/noop.py": [
+      "base",
+      "typing",
+      "asyncio"
+    ],
+    "openspace/grounding/core/transport/task_managers/base.py": [
+      "abc",
+      "typing",
+      "asyncio",
+      "openspace"
+    ]
+  }
+}

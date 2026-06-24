@@ -1,0 +1,839 @@
+{
+  "python_files": 137,
+  "packages": 35,
+  "max_directory_depth": 7,
+  "avg_files_per_package": 3.914285714285714,
+  "imports_graph": {
+    "launcher.py": [
+      "pathlib",
+      "dotenv",
+      "sys",
+      "quantaalpha"
+    ],
+    "quantaalpha/__init__.py": [],
+    "quantaalpha/cli.py": [
+      "fire",
+      "pathlib",
+      "dotenv",
+      "quantaalpha"
+    ],
+    "docs/conf.py": [
+      "furo",
+      "subprocess"
+    ],
+    "frontend-v2/backend/app.py": [
+      "uvicorn",
+      "json",
+      "re",
+      "datetime",
+      "quantaalpha",
+      "signal",
+      "fastapi",
+      "pydantic",
+      "traceback",
+      "uuid",
+      "pathlib",
+      "sys",
+      "asyncio",
+      "yaml",
+      "typing",
+      "subprocess",
+      "random",
+      "pandas",
+      "glob",
+      "os"
+    ],
+    "quantaalpha/pipeline/__init__.py": [],
+    "quantaalpha/pipeline/loop.py": [
+      "time",
+      "typing",
+      "tqdm",
+      "pathlib",
+      "threading",
+      "pandas",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/settings.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/planning.py": [
+      "json",
+      "re",
+      "yaml",
+      "typing",
+      "pathlib",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/factor_from_report.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "fire",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/factor_backtest.py": [
+      "fire",
+      "typing",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/base.py": [
+      "typing",
+      "time",
+      "quantaalpha"
+    ],
+    "quantaalpha/docker/__init__.py": [],
+    "quantaalpha/llm/interfaces.py": [
+      "abc",
+      "pathlib",
+      "typing",
+      "__future__"
+    ],
+    "quantaalpha/llm/config.py": [
+      "pathlib",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/llm/client.py": [
+      "json",
+      "re",
+      "inspect",
+      "ssl",
+      "azure",
+      "quantaalpha",
+      "openai",
+      "uuid",
+      "numpy",
+      "pathlib",
+      "llama",
+      "__future__",
+      "copy",
+      "urllib",
+      "time",
+      "typing",
+      "hashlib",
+      "random",
+      "tiktoken",
+      "sqlite3",
+      "os"
+    ],
+    "quantaalpha/llm/__init__.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/core/exception.py": [],
+    "quantaalpha/core/knowledge_base.py": [
+      "pathlib",
+      "quantaalpha",
+      "dill"
+    ],
+    "quantaalpha/core/evolving_agent.py": [
+      "typing",
+      "tqdm",
+      "abc",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/conf.py": [
+      "typing",
+      "pathlib",
+      "__future__",
+      "pydantic",
+      "os",
+      "pydantic_settings"
+    ],
+    "quantaalpha/core/evaluation.py": [
+      "abc",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/evolving_framework.py": [
+      "dataclasses",
+      "typing",
+      "abc",
+      "__future__",
+      "copy",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/__init__.py": [],
+    "quantaalpha/core/proposal.py": [
+      "abc",
+      "typing",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/prompts.py": [
+      "pathlib",
+      "quantaalpha",
+      "yaml"
+    ],
+    "quantaalpha/core/experiment.py": [
+      "typing",
+      "uuid",
+      "abc",
+      "pathlib",
+      "shutil",
+      "platform",
+      "collections",
+      "__future__",
+      "os",
+      "copy",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/utils.py": [
+      "json",
+      "typing",
+      "multiprocessing",
+      "filelock",
+      "pathlib",
+      "collections",
+      "random",
+      "pickle",
+      "__future__",
+      "fuzzywuzzy",
+      "functools",
+      "quantaalpha",
+      "importlib"
+    ],
+    "quantaalpha/core/scenario.py": [
+      "abc",
+      "quantaalpha"
+    ],
+    "quantaalpha/core/template.py": [
+      "pathlib",
+      "typing",
+      "jinja2",
+      "yaml"
+    ],
+    "quantaalpha/core/developer.py": [
+      "abc",
+      "typing",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/app/__init__.py": [],
+    "quantaalpha/factors/runner.py": [
+      "pandarallel",
+      "typing",
+      "subprocess",
+      "pathlib",
+      "pickle",
+      "sys",
+      "pandas",
+      "os",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/library.py": [
+      "json",
+      "pandas",
+      "typing",
+      "numpy",
+      "hashlib",
+      "pathlib",
+      "logging",
+      "datetime",
+      "os"
+    ],
+    "quantaalpha/factors/qlib_coder.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/feedback.py": [
+      "json",
+      "pathlib",
+      "pandas",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/__init__.py": [],
+    "quantaalpha/factors/proposal.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "pandas",
+      "os",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/experiment.py": [
+      "pathlib",
+      "copy",
+      "rdagent",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/qlib_utils.py": [
+      "re",
+      "io",
+      "pathlib",
+      "shutil",
+      "sys",
+      "pandas",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/workspace.py": [
+      "pathlib",
+      "subprocess",
+      "rdagent"
+    ],
+    "quantaalpha/factors/qlib_experiment_init.py": [
+      "pathlib",
+      "sys",
+      "importlib"
+    ],
+    "quantaalpha/utils/env.py": [
+      "json",
+      "typing",
+      "uuid",
+      "subprocess",
+      "abc",
+      "pathlib",
+      "rich",
+      "pickle",
+      "pydantic",
+      "os",
+      "quantaalpha",
+      "docker"
+    ],
+    "quantaalpha/utils/__init__.py": [
+      "re",
+      "typing",
+      "sys",
+      "types",
+      "importlib"
+    ],
+    "quantaalpha/utils/workflow.py": [
+      "dataclasses",
+      "typing",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "pickle",
+      "threading",
+      "datetime",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/__init__.py": [],
+    "quantaalpha/backtest/factor_calculator.py": [
+      "json",
+      "typing",
+      "numpy",
+      "qlib",
+      "hashlib",
+      "subprocess",
+      "pathlib",
+      "logging",
+      "sys",
+      "pandas",
+      "os",
+      "tempfile",
+      "quantaalpha"
+    ],
+    "quantaalpha/backtest/runner.py": [
+      "json",
+      "time",
+      "yaml",
+      "custom_factor_calculator",
+      "typing",
+      "numpy",
+      "qlib",
+      "pathlib",
+      "logging",
+      "sys",
+      "pandas",
+      "factor_loader",
+      "os",
+      "traceback"
+    ],
+    "quantaalpha/backtest/factor_loader.py": [
+      "logging",
+      "pathlib",
+      "typing",
+      "json"
+    ],
+    "quantaalpha/backtest/__init__.py": [
+      "factor_loader",
+      "factor_calculator",
+      "runner"
+    ],
+    "quantaalpha/backtest/custom_factor_calculator.py": [
+      "joblib",
+      "json",
+      "time",
+      "pandas",
+      "yaml",
+      "typing",
+      "numpy",
+      "qlib",
+      "hashlib",
+      "io",
+      "pathlib",
+      "signal",
+      "logging",
+      "sys",
+      "warnings",
+      "os",
+      "quantaalpha",
+      "tools"
+    ],
+    "quantaalpha/backtest/run_backtest.py": [
+      "dotenv",
+      "pathlib",
+      "argparse",
+      "sys",
+      "logging",
+      "traceback",
+      "quantaalpha"
+    ],
+    "quantaalpha/components/__init__.py": [],
+    "quantaalpha/log/time.py": [
+      "functools",
+      "time",
+      "quantaalpha"
+    ],
+    "quantaalpha/log/__init__.py": [
+      "pathlib",
+      "rdagent"
+    ],
+    "quantaalpha/coder/__init__.py": [],
+    "quantaalpha/coder/costeer/task.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/config.py": [
+      "typing",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/evolving_agent.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/__init__.py": [
+      "pathlib",
+      "pickle",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/knowledge_management.py": [
+      "itertools",
+      "json",
+      "re",
+      "typing",
+      "pathlib",
+      "random",
+      "__future__",
+      "copy",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/scheduler.py": [
+      "random",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/evolvable_subjects.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/evolving_strategy.py": [
+      "abc",
+      "pathlib",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/costeer/evaluators.py": [
+      "abc",
+      "typing",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/knowledge/graph.py": [
+      "typing",
+      "pathlib",
+      "collections",
+      "random",
+      "pickle",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/knowledge/vector_base.py": [
+      "typing",
+      "uuid",
+      "scipy",
+      "pathlib",
+      "pandas",
+      "quantaalpha"
+    ],
+    "quantaalpha/coder/knowledge/__init__.py": [],
+    "quantaalpha/components/benchmark/eval_method.py": [
+      "typing",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "pandas",
+      "quantaalpha"
+    ],
+    "quantaalpha/components/benchmark/conf.py": [
+      "pathlib",
+      "typing",
+      "dataclasses",
+      "quantaalpha"
+    ],
+    "quantaalpha/components/benchmark/__init__.py": [],
+    "quantaalpha/components/runner/__init__.py": [
+      "typing",
+      "pathlib",
+      "shutil",
+      "pickle",
+      "rdagent",
+      "quantaalpha"
+    ],
+    "quantaalpha/components/proposal/__init__.py": [
+      "typing",
+      "abc",
+      "pathlib",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/runner.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/qlib_coder.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/__init__.py": [],
+    "quantaalpha/contrib/model/proposal.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/experiment.py": [
+      "rdagent"
+    ],
+    "quantaalpha/contrib/model/coder/__init__.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/model.py": [
+      "typing",
+      "pathlib",
+      "pickle",
+      "site",
+      "traceback",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/gt_code.py": [
+      "torch_geometric",
+      "typing",
+      "torch",
+      "math"
+    ],
+    "quantaalpha/contrib/model/coder/task_loader.py": [
+      "json",
+      "re",
+      "pathlib",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/evolving_strategy.py": [
+      "pathlib",
+      "json",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/evaluators.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/eva_utils.py": [
+      "json",
+      "typing",
+      "numpy",
+      "pathlib",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/eval.py": [
+      "torch",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/one_shot/__init__.py": [
+      "pathlib",
+      "re",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/linkx.py": [
+      "torch_geometric",
+      "torch",
+      "math"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/pmlp.py": [
+      "torch_geometric",
+      "typing",
+      "torch"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/dirgnn.py": [
+      "torch_geometric",
+      "copy",
+      "torch"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/visnet.py": [
+      "torch_geometric",
+      "typing",
+      "torch",
+      "math"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/A-DGN.py": [
+      "torch_geometric",
+      "typing",
+      "torch",
+      "math"
+    ],
+    "quantaalpha/contrib/model/coder/benchmark/gt_code/gpsconv.py": [
+      "inspect",
+      "typing",
+      "torch",
+      "torch_geometric"
+    ],
+    "quantaalpha/utils/agent/__init__.py": [],
+    "quantaalpha/utils/agent/tpl.py": [
+      "yaml",
+      "inspect",
+      "typing",
+      "pathlib",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/utils/agent/ret.py": [
+      "abc",
+      "typing",
+      "re",
+      "quantaalpha"
+    ],
+    "quantaalpha/utils/document_reader/__init__.py": [],
+    "quantaalpha/utils/document_reader/document_reader.py": [
+      "fitz",
+      "PIL",
+      "langchain_community",
+      "typing",
+      "azure",
+      "langchain_core",
+      "io",
+      "pathlib",
+      "__future__",
+      "requests",
+      "quantaalpha"
+    ],
+    "quantaalpha/utils/loader/__init__.py": [],
+    "quantaalpha/utils/loader/experiment_loader.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/utils/loader/task_loader.py": [
+      "typing",
+      "pathlib",
+      "json",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/data_template/generate.py": [
+      "qlib",
+      "os"
+    ],
+    "quantaalpha/factors/data_template/__init__.py": [],
+    "quantaalpha/factors/regulator/__init__.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/regulator/consistency_checker.py": [
+      "json",
+      "dataclasses",
+      "typing",
+      "pathlib",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/regulator/factor_regulator.py": [
+      "typing",
+      "numpy",
+      "quantaalpha",
+      "pandas"
+    ],
+    "quantaalpha/factors/loader/pdf_loader.py": [
+      "sklearn",
+      "json",
+      "re",
+      "typing",
+      "multiprocessing",
+      "numpy",
+      "tqdm",
+      "pathlib",
+      "__future__",
+      "pandas",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/loader/__init__.py": [],
+    "quantaalpha/factors/loader/json_loader.py": [
+      "pathlib",
+      "json",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/prompts/__init__.py": [],
+    "quantaalpha/factors/coder/factor_ast.py": [
+      "dataclasses",
+      "typing",
+      "collections",
+      "sys",
+      "pyparsing",
+      "pandas"
+    ],
+    "quantaalpha/factors/coder/config.py": [
+      "typing",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/__init__.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/test.py": [
+      "pathlib",
+      "jinja2"
+    ],
+    "quantaalpha/factors/coder/expr_parser.py": [
+      "numpy",
+      "re",
+      "sys",
+      "pyparsing"
+    ],
+    "quantaalpha/factors/coder/factor.py": [
+      "typing",
+      "uuid",
+      "subprocess",
+      "filelock",
+      "pathlib",
+      "__future__",
+      "site",
+      "pandas",
+      "os",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/evolving_strategy.py": [
+      "json",
+      "re",
+      "pathlib",
+      "__future__",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/evaluators.py": [
+      "pathlib",
+      "re",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/eva_utils.py": [
+      "json",
+      "typing",
+      "io",
+      "pathlib",
+      "abc",
+      "pandas",
+      "jinja2",
+      "quantaalpha"
+    ],
+    "quantaalpha/factors/coder/function_lib.py": [
+      "joblib",
+      "numpy",
+      "scipy",
+      "pandas",
+      "operator"
+    ],
+    "quantaalpha/app/benchmark/__init__.py": [],
+    "quantaalpha/app/utils/__init__.py": [],
+    "quantaalpha/app/utils/health_check.py": [
+      "socket",
+      "quantaalpha",
+      "docker"
+    ],
+    "quantaalpha/app/utils/info.py": [
+      "setuptools_scm",
+      "pathlib",
+      "platform",
+      "importlib",
+      "sys",
+      "requests",
+      "quantaalpha",
+      "docker"
+    ],
+    "quantaalpha/app/benchmark/factor/analysis.py": [
+      "matplotlib",
+      "json",
+      "numpy",
+      "pathlib",
+      "pickle",
+      "pandas",
+      "fire",
+      "seaborn",
+      "quantaalpha"
+    ],
+    "quantaalpha/app/benchmark/factor/__init__.py": [],
+    "quantaalpha/app/benchmark/factor/eval.py": [
+      "quantaalpha"
+    ],
+    "quantaalpha/app/benchmark/model/__init__.py": [],
+    "quantaalpha/app/benchmark/model/eval.py": [
+      "pathlib",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/evolution/controller.py": [
+      "json",
+      "dataclasses",
+      "pandas",
+      "typing",
+      "trajectory",
+      "pathlib",
+      "__future__",
+      "threading",
+      "mutation",
+      "crossover",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/evolution/mutation.py": [
+      "json",
+      "re",
+      "yaml",
+      "typing",
+      "trajectory",
+      "pathlib",
+      "random",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/evolution/__init__.py": [
+      "crossover",
+      "controller",
+      "trajectory",
+      "mutation"
+    ],
+    "quantaalpha/pipeline/evolution/trajectory.py": [
+      "itertools",
+      "json",
+      "dataclasses",
+      "typing",
+      "hashlib",
+      "pathlib",
+      "random",
+      "__future__",
+      "datetime",
+      "enum",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/evolution/crossover.py": [
+      "itertools",
+      "json",
+      "re",
+      "yaml",
+      "typing",
+      "trajectory",
+      "pathlib",
+      "random",
+      "__future__",
+      "quantaalpha"
+    ],
+    "quantaalpha/pipeline/prompts/__init__.py": [],
+    "quantaalpha/pipeline/factor_mining/planning.py": [
+      "pathlib",
+      "typing",
+      "quantaalpha"
+    ]
+  }
+}

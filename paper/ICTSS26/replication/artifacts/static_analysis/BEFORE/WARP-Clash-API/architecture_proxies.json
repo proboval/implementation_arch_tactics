@@ -1,0 +1,126 @@
+{
+  "python_files": 20,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 20.0,
+  "imports_graph": {
+    "config.py": [
+      "os"
+    ],
+    "app.py": [
+      "config",
+      "services",
+      "gunicorn",
+      "argparse",
+      "sys",
+      "utils"
+    ],
+    "tests/test_utils.py": [
+      "unittest",
+      "utils"
+    ],
+    "utils/wireguard.py": [
+      "base64",
+      "cryptography"
+    ],
+    "utils/proxy.py": [
+      "config",
+      "requests"
+    ],
+    "utils/node_name.py": [
+      "faker",
+      "uuid"
+    ],
+    "utils/sub_useragent.py": [],
+    "utils/logger.py": [
+      "os",
+      "logging"
+    ],
+    "utils/geoip.py": [
+      "maxminddb",
+      "logging"
+    ],
+    "utils/entrypoints.py": [
+      "config",
+      "csv",
+      "logging",
+      "models",
+      "flask",
+      "os",
+      "copy"
+    ],
+    "models/__init__.py": [
+      "account",
+      "entrypoint"
+    ],
+    "models/entrypoint.py": [
+      "datetime"
+    ],
+    "models/account.py": [
+      "logging",
+      "json",
+      "datetime"
+    ],
+    "services/web_service.py": [
+      "config",
+      "time",
+      "services",
+      "faker",
+      "logging",
+      "utils",
+      "flask",
+      "functools"
+    ],
+    "services/tasks.py": [
+      "time",
+      "services",
+      "sys",
+      "logging",
+      "models",
+      "utils"
+    ],
+    "services/subscription.py": [
+      "config",
+      "urllib",
+      "json",
+      "configparser",
+      "yaml",
+      "services",
+      "random",
+      "logging",
+      "utils",
+      "models",
+      "base64",
+      "tempfile",
+      "string",
+      "copy",
+      "flask"
+    ],
+    "services/cloudflare.py": [
+      "faker",
+      "random",
+      "datetime",
+      "models",
+      "requests"
+    ],
+    "services/common.py": [
+      "services",
+      "logging",
+      "utils",
+      "models"
+    ],
+    "services/scheduled_service.py": [
+      "apscheduler",
+      "config",
+      "time",
+      "services",
+      "logging",
+      "sys"
+    ],
+    "services/account.py": [
+      "logging",
+      "utils",
+      "services"
+    ]
+  }
+}

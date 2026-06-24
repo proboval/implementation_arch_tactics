@@ -1,0 +1,64 @@
+{
+  "python_files": 9,
+  "packages": 3,
+  "max_directory_depth": 5,
+  "avg_files_per_package": 3.0,
+  "imports_graph": {
+    "e2e_demo/__init__.py": [],
+    ".agent/skills/superpowers-workflow/scripts/record_activation.py": [
+      "pathlib",
+      "datetime",
+      "__future__",
+      "argparse"
+    ],
+    ".agent/skills/superpowers-workflow/scripts/write_artifact.py": [
+      "pathlib",
+      "sys",
+      "__future__",
+      "argparse"
+    ],
+    ".agent/skills/superpowers-workflow/scripts/spawn_subagent.py": [
+      "subprocess",
+      "argparse",
+      "typing",
+      "sys",
+      "pathlib",
+      "time",
+      "uuid",
+      "json"
+    ],
+    "e2e_demo/tests/test_e2e.py": [
+      "socket",
+      "subprocess",
+      "os",
+      "httpx",
+      "sys",
+      "pathlib",
+      "time",
+      "__future__",
+      "json"
+    ],
+    "e2e_demo/sync_tool/sync.py": [
+      "dataclasses",
+      "os",
+      "argparse",
+      "typing",
+      "logging",
+      "random",
+      "httpx",
+      "pathlib",
+      "json",
+      "uuid",
+      "__future__",
+      "time"
+    ],
+    "e2e_demo/sync_tool/__init__.py": [],
+    "e2e_demo/api/__init__.py": [],
+    "e2e_demo/api/app.py": [
+      "fastapi",
+      "pydantic",
+      "__future__",
+      "typing"
+    ]
+  }
+}

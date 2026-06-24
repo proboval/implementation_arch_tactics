@@ -1,0 +1,37 @@
+{
+  "python_files": 7,
+  "packages": 1,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 7.0,
+  "imports_graph": {
+    "manage.py": [
+      "os",
+      "django",
+      "sys"
+    ],
+    "herokufreeproxy/database.py": [
+      "os",
+      "dj_database_url"
+    ],
+    "herokufreeproxy/__init__.py": [],
+    "herokufreeproxy/settings.py": [
+      "os",
+      "database",
+      "static",
+      "security"
+    ],
+    "herokufreeproxy/urls.py": [
+      "django",
+      "proxy"
+    ],
+    "herokufreeproxy/wsgi.py": [
+      "os",
+      "django",
+      "whitenoise"
+    ],
+    "herokufreeproxy/proxy/urls.py": [
+      "django",
+      "proxy"
+    ]
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "main.py": {
+    "path": "main.py",
+    "imports": [
+      "os",
+      "sys",
+      "signal",
+      "threading",
+      "time",
+      "uvicorn",
+      "dotenv.load_dotenv",
+      "shuo.server.app",
+      "shuo.services.twilio_client.make_outbound_call",
+      "shuo.log.setup_logging",
+      "shuo.log.Logger",
+      "shuo.log.get_logger",
+      "shuo.server"
+    ],
+    "classes": [],
+    "functions": [
+      "check_environment",
+      "start_server",
+      "main",
+      "_handle_sigterm"
+    ],
+    "size": 4678
+  },
+  "shuo/server.py": {
+    "path": "shuo/server.py",
+    "imports": [
+      "json",
+      "os",
+      "time",
+      "asyncio",
+      "random",
+      "collections.defaultdict",
+      "pathlib.Path",
+      "typing.List",
+      "typing.Optional",
+      "fastapi.FastAPI",
+      "fastapi.WebSocket",
+      "fastapi.Response",
+      "fastapi.Query",
+      "fastapi.responses.JSONResponse",
+      "fastapi.responses.PlainTextResponse",
+      "openai.AsyncOpenAI",
+      "conversation.run_conversation_over_twilio",
+      "services.twilio_client.make_outbound_call",
+      "log.get_logger"
+    ],
+    "classes": [],
+    "functions": [
+      "health",
+      "twiml",
+      "latest_trace",
+      "trigger_call",
+      "_make_clients",
+      "_measure_ttft",
+      "bench_ttft",
+      "websocket_endpoint"
+    ],
+    "size": 10243
+  },
+  "shuo/log.py": {
+    "path": "shuo/log.py",
+    "imports": [
+      "logging",
+      "sys",
+      "typing.Optional",
+      "types.Event",
+      "types.StreamStartEvent",
+      "types.StreamStopEvent",
+      "types.MediaEvent",
+      "types.FluxStartOfTurnEvent",
+      "types.FluxEndOfTurnEvent",
+      "types.AgentTurnDoneEvent",
+      "types.Action",
+      "types.FeedFluxAction",
+      "types.StartAgentTurnAction",
+      "types.ResetAgentTurnAction",
+      "types.Phase"
+    ],
+    "classes": [
+      "C",
+      "ColorFormatter",
+      "Logger",
+      "ServiceLogger"
+    ],
+    "functions": [
+      "_c",
+      "_quote",
+      "setup_logging",
+      "get_logger",
+      "format",
+      "server_starting",
+      "server_ready",
+      "call_initiating",
+      "call_initiated",
+      "websocket_connected",
+      "websocket_disconnected",
+      "shutdown",
+      "__init__",
+      "event",
+      "action",
+      "transition",
+      "error",
+      "__init__",
+      "connected",
+      "disconnected",
+      "cancelled",
+      "error",
+      "debug",
+      "info"
+    ],
+    "size": 9579
+  },
+  "shuo/conversation.py": {
+    "path": "shuo/conversation.py",
+    "imports": [
+      "json",
+      "asyncio",
+      "typing.Optional",
+      "fastapi.WebSocket",
+      "types.AppState",
+      "types.Event",
+      "types.StreamStartEvent",
+      "types.StreamStopEvent",
+      "types.FluxStartOfTurnEvent",
+      "types.FluxEndOfTurnEvent",
+      "types.AgentTurnDoneEvent",
+      "types.FeedFluxAction",
+      "types.StartAgentTurnAction",
+      "types.ResetAgentTurnAction",
+      "state.process_event",
+      "services.flux.FluxService",
+      "services.tts_pool.TTSPool",
+      "services.twilio_client.parse_twilio_message",
+      "agent.Agent",
+      "tracer.Tracer",
+      "log.Logger",
+      "log.get_logger"
+    ],
+    "classes": [],
+    "functions": [
+      "run_conversation_over_twilio",
+      "on_flux_end_of_turn",
+      "on_flux_start_of_turn",
+      "read_twilio"
+    ],
+    "size": 5077
+  },
+  "shuo/__init__.py": {
+    "path": "shuo/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 31
+  },
+  "shuo/types.py": {
+    "path": "shuo/types.py",
+    "imports": [
+      "dataclasses.dataclass",
+      "enum.Enum",
+      "enum.auto",
+      "typing.Optional",
+      "typing.Union",
+      "typing.List"
+    ],
+    "classes": [
+      "Phase",
+      "AppState",
+      "StreamStartEvent",
+      "StreamStopEvent",
+      "MediaEvent",
+      "FluxStartOfTurnEvent",
+      "FluxEndOfTurnEvent",
+      "AgentTurnDoneEvent",
+      "FeedFluxAction",
+      "StartAgentTurnAction",
+      "ResetAgentTurnAction"
+    ],
+    "functions": [],
+    "size": 2564
+  },
+  "shuo/agent.py": {
+    "path": "shuo/agent.py",
+    "imports": [
+      "asyncio",
+      "time",
+      "typing.Optional",
+      "typing.Callable",
+      "typing.List",
+      "typing.Dict",
+      "fastapi.WebSocket",
+      "services.llm.LLMService",
+      "services.tts.TTSService",
+      "services.tts_pool.TTSPool",
+      "services.player.AudioPlayer",
+      "tracer.Tracer",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "Agent"
+    ],
+    "functions": [
+      "_ms_since",
+      "__init__",
+      "is_turn_active",
+      "history",
+      "start_turn",
+      "cancel_turn",
+      "cleanup",
+      "_on_llm_token",
+      "_on_llm_done",
+      "_on_tts_audio",
+      "_on_tts_done",
+      "_on_playback_done"
+    ],
+    "size": 6742
+  },
+  "shuo/tracer.py": {
+    "path": "shuo/tracer.py",
+    "imports": [
+      "json",
+      "time",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "dataclasses.asdict",
+      "log.get_logger"
+    ],
+    "classes": [
+      "Span",
+      "Marker",
+      "Turn",
+      "Tracer"
+    ],
+    "functions": [
+      "__init__",
+      "begin_turn",
+      "begin",
+      "end",
+      "mark",
+      "cancel_turn",
+      "save"
+    ],
+    "size": 3987
+  },
+  "shuo/state.py": {
+    "path": "shuo/state.py",
+    "imports": [
+      "dataclasses.replace",
+      "typing.List",
+      "typing.Tuple",
+      "types.AppState",
+      "types.Phase",
+      "types.Event",
+      "types.StreamStartEvent",
+      "types.StreamStopEvent",
+      "types.MediaEvent",
+      "types.FluxStartOfTurnEvent",
+      "types.FluxEndOfTurnEvent",
+      "types.AgentTurnDoneEvent",
+      "types.Action",
+      "types.FeedFluxAction",
+      "types.StartAgentTurnAction",
+      "types.ResetAgentTurnAction"
+    ],
+    "classes": [],
+    "functions": [
+      "process_event"
+    ],
+    "size": 2077
+  },
+  "tests/__init__.py": {
+    "path": "tests/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 16
+  },
+  "tests/test_update.py": {
+    "path": "tests/test_update.py",
+    "imports": [
+      "pytest",
+      "dataclasses.replace",
+      "shuo.types.AppState",
+      "shuo.types.Phase",
+      "shuo.types.StreamStartEvent",
+      "shuo.types.StreamStopEvent",
+      "shuo.types.MediaEvent",
+      "shuo.types.FluxStartOfTurnEvent",
+      "shuo.types.FluxEndOfTurnEvent",
+      "shuo.types.AgentTurnDoneEvent",
+      "shuo.types.FeedFluxAction",
+      "shuo.types.StartAgentTurnAction",
+      "shuo.types.ResetAgentTurnAction",
+      "shuo.state.process_event"
+    ],
+    "classes": [
+      "TestStreamLifecycle",
+      "TestMediaRouting",
+      "TestFluxEndOfTurn",
+      "TestFluxStartOfTurn",
+      "TestAgentTurnDone",
+      "TestCompleteFlow",
+      "TestEdgeCases"
+    ],
+    "functions": [
+      "initial_state",
+      "listening_state",
+      "responding_state",
+      "test_stream_start_sets_stream_sid",
+      "test_stream_start_resets_phase",
+      "test_stream_stop_resets_agent_if_responding",
+      "test_stream_stop_no_action_if_listening",
+      "test_media_feeds_flux",
+      "test_media_feeds_flux_in_any_phase",
+      "test_media_does_not_change_state",
+      "test_end_of_turn_starts_agent",
+      "test_end_of_turn_empty_transcript_ignored",
+      "test_end_of_turn_ignored_if_responding",
+      "test_start_of_turn_interrupts_agent",
+      "test_start_of_turn_ignored_if_listening",
+      "test_done_transitions_to_listening",
+      "test_done_ignored_if_listening",
+      "test_full_conversation_turn",
+      "test_interrupt_during_response",
+      "test_multi_turn",
+      "test_audio_always_forwarded_to_flux",
+      "test_interrupt_then_new_turn",
+      "test_state_immutability",
+      "test_stream_stop_in_listening_is_safe",
+      "test_agent_done_in_wrong_phase_is_safe",
+      "test_start_of_turn_in_listening_is_safe",
+      "test_end_of_turn_without_stream_sid"
+    ],
+    "size": 11905
+  },
+  "scripts/service_map.py": {
+    "path": "scripts/service_map.py",
+    "imports": [
+      "sys",
+      "matplotlib.pyplot",
+      "matplotlib.patheffects",
+      "cartopy.crs",
+      "cartopy.feature",
+      "numpy"
+    ],
+    "classes": [],
+    "functions": [
+      "_text_outline",
+      "make_map"
+    ],
+    "size": 8566
+  },
+  "scripts/visualize.py": {
+    "path": "scripts/visualize.py",
+    "imports": [
+      "sys",
+      "json",
+      "urllib.request",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "matplotlib.pyplot",
+      "matplotlib.patches",
+      "matplotlib.ticker.FuncFormatter"
+    ],
+    "classes": [],
+    "functions": [
+      "load_trace",
+      "fetch_trace",
+      "find_latest_trace",
+      "_fmt_ms",
+      "_short_id",
+      "render_trace",
+      "_render_turn",
+      "main"
+    ],
+    "size": 10133
+  },
+  "scripts/bench_chart.py": {
+    "path": "scripts/bench_chart.py",
+    "imports": [
+      "sys",
+      "json",
+      "pathlib.Path",
+      "typing.Optional",
+      "matplotlib.pyplot",
+      "numpy",
+      "matplotlib.ticker.MultipleLocator"
+    ],
+    "classes": [],
+    "functions": [
+      "make_chart",
+      "_color"
+    ],
+    "size": 5165
+  },
+  "shuo/services/tts_pool.py": {
+    "path": "shuo/services/tts_pool.py",
+    "imports": [
+      "asyncio",
+      "time",
+      "typing.Optional",
+      "typing.Callable",
+      "typing.Awaitable",
+      "typing.List",
+      "dataclasses.dataclass",
+      "tts.TTSService",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "_Entry",
+      "TTSPool"
+    ],
+    "functions": [
+      "_noop_audio",
+      "_noop_done",
+      "__init__",
+      "available",
+      "start",
+      "get",
+      "stop",
+      "_trigger_fill",
+      "_fill_loop",
+      "_evict_stale"
+    ],
+    "size": 5725
+  },
+  "shuo/services/tts.py": {
+    "path": "shuo/services/tts.py",
+    "imports": [
+      "os",
+      "json",
+      "asyncio",
+      "typing.Optional",
+      "typing.Callable",
+      "typing.Awaitable",
+      "websockets",
+      "websockets.client.WebSocketClientProtocol",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "TTSService"
+    ],
+    "functions": [
+      "__init__",
+      "is_active",
+      "bind",
+      "start",
+      "send",
+      "flush",
+      "stop",
+      "cancel",
+      "_cleanup",
+      "_receive_loop",
+      "_handle_message"
+    ],
+    "size": 5817
+  },
+  "shuo/services/__init__.py": {
+    "path": "shuo/services/__init__.py",
+    "imports": [
+      "flux.FluxService",
+      "llm.LLMService",
+      "tts.TTSService",
+      "tts_pool.TTSPool",
+      "player.AudioPlayer",
+      "twilio_client.make_outbound_call"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 558
+  },
+  "shuo/services/llm.py": {
+    "path": "shuo/services/llm.py",
+    "imports": [
+      "os",
+      "asyncio",
+      "typing.Optional",
+      "typing.Callable",
+      "typing.Awaitable",
+      "typing.List",
+      "typing.Dict",
+      "openai.AsyncOpenAI",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "LLMService"
+    ],
+    "functions": [
+      "__init__",
+      "is_active",
+      "history",
+      "clear_history",
+      "start",
+      "cancel",
+      "_generate"
+    ],
+    "size": 3691
+  },
+  "shuo/services/twilio_client.py": {
+    "path": "shuo/services/twilio_client.py",
+    "imports": [
+      "os",
+      "json",
+      "base64",
+      "typing.Optional",
+      "twilio.rest.Client",
+      "types.Event",
+      "types.StreamStartEvent",
+      "types.StreamStopEvent",
+      "types.MediaEvent",
+      "log.Logger"
+    ],
+    "classes": [],
+    "functions": [
+      "make_outbound_call",
+      "parse_twilio_message"
+    ],
+    "size": 1929
+  },
+  "shuo/services/player.py": {
+    "path": "shuo/services/player.py",
+    "imports": [
+      "json",
+      "asyncio",
+      "typing.List",
+      "typing.Optional",
+      "typing.Callable",
+      "fastapi.WebSocket",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "AudioPlayer"
+    ],
+    "functions": [
+      "__init__",
+      "is_playing",
+      "start",
+      "send_chunk",
+      "mark_tts_done",
+      "play",
+      "stop_and_clear",
+      "wait_until_done",
+      "_playback_loop",
+      "_send_audio",
+      "_send_clear"
+    ],
+    "size": 4606
+  },
+  "shuo/services/flux.py": {
+    "path": "shuo/services/flux.py",
+    "imports": [
+      "os",
+      "asyncio",
+      "typing.Optional",
+      "typing.Callable",
+      "typing.Awaitable",
+      "deepgram.AsyncDeepgramClient",
+      "deepgram.DeepgramClientEnvironment",
+      "log.ServiceLogger"
+    ],
+    "classes": [
+      "FluxService"
+    ],
+    "functions": [
+      "__init__",
+      "is_active",
+      "start",
+      "send",
+      "stop",
+      "_cleanup",
+      "_on_message",
+      "_on_error"
+    ],
+    "size": 5149
+  }
+}

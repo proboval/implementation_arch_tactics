@@ -1,0 +1,357 @@
+{
+  "config.py": {
+    "path": "config.py",
+    "imports": [
+      "pathlib.Path",
+      "os",
+      "dotenv.load_dotenv"
+    ],
+    "classes": [
+      "Config"
+    ],
+    "functions": [],
+    "size": 525
+  },
+  "test.py": {
+    "path": "test.py",
+    "imports": [
+      "typing.List",
+      "unittest"
+    ],
+    "classes": [
+      "TestCalculateSum",
+      "TestCalculateMedian"
+    ],
+    "functions": [
+      "calculate_sum",
+      "calculate_median",
+      "main",
+      "test_normal_list",
+      "test_float_numbers",
+      "test_empty_list",
+      "test_negative_numbers",
+      "test_odd_length_list",
+      "test_even_length_list",
+      "test_unordered_list",
+      "test_empty_list",
+      "test_negative_numbers"
+    ],
+    "size": 3216
+  },
+  "app.py": {
+    "path": "app.py",
+    "imports": [
+      "flask.Flask",
+      "flask.render_template",
+      "flask.request",
+      "flask.jsonify",
+      "flask.url_for",
+      "ce3.Assistant",
+      "os",
+      "werkzeug.utils.secure_filename",
+      "base64",
+      "config.Config"
+    ],
+    "classes": [],
+    "functions": [
+      "home",
+      "chat",
+      "upload_file",
+      "reset"
+    ],
+    "size": 4341
+  },
+  "ce3.py": {
+    "path": "ce3.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "tools/screenshottool.py": {
+    "path": "tools/screenshottool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Optional",
+      "base64",
+      "io",
+      "json",
+      "pyautogui",
+      "PIL.Image"
+    ],
+    "classes": [
+      "ScreenshotTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 2769
+  },
+  "tools/e2bcodetool.py": {
+    "path": "tools/e2bcodetool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "e2b_code_interpreter.Sandbox",
+      "dotenv.load_dotenv",
+      "os",
+      "time",
+      "json",
+      "base64"
+    ],
+    "classes": [
+      "E2bCodeTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 4605
+  },
+  "tools/filecreatortool.py": {
+    "path": "tools/filecreatortool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "os",
+      "json",
+      "typing.Union",
+      "typing.List",
+      "typing.Dict",
+      "pathlib.Path"
+    ],
+    "classes": [
+      "FileCreatorTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 5236
+  },
+  "tools/fileedittool.py": {
+    "path": "tools/fileedittool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "os",
+      "re"
+    ],
+    "classes": [
+      "FileEditTool"
+    ],
+    "functions": [
+      "execute",
+      "_edit_by_lines",
+      "_find_and_replace"
+    ],
+    "size": 3363
+  },
+  "tools/toolcreator.py": {
+    "path": "tools/toolcreator.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "rich.console.Console",
+      "rich.panel.Panel",
+      "pathlib.Path",
+      "os",
+      "dotenv.load_dotenv",
+      "re",
+      "anthropic"
+    ],
+    "classes": [
+      "ToolCreatorTool"
+    ],
+    "functions": [
+      "__init__",
+      "_sanitize_filename",
+      "_validate_tool_name",
+      "execute"
+    ],
+    "size": 4371
+  },
+  "tools/uvpackagemanager.py": {
+    "path": "tools/uvpackagemanager.py",
+    "imports": [
+      "logging",
+      "subprocess",
+      "typing.List",
+      "typing.Optional",
+      "tools.base.BaseTool"
+    ],
+    "classes": [
+      "UVPackageManager"
+    ],
+    "functions": [
+      "execute",
+      "_run_uv_command",
+      "_install_packages",
+      "_remove_packages",
+      "_update_packages",
+      "_list_packages",
+      "_init_project",
+      "_create_venv",
+      "_manage_python",
+      "_compile_requirements",
+      "_run_script"
+    ],
+    "size": 5109
+  },
+  "tools/diffeditortool.py": {
+    "path": "tools/diffeditortool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "os",
+      "typing.Dict"
+    ],
+    "classes": [
+      "DiffEditorTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 2615
+  },
+  "tools/createfolderstool.py": {
+    "path": "tools/createfolderstool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "os",
+      "pathlib",
+      "typing.List"
+    ],
+    "classes": [
+      "CreateFoldersTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 2004
+  },
+  "tools/duckduckgotool.py": {
+    "path": "tools/duckduckgotool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "requests",
+      "bs4.BeautifulSoup",
+      "urllib.parse.quote_plus"
+    ],
+    "classes": [
+      "DuckduckgoTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 2304
+  },
+  "tools/filecontentreadertool.py": {
+    "path": "tools/filecontentreadertool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "os",
+      "json",
+      "mimetypes"
+    ],
+    "classes": [
+      "FileContentReaderTool"
+    ],
+    "functions": [
+      "_should_skip",
+      "_read_file",
+      "_read_directory",
+      "execute"
+    ],
+    "size": 5297
+  },
+  "tools/lintingtool.py": {
+    "path": "tools/lintingtool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "subprocess",
+      "typing.List",
+      "json"
+    ],
+    "classes": [
+      "LintingTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 3817
+  },
+  "tools/webscrapertool.py": {
+    "path": "tools/webscrapertool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "requests",
+      "bs4.BeautifulSoup",
+      "bs4.Comment",
+      "re"
+    ],
+    "classes": [
+      "WebScraperTool"
+    ],
+    "functions": [
+      "execute"
+    ],
+    "size": 5298
+  },
+  "tools/base.py": {
+    "path": "tools/base.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.Dict"
+    ],
+    "classes": [
+      "BaseTool"
+    ],
+    "functions": [
+      "name",
+      "description",
+      "input_schema",
+      "execute"
+    ],
+    "size": 634
+  },
+  "tools/browsertool.py": {
+    "path": "tools/browsertool.py",
+    "imports": [
+      "tools.base.BaseTool",
+      "webbrowser",
+      "validators",
+      "typing.Union",
+      "typing.List",
+      "urllib.parse.urlparse"
+    ],
+    "classes": [
+      "BrowserTool"
+    ],
+    "functions": [
+      "_validate_url",
+      "execute"
+    ],
+    "size": 1607
+  },
+  "Claude-Eng-v2/ollama-eng.py": {
+    "path": "Claude-Eng-v2/ollama-eng.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "Claude-Eng-v2/main.py": {
+    "path": "Claude-Eng-v2/main.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "prompts/system_prompts.py": {
+    "path": "prompts/system_prompts.py",
+    "imports": [],
+    "classes": [
+      "SystemPrompts"
+    ],
+    "functions": [],
+    "size": 3309
+  }
+}

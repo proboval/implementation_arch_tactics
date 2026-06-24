@@ -1,0 +1,22 @@
+{
+  "available": true,
+  "has_tests": true,
+  "failure_count": 15,
+  "failed_names": [
+    "tests/test_engine_switch.py::TestEngineSwitchAPI::test_embedding_dim_warning_in_response",
+    "tests/test_engine_switch.py::TestEngineSwitchAPI::test_put_engine_success",
+    "tests/test_engine_switch.py::TestEngineSwitchResponseModel::test_engine_switch_response_model",
+    "tests/test_engine_switch.py::TestIntegrationWithExistingCode::test_app_state_uses_manager",
+    "tests/test_engine_switch.py::TestIntegrationWithExistingCode::test_get_speaker_engine_uses_manager",
+    "tests/test_engine_switch.py::TestSpeakerEngineManager::test_manager_engine_caching",
+    "tests/test_engine_switch.py::TestSpeakerEngineManager::test_manager_get_engine",
+    "tests/test_engine_switch.py::TestSpeakerEngineManager::test_manager_has_current_engine",
+    "tests/test_engine_switch.py::TestSpeakerEngineManager::test_manager_returns_embedding_dim_warning",
+    "tests/test_engine_switch.py::TestSpeakerEngineManager::test_manager_switch_engine",
+    "tests/test_exceptions.py::TestExceptionHandling::test_upload_handles_http_exception_correctly",
+    "tests/test_exceptions.py::TestSpecificExceptionHandling::test_upload_rejects_invalid_audio_format",
+    "tests/test_upload_security.py::TestFileUploadSecurity::test_reject_invalid_extension_txt",
+    "tests/test_upload_security.py::TestFileUploadSecurity::test_reject_invalid_file_extension_exe",
+    "tests/test_upload_security.py::TestFileUploadSecurity::test_reject_oversized_file"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "sgd/streams.py": {
+    "path": "sgd/streams.py",
+    "imports": [
+      "os",
+      "urllib",
+      "sgd.ptn.parse_title",
+      "sgd.utils.sanitize",
+      "sgd.utils.hr_size"
+    ],
+    "classes": [
+      "Streams"
+    ],
+    "functions": [
+      "__init__",
+      "is_valid_year",
+      "is_semi_valid_title",
+      "get_title",
+      "get_proxy_url",
+      "get_gapi_url",
+      "construct_stream",
+      "best_res"
+    ],
+    "size": 4430
+  },
+  "sgd/cache.py": {
+    "path": "sgd/cache.py",
+    "imports": [
+      "json",
+      "pickle"
+    ],
+    "classes": [
+      "Cache",
+      "Pickle",
+      "Json"
+    ],
+    "functions": [
+      "__init__",
+      "load",
+      "save",
+      "__init__",
+      "__init__"
+    ],
+    "size": 914
+  },
+  "sgd/__init__.py": {
+    "path": "sgd/__init__.py",
+    "imports": [
+      "os",
+      "json",
+      "flask.Flask",
+      "sgd.gdrive.GoogleDrive",
+      "sgd.routes"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 200
+  },
+  "sgd/utils.py": {
+    "path": "sgd/utils.py",
+    "imports": [
+      "json",
+      "requests",
+      "sgd.cache.Pickle"
+    ],
+    "classes": [],
+    "functions": [
+      "hr_size",
+      "safe_get",
+      "num_extract",
+      "is_year",
+      "sanitize",
+      "req_wrapper",
+      "req_api"
+    ],
+    "size": 2050
+  },
+  "sgd/gdrive.py": {
+    "path": "sgd/gdrive.py",
+    "imports": [
+      "requests",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "sgd.cache.Pickle",
+      "sgd.cache.Json",
+      "googleapiclient.discovery.build",
+      "google.oauth2.credentials.Credentials"
+    ],
+    "classes": [
+      "GoogleDrive"
+    ],
+    "functions": [
+      "__init__",
+      "qgen",
+      "get_query",
+      "file_list",
+      "get_drive_names",
+      "search",
+      "get_acc_token",
+      "callb",
+      "callb",
+      "check_dupe"
+    ],
+    "size": 5907
+  },
+  "sgd/ptn.py": {
+    "path": "sgd/ptn.py",
+    "imports": [
+      "PTN"
+    ],
+    "classes": [
+      "parse_title"
+    ],
+    "functions": [
+      "__init__",
+      "get_val",
+      "get_str"
+    ],
+    "size": 1488
+  },
+  "sgd/routes.py": {
+    "path": "sgd/routes.py",
+    "imports": [
+      "sgd.app",
+      "sgd.gdrive",
+      "sgd.meta.MetadataNotFound",
+      "sgd.meta.Meta",
+      "sgd.streams.Streams",
+      "json.dumps",
+      "flask.jsonify",
+      "flask.abort",
+      "flask.Response",
+      "datetime.datetime"
+    ],
+    "classes": [],
+    "functions": [
+      "init",
+      "addon_manifest",
+      "addon_stream",
+      "common_headers",
+      "get_streams"
+    ],
+    "size": 2375
+  },
+  "sgd/meta.py": {
+    "path": "sgd/meta.py",
+    "imports": [
+      "lxml",
+      "cchardet",
+      "sgd.utils",
+      "bs4.BeautifulSoup",
+      "sgd.cache.Json"
+    ],
+    "classes": [
+      "MetadataNotFound",
+      "IMDb",
+      "Meta"
+    ],
+    "functions": [
+      "__init__",
+      "get_meta_from_imdb_html",
+      "get_meta_from_imdb_sg",
+      "get_meta_from_cinemeta",
+      "set_meta",
+      "__init__"
+    ],
+    "size": 4723
+  }
+}

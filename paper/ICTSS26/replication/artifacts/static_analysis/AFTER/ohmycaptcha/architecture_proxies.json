@@ -1,0 +1,123 @@
+{
+  "python_files": 18,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 3.6,
+  "imports_graph": {
+    "main.py": [
+      "src",
+      "uvicorn",
+      "os"
+    ],
+    "tests/test_api.py": [
+      "sys",
+      "importlib",
+      "unittest",
+      "pathlib",
+      "pytest",
+      "__future__",
+      "os",
+      "fastapi"
+    ],
+    "src/__init__.py": [],
+    "src/main.py": [
+      "core",
+      "services",
+      "logging",
+      "__future__",
+      "contextlib",
+      "fastapi",
+      "api",
+      "typing"
+    ],
+    "src/core/config.py": [
+      "__future__",
+      "dataclasses",
+      "os"
+    ],
+    "src/core/__init__.py": [],
+    "src/models/task.py": [
+      "__future__",
+      "pydantic"
+    ],
+    "src/models/__init__.py": [],
+    "src/api/__init__.py": [],
+    "src/api/routes.py": [
+      "core",
+      "services",
+      "__future__",
+      "fastapi",
+      "models",
+      "logging"
+    ],
+    "src/services/recognition.py": [
+      "core",
+      "PIL",
+      "logging",
+      "__future__",
+      "io",
+      "openai",
+      "typing",
+      "base64",
+      "json",
+      "re"
+    ],
+    "src/services/recaptcha_v3.py": [
+      "playwright",
+      "core",
+      "logging",
+      "__future__",
+      "asyncio",
+      "typing"
+    ],
+    "src/services/turnstile.py": [
+      "playwright",
+      "core",
+      "logging",
+      "__future__",
+      "asyncio",
+      "typing"
+    ],
+    "src/services/recaptcha_v2.py": [
+      "playwright",
+      "core",
+      "logging",
+      "__future__",
+      "httpx",
+      "asyncio",
+      "base64",
+      "typing"
+    ],
+    "src/services/classification.py": [
+      "core",
+      "PIL",
+      "logging",
+      "__future__",
+      "io",
+      "openai",
+      "typing",
+      "base64",
+      "json",
+      "re"
+    ],
+    "src/services/__init__.py": [],
+    "src/services/task_manager.py": [
+      "uuid",
+      "typing",
+      "datetime",
+      "__future__",
+      "asyncio",
+      "enum",
+      "logging",
+      "dataclasses"
+    ],
+    "src/services/hcaptcha.py": [
+      "playwright",
+      "core",
+      "logging",
+      "__future__",
+      "asyncio",
+      "typing"
+    ]
+  }
+}

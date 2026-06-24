@@ -1,0 +1,179 @@
+{
+  "python_files": 21,
+  "packages": 0,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "config.py": [
+      "pathlib",
+      "dotenv",
+      "os"
+    ],
+    "test.py": [
+      "typing",
+      "unittest"
+    ],
+    "app.py": [
+      "os",
+      "config",
+      "base64",
+      "flask",
+      "ce3",
+      "werkzeug"
+    ],
+    "ce3.py": [
+      "pkgutil",
+      "config",
+      "json",
+      "prompt_toolkit",
+      "inspect",
+      "typing",
+      "tools",
+      "prompts",
+      "rich",
+      "anthropic",
+      "sys",
+      "logging",
+      "os",
+      "importlib"
+    ],
+    "tools/screenshottool.py": [
+      "PIL",
+      "json",
+      "typing",
+      "io",
+      "pyautogui",
+      "base64",
+      "tools"
+    ],
+    "tools/e2bcodetool.py": [
+      "json",
+      "time",
+      "dotenv",
+      "e2b_code_interpreter",
+      "base64",
+      "os",
+      "tools"
+    ],
+    "tools/filecreatortool.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "os",
+      "tools"
+    ],
+    "tools/fileedittool.py": [
+      "os",
+      "re",
+      "tools"
+    ],
+    "tools/toolcreator.py": [
+      "re",
+      "dotenv",
+      "pathlib",
+      "rich",
+      "anthropic",
+      "os",
+      "tools"
+    ],
+    "tools/uvpackagemanager.py": [
+      "typing",
+      "subprocess",
+      "logging",
+      "tools"
+    ],
+    "tools/diffeditortool.py": [
+      "os",
+      "typing",
+      "tools"
+    ],
+    "tools/createfolderstool.py": [
+      "pathlib",
+      "os",
+      "typing",
+      "tools"
+    ],
+    "tools/duckduckgotool.py": [
+      "urllib",
+      "requests",
+      "bs4",
+      "tools"
+    ],
+    "tools/filecontentreadertool.py": [
+      "os",
+      "mimetypes",
+      "json",
+      "tools"
+    ],
+    "tools/lintingtool.py": [
+      "typing",
+      "json",
+      "subprocess",
+      "tools"
+    ],
+    "tools/webscrapertool.py": [
+      "re",
+      "requests",
+      "bs4",
+      "tools"
+    ],
+    "tools/base.py": [
+      "abc",
+      "typing"
+    ],
+    "tools/browsertool.py": [
+      "urllib",
+      "validators",
+      "webbrowser",
+      "typing",
+      "tools"
+    ],
+    "Claude-Eng-v2/ollama-eng.py": [
+      "asyncio",
+      "json",
+      "re",
+      "time",
+      "prompt_toolkit",
+      "difflib",
+      "tavily",
+      "typing",
+      "dotenv",
+      "ollama",
+      "aiohttp",
+      "rich",
+      "logging",
+      "datetime",
+      "os"
+    ],
+    "Claude-Eng-v2/main.py": [
+      "json",
+      "re",
+      "prompt_toolkit",
+      "base64",
+      "websockets",
+      "anthropic",
+      "datetime",
+      "tavily",
+      "venv",
+      "signal",
+      "io",
+      "shutil",
+      "speech_recognition",
+      "mimetypes",
+      "sys",
+      "logging",
+      "PIL",
+      "asyncio",
+      "time",
+      "difflib",
+      "typing",
+      "dotenv",
+      "subprocess",
+      "rich",
+      "glob",
+      "os",
+      "pydub"
+    ],
+    "prompts/system_prompts.py": []
+  }
+}

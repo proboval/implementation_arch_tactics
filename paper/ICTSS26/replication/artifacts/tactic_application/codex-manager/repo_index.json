@@ -1,0 +1,2688 @@
+{
+  "webui.py": {
+    "path": "webui.py",
+    "imports": [
+      "uvicorn",
+      "logging",
+      "sys",
+      "pathlib.Path",
+      "os",
+      "src.core.utils.setup_logging",
+      "src.database.init_db.initialize_database",
+      "src.config.settings.get_settings",
+      "src.web.app.app",
+      "argparse",
+      "os",
+      "src.config.settings.update_settings"
+    ],
+    "classes": [],
+    "functions": [
+      "_load_dotenv",
+      "setup_application",
+      "start_webui",
+      "main"
+    ],
+    "size": 4380
+  },
+  "tests/test_mail_code_reuse_guard.py": {
+    "path": "tests/test_mail_code_reuse_guard.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "tests/test_duck_mail_service.py": {
+    "path": "tests/test_duck_mail_service.py",
+    "imports": [
+      "src.services.duck_mail.DuckMailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHTTPClient"
+    ],
+    "functions": [
+      "test_create_email_creates_account_and_fetches_token",
+      "test_get_verification_code_reads_message_detail_and_extracts_code",
+      "__init__",
+      "json",
+      "__init__",
+      "request"
+    ],
+    "size": 4457
+  },
+  "tests/test_codex_auth_flow.py": {
+    "path": "tests/test_codex_auth_flow.py",
+    "imports": [
+      "types.SimpleNamespace",
+      "core.openai.codex_auth",
+      "core.openai.codex_auth.CodexAuthEngine",
+      "src.core.register.PhaseResult",
+      "src.core.register.RegistrationEngine",
+      "src.services.EmailServiceType"
+    ],
+    "classes": [
+      "DummySettings",
+      "FakeEmailService",
+      "FakeResponse",
+      "FakeSession"
+    ],
+    "functions": [
+      "_build_engine",
+      "test_codex_auth_run_reuses_working_login_flow_without_manual_otp_send",
+      "test_resolve_workspace_id_falls_back_to_cookie_path_when_consent_page_has_no_workspace",
+      "__init__",
+      "__init__",
+      "get",
+      "fake_start_oauth",
+      "fake_submit_login_password_step",
+      "fake_phase_otp_secondary"
+    ],
+    "size": 5162
+  },
+  "tests/test_registration_otp_phase.py": {
+    "path": "tests/test_registration_otp_phase.py",
+    "imports": [
+      "src.core.register",
+      "src.core.register.ERROR_OTP_TIMEOUT_SECONDARY",
+      "src.core.register.PhaseContext",
+      "src.core.register.PhaseResult",
+      "src.core.register.RegistrationEngine",
+      "src.services.EmailServiceType"
+    ],
+    "classes": [
+      "DummySettings",
+      "FakeEmailService",
+      "FastResendEmailService",
+      "FakeCookies",
+      "FakeSession",
+      "FakeResponse"
+    ],
+    "functions": [
+      "_build_engine",
+      "_build_failed_phase",
+      "_prepare_engine_for_run",
+      "test_phase_otp_secondary_uses_remaining_budget_from_start_timestamp",
+      "test_phase_otp_secondary_returns_dedicated_timeout_error_code",
+      "test_phase_otp_secondary_maps_no_openai_sender_to_resend_action",
+      "test_run_uses_dedicated_budget_for_non_openai_sender_resends",
+      "test_run_stops_when_non_openai_sender_budget_is_exhausted",
+      "test_run_keeps_timeout_budget_after_non_openai_sender_resend",
+      "test_advance_login_authorization_sets_otp_anchor_before_retryable_wait",
+      "test_get_device_id_reuses_existing_cookie_without_extra_request",
+      "test_extract_workspace_id_from_response_payload",
+      "test_extract_workspace_id_from_response_text_when_hidden_input_missing",
+      "__init__",
+      "get_verification_code",
+      "get_verification_code",
+      "__init__",
+      "get",
+      "__init__",
+      "get",
+      "__init__",
+      "json",
+      "_settings",
+      "fake_phase_email_prepare",
+      "fake_send_verification_code",
+      "fake_submit_login_password_step",
+      "fake_wait_for_verification_code"
+    ],
+    "size": 11071
+  },
+  "tests/test_login_engine_otp_retry.py": {
+    "path": "tests/test_login_engine_otp_retry.py",
+    "imports": [
+      "src.core.register",
+      "src.core.login.LoginEngine",
+      "src.core.register.PhaseResult",
+      "src.services.EmailServiceType"
+    ],
+    "classes": [
+      "DummySettings",
+      "FakeEmailService"
+    ],
+    "functions": [
+      "_success_phase",
+      "_failed_phase",
+      "_build_login_engine",
+      "_stub_login_success_path",
+      "test_login_engine_run_uses_retryable_waiter_for_both_otp_steps",
+      "test_login_engine_run_preserves_non_openai_sender_error",
+      "get_verification_code",
+      "fake_create_email",
+      "fake_start_oauth",
+      "send_signup_code",
+      "send_passwordless_code",
+      "fake_wait_for_code"
+    ],
+    "size": 5498
+  },
+  "tests/test_task_manager_status_broadcast.py": {
+    "path": "tests/test_task_manager_status_broadcast.py",
+    "imports": [
+      "asyncio",
+      "src.web.routes.registration._create_task_status_callback",
+      "src.web.task_manager.task_manager"
+    ],
+    "classes": [
+      "FakeWebSocket"
+    ],
+    "functions": [
+      "test_update_status_broadcasts_to_registered_websocket",
+      "test_task_status_callback_broadcasts_phase_fields",
+      "__init__",
+      "send_json",
+      "run_test",
+      "run_test"
+    ],
+    "size": 2468
+  },
+  "tests/test_static_asset_versioning.py": {
+    "path": "tests/test_static_asset_versioning.py",
+    "imports": [
+      "pathlib.Path",
+      "importlib"
+    ],
+    "classes": [],
+    "functions": [
+      "test_static_asset_version_is_non_empty_string",
+      "test_email_services_template_uses_versioned_static_assets",
+      "test_index_template_uses_versioned_static_assets"
+    ],
+    "size": 1137
+  },
+  "tests/check_otp_timing.py": {
+    "path": "tests/check_otp_timing.py",
+    "imports": [
+      "__future__.annotations",
+      "dataclasses.dataclass",
+      "logging",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "src.services.tempmail",
+      "src.services.tempmail.TempmailService"
+    ],
+    "classes": [
+      "Scenario",
+      "FakeResponse",
+      "FakeHTTPClient",
+      "FakeClock"
+    ],
+    "functions": [
+      "build_inbox_payload",
+      "run_scenario",
+      "main",
+      "__init__",
+      "json",
+      "__init__",
+      "get",
+      "__init__",
+      "time",
+      "sleep"
+    ],
+    "size": 4327
+  },
+  "tests/test_task_recovery.py": {
+    "path": "tests/test_task_recovery.py",
+    "imports": [
+      "contextlib.contextmanager",
+      "asyncio",
+      "fastapi.WebSocketDisconnect",
+      "src.database.crud",
+      "src.database.models.Base",
+      "src.database.models.RegistrationTask",
+      "src.database.session.DatabaseSessionManager",
+      "src.web.routes.websocket",
+      "src.web.task_manager.TaskManager"
+    ],
+    "classes": [
+      "_FakeWebSocket"
+    ],
+    "functions": [
+      "test_fail_incomplete_registration_tasks_marks_pending_and_running_failed",
+      "test_restore_task_snapshot_loads_status_and_logs_from_database",
+      "test_sync_task_state_prefers_longer_persisted_log_history",
+      "test_register_websocket_returns_snapshot_and_keeps_live_cursor",
+      "test_batch_websocket_replays_history_logs_from_registration_snapshot",
+      "fake_get_db",
+      "__init__",
+      "accept",
+      "send_json",
+      "receive_json"
+    ],
+    "size": 4810
+  },
+  "tests/test_cpa_upload.py": {
+    "path": "tests/test_cpa_upload.py",
+    "imports": [
+      "types.SimpleNamespace",
+      "src.core.upload.cpa_upload"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeMime"
+    ],
+    "functions": [
+      "test_upload_to_cpa_accepts_management_root_url",
+      "test_upload_to_cpa_does_not_double_append_full_endpoint",
+      "test_upload_to_cpa_falls_back_to_raw_json_when_multipart_returns_404",
+      "test_test_cpa_connection_uses_get_and_normalized_url",
+      "test_generate_token_json_includes_account_proxy_url_when_enabled",
+      "test_generate_token_json_uses_fallback_proxy_when_account_proxy_missing",
+      "__init__",
+      "json",
+      "__init__",
+      "addpart",
+      "fake_post",
+      "fake_post",
+      "fake_post",
+      "fake_get"
+    ],
+    "size": 4677
+  },
+  "tests/test_cloud_mail_service.py": {
+    "path": "tests/test_cloud_mail_service.py",
+    "imports": [
+      "datetime.datetime",
+      "datetime.timezone",
+      "src.services.cloud_mail.CloudMailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHTTPClient"
+    ],
+    "functions": [
+      "_to_timestamp",
+      "test_cloud_mail_creates_address_via_public_api",
+      "test_cloud_mail_extracts_openai_verification_code_from_public_email_list",
+      "test_cloud_mail_ignores_messages_received_before_otp_sent_at",
+      "__init__",
+      "json",
+      "__init__",
+      "request"
+    ],
+    "size": 5451
+  },
+  "tests/test_account_token_sync_status.py": {
+    "path": "tests/test_account_token_sync_status.py",
+    "imports": [
+      "src.database.crud",
+      "src.database.session.DatabaseSessionManager"
+    ],
+    "classes": [],
+    "functions": [
+      "test_create_account_marks_token_sync_pending_when_tokens_persist",
+      "test_update_account_marks_token_sync_pending_when_tokens_change",
+      "test_update_account_preserves_pending_status_when_other_tokens_remain",
+      "test_update_outlook_refresh_token_persists_nested_config_changes"
+    ],
+    "size": 3484
+  },
+  "tests/test_tempmail_timestamp_filter.py": {
+    "path": "tests/test_tempmail_timestamp_filter.py",
+    "imports": [
+      "datetime.datetime",
+      "datetime.timezone",
+      "src.services.tempmail.TempmailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHTTPClient"
+    ],
+    "functions": [
+      "_to_timestamp",
+      "test_get_verification_code_ignores_messages_received_before_otp_sent_at",
+      "test_get_verification_code_uses_date_field_when_received_at_is_missing",
+      "test_get_verification_code_accepts_tempmail_date_field_as_timestamp",
+      "test_parse_message_time_normalizes_timezone_offset",
+      "__init__",
+      "json",
+      "__init__",
+      "get"
+    ],
+    "size": 4562
+  },
+  "tests/probe_tempmail.py": {
+    "path": "tests/probe_tempmail.py",
+    "imports": [
+      "argparse",
+      "json",
+      "sys",
+      "time",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Iterable",
+      "httpx"
+    ],
+    "classes": [],
+    "functions": [
+      "parse_args",
+      "dump_json",
+      "summarize_time_fields",
+      "create_inbox",
+      "fetch_inbox",
+      "main"
+    ],
+    "size": 3381
+  },
+  "tests/test_batch_task_manager.py": {
+    "path": "tests/test_batch_task_manager.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "types.SimpleNamespace",
+      "src.web.routes.registration",
+      "src.web.task_manager.task_manager"
+    ],
+    "classes": [],
+    "functions": [
+      "test_init_batch_state_persists_state_in_task_manager",
+      "test_run_batch_parallel_keeps_counter_updates_in_sync",
+      "fake_run_registration_task",
+      "fake_get_db",
+      "fake_get_registration_task"
+    ],
+    "size": 2879
+  },
+  "tests/test_account_inbox_code_state.py": {
+    "path": "tests/test_account_inbox_code_state.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "pathlib.Path",
+      "src.config.constants.EmailServiceType",
+      "src.core.register.RegistrationEngine",
+      "src.core.register.RegistrationResult",
+      "src.database.models.Account",
+      "src.database.models.Base",
+      "src.database.session.DatabaseSessionManager",
+      "src.services.base.BaseEmailService",
+      "src.web.routes.accounts"
+    ],
+    "classes": [
+      "DummySettings",
+      "FakeStatefulTempmailService"
+    ],
+    "functions": [
+      "_build_test_db",
+      "test_account_inbox_code_persists_verification_state_across_requests",
+      "test_save_to_database_persists_verification_state",
+      "__init__",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health",
+      "fake_get_db",
+      "fake_get_db"
+    ],
+    "size": 5315
+  },
+  "tests/test_cloudflare_worker_mail_services.py": {
+    "path": "tests/test_cloudflare_worker_mail_services.py",
+    "imports": [
+      "src.services.freemail.FreemailService",
+      "src.services.temp_mail.TempMailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHTTPClient"
+    ],
+    "functions": [
+      "test_temp_mail_ignores_six_digit_domain_when_extracting_code",
+      "test_freemail_prefers_real_code_over_worker_extracted_domain_digits",
+      "__init__",
+      "json",
+      "__init__",
+      "request"
+    ],
+    "size": 2831
+  },
+  "tests/test_mail_latest_code_preference.py": {
+    "path": "tests/test_mail_latest_code_preference.py",
+    "imports": [
+      "src.services.duck_mail.DuckMailService",
+      "src.services.freemail.FreemailService",
+      "src.services.moe_mail.MeoMailEmailService",
+      "src.services.temp_mail.TempMailService",
+      "src.services.tempmail.TempmailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeRequestHTTPClient",
+      "FakeGetHTTPClient"
+    ],
+    "functions": [
+      "test_tempmail_service_prefers_latest_matching_message_without_otp_timestamp",
+      "test_temp_mail_service_prefers_latest_matching_message_without_otp_timestamp",
+      "test_moe_mail_service_prefers_latest_matching_message_without_otp_timestamp",
+      "test_freemail_service_prefers_latest_matching_message_without_otp_timestamp",
+      "test_duck_mail_service_prefers_latest_matching_message_without_otp_timestamp",
+      "__init__",
+      "json",
+      "__init__",
+      "request",
+      "__init__",
+      "get",
+      "fake_make_request"
+    ],
+    "size": 8206
+  },
+  "tests/test_default_webui_port_config.py": {
+    "path": "tests/test_default_webui_port_config.py",
+    "imports": [
+      "src.config.constants.DEFAULT_SETTINGS",
+      "src.config.constants.DEFAULT_WEBUI_BASE_URL",
+      "src.config.constants.DEFAULT_WEBUI_PORT",
+      "src.config.constants.DEFAULT_WEBUI_WS_BASE_URL",
+      "src.config.constants.OAUTH_REDIRECT_URI",
+      "src.config.settings.SETTING_DEFINITIONS",
+      "src.config.settings.Settings"
+    ],
+    "classes": [],
+    "functions": [
+      "test_default_webui_port_is_shared_from_one_constant"
+    ],
+    "size": 823
+  },
+  "tests/test_codex_auth_export_route.py": {
+    "path": "tests/test_codex_auth_export_route.py",
+    "imports": [
+      "asyncio",
+      "io",
+      "json",
+      "zipfile",
+      "contextlib.contextmanager",
+      "pytest",
+      "fastapi.HTTPException",
+      "src.web.routes.accounts",
+      "src.database.crud",
+      "src.database.session.DatabaseSessionManager",
+      "src.web.routes.accounts.BatchExportRequest"
+    ],
+    "classes": [],
+    "functions": [
+      "_read_streaming_response_body",
+      "_build_fake_get_db",
+      "test_export_codex_auth_single_account_uses_auth_json_filename",
+      "test_export_codex_auth_multiple_accounts_zip_each_auth_json_under_email_directory",
+      "test_export_codex_auth_requires_manual_generation_first",
+      "test_persist_codex_auth_result_marks_account_generated",
+      "fake_get_db"
+    ],
+    "size": 6941
+  },
+  "tests/test_registration_task_cancellation.py": {
+    "path": "tests/test_registration_task_cancellation.py",
+    "imports": [
+      "asyncio",
+      "threading",
+      "time",
+      "contextlib.contextmanager",
+      "pathlib.Path",
+      "types.SimpleNamespace",
+      "src.core.register.ERROR_TASK_CANCELLED",
+      "src.core.register.RegistrationResult",
+      "src.database.models.Base",
+      "src.database.models.RegistrationTask",
+      "src.database.session.DatabaseSessionManager",
+      "src.services.EmailServiceType",
+      "src.services.base.BaseEmailService",
+      "src.services.base.EmailServiceCancelledError",
+      "src.web.routes.registration"
+    ],
+    "classes": [
+      "FakeTaskManager",
+      "DummySettings",
+      "FakeRegistrationEngine",
+      "FakePollingEmailService",
+      "FakeEmailPollingRegistrationEngine"
+    ],
+    "functions": [
+      "_build_fake_get_db",
+      "test_cancel_task_route_marks_task_manager_and_db_cancelled",
+      "test_run_sync_registration_task_stops_after_cancel_request",
+      "test_cancel_batch_propagates_to_member_tasks",
+      "test_run_sync_registration_task_stops_while_email_service_polling",
+      "__init__",
+      "is_cancelled",
+      "cancel_task",
+      "update_status",
+      "create_log_callback",
+      "create_check_cancelled_callback",
+      "get_batch_status",
+      "cancel_batch",
+      "update_batch_status",
+      "get_proxy_url",
+      "fake_get_db",
+      "__init__",
+      "run",
+      "save_to_database",
+      "close",
+      "__init__",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health",
+      "__init__",
+      "run",
+      "save_to_database",
+      "close",
+      "callback"
+    ],
+    "size": 13054
+  },
+  "tests/test_register_protocol_baseline.py": {
+    "path": "tests/test_register_protocol_baseline.py",
+    "imports": [
+      "json",
+      "types.SimpleNamespace",
+      "src.core.register",
+      "src.config.constants.OPENAI_PAGE_TYPES",
+      "src.core.register.RegistrationEngine",
+      "src.services.EmailServiceType"
+    ],
+    "classes": [
+      "DummySettings",
+      "FakeResponse",
+      "FakeSession"
+    ],
+    "functions": [
+      "_build_engine",
+      "test_submit_signup_form_uses_stable_protocol_body",
+      "test_register_password_uses_stable_protocol_body",
+      "__init__",
+      "json",
+      "__init__",
+      "post"
+    ],
+    "size": 2456
+  },
+  "tests/test_email_service_cloudmail_routes.py": {
+    "path": "tests/test_email_service_cloudmail_routes.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "pathlib.Path",
+      "src.config.constants.EmailServiceType",
+      "src.database.models.Base",
+      "src.database.models.EmailService",
+      "src.database.session.DatabaseSessionManager",
+      "src.services.base.EmailServiceFactory",
+      "src.web.routes.email",
+      "src.web.routes.registration",
+      "src.config.settings"
+    ],
+    "classes": [
+      "DummySettings"
+    ],
+    "functions": [
+      "test_cloud_mail_service_registered",
+      "test_email_service_types_include_cloud_mail",
+      "test_filter_sensitive_config_marks_cloud_mail_admin_password",
+      "test_registration_available_services_include_cloud_mail",
+      "test_build_email_service_candidates_supports_cloud_mail",
+      "fake_get_db"
+    ],
+    "size": 5338
+  },
+  "tests/test_email_service_backoff.py": {
+    "path": "tests/test_email_service_backoff.py",
+    "imports": [
+      "src.services.base.BaseEmailService",
+      "src.services.base.EmailProviderBackoffState",
+      "src.services.base.EmailServiceType",
+      "src.services.base.OTPTimeoutEmailServiceError",
+      "src.services.base.RateLimitedEmailServiceError",
+      "src.services.base.apply_adaptive_backoff",
+      "src.services.base.calculate_adaptive_backoff_delay"
+    ],
+    "classes": [
+      "DummyEmailService"
+    ],
+    "functions": [
+      "test_calculate_adaptive_backoff_delay_uses_failure_count_progression",
+      "test_apply_adaptive_backoff_tracks_timeout_failures_to_one_hour",
+      "test_apply_adaptive_backoff_keeps_normal_rate_limit_on_exponential_curve",
+      "test_update_status_resets_provider_backoff_after_success",
+      "__init__",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health"
+    ],
+    "size": 2957
+  },
+  "tests/test_registration_proxy_failover.py": {
+    "path": "tests/test_registration_proxy_failover.py",
+    "imports": [
+      "types.SimpleNamespace",
+      "src.database.crud",
+      "src.database.session.DatabaseSessionManager",
+      "src.web.routes.registration",
+      "src.core.register.RegistrationResult"
+    ],
+    "classes": [
+      "FakeRegistrationEngine"
+    ],
+    "functions": [
+      "test_run_sync_registration_task_disables_bad_proxy_and_retries",
+      "__init__",
+      "run",
+      "save_to_database"
+    ],
+    "size": 3763
+  },
+  "tests/test_newapi_upload.py": {
+    "path": "tests/test_newapi_upload.py",
+    "imports": [
+      "types.SimpleNamespace",
+      "src.core.upload.newapi_upload"
+    ],
+    "classes": [
+      "FakeResponse"
+    ],
+    "functions": [
+      "test_build_headers_rejects_non_ascii_api_key",
+      "test_upload_to_newapi_uses_ascii_authorization_header",
+      "test_upload_to_newapi_returns_clear_error_for_non_ascii_api_key",
+      "__init__",
+      "json",
+      "fake_post"
+    ],
+    "size": 2007
+  },
+  "tests/test_proxy_batch_delete.py": {
+    "path": "tests/test_proxy_batch_delete.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "pytest",
+      "fastapi.HTTPException",
+      "src.database.crud",
+      "src.database.session.DatabaseSessionManager",
+      "src.web.routes.settings"
+    ],
+    "classes": [],
+    "functions": [
+      "_build_fake_get_db",
+      "_create_proxy_ids",
+      "test_batch_delete_proxies_removes_selected_ids",
+      "test_batch_delete_proxies_reports_missing_ids",
+      "test_batch_delete_proxies_requires_non_empty_selection",
+      "test_delete_disabled_proxy_items_only_removes_disabled_records",
+      "test_delete_disabled_proxy_items_is_noop_when_none_exist",
+      "fake_get_db"
+    ],
+    "size": 4658
+  },
+  "tests/test_email_service_duckmail_routes.py": {
+    "path": "tests/test_email_service_duckmail_routes.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "pathlib.Path",
+      "src.config.constants.EmailServiceType",
+      "src.database.models.Base",
+      "src.database.models.EmailService",
+      "src.database.session.DatabaseSessionManager",
+      "src.services.base.EmailServiceFactory",
+      "src.web.routes.email",
+      "src.web.routes.registration",
+      "src.config.settings"
+    ],
+    "classes": [
+      "DummySettings"
+    ],
+    "functions": [
+      "test_duck_mail_service_registered",
+      "test_email_service_types_include_duck_mail",
+      "test_filter_sensitive_config_marks_duckmail_api_key",
+      "test_registration_available_services_include_duck_mail",
+      "fake_get_db"
+    ],
+    "size": 3227
+  },
+  "tests/test_mail_openai_detection.py": {
+    "path": "tests/test_mail_openai_detection.py",
+    "imports": [
+      "src.services.EmailServiceType",
+      "src.services.base.BaseEmailService"
+    ],
+    "classes": [
+      "DummyEmailService"
+    ],
+    "functions": [
+      "test_is_openai_candidate_message_supports_sender_and_content_paths",
+      "test_batch_has_openai_sender_only_checks_sender_fields",
+      "__init__",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health"
+    ],
+    "size": 1512
+  },
+  "tests/test_tempmail_service.py": {
+    "path": "tests/test_tempmail_service.py",
+    "imports": [
+      "src.services.tempmail",
+      "src.services.tempmail.TempmailService"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeHTTPClient"
+    ],
+    "functions": [
+      "test_get_verification_code_ignores_messages_older_than_tolerance_window",
+      "test_get_verification_code_allows_two_second_anchor_tolerance",
+      "__init__",
+      "json",
+      "__init__",
+      "get"
+    ],
+    "size": 3632
+  },
+  "tests/test_newapi_service_routes.py": {
+    "path": "tests/test_newapi_service_routes.py",
+    "imports": [
+      "asyncio",
+      "contextlib.contextmanager",
+      "pytest",
+      "fastapi.HTTPException",
+      "src.web.routes.upload.newapi_services",
+      "src.database.session.DatabaseSessionManager",
+      "src.web.routes.upload.newapi_services.NewapiServiceCreate",
+      "src.web.routes.upload.newapi_services.NewapiServiceUpdate"
+    ],
+    "classes": [],
+    "functions": [
+      "_build_fake_get_db",
+      "test_create_newapi_service_rejects_non_ascii_api_key",
+      "test_update_newapi_service_rejects_non_ascii_api_key",
+      "fake_get_db"
+    ],
+    "size": 2225
+  },
+  "tests/test_register_otp_integration.py": {
+    "path": "tests/test_register_otp_integration.py",
+    "imports": [
+      "json",
+      "types.SimpleNamespace",
+      "src.core.register.RegistrationEngine"
+    ],
+    "classes": [
+      "FakeResponse",
+      "FakeSession",
+      "FakeEmailService"
+    ],
+    "functions": [
+      "test_registration_engine_resend_flow_propagates_new_otp_timestamp_and_validates_code",
+      "__init__",
+      "json",
+      "__init__",
+      "get",
+      "post",
+      "__init__",
+      "get_verification_code"
+    ],
+    "size": 3024
+  },
+  "tests/test_settings_email_code.py": {
+    "path": "tests/test_settings_email_code.py",
+    "imports": [
+      "asyncio",
+      "types.SimpleNamespace",
+      "fastapi.HTTPException",
+      "src.web.routes.settings"
+    ],
+    "classes": [
+      "DummySecret"
+    ],
+    "functions": [
+      "_build_settings",
+      "test_get_all_settings_includes_non_openai_sender_resend_budget",
+      "test_update_email_code_settings_persists_non_openai_sender_budget",
+      "test_update_email_code_settings_rejects_invalid_non_openai_sender_budget",
+      "__init__",
+      "get_secret_value"
+    ],
+    "size": 3474
+  },
+  "tests/test_outlook_service_config_and_health.py": {
+    "path": "tests/test_outlook_service_config_and_health.py",
+    "imports": [
+      "src.services.EmailServiceType",
+      "src.services.outlook.base.EmailMessage",
+      "src.services.outlook.base.ProviderType",
+      "src.services.outlook.email_parser.EmailParser",
+      "src.services.outlook.health_checker.HealthChecker",
+      "src.services.outlook.service.OutlookService",
+      "src.services.base.OTPNoOpenAISenderEmailServiceError",
+      "src.web.routes.registration"
+    ],
+    "classes": [
+      "DummySettings"
+    ],
+    "functions": [
+      "test_health_checker_is_scoped_by_account_email",
+      "test_email_parser_respects_recipient_match_switch",
+      "test_normalize_outlook_config_inherits_global_settings",
+      "test_email_parser_has_openai_sender",
+      "test_outlook_service_returns_early_when_batch_has_no_openai_sender"
+    ],
+    "size": 4105
+  },
+  "tests/test_registration_email_service_failover.py": {
+    "path": "tests/test_registration_email_service_failover.py",
+    "imports": [
+      "contextlib.contextmanager",
+      "pathlib.Path",
+      "threading",
+      "types.SimpleNamespace",
+      "src.services.base",
+      "src.core.register.ERROR_OTP_TIMEOUT_SECONDARY",
+      "src.core.register.PhaseResult",
+      "src.core.register.RegistrationResult",
+      "src.database.models.Base",
+      "src.database.models.EmailService",
+      "src.database.models.RegistrationTask",
+      "src.database.session.DatabaseSessionManager",
+      "src.services.EmailServiceType",
+      "src.services.base.BaseEmailService",
+      "src.services.base.EmailProviderBackoffState",
+      "src.web.routes.registration"
+    ],
+    "classes": [
+      "DummyTaskManager",
+      "BackoffAwareEmailService",
+      "DummySettings",
+      "FakeRegistrationEngine",
+      "DummySettings",
+      "FakeRegistrationEngine",
+      "DummySettings",
+      "FakeRegistrationEngine"
+    ],
+    "functions": [
+      "test_registration_task_fails_over_after_rate_limit",
+      "test_registration_task_enters_deep_cooldown_after_three_otp_timeouts",
+      "test_registration_task_success_clears_email_service_backoff",
+      "test_registration_task_backoff_failures_do_not_get_lost_under_concurrency",
+      "__init__",
+      "is_cancelled",
+      "update_status",
+      "create_log_callback",
+      "__init__",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health",
+      "fake_get_db",
+      "fake_get_db",
+      "fake_get_db",
+      "callback",
+      "__init__",
+      "run",
+      "save_to_database",
+      "close",
+      "__init__",
+      "run",
+      "save_to_database",
+      "close",
+      "__init__",
+      "run",
+      "save_to_database",
+      "close"
+    ],
+    "size": 15038
+  },
+  "src/__init__.py": {
+    "path": "src/__init__.py",
+    "imports": [
+      "config.get_settings",
+      "config.EmailServiceType",
+      "database.get_db",
+      "database.Account",
+      "database.EmailService",
+      "database.RegistrationTask",
+      "core.RegistrationEngine",
+      "core.RegistrationResult",
+      "services.EmailServiceFactory",
+      "services.BaseEmailService"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 550
+  },
+  "src/database/models.py": {
+    "path": "src/database/models.py",
+    "imports": [
+      "datetime.datetime",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "json",
+      "sqlalchemy.Column",
+      "sqlalchemy.Integer",
+      "sqlalchemy.String",
+      "sqlalchemy.Text",
+      "sqlalchemy.Boolean",
+      "sqlalchemy.DateTime",
+      "sqlalchemy.ForeignKey",
+      "sqlalchemy.ext.declarative.declarative_base",
+      "sqlalchemy.types.TypeDecorator",
+      "sqlalchemy.orm.relationship"
+    ],
+    "classes": [
+      "JSONEncodedDict",
+      "Account",
+      "EmailService",
+      "RegistrationTask",
+      "Setting",
+      "CpaService",
+      "Sub2ApiService",
+      "TeamManagerService",
+      "NewapiService",
+      "Proxy"
+    ],
+    "functions": [
+      "process_bind_param",
+      "process_result_value",
+      "to_dict",
+      "to_dict",
+      "proxy_url"
+    ],
+    "size": 10786
+  },
+  "src/database/session.py": {
+    "path": "src/database/session.py",
+    "imports": [
+      "contextlib.contextmanager",
+      "typing.Generator",
+      "sqlalchemy.create_engine",
+      "sqlalchemy.text",
+      "sqlalchemy.orm.sessionmaker",
+      "sqlalchemy.orm.Session",
+      "sqlalchemy.exc.SQLAlchemyError",
+      "os",
+      "logging",
+      "models.Base"
+    ],
+    "classes": [
+      "DatabaseSessionManager"
+    ],
+    "functions": [
+      "_build_sqlalchemy_url",
+      "init_database",
+      "get_session_manager",
+      "get_db",
+      "__init__",
+      "get_db",
+      "session_scope",
+      "create_tables",
+      "drop_tables",
+      "migrate_tables"
+    ],
+    "size": 6353
+  },
+  "src/database/__init__.py": {
+    "path": "src/database/__init__.py",
+    "imports": [
+      "models.Base",
+      "models.Account",
+      "models.EmailService",
+      "models.RegistrationTask",
+      "models.Setting",
+      "session.get_db",
+      "session.init_database",
+      "session.get_session_manager",
+      "session.DatabaseSessionManager",
+      "crud"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 402
+  },
+  "src/database/crud.py": {
+    "path": "src/database/crud.py",
+    "imports": [
+      "typing.List",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Union",
+      "typing.Iterable",
+      "typing.Set",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "sqlalchemy.orm.Session",
+      "sqlalchemy.orm.attributes.flag_modified",
+      "sqlalchemy.and_",
+      "sqlalchemy.or_",
+      "sqlalchemy.desc",
+      "sqlalchemy.asc",
+      "sqlalchemy.func",
+      "models.Account",
+      "models.EmailService",
+      "models.RegistrationTask",
+      "models.Setting",
+      "models.Proxy",
+      "models.CpaService",
+      "models.Sub2ApiService",
+      "models.NewapiService"
+    ],
+    "classes": [],
+    "functions": [
+      "_default_token_sync_status",
+      "create_account",
+      "get_account_by_id",
+      "get_account_by_email",
+      "get_accounts",
+      "update_account",
+      "delete_account",
+      "delete_accounts_batch",
+      "get_accounts_count",
+      "create_email_service",
+      "get_email_service_by_id",
+      "get_email_services",
+      "update_email_service",
+      "delete_email_service",
+      "create_registration_task",
+      "get_registration_task_by_uuid",
+      "get_registration_tasks",
+      "update_registration_task",
+      "append_task_log",
+      "delete_registration_task",
+      "fail_incomplete_registration_tasks",
+      "get_setting",
+      "get_settings_by_category",
+      "set_setting",
+      "delete_setting",
+      "create_proxy",
+      "get_proxy_by_id",
+      "get_proxies",
+      "get_enabled_proxies",
+      "update_proxy",
+      "delete_proxy",
+      "delete_proxies_by_ids"
+    ],
+    "size": 15038
+  },
+  "src/database/init_db.py": {
+    "path": "src/database/init_db.py",
+    "imports": [
+      "session.init_database",
+      "models.Base",
+      "config.settings.init_default_settings",
+      "config.settings.init_default_settings",
+      "argparse"
+    ],
+    "classes": [],
+    "functions": [
+      "initialize_database",
+      "reset_database",
+      "check_database_connection"
+    ],
+    "size": 1895
+  },
+  "src/core/register.py": {
+    "path": "src/core/register.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/core/http_client.py": {
+    "path": "src/core/http_client.py",
+    "imports": [
+      "time",
+      "json",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Union",
+      "typing.Tuple",
+      "dataclasses.dataclass",
+      "logging",
+      "curl_cffi.requests",
+      "curl_cffi.requests.Session",
+      "curl_cffi.requests.Response",
+      "config.constants.ERROR_MESSAGES",
+      "config.settings.get_settings",
+      "config.constants.OPENAI_API_ENDPOINTS",
+      "re"
+    ],
+    "classes": [
+      "RequestConfig",
+      "HTTPClientError",
+      "HTTPClient",
+      "OpenAIHTTPClient"
+    ],
+    "functions": [
+      "create_http_client",
+      "create_openai_client",
+      "__init__",
+      "proxies",
+      "session",
+      "request",
+      "get",
+      "post",
+      "put",
+      "delete",
+      "head",
+      "options",
+      "patch",
+      "download_file",
+      "check_proxy",
+      "close",
+      "__enter__",
+      "__exit__",
+      "__init__",
+      "check_ip_location",
+      "send_openai_request",
+      "check_sentinel"
+    ],
+    "size": 11360
+  },
+  "src/core/__init__.py": {
+    "path": "src/core/__init__.py",
+    "imports": [
+      "openai.oauth.OAuthManager",
+      "openai.oauth.OAuthStart",
+      "openai.oauth.generate_oauth_url",
+      "openai.oauth.submit_callback_url",
+      "http_client.OpenAIHTTPClient",
+      "http_client.HTTPClient",
+      "http_client.HTTPClientError",
+      "http_client.RequestConfig",
+      "http_client.create_http_client",
+      "http_client.create_openai_client",
+      "register.RegistrationEngine",
+      "register.RegistrationResult",
+      "utils.setup_logging",
+      "utils.get_data_dir"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 712
+  },
+  "src/core/utils.py": {
+    "path": "src/core/utils.py",
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "time",
+      "random",
+      "string",
+      "secrets",
+      "hashlib",
+      "logging",
+      "base64",
+      "re",
+      "uuid",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Union",
+      "typing.Callable",
+      "pathlib.Path",
+      "config.constants.PASSWORD_CHARSET",
+      "config.constants.DEFAULT_PASSWORD_LENGTH",
+      "config.settings.get_settings"
+    ],
+    "classes": [
+      "RetryDecorator",
+      "Timer"
+    ],
+    "functions": [
+      "setup_logging",
+      "generate_password",
+      "generate_random_string",
+      "generate_uuid",
+      "get_timestamp",
+      "format_datetime",
+      "parse_datetime",
+      "human_readable_size",
+      "retry_with_backoff",
+      "validate_email",
+      "validate_url",
+      "sanitize_filename",
+      "read_json_file",
+      "write_json_file",
+      "get_project_root",
+      "get_data_dir",
+      "get_logs_dir",
+      "format_duration",
+      "mask_sensitive_data",
+      "calculate_md5",
+      "calculate_sha256",
+      "base64_encode",
+      "base64_decode",
+      "__init__",
+      "__call__",
+      "__init__",
+      "__enter__",
+      "__exit__",
+      "get_elapsed",
+      "wrapper",
+      "func_to_retry"
+    ],
+    "size": 12660
+  },
+  "src/core/login.py": {
+    "path": "src/core/login.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/core/dynamic_proxy.py": {
+    "path": "src/core/dynamic_proxy.py",
+    "imports": [
+      "logging",
+      "re",
+      "typing.Optional",
+      "config.settings.get_settings",
+      "curl_cffi.requests",
+      "json"
+    ],
+    "classes": [],
+    "functions": [
+      "fetch_dynamic_proxy",
+      "get_proxy_url_for_task"
+    ],
+    "size": 3636
+  },
+  "src/config/constants.py": {
+    "path": "src/config/constants.py",
+    "imports": [
+      "random",
+      "datetime.datetime",
+      "enum.Enum",
+      "typing.Dict",
+      "typing.List",
+      "typing.Tuple"
+    ],
+    "classes": [
+      "AccountStatus",
+      "TaskStatus",
+      "EmailServiceType"
+    ],
+    "functions": [
+      "build_http_url",
+      "build_ws_url",
+      "generate_random_user_info"
+    ],
+    "size": 12559
+  },
+  "src/config/__init__.py": {
+    "path": "src/config/__init__.py",
+    "imports": [
+      "settings.Settings",
+      "settings.get_settings",
+      "settings.update_settings",
+      "settings.get_database_url",
+      "settings.init_default_settings",
+      "settings.get_setting_definition",
+      "settings.get_all_setting_definitions",
+      "settings.SETTING_DEFINITIONS",
+      "settings.SettingCategory",
+      "settings.SettingDefinition",
+      "constants.AccountStatus",
+      "constants.TaskStatus",
+      "constants.EmailServiceType",
+      "constants.APP_NAME",
+      "constants.APP_VERSION",
+      "constants.OTP_CODE_PATTERN",
+      "constants.DEFAULT_PASSWORD_LENGTH",
+      "constants.PASSWORD_CHARSET",
+      "constants.DEFAULT_USER_INFO",
+      "constants.generate_random_user_info",
+      "constants.OPENAI_API_ENDPOINTS"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1070
+  },
+  "src/config/settings.py": {
+    "path": "src/config/settings.py",
+    "imports": [
+      "os",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Type",
+      "typing.List",
+      "enum.Enum",
+      "pydantic.BaseModel",
+      "pydantic.field_validator",
+      "pydantic.types.SecretStr",
+      "dataclasses.dataclass",
+      "constants.APP_NAME",
+      "constants.APP_VERSION",
+      "constants.DEFAULT_WEBUI_HOST",
+      "constants.DEFAULT_WEBUI_PORT",
+      "json",
+      "ast",
+      "json",
+      "ast"
+    ],
+    "classes": [
+      "SettingCategory",
+      "SettingDefinition"
+    ],
+    "functions": [
+      "_convert_value",
+      "_normalize_database_url"
+    ],
+    "size": 15038
+  },
+  "src/web/__init__.py": {
+    "path": "src/web/__init__.py",
+    "imports": [
+      "app.app",
+      "app.create_app"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 87
+  },
+  "src/web/task_manager.py": {
+    "path": "src/web/task_manager.py",
+    "imports": [
+      "asyncio",
+      "logging",
+      "threading",
+      "concurrent.futures.ThreadPoolExecutor",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.List",
+      "typing.Callable",
+      "typing.Any",
+      "collections.defaultdict",
+      "datetime.datetime"
+    ],
+    "classes": [
+      "TaskManager"
+    ],
+    "functions": [
+      "_get_log_lock",
+      "_get_batch_lock",
+      "__init__",
+      "set_loop",
+      "get_loop",
+      "is_cancelled",
+      "cancel_task",
+      "add_log",
+      "_broadcast_log",
+      "broadcast_status",
+      "register_websocket",
+      "get_unsent_logs",
+      "unregister_websocket",
+      "get_logs",
+      "sync_task_state",
+      "update_status",
+      "get_status",
+      "cleanup_task",
+      "init_batch",
+      "add_batch_log",
+      "_broadcast_batch_log",
+      "update_batch_status",
+      "_broadcast_batch_status",
+      "get_batch_status",
+      "get_batch_logs",
+      "is_batch_cancelled",
+      "cancel_batch",
+      "register_batch_websocket",
+      "get_unsent_batch_logs",
+      "unregister_batch_websocket",
+      "create_log_callback",
+      "create_check_cancelled_callback",
+      "callback",
+      "callback"
+    ],
+    "size": 15038
+  },
+  "src/web/app.py": {
+    "path": "src/web/app.py",
+    "imports": [
+      "logging",
+      "sys",
+      "secrets",
+      "hmac",
+      "hashlib",
+      "typing.Optional",
+      "pathlib.Path",
+      "fastapi.FastAPI",
+      "fastapi.Request",
+      "fastapi.Form",
+      "fastapi.staticfiles.StaticFiles",
+      "fastapi.templating.Jinja2Templates",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "fastapi.responses.FileResponse",
+      "fastapi.responses.HTMLResponse",
+      "fastapi.responses.RedirectResponse",
+      "config.settings.get_settings",
+      "database.crud",
+      "database.session.get_db",
+      "routes.api_router",
+      "routes.websocket.router",
+      "task_manager.task_manager",
+      "webui.setup_application",
+      "uvicorn",
+      "asyncio",
+      "database.init_db.initialize_database"
+    ],
+    "classes": [],
+    "functions": [
+      "_build_static_asset_version",
+      "create_app",
+      "_auth_token",
+      "_is_authenticated",
+      "_redirect_to_login",
+      "login_page",
+      "login_submit",
+      "logout",
+      "favicon_ico",
+      "favicon_svg",
+      "index",
+      "accounts_page",
+      "email_services_page",
+      "settings_page",
+      "payment_page",
+      "startup_event",
+      "shutdown_event"
+    ],
+    "size": 8277
+  },
+  "src/services/moe_mail.py": {
+    "path": "src/services/moe_mail.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/__init__.py": {
+    "path": "src/services/__init__.py",
+    "imports": [
+      "base.BaseEmailService",
+      "base.EmailServiceError",
+      "base.EmailServiceStatus",
+      "base.EmailServiceFactory",
+      "base.create_email_service",
+      "base.EmailServiceType",
+      "tempmail.TempmailService",
+      "outlook.OutlookService",
+      "moe_mail.MeoMailEmailService",
+      "temp_mail.TempMailService",
+      "duck_mail.DuckMailService",
+      "freemail.FreemailService",
+      "imap_mail.ImapMailService",
+      "cloud_mail.CloudMailService",
+      "outlook.base.ProviderType",
+      "outlook.base.EmailMessage",
+      "outlook.base.TokenInfo",
+      "outlook.base.ProviderHealth",
+      "outlook.base.ProviderStatus",
+      "outlook.account.OutlookAccount",
+      "outlook.providers.OutlookProvider",
+      "outlook.providers.IMAPOldProvider",
+      "outlook.providers.IMAPNewProvider",
+      "outlook.providers.GraphAPIProvider"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 2007
+  },
+  "src/services/cloud_mail.py": {
+    "path": "src/services/cloud_mail.py",
+    "imports": [
+      "logging",
+      "random",
+      "string",
+      "time",
+      "datetime.datetime",
+      "datetime.timezone",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "base.BaseEmailService",
+      "base.EmailServiceError",
+      "base.EmailServiceType",
+      "base.OTPNoOpenAISenderEmailServiceError",
+      "base.RateLimitedEmailServiceError",
+      "base.get_email_code_settings",
+      "config.constants.OTP_CODE_PATTERN",
+      "core.http_client.HTTPClient",
+      "core.http_client.RequestConfig"
+    ],
+    "classes": [
+      "CloudMailService"
+    ],
+    "functions": [
+      "__init__",
+      "_build_headers",
+      "_unwrap_result",
+      "_make_request",
+      "_get_public_token",
+      "_generate_local_part",
+      "_generate_password",
+      "_parse_message_time",
+      "_get_received_timestamp",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health"
+    ],
+    "size": 11995
+  },
+  "src/services/duck_mail.py": {
+    "path": "src/services/duck_mail.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/tempmail.py": {
+    "path": "src/services/tempmail.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/imap_mail.py": {
+    "path": "src/services/imap_mail.py",
+    "imports": [
+      "imaplib",
+      "email",
+      "re",
+      "time",
+      "logging",
+      "email.header.decode_header",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Optional",
+      "base.BaseEmailService",
+      "base.OTPNoOpenAISenderEmailServiceError",
+      "base.get_email_code_settings",
+      "config.constants.EmailServiceType",
+      "config.constants.OTP_CODE_SEMANTIC_PATTERN",
+      "config.constants.OTP_CODE_PATTERN"
+    ],
+    "classes": [
+      "ImapMailService"
+    ],
+    "functions": [
+      "__init__",
+      "_connect",
+      "_decode_str",
+      "_get_text_body",
+      "_is_openai_sender",
+      "_extract_otp",
+      "create_email",
+      "get_verification_code",
+      "check_health",
+      "list_emails",
+      "delete_email"
+    ],
+    "size": 7711
+  },
+  "src/services/temp_mail.py": {
+    "path": "src/services/temp_mail.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/freemail.py": {
+    "path": "src/services/freemail.py",
+    "imports": [
+      "re",
+      "time",
+      "logging",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.List",
+      "base.BaseEmailService",
+      "base.EmailServiceError",
+      "base.EmailServiceType",
+      "base.OTPNoOpenAISenderEmailServiceError",
+      "base.RateLimitedEmailServiceError",
+      "base.get_email_code_settings",
+      "core.http_client.HTTPClient",
+      "core.http_client.RequestConfig",
+      "config.constants.OTP_CODE_PATTERN"
+    ],
+    "classes": [
+      "FreemailService"
+    ],
+    "functions": [
+      "__init__",
+      "_get_headers",
+      "_make_request",
+      "_ensure_domains",
+      "create_email",
+      "get_verification_code",
+      "list_emails",
+      "delete_email",
+      "check_health"
+    ],
+    "size": 12923
+  },
+  "src/services/base.py": {
+    "path": "src/services/base.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/outlook/service.py": {
+    "path": "src/services/outlook/service.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/services/outlook/token_manager.py": {
+    "path": "src/services/outlook/token_manager.py",
+    "imports": [
+      "json",
+      "logging",
+      "threading",
+      "time",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Any",
+      "curl_cffi.requests",
+      "base.ProviderType",
+      "base.TokenEndpoint",
+      "base.TokenInfo",
+      "account.OutlookAccount"
+    ],
+    "classes": [
+      "TokenManager"
+    ],
+    "functions": [
+      "create_token_manager",
+      "__init__",
+      "get_cached_token",
+      "set_cached_token",
+      "clear_cache",
+      "get_access_token",
+      "_refresh_token",
+      "clear_all_cache",
+      "get_cache_stats"
+    ],
+    "size": 6867
+  },
+  "src/services/outlook/email_parser.py": {
+    "path": "src/services/outlook/email_parser.py",
+    "imports": [
+      "logging",
+      "re",
+      "typing.Optional",
+      "typing.List",
+      "config.constants.OTP_CODE_SIMPLE_PATTERN",
+      "config.constants.OTP_CODE_SEMANTIC_PATTERN",
+      "config.constants.OPENAI_EMAIL_SENDERS",
+      "config.constants.OPENAI_VERIFICATION_KEYWORDS",
+      "base.EmailMessage"
+    ],
+    "classes": [
+      "EmailParser"
+    ],
+    "functions": [
+      "get_email_parser",
+      "__init__",
+      "is_openai_verification_email",
+      "_recipient_matches_target",
+      "extract_verification_code",
+      "_extract_from_subject",
+      "_extract_semantic",
+      "_extract_simple",
+      "has_openai_sender",
+      "find_verification_code_in_emails",
+      "filter_emails_by_sender",
+      "filter_emails_by_subject"
+    ],
+    "size": 6932
+  },
+  "src/services/outlook/__init__.py": {
+    "path": "src/services/outlook/__init__.py",
+    "imports": [
+      "service.OutlookService"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 116
+  },
+  "src/services/outlook/health_checker.py": {
+    "path": "src/services/outlook/health_checker.py",
+    "imports": [
+      "logging",
+      "threading",
+      "datetime.datetime",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Any",
+      "typing.Tuple",
+      "base.ProviderType",
+      "base.ProviderHealth",
+      "base.ProviderStatus"
+    ],
+    "classes": [
+      "HealthChecker",
+      "FailoverManager"
+    ],
+    "functions": [
+      "__init__",
+      "_normalize_account_email",
+      "_state_key",
+      "_ensure_health",
+      "get_health",
+      "record_success",
+      "record_failure",
+      "is_available",
+      "get_available_providers",
+      "get_next_available_provider",
+      "force_disable",
+      "force_enable",
+      "get_all_health_status",
+      "check_and_recover",
+      "reset_all",
+      "__init__",
+      "get_current_provider",
+      "switch_to_next",
+      "on_provider_success",
+      "on_provider_failure",
+      "get_status"
+    ],
+    "size": 10459
+  },
+  "src/services/outlook/base.py": {
+    "path": "src/services/outlook/base.py",
+    "imports": [
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "datetime.datetime",
+      "enum.Enum",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.List",
+      "time",
+      "time",
+      "datetime.timedelta"
+    ],
+    "classes": [
+      "ProviderType",
+      "TokenEndpoint",
+      "IMAPServer",
+      "ProviderStatus",
+      "EmailMessage",
+      "TokenInfo",
+      "ProviderHealth"
+    ],
+    "functions": [
+      "to_dict",
+      "is_expired",
+      "from_response",
+      "record_success",
+      "record_failure",
+      "should_disable",
+      "is_disabled",
+      "disable",
+      "enable",
+      "to_dict"
+    ],
+    "size": 5042
+  },
+  "src/services/outlook/account.py": {
+    "path": "src/services/outlook/account.py",
+    "imports": [
+      "dataclasses.dataclass",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Optional"
+    ],
+    "classes": [
+      "OutlookAccount"
+    ],
+    "functions": [
+      "from_config",
+      "has_oauth",
+      "validate",
+      "to_dict",
+      "__str__"
+    ],
+    "size": 1409
+  },
+  "src/services/outlook/providers/imap_new.py": {
+    "path": "src/services/outlook/providers/imap_new.py",
+    "imports": [
+      "email",
+      "imaplib",
+      "logging",
+      "email.header.decode_header",
+      "email.utils.parsedate_to_datetime",
+      "typing.List",
+      "typing.Optional",
+      "base.ProviderType",
+      "base.EmailMessage",
+      "account.OutlookAccount",
+      "token_manager.TokenManager",
+      "base.OutlookProvider",
+      "base.ProviderConfig",
+      "imap_old.IMAPOldProvider"
+    ],
+    "classes": [
+      "IMAPNewProvider"
+    ],
+    "functions": [
+      "provider_type",
+      "__init__",
+      "connect",
+      "_authenticate_xoauth2",
+      "disconnect",
+      "get_recent_emails",
+      "_fetch_email",
+      "_parse_email",
+      "test_connection"
+    ],
+    "size": 6320
+  },
+  "src/services/outlook/providers/__init__.py": {
+    "path": "src/services/outlook/providers/__init__.py",
+    "imports": [
+      "base.OutlookProvider",
+      "base.ProviderConfig",
+      "imap_old.IMAPOldProvider",
+      "imap_new.IMAPNewProvider",
+      "graph_api.GraphAPIProvider"
+    ],
+    "classes": [],
+    "functions": [
+      "get_provider_class"
+    ],
+    "size": 566
+  },
+  "src/services/outlook/providers/graph_api.py": {
+    "path": "src/services/outlook/providers/graph_api.py",
+    "imports": [
+      "json",
+      "logging",
+      "typing.List",
+      "typing.Optional",
+      "datetime.datetime",
+      "curl_cffi.requests",
+      "base.ProviderType",
+      "base.EmailMessage",
+      "account.OutlookAccount",
+      "token_manager.TokenManager",
+      "base.OutlookProvider",
+      "base.ProviderConfig"
+    ],
+    "classes": [
+      "GraphAPIProvider"
+    ],
+    "functions": [
+      "provider_type",
+      "__init__",
+      "connect",
+      "disconnect",
+      "get_recent_emails",
+      "_parse_graph_message",
+      "test_connection"
+    ],
+    "size": 7257
+  },
+  "src/services/outlook/providers/imap_old.py": {
+    "path": "src/services/outlook/providers/imap_old.py",
+    "imports": [
+      "email",
+      "imaplib",
+      "logging",
+      "email.header.decode_header",
+      "email.utils.parsedate_to_datetime",
+      "typing.List",
+      "typing.Optional",
+      "base.ProviderType",
+      "base.EmailMessage",
+      "account.OutlookAccount",
+      "token_manager.TokenManager",
+      "base.OutlookProvider",
+      "base.ProviderConfig",
+      "html",
+      "re"
+    ],
+    "classes": [
+      "IMAPOldProvider"
+    ],
+    "functions": [
+      "provider_type",
+      "__init__",
+      "connect",
+      "_authenticate_xoauth2",
+      "disconnect",
+      "get_recent_emails",
+      "_fetch_email",
+      "_parse_email",
+      "_decode_header",
+      "_extract_body",
+      "test_connection"
+    ],
+    "size": 9545
+  },
+  "src/services/outlook/providers/base.py": {
+    "path": "src/services/outlook/providers/base.py",
+    "imports": [
+      "abc",
+      "logging",
+      "dataclasses.dataclass",
+      "typing.Dict",
+      "typing.Any",
+      "typing.List",
+      "typing.Optional",
+      "base.ProviderType",
+      "base.EmailMessage",
+      "base.ProviderHealth",
+      "base.ProviderStatus",
+      "account.OutlookAccount"
+    ],
+    "classes": [
+      "ProviderConfig",
+      "OutlookProvider"
+    ],
+    "functions": [
+      "__init__",
+      "provider_type",
+      "health",
+      "is_healthy",
+      "is_connected",
+      "connect",
+      "disconnect",
+      "get_recent_emails",
+      "test_connection",
+      "record_success",
+      "record_failure",
+      "check_health",
+      "__enter__",
+      "__exit__",
+      "__str__",
+      "__repr__"
+    ],
+    "size": 4100
+  },
+  "src/web/routes/registration.py": {
+    "path": "src/web/routes/registration.py",
+    "imports": [
+      "asyncio",
+      "logging",
+      "threading",
+      "uuid",
+      "random",
+      "re",
+      "time",
+      "datetime.datetime",
+      "typing.List",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Tuple",
+      "typing.Any",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Query",
+      "fastapi.BackgroundTasks",
+      "pydantic.BaseModel",
+      "pydantic.Field",
+      "database.crud",
+      "database.session.get_db",
+      "database.models.RegistrationTask",
+      "database.models.Proxy",
+      "core.register.ERROR_OTP_TIMEOUT_SECONDARY",
+      "core.register.ERROR_TASK_CANCELLED",
+      "core.register.RegistrationEngine",
+      "core.register.RegistrationResult",
+      "services.EmailServiceFactory",
+      "services.EmailServiceType",
+      "services.base.BaseEmailService",
+      "services.base.EmailProviderBackoffState",
+      "services.base.OTPTimeoutEmailServiceError",
+      "config.settings.get_settings",
+      "task_manager.task_manager",
+      "core.dynamic_proxy.get_proxy_url_for_task"
+    ],
+    "classes": [
+      "RegistrationTaskCreate",
+      "BatchRegistrationRequest",
+      "MockRegistrationCreateRequest",
+      "RegistrationTaskResponse",
+      "BatchRegistrationResponse",
+      "MockRegistrationTaskCreateResponse",
+      "TaskListResponse",
+      "OutlookAccountForRegistration",
+      "OutlookAccountsListResponse",
+      "OutlookBatchRegistrationRequest",
+      "OutlookBatchRegistrationResponse",
+      "Config"
+    ],
+    "functions": [
+      "get_proxy_for_registration",
+      "update_proxy_usage",
+      "is_retryable_proxy_error",
+      "disable_proxy_for_network_error",
+      "task_to_response",
+      "_create_task_status_callback",
+      "_normalize_email_service_config",
+      "_get_email_service_backoff_state",
+      "_store_email_service_backoff_state",
+      "_get_phase_result",
+      "_is_email_service_circuit_open",
+      "_trip_email_service_circuit",
+      "_record_email_service_timeout_backoff",
+      "_run_registration_engine_attempt",
+      "_get_batch_snapshot",
+      "_finalize_task_cancelled",
+      "_request_task_cancellation",
+      "_request_batch_cancellation",
+      "callback"
+    ],
+    "size": 15038
+  },
+  "src/web/routes/accounts.py": {
+    "path": "src/web/routes/accounts.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/web/routes/__init__.py": {
+    "path": "src/web/routes/__init__.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "accounts.router",
+      "registration.router",
+      "settings.router",
+      "email.router",
+      "payment.router",
+      "upload.cpa_services.router",
+      "upload.sub2api_services.router",
+      "upload.tm_services.router",
+      "upload.newapi_services.router"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1430
+  },
+  "src/web/routes/email.py": {
+    "path": "src/web/routes/email.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "src/web/routes/settings.py": {
+    "path": "src/web/routes/settings.py",
+    "imports": [
+      "logging",
+      "os",
+      "typing.List",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "config.settings.get_settings",
+      "config.settings.update_settings",
+      "database.crud",
+      "database.session.get_db",
+      "core.dynamic_proxy.fetch_dynamic_proxy",
+      "time",
+      "curl_cffi.requests",
+      "os",
+      "pathlib.Path",
+      "shutil",
+      "datetime.datetime",
+      "pathlib.Path",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "pathlib.Path",
+      "time",
+      "curl_cffi.requests",
+      "database.models.Account",
+      "database.models.EmailService",
+      "database.models.RegistrationTask",
+      "database.models.RegistrationTask",
+      "sqlalchemy.delete"
+    ],
+    "classes": [
+      "SettingItem",
+      "SettingUpdateRequest",
+      "ProxySettings",
+      "RegistrationSettings",
+      "WebUISettings",
+      "AllSettings",
+      "DynamicProxySettings",
+      "TempmailSettings",
+      "EmailCodeSettings",
+      "ProxyCreateRequest",
+      "ProxyBatchDeleteRequest",
+      "ProxyUpdateRequest"
+    ],
+    "functions": [
+      "get_all_settings",
+      "get_dynamic_proxy_settings",
+      "update_dynamic_proxy_settings",
+      "test_dynamic_proxy",
+      "get_registration_settings",
+      "update_registration_settings",
+      "update_webui_settings",
+      "get_database_info",
+      "backup_database",
+      "cleanup_database",
+      "get_recent_logs",
+      "get_tempmail_settings",
+      "update_tempmail_settings",
+      "get_email_code_settings",
+      "update_email_code_settings",
+      "_test_proxy_connectivity"
+    ],
+    "size": 15038
+  },
+  "src/web/routes/payment.py": {
+    "path": "src/web/routes/payment.py",
+    "imports": [
+      "logging",
+      "typing.Optional",
+      "typing.List",
+      "datetime.datetime",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "database.session.get_db",
+      "database.models.Account",
+      "database.crud",
+      "config.settings.get_settings",
+      "accounts.resolve_account_ids",
+      "core.openai.payment.generate_plus_link",
+      "core.openai.payment.generate_team_link",
+      "core.openai.payment.open_url_incognito",
+      "core.openai.payment.check_subscription_status",
+      "time",
+      "json",
+      "curl_cffi.requests",
+      "concurrent.futures.ThreadPoolExecutor",
+      "concurrent.futures.as_completed"
+    ],
+    "classes": [
+      "GenerateLinkRequest",
+      "OpenIncognitoRequest",
+      "MarkSubscriptionRequest",
+      "BatchCheckSubscriptionRequest"
+    ],
+    "functions": [
+      "generate_payment_link",
+      "open_browser_incognito",
+      "batch_check_subscription",
+      "mark_subscription",
+      "_get_fallback_countries",
+      "get_checkout_countries",
+      "fetch_config"
+    ],
+    "size": 10907
+  },
+  "src/web/routes/websocket.py": {
+    "path": "src/web/routes/websocket.py",
+    "imports": [
+      "asyncio",
+      "logging",
+      "fastapi.APIRouter",
+      "fastapi.WebSocket",
+      "fastapi.WebSocketDisconnect",
+      "database.crud",
+      "database.session.get_db",
+      "task_manager.task_manager",
+      "registration",
+      "registration"
+    ],
+    "classes": [],
+    "functions": [
+      "_restore_task_snapshot",
+      "task_websocket",
+      "batch_websocket"
+    ],
+    "size": 6275
+  },
+  "src/web/routes/upload/newapi_services.py": {
+    "path": "src/web/routes/upload/newapi_services.py",
+    "imports": [
+      "typing.List",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "database.crud",
+      "database.session.get_db",
+      "core.upload.newapi_upload.normalize_authorization_token"
+    ],
+    "classes": [
+      "NewapiServiceCreate",
+      "NewapiServiceUpdate",
+      "NewapiServiceResponse",
+      "Config"
+    ],
+    "functions": [
+      "_to_response",
+      "_validated_newapi_api_key",
+      "list_newapi_services",
+      "create_newapi_service",
+      "get_newapi_service",
+      "update_newapi_service",
+      "delete_newapi_service"
+    ],
+    "size": 5326
+  },
+  "src/web/routes/upload/__init__.py": {
+    "path": "src/web/routes/upload/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 46
+  },
+  "src/web/routes/upload/sub2api_services.py": {
+    "path": "src/web/routes/upload/sub2api_services.py",
+    "imports": [
+      "typing.List",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "database.crud",
+      "database.session.get_db",
+      "core.upload.sub2api_upload.test_sub2api_connection",
+      "core.upload.sub2api_upload.batch_upload_to_sub2api"
+    ],
+    "classes": [
+      "Sub2ApiServiceCreate",
+      "Sub2ApiServiceUpdate",
+      "Sub2ApiServiceResponse",
+      "Sub2ApiTestRequest",
+      "Sub2ApiUploadRequest",
+      "Config"
+    ],
+    "functions": [
+      "_to_response",
+      "list_sub2api_services",
+      "create_sub2api_service",
+      "get_sub2api_service",
+      "get_sub2api_service_full",
+      "update_sub2api_service",
+      "delete_sub2api_service",
+      "test_sub2api_service",
+      "test_sub2api_connection_direct",
+      "upload_accounts_to_sub2api"
+    ],
+    "size": 6387
+  },
+  "src/web/routes/upload/cpa_services.py": {
+    "path": "src/web/routes/upload/cpa_services.py",
+    "imports": [
+      "typing.List",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "database.crud",
+      "database.session.get_db",
+      "core.upload.cpa_upload.test_cpa_connection"
+    ],
+    "classes": [
+      "CpaServiceCreate",
+      "CpaServiceUpdate",
+      "CpaServiceResponse",
+      "CpaServiceTestRequest",
+      "Config"
+    ],
+    "functions": [
+      "_to_response",
+      "list_cpa_services",
+      "create_cpa_service",
+      "get_cpa_service",
+      "get_cpa_service_full",
+      "update_cpa_service",
+      "delete_cpa_service",
+      "test_cpa_service",
+      "test_cpa_connection_direct"
+    ],
+    "size": 5729
+  },
+  "src/web/routes/upload/tm_services.py": {
+    "path": "src/web/routes/upload/tm_services.py",
+    "imports": [
+      "typing.List",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "database.crud",
+      "database.session.get_db",
+      "core.upload.team_manager_upload.test_team_manager_connection"
+    ],
+    "classes": [
+      "TmServiceCreate",
+      "TmServiceUpdate",
+      "TmServiceResponse",
+      "TmTestRequest",
+      "Config"
+    ],
+    "functions": [
+      "_to_response",
+      "list_tm_services",
+      "create_tm_service",
+      "get_tm_service",
+      "update_tm_service",
+      "delete_tm_service",
+      "test_tm_service",
+      "test_tm_connection_direct"
+    ],
+    "size": 4754
+  },
+  "src/core/upload/sub2api_upload.py": {
+    "path": "src/core/upload/sub2api_upload.py",
+    "imports": [
+      "json",
+      "logging",
+      "datetime.datetime",
+      "datetime.timezone",
+      "typing.List",
+      "typing.Tuple",
+      "typing.Optional",
+      "curl_cffi.requests",
+      "database.session.get_db",
+      "database.models.Account"
+    ],
+    "classes": [],
+    "functions": [
+      "upload_to_sub2api",
+      "batch_upload_to_sub2api",
+      "test_sub2api_connection"
+    ],
+    "size": 6548
+  },
+  "src/core/upload/__init__.py": {
+    "path": "src/core/upload/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 72
+  },
+  "src/core/upload/cpa_upload.py": {
+    "path": "src/core/upload/cpa_upload.py",
+    "imports": [
+      "json",
+      "logging",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Tuple",
+      "typing.Optional",
+      "datetime.datetime",
+      "urllib.parse.quote",
+      "curl_cffi.requests",
+      "curl_cffi.CurlMime",
+      "database.session.get_db",
+      "database.models.Account",
+      "config.settings.get_settings"
+    ],
+    "classes": [],
+    "functions": [
+      "_normalize_cpa_auth_files_url",
+      "_build_cpa_headers",
+      "_extract_cpa_error",
+      "_post_cpa_auth_file_multipart",
+      "_post_cpa_auth_file_raw_json",
+      "generate_token_json",
+      "upload_to_cpa",
+      "batch_upload_to_cpa",
+      "test_cpa_connection"
+    ],
+    "size": 9480
+  },
+  "src/core/upload/newapi_upload.py": {
+    "path": "src/core/upload/newapi_upload.py",
+    "imports": [
+      "json",
+      "logging",
+      "datetime.datetime",
+      "typing.List",
+      "typing.Optional",
+      "typing.Tuple",
+      "curl_cffi.requests",
+      "database.models.Account",
+      "database.session.get_db"
+    ],
+    "classes": [],
+    "functions": [
+      "_normalize_base",
+      "normalize_authorization_token",
+      "_mask_header_value",
+      "_build_headers",
+      "_extract_error",
+      "upload_to_newapi",
+      "batch_upload_to_newapi"
+    ],
+    "size": 6615
+  },
+  "src/core/upload/team_manager_upload.py": {
+    "path": "src/core/upload/team_manager_upload.py",
+    "imports": [
+      "logging",
+      "typing.List",
+      "typing.Tuple",
+      "curl_cffi.requests",
+      "database.models.Account",
+      "database.session.get_db"
+    ],
+    "classes": [],
+    "functions": [
+      "upload_to_team_manager",
+      "batch_upload_to_team_manager",
+      "test_team_manager_connection"
+    ],
+    "size": 6239
+  },
+  "src/core/openai/__init__.py": {
+    "path": "src/core/openai/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 72
+  },
+  "src/core/openai/token_refresh.py": {
+    "path": "src/core/openai/token_refresh.py",
+    "imports": [
+      "logging",
+      "json",
+      "time",
+      "typing.Optional",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Tuple",
+      "dataclasses.dataclass",
+      "datetime.datetime",
+      "datetime.timedelta",
+      "curl_cffi.requests",
+      "config.settings.get_settings",
+      "database.session.get_db",
+      "database.crud",
+      "database.models.Account"
+    ],
+    "classes": [
+      "TokenRefreshResult",
+      "TokenRefreshManager"
+    ],
+    "functions": [
+      "refresh_account_token",
+      "validate_account_token",
+      "__init__",
+      "_create_session",
+      "_parse_oauth_error",
+      "refresh_by_session_token",
+      "refresh_by_oauth_token",
+      "refresh_account",
+      "validate_token"
+    ],
+    "size": 10922
+  },
+  "src/core/openai/codex_auth.py": {
+    "path": "src/core/openai/codex_auth.py",
+    "imports": [
+      "time",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "typing.Any",
+      "typing.Callable",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "core.openai.oauth.OAuthManager",
+      "core.register.PhaseContext",
+      "core.register.RegistrationEngine",
+      "config.constants.CODEX_OAUTH_ORIGINATOR",
+      "config.constants.CODEX_OAUTH_REDIRECT_URI",
+      "config.constants.CODEX_OAUTH_SCOPE",
+      "config.settings.get_settings",
+      "services.base.BaseEmailService"
+    ],
+    "classes": [
+      "CodexAuthResult",
+      "CodexAuthEngine"
+    ],
+    "functions": [
+      "__init__",
+      "_build_auth_json",
+      "_resolve_workspace_id",
+      "run"
+    ],
+    "size": 7418
+  },
+  "src/core/openai/payment.py": {
+    "path": "src/core/openai/payment.py",
+    "imports": [
+      "logging",
+      "subprocess",
+      "sys",
+      "uuid",
+      "typing.Optional",
+      "curl_cffi.requests",
+      "database.models.Account",
+      "threading",
+      "playwright.sync_api.sync_playwright"
+    ],
+    "classes": [],
+    "functions": [
+      "_build_proxies",
+      "_extract_oai_did",
+      "_parse_cookie_str",
+      "_open_url_system_browser",
+      "generate_plus_link",
+      "generate_team_link",
+      "open_url_incognito",
+      "check_subscription_status",
+      "_launch"
+    ],
+    "size": 8905
+  },
+  "src/core/openai/oauth.py": {
+    "path": "src/core/openai/oauth.py",
+    "imports": [
+      "base64",
+      "hashlib",
+      "json",
+      "secrets",
+      "time",
+      "urllib.parse",
+      "dataclasses.dataclass",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Optional",
+      "curl_cffi.requests",
+      "config.constants.OAUTH_CLIENT_ID",
+      "config.constants.OAUTH_AUTH_URL",
+      "config.constants.OAUTH_TOKEN_URL",
+      "config.constants.OAUTH_REDIRECT_URI",
+      "config.constants.OAUTH_SCOPE"
+    ],
+    "classes": [
+      "OAuthStart",
+      "OAuthManager"
+    ],
+    "functions": [
+      "_b64url_no_pad",
+      "_sha256_b64url_no_pad",
+      "_random_state",
+      "_pkce_verifier",
+      "_parse_callback_url",
+      "_jwt_claims_no_verify",
+      "_decode_jwt_segment",
+      "_to_int",
+      "_post_form",
+      "generate_oauth_url",
+      "submit_callback_url",
+      "get1",
+      "__init__",
+      "start_oauth",
+      "handle_callback",
+      "extract_account_info"
+    ],
+    "size": 10275
+  },
+  "tests/e2e/runtime_functionality_check.py": {
+    "path": "tests/e2e/runtime_functionality_check.py",
+    "imports": [
+      "argparse",
+      "asyncio",
+      "json",
+      "sqlite3",
+      "time",
+      "uuid",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Dict",
+      "typing.List",
+      "httpx",
+      "websockets",
+      "src.config.constants.DEFAULT_WEBUI_BASE_URL",
+      "src.config.constants.DEFAULT_WEBUI_WS_BASE_URL"
+    ],
+    "classes": [],
+    "functions": [
+      "_write_json",
+      "_load_json",
+      "_connect_db",
+      "_fetchone_dict",
+      "_assert",
+      "_health_check",
+      "_collect_task_websocket",
+      "_poll_task_completion",
+      "_validate_live_database",
+      "run_live_mode",
+      "run_prepare_recovery_mode",
+      "run_verify_recovery_mode",
+      "main"
+    ],
+    "size": 11255
+  }
+}

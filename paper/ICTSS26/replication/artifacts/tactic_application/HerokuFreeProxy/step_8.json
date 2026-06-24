@@ -1,0 +1,5 @@
+{
+  "action": "create_file",
+  "path": "herokufreeproxy/proxy/urls.py",
+  "content": "from django.conf.urls import url\nfrom proxy import views\n\nurlpatterns = [\n    url(r'^proxy/(?P<url>.*)$', views.proxy_view),\n]\n"
+}

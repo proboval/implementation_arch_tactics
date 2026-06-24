@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "infra_error": false,
+  "timeout": false,
+  "failures": 0,
+  "failed_names": [],
+  "stdout": "\n==================================== ERRORS ====================================\n__________________ ERROR collecting test/test_chat_routing.py __________________\nImportError while importing test module '/home/anon/PycharmProjects/implementation_arch_tactics/experiment_5/repos/bilibili-rag/test/test_chat_routing.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntest/test_chat_routing.py:3: in <module>\n    from app.config import settings\nE   ModuleNotFoundError: No module named 'app'\n___________________ ERROR collecting test/test_retrieval.py ____________________\nImportError while importing test module '/home/anon/PycharmProjects/implementation_arch_tactics/experiment_5/repos/bilibili-rag/test/test_retrieval.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\ntest/test_retrieval.py:3: in <module>\n    from app.services.retrieval import (\nE   ModuleNotFoundError: No module named 'app'\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!\n2 errors in 0.04s\n",
+  "stderr": "",
+  "regression": false
+}

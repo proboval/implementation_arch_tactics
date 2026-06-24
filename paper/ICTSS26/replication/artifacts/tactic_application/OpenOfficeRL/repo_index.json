@@ -1,0 +1,755 @@
+{
+  "main.py": {
+    "path": "main.py",
+    "imports": [],
+    "classes": [],
+    "functions": [
+      "main"
+    ],
+    "size": 100
+  },
+  "office_os/send_training.py": {
+    "path": "office_os/send_training.py",
+    "imports": [
+      "__future__.annotations",
+      "argparse",
+      "json",
+      "os",
+      "sys",
+      "time",
+      "dotenv.load_dotenv",
+      "urllib.request",
+      "urllib.request"
+    ],
+    "classes": [],
+    "functions": [
+      "load_trajectories",
+      "check_health",
+      "send_train_request",
+      "main"
+    ],
+    "size": 7102
+  },
+  "office_os/models.py": {
+    "path": "office_os/models.py",
+    "imports": [
+      "typing.Optional",
+      "pydantic.Field",
+      "openenv.core.env_server.types.Action",
+      "openenv.core.env_server.types.Observation"
+    ],
+    "classes": [
+      "OfficeOsAction",
+      "OfficeOsObservation"
+    ],
+    "functions": [],
+    "size": 2486
+  },
+  "office_os/client.py": {
+    "path": "office_os/client.py",
+    "imports": [
+      "typing.Dict",
+      "openenv.core.client_types.StepResult",
+      "openenv.core.env_server.types.State",
+      "openenv.core.EnvClient",
+      "models.OfficeOsAction",
+      "models.OfficeOsObservation"
+    ],
+    "classes": [
+      "OfficeOsEnv"
+    ],
+    "functions": [
+      "_step_payload",
+      "_parse_result",
+      "_parse_state"
+    ],
+    "size": 2947
+  },
+  "office_os/frontend.py": {
+    "path": "office_os/frontend.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "office_os/__init__.py": {
+    "path": "office_os/__init__.py",
+    "imports": [
+      "client.OfficeOsEnv",
+      "models.OfficeOsAction",
+      "models.OfficeOsObservation"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 410
+  },
+  "office_os/run_agents.py": {
+    "path": "office_os/run_agents.py",
+    "imports": [
+      "argparse",
+      "json",
+      "logging",
+      "sys",
+      "os",
+      "agents.llm_agent.LLMAgent",
+      "market.config.AGENT_ROLES",
+      "market.config.EPISODE_DAYS",
+      "market.config.TURNS_PER_DAY",
+      "server.office_os_environment.OfficeOsEnvironment",
+      "models.OfficeOsAction",
+      "client.OfficeOsEnv",
+      "models.OfficeOsAction"
+    ],
+    "classes": [],
+    "functions": [
+      "run_local",
+      "run_server",
+      "_obs_to_dict",
+      "main"
+    ],
+    "size": 11041
+  },
+  "office_os/train_loop.py": {
+    "path": "office_os/train_loop.py",
+    "imports": [
+      "argparse",
+      "asyncio",
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "time",
+      "agents.llm_agent.LLMAgent",
+      "market.config.AGENT_ROLES",
+      "market.config.TURNS_PER_DAY",
+      "server.office_os_environment.OfficeOsEnvironment",
+      "models.OfficeOsAction",
+      "market.config.EPISODE_DAYS",
+      "training.collector.TrajectoryCollector",
+      "training.trainer.RemoteTrainer"
+    ],
+    "classes": [],
+    "functions": [
+      "run_episode",
+      "main"
+    ],
+    "size": 14780
+  },
+  "office_os/demo_inference.py": {
+    "path": "office_os/demo_inference.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "office_os/generate_training_data.py": {
+    "path": "office_os/generate_training_data.py",
+    "imports": [
+      "argparse",
+      "json",
+      "logging",
+      "os",
+      "random",
+      "sys",
+      "agents.llm_agent.LLMAgent",
+      "agents.prompts.ROLE_PROMPTS",
+      "market.config.AGENT_ROLES",
+      "market.config.ROLE_ACTIONS",
+      "market.config.TURNS_PER_DAY",
+      "market.config.EPISODE_DAYS",
+      "server.office_os_environment.OfficeOsEnvironment",
+      "models.OfficeOsAction"
+    ],
+    "classes": [],
+    "functions": [
+      "_customer_names",
+      "_shipped_features",
+      "_building_features",
+      "_pipeline_closest",
+      "expert_ceo",
+      "expert_dev",
+      "expert_marketing"
+    ],
+    "size": 15038
+  },
+  "examples/simple_agent.py": {
+    "path": "examples/simple_agent.py",
+    "imports": [
+      "gymnasium",
+      "numpy",
+      "typing.Tuple"
+    ],
+    "classes": [
+      "SimpleAgent"
+    ],
+    "functions": [
+      "main",
+      "__init__",
+      "select_action",
+      "train_episode"
+    ],
+    "size": 2662
+  },
+  "examples/run_agent.py": {
+    "path": "examples/run_agent.py",
+    "imports": [
+      "gymnasium"
+    ],
+    "classes": [],
+    "functions": [
+      "run_simple_agent"
+    ],
+    "size": 847
+  },
+  "office_os/training/train_worker.py": {
+    "path": "office_os/training/train_worker.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "office_os/training/collector.py": {
+    "path": "office_os/training/collector.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "logging",
+      "os",
+      "dataclasses.dataclass",
+      "dataclasses.field"
+    ],
+    "classes": [
+      "TurnRecord",
+      "TrajectoryCollector"
+    ],
+    "functions": [
+      "__init__",
+      "record",
+      "drain_batch",
+      "turns_for_role",
+      "pending_count",
+      "total_count",
+      "save_jsonl"
+    ],
+    "size": 3726
+  },
+  "office_os/training/__init__.py": {
+    "path": "office_os/training/__init__.py",
+    "imports": [
+      "collector.TrajectoryCollector",
+      "trainer.RemoteTrainer"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 203
+  },
+  "office_os/training/trainer.py": {
+    "path": "office_os/training/trainer.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "logging",
+      "os",
+      "typing.Any",
+      "collector.TrajectoryCollector",
+      "collector.TurnRecord",
+      "market.config.AGENT_ROLES",
+      "market.config.AGENT_ROLES",
+      "httpx"
+    ],
+    "classes": [
+      "RemoteTrainer"
+    ],
+    "functions": [
+      "__init__",
+      "enabled",
+      "should_train",
+      "initialize",
+      "train_role",
+      "train_all_roles",
+      "get_inference_endpoint",
+      "is_role_trained",
+      "get_training_stats"
+    ],
+    "size": 7398
+  },
+  "office_os/tests/test_env.py": {
+    "path": "office_os/tests/test_env.py",
+    "imports": [
+      "sys",
+      "os",
+      "server.office_os_environment.OfficeOsEnvironment",
+      "models.OfficeOsAction",
+      "models.OfficeOsObservation",
+      "market.state.Customer",
+      "market.state.Customer",
+      "market.config.EPISODE_DAYS"
+    ],
+    "classes": [],
+    "functions": [
+      "test_reset",
+      "test_dev_build_feature",
+      "test_dev_ship_release",
+      "test_marketing_launch_campaign",
+      "test_content_write_blog",
+      "test_content_vaporware_penalty",
+      "test_sales_pipeline",
+      "test_invalid_action_for_role",
+      "test_messages_between_agents",
+      "test_full_pipeline_rewards",
+      "test_contract_tiers",
+      "test_episode_ends"
+    ],
+    "size": 9075
+  },
+  "office_os/agents/memory.py": {
+    "path": "office_os/agents/memory.py",
+    "imports": [
+      "__future__.annotations",
+      "math",
+      "dataclasses.dataclass",
+      "dataclasses.field"
+    ],
+    "classes": [
+      "Memory",
+      "MemoryStream"
+    ],
+    "functions": [
+      "__repr__",
+      "__init__",
+      "add",
+      "add_observation",
+      "add_reflection",
+      "add_plan",
+      "retrieve_relevant",
+      "recent_reflections",
+      "current_plan",
+      "summary"
+    ],
+    "size": 4282
+  },
+  "office_os/agents/base_agent.py": {
+    "path": "office_os/agents/base_agent.py",
+    "imports": [
+      "__future__.annotations",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "memory.MemoryStream"
+    ],
+    "classes": [
+      "BaseAgent"
+    ],
+    "functions": [
+      "__post_init__",
+      "observe",
+      "reflect",
+      "plan",
+      "get_context",
+      "reset"
+    ],
+    "size": 2234
+  },
+  "office_os/agents/__init__.py": {
+    "path": "office_os/agents/__init__.py",
+    "imports": [
+      "base_agent.BaseAgent",
+      "memory.MemoryStream",
+      "llm_agent.LLMAgent"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 198
+  },
+  "office_os/agents/prompts.py": {
+    "path": "office_os/agents/prompts.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 10371
+  },
+  "office_os/agents/llm_agent.py": {
+    "path": "office_os/agents/llm_agent.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "logging",
+      "os",
+      "typing.Optional",
+      "pydantic.BaseModel",
+      "pydantic.Field",
+      "base_agent.BaseAgent",
+      "prompts.ROLE_PROMPTS",
+      "anthropic",
+      "openai.OpenAI",
+      "market.config.ROLE_ACTIONS",
+      "random",
+      "boto3",
+      "time"
+    ],
+    "classes": [
+      "AgentAction",
+      "ReflectionOutput",
+      "LLMAgent"
+    ],
+    "functions": [
+      "_get_client",
+      "_get_openai_client",
+      "__init__",
+      "set_vllm_endpoint",
+      "clear_vllm_endpoint",
+      "client",
+      "openai_client",
+      "decide",
+      "_call_vllm",
+      "_is_claude_model",
+      "_call_bedrock_converse",
+      "_prune_to_budget",
+      "_call_structured",
+      "_get_priority"
+    ],
+    "size": 15038
+  },
+  "office_os/server/__init__.py": {
+    "path": "office_os/server/__init__.py",
+    "imports": [
+      "office_os_environment.OfficeOsEnvironment"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 347
+  },
+  "office_os/server/app.py": {
+    "path": "office_os/server/app.py",
+    "imports": [
+      "models.OfficeOsAction",
+      "models.OfficeOsObservation",
+      "office_os_environment.OfficeOsEnvironment",
+      "openenv.core.env_server.http_server.create_app",
+      "uvicorn"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ],
+    "size": 2274
+  },
+  "office_os/server/office_os_environment.py": {
+    "path": "office_os/server/office_os_environment.py",
+    "imports": [
+      "pathlib.Path",
+      "uuid.uuid4",
+      "dotenv.load_dotenv",
+      "openenv.core.env_server.interfaces.Environment",
+      "openenv.core.env_server.types.State",
+      "models.OfficeOsAction",
+      "models.OfficeOsObservation",
+      "market.state.MarketState",
+      "market.simulator.MarketSimulator",
+      "market.events.EventEngine",
+      "market.metrics.RewardCalculator",
+      "market.config.EPISODE_DAYS",
+      "market.config.ROLE_ACTIONS",
+      "integrations.sheets.GoogleSheetsSync"
+    ],
+    "classes": [
+      "OfficeOsEnvironment"
+    ],
+    "functions": [
+      "__init__",
+      "reset",
+      "step",
+      "sync_sheets",
+      "state",
+      "_build_observation",
+      "_get_role_data",
+      "_suggest_content"
+    ],
+    "size": 15038
+  },
+  "office_os/integrations/sheets.py": {
+    "path": "office_os/integrations/sheets.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "os",
+      "logging",
+      "tempfile",
+      "datetime.datetime",
+      "typing.TYPE_CHECKING",
+      "market.state.MarketState",
+      "market.state.Customer",
+      "gspread"
+    ],
+    "classes": [
+      "GoogleSheetsSync"
+    ],
+    "functions": [
+      "_load_gspread",
+      "__init__",
+      "enabled",
+      "setup",
+      "update_dashboard",
+      "update_customers",
+      "create_invoice",
+      "log_agent_action",
+      "_ensure_sheet"
+    ],
+    "size": 10711
+  },
+  "office_os/integrations/__init__.py": {
+    "path": "office_os/integrations/__init__.py",
+    "imports": [
+      "sheets.GoogleSheetsSync"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 115
+  },
+  "office_os/market/scenarios.py": {
+    "path": "office_os/market/scenarios.py",
+    "imports": [
+      "__future__.annotations",
+      "dataclasses.dataclass",
+      "dataclasses.field"
+    ],
+    "classes": [
+      "ScheduledEvent",
+      "Scenario"
+    ],
+    "functions": [
+      "get_scenario"
+    ],
+    "size": 8399
+  },
+  "office_os/market/metrics.py": {
+    "path": "office_os/market/metrics.py",
+    "imports": [
+      "__future__.annotations",
+      "config.CONTRACT_TIERS",
+      "config.STAGE_REWARDS",
+      "config.TURNS_PER_DAY",
+      "state.MarketState"
+    ],
+    "classes": [
+      "RewardCalculator"
+    ],
+    "functions": [
+      "__init__",
+      "snapshot",
+      "calculate",
+      "_action_reward",
+      "_kpi_delta_reward",
+      "_collaboration_bonus",
+      "_constraint_penalties"
+    ],
+    "size": 11747
+  },
+  "office_os/market/config.py": {
+    "path": "office_os/market/config.py",
+    "imports": [
+      "dataclasses.dataclass",
+      "dataclasses.field"
+    ],
+    "classes": [
+      "Config"
+    ],
+    "functions": [],
+    "size": 5397
+  },
+  "office_os/market/events.py": {
+    "path": "office_os/market/events.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "office_os/market/__init__.py": {
+    "path": "office_os/market/__init__.py",
+    "imports": [
+      "state.MarketState",
+      "config.Config",
+      "events.EventEngine",
+      "metrics.RewardCalculator",
+      "simulator.MarketSimulator"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 328
+  },
+  "office_os/market/simulator.py": {
+    "path": "office_os/market/simulator.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "office_os/market/state.py": {
+    "path": "office_os/market/state.py",
+    "imports": [
+      "__future__.annotations",
+      "random",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "uuid.uuid4",
+      "config.Config",
+      "config.DAY_PHASES",
+      "config.PHASE_TURNS",
+      "config.PIPELINE_STAGES",
+      "config.SAMPLE_CUSTOMERS",
+      "config.TURNS_PER_DAY",
+      "scenarios.get_scenario",
+      "config.CONTRACT_TIERS"
+    ],
+    "classes": [
+      "Customer",
+      "Feature",
+      "ContentPiece",
+      "Campaign",
+      "Message",
+      "SharedMemoryEntry",
+      "SharedMemory",
+      "MarketState"
+    ],
+    "functions": [
+      "advance_stage",
+      "post",
+      "recent",
+      "by_type",
+      "requests_for",
+      "initial",
+      "get_all_kpis",
+      "get_kpis_for_role",
+      "get_visible_actions",
+      "get_messages_for",
+      "shipped_features",
+      "active_leads",
+      "customers_that_moved_stage",
+      "maybe_spawn_customer",
+      "_accrue_mrr"
+    ],
+    "size": 15038
+  },
+  "demo/api/rl_bridge.py": {
+    "path": "demo/api/rl_bridge.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "demo/api/server.py": {
+    "path": "demo/api/server.py",
+    "imports": [
+      "argparse",
+      "os",
+      "sys",
+      "dotenv.load_dotenv",
+      "fastapi.FastAPI",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "fastapi.staticfiles.StaticFiles",
+      "routes.router",
+      "uvicorn"
+    ],
+    "classes": [],
+    "functions": [
+      "health",
+      "main"
+    ],
+    "size": 4885
+  },
+  "demo/api/claude_bridge.py": {
+    "path": "demo/api/claude_bridge.py",
+    "imports": [
+      "__future__.annotations",
+      "os",
+      "asyncio",
+      "json",
+      "typing.Any",
+      "boto3",
+      "botocore.exceptions"
+    ],
+    "classes": [],
+    "functions": [
+      "_get_client",
+      "_invoke_bedrock",
+      "get_agent_reasoning",
+      "get_batch_reasoning",
+      "_template_fallback"
+    ],
+    "size": 7529
+  },
+  "demo/api/rl_environment.py": {
+    "path": "demo/api/rl_environment.py",
+    "imports": [
+      "__future__.annotations",
+      "random",
+      "typing.Any",
+      "typing.Optional",
+      "uuid.uuid4",
+      "pydantic.BaseModel",
+      "pydantic.Field"
+    ],
+    "classes": [
+      "KPISnapshot",
+      "AgentState",
+      "SimEvent",
+      "Message",
+      "EpisodeResult",
+      "GTMState",
+      "GTMEnvironment"
+    ],
+    "functions": [
+      "__init__",
+      "reset",
+      "step"
+    ],
+    "size": 15038
+  },
+  "demo/api/routes.py": {
+    "path": "demo/api/routes.py",
+    "imports": [
+      "__future__.annotations",
+      "asyncio",
+      "json",
+      "logging",
+      "os",
+      "typing.Any",
+      "typing.Optional",
+      "fastapi.APIRouter",
+      "fastapi.WebSocket",
+      "fastapi.WebSocketDisconnect",
+      "fastapi.HTTPException",
+      "pydantic.BaseModel",
+      "rl_bridge.OfficeOsBridge",
+      "sys",
+      "fastapi.responses.StreamingResponse",
+      "sys",
+      "anthropic",
+      "os",
+      "sys",
+      "sys",
+      "re",
+      "importlib.util",
+      "json"
+    ],
+    "classes": [
+      "ReconfigureRequest"
+    ],
+    "functions": [
+      "_get_bridge",
+      "reset",
+      "step",
+      "get_state",
+      "get_metrics",
+      "get_conversations",
+      "get_config",
+      "reconfigure",
+      "training_status",
+      "validate_rubric",
+      "list_scenarios",
+      "websocket_live",
+      "_broadcast",
+      "event_stream"
+    ],
+    "size": 13378
+  }
+}

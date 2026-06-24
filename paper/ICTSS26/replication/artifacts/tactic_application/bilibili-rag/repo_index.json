@@ -1,0 +1,377 @@
+{
+  "app/config.py": {
+    "path": "app/config.py",
+    "imports": [
+      "pydantic_settings.BaseSettings",
+      "pydantic.Field",
+      "pydantic.AliasChoices",
+      "typing.Optional",
+      "os"
+    ],
+    "classes": [
+      "Settings",
+      "Config"
+    ],
+    "functions": [
+      "ensure_directories"
+    ],
+    "size": 2281
+  },
+  "app/models.py": {
+    "path": "app/models.py",
+    "imports": [
+      "sqlalchemy.Column",
+      "sqlalchemy.Integer",
+      "sqlalchemy.String",
+      "sqlalchemy.Text",
+      "sqlalchemy.DateTime",
+      "sqlalchemy.Boolean",
+      "sqlalchemy.JSON",
+      "sqlalchemy.ext.declarative.declarative_base",
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.orm.sessionmaker",
+      "datetime.datetime",
+      "typing.Optional",
+      "pydantic.BaseModel",
+      "enum.Enum"
+    ],
+    "classes": [
+      "VideoCache",
+      "UserSession",
+      "FavoriteFolder",
+      "FavoriteVideo",
+      "ContentSource",
+      "VideoInfo",
+      "VideoContent",
+      "QRCodeResponse",
+      "LoginStatusResponse",
+      "FavoriteFolderInfo",
+      "ChatRequest",
+      "ChatResponse"
+    ],
+    "functions": [],
+    "size": 5081
+  },
+  "app/database.py": {
+    "path": "app/database.py",
+    "imports": [
+      "sqlalchemy.ext.asyncio.create_async_engine",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.ext.asyncio.async_sessionmaker",
+      "contextlib.asynccontextmanager",
+      "app.config.settings",
+      "app.models.Base",
+      "os"
+    ],
+    "classes": [],
+    "functions": [
+      "init_db",
+      "get_db",
+      "get_db_context"
+    ],
+    "size": 1090
+  },
+  "app/__init__.py": {
+    "path": "app/__init__.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 38
+  },
+  "app/main.py": {
+    "path": "app/main.py",
+    "imports": [
+      "contextlib.asynccontextmanager",
+      "fastapi.FastAPI",
+      "fastapi.middleware.cors.CORSMiddleware",
+      "loguru.logger",
+      "sys",
+      "app.config.settings",
+      "app.config.ensure_directories",
+      "app.database.init_db",
+      "app.routers.auth",
+      "app.routers.favorites",
+      "app.routers.knowledge",
+      "app.routers.chat",
+      "uvicorn"
+    ],
+    "classes": [],
+    "functions": [
+      "lifespan",
+      "root",
+      "health_check"
+    ],
+    "size": 2139
+  },
+  "test/sync_cache_vectors.py": {
+    "path": "test/sync_cache_vectors.py",
+    "imports": [
+      "argparse",
+      "asyncio",
+      "typing.Iterable",
+      "typing.Optional",
+      "loguru.logger",
+      "sqlalchemy.select",
+      "app.database.get_db_context",
+      "app.models.VideoCache",
+      "app.models.ContentSource",
+      "app.models.VideoContent",
+      "app.services.rag.RAGService"
+    ],
+    "classes": [],
+    "functions": [
+      "_parse_source",
+      "_has_vectors",
+      "_load_caches",
+      "_sync_vectors",
+      "_parse_args",
+      "main"
+    ],
+    "size": 4427
+  },
+  "test/test_retrieval.py": {
+    "path": "test/test_retrieval.py",
+    "imports": [
+      "unittest",
+      "app.services.retrieval.build_snippet",
+      "app.services.retrieval.extract_keywords",
+      "app.services.retrieval.keyword_score",
+      "app.services.retrieval.merge_ranked_documents"
+    ],
+    "classes": [
+      "FakeDoc",
+      "RetrievalHelperTest"
+    ],
+    "functions": [
+      "__init__",
+      "test_extract_keywords_keeps_english_and_chinese_ngrams",
+      "test_keyword_score_boosts_title_matches",
+      "test_build_snippet_centers_first_keyword",
+      "test_merge_ranked_documents_dedupes_and_limits_per_video"
+    ],
+    "size": 2359
+  },
+  "test/debug_asr_single.py": {
+    "path": "test/debug_asr_single.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "test/test_chat_routing.py": {
+    "path": "test/test_chat_routing.py",
+    "imports": [
+      "unittest",
+      "app.config.settings",
+      "app.routers.chat"
+    ],
+    "classes": [
+      "ChatRoutingTest"
+    ],
+    "functions": [
+      "test_short_acknowledgement_is_general_question",
+      "test_general_question_stays_direct_even_with_collection_context",
+      "test_llm_router_is_disabled_by_default"
+    ],
+    "size": 730
+  },
+  "test/diagnose_rag.py": {
+    "path": "test/diagnose_rag.py",
+    "imports": [
+      "asyncio",
+      "os",
+      "sys",
+      "app.config.settings",
+      "app.services.rag.RAGService",
+      "langchain_chroma.Chroma",
+      "sqlalchemy.select",
+      "app.models.VideoCache",
+      "app.database.get_db_context",
+      "dotenv.load_dotenv"
+    ],
+    "classes": [],
+    "functions": [
+      "diagnose"
+    ],
+    "size": 1705
+  },
+  "app/routers/auth.py": {
+    "path": "app/routers/auth.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Depends",
+      "loguru.logger",
+      "sqlalchemy.ext.asyncio.AsyncSession",
+      "sqlalchemy.select",
+      "app.database.get_db",
+      "app.database.get_db_context",
+      "app.models.QRCodeResponse",
+      "app.models.LoginStatusResponse",
+      "app.models.UserSession",
+      "app.services.bilibili.BilibiliService",
+      "uuid",
+      "sqlalchemy.select",
+      "app.models.UserSession"
+    ],
+    "classes": [],
+    "functions": [
+      "generate_qrcode",
+      "poll_qrcode_status",
+      "get_session_info",
+      "logout",
+      "get_session"
+    ],
+    "size": 6413
+  },
+  "app/routers/__init__.py": {
+    "path": "app/routers/__init__.py",
+    "imports": [
+      "app.routers.auth",
+      "app.routers.favorites",
+      "app.routers.knowledge",
+      "app.routers.chat"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 147
+  },
+  "app/routers/chat.py": {
+    "path": "app/routers/chat.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/routers/favorites.py": {
+    "path": "app/routers/favorites.py",
+    "imports": [
+      "fastapi.APIRouter",
+      "fastapi.HTTPException",
+      "fastapi.Query",
+      "loguru.logger",
+      "typing.List",
+      "typing.Optional",
+      "pydantic.BaseModel",
+      "app.models.FavoriteFolderInfo",
+      "app.services.bilibili.BilibiliService",
+      "app.routers.auth.get_session"
+    ],
+    "classes": [
+      "OrganizePreviewRequest",
+      "OrganizePreviewItem",
+      "OrganizePreviewResponse",
+      "OrganizeMoveItem",
+      "OrganizeExecuteRequest",
+      "CleanInvalidRequest"
+    ],
+    "functions": [
+      "_is_default_folder",
+      "get_favorites_list",
+      "get_favorite_videos",
+      "get_all_favorite_videos",
+      "organize_preview",
+      "organize_execute",
+      "clean_invalid_resources"
+    ],
+    "size": 12480
+  },
+  "app/routers/knowledge.py": {
+    "path": "app/routers/knowledge.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/content_fetcher.py": {
+    "path": "app/services/content_fetcher.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/wbi.py": {
+    "path": "app/services/wbi.py",
+    "imports": [
+      "time",
+      "hashlib",
+      "urllib.parse.urlencode",
+      "functools.reduce",
+      "httpx",
+      "typing.Optional",
+      "typing.Dict"
+    ],
+    "classes": [
+      "WbiSigner"
+    ],
+    "functions": [
+      "__init__",
+      "_get_mixin_key",
+      "_fetch_wbi_keys",
+      "ensure_keys",
+      "_filter_params",
+      "sign"
+    ],
+    "size": 3535
+  },
+  "app/services/__init__.py": {
+    "path": "app/services/__init__.py",
+    "imports": [
+      "app.services.bilibili.BilibiliService",
+      "app.services.content_fetcher.ContentFetcher",
+      "app.services.asr.ASRService",
+      "app.services.rag.RAGService",
+      "app.services.wbi.wbi_signer"
+    ],
+    "classes": [],
+    "functions": [
+      "__getattr__"
+    ],
+    "size": 898
+  },
+  "app/services/asr.py": {
+    "path": "app/services/asr.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/rag.py": {
+    "path": "app/services/rag.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/bilibili.py": {
+    "path": "app/services/bilibili.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "app/services/retrieval.py": {
+    "path": "app/services/retrieval.py",
+    "imports": [
+      "__future__.annotations",
+      "re",
+      "collections.defaultdict",
+      "typing.Any",
+      "typing.Iterable",
+      "typing.Mapping",
+      "typing.Sequence"
+    ],
+    "classes": [],
+    "functions": [
+      "extract_keywords",
+      "keyword_score",
+      "build_snippet",
+      "_metadata",
+      "document_identity",
+      "merge_ranked_documents",
+      "add"
+    ],
+    "size": 6013
+  }
+}

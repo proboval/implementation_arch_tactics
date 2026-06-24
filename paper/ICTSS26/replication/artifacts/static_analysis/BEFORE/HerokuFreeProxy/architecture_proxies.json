@@ -1,0 +1,27 @@
+{
+  "python_files": 5,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 5.0,
+  "imports_graph": {
+    "manage.py": [
+      "sys",
+      "django",
+      "os"
+    ],
+    "herokufreeproxy/__init__.py": [],
+    "herokufreeproxy/settings.py": [
+      "dj_database_url",
+      "os"
+    ],
+    "herokufreeproxy/urls.py": [
+      "proxy",
+      "django"
+    ],
+    "herokufreeproxy/wsgi.py": [
+      "django",
+      "os",
+      "whitenoise"
+    ]
+  }
+}

@@ -1,0 +1,1178 @@
+{
+  "python_files": 122,
+  "packages": 6,
+  "max_directory_depth": 4,
+  "avg_files_per_package": 20.333333333333332,
+  "imports_graph": {
+    "run_all_pipelines.py": [
+      "gc",
+      "typing",
+      "subprocess",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime",
+      "os",
+      "torch"
+    ],
+    "scripts/advisor/chunk_based_rag.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "typing",
+      "numpy",
+      "scripts",
+      "pathlib",
+      "collections",
+      "argparse",
+      "logging",
+      "sys",
+      "datetime"
+    ],
+    "scripts/advisor/query_rewriter.py": [
+      "typing",
+      "re",
+      "dataclasses",
+      "datetime"
+    ],
+    "scripts/advisor/safety_layer.py": [
+      "re",
+      "json",
+      "typing",
+      "scripts",
+      "pathlib",
+      "logging",
+      "datetime"
+    ],
+    "scripts/advisor/key_rotator.py": [
+      "time",
+      "yaml",
+      "typing",
+      "pathlib",
+      "logging",
+      "threading"
+    ],
+    "scripts/advisor/analyzers.py": [
+      "re",
+      "dataclasses",
+      "typing",
+      "graph_rag",
+      "collections",
+      "datetime"
+    ],
+    "scripts/advisor/formatter.py": [
+      "re",
+      "json",
+      "typing",
+      "tqdm",
+      "pathlib"
+    ],
+    "scripts/advisor/schema_validator.py": [
+      "re",
+      "json",
+      "typing",
+      "scripts",
+      "logging",
+      "pydantic"
+    ],
+    "scripts/advisor/config.py": [
+      "re",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib",
+      "os"
+    ],
+    "scripts/advisor/augmentor.py": [
+      "json",
+      "dataclasses",
+      "time",
+      "openai",
+      "typing",
+      "tqdm",
+      "pathlib",
+      "logging",
+      "os"
+    ],
+    "scripts/advisor/graph_rag_enhanced.py": [
+      "intent_classifier",
+      "re",
+      "typing",
+      "graph_rag",
+      "query_rewriter",
+      "pathlib",
+      "datetime"
+    ],
+    "scripts/advisor/__init__.py": [
+      "inference",
+      "formatter",
+      "extractor",
+      "graph_rag",
+      "streaming",
+      "schema_validator",
+      "model_router",
+      "augmentor",
+      "generator",
+      "trainer",
+      "safety_layer"
+    ],
+    "scripts/advisor/intent_classifier.py": [
+      "typing",
+      "enum",
+      "re",
+      "dataclasses"
+    ],
+    "scripts/advisor/extractor.py": [
+      "re",
+      "json",
+      "typing",
+      "tqdm",
+      "pathlib"
+    ],
+    "scripts/advisor/generator.py": [
+      "re",
+      "json",
+      "time",
+      "openai",
+      "typing",
+      "scripts",
+      "tqdm",
+      "httpx",
+      "pathlib",
+      "logging",
+      "anthropic",
+      "os"
+    ],
+    "scripts/advisor/schemas.py": [
+      "typing",
+      "pydantic",
+      "enum"
+    ],
+    "scripts/advisor/graph_rag.py": [
+      "faiss",
+      "json",
+      "time",
+      "gc",
+      "dataclasses",
+      "typing",
+      "numpy",
+      "re",
+      "FlagEmbedding",
+      "pathlib",
+      "collections",
+      "logging",
+      "datetime",
+      "os",
+      "torch"
+    ],
+    "scripts/advisor/inference.py": [
+      "peft",
+      "re",
+      "json",
+      "gc",
+      "typing",
+      "transformers",
+      "tqdm",
+      "pathlib",
+      "torch"
+    ],
+    "scripts/advisor/test_backends.py": [
+      "json",
+      "time",
+      "scripts",
+      "pathlib",
+      "sys",
+      "os"
+    ],
+    "scripts/advisor/errors.py": [
+      "time",
+      "gc",
+      "typing",
+      "pathlib",
+      "traceback",
+      "sys",
+      "logging",
+      "torch",
+      "functools"
+    ],
+    "scripts/advisor/trainer.py": [
+      "peft",
+      "json",
+      "gc",
+      "datasets",
+      "typing",
+      "transformers",
+      "trl",
+      "pathlib",
+      "unsloth",
+      "os",
+      "torch"
+    ],
+    "scripts/advisor/pipeline_executor.py": [
+      "concurrent",
+      "asyncio",
+      "json",
+      "time",
+      "typing",
+      "scripts",
+      "pathlib",
+      "rich",
+      "logging",
+      "threading",
+      "datetime"
+    ],
+    "scripts/advisor/model_router.py": [
+      "openai",
+      "time",
+      "gc",
+      "typing",
+      "scripts",
+      "logging",
+      "anthropic",
+      "datetime",
+      "os",
+      "torch"
+    ],
+    "scripts/advisor/streaming.py": [
+      "asyncio",
+      "json",
+      "time",
+      "gc",
+      "dataclasses",
+      "typing",
+      "openai",
+      "graph_rag",
+      "collections",
+      "logging",
+      "os",
+      "safety_layer",
+      "enum"
+    ],
+    "scripts/video/sync_video_to_slim.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys"
+    ],
+    "scripts/_common/check_paths.py": [
+      "json",
+      "pathlib",
+      "sys",
+      "os",
+      "_common"
+    ],
+    "scripts/_common/schema_utils.py": [
+      "typing",
+      "collections"
+    ],
+    "scripts/_common/download_models.py": [
+      "huggingface_hub",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "requests"
+    ],
+    "scripts/_common/anonymizer.py": [
+      "typing",
+      "pathlib",
+      "re",
+      "yaml"
+    ],
+    "scripts/_common/text_normalize.py": [
+      "opencc",
+      "typing",
+      "re"
+    ],
+    "scripts/_common/migrate_merged_files.py": [
+      "json",
+      "typing",
+      "scripts",
+      "pathlib",
+      "shutil",
+      "argparse",
+      "sys",
+      "logging",
+      "datetime",
+      "os"
+    ],
+    "scripts/_common/media_filter.py": [
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib",
+      "sys",
+      "os",
+      "enum"
+    ],
+    "scripts/_common/jsonl_utils.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "shutil",
+      "logging",
+      "os"
+    ],
+    "scripts/_common/path_utils.py": [
+      "pathlib",
+      "os",
+      "re",
+      "yaml"
+    ],
+    "scripts/linkfile/extractor.py": [
+      "typing",
+      "pathlib",
+      "logging",
+      "scripts"
+    ],
+    "scripts/workspace/init_workspace.py": [
+      "typing",
+      "scripts",
+      "pathlib",
+      "shutil",
+      "argparse",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/workspace/run_ingest.py": [
+      "yaml",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "__future__"
+    ],
+    "scripts/image/loader.py": [
+      "PIL",
+      "json",
+      "typing",
+      "scripts",
+      "pathlib",
+      "sys",
+      "os",
+      "magic"
+    ],
+    "scripts/image/router.py": [
+      "PIL",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "scripts",
+      "pathlib",
+      "sys",
+      "paddleocr",
+      "os"
+    ],
+    "scripts/compression/video_compressor.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib"
+    ],
+    "scripts/compression/llm_pii_scanner.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "transformers",
+      "gc",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "random",
+      "argparse",
+      "torch"
+    ],
+    "scripts/compression/validate_sft_quality.py": [
+      "re",
+      "json",
+      "yaml",
+      "typing",
+      "pathlib",
+      "collections",
+      "argparse",
+      "sys"
+    ],
+    "scripts/compression/scan_pii.py": [
+      "json",
+      "yaml",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "argparse",
+      "sys",
+      "datetime"
+    ],
+    "scripts/compression/voice_compressor.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib"
+    ],
+    "scripts/compression/quality_validator.py": [
+      "sentence_transformers",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "numpy",
+      "pathlib"
+    ],
+    "scripts/compression/__init__.py": [],
+    "scripts/compression/run_full_anonymization.py": [
+      "json",
+      "scripts",
+      "subprocess",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/compression/sticker_compressor.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib"
+    ],
+    "scripts/compression/two_stage_pii.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/compression/sample_comparison.py": [
+      "json",
+      "typing",
+      "scripts",
+      "pathlib",
+      "random",
+      "sys"
+    ],
+    "scripts/compression/privacy_shield.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "scripts",
+      "pathlib",
+      "sys",
+      "datetime"
+    ],
+    "scripts/compression/engine.py": [
+      "json",
+      "gc",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "torch"
+    ],
+    "scripts/compression/generate_report.py": [
+      "json",
+      "typing",
+      "pathlib",
+      "random",
+      "argparse",
+      "datetime"
+    ],
+    "scripts/compression/sft_optimizer.py": [
+      "json",
+      "yaml",
+      "typing",
+      "unicodedata",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "datetime"
+    ],
+    "scripts/compression/pii_detector.py": [
+      "re",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib"
+    ],
+    "scripts/compression/image_compressor.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib"
+    ],
+    "scripts/compression/sft_trimmer.py": [
+      "json",
+      "re",
+      "typing",
+      "unicodedata",
+      "tqdm",
+      "pathlib",
+      "argparse"
+    ],
+    "scripts/extract/extract_quote_info.py": [
+      "re",
+      "json",
+      "pathlib",
+      "sys",
+      "_common"
+    ],
+    "scripts/extract/fix_recall_speaker.py": [
+      "re",
+      "json",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "_common"
+    ],
+    "scripts/extract/extract_html_to_jsonl.py": [
+      "json5",
+      "re",
+      "json",
+      "html",
+      "pathlib",
+      "csv",
+      "sys",
+      "argparse",
+      "datetime",
+      "_common"
+    ],
+    "scripts/timeline/run_postprocess.py": [
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/timeline/__init__.py": [],
+    "scripts/timeline/postprocess_timeline.py": [
+      "re",
+      "json",
+      "yaml",
+      "typing",
+      "uuid",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "datetime"
+    ],
+    "scripts/timeline/timeline_postprocessor.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib",
+      "datetime"
+    ],
+    "scripts/timeline/run_anonymization.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/compression/two_stage_pii/scanner.py": [
+      "llm_validator",
+      "json",
+      "dataclasses",
+      "gc",
+      "yaml",
+      "typing",
+      "candidate_extractor",
+      "tqdm",
+      "pathlib",
+      "datetime",
+      "models",
+      "name_replacer"
+    ],
+    "scripts/compression/two_stage_pii/models.py": [
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib",
+      "datetime"
+    ],
+    "scripts/compression/two_stage_pii/__init__.py": [
+      "llm_validator",
+      "candidate_extractor",
+      "scanner",
+      "models",
+      "name_replacer"
+    ],
+    "scripts/compression/two_stage_pii/name_replacer.py": [
+      "re",
+      "json",
+      "dataclasses",
+      "yaml",
+      "typing",
+      "pathlib",
+      "datetime",
+      "models"
+    ],
+    "scripts/compression/two_stage_pii/candidate_extractor.py": [
+      "re",
+      "json",
+      "yaml",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime",
+      "models"
+    ],
+    "scripts/compression/two_stage_pii/llm_validator.py": [
+      "re",
+      "json",
+      "gc",
+      "typing",
+      "transformers",
+      "tqdm",
+      "pathlib",
+      "torch",
+      "datetime",
+      "models"
+    ],
+    "scripts/voice/run_all/_02.5_run_compress.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/voice/run_all/_01b_run_whisper.py": [
+      "faster_whisper",
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "funasr"
+    ],
+    "scripts/voice/run_all/_04_update_timeline.py": [
+      "re",
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime"
+    ],
+    "scripts/voice/run_all/_01_run_funasr.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "funasr"
+    ],
+    "scripts/voice/run_all/_02_run_emotion.py": [
+      "re",
+      "json",
+      "gc",
+      "scripts",
+      "librosa",
+      "transformers",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime",
+      "os",
+      "torch",
+      "funasr"
+    ],
+    "scripts/voice/run_all/_03_merge_engine.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime"
+    ],
+    "scripts/sticker/run_all/_04_run_triage.py": [
+      "gc",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "os",
+      "torch"
+    ],
+    "scripts/sticker/run_all/_06_merge_engine.py": [
+      "typing",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "os"
+    ],
+    "scripts/sticker/run_all/_07_update_timeline.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/sticker/run_all/_01_run_download.py": [
+      "concurrent",
+      "json",
+      "time",
+      "typing",
+      "scripts",
+      "hashlib",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "logging",
+      "os",
+      "requests"
+    ],
+    "scripts/sticker/run_all/_05.5_run_compress.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/sticker/run_all/_03_run_process.py": [
+      "PIL",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "os"
+    ],
+    "scripts/sticker/run_all/_02_run_sniff.py": [
+      "PIL",
+      "json",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "shutil",
+      "argparse",
+      "sys",
+      "logging",
+      "os"
+    ],
+    "scripts/sticker/run_all/_05_run_caption.py": [
+      "PIL",
+      "gc",
+      "typing",
+      "scripts",
+      "transformers",
+      "qwen_vl_utils",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "paddleocr",
+      "os",
+      "torch"
+    ],
+    "scripts/sticker/run_all/_08_cleanup_frames.py": [
+      "typing",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "os"
+    ],
+    "scripts/image/run_all/_02.5_run_compress.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/image/run_all/_04_update_timeline.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "logging",
+      "sys",
+      "os"
+    ],
+    "scripts/image/run_all/_01_run_ocr.py": [
+      "PIL",
+      "json",
+      "typing",
+      "numpy",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "paddleocr",
+      "os"
+    ],
+    "scripts/image/run_all/_02_run_caption.py": [
+      "json",
+      "gc",
+      "yaml",
+      "transformers",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "os",
+      "torch"
+    ],
+    "scripts/image/run_all/_03_merge_engine.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "logging",
+      "sys",
+      "os"
+    ],
+    "scripts/linkfile/run_all/_01_extract_and_anonymize.py": [
+      "re",
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "logging",
+      "sys"
+    ],
+    "scripts/linkfile/run_all/_02_merge_engine.py": [
+      "json",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "collections",
+      "logging",
+      "sys"
+    ],
+    "scripts/linkfile/run_all/_01.5_run_file_summary.py": [
+      "zipfile",
+      "PIL",
+      "json",
+      "gc",
+      "typing",
+      "transformers",
+      "scripts",
+      "qwen_vl_utils",
+      "tqdm",
+      "docx",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "pdf2image",
+      "tempfile",
+      "torch"
+    ],
+    "scripts/linkfile/run_all/_03_update_timeline.py": [
+      "json",
+      "typing",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "logging",
+      "sys"
+    ],
+    "scripts/video/run_all/_03.5_run_compress.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/video/run_all/_05_update_timeline.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/video/run_all/_01_run_extract.py": [
+      "json",
+      "scripts",
+      "numpy",
+      "cv2",
+      "hashlib",
+      "subprocess",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime",
+      "os",
+      "tempfile"
+    ],
+    "scripts/video/run_all/_02_run_transcribe.py": [
+      "json",
+      "gc",
+      "re",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "torch",
+      "funasr"
+    ],
+    "scripts/video/run_all/_03_run_caption.py": [
+      "PIL",
+      "json",
+      "gc",
+      "scripts",
+      "transformers",
+      "numpy",
+      "qwen_vl_utils",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "av",
+      "torch"
+    ],
+    "scripts/video/run_all/_04_merge_engine.py": [
+      "json",
+      "scripts",
+      "tqdm",
+      "pathlib",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/advisor/run_all/_04_import_reviewed.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_00_verify_environment.py": [
+      "gc",
+      "transformers",
+      "pathlib",
+      "traceback",
+      "sys",
+      "torch"
+    ],
+    "scripts/advisor/run_all/_05b_filter_split_training.py": [
+      "re",
+      "json",
+      "pathlib",
+      "random",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_09_build_graph.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_07b_eval_compare.py": [
+      "peft",
+      "re",
+      "json",
+      "gc",
+      "transformers",
+      "tqdm",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os",
+      "torch"
+    ],
+    "scripts/advisor/run_all/_02_generate_analysis.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_03_export_for_review.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_02c_fusion_pipeline.py": [
+      "concurrent",
+      "asyncio",
+      "json",
+      "time",
+      "re",
+      "queue",
+      "typing",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "threading",
+      "os",
+      "datetime",
+      "signal"
+    ],
+    "scripts/advisor/run_all/_05c_deanonymize_training.py": [
+      "re",
+      "json",
+      "yaml",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime"
+    ],
+    "scripts/advisor/run_all/_06_train_model.py": [
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "scripts/advisor/run_all/__init__.py": [],
+    "scripts/advisor/run_all/_02b_model_comparison.py": [
+      "json",
+      "time",
+      "yaml",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/advisor/run_all/_05_format_training_data.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_01_extract_conversations.py": [
+      "pathlib",
+      "argparse",
+      "sys",
+      "scripts"
+    ],
+    "scripts/advisor/run_all/_07_run_inference.py": [
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "scripts/advisor/run_all/_03b_ai_review.py": [
+      "json",
+      "time",
+      "re",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys"
+    ],
+    "scripts/advisor/run_all/_02c_rerun_moa.py": [
+      "concurrent",
+      "json",
+      "time",
+      "yaml",
+      "typing",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "logging",
+      "sys",
+      "datetime",
+      "os"
+    ],
+    "scripts/advisor/run_all/_08_run_dialogue.py": [
+      "asyncio",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "scripts/advisor/run_all/_10_augment_data.py": [
+      "json",
+      "scripts",
+      "pathlib",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "scripts/advisor/api/server.py": [
+      "re",
+      "json",
+      "scripts",
+      "collections",
+      "threading",
+      "datetime",
+      "fastapi",
+      "shutil",
+      "pydantic",
+      "queue",
+      "traceback",
+      "uuid",
+      "pathlib",
+      "sys",
+      "asyncio",
+      "time",
+      "yaml",
+      "typing",
+      "dotenv",
+      "subprocess",
+      "httpx",
+      "os"
+    ],
+    "scripts/advisor/api/__init__.py": []
+  }
+}

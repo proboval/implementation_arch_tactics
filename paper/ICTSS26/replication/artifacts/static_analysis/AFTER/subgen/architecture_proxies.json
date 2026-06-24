@@ -1,0 +1,125 @@
+{
+  "python_files": 14,
+  "packages": 1,
+  "max_directory_depth": 2,
+  "avg_files_per_package": 14.0,
+  "imports_graph": {
+    "subgen.py": [
+      "json",
+      "threading",
+      "datetime",
+      "av",
+      "xml",
+      "ctypes",
+      "language_code",
+      "gc",
+      "ffmpeg",
+      "fastapi",
+      "queue",
+      "torch",
+      "contextlib",
+      "numpy",
+      "watchdog",
+      "logging",
+      "sys",
+      "ast",
+      "stable_whisper",
+      "faster_whisper",
+      "asyncio",
+      "time",
+      "typing",
+      "hashlib",
+      "subprocess",
+      "subgen",
+      "os",
+      "requests"
+    ],
+    "language_code.py": [
+      "enum"
+    ],
+    "launcher.py": [
+      "urllib",
+      "subprocess",
+      "argparse",
+      "sys",
+      "os"
+    ],
+    "tests/conftest.py": [
+      "unittest",
+      "sys"
+    ],
+    "tests/test_bug_fixes.py": [
+      "json",
+      "subgen",
+      "pytest",
+      "sys",
+      "os",
+      "av",
+      "language_code",
+      "unittest"
+    ],
+    "tests/test_endpoints.py": [
+      "json",
+      "subgen",
+      "fastapi",
+      "pytest",
+      "sys",
+      "os",
+      "unittest"
+    ],
+    "tests/test_skip_logic.py": [
+      "subgen",
+      "pytest",
+      "sys",
+      "os",
+      "language_code",
+      "unittest"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_language_code.py": [
+      "os",
+      "pytest",
+      "language_code",
+      "sys"
+    ],
+    "tests/test_queue.py": [
+      "time",
+      "subgen",
+      "pytest",
+      "sys",
+      "threading",
+      "os"
+    ],
+    "tests/test_helpers.py": [
+      "os",
+      "pytest",
+      "subgen",
+      "sys"
+    ],
+    "tests/test_integration.py": [
+      "json",
+      "time",
+      "subgen",
+      "fastapi",
+      "pytest",
+      "sys",
+      "os",
+      "language_code",
+      "unittest"
+    ],
+    "tests/test_audio_tracks.py": [
+      "subgen",
+      "pytest",
+      "sys",
+      "os",
+      "language_code",
+      "unittest"
+    ],
+    "subgen/environment.py": [
+      "os",
+      "ast",
+      "language_code",
+      "typing"
+    ]
+  }
+}

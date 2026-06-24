@@ -1,0 +1,220 @@
+{
+  "python_files": 34,
+  "packages": 5,
+  "max_directory_depth": 3,
+  "avg_files_per_package": 6.8,
+  "imports_graph": {
+    "test_webhook.py": [
+      "asyncio",
+      "app",
+      "sqlalchemy",
+      "httpx"
+    ],
+    "init_db.py": [
+      "asyncio",
+      "app",
+      "bcrypt",
+      "sqlalchemy"
+    ],
+    "app/config.py": [
+      "pathlib",
+      "pydantic_settings"
+    ],
+    "app/models.py": [
+      "app",
+      "sqlalchemy"
+    ],
+    "app/database.py": [
+      "app",
+      "sqlalchemy"
+    ],
+    "app/__init__.py": [],
+    "app/db_migrations.py": [
+      "logging",
+      "datetime",
+      "sqlite3",
+      "pathlib",
+      "app"
+    ],
+    "app/main.py": [
+      "logging",
+      "datetime",
+      "starlette",
+      "uvicorn",
+      "fastapi",
+      "pathlib",
+      "contextlib",
+      "pytz",
+      "app"
+    ],
+    "tests/test_warranty_issue20.py": [
+      "unittest",
+      "datetime",
+      "sqlite3",
+      "sqlalchemy",
+      "app"
+    ],
+    "tests/test_issue10_pending_invites.py": [
+      "app",
+      "unittest",
+      "sqlalchemy"
+    ],
+    "app/dependencies/auth.py": [
+      "logging",
+      "app",
+      "fastapi"
+    ],
+    "app/dependencies/__init__.py": [],
+    "app/utils/jwt_parser.py": [
+      "logging",
+      "typing",
+      "jwt",
+      "datetime",
+      "app"
+    ],
+    "app/utils/__init__.py": [],
+    "app/utils/time_utils.py": [
+      "datetime",
+      "pytz",
+      "app"
+    ],
+    "app/utils/token_parser.py": [
+      "typing",
+      "re",
+      "logging"
+    ],
+    "app/routes/auth.py": [
+      "pydantic",
+      "logging",
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app"
+    ],
+    "app/routes/user.py": [
+      "app",
+      "logging",
+      "sqlalchemy",
+      "fastapi"
+    ],
+    "app/routes/redeem.py": [
+      "pydantic",
+      "logging",
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app"
+    ],
+    "app/routes/__init__.py": [],
+    "app/routes/api.py": [
+      "app",
+      "logging",
+      "sqlalchemy",
+      "fastapi"
+    ],
+    "app/routes/warranty.py": [
+      "pydantic",
+      "typing",
+      "sqlalchemy",
+      "fastapi",
+      "app"
+    ],
+    "app/routes/admin.py": [
+      "json",
+      "logging",
+      "pydantic",
+      "typing",
+      "datetime",
+      "sqlalchemy",
+      "fastapi",
+      "xlsxwriter",
+      "io",
+      "math",
+      "traceback",
+      "app"
+    ],
+    "app/services/auth.py": [
+      "logging",
+      "typing",
+      "bcrypt",
+      "sqlalchemy",
+      "app"
+    ],
+    "app/services/encryption.py": [
+      "logging",
+      "base64",
+      "cryptography",
+      "hashlib",
+      "app"
+    ],
+    "app/services/notification.py": [
+      "logging",
+      "httpx",
+      "asyncio",
+      "typing",
+      "sqlalchemy",
+      "app"
+    ],
+    "app/services/__init__.py": [],
+    "app/services/team.py": [
+      "logging",
+      "asyncio",
+      "datetime",
+      "typing",
+      "sqlalchemy",
+      "math",
+      "app"
+    ],
+    "app/services/redemption.py": [
+      "logging",
+      "typing",
+      "datetime",
+      "traceback",
+      "sqlalchemy",
+      "string",
+      "math",
+      "secrets",
+      "app"
+    ],
+    "app/services/warranty.py": [
+      "logging",
+      "asyncio",
+      "datetime",
+      "typing",
+      "sqlalchemy",
+      "app"
+    ],
+    "app/services/team_status.py": [
+      "logging",
+      "typing",
+      "datetime",
+      "sqlalchemy",
+      "app"
+    ],
+    "app/services/redeem_flow.py": [
+      "logging",
+      "asyncio",
+      "typing",
+      "datetime",
+      "sqlalchemy",
+      "collections",
+      "traceback",
+      "app"
+    ],
+    "app/services/chatgpt.py": [
+      "logging",
+      "random",
+      "curl_cffi",
+      "asyncio",
+      "typing",
+      "sqlalchemy",
+      "app"
+    ],
+    "app/services/settings.py": [
+      "typing",
+      "app",
+      "logging",
+      "sqlalchemy"
+    ]
+  }
+}

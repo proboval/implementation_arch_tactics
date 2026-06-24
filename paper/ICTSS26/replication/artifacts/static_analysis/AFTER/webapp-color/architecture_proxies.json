@@ -1,0 +1,24 @@
+{
+  "python_files": 3,
+  "packages": 0,
+  "max_directory_depth": 1,
+  "avg_files_per_package": 0,
+  "imports_graph": {
+    "color.py": [
+      "random",
+      "os"
+    ],
+    "config.py": [
+      "argparse",
+      "os"
+    ],
+    "app.py": [
+      "socket",
+      "argparse",
+      "color",
+      "config",
+      "flask",
+      "os"
+    ]
+  }
+}

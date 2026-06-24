@@ -1,0 +1,2569 @@
+{
+  "launcher.py": {
+    "path": "launcher.py",
+    "imports": [
+      "sys",
+      "pathlib.Path",
+      "dotenv.load_dotenv",
+      "quantaalpha.cli.app"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 891
+  },
+  "quantaalpha/cli.py": {
+    "path": "quantaalpha/cli.py",
+    "imports": [
+      "pathlib.Path",
+      "dotenv.load_dotenv",
+      "fire",
+      "quantaalpha.pipeline.factor_mining.main",
+      "quantaalpha.pipeline.factor_backtest.main",
+      "quantaalpha.app.utils.health_check.health_check",
+      "quantaalpha.app.utils.info.collect_info"
+    ],
+    "classes": [],
+    "functions": [
+      "app"
+    ],
+    "size": 989
+  },
+  "docs/conf.py": {
+    "path": "docs/conf.py",
+    "imports": [
+      "subprocess",
+      "furo"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 2235
+  },
+  "frontend-v2/backend/app.py": {
+    "path": "frontend-v2/backend/app.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/pipeline/factor_mining.py": {
+    "path": "quantaalpha/pipeline/factor_mining.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/pipeline/loop.py": {
+    "path": "quantaalpha/pipeline/loop.py",
+    "imports": [
+      "time",
+      "pandas",
+      "typing.Any",
+      "quantaalpha.pipeline.settings.BaseFacSetting",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.proposal.Hypothesis2Experiment",
+      "quantaalpha.core.proposal.HypothesisExperiment2Feedback",
+      "quantaalpha.core.proposal.HypothesisGen",
+      "quantaalpha.core.proposal.Trace",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.core.utils.import_class",
+      "quantaalpha.log.logger",
+      "quantaalpha.log.time.measure_time",
+      "quantaalpha.utils.workflow.LoopBase",
+      "quantaalpha.utils.workflow.LoopMeta",
+      "quantaalpha.core.exception.FactorEmptyError",
+      "threading",
+      "datetime",
+      "pickle",
+      "collections.defaultdict",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "pathlib.Path",
+      "typing.Callable",
+      "tqdm.auto.tqdm",
+      "quantaalpha.core.exception.CoderError",
+      "quantaalpha.log.logger",
+      "functools.wraps",
+      "os",
+      "pathlib.Path",
+      "quantaalpha.factors.library.FactorLibraryManager"
+    ],
+    "classes": [
+      "AlphaAgentLoop",
+      "BacktestLoop"
+    ],
+    "functions": [
+      "stop_event_check",
+      "wrapper",
+      "__init__",
+      "load",
+      "factor_propose",
+      "factor_construct",
+      "factor_calculate",
+      "factor_backtest",
+      "feedback",
+      "_get_trajectory_data",
+      "__init__",
+      "factor_propose",
+      "factor_construct",
+      "factor_calculate",
+      "factor_backtest",
+      "stop"
+    ],
+    "size": 14270
+  },
+  "quantaalpha/pipeline/settings.py": {
+    "path": "quantaalpha/pipeline/settings.py",
+    "imports": [
+      "quantaalpha.core.conf.ExtendedBaseSettings",
+      "quantaalpha.core.conf.ExtendedSettingsConfigDict"
+    ],
+    "classes": [
+      "BasePropSetting",
+      "BaseFacSetting",
+      "AlphaAgentFactorBasePropSetting",
+      "FactorBasePropSetting",
+      "FactorBackTestBasePropSetting",
+      "FactorFromReportPropSetting",
+      "ModelBasePropSetting"
+    ],
+    "functions": [],
+    "size": 5193
+  },
+  "quantaalpha/pipeline/planning.py": {
+    "path": "quantaalpha/pipeline/planning.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "re",
+      "pathlib.Path",
+      "typing.Any",
+      "yaml",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [],
+    "functions": [
+      "_load_prompts",
+      "_extract_json",
+      "_parse_directions",
+      "_fallback_directions",
+      "generate_parallel_directions",
+      "load_run_config"
+    ],
+    "size": 4028
+  },
+  "quantaalpha/pipeline/factor_from_report.py": {
+    "path": "quantaalpha/pipeline/factor_from_report.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Tuple",
+      "fire",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.pipeline.settings.FACTOR_FROM_REPORT_PROP_SETTING",
+      "quantaalpha.app.qlib_rd_loop.factor.FactorRDLoop",
+      "quantaalpha.utils.document_reader.document_reader.extract_first_page_screenshot_from_pdf",
+      "quantaalpha.utils.document_reader.document_reader.load_and_process_pdfs_by_langchain",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.proposal.Hypothesis",
+      "quantaalpha.log.logger",
+      "quantaalpha.log.time.measure_time",
+      "quantaalpha.llm.client.APIBackend",
+      "quantaalpha.factors.experiment.QlibFactorExperiment",
+      "quantaalpha.factors.loader.pdf_loader.FactorExperimentLoaderFromPDFfiles",
+      "quantaalpha.utils.workflow.LoopMeta"
+    ],
+    "classes": [
+      "FactorReportLoop"
+    ],
+    "functions": [
+      "generate_hypothesis",
+      "extract_hypothesis_and_exp_from_reports",
+      "main",
+      "__init__",
+      "propose_hypo_exp",
+      "propose",
+      "exp_gen"
+    ],
+    "size": 6857
+  },
+  "quantaalpha/pipeline/factor_backtest.py": {
+    "path": "quantaalpha/pipeline/factor_backtest.py",
+    "imports": [
+      "typing.Any",
+      "fire",
+      "quantaalpha.pipeline.settings.FACTOR_BACK_TEST_PROP_SETTING",
+      "quantaalpha.pipeline.loop.BacktestLoop"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ],
+    "size": 711
+  },
+  "quantaalpha/pipeline/base.py": {
+    "path": "quantaalpha/pipeline/base.py",
+    "imports": [
+      "time",
+      "typing.Any",
+      "quantaalpha.pipeline.settings.BasePropSetting",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.proposal.Hypothesis2Experiment",
+      "quantaalpha.core.proposal.HypothesisExperiment2Feedback",
+      "quantaalpha.core.proposal.HypothesisGen",
+      "quantaalpha.core.proposal.Trace",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.core.utils.import_class",
+      "quantaalpha.log.logger",
+      "quantaalpha.log.time.measure_time",
+      "quantaalpha.utils.workflow.LoopBase",
+      "quantaalpha.utils.workflow.LoopMeta"
+    ],
+    "classes": [
+      "RDLoop"
+    ],
+    "functions": [
+      "__init__",
+      "propose",
+      "exp_gen",
+      "coding",
+      "running",
+      "feedback"
+    ],
+    "size": 3158
+  },
+  "quantaalpha/llm/config.py": {
+    "path": "quantaalpha/llm/config.py",
+    "imports": [
+      "__future__.annotations",
+      "pathlib.Path",
+      "quantaalpha.core.conf.ExtendedBaseSettings"
+    ],
+    "classes": [
+      "LLMSettings"
+    ],
+    "functions": [],
+    "size": 2001
+  },
+  "quantaalpha/llm/client.py": {
+    "path": "quantaalpha/llm/client.py",
+    "imports": [
+      "__future__.annotations",
+      "hashlib",
+      "inspect",
+      "json",
+      "os",
+      "random",
+      "re",
+      "sqlite3",
+      "ssl",
+      "time",
+      "urllib.request",
+      "uuid",
+      "copy.deepcopy",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Optional",
+      "numpy",
+      "tiktoken",
+      "quantaalpha.core.utils.LLM_CACHE_SEED_GEN",
+      "quantaalpha.core.utils.SingletonBaseClass",
+      "quantaalpha.log.LogColors",
+      "quantaalpha.log.logger",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.config.LLM_SETTINGS",
+      "azure.identity.DefaultAzureCredential",
+      "azure.identity.get_bearer_token_provider",
+      "openai",
+      "llama.Llama"
+    ],
+    "classes": [
+      "ConvManager",
+      "SQliteLazyCache",
+      "SessionChatHistoryCache",
+      "ChatSession",
+      "APIBackend"
+    ],
+    "functions": [
+      "md5_hash",
+      "robust_json_parse",
+      "__init__",
+      "_rotate_files",
+      "append",
+      "__init__",
+      "chat_get",
+      "embedding_get",
+      "chat_set",
+      "embedding_set",
+      "message_get",
+      "message_set",
+      "__init__",
+      "message_get",
+      "message_set",
+      "__init__",
+      "build_chat_completion_message",
+      "build_chat_completion_message_and_calculate_token",
+      "build_chat_completion",
+      "get_conversation_id",
+      "display_history",
+      "__init__"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/llm/__init__.py": {
+    "path": "quantaalpha/llm/__init__.py",
+    "imports": [
+      "quantaalpha.llm.config.LLM_SETTINGS",
+      "quantaalpha.llm.config.LLMSettings"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 104
+  },
+  "quantaalpha/core/exception.py": {
+    "path": "quantaalpha/core/exception.py",
+    "imports": [],
+    "classes": [
+      "CoderError",
+      "CodeFormatError",
+      "CustomRuntimeError",
+      "NoOutputError",
+      "CustomRunnerError",
+      "FactorEmptyError",
+      "ModelEmptyError",
+      "KaggleError"
+    ],
+    "functions": [],
+    "size": 1003
+  },
+  "quantaalpha/core/knowledge_base.py": {
+    "path": "quantaalpha/core/knowledge_base.py",
+    "imports": [
+      "pathlib.Path",
+      "dill",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [
+      "KnowledgeBase"
+    ],
+    "functions": [
+      "__init__",
+      "load",
+      "dump"
+    ],
+    "size": 976
+  },
+  "quantaalpha/core/evolving_agent.py": {
+    "path": "quantaalpha/core/evolving_agent.py",
+    "imports": [
+      "__future__.annotations",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.TYPE_CHECKING",
+      "typing.Any",
+      "tqdm.tqdm",
+      "quantaalpha.core.evaluation.Feedback",
+      "quantaalpha.core.evolving_framework.EvolvingStrategy",
+      "quantaalpha.core.evolving_framework.EvoStep",
+      "quantaalpha.log.logger",
+      "quantaalpha.core.evaluation.Evaluator",
+      "quantaalpha.core.evolving_framework.EvolvableSubjects"
+    ],
+    "classes": [
+      "EvoAgent",
+      "RAGEvoAgent"
+    ],
+    "functions": [
+      "__init__",
+      "multistep_evolve",
+      "filter_evolvable_subjects_by_feedback",
+      "__init__",
+      "multistep_evolve",
+      "filter_evolvable_subjects_by_feedback"
+    ],
+    "size": 3640
+  },
+  "quantaalpha/core/conf.py": {
+    "path": "quantaalpha/core/conf.py",
+    "imports": [
+      "__future__.annotations",
+      "os",
+      "pathlib.Path",
+      "typing.TYPE_CHECKING",
+      "typing.Any",
+      "pydantic_settings.BaseSettings",
+      "pydantic_settings.EnvSettingsSource",
+      "pydantic_settings.PydanticBaseSettingsSource",
+      "pydantic_settings.SettingsConfigDict",
+      "pydantic.fields.FieldInfo"
+    ],
+    "classes": [
+      "ExtendedEnvSettingsSource",
+      "ExtendedSettingsConfigDict",
+      "ExtendedBaseSettings",
+      "RDAgentSettings"
+    ],
+    "functions": [
+      "get_field_value",
+      "settings_customise_sources"
+    ],
+    "size": 3313
+  },
+  "quantaalpha/core/evaluation.py": {
+    "path": "quantaalpha/core/evaluation.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "quantaalpha.core.experiment.Task",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.core.scenario.Scenario"
+    ],
+    "classes": [
+      "Feedback",
+      "Evaluator"
+    ],
+    "functions": [
+      "__init__",
+      "evaluate"
+    ],
+    "size": 515
+  },
+  "quantaalpha/core/evolving_framework.py": {
+    "path": "quantaalpha/core/evolving_framework.py",
+    "imports": [
+      "__future__.annotations",
+      "copy",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "dataclasses.dataclass",
+      "typing.TYPE_CHECKING",
+      "typing.Any",
+      "quantaalpha.core.knowledge_base.KnowledgeBase",
+      "quantaalpha.core.evaluation.Feedback",
+      "quantaalpha.core.scenario.Scenario"
+    ],
+    "classes": [
+      "Knowledge",
+      "QueriedKnowledge",
+      "EvolvingKnowledgeBase",
+      "EvolvableSubjects",
+      "QlibEvolvableSubjects",
+      "EvoStep",
+      "EvolvingStrategy",
+      "RAGStrategy"
+    ],
+    "functions": [
+      "query",
+      "clone",
+      "__init__",
+      "evolve",
+      "__init__",
+      "query",
+      "generate_knowledge"
+    ],
+    "size": 2675
+  },
+  "quantaalpha/core/proposal.py": {
+    "path": "quantaalpha/core/proposal.py",
+    "imports": [
+      "__future__.annotations",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.TYPE_CHECKING",
+      "typing.Generic",
+      "typing.TypeVar",
+      "quantaalpha.core.evaluation.Feedback",
+      "quantaalpha.core.experiment.ASpecificExp",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.knowledge_base.KnowledgeBase",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.core.prompts.Prompts"
+    ],
+    "classes": [
+      "Hypothesis",
+      "HypothesisFeedback",
+      "Trace",
+      "HypothesisGen",
+      "Hypothesis2Experiment",
+      "HypothesisExperiment2Feedback"
+    ],
+    "functions": [
+      "__init__",
+      "__str__",
+      "__init__",
+      "__bool__",
+      "__str__",
+      "__init__",
+      "get_sota_hypothesis_and_experiment",
+      "__init__",
+      "gen",
+      "convert",
+      "__init__",
+      "generate_feedback"
+    ],
+    "size": 5129
+  },
+  "quantaalpha/core/prompts.py": {
+    "path": "quantaalpha/core/prompts.py",
+    "imports": [
+      "pathlib.Path",
+      "yaml",
+      "quantaalpha.core.utils.SingletonBaseClass"
+    ],
+    "classes": [
+      "Prompts"
+    ],
+    "functions": [
+      "__init__"
+    ],
+    "size": 564
+  },
+  "quantaalpha/core/experiment.py": {
+    "path": "quantaalpha/core/experiment.py",
+    "imports": [
+      "__future__.annotations",
+      "os",
+      "platform",
+      "shutil",
+      "uuid",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "collections.abc.Sequence",
+      "copy.deepcopy",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Generic",
+      "typing.TypeVar",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS"
+    ],
+    "classes": [
+      "Task",
+      "Workspace",
+      "WsLoader",
+      "FBWorkspace",
+      "Experiment",
+      "Loader"
+    ],
+    "functions": [
+      "__init__",
+      "get_task_information",
+      "__init__",
+      "execute",
+      "copy",
+      "load",
+      "__init__",
+      "code",
+      "prepare",
+      "link_all_files_in_folder_to_workspace",
+      "inject_code",
+      "get_files",
+      "inject_code_from_folder",
+      "copy",
+      "clear",
+      "execute",
+      "__str__",
+      "__init__",
+      "load"
+    ],
+    "size": 7637
+  },
+  "quantaalpha/core/utils.py": {
+    "path": "quantaalpha/core/utils.py",
+    "imports": [
+      "__future__.annotations",
+      "functools",
+      "importlib",
+      "json",
+      "multiprocessing",
+      "pickle",
+      "random",
+      "collections.abc.Callable",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.ClassVar",
+      "typing.NoReturn",
+      "typing.cast",
+      "filelock.FileLock",
+      "fuzzywuzzy.fuzz",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "quantaalpha.llm.config.LLM_SETTINGS"
+    ],
+    "classes": [
+      "RDAgentException",
+      "SingletonBaseClass",
+      "CacheSeedGen"
+    ],
+    "functions": [
+      "parse_json",
+      "similarity",
+      "import_class",
+      "_subprocess_wrapper",
+      "multiprocessing_wrapper",
+      "cache_with_pickle",
+      "__new__",
+      "__reduce__",
+      "__init__",
+      "set_seed",
+      "get_next_seed",
+      "cache_decorator",
+      "cache_wrapper"
+    ],
+    "size": 6927
+  },
+  "quantaalpha/core/scenario.py": {
+    "path": "quantaalpha/core/scenario.py",
+    "imports": [
+      "abc.ABC",
+      "abc.abstractmethod",
+      "quantaalpha.core.experiment.Task"
+    ],
+    "classes": [
+      "Scenario"
+    ],
+    "functions": [
+      "background",
+      "get_source_data_desc",
+      "source_data",
+      "interface",
+      "output_format",
+      "simulator",
+      "rich_style_description",
+      "get_scenario_all_desc",
+      "experiment_setting"
+    ],
+    "size": 1689
+  },
+  "quantaalpha/core/template.py": {
+    "path": "quantaalpha/core/template.py",
+    "imports": [
+      "pathlib.Path",
+      "typing.Any",
+      "yaml",
+      "jinja2.Environment",
+      "jinja2.FileSystemLoader",
+      "jinja2.Template"
+    ],
+    "classes": [
+      "CodeTemplate"
+    ],
+    "functions": [
+      "__init__",
+      "render"
+    ],
+    "size": 819
+  },
+  "quantaalpha/core/developer.py": {
+    "path": "quantaalpha/core/developer.py",
+    "imports": [
+      "__future__.annotations",
+      "abc.ABC",
+      "abc.abstractmethod",
+      "typing.TYPE_CHECKING",
+      "typing.Generic",
+      "quantaalpha.core.experiment.ASpecificExp",
+      "quantaalpha.core.scenario.Scenario"
+    ],
+    "classes": [
+      "Developer"
+    ],
+    "functions": [
+      "__init__",
+      "develop"
+    ],
+    "size": 770
+  },
+  "quantaalpha/factors/runner.py": {
+    "path": "quantaalpha/factors/runner.py",
+    "imports": [
+      "pickle",
+      "sys",
+      "pathlib.Path",
+      "typing.List",
+      "os",
+      "pandas",
+      "pandarallel.pandarallel",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "quantaalpha.core.utils.cache_with_pickle",
+      "quantaalpha.core.utils.multiprocessing_wrapper",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.components.runner.CachedRunner",
+      "quantaalpha.core.exception.FactorEmptyError",
+      "quantaalpha.log.logger",
+      "quantaalpha.factors.experiment.QlibFactorExperiment",
+      "subprocess"
+    ],
+    "classes": [
+      "QlibFactorRunner"
+    ],
+    "functions": [
+      "calculate_information_coefficient",
+      "deduplicate_new_factors",
+      "develop",
+      "process_factor_data"
+    ],
+    "size": 11317
+  },
+  "quantaalpha/factors/library.py": {
+    "path": "quantaalpha/factors/library.py",
+    "imports": [
+      "json",
+      "hashlib",
+      "logging",
+      "os",
+      "datetime.datetime",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Optional",
+      "numpy",
+      "pandas"
+    ],
+    "classes": [
+      "FactorLibraryManager"
+    ],
+    "functions": [
+      "__init__",
+      "_load",
+      "_save",
+      "add_factors_from_experiment",
+      "_sync_h5_to_md5_cache",
+      "check_cache_status",
+      "warm_cache_from_json",
+      "_extract_backtest_results",
+      "_extract_feedback"
+    ],
+    "size": 12487
+  },
+  "quantaalpha/factors/qlib_coder.py": {
+    "path": "quantaalpha/factors/qlib_coder.py",
+    "imports": [
+      "quantaalpha.factors.coder.FactorCoSTEER",
+      "quantaalpha.factors.coder.FactorParser",
+      "quantaalpha.factors.coder.FactorCoder"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 175
+  },
+  "quantaalpha/factors/feedback.py": {
+    "path": "quantaalpha/factors/feedback.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "pandas",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.proposal.Hypothesis",
+      "quantaalpha.core.proposal.HypothesisExperiment2Feedback",
+      "quantaalpha.core.proposal.HypothesisFeedback",
+      "quantaalpha.core.proposal.Trace",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.client.APIBackend",
+      "quantaalpha.llm.client.robust_json_parse",
+      "quantaalpha.utils.convert2bool",
+      "quantaalpha.factors.coder.factor_ast.calculate_symbol_length",
+      "quantaalpha.factors.coder.factor_ast.count_base_features",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS"
+    ],
+    "classes": [
+      "QlibFactorHypothesisExperiment2Feedback",
+      "AlphaAgentQlibFactorHypothesisExperiment2Feedback"
+    ],
+    "functions": [
+      "process_results",
+      "generate_feedback",
+      "generate_feedback"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/factors/proposal.py": {
+    "path": "quantaalpha/factors/proposal.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/factors/experiment.py": {
+    "path": "quantaalpha/factors/experiment.py",
+    "imports": [
+      "copy.deepcopy",
+      "pathlib.Path",
+      "rdagent.scenarios.qlib.experiment.factor_experiment.QlibFactorScenario",
+      "rdagent.scenarios.qlib.experiment.factor_experiment.FactorExperiment",
+      "rdagent.scenarios.qlib.experiment.factor_experiment.FactorTask",
+      "rdagent.scenarios.qlib.experiment.factor_experiment.FactorFBWorkspace",
+      "rdagent.utils.agent.tpl.T",
+      "quantaalpha.factors.workspace.QlibFBWorkspace",
+      "rdagent.scenarios.qlib.experiment.factor_experiment.QlibFactorExperiment",
+      "rdagent.scenarios.qlib.experiment.factor_experiment",
+      "rdagent.core.scenario.Scenario",
+      "quantaalpha.factors.qlib_utils.get_data_folder_intro"
+    ],
+    "classes": [
+      "QlibFactorExperiment",
+      "QlibAlphaAgentScenario"
+    ],
+    "functions": [
+      "__init__",
+      "__init__"
+    ],
+    "size": 2412
+  },
+  "quantaalpha/factors/qlib_utils.py": {
+    "path": "quantaalpha/factors/qlib_utils.py",
+    "imports": [
+      "io",
+      "re",
+      "shutil",
+      "sys",
+      "pathlib.Path",
+      "pandas",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.utils.env.QTDockerEnv",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [],
+    "functions": [
+      "generate_data_folder_from_qlib",
+      "get_file_desc",
+      "get_data_folder_intro"
+    ],
+    "size": 5432
+  },
+  "quantaalpha/factors/workspace.py": {
+    "path": "quantaalpha/factors/workspace.py",
+    "imports": [
+      "subprocess",
+      "pathlib.Path",
+      "rdagent.scenarios.qlib.experiment.workspace.QlibFBWorkspace",
+      "rdagent.log.rdagent_logger"
+    ],
+    "classes": [
+      "QlibFBWorkspace"
+    ],
+    "functions": [
+      "__init__",
+      "before_execute"
+    ],
+    "size": 1625
+  },
+  "quantaalpha/factors/qlib_experiment_init.py": {
+    "path": "quantaalpha/factors/qlib_experiment_init.py",
+    "imports": [
+      "importlib.import_module",
+      "pathlib.Path",
+      "sys"
+    ],
+    "classes": [],
+    "functions": [
+      "_lazy_import"
+    ],
+    "size": 1286
+  },
+  "quantaalpha/utils/env.py": {
+    "path": "quantaalpha/utils/env.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/utils/__init__.py": {
+    "path": "quantaalpha/utils/__init__.py",
+    "imports": [
+      "importlib",
+      "re",
+      "sys",
+      "types.ModuleType",
+      "typing.Union"
+    ],
+    "classes": [],
+    "functions": [
+      "get_module_by_module_path",
+      "convert2bool"
+    ],
+    "size": 1951
+  },
+  "quantaalpha/utils/workflow.py": {
+    "path": "quantaalpha/utils/workflow.py",
+    "imports": [
+      "datetime",
+      "pickle",
+      "collections.defaultdict",
+      "dataclasses.dataclass",
+      "dataclasses.field",
+      "pathlib.Path",
+      "typing.Callable",
+      "tqdm.auto.tqdm",
+      "quantaalpha.core.exception.CoderError",
+      "quantaalpha.log.logger",
+      "threading"
+    ],
+    "classes": [
+      "LoopMeta",
+      "LoopTrace",
+      "LoopBase"
+    ],
+    "functions": [
+      "_get_steps",
+      "__new__",
+      "__init__",
+      "run",
+      "dump",
+      "load"
+    ],
+    "size": 5806
+  },
+  "quantaalpha/backtest/factor_calculator.py": {
+    "path": "quantaalpha/backtest/factor_calculator.py",
+    "imports": [
+      "hashlib",
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "tempfile",
+      "subprocess",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Optional",
+      "typing.Any",
+      "typing.Tuple",
+      "numpy",
+      "pandas",
+      "qlib",
+      "qlib.config.REG_CN",
+      "qlib.config.REG_US",
+      "quantaalpha.factors.coder.expr_parser.parse_expression",
+      "quantaalpha.factors.coder.expr_parser.parse_symbol",
+      "quantaalpha.factors.coder.function_lib",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [
+      "FactorCalculator",
+      "QlibDataProvider"
+    ],
+    "functions": [
+      "__init__",
+      "set_data",
+      "calculate_factors",
+      "_calculate_with_parser",
+      "_calculate_with_llm",
+      "_generate_factor_code",
+      "_validate_expression",
+      "_execute_factor_code",
+      "_get_cache_key",
+      "_load_from_cache",
+      "_save_to_cache",
+      "__init__",
+      "_init_qlib"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/backtest/runner.py": {
+    "path": "quantaalpha/backtest/runner.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/backtest/factor_loader.py": {
+    "path": "quantaalpha/backtest/factor_loader.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/backtest/__init__.py": {
+    "path": "quantaalpha/backtest/__init__.py",
+    "imports": [
+      "factor_loader.FactorLoader",
+      "factor_calculator.FactorCalculator",
+      "runner.BacktestRunner"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 332
+  },
+  "quantaalpha/backtest/custom_factor_calculator.py": {
+    "path": "quantaalpha/backtest/custom_factor_calculator.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/backtest/run_backtest.py": {
+    "path": "quantaalpha/backtest/run_backtest.py",
+    "imports": [
+      "argparse",
+      "logging",
+      "sys",
+      "pathlib.Path",
+      "dotenv.load_dotenv",
+      "quantaalpha.backtest.runner.BacktestRunner",
+      "quantaalpha.backtest.factor_loader.FactorLoader",
+      "traceback"
+    ],
+    "classes": [],
+    "functions": [
+      "main"
+    ],
+    "size": 4735
+  },
+  "quantaalpha/log/time.py": {
+    "path": "quantaalpha/log/time.py",
+    "imports": [
+      "time",
+      "functools",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [],
+    "functions": [
+      "measure_time",
+      "wrapper"
+    ],
+    "size": 447
+  },
+  "quantaalpha/log/__init__.py": {
+    "path": "quantaalpha/log/__init__.py",
+    "imports": [
+      "pathlib.Path",
+      "rdagent.log.rdagent_logger",
+      "rdagent.log.utils.LogColors",
+      "rdagent.log.storage.FileStorage"
+    ],
+    "classes": [
+      "_AlphaAgentLoggerWrapper"
+    ],
+    "functions": [
+      "__init__",
+      "log_trace_path",
+      "set_trace_path",
+      "__getattr__",
+      "__setattr__"
+    ],
+    "size": 1350
+  },
+  "quantaalpha/coder/costeer/task.py": {
+    "path": "quantaalpha/coder/costeer/task.py",
+    "imports": [
+      "quantaalpha.core.experiment.Task"
+    ],
+    "classes": [
+      "CoSTEERTask"
+    ],
+    "functions": [
+      "__init__"
+    ],
+    "size": 221
+  },
+  "quantaalpha/coder/costeer/config.py": {
+    "path": "quantaalpha/coder/costeer/config.py",
+    "imports": [
+      "typing.Union",
+      "quantaalpha.core.conf.ExtendedBaseSettings"
+    ],
+    "classes": [
+      "CoSTEERSettings",
+      "Config"
+    ],
+    "functions": [],
+    "size": 1059
+  },
+  "quantaalpha/coder/costeer/evolving_agent.py": {
+    "path": "quantaalpha/coder/costeer/evolving_agent.py",
+    "imports": [
+      "quantaalpha.coder.costeer.evaluators.CoSTEERSingleFeedback",
+      "quantaalpha.coder.costeer.evolvable_subjects.EvolvingItem",
+      "quantaalpha.core.evolving_agent.RAGEvoAgent",
+      "quantaalpha.core.evolving_framework.EvolvableSubjects"
+    ],
+    "classes": [
+      "FilterFailedRAGEvoAgent"
+    ],
+    "functions": [
+      "filter_evolvable_subjects_by_feedback"
+    ],
+    "size": 849
+  },
+  "quantaalpha/coder/costeer/__init__.py": {
+    "path": "quantaalpha/coder/costeer/__init__.py",
+    "imports": [
+      "pickle",
+      "pathlib.Path",
+      "quantaalpha.coder.costeer.config.CoSTEERSettings",
+      "quantaalpha.coder.costeer.evolvable_subjects.EvolvingItem",
+      "quantaalpha.coder.costeer.evolving_agent.FilterFailedRAGEvoAgent",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERKnowledgeBaseV1",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERKnowledgeBaseV2",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERRAGStrategyV1",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERRAGStrategyV2",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.evaluation.Evaluator",
+      "quantaalpha.core.evolving_agent.EvolvingStrategy",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [
+      "CoSTEER"
+    ],
+    "functions": [
+      "__init__",
+      "load_or_init_knowledge_base",
+      "develop"
+    ],
+    "size": 4254
+  },
+  "quantaalpha/coder/costeer/knowledge_management.py": {
+    "path": "quantaalpha/coder/costeer/knowledge_management.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/coder/costeer/scheduler.py": {
+    "path": "quantaalpha/coder/costeer/scheduler.py",
+    "imports": [
+      "random",
+      "quantaalpha.coder.costeer.evolvable_subjects.EvolvingItem",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledge",
+      "quantaalpha.core.evaluation.Scenario",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [],
+    "functions": [
+      "random_select"
+    ],
+    "size": 658
+  },
+  "quantaalpha/coder/costeer/evolvable_subjects.py": {
+    "path": "quantaalpha/coder/costeer/evolvable_subjects.py",
+    "imports": [
+      "quantaalpha.core.evolving_framework.EvolvableSubjects",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.experiment.FBWorkspace",
+      "quantaalpha.core.scenario.Task",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [
+      "EvolvingItem"
+    ],
+    "functions": [
+      "__init__",
+      "from_experiment"
+    ],
+    "size": 1235
+  },
+  "quantaalpha/coder/costeer/evolving_strategy.py": {
+    "path": "quantaalpha/coder/costeer/evolving_strategy.py",
+    "imports": [
+      "__future__.annotations",
+      "abc.abstractmethod",
+      "pathlib.Path",
+      "quantaalpha.coder.costeer.config.CoSTEERSettings",
+      "quantaalpha.coder.costeer.evolvable_subjects.EvolvingItem",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledge",
+      "quantaalpha.coder.costeer.scheduler.random_select",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "quantaalpha.core.evaluation.Scenario",
+      "quantaalpha.core.evolving_framework.EvolvingStrategy",
+      "quantaalpha.core.evolving_framework.QueriedKnowledge",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.scenario.Task",
+      "quantaalpha.core.utils.multiprocessing_wrapper"
+    ],
+    "classes": [
+      "MultiProcessEvolvingStrategy"
+    ],
+    "functions": [
+      "__init__",
+      "implement_one_task",
+      "select_one_round_tasks",
+      "assign_code_list_to_evo",
+      "evolve"
+    ],
+    "size": 3896
+  },
+  "quantaalpha/coder/costeer/evaluators.py": {
+    "path": "quantaalpha/coder/costeer/evaluators.py",
+    "imports": [
+      "abc.abstractmethod",
+      "typing.List",
+      "quantaalpha.coder.costeer.evolvable_subjects.EvolvingItem",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "quantaalpha.core.evaluation.Evaluator",
+      "quantaalpha.core.evaluation.Feedback",
+      "quantaalpha.core.evolving_framework.QueriedKnowledge",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.core.scenario.Task",
+      "quantaalpha.core.utils.multiprocessing_wrapper",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [
+      "CoSTEERSingleFeedback",
+      "CoSTEERMultiFeedback",
+      "CoSTEEREvaluator",
+      "CoSTEERMultiEvaluator"
+    ],
+    "functions": [
+      "__init__",
+      "__str__",
+      "evaluate",
+      "__init__",
+      "evaluate"
+    ],
+    "size": 4457
+  },
+  "quantaalpha/coder/knowledge/graph.py": {
+    "path": "quantaalpha/coder/knowledge/graph.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/coder/knowledge/vector_base.py": {
+    "path": "quantaalpha/coder/knowledge/vector_base.py",
+    "imports": [
+      "uuid",
+      "pathlib.Path",
+      "typing.List",
+      "typing.Tuple",
+      "typing.Union",
+      "pandas",
+      "scipy.spatial.distance.cosine",
+      "quantaalpha.core.knowledge_base.KnowledgeBase",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.client.APIBackend",
+      "quantaalpha.llm.config.LLM_SETTINGS"
+    ],
+    "classes": [
+      "KnowledgeMetaData",
+      "VectorBase",
+      "PDVectorBase"
+    ],
+    "functions": [
+      "contents_to_documents",
+      "__init__",
+      "split_into_trunk",
+      "create_embedding",
+      "from_dict",
+      "__repr__",
+      "add",
+      "search",
+      "__init__",
+      "shape",
+      "add",
+      "search",
+      "split_string_into_chunks"
+    ],
+    "size": 5579
+  },
+  "quantaalpha/components/benchmark/eval_method.py": {
+    "path": "quantaalpha/components/benchmark/eval_method.py",
+    "imports": [
+      "collections.defaultdict",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.List",
+      "typing.Tuple",
+      "typing.Union",
+      "pandas",
+      "tqdm.tqdm",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.factors.coder.eva_utils.FactorCorrelationEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorEqualValueRatioEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorIndexEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorRowCountEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorSingleColumnEvaluator",
+      "quantaalpha.factors.coder.factor.FactorFBWorkspace",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.exception.CoderError",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.experiment.Task",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.core.utils.multiprocessing_wrapper"
+    ],
+    "classes": [
+      "TestCase",
+      "TestCases",
+      "BaseEval",
+      "FactorImplementEval"
+    ],
+    "functions": [
+      "__init__",
+      "__init__",
+      "__getitem__",
+      "__len__",
+      "get_exp",
+      "target_task",
+      "ground_truth",
+      "__init__",
+      "load_cases_to_eval",
+      "eval_case",
+      "__init__",
+      "develop",
+      "eval",
+      "summarize_res"
+    ],
+    "size": 7700
+  },
+  "quantaalpha/components/benchmark/conf.py": {
+    "path": "quantaalpha/components/benchmark/conf.py",
+    "imports": [
+      "dataclasses.field",
+      "pathlib.Path",
+      "typing.Optional",
+      "quantaalpha.core.conf.ExtendedBaseSettings"
+    ],
+    "classes": [
+      "BenchmarkSettings",
+      "Config"
+    ],
+    "functions": [],
+    "size": 990
+  },
+  "quantaalpha/components/runner/__init__.py": {
+    "path": "quantaalpha/components/runner/__init__.py",
+    "imports": [
+      "pickle",
+      "shutil",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Tuple",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.experiment.ASpecificExp",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.llm.client.md5_hash",
+      "rdagent.core.experiment.RunningInfo",
+      "quantaalpha.core.experiment.RunningInfo"
+    ],
+    "classes": [
+      "CachedRunner"
+    ],
+    "functions": [
+      "get_cache_key",
+      "assign_cached_result",
+      "_ensure_running_info"
+    ],
+    "size": 2090
+  },
+  "quantaalpha/components/proposal/__init__.py": {
+    "path": "quantaalpha/components/proposal/__init__.py",
+    "imports": [
+      "abc.abstractmethod",
+      "pathlib.Path",
+      "typing.Tuple",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.proposal.Hypothesis",
+      "quantaalpha.core.proposal.Hypothesis2Experiment",
+      "quantaalpha.core.proposal.HypothesisGen",
+      "quantaalpha.core.proposal.Scenario",
+      "quantaalpha.core.proposal.Trace",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [
+      "LLMHypothesisGen",
+      "FactorHypothesisGen",
+      "ModelHypothesisGen",
+      "FactorAndModelHypothesisGen",
+      "LLMHypothesis2Experiment",
+      "FactorHypothesis2Experiment",
+      "ModelHypothesis2Experiment",
+      "FactorAndModelHypothesis2Experiment"
+    ],
+    "functions": [
+      "__init__",
+      "prepare_context",
+      "convert_response",
+      "gen",
+      "__init__",
+      "__init__",
+      "__init__",
+      "prepare_context",
+      "convert_response",
+      "convert",
+      "__init__",
+      "__init__",
+      "__init__"
+    ],
+    "size": 4478
+  },
+  "quantaalpha/contrib/model/runner.py": {
+    "path": "quantaalpha/contrib/model/runner.py",
+    "imports": [
+      "quantaalpha.components.runner.CachedRunner",
+      "quantaalpha.core.exception.ModelEmptyError",
+      "quantaalpha.core.utils.cache_with_pickle",
+      "quantaalpha.contrib.model.experiment.QlibModelExperiment"
+    ],
+    "classes": [
+      "QlibModelRunner"
+    ],
+    "functions": [
+      "develop"
+    ],
+    "size": 1484
+  },
+  "quantaalpha/contrib/model/qlib_coder.py": {
+    "path": "quantaalpha/contrib/model/qlib_coder.py",
+    "imports": [
+      "quantaalpha.contrib.model.coder.ModelCoSTEER"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 90
+  },
+  "quantaalpha/contrib/model/proposal.py": {
+    "path": "quantaalpha/contrib/model/proposal.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "typing.List",
+      "typing.Tuple",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.contrib.model.coder.model.ModelExperiment",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.components.proposal.ModelHypothesis2Experiment",
+      "quantaalpha.components.proposal.ModelHypothesisGen",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.proposal.Hypothesis",
+      "quantaalpha.core.proposal.Scenario",
+      "quantaalpha.core.proposal.Trace",
+      "quantaalpha.contrib.model.experiment.QlibModelExperiment"
+    ],
+    "classes": [
+      "QlibModelHypothesisGen",
+      "QlibModelHypothesis2Experiment"
+    ],
+    "functions": [
+      "__init__",
+      "prepare_context",
+      "convert_response",
+      "prepare_context",
+      "convert_response"
+    ],
+    "size": 4447
+  },
+  "quantaalpha/contrib/model/experiment.py": {
+    "path": "quantaalpha/contrib/model/experiment.py",
+    "imports": [
+      "rdagent.scenarios.qlib.experiment.model_experiment.*"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 221
+  },
+  "quantaalpha/contrib/model/coder/__init__.py": {
+    "path": "quantaalpha/contrib/model/coder/__init__.py",
+    "imports": [
+      "quantaalpha.coder.costeer.CoSTEER",
+      "quantaalpha.coder.costeer.config.CoSTEER_SETTINGS",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERMultiEvaluator",
+      "quantaalpha.contrib.model.coder.evaluators.ModelCoSTEEREvaluator",
+      "quantaalpha.contrib.model.coder.evolving_strategy.ModelMultiProcessEvolvingStrategy",
+      "quantaalpha.core.scenario.Scenario"
+    ],
+    "classes": [
+      "ModelCoSTEER"
+    ],
+    "functions": [
+      "__init__"
+    ],
+    "size": 826
+  },
+  "quantaalpha/contrib/model/coder/model.py": {
+    "path": "quantaalpha/contrib/model/coder/model.py",
+    "imports": [
+      "pickle",
+      "site",
+      "traceback",
+      "pathlib.Path",
+      "typing.Dict",
+      "typing.Optional",
+      "quantaalpha.coder.costeer.task.CoSTEERTask",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.experiment.FBWorkspace",
+      "quantaalpha.core.utils.cache_with_pickle",
+      "quantaalpha.llm.client.md5_hash",
+      "quantaalpha.utils.env.KGDockerEnv",
+      "quantaalpha.utils.env.QTDockerEnv"
+    ],
+    "classes": [
+      "ModelTask",
+      "ModelFBWorkspace"
+    ],
+    "functions": [
+      "__init__",
+      "get_task_information",
+      "from_dict",
+      "__repr__",
+      "hash_func",
+      "execute"
+    ],
+    "size": 5382
+  },
+  "quantaalpha/contrib/model/coder/gt_code.py": {
+    "path": "quantaalpha/contrib/model/coder/gt_code.py",
+    "imports": [
+      "math",
+      "typing.Any",
+      "typing.Callable",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Union",
+      "torch",
+      "torch.Tensor",
+      "torch.nn.Parameter",
+      "torch_geometric.nn.conv.GCNConv",
+      "torch_geometric.nn.conv.MessagePassing",
+      "torch_geometric.nn.inits.zeros",
+      "torch_geometric.nn.resolver.activation_resolver",
+      "torch_geometric.typing.Adj"
+    ],
+    "classes": [
+      "AntiSymmetricConv"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 4827
+  },
+  "quantaalpha/contrib/model/coder/task_loader.py": {
+    "path": "quantaalpha/contrib/model/coder/task_loader.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "re",
+      "pathlib.Path",
+      "quantaalpha.contrib.model.coder.model.ModelExperiment",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.utils.document_reader.document_reader.load_and_process_pdfs_by_langchain",
+      "quantaalpha.utils.loader.task_loader.ModelTaskLoader",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.client.APIBackend",
+      "quantaalpha.contrib.model.experiment.QlibModelExperiment"
+    ],
+    "classes": [
+      "ModelExperimentLoaderFromDict",
+      "ModelExperimentLoaderFromPDFfiles"
+    ],
+    "functions": [
+      "extract_model_from_doc",
+      "merge_file_to_model_dict_to_model_dict",
+      "extract_model_from_docs",
+      "load",
+      "load"
+    ],
+    "size": 4691
+  },
+  "quantaalpha/contrib/model/coder/evolving_strategy.py": {
+    "path": "quantaalpha/contrib/model/coder/evolving_strategy.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.coder.costeer.config.CoSTEER_SETTINGS",
+      "quantaalpha.coder.costeer.evolving_strategy.MultiProcessEvolvingStrategy",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledge",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledgeV2",
+      "quantaalpha.contrib.model.coder.model.ModelExperiment",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.llm.config.LLM_SETTINGS",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [
+      "ModelMultiProcessEvolvingStrategy"
+    ],
+    "functions": [
+      "implement_one_task",
+      "assign_code_list_to_evo"
+    ],
+    "size": 4228
+  },
+  "quantaalpha/contrib/model/coder/evaluators.py": {
+    "path": "quantaalpha/contrib/model/coder/evaluators.py",
+    "imports": [
+      "quantaalpha.coder.costeer.evaluators.CoSTEEREvaluator",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERMultiFeedback",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERSingleFeedback",
+      "quantaalpha.contrib.model.coder.eva_utils.ModelCodeEvaluator",
+      "quantaalpha.contrib.model.coder.eva_utils.ModelFinalEvaluator",
+      "quantaalpha.contrib.model.coder.eva_utils.shape_evaluator",
+      "quantaalpha.contrib.model.coder.eva_utils.value_evaluator",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.core.evolving_framework.QueriedKnowledge",
+      "quantaalpha.core.experiment.Task",
+      "quantaalpha.core.experiment.Workspace"
+    ],
+    "classes": [
+      "ModelCoSTEEREvaluator"
+    ],
+    "functions": [
+      "evaluate"
+    ],
+    "size": 4408
+  },
+  "quantaalpha/contrib/model/coder/eva_utils.py": {
+    "path": "quantaalpha/contrib/model/coder/eva_utils.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "typing.Tuple",
+      "numpy",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.core.evaluation.Evaluator",
+      "quantaalpha.core.experiment.Task",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.llm.config.LLM_SETTINGS",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [
+      "ModelCodeEvaluator",
+      "ModelFinalEvaluator"
+    ],
+    "functions": [
+      "shape_evaluator",
+      "value_evaluator",
+      "evaluate",
+      "evaluate"
+    ],
+    "size": 6897
+  },
+  "quantaalpha/contrib/model/coder/benchmark/eval.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/eval.py",
+    "imports": [
+      "torch",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace"
+    ],
+    "classes": [
+      "ModelImpValEval"
+    ],
+    "functions": [
+      "get_data_conf",
+      "evaluate",
+      "norm"
+    ],
+    "size": 2833
+  },
+  "quantaalpha/contrib/model/coder/one_shot/__init__.py": {
+    "path": "quantaalpha/contrib/model/coder/one_shot/__init__.py",
+    "imports": [
+      "re",
+      "pathlib.Path",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.contrib.model.coder.model.ModelExperiment",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace",
+      "quantaalpha.core.developer.Developer",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.llm.client.APIBackend"
+    ],
+    "classes": [
+      "ModelCodeWriter"
+    ],
+    "functions": [
+      "develop"
+    ],
+    "size": 1550
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/linkx.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/linkx.py",
+    "imports": [
+      "math",
+      "torch",
+      "torch.Tensor",
+      "torch.nn.BatchNorm1d",
+      "torch.nn.Parameter",
+      "torch_geometric.nn.inits",
+      "torch_geometric.nn.conv.MessagePassing",
+      "torch_geometric.nn.models.MLP",
+      "torch_geometric.typing.Adj",
+      "torch_geometric.typing.OptTensor",
+      "torch_geometric.utils.spmm"
+    ],
+    "classes": [
+      "SparseLinear",
+      "LINKX"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "message",
+      "message_and_aggregate",
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 6293
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/pmlp.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/pmlp.py",
+    "imports": [
+      "typing.Optional",
+      "torch",
+      "torch.nn.functional",
+      "torch.Tensor",
+      "torch_geometric.nn.SimpleConv",
+      "torch_geometric.nn.dense.linear.Linear"
+    ],
+    "classes": [
+      "PMLP"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 3976
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/dirgnn.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/dirgnn.py",
+    "imports": [
+      "copy",
+      "torch",
+      "torch.Tensor",
+      "torch_geometric.nn.conv.MessagePassing"
+    ],
+    "classes": [
+      "DirGNNConv"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 2789
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/visnet.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/visnet.py",
+    "imports": [
+      "math",
+      "typing.Optional",
+      "typing.Tuple",
+      "torch",
+      "torch.Tensor",
+      "torch.autograd.grad",
+      "torch.nn.Embedding",
+      "torch.nn.LayerNorm",
+      "torch.nn.Linear",
+      "torch.nn.Parameter",
+      "torch_geometric.nn.MessagePassing",
+      "torch_geometric.nn.radius_graph",
+      "torch_geometric.utils.scatter"
+    ],
+    "classes": [
+      "CosineCutoff",
+      "ExpNormalSmearing",
+      "Sphere",
+      "VecLayerNorm",
+      "Distance",
+      "NeighborEmbedding",
+      "EdgeEmbedding"
+    ],
+    "functions": [
+      "__init__",
+      "forward",
+      "__init__",
+      "_initial_params",
+      "reset_parameters",
+      "forward",
+      "__init__",
+      "forward",
+      "_spherical_harmonics",
+      "__init__",
+      "reset_parameters",
+      "max_min_norm",
+      "forward",
+      "__init__",
+      "forward",
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "message",
+      "__init__",
+      "reset_parameters"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/A-DGN.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/A-DGN.py",
+    "imports": [
+      "math",
+      "typing.Any",
+      "typing.Callable",
+      "typing.Dict",
+      "typing.Optional",
+      "typing.Union",
+      "torch",
+      "torch.Tensor",
+      "torch.nn.Parameter",
+      "torch_geometric.nn.conv.GCNConv",
+      "torch_geometric.nn.conv.MessagePassing",
+      "torch_geometric.nn.inits.zeros",
+      "torch_geometric.nn.resolver.activation_resolver",
+      "torch_geometric.typing.Adj"
+    ],
+    "classes": [
+      "AntiSymmetricConv"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 4770
+  },
+  "quantaalpha/contrib/model/coder/benchmark/gt_code/gpsconv.py": {
+    "path": "quantaalpha/contrib/model/coder/benchmark/gt_code/gpsconv.py",
+    "imports": [
+      "inspect",
+      "typing.Any",
+      "typing.Dict",
+      "typing.Optional",
+      "torch",
+      "torch.nn.functional",
+      "torch.Tensor",
+      "torch.nn.Dropout",
+      "torch.nn.Linear",
+      "torch.nn.Sequential",
+      "torch_geometric.nn.attention.PerformerAttention",
+      "torch_geometric.nn.conv.MessagePassing",
+      "torch_geometric.nn.inits.reset",
+      "torch_geometric.nn.resolver.activation_resolver",
+      "torch_geometric.nn.resolver.normalization_resolver",
+      "torch_geometric.typing.Adj",
+      "torch_geometric.utils.to_dense_batch"
+    ],
+    "classes": [
+      "GPSConv"
+    ],
+    "functions": [
+      "__init__",
+      "reset_parameters",
+      "forward",
+      "__repr__"
+    ],
+    "size": 7025
+  },
+  "quantaalpha/utils/agent/tpl.py": {
+    "path": "quantaalpha/utils/agent/tpl.py",
+    "imports": [
+      "inspect",
+      "pathlib.Path",
+      "typing.Any",
+      "yaml",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.core.utils.SingletonBaseClass"
+    ],
+    "classes": [
+      "RDAT"
+    ],
+    "functions": [
+      "__init__",
+      "r"
+    ],
+    "size": 2105
+  },
+  "quantaalpha/utils/agent/ret.py": {
+    "path": "quantaalpha/utils/agent/ret.py",
+    "imports": [
+      "re",
+      "abc.abstractclassmethod",
+      "typing.Any",
+      "quantaalpha.utils.agent.tpl.T"
+    ],
+    "classes": [
+      "AgentOut",
+      "PythonAgentOut"
+    ],
+    "functions": [
+      "get_spec",
+      "extract_output",
+      "get_spec",
+      "extract_output"
+    ],
+    "size": 774
+  },
+  "quantaalpha/utils/document_reader/document_reader.py": {
+    "path": "quantaalpha/utils/document_reader/document_reader.py",
+    "imports": [
+      "__future__.annotations",
+      "io",
+      "pathlib.Path",
+      "typing.TYPE_CHECKING",
+      "fitz",
+      "requests",
+      "azure.ai.formrecognizer.DocumentAnalysisClient",
+      "azure.core.credentials.AzureKeyCredential",
+      "langchain_community.document_loaders.PyPDFDirectoryLoader",
+      "langchain_community.document_loaders.PyPDFLoader",
+      "PIL.Image",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS",
+      "langchain_core.documents.Document"
+    ],
+    "classes": [],
+    "functions": [
+      "load_documents_by_langchain",
+      "process_documents_by_langchain",
+      "load_and_process_pdfs_by_langchain",
+      "load_and_process_one_pdf_by_azure_document_intelligence",
+      "load_and_process_pdfs_by_azure_document_intelligence",
+      "extract_first_page_screenshot_from_pdf"
+    ],
+    "size": 3876
+  },
+  "quantaalpha/utils/loader/experiment_loader.py": {
+    "path": "quantaalpha/utils/loader/experiment_loader.py",
+    "imports": [
+      "quantaalpha.factors.coder.factor.FactorExperiment",
+      "quantaalpha.core.experiment.Loader"
+    ],
+    "classes": [
+      "FactorExperimentLoader",
+      "ModelExperimentLoader"
+    ],
+    "functions": [],
+    "size": 242
+  },
+  "quantaalpha/utils/loader/task_loader.py": {
+    "path": "quantaalpha/utils/loader/task_loader.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "typing.Sequence",
+      "quantaalpha.factors.coder.factor.FactorTask",
+      "quantaalpha.contrib.model.coder.model.ModelFBWorkspace",
+      "quantaalpha.contrib.model.coder.model.ModelTask",
+      "quantaalpha.core.experiment.Loader",
+      "quantaalpha.core.experiment.WsLoader"
+    ],
+    "classes": [
+      "FactorTaskLoader",
+      "ModelTaskLoader",
+      "ModelTaskLoaderJson",
+      "ModelWsLoader"
+    ],
+    "functions": [
+      "__init__",
+      "load",
+      "__init__",
+      "load"
+    ],
+    "size": 3951
+  },
+  "quantaalpha/factors/data_template/generate.py": {
+    "path": "quantaalpha/factors/data_template/generate.py",
+    "imports": [
+      "qlib",
+      "os",
+      "qlib.data.D"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1064
+  },
+  "quantaalpha/factors/regulator/__init__.py": {
+    "path": "quantaalpha/factors/regulator/__init__.py",
+    "imports": [
+      "quantaalpha.factors.regulator.factor_regulator.FactorRegulator",
+      "quantaalpha.factors.regulator.consistency_checker.FactorConsistencyChecker",
+      "quantaalpha.factors.regulator.consistency_checker.ConsistencyCheckResult",
+      "quantaalpha.factors.regulator.consistency_checker.ComplexityChecker",
+      "quantaalpha.factors.regulator.consistency_checker.RedundancyChecker",
+      "quantaalpha.factors.regulator.consistency_checker.FactorQualityGate"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1072
+  },
+  "quantaalpha/factors/regulator/consistency_checker.py": {
+    "path": "quantaalpha/factors/regulator/consistency_checker.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/factors/regulator/factor_regulator.py": {
+    "path": "quantaalpha/factors/regulator/factor_regulator.py",
+    "imports": [
+      "pandas",
+      "numpy",
+      "typing.Tuple",
+      "typing.List",
+      "typing.Dict",
+      "typing.Any",
+      "typing.Optional",
+      "quantaalpha.core.evaluation.Evaluator",
+      "quantaalpha.log.logger",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.factors.coder.factor_ast.match_alphazoo",
+      "quantaalpha.factors.coder.factor_ast.count_free_args",
+      "quantaalpha.factors.coder.factor_ast.count_unique_vars",
+      "quantaalpha.factors.coder.factor_ast.count_all_nodes",
+      "quantaalpha.factors.coder.factor_ast.calculate_symbol_length",
+      "quantaalpha.factors.coder.factor_ast.count_base_features",
+      "quantaalpha.factors.coder.expr_parser.parse_expression"
+    ],
+    "classes": [
+      "FactorRegulator"
+    ],
+    "functions": [
+      "__init__",
+      "is_parsable",
+      "evaluate",
+      "is_expression_acceptable",
+      "add_factor",
+      "save_factor_zoo",
+      "get_new_factors"
+    ],
+    "size": 9383
+  },
+  "quantaalpha/factors/loader/pdf_loader.py": {
+    "path": "quantaalpha/factors/loader/pdf_loader.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/factors/loader/json_loader.py": {
+    "path": "quantaalpha/factors/loader/json_loader.py",
+    "imports": [
+      "json",
+      "pathlib.Path",
+      "quantaalpha.components.benchmark.eval_method.TestCase",
+      "quantaalpha.components.benchmark.eval_method.TestCases",
+      "quantaalpha.factors.coder.factor.FactorExperiment",
+      "quantaalpha.factors.coder.factor.FactorFBWorkspace",
+      "quantaalpha.factors.coder.factor.FactorTask",
+      "quantaalpha.utils.loader.experiment_loader.FactorExperimentLoader",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.experiment.Loader",
+      "quantaalpha.factors.experiment.QlibFactorExperiment"
+    ],
+    "classes": [
+      "FactorExperimentLoaderFromDict",
+      "FactorExperimentLoaderFromJsonFile",
+      "FactorExperimentLoaderFromJsonString",
+      "FactorTestCaseLoaderFromJsonFile"
+    ],
+    "functions": [
+      "load",
+      "load",
+      "load",
+      "load"
+    ],
+    "size": 2470
+  },
+  "quantaalpha/factors/coder/factor_ast.py": {
+    "path": "quantaalpha/factors/coder/factor_ast.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/factors/coder/config.py": {
+    "path": "quantaalpha/factors/coder/config.py",
+    "imports": [
+      "typing.Optional",
+      "quantaalpha.coder.costeer.config.CoSTEERSettings",
+      "quantaalpha.core.conf.ExtendedSettingsConfigDict"
+    ],
+    "classes": [
+      "FactorCoSTEERSettings"
+    ],
+    "functions": [],
+    "size": 2012
+  },
+  "quantaalpha/factors/coder/__init__.py": {
+    "path": "quantaalpha/factors/coder/__init__.py",
+    "imports": [
+      "quantaalpha.coder.costeer.CoSTEER",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERMultiEvaluator",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.factors.coder.evaluators.FactorEvaluatorForCoder",
+      "quantaalpha.factors.coder.evolving_strategy.FactorMultiProcessEvolvingStrategy",
+      "quantaalpha.factors.coder.evolving_strategy.FactorParsingStrategy",
+      "quantaalpha.factors.coder.evolving_strategy.FactorRunningStrategy",
+      "quantaalpha.core.scenario.Scenario"
+    ],
+    "classes": [
+      "FactorCoSTEER",
+      "FactorParser",
+      "FactorCoder"
+    ],
+    "functions": [
+      "__init__",
+      "__init__",
+      "__init__"
+    ],
+    "size": 1833
+  },
+  "quantaalpha/factors/coder/test.py": {
+    "path": "quantaalpha/factors/coder/test.py",
+    "imports": [
+      "pathlib.Path",
+      "jinja2.Template"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 576
+  },
+  "quantaalpha/factors/coder/expr_parser.py": {
+    "path": "quantaalpha/factors/coder/expr_parser.py",
+    "imports": [
+      "pyparsing.Word",
+      "pyparsing.alphas",
+      "pyparsing.alphanums",
+      "pyparsing.infixNotation",
+      "pyparsing.opAssoc",
+      "pyparsing.oneOf",
+      "pyparsing.Optional",
+      "pyparsing.delimitedList",
+      "pyparsing.Forward",
+      "pyparsing.Group",
+      "pyparsing.ParseException",
+      "pyparsing.Regex",
+      "pyparsing.Combine",
+      "pyparsing.Literal",
+      "sys",
+      "re",
+      "numpy",
+      "pyparsing.ParserElement",
+      "re"
+    ],
+    "classes": [],
+    "functions": [
+      "is_number",
+      "flatten_nested_tokens",
+      "parse_arith_op",
+      "parse_conditional_expression",
+      "parse_comparison_op",
+      "parse_logical_expression",
+      "parse_function_call",
+      "parse_entire_expression",
+      "check_for_invalid_operators",
+      "check_parentheses_balance",
+      "preprocess_unary_minus",
+      "parse_expression",
+      "parse_symbol",
+      "recursive_build_expression",
+      "build_expression",
+      "recursive_build_comparison",
+      "build_comparison",
+      "recursive_flatten"
+    ],
+    "size": 12406
+  },
+  "quantaalpha/factors/coder/factor.py": {
+    "path": "quantaalpha/factors/coder/factor.py",
+    "imports": [
+      "__future__.annotations",
+      "subprocess",
+      "uuid",
+      "pathlib.Path",
+      "typing.Tuple",
+      "typing.Union",
+      "pandas",
+      "filelock.FileLock",
+      "quantaalpha.coder.costeer.task.CoSTEERTask",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.core.exception.CodeFormatError",
+      "quantaalpha.core.exception.CustomRuntimeError",
+      "quantaalpha.core.exception.NoOutputError",
+      "quantaalpha.core.experiment.Experiment",
+      "quantaalpha.core.experiment.FBWorkspace",
+      "quantaalpha.core.utils.cache_with_pickle",
+      "quantaalpha.llm.client.md5_hash",
+      "quantaalpha.log.logger",
+      "os",
+      "site"
+    ],
+    "classes": [
+      "FactorTask",
+      "FactorFBWorkspace"
+    ],
+    "functions": [
+      "__init__",
+      "get_task_information",
+      "get_task_description",
+      "get_task_information_and_implementation_result",
+      "from_dict",
+      "__repr__",
+      "__init__",
+      "hash_func",
+      "execute",
+      "__str__",
+      "__repr__",
+      "from_folder"
+    ],
+    "size": 10230
+  },
+  "quantaalpha/factors/coder/evolving_strategy.py": {
+    "path": "quantaalpha/factors/coder/evolving_strategy.py",
+    "imports": [
+      "__future__.annotations",
+      "json",
+      "pathlib.Path",
+      "re",
+      "jinja2.Environment",
+      "jinja2.StrictUndefined",
+      "quantaalpha.coder.costeer.evolving_strategy.MultiProcessEvolvingStrategy",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledge",
+      "quantaalpha.coder.costeer.knowledge_management.CoSTEERQueriedKnowledgeV2",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.factors.coder.factor.FactorFBWorkspace",
+      "quantaalpha.factors.coder.factor.FactorTask",
+      "quantaalpha.core.prompts.Prompts",
+      "quantaalpha.core.template.CodeTemplate",
+      "quantaalpha.llm.config.LLM_SETTINGS",
+      "quantaalpha.llm.client.APIBackend",
+      "quantaalpha.core.utils.multiprocessing_wrapper",
+      "quantaalpha.core.conf.RD_AGENT_SETTINGS"
+    ],
+    "classes": [
+      "FactorMultiProcessEvolvingStrategy",
+      "FactorParsingStrategy"
+    ],
+    "functions": [
+      "__init__",
+      "error_summary",
+      "implement_one_task",
+      "assign_code_list_to_evo",
+      "__init__",
+      "extract_expr",
+      "implement_one_task"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/factors/coder/evaluators.py": {
+    "path": "quantaalpha/factors/coder/evaluators.py",
+    "imports": [
+      "re",
+      "pathlib.Path",
+      "quantaalpha.coder.costeer.evaluators.CoSTEEREvaluator",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERMultiFeedback",
+      "quantaalpha.coder.costeer.evaluators.CoSTEERSingleFeedback",
+      "quantaalpha.factors.coder.eva_utils.FactorCodeEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorFinalDecisionEvaluator",
+      "quantaalpha.factors.coder.eva_utils.FactorValueEvaluator",
+      "quantaalpha.factors.coder.factor.FactorTask",
+      "quantaalpha.factors.coder.config.FACTOR_COSTEER_SETTINGS",
+      "quantaalpha.core.evolving_framework.QueriedKnowledge",
+      "quantaalpha.core.experiment.Workspace",
+      "quantaalpha.factors.regulator.factor_regulator.FactorRegulator",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [
+      "FactorEvaluatorForCoder"
+    ],
+    "functions": [
+      "shorten_prompt",
+      "__init__",
+      "extract_expr",
+      "check_ast_regularization",
+      "evaluate"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/factors/coder/eva_utils.py": {
+    "path": "quantaalpha/factors/coder/eva_utils.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/factors/coder/function_lib.py": {
+    "path": "quantaalpha/factors/coder/function_lib.py",
+    "imports": [
+      "numpy",
+      "pandas",
+      "operator",
+      "joblib.Parallel",
+      "joblib.delayed",
+      "scipy.stats.skew",
+      "scipy.stats.kurtosis",
+      "scipy.stats.kurtosis",
+      "scipy.stats.skew"
+    ],
+    "classes": [],
+    "functions": [
+      "datatype_adapter",
+      "DELTA",
+      "RANK",
+      "MEAN",
+      "STD",
+      "SKEW",
+      "KURT",
+      "MAX",
+      "MIN",
+      "MEDIAN",
+      "TS_KURT",
+      "TS_SKEW",
+      "TS_RANK",
+      "TS_MAX",
+      "TS_MIN",
+      "TS_MEAN",
+      "TS_MEDIAN",
+      "PERCENTILE",
+      "TS_SUM",
+      "TS_ARGMAX",
+      "TS_ARGMIN",
+      "MAX",
+      "MIN",
+      "ABS",
+      "DELAY",
+      "TS_CORR",
+      "TS_COVARIANCE",
+      "TS_STD",
+      "TS_VAR",
+      "SIGN",
+      "SMA",
+      "EMA",
+      "WMA",
+      "COUNT",
+      "SUMIF",
+      "FILTER",
+      "PROD",
+      "DECAYLINEAR",
+      "HIGHDAY",
+      "LOWDAY",
+      "SEQUENCE",
+      "SUMAC",
+      "calculate_beta",
+      "rolling_beta",
+      "REGBETA",
+      "wrapper",
+      "calc_kurt",
+      "rolling_kurt",
+      "rolling_skew",
+      "rolling_argmax",
+      "rolling_argmin",
+      "calculate_wma",
+      "calculate_deycaylinear",
+      "highday",
+      "lowday",
+      "corr",
+      "cov",
+      "rolling_corr",
+      "rolling_cov"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/app/utils/health_check.py": {
+    "path": "quantaalpha/app/utils/health_check.py",
+    "imports": [
+      "socket",
+      "docker",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [],
+    "functions": [
+      "check_docker",
+      "is_port_in_use",
+      "check_and_list_free_ports",
+      "health_check"
+    ],
+    "size": 1629
+  },
+  "quantaalpha/app/utils/info.py": {
+    "path": "quantaalpha/app/utils/info.py",
+    "imports": [
+      "importlib.metadata",
+      "platform",
+      "sys",
+      "pathlib.Path",
+      "docker",
+      "requests",
+      "setuptools_scm.get_version",
+      "quantaalpha.log.logger"
+    ],
+    "classes": [],
+    "functions": [
+      "sys_info",
+      "python_info",
+      "docker_info",
+      "collect_info"
+    ],
+    "size": 1835
+  },
+  "quantaalpha/app/benchmark/factor/analysis.py": {
+    "path": "quantaalpha/app/benchmark/factor/analysis.py",
+    "imports": [
+      "json",
+      "pickle",
+      "pathlib.Path",
+      "fire",
+      "matplotlib.pyplot",
+      "numpy",
+      "pandas",
+      "seaborn",
+      "quantaalpha.components.benchmark.conf.BenchmarkSettings",
+      "quantaalpha.components.benchmark.eval_method.FactorImplementEval"
+    ],
+    "classes": [
+      "BenchmarkAnalyzer",
+      "Plotter"
+    ],
+    "functions": [
+      "main",
+      "__init__",
+      "load_index_map",
+      "load_data",
+      "process_results",
+      "reformat_index",
+      "result_all_key_order",
+      "analyze_data",
+      "change_fs",
+      "plot_data"
+    ],
+    "size": 7734
+  },
+  "quantaalpha/app/benchmark/factor/eval.py": {
+    "path": "quantaalpha/app/benchmark/factor/eval.py",
+    "imports": [
+      "quantaalpha.pipeline.settings.FACTOR_PROP_SETTING",
+      "quantaalpha.components.benchmark.conf.BenchmarkSettings",
+      "quantaalpha.components.benchmark.eval_method.FactorImplementEval",
+      "quantaalpha.core.scenario.Scenario",
+      "quantaalpha.core.utils.import_class",
+      "quantaalpha.log.logger",
+      "quantaalpha.factors.loader.json_loader.FactorTestCaseLoaderFromJsonFile"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1236
+  },
+  "quantaalpha/app/benchmark/model/eval.py": {
+    "path": "quantaalpha/app/benchmark/model/eval.py",
+    "imports": [
+      "pathlib.Path",
+      "quantaalpha.contrib.model.coder.ModelCoSTEER",
+      "quantaalpha.utils.loader.task_loader.ModelTaskLoaderJson",
+      "quantaalpha.utils.loader.task_loader.ModelWsLoader",
+      "quantaalpha.contrib.model.experiment.QlibModelExperiment",
+      "quantaalpha.contrib.model.experiment.QlibModelScenario",
+      "quantaalpha.contrib.model.coder.benchmark.eval.ModelImpValEval",
+      "quantaalpha.contrib.model.coder.one_shot.ModelCodeWriter"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 1489
+  },
+  "quantaalpha/pipeline/evolution/controller.py": {
+    "path": "quantaalpha/pipeline/evolution/controller.py",
+    "imports": [
+      "__future__.annotations",
+      "dataclasses.dataclass",
+      "pathlib.Path",
+      "typing.Any",
+      "typing.Optional",
+      "threading",
+      "quantaalpha.log.logger",
+      "trajectory.StrategyTrajectory",
+      "trajectory.TrajectoryPool",
+      "trajectory.RoundPhase",
+      "mutation.MutationOperator",
+      "crossover.CrossoverOperator"
+    ],
+    "classes": [
+      "EvolutionConfig",
+      "EvolutionController"
+    ],
+    "functions": [
+      "__init__",
+      "get_current_state",
+      "get_next_task",
+      "get_all_tasks_for_current_phase",
+      "advance_phase_after_parallel_completion"
+    ],
+    "size": 15038
+  },
+  "quantaalpha/pipeline/evolution/mutation.py": {
+    "path": "quantaalpha/pipeline/evolution/mutation.py",
+    "imports": [
+      "__future__.annotations",
+      "pathlib.Path",
+      "typing.Optional",
+      "yaml",
+      "quantaalpha.log.logger",
+      "quantaalpha.llm.client.APIBackend",
+      "trajectory.StrategyTrajectory",
+      "trajectory.RoundPhase",
+      "json",
+      "re",
+      "random"
+    ],
+    "classes": [
+      "MutationOperator"
+    ],
+    "functions": [
+      "__init__",
+      "_load_prompts",
+      "generate_mutation",
+      "_parse_detailed_response",
+      "_generate_fallback_hypothesis",
+      "generate_mutation_prompt_suffix"
+    ],
+    "size": 10935
+  },
+  "quantaalpha/pipeline/evolution/__init__.py": {
+    "path": "quantaalpha/pipeline/evolution/__init__.py",
+    "imports": [
+      "trajectory.StrategyTrajectory",
+      "trajectory.TrajectoryPool",
+      "trajectory.RoundPhase",
+      "mutation.MutationOperator",
+      "crossover.CrossoverOperator",
+      "controller.EvolutionController",
+      "controller.EvolutionConfig"
+    ],
+    "classes": [],
+    "functions": [],
+    "size": 983
+  },
+  "quantaalpha/pipeline/evolution/trajectory.py": {
+    "path": "quantaalpha/pipeline/evolution/trajectory.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  },
+  "quantaalpha/pipeline/evolution/crossover.py": {
+    "path": "quantaalpha/pipeline/evolution/crossover.py",
+    "imports": [],
+    "classes": [],
+    "functions": [],
+    "size": 15038
+  }
+}
